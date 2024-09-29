@@ -1,0 +1,615 @@
+<html><head><base href="https://1.%E8%A6%81%E6%9C%89%E9%97%9C%E6%96%BC%E6%88%91%E5%80%91%E3%80%81%E8%81%AF%E7%B5%A6%E6%88%91%E5%80%91">
+<title>華翔有機顏料貿易公司</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --card-background: #ffffff;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding-top: 60px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+    transform: rotate(45deg);
+    z-index: 1;
+  }
+
+  header h1 {
+    position: relative;
+    z-index: 2;
+    font-size: 2.5rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  nav {
+    background-color: var(--card-background);
+    padding: 0.5rem;
+    box-shadow: var(--card-shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 0.25rem 0;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color var(--transition-speed) ease;
+    font-size: 0.9rem;
+  }
+
+  nav ul li a:hover {
+    color: var(--primary-color);
+  }
+
+  main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .search-container {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    z-index: 999;
+  }
+
+  #search-input, #lightfastness-filter, #color-filter, #application-filter {
+    flex-grow: 1;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all var(--transition-speed) ease;
+  }
+
+  #search-input:focus, #lightfastness-filter:focus, #color-filter:focus, #application-filter:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  }
+
+  #search-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
+  }
+
+  #search-button:hover {
+    background-color: #2980b9;
+  }
+
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    flex: 0 0 calc(33.333% - 1rem);
+    transition: all var(--transition-speed) ease;
+  }
+
+  .product-card.expanded {
+    flex: 0 0 100%;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .product-card.expanded .color-sample {
+    flex: 0 0 120px;
+    height: 120px;
+    margin-right: 1rem;
+  }
+
+  .product-card.expanded .product-content {
+    flex: 1;
+  }
+
+  .product-card .expanded-info {
+    display: none;
+  }
+
+  .product-card.expanded .expanded-info {
+    display: block;
+  }
+
+  .color-sample {
+    width: 100%;
+    height: 120px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .product-info {
+    font-size: 0.9rem;
+  }
+
+  .product-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+
+  .about-us, .contact-us {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+  }
+
+  .about-us h2, .contact-us h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all var(--transition-speed) ease;
+  }
+
+  .contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  }
+
+  .contact-form button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
+  }
+
+  .contact-form button:hover {
+    background-color: #2980b9;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      padding: 0.5rem;
+    }
+
+    nav ul li a {
+      font-size: 0.9rem;
+    }
+
+    body {
+      padding-top: 60px;
+    }
+
+    .search-container {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    #search-input, #lightfastness-filter, #color-filter, #application-filter, #search-button {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+    nav ul {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0.25rem 0;
+    }
+
+    .product-card {
+      flex: 0 0 calc(100% - 1rem);
+    }
+
+    header {
+      padding: 1rem;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+    }
+  }
+
+  #back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: background-color 0.3s;
+  }
+
+  #back-to-top:hover {
+    background-color: var(--secondary-color);
+  }
+
+  #contact-us-float {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  #contact-us-float:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>華翔興業有限公司</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#home">首頁</a></li>
+      <li><a href="#products">產品</a></li>
+      <li><a href="#about">關於我們</a></li>
+      <li><a href="#contact">聯絡我們</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section id="home">
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="搜索顏料 (例如: PB15:0, 藍色)">
+        <select id="lightfastness-filter">
+          <option value="">所有耐光級數</option>
+          <option value="8">8 級 - 極佳</option>
+          <option value="7">7 級 - 優秀</option>
+          <option value="6">6 級 - 很好</option>
+          <option value="5">5 級 - 好</option>
+          <option value="4">4 級 - 一般</option>
+          <option value="3">3 級 - 尚可</option>
+        </select>
+        <select id="color-filter">
+          <option value="">所有顏色</option>
+          <option value="藍色">藍色</option>
+          <option value="綠色">綠色</option>
+          <option value="橙色">橙色</option>
+          <option value="紅色">紅色</option>
+          <option value="紫色">紫色</option>
+          <option value="黃色">黃色</option>
+        </select>
+        <select id="application-filter">
+          <option value="">所有應用</option>
+          <option value="油墨">油墨</option>
+          <option value="塗料">塗料</option>
+          <option value="塑料">塑料</option>
+        </select>
+        <button id="search-button">搜索</button>
+      </div>
+    </section>
+    
+    <section id="products">
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+    
+    <section id="about" class="about-us">
+      <h2>關於我們</h2>
+      <p>華翔有機顏料貿易公司是一家專業的顏料供應商，致力於為客戶提供高品質的有機顏料、溶劑染料和螢光增白劑。我們擁有豐富的行業經驗和專業知識，能夠為各種應用領域提供最適合的顏料解決方案。</p>
+      <p>我們的產品範圍包括各種顏色的有機顏料，如藍色、綠色、橙色、紅色、紫色和黃色。我們的產品以卓越的性能、優異的耐光性和多樣化的應用而聞名。無論您是在塗料、油墨、塑料還是其他領域，我們都能為您提供最佳的顏料選擇。</p>
+      <p>華翔公司秉承誠信、專業和創新的經營理念，致力於為客戶提供優質的產品和卓越的服務。我們與國際知名的顏料製造商保持密切合作，確保我們的產品始終處於行業領先水平。</p>
+    </section>
+    
+    <section id="contact" class="contact-us">
+      <h2>聯絡我們</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="您的姓名" required="">
+        <input type="email" placeholder="您的電子郵件" required="">
+        <input type="tel" placeholder="您的電話">
+        <textarea placeholder="您的訊息" rows="5" required=""></textarea>
+        <button type="submit">發送訊息</button>
+      </form>
+      <div class="contact-info">
+        <p><strong>地址：</strong>臺北市信義區信義路5段7號37樓</p>
+        <p><strong>電話：</strong>02-87292906</p>
+        <p><strong>電子郵件：</strong>sam@hwashine.tw</p>
+        <p><strong>營業時間：</strong>週一至週五 9:00-18:00</p>
+      </div>
+    </section>
+  </main>
+  <button id="back-to-top" title="Back to Top">↑</button>
+  <button id="contact-us-float" title="聯絡我們">聯絡我們</button>
+
+<script>
+let products = [
+  { name: "藍色 PB15:0", color: "#0047AB", category: "藍色", lightfastness: 8, description: "高性能銅酞菁藍顏料(Copper Phthalocyanine Blue)，具有優異的耐光性、耐化學性和耐熱性。廣泛應用於油墨、塑料和紡織品等領域。其穩定性使其成為戶外應用的理想選擇。", molecularFormula: "C32H16CuN8", properties: "熔點: >300°C, 密度: 1.6 g/cm³", colorDescription: "明亮的藍色，具有微弱的綠色調", group: "酞菁藍顏料", applications: ["油墨", "塑料"] },
+  { name: "藍色 PB15:1", color: "#0066CC", category: "藍色", lightfastness: 8, description: "結晶型銅酞菁藍顏料，具有出色的著色力、遮蓋力和分散性。常用於高品質印刷油墨、藝術顏料和工業塗料。其鮮艷的藍色調使其在包裝和裝飾領域備受青睞。", molecularFormula: "C32H16CuN8", properties: "熔點: >300°C, 密度: 1.6 g/cm³", colorDescription: "明亮的藍色，具有微弱的綠色調", group: "酞菁藍顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "藍色 PB15:4", color: "#0080FF", category: "藍色", lightfastness: 8, description: "α型銅酞菁藍顏料，具有高度的透明度和鮮豔的色彩。特別適用於金屬效果塗料、汽車塗料和特殊效果油墨。其獨特的晶體結構賦予了卓越的耐候性。", molecularFormula: "C32H16CuN8", properties: "熔點: >300°C, 密度: 1.6 g/cm³", colorDescription: "明亮的藍色，具有微弱的綠色調", group: "酞菁藍顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "藍色 PB15:6", color: "#4169E1", category: "藍色", lightfastness: 8, description: "ε型銅酞菁藍顏料，具有優異的耐溶剤性和耐熱性。廣泛應用於工程塑料、高溫烤漆和工業塗料。其穩定的結晶形態使其在苛刻環境下依然保持色彩穩定。", molecularFormula: "C32H16CuN8", properties: "熔點: >300°C, 密度: 1.6 g/cm³", colorDescription: "明亮的藍色，具有微弱的綠色調", group: "酞菁藍顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "綠色 PG7", color: "#009E60", category: "綠色", lightfastness: 8, description: "氯化銅酞菁綠顏料，具有優異的耐光性、耐化學性和耐熱性。廣泛用於各種塗料、油墨和塑料著色。其獨特的藍綠色調使其成為景觀和建築領域的首選。", molecularFormula: "C32H16CuN8Cl16", properties: "熔點: >300°C, 密度: 1.6 g/cm³", colorDescription: "深邃的綠色，帶有藍色調", group: "酞菁綠顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "綠色 PG36", color: "#1C7C4E", category: "綠色", lightfastness: 7, description: "溴化銅酞菁綠顏料，具有良好的耐候性、耐熱性和色彩穩定性。常用於高級汽車塗料、工業塗料和特種油墨。其深沉的綠色調為產品增添了高級感和持久魅力。", molecularFormula: "C32H16CuN8Br6Cl10", properties: "熔點: >300°C, 密度: 1.6 g/cm³", colorDescription: "濃厚的森林綠", group: "酞菁綠顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "橙色 PO13", color: "#FF8C00", category: "橙色", lightfastness: 6, description: "苯並咪唑酮橙顏料，具有明亮的色調和良好的耐光性。適用於各種塑料和油漆產品，提供最佳色彩選擇。", molecularFormula: "C18H10Cl2N4O2", properties: "熔點: >300°C, 密度: 1.5 g/cm³", colorDescription: "明亮的橙色，明亮且飽滿", group: "有機橙色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "橙色 PO34", color: "#FF7F50", category: "橙色", lightfastness: 7, description: "二酮吡咯并吡咯橙顏料，具有優異的耐光性和耐熱性，常用於印刷和塗飾應用。", molecularFormula: "C26H14N4O2", properties: "熔點: >300°C, 密度: 1.5 g/cm³", colorDescription: "鮮豔的橙色，帶一點紅色調", group: "有機橙色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "橙色 PO36", color: "#FF6347", category: "橙色", lightfastness: 7, description: "苯並咪唑酮橙顏料，具有良好的耐光性和耐化學性，適用於各種涂料和油墨產品。", molecularFormula: "C18H10Cl2N4O2", properties: "熔點: >300°C, 密度: 1.5 g/cm³", colorDescription: "明亮的橙色，偏紅色", group: "有機橙色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "橙色 PO64", color: "#FF4500", category: "橙色", lightfastness: 6, description: "苯並咪唑酮橙顏料，具有鮮豔的色調和良好的耐光性，適合高品質的藝術顏料和工業用途。", molecularFormula: "C26H22N4O2", properties: "熔點: >300°C, 密度: 1.5 g/cm³", colorDescription: "彩度高的橙色", group: "有機橙色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR2", color: "#FF0000", category: "紅色", lightfastness: 3, description: "莫蘭迪紅顏料，具有明亮的色調，但耐光性較低，適合內部室內裝飾使用。", molecularFormula: "C23H16Cl2N2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR8", color: "#DC143C", category: "紅色", lightfastness: 4, description: "立索爾紅顏料，具有鮮豔的色調和中等耐光性，廣泛應用於藝術和工業塗料。", molecularFormula: "C23H20N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "深紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR48:2", color: "#B22222", category: "紅色", lightfastness: 5, description: "永固紅顏料，具有優良的耐光性和耐化學性，適用於高端油墨和印刷產品。", molecularFormula: "C24H20N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的血紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR53:1", color: "#CD5C5C", category: "紅色", lightfastness: 4, description: "立索爾紅鈣鹽顏料，具有良好的遮蓋力和中等耐光性，常用於繪畫和塗料。", molecularFormula: "C24H22N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR57:1", color: "#FF69B4", category: "紅色", lightfastness: 5, description: "立索爾紅鈣鹽顏料，具有明亮的色調和良好的耐光性，適合藝術作品和裝飾用途。", molecularFormula: "C24H22N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的粉紅紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR112", color: "#FF1493", category: "紅色", lightfastness: 6, description: "萘酚AS顏料，具有優異的耐光性和耐化學性，適合高品質藝術和專業用途。", molecularFormula: "C18H12N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的鮮紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR122", color: "#FF00FF", category: "紅色", lightfastness: 7, description: "喹吖啶酮紅顏料，具有優異的耐光性和高度的透明度，適合高端設計產品。", molecularFormula: "C17H10N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "紅紫色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR146", color: "#FF00FF", category: "紅色", lightfastness: 6, description: "萘酚AS紅顏料，具有良好的耐光性和耐化學性，適用於各種高標準油漆和工藝品。", molecularFormula: "C19H14N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的粉紅紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR170", color: "#FF4500", category: "紅色", lightfastness: 6, description: "萘酚AS紅顏料，具有優良的耐光性和耐熱性，特別適合工業用途。", molecularFormula: "C20H14N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR176", color: "#FF6347", category: "紅色", lightfastness: 7, description: "苯並咪唑酮紅顏料，具有優異的耐光性和耐化學性，常用於高端塗料和藝術品。", molecularFormula: "C20H18N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "亮紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR177", color: "#FF7F50", category: "紅色", lightfastness: 6, description: "胺基蒽醌紅顏料，具有良好的耐光性和耐熱性，適合多種應用場景。", molecularFormula: "C18H14N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR185", color: "#FF69B4", category: "紅色", lightfastness: 7, description: "二酮吡咯并吡咯紅顏料，具有優異的耐光性和鮮豔的色調，適合藝術和設計用途。", molecularFormula: "C18H17N3O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的粉紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR208", color: "#FF1493", category: "紅色", lightfastness: 6, description: "二酮吡咯并吡咯紅顏料，具有良好的耐光性和高度的透明度，常用於高端產品。", molecularFormula: "C18H17N3O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的粉紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR242", color: "#FF00FF", category: "紅色", lightfastness: 7, description: "二酮吡咯并吡咯紅顏料，具有優異的耐光性和耐化學性，適合各類商品和氛圍設計。", molecularFormula: "C18H17N3O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "深粉紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR254", color: "#FF4500", category: "紅色", lightfastness: 8, description: "二酮吡咯并吡咯紅顏料，具有極佳的耐光性和耐候性，特別適合戶外用品和裝飾。", molecularFormula: "C18H17N3O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紫色 PR19", color: "#8A2BE2", category: "紫色", lightfastness: 5, description: "喹吖啶酮紫顏料，具有鮮豔的色調和良好的耐光性，主要用於藝術和化妝品。", molecularFormula: "C14H8N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮明的紫色", group: "有機紫色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紫色 PV23", color: "#9400D3", category: "紫色", lightfastness: 7, description: "二噁嗪紫顏料，具有優異的耐光性和耐化學性，適合工業應用和設計需求。", molecularFormula: "C16H10N2O3", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "深紫色", group: "有機紫色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY12", color: "#FFD700", category: "黃色", lightfastness: 4, description: "二芳基黃顏料，具有明亮的色調和中等耐光性，常用於繪畫和建築內裝。", molecularFormula: "C18H16N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY13", color: "#FFFF00", category: "黃色", lightfastness: 4, description: "二芳基黃顏料，具有鮮豔的色調和中等耐光性，適合專業和商業用途。", molecularFormula: "C18H15N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮明的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY14", color: "#FFD700", category: "黃色", lightfastness: 5, description: "二芳基黃顏料，具有良好的耐光性和耐化學性，常用於工業和裝飾性涂料。", molecularFormula: "C18H16N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY74", color: "#FFFF00", category: "黃色", lightfastness: 6, description: "縮醛黃顏料，具有優良的耐光性和耐熱性，廣泛應用於輸出商品和內部裝飾。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "淺黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY81", color: "#FFD700", category: "黃色", lightfastness: 5, description: "二芳基黃顏料，具有良好的耐光性和耐化學性，適合藝術品和室內產品。", molecularFormula: "C18H16N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮艷的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY83", color: "#FFFF00", category: "黃色", lightfastness: 6, description: "二芳基黃顏料，具有優良的耐光性和耐溶剂性，常用於塑料和包裝。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY110", color: "#FFD700", category: "黃色", lightfastness: 7, description: "異吲哚啉黃顏料，具有優異的耐光性和耐化學性，適合戶外產品和特殊需求。", molecularFormula: "C20H18N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "亮黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY128", color: "#FFFF00", category: "黃色", lightfastness: 7, description: "二吖華唑黃顏料，具有優異的耐光性和耐熱性，適合工業製造和設計。", molecularFormula: "C19H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "顯眼的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY138", color: "#FFD700", category: "黃色", lightfastness: 8, description: "喹吖啶酮黃顏料，具有極佳的耐光性和耐化學性，適合高端藝術和專業用途。", molecularFormula: "C19H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮豔的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY139", color: "#FFFF00", category: "黃色", lightfastness: 8, description: "異吲哚啉黃顏料，具有極佳的耐光性和耐候性，適合戶外裝飾和工業用途。", molecularFormula: "C19H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "亮黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY150", color: "#FFD700", category: "黃色", lightfastness: 7, description: "偶氮黃顏料，具有優異的耐光性和耐化學性，適合各種商品和氛圍設計。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY151", color: "#FFFF00", category: "黃色", lightfastness: 7, description: "苯並咪唑酮黃顏料，具有優異的耐光性和耐熱性，適合多種應用場景。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮艷的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY154", color: "#FFD700", category: "黃色", lightfastness: 8, description: "苯並咪唑酮黃顏料，具有極佳的耐光性和耐化學性，適合高端產品和藝術需求。", molecularFormula: "C18H16N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的深黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY155", color: "#FFFF00", category: "黃色", lightfastness: 7, description: "二酮吡咯并吡咯黃顏料，具有優異的耐光性和耐熱性，常用於繪畫和裝飾。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY174", color: "#FFD700", category: "黃色", lightfastness: 7, description: "苯並咪唑酮黃顏料，具有優異的耐光性和耐候性，適合廣泛應用。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "光亮亮的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY180", color: "#FFFF00", category: "黃色", lightfastness: 8, description: "苯並咪唑酮黃顏料，具有極佳的耐光性和耐化學性，適合各種商品和氛圍設計。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "亮黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY191", color: "#FFD700", category: "黃色", lightfastness: 7, description: "苯並咪唑酮黃顏料，具有優異的耐光性和耐熱性，適合藝術和設計用途。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "亮黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "藍色 PB15:3", color: "#0067A5", category: "藍色", lightfastness: 8, description: "銅酞菁藍顏料，具有優異的耐光性和耐化學性。廣泛應用於各種高品質塗料和印刷油墨。", molecularFormula: "C32H16CuN8", properties: "熔點: >300°C, 密度: 1.6 g/cm³", colorDescription: "明亮的藍色", group: "酞菁藍顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "藍色 PB60", color: "#0047AB", category: "藍色", lightfastness: 8, description: "吲哚蘭顏料，具有優異的耐光性和耐候性。常用於高級藝術顏料和工業塗料。", molecularFormula: "C32H16N4O2", properties: "熔點: >300°C, 密度: 1.4 g/cm³", colorDescription: "深邃的藍色", group: "吲哚蘭顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR22", color: "#E30022", category: "紅色", lightfastness: 6, description: "萘酚AS紅顏料，具有良好的耐光性和鮮豔的色調。適用於各種塗料和印刷油墨。", molecularFormula: "C20H13N3O4", properties: "熔點: >300°C, 密度: 1.4 g/cm³", colorDescription: "鮮豔的紅色", group: "萘酚AS紅顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR48:3", color: "#D40000", category: "紅色", lightfastness: 5, description: "永固紅鋇鹽顏料，具有良好的耐光性和遮蓋力。廣泛應用於塗料和塑料著色。", molecularFormula: "C18H13N3O3", properties: "熔點: >300°C, 密度: 1.5 g/cm³", colorDescription: "亮麗的紅色", group: "永固紅顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "紅色 PR144", color: "#FF2400", category: "紅色", lightfastness: 7, description: "縮合偶氮紅顏料，具有優異的耐光性和耐熱性。適用於高溫應用和工業塗料。", molecularFormula: "C22H14N6O2", properties: "熔點: >300°C, 密度: 1.5 g/cm³", colorDescription: "明亮的紅色", group: "縮合偶氮紅顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY17", color: "#FCE883", category: "黃色", lightfastness: 5, description: "二芳基黃顏料，具有良好的耐光性和鮮豔的色調。常用於藝術顏料和印刷油墨。", molecularFormula: "C18H16N4O4", properties: "熔點: >300°C, 密度: 1.4 g/cm³", colorDescription: "明亮的黃色", group: "二芳基黃顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY93", color: "#FFFF00", category: "黃色", lightfastness: 7, description: "縮醛黃顏料，具有優異的耐光性和耐化學性。廣泛應用於塗料和塑料著色。", molecularFormula: "C21H21N3O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮豔的黃色", group: "縮醛黃顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY95", color: "#FFEB00", category: "黃色", lightfastness: 6, description: "二芳基黃顏料，具有良好的耐光性和色彩穩定性。適用於各種印刷油墨和塗料。", molecularFormula: "C18H17N3O4", properties: "熔點: >300°C, 密度: 1.4 g/cm³", colorDescription: "明亮的黃色", group: "二芳基黃顏料", applications: ["油墨", "塗料", "塑料"] },
+  { name: "黃色 PY192", color: "#FFF600", category: "黃色", lightfastness: 8, description: "苯並咪唑酮黃顏料，具有極佳的耐光性和耐候性。常用於高端塗料和工業應用。", molecularFormula: "C24H20N4O4", properties: "熔點: >300°C, 密度: 1.4 g/cm³", colorDescription: "明亮的黃色", group: "苯並咪唑酮黃顏料", applications: ["油墨", "塗料", "塑料"] },
+];
+
+// Remove duplicate products
+let uniqueProducts = products.filter((product, index, self) =>
+  index === self.findIndex((t) => t.name === product.name)
+);
+
+// Replace the original products array with the unique products
+products = uniqueProducts;
+
+function createProductCard(product) {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+
+  const colorSample = document.createElement('div');
+  colorSample.className = 'color-sample';
+  colorSample.style.backgroundColor = product.color;
+
+  const content = document.createElement('div');
+  content.className = 'product-content';
+
+  const name = document.createElement('h3');
+  name.textContent = product.name;
+
+  const info = document.createElement('div');
+  info.className = 'product-info';
+  info.innerHTML = `
+    <p><strong>耐光性:</strong> ${product.lightfastness} 級</p>
+    <p>${product.description}</p>
+    <p><strong>適用於:</strong> ${product.applications.join(', ')}</p>
+  `;
+
+  const expandedInfo = document.createElement('div');
+  expandedInfo.className = 'expanded-info';
+  expandedInfo.innerHTML = `
+    <h4>分子式</h4>
+    <p>${product.molecularFormula}</p>
+    <h4>物性</h4>
+    <p>${product.properties}</p>
+    <h4>顏色描述</h4>
+    <p>${product.colorDescription}</p>
+    <h4>所屬族群</h4>
+    <p>${product.group}</p>
+  `;
+
+  content.appendChild(name);
+  content.appendChild(info);
+  content.appendChild(expandedInfo);
+
+  card.appendChild(colorSample);
+  card.appendChild(content);
+
+  card.addEventListener('click', (e) => {
+    const expanded = card.classList.toggle('expanded');
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(c => {
+      if (c !== card) {
+        c.classList.remove('expanded');
+      }
+    });
+
+    if (expanded) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  return card;
+}
+
+function displayProducts(productsToShow) {
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = '';
+  productsToShow.forEach(product => {
+    grid.appendChild(createProductCard(product));
+  });
+}
+
+function searchProducts() {
+  const searchTerm = document.getElementById('search-input').value.toLowerCase();
+  const lightfastness = document.getElementById('lightfastness-filter').value;
+  const colorFilter = document.getElementById('color-filter').value;
+  const applicationFilter = document.getElementById('application-filter').value;
+
+  const filteredProducts = products.filter(product =>
+    (product.name.toLowerCase().includes(searchTerm) ||
+     product.category.toLowerCase().includes(searchTerm) ||
+     product.description.toLowerCase().includes(searchTerm)) &&
+    (lightfastness === '' || product.lightfastness.toString() === lightfastness) &&
+    (colorFilter === '' || product.category === colorFilter) &&
+    (applicationFilter === '' || product.applications.includes(applicationFilter))
+  );
+
+  displayProducts(filteredProducts);
+}
+
+document.getElementById('search-button').addEventListener('click', searchProducts);
+document.getElementById('search-input').addEventListener('keyup', function(event) {
+  if (event.key === 'Enter') {
+    searchProducts();
+  }
+});
+document.getElementById('lightfastness-filter').addEventListener('change', searchProducts);
+document.getElementById('color-filter').addEventListener('change', searchProducts);
+document.getElementById('application-filter').addEventListener('change', searchProducts);
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (this.getAttribute('href') === '#home') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    } else {
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// Back to Top functionality
+const backToTopButton = document.getElementById("back-to-top");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    backToTopButton.style.display = "block";
+  } else {
+    backToTopButton.style.display = "none";
+  }
+}
+
+backToTopButton.addEventListener("click", function(){
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+// Contact Us float button functionality
+const contactUsFloatButton = document.getElementById("contact-us-float");
+
+contactUsFloatButton.addEventListener("click", function() {
+  const contactSection = document.getElementById("contact");
+  contactSection.scrollIntoView({behavior: 'smooth'});
+});
+
+// Initial display of all products
+displayProducts(products);
+</script>
+</body></html>
