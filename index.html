@@ -4,7 +4,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="Description" content="華翔興業有限公司，華翔顏料，華翔顏染料，華翔興業 ">
 <meta name="keywords" content="顏料,溶劑染料，華翔，色母、色漿、色砂、色膠,功能性母粒,塑膠添加劑,增白劑,珠光，溶劑染料，TPO，顏料紅122，顏料紫19，顏料黃150，顏料紫23">
-<style>
   :root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
@@ -317,6 +316,43 @@
     background-color: var(--secondary-color);
     transform: scale(1.05);
   }
+
+  #contact-form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #contact-form input,
+  #contact-form textarea {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  #contact-form textarea {
+    height: 100px;
+  }
+
+  #contact-form button {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  #contact-form button:hover {
+    background-color: var(--secondary-color);
+  }
+
+  #form-status {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
 </style>
 </head>
 <body>
@@ -400,6 +436,14 @@
         <p><strong>地址：</strong>臺北市信義區信義路5段7號37樓</p>
         <p><strong>營業時間：</strong>週一至週五 9:00-18:00</p>
       </div>
+      <form id="contact-form"action="https://formspree.io/f/xblrnwnz" method="POST">
+        <h3>直接留言</h3>
+        <input type="text" id="name" name="name" placeholder="您的姓名" required>
+        <input type="email" id="email" name="email" placeholder="您的電子郵件" required>
+        <textarea id="message" name="message" placeholder="您的訊息" required></textarea>
+        <button type="submit">發送訊息</button>
+      </form>
+      <p id="form-status"></p>
       <p>我們將盡快回覆您的訊息。感謝您的支持！</p>
     </section>
   </main>
@@ -617,6 +661,23 @@ products.forEach(product => {
 
 // Initial display of all products
 displayProducts(products);
+
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  
+  // Here you would typically send this data to a server
+  // For demonstration, we'll just log it and show a success message
+  console.log('Form submitted:', { name, email, message });
+  
+  document.getElementById('form-status').textContent = '訊息已發送！我們將盡快與您聯繫。';
+  
+  // Clear the form
+  this.reset();
+});
 </script>
 </body>
 </html>
