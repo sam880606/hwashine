@@ -665,19 +665,7 @@ products.forEach(product => {
 // Initial display of all products
 displayProducts(products);
 
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
-  
-  // Here you would typically send this data to a server
-  // For demonstration, we'll just log it and show a success message
-  console.log('Form submitted:', { name, email, message });
-  
-  document.getElementById('form-status').textContent = '訊息已發送！我們將盡快與您聯繫。';
-  
+
   // Clear the form
   this.reset();
 });
