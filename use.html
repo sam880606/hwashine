@@ -1,0 +1,811 @@
+<html><head><base href="/" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工業有機顏料應用指南</title>
+
+<style>
+:root {
+  --primary: #2c5282;
+  --secondary: #4a5568;
+  --accent: #ed8936;
+  --background: #f7fafc;
+}
+
+body {
+  font-family: "微軟正黑體", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+}
+
+.header {
+  background-color: var(--primary);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.search-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.filter-section {
+  background: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+}
+
+.filter-group {
+  margin: 1rem 0;
+}
+
+.filter-input {
+  padding: 0.5rem;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  width: 120px;
+  margin-left: 0.5rem;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.color-analysis-section {
+  max-width: 800px;
+  margin: 0 auto 2rem auto; 
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pigment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.pigment-table th, .pigment-table td {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+}
+
+.pigment-table td {
+  vertical-align: middle;
+}
+
+.search-box {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.upload-area {
+  border: 2px dashed var(--primary);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.upload-area:hover {
+  background-color: #f0f5ff;
+}
+
+.color-preview {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.color-box {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.matched-pigments {
+  margin-top: 1rem;
+}
+
+.matched-pigment-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.pigment-color {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>工業有機顏料應用指南</h1>
+  <p>為您的產品找到最適合的有機顏料解決方案</p>
+</header>
+
+<section class="search-section">
+  <input type="text" class="search-box" placeholder="搜尋顏料或應用領域..." id="searchInput">
+  
+  <div class="filter-section">
+    <h3>篩選條件</h3>
+    <div class="filter-group">
+      <label>最低耐溫值 (°C):
+        <input type="number" id="tempFilter" class="filter-input" min="0" max="400" placeholder="最低溫度">
+      </label>
+    </div>
+    <div class="filter-group">
+      <label>最低耐光值 (1-8):
+        <input type="number" id="lightFilter" class="filter-input" min="1" max="8" placeholder="最低耐光值">
+      </label>
+    </div>
+    <div class="filter-group">
+      <label>最低耐候值 (1-5):
+        <input type="number" id="weatherFilter" class="filter-input" min="1" max="5" placeholder="最低耐候值">
+      </label>
+    </div>
+    <div class="filter-group">
+      <label>翹曲程度:</label>
+      <select id="warpFilter" class="filter-input" style="width: 150px;">
+        <option value="">全部</option>
+        <option value="N/A">N/A</option>
+        <option value="None">None</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>應用領域:</label>
+      <select id="applicationFilter" class="filter-input" style="width: 150px;">
+        <option value="">全部</option>
+        <option value="塗料">塗料</option>
+        <option value="油墨">油墨</option>
+        <option value="塑膠">塑膠</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>價格範圍:</label>
+      <select id="priceFilter" class="filter-input" style="width: 150px;">
+        <option value="">全部</option>
+        <option value="low">低價位 (<450 NT$/kg)</option>
+        <option value="mid">中價位 (450-900 NT$/kg)</option>
+        <option value="high">高價位 (>900 NT$/kg)</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<section class="color-analysis-section">
+  <h2>顏色匹配分析</h2>
+  <div class="upload-area" id="uploadArea">
+    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+    <p>點擊或拖曳圖片至此處</p>
+    <p>支援 JPG, PNG 格式</p>
+  </div>
+  
+  <div class="color-preview">
+    <div>
+      <h3>上傳圖片</h3>
+      <img id="uploadedImage" style="max-width: 200px; display: none;">
+    </div>
+    <div>
+      <h3>主要顏色</h3>
+      <div id="dominantColor" class="color-box"></div>
+      <p id="colorInfo"></p>
+    </div>
+  </div>
+  
+  <div class="matched-pigments">
+    <h3>建議顏料</h3>
+    <div id="matchedPigmentsList"></div>
+  </div>
+</section>
+
+<div id="pigmentTable" style="padding: 2rem;">
+  <table class="pigment-table">
+    <thead>
+      <tr>
+        <th>顏料名稱</th>
+        <th>color index</th>
+        <th>應用領域</th>
+        <th>特性</th>
+        <th>濃度</th>
+        <th>價格</th>
+        <th>著色力</th>
+      </tr>
+    </thead>
+    <tbody id="pigmentData">
+      <!-- JavaScript 將動態填充數據 -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+const pigmentData = [
+  {
+    name: "顏料黃128(Full shade)",
+    colorIndex: "PY128",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment in PP",
+    rgb: [253, 215, 39],
+    lightfastness: 8,
+    weatherability: 5,
+    heatResistance: 240,
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in PVC(2%Tio2)=0.44",
+    migrationResistance: 5,
+    warpResistance: "N/A"
+  },
+  {
+    name: "顏料黃128(Tint shade)",
+    colorIndex: "PY128",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment + 1%Tio2 in PP",
+    rgb: [255, 243, 123],
+    lightfastness: 8,
+    weatherability: 4.5,
+    heatResistance: 240,
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in PVC(2%Tio2)=0.44",
+    migrationResistance: 5,
+    warpResistance: "N/A"
+  },
+  {
+    name: "顏料黃151(Full shade)",
+    colorIndex: "PY151",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment in PP",
+    rgb: [253, 218, 40],
+    lightfastness: 8,
+    weatherability: 5,
+    heatResistance: 280-230,
+    price: "450-900 NT$/kg", 
+    tintingStrength: "1/3 SD in PP(1%Tio2)=0.38",
+    migrationResistance: 5,
+    warpResistance: "Low"
+  },
+  {
+    name: "顏料黃151(Tint shade)",
+    colorIndex: "PY151",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment + 1%Tio2 in PP",
+    rgb: [255, 243, 123],
+    lightfastness: 8,
+    weatherability: 4.5,
+    heatResistance: 280-230,
+    price: "450-900 NT$/kg", 
+    tintingStrength: "1/3 SD in PP(1%Tio2)=0.38",
+    migrationResistance: 5,
+    warpResistance: "Low"
+  },
+  {
+    name: "顏料黃180(Full shade)",
+    colorIndex: "PY180",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment in PP",
+    rgb: [252, 197, 37],
+    lightfastness: 6.5,
+    weatherability: 4,
+    heatResistance: 280-230,
+    price: "450-900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.16",
+    migrationResistance: 5,
+    warpResistance: "Low"
+  },
+  {
+    name: "顏料黃180(Tint shade)",
+    colorIndex: "PY180",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment + 1%Tio2 in PP",
+    rgb: [255, 230, 123],
+    lightfastness: 6.5,
+    weatherability: 3,
+    heatResistance: 290,
+    price: "450-900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.16",
+    migrationResistance: 5,
+    warpResistance: "Low"
+  },
+  {
+    name: "顏料黃155(Full shade)",
+    colorIndex: "PY155",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment in PP",
+    rgb: [252, 205, 37],
+    lightfastness: 7.5,
+    weatherability: 4.5,
+    heatResistance: "240-200",
+    price: "450-900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.18",
+    migrationResistance: 3.5,
+    warpResistance: "Meium"
+  },
+  {
+    name: "顏料黃155(Tint shade)",
+    colorIndex: "PY155",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment + 1%Tio2 in PP",
+    rgb: [255, 235, 123],
+    lightfastness: 7.5,
+    weatherability: 3.5,
+    heatResistance: "240-200",
+    price: "450-900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.18",
+    migrationResistance: 3.5,
+    warpResistance: "Meium"
+  },
+  
+  {
+    name: "顏料黃139(Full shade)",
+    colorIndex: "PY139",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment in PP",
+    rgb: [255, 160, 34],
+    lightfastness: 7,
+    weatherability: 3.5,
+    heatResistance: "240",
+    price: "450-900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.14",
+    migrationResistance: 5,
+    warpResistance: "Low"
+  },
+  {
+    name: "顏料黃139(Tint shade)",
+    colorIndex: "PY139",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment + 1%Tio2 in PP",
+    rgb: [255, 199, 118],
+    lightfastness: 7,
+    weatherability: 3,
+    heatResistance: "240",
+    price: "450-900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.14",
+    migrationResistance: 5,
+    warpResistance: "Low"
+  },
+  {
+    name: "顏料橙64(Full shade)",
+    colorIndex: "PO64",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment in PP",
+    rgb: [255, 100, 34],
+    lightfastness: 7.5,
+    weatherability: 4.5,
+    heatResistance: "300-230",
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.25",
+    migrationResistance: 5,
+    warpResistance: "Low"
+  },
+  {
+    name: "顏料橙64(Tint shade)",
+    colorIndex: "PO64",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment + 1%Tio2 in PP",
+    rgb: [255, 152, 112],
+    lightfastness: 7.5,
+    weatherability: 3.5,
+    heatResistance: "300-230",
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.25",
+    migrationResistance: 5,
+    warpResistance: "Low"
+  },
+  {
+    name: "顏料紅176(Full shade)",
+    colorIndex: "PR176",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment in PP",
+    rgb: [227, 35, 33],
+    lightfastness: 7,
+    weatherability: 3.5,
+    heatResistance: 250,
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.21",
+    migrationResistance: 5,
+    warpResistance: "Low"
+  },
+  {
+    name: "顏料紅176(Tint shade)",
+    colorIndex: "PR176",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment + 1%Tio2 in PP",
+    rgb: [255, 107, 136],
+    lightfastness: 6,
+    weatherability: 3,
+    heatResistance: 250,
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.21",
+    migrationResistance: 5,
+    warpResistance: "Low"
+  },
+  {
+    name: "顏料紅185(Full shade)",
+    colorIndex: "PR185",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment in PP",
+    rgb: [236, 37, 35],
+    lightfastness: 7,
+    weatherability: 3.5,
+    heatResistance: 280,
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.20",
+    migrationResistance: 5,
+    warpResistance: "High"
+  },
+  {
+    name: "顏料紅185(Tint shade)",
+    colorIndex: "PR185",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment + 1%Tio2 in PP",
+    rgb: [255, 114, 145],
+    lightfastness: 6,
+    weatherability: 3,
+    heatResistance: 280,
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.20",
+    migrationResistance: 5,
+    warpResistance: "High"
+  },
+  {
+    name: "顏料紅208(Full shade)",
+    colorIndex: "PR208",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment in PP",
+    rgb: [233, 36, 34],
+    lightfastness: 7,
+    weatherability: "4",
+    heatResistance: 250-240,
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.13",
+    migrationResistance: 4.5,
+    warpResistance: "High"
+  },
+  {
+    name: "顏料紅208(Tint shade)",
+    colorIndex: "PR208",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment + 1%Tio2 in PP",
+    rgb: [255, 112, 113],
+    lightfastness: 6.5,
+    weatherability: "4",
+    heatResistance: 240,
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.13",
+    migrationResistance: 4.5,
+    warpResistance: "High"
+  },
+  {
+    name: "顏料紅242(Full shade)",
+    colorIndex: "PR242",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment in PP",
+    rgb: [255, 67, 34],
+    lightfastness: 8,
+    weatherability: 5,
+    heatResistance: 300,
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.23",
+    migrationResistance: 5,
+    warpResistance: "High"
+  },
+  {
+    name: "顏料紅242(Tint shade)",
+    colorIndex: "PR242",
+    applications: ["塑膠"],
+    dosage: "濃度: 0.1% pigment + 1%Tio2 in PP",
+    rgb: [255, 130, 112],
+    lightfastness: 7.5,
+    weatherability: 5,
+    heatResistance: 300,
+    price: ">900 NT$/kg", 
+    tintingStrength: "1/3 SD in pp(1%TIO2)=0.23",
+    migrationResistance: 5,
+    warpResistance: "High"
+  }
+];
+
+function renderPigmentTable(data) {
+  const tableBody = document.getElementById('pigmentData');
+  tableBody.innerHTML = '';
+  
+  data.forEach(pigment => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 30px; height: 30px; border-radius: 4px; background-color: rgb(${pigment.rgb.join(',')});"></div>
+          ${pigment.name}
+        </div>
+      </td>
+      <td>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 30px; height: 30px; border-radius: 4px; background-color: rgb(${pigment.rgb.join(',')});"></div>
+          ${pigment.colorIndex}
+        </div>
+      </td>
+      <td>${pigment.applications.join(', ')}</td>
+      <td>
+        耐光性: ${pigment.lightfastness}/8<br>
+        耐候性: ${pigment.weatherability}/5<br>
+        耐溫性: ${pigment.heatResistance}<br>
+        耐遷移性: ${pigment.migrationResistance}/5<br>
+        翹曲性: ${pigment.warpResistance}
+      </td>
+      <td>${pigment.dosage}</td>
+      <td>${pigment.price}</td>
+      <td>${pigment.tintingStrength}%</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+// 初始化表格
+renderPigmentTable(pigmentData);
+
+// 搜尋功能
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+  const filteredData = pigmentData.filter(pigment => 
+    pigment.name.toLowerCase().includes(searchTerm) ||
+    pigment.colorIndex.toLowerCase().includes(searchTerm) ||
+    pigment.applications.some(app => app.toLowerCase().includes(searchTerm))
+  );
+  renderPigmentTable(filteredData);
+});
+
+// 新篩選輸入的事件
+const filterInputs = document.querySelectorAll('.filter-input');
+filterInputs.forEach(input => {
+  input.addEventListener('input', applyFilters);
+});
+
+function applyFilters() {
+  const tempMin = Number(document.getElementById('tempFilter').value) || 0;
+  const lightMin = Number(document.getElementById('lightFilter').value) || 0;
+  const weatherMin = Number(document.getElementById('weatherFilter').value) || 0;
+  const selectedApplication = document.getElementById('applicationFilter').value;
+  const selectedPriceRange = document.getElementById('priceFilter').value;
+  const selectedWarp = document.getElementById('warpFilter').value;
+  
+  const filteredData = pigmentData.filter(pigment => {
+    // Handle temperature range
+    let meetsTemperature = true;
+    if (tempMin > 0) {
+      if (typeof pigment.heatResistance === 'string') {
+        const [maxTemp] = pigment.heatResistance.split('-').map(Number);
+        meetsTemperature = maxTemp >= tempMin;
+      } else {
+        meetsTemperature = pigment.heatResistance >= tempMin;
+      }
+    }
+    
+    const meetsBasicCriteria = (
+      meetsTemperature &&
+      pigment.lightfastness >= lightMin &&
+      pigment.weatherability >= weatherMin
+    );
+    
+    const meetsApplicationCriteria = !selectedApplication || 
+      pigment.applications.includes(selectedApplication);
+
+    // New price filtering logic
+    let meetsPriceCriteria = true;
+    if (selectedPriceRange) {
+      switch (selectedPriceRange) {
+        case 'low':
+          meetsPriceCriteria = pigment.price === "<450 NT$/kg";
+          break;
+        case 'mid':
+          meetsPriceCriteria = pigment.price === "450-900 NT$/kg";
+          break;
+        case 'high':
+          meetsPriceCriteria = pigment.price === ">900 NT$/kg";
+          break;
+      }
+    }
+
+    const meetsWarpCriteria = !selectedWarp || pigment.warpResistance === selectedWarp;
+    
+    return meetsBasicCriteria && meetsApplicationCriteria && 
+           meetsPriceCriteria && meetsWarpCriteria;
+  });
+  
+  renderPigmentTable(filteredData);
+}
+
+// Remove old application checkbox listeners and add new dropdown listener
+document.getElementById('applicationFilter').addEventListener('change', applyFilters);
+
+// 顏色分析功能
+const uploadArea = document.getElementById('uploadArea');
+const imageInput = document.getElementById('imageInput');
+const uploadedImage = document.getElementById('uploadedImage');
+const dominantColor = document.getElementById('dominantColor');
+const colorInfo = document.getElementById('colorInfo');
+const matchedPigmentsList = document.getElementById('matchedPigmentsList');
+
+uploadArea.addEventListener('click', () => {
+  imageInput.click();
+});
+
+uploadArea.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  uploadArea.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+});
+
+uploadArea.addEventListener('dragleave', () => {
+  uploadArea.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--primary');
+});
+
+uploadArea.addEventListener('drop', (e) => {
+  e.preventDefault();
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    processImage(file);
+  }
+});
+
+imageInput.addEventListener('change', (e) => {
+  if (e.target.files.length > 0) {
+    processImage(e.target.files[0]);
+  }
+});
+
+function processImage(file) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    uploadedImage.src = e.target.result;
+    uploadedImage.style.display = 'block';
+    
+    uploadedImage.onload = function() {
+      const colorThief = new ColorThief();
+      const color = colorThief.getColor(uploadedImage);
+      const rgbColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+      const labColor = rgb2lab(color);
+      
+      dominantColor.style.backgroundColor = rgbColor;
+      colorInfo.textContent = `RGB: ${color[0]}, ${color[1]}, ${color[2]} | LAB: ${labColor.L.toFixed(2)}, ${labColor.a.toFixed(2)}, ${labColor.b.toFixed(2)}`;
+      
+      findMatchingPigments(color, labColor);
+    }
+  }
+  reader.readAsDataURL(file);
+}
+
+function rgb2lab(rgb) {
+  let r = rgb[0] / 255;
+  let g = rgb[1] / 255;
+  let b = rgb[2] / 255;
+
+  r = r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
+  g = g > 0.04045 ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
+  b = b > 0.04045 ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;
+
+  let x = (r * 0.4124 + g * 0.3576 + b * 0.1805) * 100;
+  let y = (r * 0.2126 + g * 0.7152 + b * 0.0722) * 100;
+  let z = (r * 0.0193 + g * 0.1192 + b * 0.9505) * 100;
+
+  x = x / 95.047;
+  y = y / 100.000;
+  z = z / 108.883;
+
+  x = x > 0.008856 ? Math.pow(x, 1/3) : (7.787 * x) + 16/116;
+  y = y > 0.008856 ? Math.pow(y, 1/3) : (7.787 * y) + 16/116;
+  z = z > 0.008856 ? Math.pow(z, 1/3) : (7.787 * z) + 16/116;
+
+  return {
+    L: (116 * y) - 16,
+    a: 500 * (x - y),
+    b: 200 * (y - z)
+  };
+}
+
+function findMatchingPigments(targetColor, targetLab) {
+  const tempMin = Number(document.getElementById('tempFilter').value) || 0;
+  const lightMin = Number(document.getElementById('lightFilter').value) || 0;
+  const weatherMin = Number(document.getElementById('weatherFilter').value) || 0;
+
+  const filteredPigments = pigmentData.filter(pigment => 
+    pigment.heatResistance >= tempMin &&
+    pigment.lightfastness >= lightMin &&
+    pigment.weatherability >= weatherMin
+  );
+
+  const matches = filteredPigments
+    .map(pigment => {
+      const pigmentLab = rgb2lab(pigment.rgb);
+      const deltaE = calculateDeltaE(targetLab, pigmentLab);
+      return {
+        ...pigment,
+        deltaE: deltaE
+      };
+    })
+    .filter(pigment => pigment.deltaE < 25)
+    .sort((a, b) => a.deltaE - b.deltaE)
+    .slice(0, 2);
+  
+  if (matches.length === 0) {
+    matchedPigmentsList.innerHTML = `
+      <div class="matched-pigment-card">
+        <p>抱歉，目前沒有完全符合的顏料選擇。建議聯繫我們的專業人員進行客製化配色。</p>
+      </div>
+    `;
+  } else {
+    displayMatchedPigments(matches);
+  }
+}
+
+function calculateDeltaE(lab1, lab2) {
+  const deltaL = lab1.L - lab2.L;
+  const deltaA = lab1.a - lab2.a;
+  const deltaB = lab1.b - lab2.b;
+  return Math.sqrt(deltaL * deltaL + deltaA * deltaA + deltaB * deltaB);
+}
+
+function displayMatchedPigments(matches) {
+  matchedPigmentsList.innerHTML = matches
+    .map(match => `
+      <div class="matched-pigment-card">
+        <div class="pigment-color" style="background-color: rgb(${match.rgb.join(',')})"></div>
+        <div>
+          <h4>${match.name} (${match.colorIndex})</h4>
+          <p>適用於: ${match.applications.join(', ')}</p>
+          <p>耐光性: ${match.lightfastness}/8<br>
+             耐候性: ${match.weatherability}/5<br>
+             耐熱性(HDPE): ${match.heatResistance}<br>
+             耐遷移性: ${match.migrationResistance}/5<br>
+             翹曲性: ${match.warpResistance}</p>
+          <p>${match.dosage}</p>
+          <p>價格: ${match.price}</p>
+          <p>著色力: ${match.tintingStrength}%</p>
+          <p>顏色相似度: ${Math.round((1 - match.deltaE / 100) * 100)}%</p>
+        </div>
+      </div>
+    `)
+    .join('');
+}
+
+filterInputs.forEach(input => {
+  input.addEventListener('input', () => {
+    if (uploadedImage.style.display === 'block') {
+      const colorThief = new ColorThief();
+      const color = colorThief.getColor(uploadedImage);
+      const labColor = rgb2lab(color);
+      findMatchingPigments(color, labColor);
+    }
+  });
+});
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+</body>
+</html>
