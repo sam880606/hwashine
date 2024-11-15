@@ -1,11 +1,9 @@
-<html>
-<head>
-<base href="https://hwashine.tw/">
+<html><head><base href="https://hwashine.tw/">
 <link rel="icon" href="./favicon.ico" type="image/x-icon">
 <title>華翔興業有限公司 - 有機顏料與溶剤染料供應商</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="Description" content="華翔興業有限公司專注於優質有機顏料和溶剂染料，提供有機顏料、溶劑染料、螢光增白劑、光固化劑TPO等產品，為塗料、油墨、塑料提供專業解決方案。 ">
+<meta name="Description" content="華翔興業有限公司專注於優質有機顏料和溶剂染料，提供有機顏料、溶劑染料、螢光增白劑、光固化劑TPO等產品，為塗料、油墨、塑料提供專業解決方案。">
 <meta name="keywords" content="顏料,溶劑染料,華翔,增白劑,光固化劑TPO,顏料紅122,顏料紫19,顏料黃150,顏料紫23">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
@@ -32,74 +30,72 @@ body {
   background-color: var(--bg-color);
 }
 
+/* Header Styles */
 header {
   display: flex;
-  flex-direction: column; /* Change to 'row' for horizontal alignment */
-  align-items: center; /* Center alignment for header content */
+  flex-direction: row; /* Horizontal alignment */
+  justify-content: center; /* Center the header content */
+  align-items: center; 
   background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
   color: var(--white);
-  padding: 1rem 0; /* Adjusted padding */
-  position: relative;
-  overflow: hidden;
+  padding: 1rem; 
 }
 
 .header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem; /* Adjusted padding */
-  position: relative;
-  z-index: 1;
-  display: flex; /* Added flexbox */
-  flex-direction: column; /* Ensure title and subtitle stack */
-  align-items: center; /* Center title and subtitle */
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
 }
 
 .header-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem; /* Reduced margin */
-  font-weight: 700;
+  font-size: 1.8rem; 
+  margin-bottom: 0.5rem; 
 }
 
 .header-content p {
-  font-size: 1.2rem;
-  max-width: 800px;
-  margin: 0 auto;
+  font-size: 1rem; 
   opacity: 0.9;
 }
 
+/* Adjustments for Search Box Layout */
 #search-box {
-  display: flex; /* Ensure input and button are on the same line */
-  margin-top: 1rem; /* Adding some space above the search box */
+  display: flex; 
+  justify-content: center;
+  width: 100%; 
+  margin-top: 1rem; 
 }
 
 nav {
   background-color: var(--white);
-  padding: 1rem 0;
+  padding: 0.5rem 0; 
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
   z-index: 100;
+  display: flex; /* Added to ensure nav is centered */
+  justify-content: center; /* Center the nav items */
 }
 
+/* Navigation Updates */
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  justify-content: center; /* Center nav items */
+  margin: 0 auto; /* Ensure central alignment */
   padding: 0 1rem;
+  flex-wrap: nowrap; 
 }
 
 nav ul li {
-  margin: 0 1rem;
+  margin: 0 0.5rem; /* Reduced margin */
 }
 
 nav ul li a {
   text-decoration: none;
   color: var(--text-color);
   font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  padding: 0.5rem;
   transition: all 0.3s ease;
 }
 
@@ -110,32 +106,32 @@ nav ul li a:hover {
 
 .hero {
   position: relative;
-  height: 60vh;
+  height: 40vh; 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1579547944212-c4f4961a8dd8?auto=format&fit=crop&w=1920&q=80') center/cover;
   color: var(--white);
+  padding: 2rem 0; 
 }
 
 .hero-content {
-  max-width: 800px;
-  padding: 2rem;
+  max-width: 1200px; /* Consistent max-width for centering */
+  margin: 0 auto; /* Centering */
+  padding: 1.5rem; 
 }
 
 .hero h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2rem; 
 }
 
 .hero p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 1rem; 
 }
 
 .features {
-  padding: 4rem 0;
+  padding: 2rem 0; 
   background-color: var(--white);
 }
 
@@ -143,8 +139,8 @@ nav ul li a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px; /* Consistent max-width for centering */
+  margin: 0 auto; /* Centering */
   padding: 0 1rem;
 }
 
@@ -174,9 +170,7 @@ nav ul li a:hover {
 }
 
 .cta {
-  background-color: var(--secondary-color);
-  color: var(--white);
-  padding: 4rem 0;
+  padding: 2rem 0; 
   text-align: center;
 }
 
@@ -193,7 +187,8 @@ nav ul li a:hover {
 
 .btn {
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem; 
+  font-size: 1rem; 
   background-color: var(--accent-color);
   color: var(--white);
   text-decoration: none;
@@ -212,8 +207,8 @@ footer {
 }
 
 .footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px; /* Consistent max-width for centering */
+  margin: 0 auto; /* Centering */
   padding: 0 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -255,41 +250,30 @@ footer {
 }
 
 @media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav ul li {
-    margin: 0.5rem 0;
-  }
-
-  .hero h2 {
-    font-size: 2rem;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .header-content h1 {
-    font-size: 1.5rem; /* Adjusted size for mobile */
-    margin-bottom: 0.3rem; /* Reduced margin */
-  }
-
-  .header-content p {
-    font-size: 0.9rem; /* Adjusted size for mobile */
-  }
-
   header {
-    padding: 1rem; /* Maintained padding for mobile */
-    flex-direction: row; /* Change to horizontal layout for mobile */
-    justify-content: space-between; /* Space between title and search box */
-    align-items: center; /* Center vertically */
+    flex-direction: column; 
+    align-items: flex-start; 
   }
 
   #search-box {
-    margin-top: 0; /* Remove margin-top for better spacing */
+    padding: 0 1rem; 
+  }
+
+  nav ul {
+    justify-content: center; 
+    padding: 0; 
+  }
+
+  .features, .product-preview, .cta {
+    padding: 2rem 0; 
+  }
+
+  .feature-card, .product-card {
+    padding: 1rem; 
+  }
+
+  .btn {
+    width: 100%; 
   }
 }
 
@@ -297,8 +281,6 @@ footer {
   padding: 8px;
   border: none;
   border-radius: 4px;
-  margin-right: 8px;
-  width: 200px;
 }
 
 #search-button {
@@ -323,8 +305,8 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px; 
+  margin: 0 auto; 
   padding: 0 1rem;
 }
 
@@ -374,11 +356,12 @@ footer {
     <h1>華翔興業有限公司</h1>
     <p>專業的有機顏料供應商，為您提供高品質的色彩解決方案</p>
   </div>
-  <div id="search-box">
-    <input type="text" id="search-input" placeholder="搜尋產品...">
-    <button id="search-button">搜尋</button>
-  </div>
 </header>
+
+<div id="search-box">
+  <input type="text" id="search-input" placeholder="搜尋產品..." style="width: 60%;">
+  <button id="search-button">搜尋</button>
+</div>
 
 <nav>
   <ul>
