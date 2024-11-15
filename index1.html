@@ -256,23 +256,12 @@ footer {
 
 @media (max-width: 768px) {
   nav ul {
-    flex-direction: row; /* Change to row layout for mobile */
-    justify-content: space-around; /* Adjust spacing between elements */
+    flex-direction: column;
+    align-items: center;
   }
 
   nav ul li {
-    margin: 0; /* Remove vertical margin */
-  }
-
-  .header-content {
-    flex-direction: row; /* Change header content to row layout */
-    justify-content: space-between; /* Space content evenly */
-    width: 100%; /* Make header content full width */
-  }
-
-  #search-box {
-    justify-content: flex-end; /* Align search box to the right in mobile view */
-    margin-top: 0; /* Remove margin above search box */
+    margin: 0.5rem 0;
   }
 
   .hero h2 {
@@ -284,22 +273,23 @@ footer {
   }
 
   .header-content h1 {
-    font-size: 2rem; /* Adjusted size for mobile */
+    font-size: 1.5rem; /* Adjusted size for mobile */
+    margin-bottom: 0.3rem; /* Reduced margin */
   }
 
   .header-content p {
-    font-size: 1rem; /* Adjusted size for mobile */
+    font-size: 0.9rem; /* Adjusted size for mobile */
   }
 
   header {
     padding: 1rem; /* Maintained padding for mobile */
+    flex-direction: row; /* Change to horizontal layout for mobile */
+    justify-content: space-between; /* Space between title and search box */
+    align-items: center; /* Center vertically */
   }
 
-  .header-content {
-    padding: 1rem; /* Adjusted padding for better spacing */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  #search-box {
+    margin-top: 0; /* Remove margin-top for better spacing */
   }
 }
 
