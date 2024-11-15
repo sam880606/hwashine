@@ -1,13 +1,12 @@
-<html><head><base href="https://hwashine.tw/"><link rel="icon" href="./favicon.ico" type="image/x-icon">
-<title>華翔興業有限公司 - 有機顏料與溶劑染料供應商</title>
+<html>
+<head>
+<base href="https://hwashine.tw/">
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+<title>華翔興業有限公司 - 有機顏料與溶剤染料供應商</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="Description" content="華翔興業有限公司專注於優質有機顏料和溶劑染料，提供有機顏料、溶劑染料、螢光增白劑、光固化劑TPO等產品，為塗料、油墨、塑料提供專業解決方案。 ">
+<meta name="Description" content="華翔興業有限公司專注於優質有機顏料和溶剂染料，提供有機顏料、溶劑染料、螢光增白劑、光固化劑TPO等產品，為塗料、油墨、塑料提供專業解決方案。 ">
 <meta name="keywords" content="顏料,溶劑染料,華翔,增白劑,光固化劑TPO,顏料紅122,顏料紫19,顏料黃150,顏料紫23">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>華翔興業有限公司 - 專業有機顏料與溶劑染料供應商</title>
-<meta name="description" content="華翔興業有限公司專注於提供高品質有機顏料、溶劑染料、螢光增白劑及光固化劑TPO，為塗料、油墨、塑料等產業提供專業解決方案。">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
 
@@ -34,10 +33,12 @@ body {
 }
 
 header {
+  display: flex;
+  flex-direction: column; /* Change to 'row' for horizontal alignment */
+  align-items: center; /* Center alignment for header content */
   background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
   color: var(--white);
-  padding: 2rem 0;
-  text-align: center;
+  padding: 1rem 0; /* Adjusted padding */
   position: relative;
   overflow: hidden;
 }
@@ -45,14 +46,17 @@ header {
 .header-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem; /* Adjusted padding */
   position: relative;
   z-index: 1;
+  display: flex; /* Added flexbox */
+  flex-direction: column; /* Ensure title and subtitle stack */
+  align-items: center; /* Center title and subtitle */
 }
 
 .header-content h1 {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem; /* Reduced margin */
   font-weight: 700;
 }
 
@@ -61,6 +65,11 @@ header {
   max-width: 800px;
   margin: 0 auto;
   opacity: 0.9;
+}
+
+#search-box {
+  display: flex; /* Ensure input and button are on the same line */
+  margin-top: 1rem; /* Adding some space above the search box */
 }
 
 nav {
@@ -247,32 +256,51 @@ footer {
 
 @media (max-width: 768px) {
   nav ul {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row; /* Change to row layout for mobile */
+    justify-content: space-around; /* Adjust spacing between elements */
   }
-  
+
   nav ul li {
-    margin: 0.5rem 0;
+    margin: 0; /* Remove vertical margin */
   }
-  
+
+  .header-content {
+    flex-direction: row; /* Change header content to row layout */
+    justify-content: space-between; /* Space content evenly */
+    width: 100%; /* Make header content full width */
+  }
+
+  #search-box {
+    justify-content: flex-end; /* Align search box to the right in mobile view */
+    margin-top: 0; /* Remove margin above search box */
+  }
+
   .hero h2 {
     font-size: 2rem;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
   }
-}
 
-#search-box {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 10px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
+  .header-content h1 {
+    font-size: 2rem; /* Adjusted size for mobile */
+  }
+
+  .header-content p {
+    font-size: 1rem; /* Adjusted size for mobile */
+  }
+
+  header {
+    padding: 1rem; /* Maintained padding for mobile */
+  }
+
+  .header-content {
+    padding: 1rem; /* Adjusted padding for better spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 #search-input {
@@ -453,7 +481,7 @@ footer {
       <h3>關於華新</h3>
       <ul>
         <li><a href="/about">公司簡介</a></li>
-        </ul>
+      </ul>
     </div>
     <div class="footer-section">
       <h3>產品資訊</h3>
