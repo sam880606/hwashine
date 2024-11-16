@@ -264,44 +264,59 @@
     </nav>
   </footer>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap" async defer></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"></script>
   <script>
+    // Initialize and add the map
     function initMap() {
-      const location = { lat: 25.033, lng: 121.564 };
-      const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: location,
-        styles: [
-          {
-            featureType: "all",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#333333" }]
-          }
-        ]
-      });
+      // The location of the company
+      const companyLocation = { lat: 25.033971, lng: 121.564363 };
       
+      // Create the map
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 17,
+        center: companyLocation,
+        mapTypeControl: true,
+        streetViewControl: true,
+        fullscreenControl: true,
+        zoomControl: true,
+      });
+
+      // Create the marker
       const marker = new google.maps.Marker({
-        position: location,
+        position: companyLocation,
         map: map,
-        title: '華翔興業有限公司'
+        title: "華翔興業有限公司",
+        animation: google.maps.Animation.DROP
       });
 
+      // Create an info window
       const infowindow = new google.maps.InfoWindow({
-        content: '<strong>華翔興業有限公司</strong><br>臺北市信義區信義路5段7號37樓'
+        content: `
+          <div style="padding: 10px;">
+            <h3 style="margin: 0 0 10px 0;">華翔興業有限公司</h3>
+            <p style="margin: 0;">臺北市信義區信義路5段7號37樓</p>
+            <p style="margin: 5px 0 0 0;">電話：02-87292906</p>
+          </div>
+        `
       });
 
-      marker.addListener('click', () => {
+      // Open info window when marker is clicked
+      marker.addListener("click", () => {
         infowindow.open(map, marker);
       });
+
+      // Open info window by default
+      infowindow.open(map, marker);
     }
 
-    document.getElementById('contact-form').addEventListener('submit', function() {
+    // Handle form submission
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      // Here you would typically send the form data to your server
       alert('感謝您的訊息！我們會盡快回覆您。');
       this.reset();
     });
 
+    // Animation for sections
     document.addEventListener('DOMContentLoaded', (event) => {
       const sections = document.querySelectorAll('section');
       
@@ -328,4 +343,5 @@
       });
     });
   </script>
-</body></html>
+</body>
+</html>
