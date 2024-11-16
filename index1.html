@@ -1,495 +1,508 @@
-<html><head><base href="https://hwashine.tw/">
-<link rel="icon" href="./favicon.ico" type="image/x-icon">
+<html><head><base href="https://hwashine.tw/"><link rel="icon" href="./favicon.ico" type="image/x-icon">
 <title>華翔興業有限公司 - 有機顏料與溶剤染料供應商</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="Description" content="華翔興業有限公司專注於優質有機顏料和溶剂染料，提供有機顏料、溶劑染料、螢光增白劑、光固化劑TPO等產品，為塗料、油墨、塑料提供專業解決方案。">
+<meta name="Description" content="華翔興業有限公司專注於優質有機顏料和溶溶劑染料，提供有機顏料、溶剂染料、螢光增白劑、光固化劑TPO等產品，為塗料、油墨、塑料提供專業解決方案。 ">
 <meta name="keywords" content="顏料,溶劑染料,華翔,增白劑,光固化劑TPO,顏料紅122,顏料紫19,顏料黃150,顏料紫23">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
 
-:root {
-  --primary-color: #2c8cb0;
-  --secondary-color: #1a5f7a;
-  --accent-color: #ff6b6b;
-  --text-color: #333;
-  --bg-color: #f8f9fa;
-  --white: #ffffff;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Noto Sans TC', sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-}
-
-/* Header Styles */
-header {
-  display: flex;
-  flex-direction: row; /* Horizontal alignment */
-  justify-content: center; /* Center the header content */
-  align-items: center; 
-  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-  color: var(--white);
-  padding: 1rem; 
-}
-
-.header-content {
-  display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  text-align: center; 
-}
-
-.header-content h1 {
-  font-size: 1.8rem; 
-  margin-bottom: 0.5rem; 
-}
-
-.header-content p {
-  font-size: 1rem; 
-  opacity: 0.9;
-}
-
-/* Adjustments for Search Box Layout */
-#search-box {
-  display: flex; 
-  justify-content: center;
-  width: 100%; 
-  margin-top: 1rem; 
-}
-
-nav {
-  background-color: var(--white);
-  padding: 0.5rem 0; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex; /* Added to ensure nav is centered */
-  justify-content: center; /* Center the nav items */
-}
-
-/* Navigation Updates */
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center; /* Center nav items */
-  margin: 0 auto; /* Ensure central alignment */
-  padding: 0 1rem;
-  flex-wrap: nowrap; 
-}
-
-nav ul li {
-  margin: 0 0.5rem; /* Reduced margin */
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 500;
-  padding: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-nav ul li a:hover {
-  color: var(--primary-color);
-  background-color: rgba(44, 140, 176, 0.1);
-}
-
-.hero {
-  position: relative;
-  height: 40vh; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1579547944212-c4f4961a8dd8?auto=format&fit=crop&w=1920&q=80') center/cover;
-  color: var(--white);
-  padding: 2rem 0; 
-}
-
-.hero-content {
-  max-width: 1200px; /* Consistent max-width for centering */
-  margin: 0 auto; /* Centering */
-  padding: 1.5rem; 
-}
-
-.hero h2 {
-  font-size: 2rem; 
-}
-
-.hero p {
-  font-size: 1rem; 
-}
-
-.features {
-  padding: 2rem 0; 
-  background-color: var(--white);
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1200px; /* Consistent max-width for centering */
-  margin: 0 auto; /* Centering */
-  padding: 0 1rem;
-}
-
-.feature-card {
-  text-align: center;
-  padding: 2rem;
-  border-radius: 8px;
-  background-color: var(--white);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-}
-
-.feature-card svg {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 1rem;
-  fill: var(--primary-color);
-}
-
-.feature-card h3 {
-  margin-bottom: 1rem;
-  color: var(--secondary-color);
-}
-
-.cta {
-  padding: 2rem 0; 
-  text-align: center;
-}
-
-.cta-content {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.cta h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem; 
-  font-size: 1rem; 
-  background-color: var(--accent-color);
-  color: var(--white);
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #ff5252;
-}
-
-footer {
-  background-color: var(--secondary-color);
-  color: var(--white);
-  padding: 3rem 0;
-}
-
-.footer-content {
-  max-width: 1200px; /* Consistent max-width for centering */
-  margin: 0 auto; /* Centering */
-  padding: 0 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.footer-section h3 {
-  margin-bottom: 1rem;
-  color: var(--white);
-}
-
-.footer-section ul {
-  list-style: none;
-}
-
-.footer-section ul li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-section ul li a {
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-  color: var(--white);
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-links a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  header {
-    flex-direction: column; 
-    align-items: flex-start; 
+  :root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
   }
 
-  #search-box {
-    padding: 0 1rem; 
+  body {
+    font-family: 'Noto Sans TC', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    animation: ripple 15s infinite linear;
+    z-index: 1;
+  }
+
+  @keyframes ripple {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+  }
+
+  header p {
+    margin: 0.5rem 0 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+  }
+
+  nav {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
 
   nav ul {
-    justify-content: center; 
-    padding: 0; 
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .features, .product-preview, .cta {
-    padding: 2rem 0; 
+  nav ul li {
+    margin: 0.5rem;
   }
 
-  .feature-card, .product-card {
-    padding: 1rem; 
+  nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
   }
 
-  .btn {
-    width: 100%; 
+  nav ul li a:hover {
+    background-color: var(--primary-color);
+    color: white;
   }
-}
 
-#search-input {
-  padding: 8px;
-  border: none;
-  border-radius: 4px;
-}
+  #news-ticker {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
 
-#search-button {
-  padding: 8px 16px;
-  background: var(--accent-color);
-  border: none;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-}
+  #news-ticker-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker 30s linear infinite;
+  }
 
-#search-button:hover {
-  background: #ff5252;
-}
+  @keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+  }
 
-.product-preview {
-  padding: 4rem 0;
-  background-color: var(--white);
-}
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1200px; 
-  margin: 0 auto; 
-  padding: 0 1rem;
-}
+  section {
+    margin: 4rem 0;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
 
-.product-card {
-  background: var(--white);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
+  section:hover {
+    transform: translateY(-5px);
+  }
 
-.product-card:hover {
-  transform: translateY(-5px);
-}
+  h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
 
-.product-image {
-  height: 200px;
-  background-color: var(--primary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
 
-.product-info {
-  padding: 1.5rem;
-}
+  .search-container input {
+    width: 60%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+  }
 
-.product-info h3 {
-  margin-bottom: 0.5rem;
-  color: var(--secondary-color);
-}
+  .search-container button {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-.product-info p {
-  color: var(--text-color);
-  margin-bottom: 1rem;
-}
+  .search-container button:hover {
+    background-color: var(--secondary-color);
+  }
 
-.view-more {
-  text-align: center;
-  margin-top: 2rem;
-}
+  footer {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  footer nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+
+  footer nav a:hover {
+    color: var(--accent-color);
+  }
+
+  .featured-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .product-card {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .product-card h3 {
+    margin: 1rem 0;
+    color: var(--primary-color);
+  }
+
+  .product-icon {
+    width: 100%;
+    height: 200px;
+    background: var(--bg-color);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .news-section {
+    margin-top: 2rem;
+  }
+
+  .news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .news-card {
+    width: 100%;
+    margin-bottom: 1rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .news-card h3 {
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+  }
+
+  .news-date {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .pagination button {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .pagination button:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    
+    .search-container {
+      flex-direction: column;
+    }
+
+    .search-container input,
+    .search-container button {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .search-container button {
+      margin-top: 0.5rem;
+    }
+  }
 </style>
 </head>
 <body>
-<header>
-  <div class="header-content">
+  <header>
     <h1>華翔興業有限公司</h1>
-    <p>專業的有機顏料供應商，為您提供高品質的色彩解決方案</p>
-  </div>
-</header>
+    <p>專業有機顏料與溶溶劑染料供應商</p>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="index">首頁</a></li>
+      <li><a href="about">關於我們</a></li>
+      <li><a href="products">產品</a></li>
+      <li><a href="contact">聯絡我們</a></li>
+    </ul>
+  </nav>
 
-<div id="search-box">
-  <input type="text" id="search-input" placeholder="搜尋產品..." style="width: 60%;">
-  <button id="search-button">搜尋</button>
-</div>
-
-<nav>
-  <ul>
-    <li><a href="/">首頁</a></li>
-    <li><a href="/about">關於我們</a></li>
-    <li><a href="/products">產品</a></li>
-    <li><a href="/contact">聯絡我們</a></li>
-  </ul>
-</nav>
-
-<section class="hero">
-  <div class="hero-content">
-    <h2>卓越的色彩專家</h2>
-    <p>透過創新技術與專業經驗，為您提供最優質的顏料產品</p>
-    <a href="/products" class="btn">瀏覽產品</a>
-  </div>
-</section>
-
-<section class="features">
-  <div class="features-grid">
-    <div class="feature-card">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zM11 7h2v6h-2V7zm0 8h2v2h-2v-2z"/>
-      </svg>
-      <h3>台灣本地化供應</h3>
-      <p>在地化建立庫存降低斷料風險</p>
-    </div>
-    <div class="feature-card">
-      <svg viewBox="0 0 24 24">
-        <path d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H4V5h16v14z"/>
-        <path d="M9 17l3-2.94c.39-.39 1.02-.39 1.41 0L16.5 17"/>
-        <path d="M6.5 12.5l3-3c.39-.39 1.02-.39 1.41 0l7.09 7.09"/>
-      </svg>
-      <h3>創新研發</h3>
-      <p>與各方合作，開發更環保、更優質的產品</p>
-    </div>
-    <div class="feature-card">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-      </svg>
-      <h3>全球服務</h3>
-      <p>完整的銷售網路，為全球客戶提供即時支援</p>
+  <div id="news-ticker">
+    <div id="news-ticker-content">
+      最新消息：中國國際塗料展CHINACOAT將於2024年12月3 – 5日，聯絡我們可索取邀請碼免費入場
     </div>
   </div>
-</section>
 
-<section class="product-preview">
-  <div class="product-grid">
-    <div class="product-card">
-      <div class="product-image" style="background-color: #FF0000;"></div>
-      <div class="product-info">
-        <h3>紅色顏料</h3>
-        <p>高性能有機紅色顏料，適用於各種工業應用</p>
-        <a href="/products?search=紅色" class="btn">了解更多</a>
+  <main>
+    <section id="search">
+      <h2>網站搜尋</h2>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="輸入關鍵字搜尋">
+        <button id="search-button">搜尋</button>
       </div>
-    </div>
-    <div class="product-card">
-      <div class="product-image" style="background-color: #0000FF;"></div>
-      <div class="product-info">
-        <h3>藍色顏料</h3>
-        <p>穩定性優異的藍色顏料，廣泛應用於塗料產業</p>
-        <a href="/products?search=藍色" class="btn">了解更多</a>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-image" style="background-color: #FFFF00;"></div>
-      <div class="product-info">
-        <h3>黃色顏料</h3>
-        <p>色系齊全的黃色顏料，滿足對顏色的苛求</p>
-        <a href="/products?search=黃色" class="btn">了解更多</a>
-      </div>
-    </div>
-  </div>
-  <div class="view-more">
-    <a href="/products" class="btn">查看更多產品</a>
-  </div>
-</section>
+    </section>
 
-<section class="cta">
-  <div class="cta-content">
-    <h2>需要專業建議？</h2>
-    <p>我們的技術團隊隨時為您服務，協助您找到最適合的顏料解決方案</p>
-    <a href="/contact" class="btn">立即聯繫</a>
-  </div>
-</section>
+    <section id="featured-products">
+      <h2>主要產品</h2>
+      <div class="featured-products">
+        <a href="products/organic-pigments" class="product-card">
+          <div class="product-icon">
+            <img 
+              src="/pigment.jpg"
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;"
+            >
+          </div>
+          <h3>有機顏料</h3>
+          <p>高品質有機顏料，適用於各類塑料、油墨和塗料應用</p>
+        </a>
 
-<footer>
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>關於華新</h3>
+        <a href="products/solvent-dyes" class="product-card">
+          <div class="product-icon">
+            <img 
+              src="溶劑染料.webp" 
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;"
+            >
+          </div>
+          <h3>溶劑染料</h3>
+          <p>優質溶劑染料，具有優異的溶解性和著色力</p>
+        </a>
+
+        <a href="products/fluorescent-whitening-agents" class="product-card">
+          <div class="product-icon">
+            <img 
+              src="增白.webp"
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;"
+            >
+          </div>
+          <h3>螢光增白劑</h3>
+          <p>高效能螢光增白劑，提供優異的白度提升效果</p>
+        </a>
+
+        <a href="products/photo-initiator-tpo" class="product-card">
+          <div class="product-icon">
+            <img 
+              src="TPO.webp"
+              alt="UV固化過程特寫，展示在紫外光照射下的透明塗層固化效果" 
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;"
+            >
+          </div>
+          <h3>光固化劑TPO</h3>
+          <p>專業光固化劑TPO，特別適用於LED固化系統</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="news">
+      <h2>最新消息</h2>
+      <div class="news-grid">
+        <a href="/什麼是有機顏料" class="news-card">
+          <p class="/什麼是有機顏料"</p>
+          <h3>什麼是有機顏料</h3>
+        </a>
+      </div>
+      <div class="pagination">
+        <button id="prevPage" disabled>上一頁</button>
+        <button id="nextPage">下一頁</button>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>聯絡我們</h2>
+      <p>我們非常重視您的意見和查詢。請通過以下方式與我們聯繫：</p>
       <ul>
-        <li><a href="/about">公司簡介</a></li>
+        <li>電子郵件：<a href="mailto:sam@hwashine.tw">sam@hwashine.tw</a></li>
+        <li>電話：<a href="tel:+886287292906">02-87292906</a></li>
+        <li>地址：臺北市信義區信義路5段7號37樓</li>
+        <li>營業時間：週一至週五 9:00-18:00</li>
       </ul>
-    </div>
-    <div class="footer-section">
-      <h3>產品資訊</h3>
-      <ul>
-        <li><a href="/products?search=紅色">紅色系列</a></li>
-        <li><a href="/products?search=藍色">藍色系列</a></li>
-        <li><a href="/products?search=黃色">黃色系列</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h3>聯絡資訊</h3>
-      <p>地址：臺北市信義區信義路5段7號37樓</p>
-      <p>電話：02-87292906</p>
-      <p>Email：sam@hwashine.com</p>
-    </div>
-  </div>
-</footer>
+    </section>
+  </main>
 
-<script>
-document.getElementById('search-button').addEventListener('click', function() {
-  const searchTerm = document.getElementById('search-input').value;
-  if (searchTerm) {
-    window.location.href = `/products?search=${encodeURIComponent(searchTerm)}`;
-  }
-});
+  <footer>
+    <p>&copy; 2023 華翔興業有限公司 版權所有</p>
+    <nav>
+      <a href="/privacy">隱私政策</a> |
+      <a href="/terms">使用條款</a>
+    </nav>
+  </footer>
 
-document.getElementById('search-input').addEventListener('keypress', function(e) {
-  if (e.key === 'Enter') {
-    const searchTerm = this.value;
-    if (searchTerm) {
-      window.location.href = `/products?search=${encodeURIComponent(searchTerm)}`;
+  <script>
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+
+    function handleSearch() {
+      const searchQuery = searchInput.value.trim();
+      if (searchQuery) {
+        const encodedQuery = encodeURIComponent(searchQuery);
+        window.location.href = `https://hwashine.tw/products?search=${encodedQuery}`;
+      }
     }
-  }
-});
-</script>
 
+    searchButton.addEventListener('click', handleSearch);
+
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        handleSearch();
+      }
+    });
+
+    if (window.location.pathname === '/products') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchParam = urlParams.get('search');
+      
+      if (searchParam) {
+        const decodedSearch = decodeURIComponent(searchParam);
+        searchInput.value = decodedSearch;
+      }
+    }
+
+    // Add pagination JavaScript
+    const newsCards = document.querySelectorAll('.news-card');
+    const itemsPerPage = 5;
+    let currentPage = 1;
+    const totalPages = Math.ceil(newsCards.length / itemsPerPage);
+
+    const prevButton = document.getElementById('prevPage');
+    const nextButton = document.getElementById('nextPage');
+
+    function showPage(page) {
+      const start = (page - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      
+      newsCards.forEach((card, index) => {
+        card.style.display = (index >= start && index < end) ? 'block' : 'none';
+      });
+      
+      prevButton.disabled = page === 1;
+      nextButton.disabled = page === totalPages;
+    }
+
+    prevButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+
+    // Initialize first page
+    showPage(1);
+  </script>
 </body>
 </html>
