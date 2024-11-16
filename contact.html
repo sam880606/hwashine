@@ -157,6 +157,14 @@
   .contact-item {
     display: flex;
     align-items: center;
+    padding: 1rem;
+    background-color: rgba(44, 140, 176, 0.1);
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .contact-item:hover {
+    background-color: rgba(44, 140, 176, 0.2);
   }
 
   .contact-item svg {
@@ -164,13 +172,6 @@
     height: 24px;
     margin-right: 0.5rem;
     fill: var(--primary-color);
-  }
-
-  #map {
-    width: 100%;
-    height: 300px;
-    border-radius: 8px;
-    margin-top: 1rem;
   }
 
   footer {
@@ -252,7 +253,6 @@
           <span>02-87292906</span>
         </div>
       </div>
-      <div id="map"></div>
     </section>
   </main>
 
@@ -264,51 +264,7 @@
     </nav>
   </footer>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPI27f_sWiCDg3CADxrhjqI-GFYjqYcXA&callback=initMap"></script>
   <script>
-    // Initialize and add the map
-    function initMap() {
-      // The location of the company
-      const companyLocation = { lat: 25.033971, lng: 121.564363 };
-      
-      // Create the map
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 17,
-        center: companyLocation,
-        mapTypeControl: true,
-        streetViewControl: true,
-        fullscreenControl: true,
-        zoomControl: true,
-      });
-
-      // Create the marker
-      const marker = new google.maps.Marker({
-        position: companyLocation,
-        map: map,
-        title: "華翔興業有限公司",
-        animation: google.maps.Animation.DROP
-      });
-
-      // Create an info window
-      const infowindow = new google.maps.InfoWindow({
-        content: `
-          <div style="padding: 10px;">
-            <h3 style="margin: 0 0 10px 0;">華翔興業有限公司</h3>
-            <p style="margin: 0;">臺北市信義區信義路5段7號37樓</p>
-            <p style="margin: 5px 0 0 0;">電話：02-87292906</p>
-          </div>
-        `
-      });
-
-      // Open info window when marker is clicked
-      marker.addListener("click", () => {
-        infowindow.open(map, marker);
-      });
-
-      // Open info window by default
-      infowindow.open(map, marker);
-    }
-
     // Handle form submission
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
