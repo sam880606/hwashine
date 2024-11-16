@@ -216,7 +216,7 @@
   <main>
     <section>
       <h2>聯絡表單</h2>
-      <form id="contact-form">
+      <form id="contact-form" action="https://formspree.io/f/xblrnwnz" method="POST">
         <label for="name">姓名</label>
         <input type="text" id="name" name="name" required>
 
@@ -264,21 +264,38 @@
     </nav>
   </footer>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap" async defer></script>
   <script>
     function initMap() {
       const location = { lat: 25.033, lng: 121.564 };
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: location
+        center: location,
+        styles: [
+          {
+            featureType: "all",
+            elementType: "labels.text.fill",
+            stylers: [{ color: "#333333" }]
+          }
+        ]
       });
+      
       const marker = new google.maps.Marker({
         position: location,
-        map: map
+        map: map,
+        title: '華翔興業有限公司'
+      });
+
+      const infowindow = new google.maps.InfoWindow({
+        content: '<strong>華翔興業有限公司</strong><br>臺北市信義區信義路5段7號37樓'
+      });
+
+      marker.addListener('click', () => {
+        infowindow.open(map, marker);
       });
     }
 
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    document.getElementById('contact-form').addEventListener('submit', function() {
       e.preventDefault();
       // Here you would typically send the form data to your server
       alert('感謝您的訊息！我們會盡快回覆您。');
