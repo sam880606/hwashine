@@ -1,14 +1,16 @@
-<html><head><base href="https://hwashine.tw/about">
+<html><head><base href="https://hwashine.tw/"><link rel="icon" href="./favicon.ico" type="image/x-icon">
+<title>華翔興業有限公司 - 有機顏料與溶剤染料供應商</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>關於我們 - 華翔興業有限公司</title>
+<meta name="Description" content="華翔興業有限公司專注於優質有機顏料和溶溶劑染料，提供有機顏料、溶剂染料、螢光增白劑、光固化劑TPO等產品，為塗料、油墨、塑料提供專業解決方案。 ">
+<meta name="keywords" content="顏料,溶劑染料,華翔,增白劑,光固化劑TPO,顏料紅122,顏料紫19,顏料黃150,顏料紫23">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
 
   :root {
-    --primary-color: #2c8cb0;
-    --secondary-color: #1a5f7a;
-    --accent-color: #ff6b6b;
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
     --text-color: #333;
     --bg-color: #f8f9fa;
   }
@@ -56,6 +58,14 @@
     z-index: 2;
   }
 
+  header p {
+    margin: 0.5rem 0 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+  }
+
   nav {
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -92,6 +102,27 @@
     color: white;
   }
 
+  #news-ticker {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  #news-ticker-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker 30s linear infinite;
+  }
+
+  @keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+  }
+
   main {
     max-width: 1200px;
     margin: 2rem auto;
@@ -115,115 +146,35 @@
     color: var(--primary-color);
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
-  .timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 0;
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
   }
 
-  .timeline::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    background-color: var(--primary-color);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -3px;
+  .search-container input {
+    width: 60%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
   }
 
-  .timeline-item {
-    padding: 10px 40px;
-    position: relative;
-    background-color: inherit;
-    width: 50%;
-  }
-
-  .timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    right: -17px;
-    background-color: var(--bg-color);
-    border: 4px solid var(--primary-color);
-    top: 15px;
-    border-radius: 50%;
-    z-index: 1;
-  }
-
-  .left {
-    left: 0;
-  }
-
-  .right {
-    left: 50%;
-  }
-
-  .left::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 22px;
-    width: 0;
-    z-index: 1;
-    right: 30px;
-    border: medium solid var(--primary-color);
-    border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent var(--primary-color);
-  }
-
-  .right::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 22px;
-    width: 0;
-    z-index: 1;
-    left: 30px;
-    border: medium solid var(--primary-color);
-    border-width: 10px 10px 10px 0;
-    border-color: transparent var(--primary-color) transparent transparent;
-  }
-
-  .right::after {
-    left: -16px;
-  }
-
-  .timeline-content {
-    padding: 20px 30px;
-    background-color: white;
-    position: relative;
-    border-radius: 6px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-  }
-
-  .value-item {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .value-item:hover {
+  .search-container button {
+    padding: 0.5rem 1rem;
     background-color: var(--primary-color);
     color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
 
-  .value-item h3 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+  .search-container button:hover {
+    background-color: var(--secondary-color);
   }
 
   footer {
@@ -245,118 +196,235 @@
     color: var(--accent-color);
   }
 
-  @media screen and (max-width: 600px) {
-    .timeline::after {
-      left: 31px;
+  .featured-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .product-card {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .product-card h3 {
+    margin: 1rem 0;
+    color: var(--primary-color);
+  }
+
+  .product-icon {
+    width: 100%;
+    height: 200px;
+    background: var(--bg-color);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .news-section {
+    margin-top: 2rem;
+  }
+
+  .news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .news-card {
+    width: 100%;
+    margin-bottom: 1rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .news-card h3 {
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+  }
+
+  .news-date {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .pagination button {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .pagination button:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2rem;
     }
     
-    .timeline-item {
+    .search-container {
+      flex-direction: column;
+    }
+
+    .search-container input,
+    .search-container button {
       width: 100%;
-      padding-left: 70px;
-      padding-right: 25px;
-    }
-    
-    .timeline-item::before {
-      left: 60px;
-      border: medium solid white;
-      border-width: 10px 10px 10px 0;
-      border-color: transparent white transparent transparent;
+      border-radius: 4px;
     }
 
-    .left::after, .right::after {
-      left: 15px;
-    }
-
-    .right {
-      left: 0%;
+    .search-container button {
+      margin-top: 0.5rem;
     }
   }
 </style>
 </head>
 <body>
   <header>
-    <h1>關於華翔</h1>
+    <h1>華翔興業有限公司</h1>
+    <p>專業有機顏料與溶溶劑染料供應商</p>
   </header>
   
   <nav>
     <ul>
-      <li><a href="/">首頁</a></li>
-      <li><a href="/about">關於我們</a></li>
-      <li><a href="/products">產品</a></li>
-      <li><a href="/contact">聯絡我們</a></li>
+      <li><a href="index">首頁</a></li>
+      <li><a href="about">關於我們</a></li>
+      <li><a href="products">產品</a></li>
+      <li><a href="contact">聯絡我們</a></li>
     </ul>
   </nav>
 
+  <div id="news-ticker">
+    <div id="news-ticker-content">
+      最新消息：中國國際塗料展CHINACOAT將於2024年12月3 – 5日，聯絡我們可索取邀請碼免費入場
+    </div>
+  </div>
+
   <main>
-    <section id="company-intro">
-      <h2>公司簡介</h2>
-      <p>華翔興業有限公司是一家專業的顏料供應商，致力於為客戶提供高品質的有機顏料、溶劑染料和螢光增白劑。</p>
-      <p>我們擁有豐富的行業經驗和專業知識，能夠為各種應用領域提供最適合的顏料解決方案。是一家專業的染料與顏料供應商。我們致力於為塑料、印刷、塗料等行業提供高品質的產品和創新解決方案。憑藉豐富的行業經驗和專業知識，我們不斷推動技術創新，以滿足客戶不斷變化的需求。</p>
-      <p>我們的使命是通過卓越的產品和服務，為客戶創造價值，同時推動行業的可持續發展。我們重視環保責任，積極開發環境友善的產品，為建設更美好的世界貢獻自己的力量。</p>
-    </section>
-
-    <section id="history">
-      <h2>公司發展歷程</h2>
-      <div class="timeline">
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>2012年</h3>
-            <p>華翔興業有限公司正式成立，開始專注於溶劑染料和顏料的開發與銷售。</p>
-          </div>
-        </div>
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>2015年</h3>
-            <p>在台灣推廣環保顏料，提供傳統重金屬無機顏料及聯苯胺顏料替代方案。</p>
-          </div>
-        </div>
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>2019年</h3>
-            <p>引進優質的螢光增白劑，以卓越的品質和經濟的價格獲得市場認可。</p>
-          </div>
-        </div>
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>2022年</h3>
-            <p>開始在台灣市場銷售TPO(光固化劑)。</p>
-          </div>
-        </div>
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>2024年</h3>
-            <p>擴展業務範圍，以三角貿易服務海外市場。</p>
-          </div>
-        </div>
+    <section id="search">
+      <h2>網站搜尋</h2>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="輸入關鍵字搜尋">
+        <button id="search-button">搜尋</button>
       </div>
     </section>
 
-    <section id="values">
-      <h2>我們的價值觀</h2>
-      <div class="values-grid">
-        <div class="value-item">
-          <h3>創新</h3>
-          <p>我們不斷探索新技術和新方法，為客戶提供最前沿的解決方案。</p>
-        </div>
-        <div class="value-item">
-          <h3>品質</h3>
-          <p>我們堅持高標準，確保每一個產品都達到卓越品質。</p>
-        </div>
-        <div class="value-item">
-          <h3>誠信</h3>
-          <p>我們以誠實和透明的方式經營業務，贏得客戶和合作夥伴的信任。</p>
-        </div>
-        <div class="value-item">
-          <h3>環保</h3>
-          <p>我們致力於開發環境友善的產品，推動行業的可持續發展。</p>
-        </div>
+    <section id="featured-products">
+      <h2>主要產品</h2>
+      <div class="featured-products">
+        <a href="products" class="product-card">
+          <div class="product-icon">
+            <img 
+              src="/pigment.jpg"
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;"
+            >
+          </div>
+          <h3>有機顏料</h3>
+          <p>高品質有機顏料，適用於各類塑料、油墨和塗料應用</p>
+        </a>
+
+        <a href="products" class="product-card">
+          <div class="product-icon">
+            <img 
+              src="溶劑染料.webp" 
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;"
+            >
+          </div>
+          <h3>溶劑染料</h3>
+          <p>優質溶劑染料，具有優異的溶解性和著色力</p>
+        </a>
+
+        <a href="products" class="product-card">
+          <div class="product-icon">
+            <img 
+              src="增白.webp"
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;"
+            >
+          </div>
+          <h3>螢光增白劑</h3>
+          <p>高效能螢光增白劑，提供優異的白度提升效果</p>
+        </a>
+
+        <a href="products" class="product-card">
+          <div class="product-icon">
+            <img 
+              src="TPO.webp"
+              alt="UV固化過程特寫，展示在紫外光照射下的透明塗層固化效果" 
+              style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;"
+            >
+          </div>
+          <h3>光固化劑TPO</h3>
+          <p>專業光固化劑TPO，特別適用於LED固化系統</p>
+        </a>
       </div>
     </section>
 
-    <section id="team">
-      <h2>我們的團隊</h2>
-      <p>華翔興業有限公司創始人擁有超過40年的特用化學品從業經驗，並創建一支經驗豐富、充滿激情的專業團隊。我們能夠從不同角度思考問題，為客戶提供全面的解決方案。</p>
-      <p>我們重視員工的成長和發展，提供持續的培訓和學習機會，鼓勵創新和團隊合作。我們相信，只有擁有優秀的團隊，才能為客戶提供卓越的產品和服務。</p>
+    <section id="news">
+      <h2>最新消息</h2>
+      <div class="news-grid">
+        <a href="/什麼是有機顏料" class="news-card">
+          <p class="/什麼是有機顏料"</p>
+          <h3>什麼是有機顏料</h3>
+        </a>
+      </div>
+      <div class="pagination">
+        <button id="prevPage" disabled>上一頁</button>
+        <button id="nextPage">下一頁</button>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>聯絡我們</h2>
+      <p>我們非常重視您的意見和查詢。請通過以下方式與我們聯繫：</p>
+      <ul>
+        <li>電子郵件：<a href="mailto:sam@hwashine.tw">sam@hwashine.tw</a></li>
+        <li>電話：<a href="tel:+886287292906">02-87292906</a></li>
+        <li>地址：臺北市信義區信義路5段7號37樓</li>
+        <li>營業時間：週一至週五 9:00-18:00</li>
+      </ul>
     </section>
   </main>
 
@@ -369,30 +437,72 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      const sections = document.querySelectorAll('section');
-      
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
 
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, observerOptions);
+    function handleSearch() {
+      const searchQuery = searchInput.value.trim();
+      if (searchQuery) {
+        const encodedQuery = encodeURIComponent(searchQuery);
+        window.location.href = `https://hwashine.tw/products?search=${encodedQuery}`;
+      }
+    }
 
-      sections.forEach(section => {
-        section.style.opacity = 0;
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(section);
-      });
+    searchButton.addEventListener('click', handleSearch);
+
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        handleSearch();
+      }
     });
+
+    if (window.location.pathname === '/products') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchParam = urlParams.get('search');
+      
+      if (searchParam) {
+        const decodedSearch = decodeURIComponent(searchParam);
+        searchInput.value = decodedSearch;
+      }
+    }
+
+    // Add pagination JavaScript
+    const newsCards = document.querySelectorAll('.news-card');
+    const itemsPerPage = 5;
+    let currentPage = 1;
+    const totalPages = Math.ceil(newsCards.length / itemsPerPage);
+
+    const prevButton = document.getElementById('prevPage');
+    const nextButton = document.getElementById('nextPage');
+
+    function showPage(page) {
+      const start = (page - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      
+      newsCards.forEach((card, index) => {
+        card.style.display = (index >= start && index < end) ? 'block' : 'none';
+      });
+      
+      prevButton.disabled = page === 1;
+      nextButton.disabled = page === totalPages;
+    }
+
+    prevButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+
+    // Initialize first page
+    showPage(1);
   </script>
-</body></html>
+</body>
+</html>
