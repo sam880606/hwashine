@@ -226,6 +226,75 @@
     #back-to-top.show {
       display: block;
     }
+
+    .comparison-table {
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .comparison-table th {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: #f5f5f5;
+    }
+
+    .market-trends {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .trend-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .trend-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .trend-card h3 {
+      color: var(--primary-color);
+      margin-top: 0;
+    }
+
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .faq-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .faq-item h3 {
+      color: var(--primary-color);
+      margin-top: 0;
+    }
   </style>
 </head>
 <body>
@@ -339,6 +408,92 @@
         <p>作為專注於有機顏料的專業公司，華翔以其高品質產品和客戶至上的服務為目標，為各行業提供創新而可靠的顏料解決方案。讓我們一起探索有機顏料的無限可能！</p>
       </div>
     </section>
+
+    <section>
+      <h2>顏料對比分析：有機顏料 vs. 無機顏料</h2>
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>比較項目</th>
+              <th>有機顏料</th>
+              <th>無機顏料</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>色彩特性</td>
+              <td>鮮艷度高，色域寬廣</td>
+              <td>色彩純度較低，但穩定性好</td>
+            </tr>
+            <tr>
+              <td>耐候性</td>
+              <td>依種類而異，高端產品表現優異</td>
+              <td>普遍具有優異的耐候性</td>
+            </tr>
+            <tr>
+              <td>透明度</td>
+              <td>可製成透明至半透明</td>
+              <td>主要為不透明性</td>
+            </tr>
+            <tr>
+              <td>價格</td>
+              <td>相對較高</td>
+              <td>一般較為經濟</td>
+            </tr>
+            <tr>
+              <td>應用靈活性</td>
+              <td>適用範圍廣，可調性強</td>
+              <td>應用較為傳統和固定</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>市場趨勢</h2>
+      <div class="market-trends">
+        <div class="trend-card">
+          <h3>環保產業升級</h3>
+          <p>隨著環保意識提升，水性塗料和低VOC產品需求增加，帶動環保型有機顏料發展。</p>
+        </div>
+        <div class="trend-card">
+          <h3>數位印刷革新</h3>
+          <p>數位印刷技術進步推動高性能有機顏料需求，特別是在包裝印刷領域。</p>
+        </div>
+        <div class="trend-card">
+          <h3>汽車工業應用</h3>
+          <p>電動車市場擴張帶動特殊效果塗料需求，促進高端有機顏料發展。</p>
+        </div>
+        <div class="trend-card">
+          <h3>智能包裝創新</h3>
+          <p>智能包裝材料興起，對高性能有機顏料提出新要求。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>常見問題（FAQ）</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <h3>Q: 有機顏料的使用壽命如何？</h3>
+          <p>A: 優質有機顏料在正確使用和存儲條件下，可保持5-10年的色彩穩定性。具體取決於產品類型和使用環境。</p>
+        </div>
+        <div class="faq-item">
+          <h3>Q: 有機顏料是否環保安全？</h3>
+          <p>A: 現代有機顏料普遍符合國際環保標準，多數產品無毒無害。建議選購具有環保認證的產品。</p>
+        </div>
+        <div class="faq-item">
+          <h3>Q: 如何選擇適合的有機顏料？</h3>
+          <p>A: 需考慮應用領域、性能要求、成本預算等因素，建議諮詢專業供應商獲取建議。</p>
+        </div>
+        <div class="faq-item">
+          <h3>Q: 有機顏料與染料的區別是什麼？</h3>
+          <p>A: 有機顏料不溶於介質，以粒子形式存在；染料則可溶於介質，能與基材形成化學鍵結。</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -428,4 +583,3 @@
   </script>
 </body>
 </html>
-```
