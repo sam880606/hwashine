@@ -322,6 +322,15 @@ let products = [
   { name: "黃色 PY192", color: "黃色", lightfastness: 7, applications: ["塑料"], description: "苯並咪唑酮黃顏料,主要被應用於PA6。", sampleColor: "#FA6006", type: 'organic' }
 ];
 
+// Update each product name to include "有機"
+products = products.map(product => {
+  if (product.type === 'organic') {
+    // Add "有機" to the name if it's an organic pigment
+    product.name = product.name.replace(/^(藍|紅|黃|橙|紫)色\s+/, '$1色有機顏料 ');
+  }
+  return product;
+});
+
 let otherProducts = [
   {
     name: "TPO光引發劑",
@@ -381,28 +390,28 @@ products = products.concat(solventDyes);
 
 let fluorescentWhiteners = [
   {
-    name: "OB",
+    name: "螢光增白劑 OB",
     category: "螢光增白劑",
     description: "通用型螢光增白劑,適用於塑料、纖維等多種材料。具有良好的耐熱性和光穩定性。",
     applications: ["塑料"],
     type: 'fluorescent'
   },
   {
-    name: "OB-1",
+    name: "螢光增白劑 OB-1",
     category: "螢光增白劑", 
     description: "改良型通用螢光增白劑,比OB具有更好的耐熱性和分散性,適用於多種高溫加工的塑料材料。",
     applications: ["塑料"],
     type: 'fluorescent'
   },
   {
-    name: "KCB",
+    name: "螢光增白劑 KCB",
     category: "螢光增白劑",
     description: "高效型螢光增白劑,具有優異的耐熱性和光穩定性,適用於工程塑料。",
     applications: ["塑料"],
     type: 'fluorescent'
   },
   {
-    name: "KSN",
+    name: "螢光增白劑 KSN",
     category: "螢光增白劑",
     description: "特殊型螢光增白劑,具有極佳的耐熱性和光穩定性,適用於高溫工程塑料。",
     applications: ["塑料"],
