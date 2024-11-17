@@ -319,7 +319,7 @@ function updateURL(searchTerm) {
 }
 
 // 產品類型切換
-let currentCategory = 'organic'; // Default category
+let currentCategory = 'all'; // Change from 'organic' to 'all'
 
 function updateFilterOptions(category) {
   const colorFilter = document.getElementById('color-filter');
@@ -393,36 +393,37 @@ function switchCategory(category) {
 
 // Initialize with default category on page load
 document.addEventListener('DOMContentLoaded', function() {
-    updateFilterOptions('organic'); // Set initial filter options
+    updateFilterOptions('all'); // Change from 'organic' to 'all'
+    switchCategory('all'); // Add this line to ensure 'all' category is selected on load
 });
 
-// 修改filterProducts函數以包含類別過濾
+// 更新filterProducts函數
 function filterProducts() {
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
-    const color = document.getElementById('color-filter').value;
-    const application = document.getElementById('application-filter').value;
-    
+    const colorFilter = document.getElementById('color-filter');
+    const applicationFilter = document.getElementById('application-filter');
+    const color = colorFilter ? colorFilter.value : '';
+    const application = applicationFilter ? applicationFilter.value : '';
+
     const filteredProducts = products.filter(product => {
-        const matchesSearch = (
-            (product.ciNumber && product.ciNumber.toLowerCase().includes(searchTerm)) ||
-            (product.name && product.name.toLowerCase().includes(searchTerm))
-        );
+        // Basic search functionality - match against name
+        const matchesSearch = product.name.toLowerCase().includes(searchTerm);
 
         if (currentCategory === 'all') {
-            // Only apply search filter for 'all' category
+            // For 'all' category, only use search term
             return matchesSearch;
         } else {
-            // Apply all filters for other categories
+            // For other categories, apply additional filters
             const matchesColor = !color || (product.category === color);
             const matchesApplication = !application || (
                 Array.isArray(product.applications) && 
                 product.applications.includes(application)
             );
-            const matchesCategory = currentCategory === 'all' || 
-                                  (currentCategory === 'organic' && product.type === 'organic') ||
-                                  (currentCategory === 'solvent' && product.type === 'solvent') ||
-                                  (currentCategory === 'fluorescent' && product.type === 'fluorescent') ||
-                                  (currentCategory === 'other' && product.type === 'other');
+            const matchesCategory = 
+                (currentCategory === 'organic' && product.type === 'organic') ||
+                (currentCategory === 'solvent' && product.type === 'solvent') ||
+                (currentCategory === 'fluorescent' && product.type === 'fluorescent') ||
+                (currentCategory === 'other' && product.type === 'other');
             
             return matchesSearch && matchesColor && matchesApplication && matchesCategory;
         }
@@ -430,6 +431,30 @@ function filterProducts() {
     
     displayProducts(filteredProducts);
 }
+
+// Add event listener for search button and input
+document.addEventListener('DOMContentLoaded', function() {
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('search-input');
+    
+    searchButton.addEventListener('click', filterProducts);
+    searchInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            filterProducts();
+        }
+    });
+
+    // Add event listeners for filters
+    const colorFilter = document.getElementById('color-filter');
+    const applicationFilter = document.getElementById('application-filter');
+    
+    if (colorFilter) {
+        colorFilter.addEventListener('change', filterProducts);
+    }
+    if (applicationFilter) {
+        applicationFilter.addEventListener('change', filterProducts);
+    }
+});
 
 // 現有的其他JavaScript代碼保持不變
 
@@ -452,8 +477,8 @@ function filterProducts() {
 
 <main>
   <div class="category-selector">
-    <button class="category-btn" data-category="all">所有產品</button>
-    <button class="category-btn active" data-category="organic">有機顏料</button>
+    <button class="category-btn active" data-category="all">所有產品</button>
+    <button class="category-btn" data-category="organic">有機顏料</button>
     <button class="category-btn" data-category="solvent">溶劑染料</button>
     <button class="category-btn" data-category="fluorescent">螢光增白劑</button>
     <button class="category-btn" data-category="other">其他</button>
@@ -488,7 +513,7 @@ function filterProducts() {
 let products = [
   { name: "藍色 PB15:0", color: "#020674", category: "藍色", lightfastness: 8, description: "顏料藍15:0是紅像藍色。這種α型銅酞菁藍結晶體使用在較低的加工溫度,通常在200℃以下進行加工。顏料藍15:0在高溫或芳香烴環境中會不穩定,並可能轉變為綠色色相的β型形式。儘管如此該顏料仍是應用廣泛的選擇,特別是在較低溫加工的情況下。", colorDescription: "明亮的藍色,具有微弱的綠色調", group: "酞菁藍顏料", applications: ["油墨", "塗料"], type: 'organic' },
   { name: "藍色 PB15:1", color: "#000559", category: "藍色", lightfastness: 8, description: "顏料藍15:1它以鮮明的綠光藍色而著稱,具有優異的著色力和牢度性能。與顏料藍15:0相比,顏料藍15:1在顏色鮮艷度和穩定性上有所提升,因此被廣泛應用於多種工業領域。", molecularFormula: "C32H16CuN8", properties: "熔點: >300°C, 密度: 1.6 g/cm³", colorDescription: "明亮的藍色,具有微弱的綠色調", group: "酞菁藍顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "藍色 PB15:3", color: "#000263", category: "藍色", lightfastness: 8, description: "顏料藍15:3具有穩定的綠光藍色調。相較於顏料藍15:0和顏料藍15:1,顏料藍15:3在結晶穩定性和色光鮮艷度上有顯著的提升,因而更常用於高需求的應用領域。", molecularFormula: "C32H16CuN8", properties: "熔點: >300°C, 密度: 1.6 g/cm³", colorDescription: "鮮豔的綠光藍色", group: "酞菁藍顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
+  { name: "藍色 PB15:3", color: "#000263", category: "藍色", lightfastness: 8, description: "顏料藍15:3具有穩定的綠光藍色調。相較於顏料藍15:0和顏色鮮艷度上有顯著的提升,因而更常用於高需求的應用領域。", molecularFormula: "C32H16CuN8", properties: "熔點: >300°C, 密度: 1.6 g/cm³", colorDescription: "鮮豔的綠光藍色", group: "酞菁藍顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "藍色 PB60", color: "#01092C", category: "藍色", lightfastness: 7, description: "顏料藍60具有優異的耐光性耐候性和耐溶剂性。常用於特殊色光需求的高級塗料。", molecularFormula: "C34H22N4O2", properties: "熔點: >300°C, 密度: 1.4 g/cm³", colorDescription: "深邃的藍色", group: "吲哚蘭顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "橙色 PO13", color: "#FC460D", category: "橙色", lightfastness: 4, description: "顏料橙13因其鮮豔的橙色光澤和優異的性能而被廣泛應用。優點在高性價比,缺點在耐溫略有不足,擁有穩定的色光和良好的耐光性,適合於多種工業和商業用途。", molecularFormula: "C18H10Cl2N4O2", properties: "熔點: >300°C, 密度: 1.5 g/cm³", colorDescription: "明亮的橙色,明亮且飽滿", group: "偶氮橙色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "橙色 PO34", color: "#D1160A", category: "橙色", lightfastness: 6, description: "顏料橙34是一種高性能的有機偶氮顏料,以其鮮明的紅光橙色調、優異的耐久性和穩定性著稱。它在多種工業應用中被廣泛使用,尤其在要求高耐光性、耐熱性及化學穩定性的場合。", molecularFormula: "C26H14N4O2", properties: "熔點: >300°C, 密度: 1.5 g/cm³", colorDescription: "鮮豔的橙色,帶一點紅色調", group: "有機橙色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
