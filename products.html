@@ -326,8 +326,12 @@ function updateFilterOptions(category) {
   const applicationFilter = document.getElementById('application-filter');
   const searchContainer = document.querySelector('.search-container');
 
-  // Show/hide filters based on category
-  if (category === 'organic' || category === 'solvent') {
+  if (category === 'all') {
+    // Hide filters for all products category
+    colorFilter.style.display = 'none';
+    applicationFilter.style.display = 'none';
+    searchContainer.style.display = 'flex';
+  } else if (category === 'organic' || category === 'solvent') {
     // Show all filters for organic and solvent
     colorFilter.style.display = 'block';
     applicationFilter.style.display = 'block';
@@ -354,7 +358,6 @@ function updateFilterOptions(category) {
     // Hide filters for fluorescent and other
     colorFilter.style.display = 'none';
     applicationFilter.style.display = 'none';
-    // Keep search input only
     searchContainer.style.display = 'flex';
   }
 }
@@ -404,19 +407,25 @@ function filterProducts() {
             (product.ciNumber && product.ciNumber.toLowerCase().includes(searchTerm)) ||
             (product.name && product.name.toLowerCase().includes(searchTerm))
         );
-        const matchesColor = !color || (product.category === color);
-        const matchesApplication = !application || (
-            Array.isArray(product.applications) && 
-            product.applications.includes(application)
-        );
-        
-        // 添加類別過濾
-        const matchesCategory = (currentCategory === 'organic' && product.type === 'organic') ||
-                              (currentCategory === 'solvent' && product.type === 'solvent') ||
-                              (currentCategory === 'fluorescent' && product.type === 'fluorescent') ||
-                              (currentCategory === 'other' && product.type === 'other');
-        
-        return matchesSearch && matchesColor && matchesApplication && matchesCategory;
+
+        if (currentCategory === 'all') {
+            // Only apply search filter for 'all' category
+            return matchesSearch;
+        } else {
+            // Apply all filters for other categories
+            const matchesColor = !color || (product.category === color);
+            const matchesApplication = !application || (
+                Array.isArray(product.applications) && 
+                product.applications.includes(application)
+            );
+            const matchesCategory = currentCategory === 'all' || 
+                                  (currentCategory === 'organic' && product.type === 'organic') ||
+                                  (currentCategory === 'solvent' && product.type === 'solvent') ||
+                                  (currentCategory === 'fluorescent' && product.type === 'fluorescent') ||
+                                  (currentCategory === 'other' && product.type === 'other');
+            
+            return matchesSearch && matchesColor && matchesApplication && matchesCategory;
+        }
     });
     
     displayProducts(filteredProducts);
@@ -443,6 +452,7 @@ function filterProducts() {
 
 <main>
   <div class="category-selector">
+    <button class="category-btn" data-category="all">所有產品</button>
     <button class="category-btn active" data-category="organic">有機顏料</button>
     <button class="category-btn" data-category="solvent">溶劑染料</button>
     <button class="category-btn" data-category="fluorescent">螢光增白劑</button>
@@ -490,14 +500,14 @@ let products = [
   { name: "紅色 PR176", color: "#690110", category: "紅色", lightfastness: 6, description: "顏料紅176具有優異的耐光性和耐化學性,高色強度,常用於高端塗料和工業品。", molecularFormula: "C32H24N6O5", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "亮紅色", group: "苯並咪脞酮紅色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "紅色 PR177", color: "#7C010F", category: "紅色", lightfastness: 7, description: "顏料紅177具有良好的透明、耐光性和耐熱性,常被用於汽機車漆。", molecularFormula: "C28H16N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的紅色", group: "蒽醌紅色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "紅色 PR185", color: "#990213", category: "紅色", lightfastness: 6, description: "顏料紅185廣泛應用於工業塗料、印刷油墨以及塑料著色等領域,特別是在高品質的油墨和專業塗料中，需注意在PVC濃度過低時會發生遷移。", molecularFormula: "C27H24N6O6S", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的紅色", group: "苯並咪脞酮紅色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紅色 PR208", color: "#7F0109", category: "紅色", lightfastness: 6, description: "顏料紅208耐溶劑且具化學惰性,可與黃83和碳黑拚棕色,在合成皮中是標準的中紅色。", molecularFormula: "C29H25N5O5", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的粉紅色", group: "苯並咪脞酮紅色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
+  { name: "紅色 PR208", color: "#7F0109", category: "紅色", lightfastness: 6, description: "顏料紅208耐溶剂且具化學惰性,可與黃83和碳黑拚棕色,在合成皮中是標準的中紅色。", molecularFormula: "C29H25N5O5", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的粉紅色", group: "苯並咪脞酮紅色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "紅色 PR242", color: "#CF0C07", category: "紅色", lightfastness: 7, description: "顏料紅242展現出明亮而飽和的紅色調,具備高色彩飽和度,主要用於調製高飽和度的黃像粉紅色。", molecularFormula: "C42H22Cl4F6N6O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "深粉紅色", group: "有機紅色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "紅色 PR254", color: "#CD0108", category: "紅色", lightfastness: 7, description: "顏料紅254卓越的耐光性和耐化學性,成為許多工業品中的理想選擇。到了現今有著規模經濟的價格優勢。", molecularFormula: "C18H10Cl2N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的紅色", group: "DPP紅色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "紫色 PV19", color: "#960210", category: "紫色", lightfastness: 7, description: "顏料紫19主要有α和β晶型,良好的耐光性主要用於高端產品。", molecularFormula: "C20H12N2O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮明的紫色", group: "喹吖啶酮紫色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "紫色 PV23", color: "#080614", category: "紫色", lightfastness: 7, description: "顏料紫23具有優異的耐光性和耐化學性,需特別注意低濃度時的耐候性和微量溶解。", molecularFormula: "C34H22Cl2N4O2", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "深紫色", group: "二噁嗪紫色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "黃色 PY14", color: "#FFDC02", category: "黃色", lightfastness: 4, description: "顏料黃14是性價比較高的選擇。", molecularFormula: "C18H16N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的黃色", group: "偶氮黃色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "黃色 PY74", color: "#FFD607", category: "黃色", lightfastness: 7, description: "顏料黃74具有優良的耐光性,廣泛應用於室內塗料。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "淺黃色", group: "偶氮黃色顏料", applications: ["油墨", "塗料", ], type: 'organic' },
-  { name: "黃色 PY83", color: "#FDA003", category: "黃色", lightfastness: 6, description: "顏料黃83市場品種眾多，是最常被使用的黃色之一。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的紅光黃色", group: "偶氮黃色顏料", applications: ["油墨", "塑料"], type: 'organic' },
+  { name: "黃色 PY83", color: "#FDA003", category: "黃色", lightfastness: 6, description: "顏料黃83市場品種眾多，是最常被使用的黃色之一。", molecularFormula: "C18H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "明亮的紅光黃色", group: "偶氮黃色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "黃色 PY110", color: "#FF7F02", category: "黃色", lightfastness: 7, description: "異吲哚啉黃顏料,具有優異的耐光性和耐化學性,適合戶外產品和特殊需求。", molecularFormula: "C20H18N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "亮黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "黃色 PY128", color: "#FFDC02", category: "黃色", lightfastness: 7, description: "二吖華唑黃顏料,具有優異的耐光性和耐熱性,適合工業製造和設計。", molecularFormula: "C19H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "顯眼的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "黃色 PY138", color: "#FFDE03", category: "黃色", lightfastness: 7, description: "具有極佳的耐光性和耐化學性,適合高製品和專業用途。", molecularFormula: "C19H17N2O4", properties: "熔點: >300°C, 密度: 1.3 g/cm³", colorDescription: "鮮豔的黃色", group: "有機黃色顏料", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
@@ -518,6 +528,53 @@ let products = [
     type: 'organic'
   },
 ];
+
+// Add these solvent dye products to the products array
+let solventDyes = [
+  {
+    name: "溶劑黃98", 
+    color: "#FFE605",
+    category: "黃色",
+    description: "優異的溶解性和高色強度,適用於塑料著色。具有良好的耐候性和耐熱性。",
+    applications: ["塑料"],
+    type: 'solvent'
+  },
+  {
+    name: "溶劑紅111", 
+    color: "#FF0505",
+    category: "紅色",
+    description: "鮮豔的紅色溶劑染料,具有優異的溶解性和著色力。適用於多種塑料材料的著色。",
+    applications: ["塑料"],
+    type: 'solvent'
+  },
+  {
+    name: "溶劑藍35", 
+    color: "#0047AB",
+    category: "藍色",
+    description: "深邃的藍色溶劑染料,具有良好的溶解性和穩定性。常用於塑料著色。",
+    applications: ["塑料"],
+    type: 'solvent'
+  },
+  {
+    name: "溶劑橙60", 
+    color: "#FF7F27",
+    category: "橙色",
+    description: "明亮的橙色溶劑染料,具有優異的耐光性和著色力。適用於各種塑料製品。",
+    applications: ["塑料"],
+    type: 'solvent'
+  },
+  {
+    name: "溶劑紫13", 
+    color: "#800080",
+    category: "紫色",
+    description: "優質的紫色溶劑染料,具有良好的溶解性和色牢度。適合高端塑料產品。",
+    applications: ["塑料"],
+    type: 'solvent'
+  }
+];
+
+// Add the new solvent dyes to the existing products array
+products = products.concat(solventDyes);
 
 // Add event listeners for category buttons
 document.addEventListener('DOMContentLoaded', function() {
