@@ -412,6 +412,11 @@ let fluorescentWhiteners = [
 
 products = products.concat(fluorescentWhiteners);
 
+function getUrlParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
 function updateFilterOptions(category) {
     const colorFilter = document.getElementById('color-filter');
     const applicationFilter = document.getElementById('application-filter');
@@ -489,6 +494,17 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
+    // Check for search parameter in URL
+    const searchParam = getUrlParameter('search');
+    if (searchParam) {
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.value = searchParam;
+            // Trigger the search
+            filterProducts();
+        }
+    }
+
     // Add event listeners for category buttons
     document.querySelectorAll('.category-btn').forEach(button => {
         button.addEventListener('click', () => {
@@ -526,8 +542,10 @@ document.addEventListener('DOMContentLoaded', function() {
     updateFilterOptions('all');
     switchCategory('all');
     
-    // Initial display of products
-    displayProducts();
+    // Initial display of products (only if no search parameter)
+    if (!searchParam) {
+        displayProducts();
+    }
 });
 
 // Modify displayProducts function to include null checks
