@@ -564,6 +564,14 @@ document.addEventListener('DOMContentLoaded', function() {
             behavior: 'smooth'
         });
     });
+
+    // Add click handler for contact us button
+    const contactUsButton = document.getElementById('contact-us-float');
+    if (contactUsButton) {
+        contactUsButton.addEventListener('click', function() {
+            window.location.href = '/contact'; // Navigate to contact page
+        });
+    }
 });
 
 // Modify displayProducts function to include null checks
