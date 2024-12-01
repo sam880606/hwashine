@@ -601,7 +601,7 @@ function filterProducts() {
     const searchTerm = document.getElementById('search-input')?.value.toLowerCase() || '';
     const selectedColor = document.getElementById('color-filter')?.value || '';
     const selectedApplication = document.getElementById('application-filter')?.value || '';
-    const activeCategory = document.querySelector('.category-select')?.value || 'all';
+    const activeCategory = document.querySelector('.category-select')?.value || getUrlParameter('category') || 'all';
     
     let filtered = products;
     
@@ -618,13 +618,13 @@ function filterProducts() {
         );
     }
     
-    // Apply color filter if visible and selected
-    if (document.getElementById('color-filter')?.style.display !== 'none' && selectedColor) {
+    // Apply color filter if selected
+    if (selectedColor) {
         filtered = filtered.filter(product => product.category === selectedColor);
     }
     
-    // Apply application filter if visible and selected
-    if (document.getElementById('application-filter')?.style.display !== 'none' && selectedApplication) {
+    // Apply application filter if selected
+    if (selectedApplication) {
         filtered = filtered.filter(product => 
             product.applications && product.applications.includes(selectedApplication)
         );
@@ -634,37 +634,42 @@ function filterProducts() {
 }
 
 function switchCategory(category) {
-    // Update filter options visibility
+    // Update filter visibility based on category
     updateFilterOptions(category);
     
-    // Apply filters
-    filterProducts();
+    // Reset filters
+    const searchInput = document.getElementById('search-input');
+    const colorFilter = document.getElementById('color-filter');
+    const applicationFilter = document.getElementById('application-filter');
+    
+    if (searchInput) searchInput.value = '';
+    if (colorFilter) colorFilter.value = '';
+    if (applicationFilter) applicationFilter.value = '';
+    
+    // Filter products based on category
+    let filteredProducts = category === 'all' ? 
+        products : 
+        products.filter(product => product.type === category);
+    
+    // Display filtered products
+    displayProducts(filteredProducts);
 }
 
-// DOMContentLoaded event listener to ensure initialization occurs after DOM is fully loaded
+// 修改 DOMContentLoaded 事件监听器
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Page loaded. Checking URL parameters...");
-    const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('category');
-    if (category) {
-        console.log("Category found in URL:", category);
-        switchCategory(category); // Ensure the category is set correctly
-        filterProducts(); // Trigger the filtering logic
-    } else {
-        console.log("No category found in URL. Showing all products.");
-    }
-
-    // Get category parameter from URL
     const categoryParam = getUrlParameter('category');
     const categorySelect = document.getElementById('category-select');
 
     // Set category if present in URL
-    if (categoryParam && categorySelect) {
-        // Validate that the category value is valid
+    if (categoryParam) {
         const validCategories = ['all', 'organic', 'solvent', 'fluorescent', 'other'];
         if (validCategories.includes(categoryParam)) {
-            categorySelect.value = categoryParam;
-            switchCategory(categoryParam);
+            if (categorySelect) {
+                categorySelect.value = categoryParam;
+            }
+            // Initialize filters based on URL category
+            updateFilterOptions(categoryParam);
+            filterProducts(); // Apply initial filtering
         }
     }
 
