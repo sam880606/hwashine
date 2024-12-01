@@ -610,12 +610,12 @@ function filterProducts() {
     
     let filtered = products;
     
-    // Filter by category first
+    // 首先按类别筛选
     if (activeCategory !== 'all') {
         filtered = filtered.filter(product => product.type === activeCategory);
     }
     
-    // Then apply search term if present
+    // 如果有搜索词则继续筛选
     if (searchTerm) {
         filtered = filtered.filter(product => 
             product.name.toLowerCase().includes(searchTerm) ||
@@ -623,27 +623,28 @@ function filterProducts() {
         );
     }
     
-    // Apply color filter if selected
+    // 如果选择了颜色则继续筛选
     if (selectedColor) {
         filtered = filtered.filter(product => product.category === selectedColor);
     }
     
-    // Apply application filter if selected
+    // 如果选择了应用领域则继续筛选
     if (selectedApplication) {
         filtered = filtered.filter(product => 
             product.applications && product.applications.includes(selectedApplication)
         );
     }
     
+    // 展示筛选后的结果
     displayProducts(filtered);
 }
 
 function switchCategory(category) {
     try {
-        // Update filter visibility based on category
+        // 更新筛选器可见性
         updateFilterOptions(category);
         
-        // Reset filters
+        // 重置筛选器
         const searchInput = document.getElementById('search-input');
         const colorFilter = document.getElementById('color-filter');
         const applicationFilter = document.getElementById('application-filter');
@@ -652,16 +653,12 @@ function switchCategory(category) {
         if (colorFilter) colorFilter.value = '';
         if (applicationFilter) applicationFilter.value = '';
         
-        // Filter products based on category
-        let filteredProducts = category === 'all' ? 
-            products : 
-            products.filter(product => product.type === category);
+        // 执行筛选
+        filterProducts();
         
-        // Display filtered products
-        displayProducts(filteredProducts);
     } catch (err) {
         console.error('Error switching category:', err);
-        // Fallback to showing all products
+        // 如果出错则显示所有产品
         displayProducts(products);
     }
 }
@@ -671,16 +668,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryParam = getUrlParameter('category');
     const categorySelect = document.getElementById('category-select');
 
-    // Set category if present in URL
+    // 设置初始类别
     if (categoryParam) {
         const validCategories = ['all', 'organic', 'solvent', 'fluorescent', 'other'];
         if (validCategories.includes(categoryParam)) {
             if (categorySelect) {
                 categorySelect.value = categoryParam;
             }
-            // Initialize filters based on URL category
+            // 初始化筛选器
             updateFilterOptions(categoryParam);
-            filterProducts(); // Apply initial filtering
+            // 立即执行筛选
+            filterProducts();
         }
     }
 
@@ -743,14 +741,8 @@ document.addEventListener('DOMContentLoaded', function() {
         applicationFilter.addEventListener('change', filterProducts);
     }
 
-    // Initialize with default category
-    updateFilterOptions('all');
-    switchCategory('all');
-    
-    // Initial display of products (only if no search parameter)
-    if (!searchParam) {
-        displayProducts();
-    }
+    // 初始显示筛选后的产品
+    filterProducts();
 
     // Add back-to-top button functionality
     const backToTopButton = document.getElementById('back-to-top');
