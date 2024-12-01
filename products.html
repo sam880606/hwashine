@@ -574,8 +574,13 @@ let fluorescentProducts = [
 products = products.concat(fluorescentProducts);
 
 function getUrlParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    } catch (err) {
+        console.warn('Error parsing URL parameters:', err);
+        return null;
+    }
 }
 
 function updateFilterOptions(category) {
@@ -634,25 +639,31 @@ function filterProducts() {
 }
 
 function switchCategory(category) {
-    // Update filter visibility based on category
-    updateFilterOptions(category);
-    
-    // Reset filters
-    const searchInput = document.getElementById('search-input');
-    const colorFilter = document.getElementById('color-filter');
-    const applicationFilter = document.getElementById('application-filter');
-    
-    if (searchInput) searchInput.value = '';
-    if (colorFilter) colorFilter.value = '';
-    if (applicationFilter) applicationFilter.value = '';
-    
-    // Filter products based on category
-    let filteredProducts = category === 'all' ? 
-        products : 
-        products.filter(product => product.type === category);
-    
-    // Display filtered products
-    displayProducts(filteredProducts);
+    try {
+        // Update filter visibility based on category
+        updateFilterOptions(category);
+        
+        // Reset filters
+        const searchInput = document.getElementById('search-input');
+        const colorFilter = document.getElementById('color-filter');
+        const applicationFilter = document.getElementById('application-filter');
+        
+        if (searchInput) searchInput.value = '';
+        if (colorFilter) colorFilter.value = '';
+        if (applicationFilter) applicationFilter.value = '';
+        
+        // Filter products based on category
+        let filteredProducts = category === 'all' ? 
+            products : 
+            products.filter(product => product.type === category);
+        
+        // Display filtered products
+        displayProducts(filteredProducts);
+    } catch (err) {
+        console.error('Error switching category:', err);
+        // Fallback to showing all products
+        displayProducts(products);
+    }
 }
 
 // 修改 DOMContentLoaded 事件监听器
@@ -695,10 +706,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (categorySelect) {
         categorySelect.addEventListener('change', (e) => {
             switchCategory(e.target.value);
-            // Update URL when category changes
-            const url = new URL(window.location.href);
-            url.searchParams.set('category', e.target.value);
-            window.history.pushState({}, '', url);
+            // Instead of using pushState, we'll use replaceState with relative URL
+            try {
+                const relativeUrl = `?category=${e.target.value}`;
+                window.history.replaceState({}, '', relativeUrl);
+            } catch (err) {
+                console.warn('Unable to update URL:', err);
+                // Continue with category switch even if URL update fails
+            }
         });
     }
 
