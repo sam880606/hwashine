@@ -172,12 +172,13 @@
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
   }
 
-  .product-card:hover {
+  a .product-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 
   .color-sample {
@@ -215,6 +216,14 @@
 
   .product-card.expanded .color-sample {
     height: 200px;
+  }
+
+  a .product-card .expanded-info {
+    display: none;
+  }
+
+  a .product-card:hover .expanded-info {
+    display: none;
   }
 
   @media (max-width: 768px) {
@@ -316,7 +325,7 @@ let products = [
 
 let otherProducts = [
   {
-    name: "TPO起始發劑",
+    name: "TPO光啟始劑",
     category: "光引發劑", 
     description: "吸收波長: 295, 380, 393nm。用途:具固化速度快和光漂白作用,適合於厚膜深層固化,多用於白色體系,可用於紫外固化塗料、印刷油墨、紫外固化粘合劑、光導纖維塗料、抗光蝕劑、光聚合印版、立體平版樹脂、複合材料、牙齒填充料等。",
     applications: ["UV塗料", "UV油墨"],
@@ -574,8 +583,13 @@ let fluorescentProducts = [
 products = products.concat(fluorescentProducts);
 
 function getUrlParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    } catch (err) {
+        console.warn('Error parsing URL parameters:', err);
+        return null;
+    }
 }
 
 function updateFilterOptions(category) {
@@ -601,16 +615,16 @@ function filterProducts() {
     const searchTerm = document.getElementById('search-input')?.value.toLowerCase() || '';
     const selectedColor = document.getElementById('color-filter')?.value || '';
     const selectedApplication = document.getElementById('application-filter')?.value || '';
-    const activeCategory = document.querySelector('.category-select')?.value || 'all';
+    const activeCategory = document.querySelector('.category-select')?.value || getUrlParameter('category') || 'all';
     
     let filtered = products;
     
-    // Filter by category first
+    // 首先按类别筛选
     if (activeCategory !== 'all') {
         filtered = filtered.filter(product => product.type === activeCategory);
     }
     
-    // Then apply search term if present
+    // 如果有搜索词则继续筛选
     if (searchTerm) {
         filtered = filtered.filter(product => 
             product.name.toLowerCase().includes(searchTerm) ||
@@ -618,42 +632,62 @@ function filterProducts() {
         );
     }
     
-    // Apply color filter if visible and selected
-    if (document.getElementById('color-filter')?.style.display !== 'none' && selectedColor) {
+    // 如果选择了颜色则继续筛选
+    if (selectedColor) {
         filtered = filtered.filter(product => product.category === selectedColor);
     }
     
-    // Apply application filter if visible and selected
-    if (document.getElementById('application-filter')?.style.display !== 'none' && selectedApplication) {
+    // 如果选择了应用领域则继续筛选
+    if (selectedApplication) {
         filtered = filtered.filter(product => 
             product.applications && product.applications.includes(selectedApplication)
         );
     }
     
+    // 展示筛选后的结果
     displayProducts(filtered);
 }
 
 function switchCategory(category) {
-    // Update filter options visibility
-    updateFilterOptions(category);
-    
-    // Apply filters
-    filterProducts();
+    try {
+        // 更新筛选器可见性
+        updateFilterOptions(category);
+        
+        // 重置筛选器
+        const searchInput = document.getElementById('search-input');
+        const colorFilter = document.getElementById('color-filter');
+        const applicationFilter = document.getElementById('application-filter');
+        
+        if (searchInput) searchInput.value = '';
+        if (colorFilter) colorFilter.value = '';
+        if (applicationFilter) applicationFilter.value = '';
+        
+        // 执行筛选
+        filterProducts();
+        
+    } catch (err) {
+        console.error('Error switching category:', err);
+        // 如果出错则显示所有产品
+        displayProducts(products);
+    }
 }
 
-// DOMContentLoaded event listener to ensure initialization occurs after DOM is fully loaded
+// 修改 DOMContentLoaded 事件监听器
 document.addEventListener('DOMContentLoaded', function() {
-    // Get category parameter from URL
     const categoryParam = getUrlParameter('category');
     const categorySelect = document.getElementById('category-select');
 
-    // Set category if present in URL
-    if (categoryParam && categorySelect) {
-        // Validate that the category value is valid
+    // 设置初始类别
+    if (categoryParam) {
         const validCategories = ['all', 'organic', 'solvent', 'fluorescent', 'other'];
         if (validCategories.includes(categoryParam)) {
-            categorySelect.value = categoryParam;
-            switchCategory(categoryParam);
+            if (categorySelect) {
+                categorySelect.value = categoryParam;
+            }
+            // 初始化筛选器
+            updateFilterOptions(categoryParam);
+            // 立即执行筛选
+            filterProducts();
         }
     }
 
@@ -679,10 +713,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (categorySelect) {
         categorySelect.addEventListener('change', (e) => {
             switchCategory(e.target.value);
-            // Update URL when category changes
-            const url = new URL(window.location.href);
-            url.searchParams.set('category', e.target.value);
-            window.history.pushState({}, '', url);
+            // Instead of using pushState, we'll use replaceState with relative URL
+            try {
+                const relativeUrl = `?category=${e.target.value}`;
+                window.history.replaceState({}, '', relativeUrl);
+            } catch (err) {
+                console.warn('Unable to update URL:', err);
+                // Continue with category switch even if URL update fails
+            }
         });
     }
 
@@ -712,14 +750,8 @@ document.addEventListener('DOMContentLoaded', function() {
         applicationFilter.addEventListener('change', filterProducts);
     }
 
-    // Initialize with default category
-    updateFilterOptions('all');
-    switchCategory('all');
-    
-    // Initial display of products (only if no search parameter)
-    if (!searchParam) {
-        displayProducts();
-    }
+    // 初始显示筛选后的产品
+    filterProducts();
 
     // Add back-to-top button functionality
     const backToTopButton = document.getElementById('back-to-top');
@@ -748,7 +780,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Modify displayProducts function to include null checks
+// Helper function to create product card
+function createProductCard(product) {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    
+    if (product.color && product.type !== 'fluorescent' && product.type !== 'other') {
+        const colorSample = document.createElement('div');
+        colorSample.className = 'color-sample';
+        colorSample.style.backgroundColor = product.color || '#CCCCCC';
+        card.appendChild(colorSample);
+    }
+    
+    const content = document.createElement('div');
+    content.className = 'product-content';
+    
+    const basicInfo = `
+        <h3>${product.name}</h3>
+        <div class="product-info">
+            ${(product.type !== 'fluorescent' && product.type !== 'other') ? `<p>顏色: ${product.category || product.color || '未指定'}</p>` : ''}
+            <p>應用: ${Array.isArray(product.applications) ? product.applications.join(', ') : '未指定'}</p>
+        </div>
+    `;
+    
+    const expandedInfo = `
+        <div class="expanded-info">
+            <p>${product.description || '暫無描述'}</p>
+        </div>
+    `;
+    
+    content.innerHTML = basicInfo + expandedInfo;
+    card.appendChild(content);
+    
+    return card;
+}
+
+// Modify the displayProducts function 
 function displayProducts(filteredProducts = products) {
     const grid = document.getElementById('product-grid');
     if (!grid) {
@@ -759,42 +826,26 @@ function displayProducts(filteredProducts = products) {
     grid.innerHTML = '';
 
     filteredProducts.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        
-        // Only show color sample if product has color and is not fluorescent type
-        if (product.color && product.type !== 'fluorescent' && product.type !== 'other') {
-            const colorSample = document.createElement('div');
-            colorSample.className = 'color-sample';
-            colorSample.style.backgroundColor = product.color || '#CCCCCC';
-            card.appendChild(colorSample);
+        // For organic pigments, create a link wrapper
+        if (product.type === 'organic') {
+            const link = document.createElement('a');
+            // Extract the pigment code (e.g., PB15-0, PO34) from product name
+            const pigmentCode = product.name.match(/P[BRGYOV]\d+(?::\d+)?/i)?.[0]?.toLowerCase().replace(':', '-') || '';
+            link.href = `https://hwashine.tw/product/${pigmentCode}`; // Create URL using pigment code
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
+            
+            const card = createProductCard(product);
+            link.appendChild(card);
+            grid.appendChild(link);
+        } else {
+            // For non-organic products, keep existing behavior
+            const card = createProductCard(product);
+            card.addEventListener('click', () => {
+                card.classList.toggle('expanded');
+            });
+            grid.appendChild(card);
         }
-        
-        const content = document.createElement('div');
-        content.className = 'product-content';
-        
-        const basicInfo = `
-          <h3>${product.name}</h3>
-          <div class="product-info">
-            ${(product.type !== 'fluorescent' && product.type !== 'other') ? `<p>顏色: ${product.category || product.color || '未指定'}</p>` : ''}
-            <p>應用: ${Array.isArray(product.applications) ? product.applications.join(', ') : '未指定'}</p>
-          </div>
-        `;
-        
-        const expandedInfo = `
-          <div class="expanded-info">
-            <p>${product.description || '暫無描述'}</p>
-          </div>
-        `;
-        
-        content.innerHTML = basicInfo + expandedInfo;
-        card.appendChild(content);
-        
-        card.addEventListener('click', () => {
-          card.classList.toggle('expanded');
-        });
-        
-        grid.appendChild(card);
     });
 }
 </script>
