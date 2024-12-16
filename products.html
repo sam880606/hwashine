@@ -827,25 +827,26 @@ function displayProducts(filteredProducts = products) {
 
     filteredProducts.forEach(product => {
         // For organic pigments, create a link wrapper
-        if (product.type === 'organic') {
-            const link = document.createElement('a');
-            // Extract the pigment code (e.g., PB15-0, PO34) from product name
-            const pigmentCode = product.name.match(/P[BRGYOV]\d+(?::\d+)?/i)?.[0]?.toLowerCase().replace(':', '-') || '';
-            link.href = `https://hwashine.tw/product/${pigmentCode}`; // Create URL using pigment code
-            link.style.textDecoration = 'none';
-            link.style.color = 'inherit';
-            
-            const card = createProductCard(product);
-            link.appendChild(card);
-            grid.appendChild(link);
-        } else {
-            // For non-organic products, keep existing behavior
-            const card = createProductCard(product);
-            card.addEventListener('click', () => {
-                card.classList.toggle('expanded');
-            });
-            grid.appendChild(card);
-        }
+       if (product.type === 'organic') {
+    const link = document.createElement('a');
+    // 提取並轉換顏料代碼為大寫
+    const pigmentCode = product.name
+        .match(/P[BRGYOV]\d+(?::\d+)?/i)?.[0]?.toUpperCase().replace(':', '-') || '';
+    link.href = `https://hwashine.tw/${pigmentCode}`; // 更新後的網址格式
+    link.style.textDecoration = 'none';
+    link.style.color = 'inherit';
+    
+    const card = createProductCard(product);
+    link.appendChild(card);
+    grid.appendChild(link);
+} else {
+    // 非有機產品，保持現有行為
+    const card = createProductCard(product);
+    card.addEventListener('click', () => {
+        card.classList.toggle('expanded');
+    });
+    grid.appendChild(card);
+}
     });
 }
 </script>
