@@ -1,0 +1,512 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>有機顏料的使用注意事項與案例分析</title>
+  <meta name="description" content="了解有機顏料的使用注意事項與案例分析">
+  <meta name="keywords" content="有機顏料, 塑膠, 塗料, 油墨">
+
+  <!-- Open Graph tags -->
+  <meta property="og:title" content="有機顏料的使用注意事項與案例分析 - 華翔興業">
+  <meta property="og:description" content="了解有機顏料的使用注意事項與案例分析">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="/plastic_containers_still_life.webp">
+  <meta property="og:url" content="https://hwashine.tw/mxd6">
+
+  <link rel="canonical" href="https://hwashine.tw/mxd6">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+
+    :root {
+      --primary-color: #2c8cb0;
+      --secondary-color: #1a5f7a;
+      --accent-color: #ff6b6b;
+      --text-color: #333;
+      --bg-color: #f8f9fa;
+      --content-bg-color: #ffffff;
+      --box-shadow-color: rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Noto Sans TC', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+      animation: ripple 15s infinite linear;
+      z-index: 1;
+    }
+
+    @keyframes ripple {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.75rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    nav {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0.5rem;
+    }
+
+    nav ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
+    nav ul li a:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      background-color: var(--content-bg-color);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px var(--box-shadow-color);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+    }
+
+    h2,
+    h3 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+
+    ul {
+      list-style-type: circle;
+      margin-left: 2rem;
+    }
+
+    li {
+      margin-bottom: 1rem;
+    }
+
+    li strong {
+      color: var(--secondary-color);
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .spec-table th,
+    .spec-table td {
+      padding: 1rem;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+    }
+
+    .spec-table th {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .spec-table tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card h3 {
+      color: var(--primary-color);
+      margin-top: 0;
+    }
+
+    .product-card .cas {
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+    }
+
+    .temperature-guide {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .temp-range {
+      background: linear-gradient(135deg, #fff, #f8f9fa);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .uv-demo {
+      position: relative;
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .uv-demo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .uv-demo::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(44, 140, 176, 0.2), rgba(26, 95, 122, 0.2));
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background: linear-gradient(135deg, #fff, #f8f9fa);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .application-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .application-item {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #e9ecef;
+    }
+
+    .color-demo {
+      height: 200px;
+      border-radius: 12px;
+      margin: 2rem 0;
+      background: linear-gradient(45deg, #FF8B3D, #FFA664);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .color-demo::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    }
+
+    .performance-chart {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+    }
+
+    .cta-section {
+      text-align: center;
+      margin: 3rem 0;
+      padding: 3rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-radius: 12px;
+    }
+
+    .cta-section h2 {
+      color: white;
+    }
+
+    .contact-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: white;
+      color: var(--primary-color);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .contact-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    footer nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    footer nav a:hover {
+      color: var(--accent-color);
+    }
+
+    #back-to-top {
+      display: none;
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 50px;
+      height: 50px;
+      font-size: 30px;
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+      transition: opacity 0.3s ease;
+    }
+
+    #back-to-top.show {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>有機顏料的使用注意事項與案例分析</h1>
+    <p>有機顏料在塑膠、塗料、油墨等應用中雖然能提供鮮艷色彩和高著色力，但其性能受到多種因素影響，例如顏料濃度、配方組成、加工條件及載體的選擇。若未妥善考慮這些因素，可能會導致耐候性下降、熱穩定性不足、顏色變異甚至產品失效。以下將介紹幾個常見問題及具體案例，幫助使用者更好地理解有機顏料的應用特性。</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="/">首頁</a></li>
+      <li><a href="/about">關於我們</a></li>
+      <li><a href="/products">產品</a></li>
+      <li><a href="/contact">聯絡我們</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="introduction">
+      <h2>1. 顏料濃度與性能變化</h2>
+      <p>
+        某些有機顏料在低濃度時性能可能會顯著下降，這與其分散性、耐熱性及耐光性有關。例如：
+      </p>
+      <p>
+        <strong>顏料黃 155（PY155）：</strong>在0.1% 的添加量時，其耐熱可達240°C，但當添加量降至0.01% 時，耐熱性則降至220°C
+        以下，這說明低濃度時顏料的熱穩定性可能會受到影響，導致應用限制。
+      </p>
+      <p>
+        此外，一次粒徑的不同也會影響顏料的性能，例如：
+      </p>
+      <ul>
+        <li>粒徑較大的顏料通常耐熱性、耐光性較好，但著色力較低。</li>
+        <li>粒徑較小的顏料著色力較強，但可能更容易受熱降解或耐光性下降。</li>
+      </ul>
+      <p>
+        這意味著即使是相同品種的顏料，根據粒徑不同，其應用效果可能會有顯著差異。
+      </p>
+    </section>
+
+    <section id="properties">
+      <h2>2. 與鈦白粉的相互影響</h2>
+      <p>
+        鈦白粉（TiO₂）是常見的白色顏料和增不透明劑，但在某些有機顏料體系中，鈦白粉的添加會影響顏料的耐候性。例如：
+      </p>
+      <p>
+        <strong>顏料紫 23（PV23）：</strong>當與鈦白粉大量混合時，其耐候性會急劇下降，這是因為鈦白粉的光催化作用會加速PV23的降解，導致褪色或變色。這種現象在戶外耐候性要求高的應用（如汽車塗料或建築塗料）中特別需要注意。
+      </p>
+      <p>
+        這類顏料與鈦白粉共存時，應根據應用需求適當調整配方，以減少耐候性的下降。
+      </p>
+    </section>
+
+    <section id="applications">
+      <h2>3. 顏料在高溫環境下的影響</h2>
+      <p>
+        有機顏料的耐熱性是選擇顏料時的重要考量之一，尤其在高溫塑膠加工（如PC、PET）中，某些顏料可能會發生熱降解或溶解。
+      </p>
+      <p>
+        <strong>顏料紅 254（PR254）：</strong>在PC（聚碳酸酯）加工溫度 320°C 時，該顏料可能會部分溶解，並轉變為螢光黃，這意味著在高溫加工時需要特別注意其耐熱極限，否則可能影響產品的色相和穩定性。
+      </p>
+      <p>
+        <strong>顏料黃 83（PY83）：</strong>屬於聯苯胺類顏料，其耐熱性有限，不建議在超過 200°C
+        的製程中使用，否則可能會分解並產生不良影響。具體來說：
+      </p>
+      <ul>
+        <li>在240°C 持續 10 分鐘時，可以檢測到DCB（鄰氯聯苯胺）。</li>
+        <li>在200°C 持續 30 分鐘時，也能檢測出 DCB，這說明該顏料在較高溫度下可能存在潛在的分解風險，影響環保與安全要求。</li>
+      </ul>
+      <p>
+        這些案例表明，顏料的耐熱極限不僅與其結構有關，還需要考慮加工時間、環境條件及應用需求。
+      </p>
+    </section>
+
+    <section id="conclusion">
+      <h2>4. 載體的選擇與顏料相容性</h2>
+      <p>
+        顏料在不同的載體中表現可能會有所不同，甚至導致配色困難，若控制不當，可能會導致產品失效或商業損失。例如：
+      </p>
+      <ul>
+        <li>某些顏料在 PET、PC 等極性塑膠中可能會有微量溶解，影響顏色表現甚至導致遷移。</li>
+        <li>某些顏料的耐熱性在 PP、PE 中較好，但在 PVC 或 PU 可能會發生降解或變色，需要根據應用環境調整顏料選擇。</li>
+        <li>
+          不同顏料的匹配問題：例如，某些高耐熱顏料在 PP 中表現良好，但在尼龍（PA）中可能會影響透明度或發生色相漂移，這對於需要精確配色的應用（如高端塑膠製品或工業塗料）會造成極大挑戰，甚至可能導致客戶退貨或索賠。
+        </li>
+      </ul>
+    </section>
+
+    <section class="cta-section">
+      <h2>對顏料有興趣？</h2>
+      <p>歡迎聯繫華翔，我們將提供最專業的諮詢與技術支援！</p>
+      <a href="/contact" class="contact-button">聯繫我們</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 華翔興業有限公司 版權所有</p>
+    <nav>
+      <a href="/privacy">隱私政策</a> |
+      <a href="/terms">使用條款</a>
+    </nav>
+  </footer>
+
+  <div id="back-to-top">&#8679;</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const sections = document.querySelectorAll('section');
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(section => {
+        section.style.opacity = 0;
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(section);
+      });
+
+      const backToTopButton = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add('show');
+        } else {
+          backToTopButton.classList.remove('show');
+        }
+      });
+
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
