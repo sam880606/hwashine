@@ -781,9 +781,16 @@ function displayProducts(filteredProducts = products) {
        if (product.type === 'organic') {
     const link = document.createElement('a');
     // 提取並轉換顏料代碼為大寫
-    const pigmentCode = product.name
-        .match(/P[BRGYOV]\d+(?::\d+)?/i)?.[0]?.toUpperCase().replace(':', '-') || '';
-    link.href = `https://hwashine.tw/${pigmentCode}`; // 更新後的網址格式
+    let pigmentCode = product.name
+    .match(/P[BRGYOV]\d+(?::\d+)?/i)?.[0]?.toUpperCase().replace(':', '-') || '';
+
+// 特殊處理 PR176，手動設定網址
+if (pigmentCode === "PR176") {
+    link.href = "https://hwashine.tw/Pigmentred176";
+} else {
+    link.href = `https://hwashine.tw/${pigmentCode}`;
+}
+
     link.style.textDecoration = 'none';
     link.style.color = 'inherit';
     
