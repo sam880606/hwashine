@@ -626,7 +626,10 @@
 
 <script>
 // Update canonical URL for PR122
-const 
+const canonicalLink = document.createElement('link');
+canonicalLink.rel = 'canonical';
+canonicalLink.href = 'https://hwashine.tw/PR122';
+document.head.appendChild(canonicalLink); 
 
 window.onscroll = function() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
