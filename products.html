@@ -331,7 +331,7 @@ let otherProducts = [
   },
   {
     name: "MXD6",
-    link: "MXD6",
+    link: "https://hwashine.tw/PA-MXD6/indexMXD6", 
     category: "特殊型的尼龍", 
     description: "MXD6（間苯二甲胺與己二酸縮聚而成的尼龍）是一種具有優異氣體阻隔性能的半芳香族尼龍。其分子結構中含有剛性芳香環，使其具備良好的機械強度、耐熱性以及極佳的氧氣阻隔能力，尤其適用於對氣體阻隔性要求較高的包裝領域。",
     applications: ["塑料"],
@@ -343,163 +343,11 @@ products = products.concat(otherProducts);
 
 let solventDyes = [
   {
-    name: "溶劑藍35", 
-    color: "#0047AB",
-    category: "藍色",
-    description: "台灣常備庫存。",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑藍78",
-    color: "#0047AB",
-    category: "藍色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑藍97",
-    color: "#0047AB",
-    category: "藍色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑藍104",
-    color: "#0047AB",
-    category: "藍色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑綠3",
-    color: "#008000",
-    category: "綠色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑綠5",
-    color: "#008000",
-    category: "綠色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑橙60", 
-    color: "#FF7F27",
-    category: "橙色",
-    description: "台灣常備庫存。",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑橙63",
-    color: "#FFA500",
-    category: "橙色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅52",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅111", 
-    color: "#FF0505",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅135",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅149",
-    color: "#FF0000",
-    category: "紅色",
-    description: "耐候型紅色溶剂染料",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅168",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅179",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅195",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅207",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紫13", 
-    color: "#800080",
-    category: "紫色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑黃33",
-    color: "#FFFF00",
-    category: "黃色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑黃98", 
-    color: "#FFE605",
-    category: "黃色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑黃114",
-    color: "#FFFF00",
-    category: "黃色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
+    name: "溶劑染料",
+    link: "https://hwashine.tw/solvent-dyes-showcase/",
+    category: "溶劑染料", 
+    description: "提供多種高品質溶劑染料，適用於各種工業應用。點擊查看更多詳情。",
+    applications: ["塑料", "油墨", "塗料"], 
     type: 'solvent'
   }
 ];
@@ -743,8 +591,8 @@ function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
     
-    // Only show color sample for organic pigments
-    if (product.color && product.type === 'organic') {
+    // Only show color sample for organic pigments or solvent dyes that have a color
+    if (product.color && (product.type === 'organic' || product.type === 'solvent')) {
         const colorSample = document.createElement('div');
         colorSample.className = 'color-sample';
         colorSample.style.backgroundColor = product.color || '#CCCCCC';
@@ -785,34 +633,52 @@ function displayProducts(filteredProducts = products) {
     grid.innerHTML = '';
 
     filteredProducts.forEach(product => {
-        // For organic pigments, create a link wrapper
-       if (product.type === 'organic') {
-    const link = document.createElement('a');
-    // 提取並轉換顏料代碼為大寫
-    let pigmentCode = product.name
-    .match(/P[BRGYOV]\d+(?::\d+)?/i)?.[0]?.toUpperCase().replace(':', '-') || '';
+        if (product.type === 'organic') {
+            const link = document.createElement('a');
+            let pigmentCode = product.name
+                .match(/P[BRGYOV]\d+(?::\d+)?/i)?.[0]?.toUpperCase().replace(':', '-') || '';
 
-// 特殊處理 PR176，手動設定網址
-if (pigmentCode === "PR176") {
-    link.href = "https://hwashine.tw/Pigmentred176";
-} else {
-    link.href = `https://hwashine.tw/${pigmentCode}`;
-}
+            if (pigmentCode === "PR176") {
+                link.href = "https://hwashine.tw/Pigmentred176";
+            } else if (pigmentCode) { 
+                link.href = `https://hwashine.tw/${pigmentCode}`;
+            } else {
+                link.href = '#'; 
+            }
 
-    link.style.textDecoration = 'none';
-    link.style.color = 'inherit';
-    
-    const card = createProductCard(product);
-    link.appendChild(card);
-    grid.appendChild(link);
-} else {
-    // 非有機產品，保持現有行為
-    const card = createProductCard(product);
-    card.addEventListener('click', () => {
-        card.classList.toggle('expanded');
-    });
-    grid.appendChild(card);
-}
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
+            
+            const card = createProductCard(product);
+            link.appendChild(card);
+            grid.appendChild(link);
+        } else if (product.type === 'solvent') {
+            const link = document.createElement('a');
+            link.href = product.link || 'https://hwashine.tw/solvent-dyes-showcase/';
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
+
+            const card = createProductCard(product);
+            link.appendChild(card);
+            grid.appendChild(link);
+        } else { 
+            if (product.link) {
+                const linkElement = document.createElement('a');
+                linkElement.href = product.link;
+                linkElement.style.textDecoration = 'none';
+                linkElement.style.color = 'inherit';
+
+                const card = createProductCard(product);
+                linkElement.appendChild(card);
+                grid.appendChild(linkElement);
+            } else {
+                const card = createProductCard(product);
+                card.addEventListener('click', () => {
+                    card.classList.toggle('expanded');
+                });
+                grid.appendChild(card);
+            }
+        }
     });
 }
 </script>
