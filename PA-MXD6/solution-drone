@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>無人機解決方案 | MXD6 高性能尼龍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="./index.html" class="brand">MXD6 高性能尼龍</a>
+    <button class="nav-toggle" aria-label="開啟導覽" aria-expanded="false">☰</button>
+    <nav class="site-nav" aria-label="主導覽">
+      <a href="./about.html">關於我們</a>
+      <a href="./products.html">產品中心</a>
+      <a href="./solutions.html" aria-current="page">應用/數據</a>
+      <a href="./contact.html">聯絡我們</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1 class="animate-on-load" data-delay="0">無人機輕量化與高剛性解決方案</h1>
+    <p class="animate-on-load" data-delay="1">隨著無人機技術的飛速發展，對材料性能的要求也日益嚴苛。MXD6 高性能尼龍及其複合材料，為現代無人機提供了兼具輕量化、高強度、高剛性與設計自由度的理想選擇。</p>
+    <img src="./drone-parts.png" alt="採用 MXD6 材料的無人機精密部件" class="page-image animate-on-scroll">
+
+    <section class="animate-on-scroll">
+      <h2>核心優勢</h2>
+      <div class="cards">
+        <div class="card">
+          <h4>極致輕量化</h4>
+          <p>MXD6 複合材料的密度遠低於傳統鋁合金，能有效減輕機身重量，從而延長飛行續航時間、提升酬載能力。</p>
+        </div>
+        <div class="card">
+          <h4>高強度與高模量</h4>
+          <p>經玻璃纖維或碳纖維增強後，MXD6 的強度和剛性可媲美金屬，為機身骨架、機臂等關鍵結構件提供可靠支撐，確保高機動飛行下的結構穩定性。</p>
+        </div>
+        <div class="card">
+          <h4>優異的抗震動性</h4>
+          <p>聚合物材料固有的阻尼特性，能有效吸收馬達運轉時產生的高頻震動，為航拍設備提供更穩定的平台，提升影像品質。</p>
+        </div>
+      </div>
+       <div class="cards" style="margin-top: 12px;">
+        <div class="card">
+          <h4>設計自由度高</h4>
+          <p>注塑成型工藝支持複雜、一體化的零件設計，可將多個零件整合為一，簡化組裝流程、降低系統總重與成本。</p>
+        </div>
+        <div class="card">
+          <h4>信號穿透性</h4>
+          <p>與金屬材料不同，MXD6 不會屏蔽 GPS、遙控器及圖傳等無線電信號，有助於簡化天線佈局，確保通訊穩定可靠。</p>
+        </div>
+        <div class="card">
+          <h4>尺寸穩定性</h4>
+          <p>極低的吸水率確保零件在不同溫濕度環境下依然能維持精密公差，對於雲台、相機模組等高精度組件至關重要。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="animate-on-scroll">
+        <h2>典型應用部位</h2>
+        <ul class="downloads">
+          <li><strong>機身骨架與機臂：</strong>承受主要飛行負載，要求高剛性與抗疲勞性。</li>
+          <li><strong>起落架：</strong>需要優異的衝擊韌性，吸收著陸時的衝擊力。</li>
+          <li><strong>電池與電子設備外殼：</strong>提供輕量化的保護，並具備一定的阻燃性能。</li>
+          <li><strong>雲台結構件與減震球：</strong>要求尺寸穩定性與優良的減震效果，保證畫面流暢。</li>
+          <li><strong>螺旋槳固定座：</strong>需承受高速旋轉的離心力，要求高強度與耐疲勞性。</li>
+        </ul>
+    </section>
+
+    <div class="cta-row animate-on-scroll">
+      <a class="btn" href="./products.html">了解相關產品</a>
+      <a class="btn primary" href="./contact.html">取得技術支持</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="brand small">華翔興業有限公司</div>
+        <p>專注於七彩化學 MXD6 材料推廣。專業、可靠、可追溯供應。</p>
+      </div>
+      <nav class="footer-nav" aria-label="頁尾導覽">
+        <a href="./index.html">首頁</a>
+        <a href="./products.html">產品中心</a>
+        <a href="./contact.html">聯絡我們</a>
+      </nav>
+    </div>
+    <small>© 2025 華翔興業有限公司. All rights reserved.</small>
+  </footer>
+</body>
+</html>
+
