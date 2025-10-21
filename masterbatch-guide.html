@@ -1,0 +1,456 @@
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>色母：定義、功能、限制｜華翔興業有限公司</title>
+  <meta name="description" content="深入了解色母（Masterbatch）的定義、功能與應用限制，確保塑膠與纖維著色品質的關鍵指南">
+  <meta name="keywords" content="色母, Masterbatch, 塑膠著色, 纖維著色, 華翔興業, 顏料分散, 載體樹脂">
+  
+  <!-- Open Graph tags -->
+  <meta property="og:title" content="色母：定義、功能、限制｜華翔興業有限公司">
+  <meta property="og:description" content="深入了解色母（Masterbatch）的定義、功能與應用限制，確保塑膠與纖維著色品質的關鍵指南">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="/plastic_containers_still_life.webp">
+  <meta property="og:url" content="https://hwashine.tw/masterbatch-guide">
+  
+  <link rel="canonical" href="https://hwashine.tw/masterbatch-guide">
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+
+    :root {
+      --primary-color: #2c8cb0;
+      --secondary-color: #1a5f7a;
+      --accent-color: #ff6b6b;
+      --text-color: #333;
+      --bg-color: #f8f9fa;
+      --content-bg-color: #ffffff;
+      --box-shadow-color: rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Noto Sans TC', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+      animation: ripple 15s infinite linear;
+      z-index: 1;
+    }
+
+    @keyframes ripple {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    nav {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+
+    nav ul li {
+      margin: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    nav ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
+    nav ul li a:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      background-color: var(--content-bg-color);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px var(--box-shadow-color);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+    }
+
+    h2, h3 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style-type: circle;
+      margin-left: 2rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    li strong {
+      color: var(--secondary-color);
+    }
+
+    .equation {
+      text-align: center;
+      font-style: italic;
+      margin: 1.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    .image-container {
+      display: none;
+    }
+
+    .image-container img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .image-container figcaption {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .highlight {
+      background-color: #e6f7ff; /* Light blue background for emphasis */
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+    }
+
+    .cta-section {
+      text-align: center;
+      margin: 3rem 0;
+      padding: 3rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-radius: 12px;
+    }
+
+    .cta-section h2 {
+      color: white;
+    }
+
+    .contact-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: white;
+      color: var(--primary-color);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .contact-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    footer nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    footer nav a:hover {
+      color: var(--accent-color);
+    }
+
+    #back-to-top {
+      display: none;
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 50px;
+      height: 50px;
+      font-size: 30px;
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+      transition: opacity 0.3s ease;
+    }
+
+    #back-to-top.show {
+      display: block;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      body {
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      header {
+        padding: 1.5rem;
+      }
+      
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      main {
+        margin: 1.5rem auto;
+      }
+
+      section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      .image-container img {
+        max-width: 100%;
+      }
+
+      #back-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
+        line-height: 45px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>色母：定義、功能、限制</h1>
+    <p>深入了解色母（Masterbatch）的定義、功能與應用限制，確保塑膠與纖維著色品質的關鍵指南</p>
+  </header>
+
+  <nav>
+  <ul>
+    <li><a href="/">首頁</a></li>
+    <li><a href="/about">關於我們</a></li>
+    <li><a href="/products">產品</a></li>
+    <li><a href="/contact">聯絡我們</a></li>
+  </ul>
+</nav>
+
+  <main>
+    <section id="introduction">
+      <h2>色母在塑膠與纖維著色的關鍵角色</h2>
+      <p>在塑膠與纖維著色領域中，<span class="highlight">「色母」（Masterbatch）</span>扮演著不可或缺的角色。它不僅是顏料分散的媒介，更是提升產品穩定性與加工效率的關鍵材料。了解色母的定義、功能與限制，有助於選擇最適合的原料與配方，確保製品在顏色、光澤與耐候性上達到理想水準。</p>
+      
+      <div class="image-container">
+        <img src="/plastic_containers_still_life.webp" alt="多樣化塑膠容器展示">
+        <figcaption>色母廣泛應用於各類塑膠製品的著色，提供穩定且鮮豔的色彩表現</figcaption>
+      </div>
+    </section>
+
+    <section id="definition">
+      <h2>一、色母的定義</h2>
+      <p>色母（Masterbatch）是將顏料或染料、分散劑與相容性樹脂預先混合、熔融並造粒後的濃縮體。它的主要組成包括：</p>
+      <ul>
+        <li><strong>著色劑：</strong>有機顏料或染料，是色彩的來源。</li>
+        <li><strong>載體樹脂：</strong>與最終塑膠基材（如 PP、PE、PET、PA 等）相容的樹脂。</li>
+        <li><strong>分散劑與助劑：</strong>協助顏料在樹脂中均勻分散，改善流動與加工性能。</li>
+      </ul>
+      <p>藉由色母，顏料得以在塑膠加工過程中更容易混合、分散，達到穩定的色彩表現與物性一致性。</p>
+    </section>
+
+    <section id="functions">
+      <h2>二、色母的主要功能</h2>
+      
+      <h3>1. 穩定配色與品質控制</h3>
+      <p>色母可確保每一批產品的色彩一致，減少色差與操作誤差。</p>
+
+      <h3>2. 提高顏料分散性</h3>
+      <p>顏料在色母中經過預分散，能在成型過程中快速均勻混合，避免結團與色點。</p>
+
+      <h3>3. 提升生產效率</h3>
+      <p>減少現場配粉與研磨步驟，降低粉塵汙染與操作難度。</p>
+
+      <h3>4. 遷移與法規限制</h3>
+      <p>食品接觸與醫療級應用需符合法規要求，選用經認證的顏料與染料。</p>
+
+      <h3>5. 分散工藝依賴性</h3>
+      <p>若色母製程控制不當，顏料仍可能出現再聚集現象，影響外觀品質。</p>
+    </section>
+
+    <section id="limitations">
+      <h2>三、色母的應用限制</h2>
+      
+      <h3>1. 相容性問題</h3>
+      <p>載體樹脂須與最終基材相容，否則可能產生表面缺陷或物性下降。</p>
+
+      <h3>2. 熱穩定性挑戰</h3>
+      <p>在高溫加工條件下，某些顏料或助劑可能分解、變色或失效。</p>
+
+      <h3>3. 添加量控制</h3>
+      <p>色母比例過高可能導致力學性能下降，過低則影響著色效果。</p>
+
+      <h3>4. 遷移與法規限制</h3>
+      <p>食品接觸與醫療級應用需符合法規要求，選用經認證的顏料與染料。</p>
+
+      <h3>5. 分散工藝依賴性</h3>
+      <p>若色母製程控制不當，顏料仍可能出現再聚集現象，影響外觀品質。</p>
+    </section>
+
+    <section id="recommendations">
+      <h2>四、專業建議</h2>
+      <p>在選擇色母或設計配方時，建議：</p>
+      <ul>
+        <li>明確確認基材樹脂種類（PP、PE、PET、PA 等）。</li>
+        <li>進行熱穩定性、光牢度與遷移測試。</li>
+        <li>優先採用高分散性、低吸油值的有機顏料，搭配相容載體。</li>
+        <li>與有經驗的顏料供應商合作，確保品質穩定與技術支援。</li>
+      </ul>
+    </section>
+
+    <section id="about-hwashine">
+      <h2>五、華翔興業有限公司 — 您的色彩與材料合作夥伴</h2>
+      <p>華翔興業有限公司（Hwashine Trading Co., Ltd.）專業供應<span class="highlight">有機顏料（Organic Pigments）</span>與<span class="highlight">溶劑染料（Solvent Dyes）</span>，服務範圍涵蓋塑膠、油墨、塗料與纖維領域。我們深耕亞洲市場多年，與多家台灣與國際母粒廠、色粉廠及色母製造商合作，能夠提供：</p>
+      <ul>
+        <li>高分散性與高穩定性的顏料原料</li>
+        <li>適用各類樹脂（PP、PE、PET、PA、PC 等）的專業建議</li>
+        <li>完整的技術資料與品質控管支援</li>
+      </ul>
+      <p>我們深知，色母品質的穩定，取決於顏料的選擇與分散技術。華翔興業以<span class="highlight">「穩定品質、誠信合作」</span>為核心理念，協助客戶打造更可靠、更具競爭力的色彩系統。</p>
+      <p>若您正在尋找值得信賴的有機顏料與溶劑染料供應商，歡迎聯繫華翔興業，我們將以專業經驗與誠懇服務，提供最合適的著色與應用解決方案。</p>
+    </section>
+
+    <section class="cta-section">
+      <h2>需要更多技術支援？</h2>
+      <p>華翔的專業團隊可為您提供完整的色母應用諮詢服務</p>
+      <a href="/contact" class="contact-button">聯絡我們</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 華翔興業有限公司 版權所有</p>
+    <nav>
+      <a href="/privacy">隱私政策</a> |
+      <a href="/terms">使用條款</a>
+    </nav>
+  </footer>
+
+  <div id="back-to-top">&#8679;</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const sections = document.querySelectorAll('section');
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(section => {
+        section.style.opacity = 0;
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(section);
+      });
+
+      const backToTopButton = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add('show');
+        } else {
+          backToTopButton.classList.remove('show');
+        }
+      });
+
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
