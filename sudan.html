@@ -49,119 +49,12 @@
             const [isMenuOpen, setIsMenuOpen] = useState(false);
             const [showScrollTop, setShowScrollTop] = useState(false);
 
-            // --- Gemini AI Features State ---
-            const [isChatOpen, setIsChatOpen] = useState(false);
-            const [chatMessages, setChatMessages] = useState([
-                { role: 'system', text: '您好！我是華翔興業的 AI 食安顧問。關於蘇丹紅、食品安全或報告內容，有什麼我可以幫您的嗎？' }
-            ]);
-            const [userInput, setUserInput] = useState('');
-            const [isAiLoading, setIsAiLoading] = useState(false);
-            const messagesEndRef = useRef(null);
-
-            const [summary, setSummary] = useState(null);
-            const [isSummaryLoading, setIsSummaryLoading] = useState(false);
-
-            // API Key Configuration (請在此處填入您的 API Key 才能使用 AI 功能)
-            const apiKey = ""; 
-
-            // Scroll to bottom of chat
-            const scrollToBottom = () => {
-                messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-            };
-
             // 重新渲染圖示 (因為在瀏覽器端運行，需要手動觸發 Lucide)
             useEffect(() => {
                 if (window.lucide) {
                     window.lucide.createIcons();
                 }
             });
-
-            useEffect(() => {
-                if (isChatOpen) {
-                    scrollToBottom();
-                }
-            }, [chatMessages, isChatOpen]);
-
-            // --- Gemini API Call Function ---
-            const callGemini = async (prompt, systemInstruction = "") => {
-                if (!apiKey) {
-                    return "請先在程式碼中設定 Google Gemini API Key 才能使用此功能。";
-                }
-
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-                
-                const payload = {
-                    contents: [{ parts: [{ text: prompt }] }],
-                    systemInstruction: { parts: [{ text: systemInstruction }] }
-                };
-
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    const data = await response.json();
-                    
-                    if (!response.ok) {
-                        throw new Error(data.error?.message || "API Error");
-                    }
-
-                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "抱歉，我現在無法回答，請稍後再試。";
-                } catch (error) {
-                    console.error("Gemini API Error:", error);
-                    return "連線發生錯誤，請檢查網路或稍後再試。";
-                }
-            };
-
-            // --- Feature 1: AI Chat Handler ---
-            const handleSendMessage = async (e) => {
-                e.preventDefault();
-                if (!userInput.trim() || isAiLoading) return;
-
-                const userMsg = userInput;
-                setChatMessages(prev => [...prev, { role: 'user', text: userMsg }]);
-                setUserInput('');
-                setIsAiLoading(true);
-
-                const systemPrompt = `
-                    角色設定：您是華翔興業有限公司 (Hwa Shine Enterprise Co., Ltd.) 的 AI 食安專業顧問。
-                    任務：根據網站關於「蘇丹紅 (Sudan Red)」的報告內容，回答用戶的提問。
-                    
-                    核心知識庫：
-                    1. 蘇丹紅是工業用偶氮染料，親脂性強，禁用於食品。
-                    2. 蘇丹紅 I, II, III, IV 號的代謝產物（如苯胺、鄰-甲苯胺）具有致癌性與基因毒性。
-                    3. IARC 列為第三級致癌物（證據不足），但其代謝物鄰-甲苯胺為第一級致癌物，故需嚴格控管。
-                    4. 2024年台灣食安事件波及辣椒粉、咖哩粉、沙茶醬等多種產品。
-                    5. 建議：多吃纖維、多喝水、攝取抗氧化劑可幫助代謝，高溫烹飪無法去除毒性。
-                    
-                    回答原則：
-                    1. 語氣專業、親切、客觀。
-                    2. 使用繁體中文。
-                    3. 回答精簡扼要，避免長篇大論。
-                    4. 若涉及具體醫療診斷，請務必建議用戶諮詢專業醫師。
-                    5. 強調預防勝於治療。
-                `;
-
-                const aiResponse = await callGemini(userMsg, systemPrompt);
-
-                setChatMessages(prev => [...prev, { role: 'bot', text: aiResponse }]);
-                setIsAiLoading(false);
-            };
-
-            // --- Feature 2: Summary Generator ---
-            const handleGenerateSummary = async () => {
-                if (summary) return; 
-                setIsSummaryLoading(true);
-
-                const prompt = "請為這份關於蘇丹紅的報告生成一份簡短的重點摘要，包含3-4個關鍵點，使用繁體中文。";
-                const systemPrompt = "你是一位專業的科學編輯，擅長將複雜的化學與食安報告總結為一般民眾易懂的條列式重點。";
-
-                const result = await callGemini(prompt, systemPrompt);
-                setSummary(result);
-                setIsSummaryLoading(false);
-            };
 
             // Scroll Listener
             useEffect(() => {
@@ -297,39 +190,6 @@
                         <p className="text-lg text-gray-600 max-w-2xl mb-6">
                         從工業染料到餐桌隱形殺手：解析偶氮染料的雙重面貌與2024年台灣食安風暴的科學省思。
                         </p>
-
-                        {/* AI Summary Feature */}
-                        <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-lg border border-purple-100 shadow-sm">
-                        {!summary ? (
-                            <div className="flex flex-col md:flex-row items-center justify-between">
-                            <div className="flex items-center mb-4 md:mb-0">
-                                <i data-lucide="sparkles" className="w-5 h-5 text-purple-600 mr-2"></i>
-                                <span className="text-purple-900 font-medium text-sm">趕時間？讓 AI 幫您整理重點</span>
-                            </div>
-                            <button 
-                                onClick={handleGenerateSummary}
-                                disabled={isSummaryLoading}
-                                className="flex items-center px-4 py-2 bg-white text-purple-700 text-sm font-bold rounded shadow hover:shadow-md transition-all border border-purple-200 disabled:opacity-50"
-                            >
-                                {isSummaryLoading ? <i data-lucide="loader-2" className="w-4 h-4 mr-2 animate-spin"></i> : <i data-lucide="file-text" className="w-4 h-4 mr-2"></i>}
-                                {isSummaryLoading ? 'AI 生成中...' : '✨ 一鍵生成重點摘要'}
-                            </button>
-                            </div>
-                        ) : (
-                            <div className="animate-fade-in">
-                            <div className="flex items-center justify-between mb-2">
-                                <div className="flex items-center">
-                                    <i data-lucide="sparkles" className="w-5 h-5 text-purple-600 mr-2"></i>
-                                    <h3 className="font-bold text-purple-900">AI 重點摘要</h3>
-                                </div>
-                                <button onClick={() => setSummary(null)} className="text-purple-400 hover:text-purple-700"><i data-lucide="x-circle" className="w-5 h-5"></i></button>
-                            </div>
-                            <div className="text-sm text-purple-800 leading-relaxed whitespace-pre-wrap pl-2 border-l-2 border-purple-300">
-                                {summary}
-                            </div>
-                            </div>
-                        )}
-                        </div>
                     </header>
 
                     {/* Chapter 1: Introduction */}
@@ -726,93 +586,16 @@
                     </main>
                 </div>
 
-                {/* --- AI Chat Widget (Floating) --- */}
-                <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-                    
-                    {/* Chat Window */}
-                    {isChatOpen && (
-                    <div className="mb-4 bg-white w-80 md:w-96 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 flex flex-col animate-fade-in-up" style={{maxHeight: '500px', height: '60vh'}}>
-                        {/* Chat Header */}
-                        <div className="bg-gradient-to-r from-red-600 to-red-700 p-4 flex justify-between items-center text-white">
-                        <div className="flex items-center">
-                            <i data-lucide="bot" className="w-6 h-6 mr-2"></i>
-                            <div>
-                            <h3 className="font-bold text-sm">✨ AI 食安顧問</h3>
-                            <p className="text-xs text-red-100">華翔興業有限公司 專屬服務</p>
-                            </div>
-                        </div>
-                        <button onClick={() => setIsChatOpen(false)} className="text-white hover:text-red-200">
-                            <i data-lucide="x" className="w-5 h-5"></i>
-                        </button>
-                        </div>
-
-                        {/* Chat Messages */}
-                        <div className="flex-1 p-4 overflow-y-auto bg-gray-50">
-                        {chatMessages.map((msg, index) => (
-                            <div key={index} className={`mb-3 flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                            <div className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm shadow-sm ${
-                                msg.role === 'user' 
-                                ? 'bg-red-600 text-white rounded-br-none' 
-                                : 'bg-white text-gray-800 border border-gray-200 rounded-bl-none'
-                            }`}>
-                                {msg.text}
-                            </div>
-                            </div>
-                        ))}
-                        {isAiLoading && (
-                            <div className="flex justify-start mb-3">
-                            <div className="bg-white text-gray-800 border border-gray-200 rounded-2xl rounded-bl-none px-4 py-3 shadow-sm flex items-center">
-                                <i data-lucide="loader-2" className="w-4 h-4 mr-2 animate-spin text-red-600"></i>
-                                <span className="text-xs text-gray-500">AI 正在思考中...</span>
-                            </div>
-                            </div>
-                        )}
-                        <div ref={messagesEndRef} />
-                        </div>
-
-                        {/* Chat Input */}
-                        <form onSubmit={handleSendMessage} className="p-3 bg-white border-t border-gray-200 flex items-center">
-                        <input 
-                            type="text" 
-                            value={userInput}
-                            onChange={(e) => setUserInput(e.target.value)}
-                            placeholder="請問關於蘇丹紅的問題..." 
-                            className="flex-1 bg-gray-100 text-gray-900 text-sm rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 mr-2"
-                        />
-                        <button 
-                            type="submit" 
-                            disabled={!userInput.trim() || isAiLoading}
-                            className="bg-red-600 text-white p-2 rounded-full hover:bg-red-700 disabled:opacity-50 disabled:hover:bg-red-600 transition-colors flex items-center justify-center"
-                        >
-                            <i data-lucide="send" className="w-4 h-4"></i>
-                        </button>
-                        </form>
-                    </div>
-                    )}
-
-                    {/* Toggle Button Group */}
-                    <div className="flex items-center space-x-3">
-                    {/* Scroll to Top */}
-                    {showScrollTop && !isChatOpen && (
-                        <button
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                        className="bg-gray-700 text-white p-3 rounded-full shadow-lg hover:bg-gray-800 transition-colors flex items-center justify-center"
-                        aria-label="回到頂部"
-                        >
-                        <i data-lucide="chevron-up" className="w-6 h-6"></i>
-                        </button>
-                    )}
-
-                    {/* Chat Toggle Button */}
+                {/* Back to Top Button */}
+                {showScrollTop && (
                     <button
-                        onClick={() => setIsChatOpen(!isChatOpen)}
-                        className={`${isChatOpen ? 'bg-gray-400' : 'bg-red-600'} text-white p-4 rounded-full shadow-xl hover:opacity-90 transition-all transform hover:scale-105 flex items-center justify-center`}
-                        aria-label="開啟 AI 顧問"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="fixed bottom-8 right-8 bg-red-600 text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition-colors z-50 flex items-center justify-center"
+                    aria-label="回到頂部"
                     >
-                        {isChatOpen ? <i data-lucide="x" className="w-6 h-6"></i> : <i data-lucide="message-circle" className="w-6 h-6"></i>}
+                    <i data-lucide="chevron-up" className="w-6 h-6"></i>
                     </button>
-                    </div>
-                </div>
+                )}
                 </div>
             );
         };
