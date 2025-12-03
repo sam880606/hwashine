@@ -1,0 +1,580 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  FlaskConical, 
+  AlertTriangle, 
+  Skull, 
+  BookOpen, 
+  Activity, 
+  ShieldAlert, 
+  Utensils, 
+  Menu, 
+  X, 
+  ChevronUp, 
+  Info,
+  Microscope,
+  Factory,
+  ArrowLeft,
+  Home
+} from 'lucide-react';
+
+const SudanRedReport = () => {
+  const [activeSection, setActiveSection] = useState('intro');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // 監聽滾動以更新目錄高亮和顯示回到頂部按鈕
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+
+      const sections = ['intro', 'family', 'uses', 'toxicology', 'metabolites', 'supply-chain', 'detection', 'consumer'];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top >= 0 && rect.top <= 300) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(id);
+      setIsMenuOpen(false);
+    }
+  };
+
+  const NavItem = ({ id, label, icon: Icon }) => (
+    <button
+      onClick={() => scrollToSection(id)}
+      className={`flex items-center w-full px-4 py-3 text-sm font-medium transition-colors duration-200 ${
+        activeSection === id
+          ? 'bg-red-50 text-red-700 border-r-4 border-red-600'
+          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+      }`}
+    >
+      <Icon className="w-4 h-4 mr-3" />
+      {label}
+    </button>
+  );
+
+  return (
+    <div className="min-h-screen bg-gray-50 font-sans text-gray-800 selection:bg-red-100 selection:text-red-900">
+      
+      {/* Mobile Header */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-4 py-3 flex justify-between items-center">
+        <div className="flex items-center space-x-2 font-bold text-red-700">
+          <FlaskConical className="w-6 h-6" />
+          <span>蘇丹紅綜合評估報告</span>
+        </div>
+        <div className="flex items-center">
+            {/* Mobile Home Link Icon */}
+            <a href="https://hwashine.tw/" className="p-2 text-gray-600 mr-1" aria-label="回官網">
+                <Home className="w-5 h-5" />
+            </a>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 text-gray-600">
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-40 bg-white pt-16 overflow-y-auto">
+          <nav className="flex flex-col">
+            <a 
+                href="https://hwashine.tw/" 
+                className="flex items-center w-full px-4 py-4 text-sm font-bold text-gray-800 bg-gray-50 border-b border-gray-200 mb-2"
+            >
+                <ArrowLeft className="w-4 h-4 mr-3" />
+                返回 華翔興業官網
+            </a>
+            <NavItem id="intro" label="緒論：雙重面貌" icon={BookOpen} />
+            <NavItem id="family" label="家族譜系與特性" icon={FlaskConical} />
+            <NavItem id="uses" label="合法工業用途" icon={Factory} />
+            <NavItem id="toxicology" label="毒理機制" icon={Skull} />
+            <NavItem id="metabolites" label="關鍵代謝產物" icon={Activity} />
+            <NavItem id="supply-chain" label="全球供應鏈風險" icon={ShieldAlert} />
+            <NavItem id="detection" label="檢測與法規" icon={Microscope} />
+            <NavItem id="consumer" label="消費者防範" icon={Utensils} />
+          </nav>
+        </div>
+      )}
+
+      <div className="flex max-w-7xl mx-auto pt-16 lg:pt-0">
+        
+        {/* Sidebar Navigation (Desktop) */}
+        <aside className="hidden lg:block w-64 fixed h-screen overflow-y-auto bg-white border-r border-gray-200 z-10">
+          {/* Back to Corporate Site Button */}
+          <a 
+            href="https://hwashine.tw/" 
+            className="flex items-center px-6 py-4 text-gray-600 hover:text-red-700 hover:bg-red-50 transition-colors border-b border-gray-200 group"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+            <span className="text-sm font-medium">返回 華翔興業官網</span>
+          </a>
+
+          <div className="px-6 py-6 mb-2">
+            <h1 className="text-xl font-bold text-gray-900 flex items-center">
+              <FlaskConical className="w-6 h-6 mr-2 text-red-600" />
+              蘇丹紅專題
+            </h1>
+            <p className="text-xs text-gray-500 mt-2">化學特性、毒理機制及<br/>全球食品安全風險評估</p>
+          </div>
+          <nav className="pb-8">
+            <NavItem id="intro" label="緒論：雙重面貌" icon={BookOpen} />
+            <NavItem id="family" label="家族譜系與特性" icon={FlaskConical} />
+            <NavItem id="uses" label="合法工業用途" icon={Factory} />
+            <NavItem id="toxicology" label="毒理機制" icon={Skull} />
+            <NavItem id="metabolites" label="關鍵代謝產物" icon={Activity} />
+            <NavItem id="supply-chain" label="供應鏈與案例" icon={ShieldAlert} />
+            <NavItem id="detection" label="檢測與法規" icon={Microscope} />
+            <NavItem id="consumer" label="消費者防範" icon={Utensils} />
+          </nav>
+        </aside>
+
+        {/* Main Content Area */}
+        <main className="flex-1 lg:ml-64 p-4 md:p-8 lg:p-12 max-w-4xl mx-auto">
+          
+          {/* Header/Title Block */}
+          <header className="mb-12 text-center md:text-left border-b border-gray-200 pb-8">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                <span className="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-red-600 uppercase bg-red-100 rounded-full self-center md:self-start">
+                深度專題報導
+                </span>
+                <span className="text-xs text-gray-400 mt-2 md:mt-0 font-medium">
+                    Presented by 華翔興業有限公司
+                </span>
+            </div>
+            
+            <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+              蘇丹紅 (Sudan Red)<br/>
+              <span className="text-red-700">化學特性、毒理機制及風險評估</span>
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl">
+              從工業染料到餐桌隱形殺手：解析偶氮染料的雙重面貌與2024年台灣食安風暴的科學省思。
+            </p>
+          </header>
+
+          {/* Chapter 1: Introduction */}
+          <section id="intro" className="mb-16 scroll-mt-24">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <span className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">1</span>
+              緒論：偶氮染料的雙重面貌
+            </h2>
+            <div className="prose prose-red max-w-none text-gray-700">
+              <p className="mb-4">
+                在當代工業化學的譜系中，偶氮染料（Azo Dyes）佔據了合成染料市場的主導地位。
+                <strong>蘇丹紅（Sudan Red）</strong>作為偶氮染料家族中親脂性（Lipophilic）溶劑染料的代表，因其卓越的色澤穩定性、高彩度及低廉的合成成本，自19世紀末以來一直是工業著色的首選材料。
+              </p>
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
+                <h3 className="text-blue-900 font-bold text-lg mb-2">研究背景</h3>
+                <p className="text-blue-800 text-sm">
+                  這種在工業上被視為「完美染料」的物質，一旦跨越界線進入食品供應鏈，便轉化為威脅公共衛生的隱形殺手。
+                  本報告將從分子結構出發，深入探討其被IARC列為第三級致癌物背後的科學依據，並結合2024年台灣蘇丹紅事件進行分析。
+                </p>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mt-6 mb-3">化學定義與分類</h3>
+              <p>
+                蘇丹紅並非單一化學物質，而是一系列<strong>人工合成的油溶性偶氮染料</strong>總稱。
+                其核心特徵是含有偶氮基團（-N=N-），連接兩個芳香環，形成共軛雙鍵系統。
+                與水溶性色素不同，蘇丹紅缺乏極性親水基團，賦予其<strong>極強的親脂性</strong>，這使其極易在人體脂肪組織與肝臟中累積。
+              </p>
+            </div>
+          </section>
+
+          {/* Chapter 2: Family Lineage */}
+          <section id="family" className="mb-16 scroll-mt-24">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <span className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">2</span>
+              蘇丹紅家族譜系：色號與結構
+            </h2>
+            <p className="mb-6 text-gray-700">
+              不同的取代基不僅影響分子的顏色深淺，更決定了其代謝後釋放出的致癌芳香胺種類。
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              {/* Card I */}
+              <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="h-2 bg-yellow-500"></div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">蘇丹紅 I 號 (Sudan I)</h3>
+                  <div className="text-xs font-mono text-gray-500 mb-4 bg-gray-100 inline-block px-2 py-1 rounded">C<sub>16</sub>H<sub>12</sub>N<sub>2</sub>O | C.I. Solvent Yellow 14</div>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-start"><span className="text-yellow-500 mr-2">●</span>外觀：橙黃色粉末</li>
+                    <li className="flex items-start"><span className="text-yellow-500 mr-2">●</span>結構：最基礎單偶氮染料</li>
+                    <li className="flex items-start"><span className="text-red-500 mr-2">!</span>代謝產物：苯胺 (Aniline)</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Card II */}
+              <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="h-2 bg-orange-500"></div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">蘇丹紅 II 號 (Sudan II)</h3>
+                  <div className="text-xs font-mono text-gray-500 mb-4 bg-gray-100 inline-block px-2 py-1 rounded">C<sub>18</sub>H<sub>16</sub>N<sub>2</sub>O | C.I. Solvent Orange 7</div>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-start"><span className="text-orange-500 mr-2">●</span>外觀：橙紅色粉末</li>
+                    <li className="flex items-start"><span className="text-orange-500 mr-2">●</span>特徵：二甲基衍生物</li>
+                    <li className="flex items-start"><span className="text-red-500 mr-2">!</span>代謝產物：2,4-二甲基苯胺</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Card III */}
+              <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="h-2 bg-red-600"></div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">蘇丹紅 III 號 (Sudan III)</h3>
+                  <div className="text-xs font-mono text-gray-500 mb-4 bg-gray-100 inline-block px-2 py-1 rounded">C<sub>22</sub>H<sub>16</sub>N<sub>4</sub>O | C.I. Solvent Red 23</div>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-start"><span className="text-red-600 mr-2">●</span>外觀：紅棕色至磚紅色</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2">●</span>結構：雙偶氮染料 (Disazo)</li>
+                    <li className="flex items-start"><span className="text-red-500 mr-2">!</span>代謝產物：4-氨基偶氮苯 (雙重致癌威脅)</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Card IV */}
+              <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="h-2 bg-red-900"></div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">蘇丹紅 IV 號 (Sudan IV)</h3>
+                  <div className="text-xs font-mono text-gray-500 mb-4 bg-gray-100 inline-block px-2 py-1 rounded">C<sub>24</sub>H<sub>20</sub>N<sub>4</sub>O | C.I. Solvent Red 24</div>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li className="flex items-start"><span className="text-red-900 mr-2">●</span>外觀：深褐色 (猩紅)</li>
+                    <li className="flex items-start"><span className="text-red-900 mr-2">●</span>風險：脂溶性極強</li>
+                    <li className="flex items-start"><span className="text-red-600 font-bold mr-2">!!</span>代謝產物：鄰-甲苯胺 (1級致癌物)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Table */}
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <div className="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                <h3 className="text-sm font-bold text-gray-700">表 2.1 蘇丹紅系列主要成員特性對照</h3>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200 text-sm">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">名稱</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">顏色</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">結構特徵</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">主要代謝毒物</th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    <tr>
+                      <td className="px-6 py-4 font-medium text-gray-900">蘇丹紅 I</td>
+                      <td className="px-6 py-4 text-yellow-600">黃色/橙色</td>
+                      <td className="px-6 py-4">單偶氮</td>
+                      <td className="px-6 py-4">苯胺 (2A級)</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 font-medium text-gray-900">蘇丹紅 II</td>
+                      <td className="px-6 py-4 text-orange-600">橙紅色</td>
+                      <td className="px-6 py-4">二甲基衍生物</td>
+                      <td className="px-6 py-4">2,4-二甲基苯胺</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 font-medium text-gray-900">蘇丹紅 III</td>
+                      <td className="px-6 py-4 text-red-600">紅棕色</td>
+                      <td className="px-6 py-4">雙偶氮</td>
+                      <td className="px-6 py-4">4-氨基偶氮苯</td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 font-medium text-gray-900">蘇丹紅 IV</td>
+                      <td className="px-6 py-4 text-red-900">深褐色</td>
+                      <td className="px-6 py-4">雙偶氮 + 甲基</td>
+                      <td className="px-6 py-4 font-bold text-red-600">鄰-甲苯胺 (1級)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          {/* Chapter 3: Industrial Uses */}
+          <section id="uses" className="mb-16 scroll-mt-24">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <span className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">3</span>
+              合法用途與工業價值
+            </h2>
+            <p className="mb-6 text-gray-700">蘇丹紅的發明初衷是為了解決非極性物質（Non-polar substances）的著色難題。以下是其合法的工業應用領域：</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                <div className="flex items-center mb-3">
+                  <div className="p-2 bg-blue-100 rounded text-blue-600 mr-3">
+                    <Factory className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-bold text-gray-900">燃料標記劑</h3>
+                </div>
+                <p className="text-sm text-gray-600">作為油品分級與稅收識別的「示蹤劑」。區分免稅柴油、航空煤油等，防範非法混充。</p>
+              </div>
+
+              <div className="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                <div className="flex items-center mb-3">
+                  <div className="p-2 bg-green-100 rounded text-green-600 mr-3">
+                    <Microscope className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-bold text-gray-900">生物醫學染色</h3>
+                </div>
+                <p className="text-sm text-gray-600">作為脂肪染色劑 (Sudan Staining)，用於病理切片觀察脂肪肝、動脈粥樣硬化等病變。</p>
+              </div>
+
+              <div className="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                <div className="flex items-center mb-3">
+                  <div className="p-2 bg-purple-100 rounded text-purple-600 mr-3">
+                    <Factory className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-bold text-gray-900">塑膠與蠟製品</h3>
+                </div>
+                <p className="text-sm text-gray-600">用於地板蠟、鞋油、PS/PVC塑膠的本體著色。也曾用於煙霧訊號彈。</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Chapter 4: Toxicology */}
+          <section id="toxicology" className="mb-16 scroll-mt-24">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <span className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">4</span>
+              毒理學機制：生物活化
+            </h2>
+            <div className="bg-red-50 p-6 rounded-lg mb-8 border border-red-100">
+              <h3 className="text-lg font-bold text-red-800 mb-2">核心機制：特洛伊木馬</h3>
+              <p className="text-red-900 text-sm">
+                蘇丹紅的危害來自於<strong>「生物活化」 (Bioactivation)</strong>。腸道細菌將穩定的染料轉化為攻擊 DNA 的致癌物。
+              </p>
+            </div>
+
+            <div className="relative border-l-2 border-gray-200 pl-8 space-y-8">
+              <div className="relative">
+                <div className="absolute -left-10 bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold text-gray-600">1</div>
+                <h4 className="font-bold text-gray-900">偶氮還原 (Azoreduction)</h4>
+                <p className="text-sm text-gray-600 mt-1">
+                  進入人體後，<strong>腸道菌群</strong>（如梭菌屬、腸球菌屬）分泌偶氮還原酶，切斷蘇丹紅分子的偶氮鍵（-N=N-）。
+                </p>
+              </div>
+              <div className="relative">
+                <div className="absolute -left-10 bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold text-gray-600">2</div>
+                <h4 className="font-bold text-gray-900">毒素釋放</h4>
+                <p className="text-sm text-gray-600 mt-1">
+                  大分子染料分解為小的、水溶性強的<strong>芳香胺 (Aromatic Amines)</strong>，如苯胺或鄰-甲苯胺。
+                </p>
+              </div>
+              <div className="relative">
+                <div className="absolute -left-10 bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold text-gray-600">3</div>
+                <h4 className="font-bold text-gray-900">肝臟氧化與活化</h4>
+                <p className="text-sm text-gray-600 mt-1">
+                  芳香胺進入肝臟，經 <strong>CYP450 酵素</strong>氧化，轉化為極不穩定的親電性物質（Nitrenium ions）。
+                </p>
+              </div>
+              <div className="relative">
+                <div className="absolute -left-10 bg-red-500 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold text-white">4</div>
+                <h4 className="font-bold text-red-700">DNA 加合物形成</h4>
+                <p className="text-sm text-gray-600 mt-1">
+                  親電性物質攻擊細胞核 DNA 的鳥嘌呤鹼基，形成 DNA 加合物，導致基因突變與癌症啟動。
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Chapter 5: Metabolites */}
+          <section id="metabolites" className="mb-16 scroll-mt-24">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <span className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">5</span>
+              關鍵代謝產物毒理檔案
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-red-900 text-white rounded-lg p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <Skull className="w-6 h-6 mr-2 text-red-300" />
+                  <h3 className="text-xl font-bold">鄰-甲苯胺 (o-Toluidine)</h3>
+                </div>
+                <div className="mb-4">
+                  <span className="bg-red-600 text-white text-xs px-2 py-1 rounded font-bold">IARC 1級致癌物</span>
+                </div>
+                <p className="text-red-100 text-sm mb-2">
+                  <strong>來源：</strong>蘇丹紅 IV 號代謝。
+                </p>
+                <p className="text-red-100 text-sm">
+                  <strong>危害：</strong>確定致癌。直接穿透膀胱上皮細胞，與染料廠工人的<strong>膀胱癌</strong>有明確因果關係。是家族中最危險的代謝物。
+                </p>
+              </div>
+
+              <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                <div className="flex items-center mb-4">
+                  <AlertTriangle className="w-6 h-6 mr-2 text-orange-500" />
+                  <h3 className="text-xl font-bold text-gray-900">苯胺 (Aniline)</h3>
+                </div>
+                <div className="mb-4">
+                  <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded font-bold">IARC 2A級致癌物</span>
+                </div>
+                <p className="text-gray-600 text-sm mb-2">
+                  <strong>來源：</strong>蘇丹紅 I / III 號代謝。
+                </p>
+                <p className="text-gray-600 text-sm">
+                  <strong>危害：</strong>極可能致癌。急性中毒可破壞血紅素功能，造成「化學性缺氧」（高鐵血紅蛋白症），導致皮膚發紺、缺氧。
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Chapter 6: Supply Chain & 2024 Event */}
+          <section id="supply-chain" className="mb-16 scroll-mt-24">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <span className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">6</span>
+              全球供應鏈的脆弱性與台灣風暴
+            </h2>
+            
+            <div className="space-y-6">
+              {/* History Timeline */}
+              <div className="border-l-4 border-gray-300 pl-4 py-2">
+                <h3 className="font-bold text-gray-800">2003 歐盟辣椒粉危機</h3>
+                <p className="text-sm text-gray-600">法國首度檢出印度辣椒粉含蘇丹紅I號，促使歐盟建立「零容忍」原則。</p>
+              </div>
+              <div className="border-l-4 border-gray-300 pl-4 py-2">
+                <h3 className="font-bold text-gray-800">2005 中國紅心鴨蛋事件</h3>
+                <p className="text-sm text-gray-600">養殖戶在飼料添加蘇丹紅IV號以製造「紅心」蛋黃，肯德基紐奧良烤翅亦受波及。</p>
+              </div>
+              
+              {/* 2024 Taiwan Event */}
+              <div className="bg-red-50 p-6 rounded-lg border border-red-200 mt-6">
+                <h3 className="text-xl font-bold text-red-900 mb-4 flex items-center">
+                  <ShieldAlert className="w-5 h-5 mr-2" />
+                  2024年台灣蘇丹紅風暴
+                </h3>
+                <p className="text-gray-800 mb-4">
+                  史上規模最大、影響層面最廣的食安事件。揭露了現代食品工業「原料依賴」的長尾效應風險。
+                </p>
+                <div className="bg-white p-4 rounded border border-red-100">
+                  <h4 className="font-bold text-red-800 text-sm mb-2">受波及產品類別與品牌（部分案例）：</h4>
+                  <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                    <li><strong>知名餐飲：</strong>八方雲集（韓式辣味鍋貼原料）、海底撈</li>
+                    <li><strong>國民零食：</strong>裕榮食品「蝦味先香辣口味」、鑫豪食品「菜䔕餅」</li>
+                    <li><strong>調味品：</strong>維力食品（部分調味包）、牛頭牌、小磨坊（部分同業受波及）、各類胡椒粉、咖哩粉、沙茶醬</li>
+                    <li><strong>加工肉品：</strong>金安記香辣豬肉乾</li>
+                  </ul>
+                  <p className="text-xs text-gray-500 mt-3 italic">
+                    * 註：系統性風險在於一家上游原料商（如津棧、保欣）的污染，透過多層級分銷，最終污染數千種終端產品。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Chapter 7: Detection & Regulation */}
+          <section id="detection" className="mb-16 scroll-mt-24">
+             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <span className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">7</span>
+              檢測技術與 IARC 分級解讀
+            </h2>
+            
+            <div className="mb-6">
+              <h3 className="font-bold text-lg mb-2">IARC 第三級致癌物是「安全」的嗎？</h3>
+              <div className="bg-yellow-50 p-4 rounded-l-md border-l-4 border-yellow-400">
+                <p className="text-gray-800 text-sm">
+                  <strong>絕對錯誤。</strong> Group 3 意為「對人類致癌性尚無法分類」，是因為缺乏拿人做實驗的數據，而非證明其無毒。
+                  由於其代謝物（鄰-甲苯胺）是一級致癌物，法規上採取<strong>「預防原則」</strong>，視同劇毒管理，<strong>食品中不得檢出</strong>。
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 border border-gray-200 rounded">
+                <h4 className="font-bold text-gray-900 mb-2">檢測挑戰</h4>
+                <p className="text-sm text-gray-600">食品基質複雜（含大量油脂、蛋白質），且天然辣椒紅素會干擾檢測。需經過有機溶劑萃取與固相萃取柱（SPE）前處理。</p>
+              </div>
+              <div className="p-4 border border-gray-200 rounded bg-gray-50">
+                <h4 className="font-bold text-gray-900 mb-2">黃金標準技術</h4>
+                <p className="text-sm text-gray-600"><strong>LC-MS/MS (液相層析串聯質譜儀)</strong>。能利用分子質量與電荷比精確區分蘇丹紅I-IV與帕拉紅，靈敏度達ppb級別，避免誤判。</p>
+              </div>
+            </div>
+          </section>
+
+           {/* Chapter 8: Consumer Advice */}
+           <section id="consumer" className="mb-16 scroll-mt-24">
+             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <span className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">8</span>
+              消費者防範與健康建議
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+                <div className="text-red-500 mb-2 font-bold flex items-center"><Info className="w-4 h-4 mr-2"/>如何辨識？</div>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>● <strong>死紅/過於鮮豔</strong>：曝曬不褪色。</li>
+                  <li>● <strong>難清洗</strong>：沾手後水洗不掉（親脂性），需用油洗。</li>
+                  <li>● <strong>價格異常低</strong>：天然色素成本高。</li>
+                </ul>
+              </div>
+              <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+                <div className="text-red-500 mb-2 font-bold flex items-center"><Utensils className="w-4 h-4 mr-2"/>高溫能去除嗎？</div>
+                <p className="text-sm text-gray-600">
+                  <strong>絕對不能。</strong> 蘇丹紅熱穩定性極高（熔點&gt;130°C），烹飪和油炸反而助其溶解，更利於腸道吸收。
+                </p>
+              </div>
+              <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+                <div className="text-green-600 mb-2 font-bold flex items-center"><Activity className="w-4 h-4 mr-2"/>誤食補救</div>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>● <strong>多纖維</strong>：蔬果全穀，吸附毒素助排便。</li>
+                  <li>● <strong>多喝水</strong>：幫助腎臟排出水溶性代謝物。</li>
+                  <li>● <strong>抗氧化</strong>：維生素C、E中和自由基。</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Conclusion */}
+          <section className="bg-gray-800 text-gray-300 p-8 rounded-xl mb-12">
+            <h2 className="text-2xl font-bold text-white mb-4">結論</h2>
+            <p className="mb-4">
+              蘇丹紅不僅是色素，更是一類攜帶致癌基因毒性的化學載體。2024年的風暴警示我們，在高度全球化的供應鏈中，原料端的微小污染足以引發全產業鏈震盪。
+            </p>
+            <p>
+              對於消費者而言，拒絕過度追求感官刺激（如異常鮮豔的顏色），回歸天然、多樣化的飲食方式，才是遠離化學毒害的根本之道。
+            </p>
+          </section>
+
+          {/* Footer */}
+          <footer className="text-center text-gray-500 text-sm pb-12 border-t border-gray-200 pt-8">
+            <p className="font-medium mb-1">© 2024 華翔興業有限公司 | 食品安全科學綜合評估報告</p>
+            <p>本報告內容基於科學文獻與 IARC 數據整理</p>
+            <p className="mt-2 text-xs">關鍵詞：蘇丹紅、偶氮染料、鄰-甲苯胺、食品安全、2024台灣食安事件</p>
+          </footer>
+
+        </main>
+      </div>
+
+      {/* Back to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-8 right-8 bg-red-600 text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition-colors z-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+          aria-label="回到頂部"
+        >
+          <ChevronUp className="w-6 h-6" />
+        </button>
+      )}
+    </div>
+  );
+};
+
+export default SudanRedReport;
