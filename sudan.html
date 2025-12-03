@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   FlaskConical, 
   AlertTriangle, 
@@ -14,7 +14,14 @@ import {
   Microscope,
   Factory,
   ArrowLeft,
-  Home
+  Home,
+  MessageCircle,
+  Send,
+  Sparkles,
+  Bot,
+  Loader2,
+  FileText,
+  XCircle
 } from 'lucide-react';
 
 const SudanRedReport = () => {
@@ -22,28 +29,162 @@ const SudanRedReport = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // 監聽滾動以更新目錄高亮和顯示回到頂部按鈕
+  // --- Gemini AI Features State ---
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState([
+    { role: 'system', text: '您好！我是華翔興業的 AI 食安顧問。關於蘇丹紅、食品安全或報告內容，有什麼我可以幫您的嗎？' }
+  ]);
+  const [userInput, setUserInput] = useState('');
+  const [isAiLoading, setIsAiLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  const [summary, setSummary] = useState(null);
+  const [isSummaryLoading, setIsSummaryLoading] = useState(false);
+
+  // API Key Configuration
+  const apiKey = ""; // The execution environment provides the key at runtime.
+
+  // Scroll to bottom of chat
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
+    if (isChatOpen) {
+      scrollToBottom();
+    }
+  }, [chatMessages, isChatOpen]);
+
+  // --- Gemini API Call Function ---
+  const callGemini = async (prompt, systemInstruction = "") => {
+    if (!apiKey) {
+      console.warn("API Key not found (runtime injection expected)");
+      // In a real scenario without injection, this would fail. 
+      // Proceeding assuming runtime injection handles it or user fills it.
+    }
+
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+    
+    const payload = {
+      contents: [{ parts: [{ text: prompt }] }],
+      systemInstruction: { parts: [{ text: systemInstruction }] }
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+         // Retry logic could go here, for simplicity we return error
+         throw new Error(data.error?.message || "API Error");
       }
 
+      return data.candidates?.[0]?.content?.parts?.[0]?.text || "抱歉，我現在無法回答，請稍後再試。";
+    } catch (error) {
+      console.error("Gemini API Error:", error);
+      return "連線發生錯誤，請檢查網路或稍後再試。";
+    }
+  };
+
+  // --- Feature 1: AI Chat Handler ---
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    if (!userInput.trim() || isAiLoading) return;
+
+    const userMsg = userInput;
+    setChatMessages(prev => [...prev, { role: 'user', text: userMsg }]);
+    setUserInput('');
+    setIsAiLoading(true);
+
+    const systemPrompt = `
+      角色設定：您是華翔興業有限公司 (Hwa Shine Enterprise Co., Ltd.) 的 AI 食安專業顧問。
+      任務：根據網站關於「蘇丹紅 (Sudan Red)」的報告內容，回答用戶的提問。
+      
+      核心知識庫：
+      1. 蘇丹紅是工業用偶氮染料，親脂性強，禁用於食品。
+      2. 蘇丹紅 I, II, III, IV 號的代謝產物（如苯胺、鄰-甲苯胺）具有致癌性與基因毒性。
+      3. IARC 列為第三級致癌物（證據不足），但其代謝物鄰-甲苯胺為第一級致癌物，故需嚴格控管。
+      4. 2024年台灣食安事件波及辣椒粉、咖哩粉、沙茶醬等多種產品。
+      5. 建議：多吃纖維、多喝水、攝取抗氧化劑可幫助代謝，高溫烹飪無法去除毒性。
+      
+      回答原則：
+      1. 語氣專業、親切、客觀。
+      2. 使用繁體中文。
+      3. 回答精簡扼要，避免長篇大論。
+      4. 若涉及具體醫療診斷，請務必建議用戶諮詢專業醫師。
+      5. 強調預防勝於治療。
+    `;
+
+    const aiResponse = await callGemini(userMsg, systemPrompt);
+
+    setChatMessages(prev => [...prev, { role: 'bot', text: aiResponse }]);
+    setIsAiLoading(false);
+  };
+
+  // --- Feature 2: Summary Generator ---
+  const handleGenerateSummary = async () => {
+    if (summary) return; // Already generated
+    setIsSummaryLoading(true);
+
+    const prompt = "請為這份關於蘇丹紅的報告生成一份簡短的重點摘要，包含3-4個關鍵點，使用繁體中文。";
+    const systemPrompt = "你是一位專業的科學編輯，擅長將複雜的化學與食安報告總結為一般民眾易懂的條列式重點。";
+
+    const result = await callGemini(prompt, systemPrompt);
+    setSummary(result);
+    setIsSummaryLoading(false);
+  };
+
+  // SEO Optimization (Existing)
+  useEffect(() => {
+    document.title = "蘇丹紅(Sudan Red)化學特性、毒理機制與食安風險評估報告 | 華翔興業有限公司";
+    const updateMeta = (name, content) => {
+      let element = document.querySelector(`meta[name="${name}"]`);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute('name', name);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', content);
+    };
+    updateMeta('description', '2024年最新蘇丹紅深度報告。由華翔興業有限公司提供，詳盡解析蘇丹紅色素之化學結構、工業用途、人體代謝毒理機制及致癌風險。');
+    updateMeta('keywords', '蘇丹紅, Sudan Red, 華翔興業, 偶氮染料, 食品安全, 致癌物, 鄰-甲苯胺, 食安風暴, 毒理評估, 工業染料');
+    
+    // JSON-LD logic...
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "蘇丹紅(Sudan Red)化學特性、毒理機制及全球食品安全風險綜合評估報告",
+      "author": { "@type": "Organization", "name": "華翔興業有限公司", "url": "https://hwashine.tw/" },
+      "publisher": { "@type": "Organization", "name": "華翔興業有限公司", "logo": { "@type": "ImageObject", "url": "https://hwashine.tw/wp-content/uploads/2021/09/logo.png" } },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://hwashine.tw/sudan-red-report" },
+      "description": "從工業染料到餐桌隱形殺手：解析偶氮染料的雙重面貌與2024年台灣食安風暴的科學省思。",
+      "articleSection": "Food Safety Report"
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+    return () => { document.head.removeChild(script); };
+  }, []);
+
+  // Scroll Listener (Existing)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) { setShowScrollTop(true); } else { setShowScrollTop(false); }
       const sections = ['intro', 'family', 'uses', 'toxicology', 'metabolites', 'supply-chain', 'detection', 'consumer'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top >= 0 && rect.top <= 300) {
-            setActiveSection(section);
-            break;
-          }
+          if (rect.top >= 0 && rect.top <= 300) { setActiveSection(section); break; }
         }
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -78,10 +219,9 @@ const SudanRedReport = () => {
       <div className="lg:hidden fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-4 py-3 flex justify-between items-center">
         <div className="flex items-center space-x-2 font-bold text-red-700">
           <FlaskConical className="w-6 h-6" />
-          <span>蘇丹紅綜合評估報告</span>
+          <h1 className="text-base m-0 p-0 font-bold text-inherit">蘇丹紅綜合評估報告</h1>
         </div>
         <div className="flex items-center">
-            {/* Mobile Home Link Icon */}
             <a href="https://hwashine.tw/" className="p-2 text-gray-600 mr-1" aria-label="回官網">
                 <Home className="w-5 h-5" />
             </a>
@@ -118,7 +258,6 @@ const SudanRedReport = () => {
         
         {/* Sidebar Navigation (Desktop) */}
         <aside className="hidden lg:block w-64 fixed h-screen overflow-y-auto bg-white border-r border-gray-200 z-10">
-          {/* Back to Corporate Site Button */}
           <a 
             href="https://hwashine.tw/" 
             className="flex items-center px-6 py-4 text-gray-600 hover:text-red-700 hover:bg-red-50 transition-colors border-b border-gray-200 group"
@@ -147,7 +286,7 @@ const SudanRedReport = () => {
         </aside>
 
         {/* Main Content Area */}
-        <main className="flex-1 lg:ml-64 p-4 md:p-8 lg:p-12 max-w-4xl mx-auto">
+        <main className="flex-1 lg:ml-64 p-4 md:p-8 lg:p-12 max-w-4xl mx-auto relative">
           
           {/* Header/Title Block */}
           <header className="mb-12 text-center md:text-left border-b border-gray-200 pb-8">
@@ -164,9 +303,42 @@ const SudanRedReport = () => {
               蘇丹紅 (Sudan Red)<br/>
               <span className="text-red-700">化學特性、毒理機制及風險評估</span>
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl">
+            <p className="text-lg text-gray-600 max-w-2xl mb-6">
               從工業染料到餐桌隱形殺手：解析偶氮染料的雙重面貌與2024年台灣食安風暴的科學省思。
             </p>
+
+            {/* AI Summary Feature */}
+            <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-lg border border-purple-100 shadow-sm">
+              {!summary ? (
+                <div className="flex flex-col md:flex-row items-center justify-between">
+                  <div className="flex items-center mb-4 md:mb-0">
+                    <Sparkles className="w-5 h-5 text-purple-600 mr-2" />
+                    <span className="text-purple-900 font-medium text-sm">趕時間？讓 AI 幫您整理重點</span>
+                  </div>
+                  <button 
+                    onClick={handleGenerateSummary}
+                    disabled={isSummaryLoading}
+                    className="flex items-center px-4 py-2 bg-white text-purple-700 text-sm font-bold rounded shadow hover:shadow-md transition-all border border-purple-200 disabled:opacity-50"
+                  >
+                    {isSummaryLoading ? <Loader2 className="w-4 h-4 mr-2 animate-spin"/> : <FileText className="w-4 h-4 mr-2"/>}
+                    {isSummaryLoading ? 'AI 生成中...' : '✨ 一鍵生成重點摘要'}
+                  </button>
+                </div>
+              ) : (
+                <div className="animate-fade-in">
+                   <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center">
+                        <Sparkles className="w-5 h-5 text-purple-600 mr-2" />
+                        <h3 className="font-bold text-purple-900">AI 重點摘要</h3>
+                      </div>
+                      <button onClick={() => setSummary(null)} className="text-purple-400 hover:text-purple-700"><XCircle className="w-5 h-5"/></button>
+                   </div>
+                   <div className="text-sm text-purple-800 leading-relaxed whitespace-pre-wrap pl-2 border-l-2 border-purple-300">
+                     {summary}
+                   </div>
+                </div>
+              )}
+            </div>
           </header>
 
           {/* Chapter 1: Introduction */}
@@ -554,7 +726,7 @@ const SudanRedReport = () => {
           </section>
 
           {/* Footer */}
-          <footer className="text-center text-gray-500 text-sm pb-12 border-t border-gray-200 pt-8">
+          <footer className="text-center text-gray-500 text-sm pb-24 lg:pb-12 border-t border-gray-200 pt-8">
             <p className="font-medium mb-1">© 2024 華翔興業有限公司 | 食品安全科學綜合評估報告</p>
             <p>本報告內容基於科學文獻與 IARC 數據整理</p>
             <p className="mt-2 text-xs">關鍵詞：蘇丹紅、偶氮染料、鄰-甲苯胺、食品安全、2024台灣食安事件</p>
@@ -563,16 +735,93 @@ const SudanRedReport = () => {
         </main>
       </div>
 
-      {/* Back to Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 bg-red-600 text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition-colors z-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-          aria-label="回到頂部"
-        >
-          <ChevronUp className="w-6 h-6" />
-        </button>
-      )}
+      {/* --- AI Chat Widget (Floating) --- */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        
+        {/* Chat Window */}
+        {isChatOpen && (
+          <div className="mb-4 bg-white w-80 md:w-96 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 flex flex-col animate-fade-in-up" style={{maxHeight: '500px', height: '60vh'}}>
+            {/* Chat Header */}
+            <div className="bg-gradient-to-r from-red-600 to-red-700 p-4 flex justify-between items-center text-white">
+              <div className="flex items-center">
+                <Bot className="w-6 h-6 mr-2" />
+                <div>
+                  <h3 className="font-bold text-sm">✨ AI 食安顧問</h3>
+                  <p className="text-xs text-red-100">華翔興業有限公司 專屬服務</p>
+                </div>
+              </div>
+              <button onClick={() => setIsChatOpen(false)} className="text-white hover:text-red-200">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Chat Messages */}
+            <div className="flex-1 p-4 overflow-y-auto bg-gray-50">
+              {chatMessages.map((msg, index) => (
+                <div key={index} className={`mb-3 flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm shadow-sm ${
+                    msg.role === 'user' 
+                      ? 'bg-red-600 text-white rounded-br-none' 
+                      : 'bg-white text-gray-800 border border-gray-200 rounded-bl-none'
+                  }`}>
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+              {isAiLoading && (
+                <div className="flex justify-start mb-3">
+                   <div className="bg-white text-gray-800 border border-gray-200 rounded-2xl rounded-bl-none px-4 py-3 shadow-sm flex items-center">
+                     <Loader2 className="w-4 h-4 mr-2 animate-spin text-red-600" />
+                     <span className="text-xs text-gray-500">AI 正在思考中...</span>
+                   </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Chat Input */}
+            <form onSubmit={handleSendMessage} className="p-3 bg-white border-t border-gray-200 flex items-center">
+              <input 
+                type="text" 
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                placeholder="請問關於蘇丹紅的問題..." 
+                className="flex-1 bg-gray-100 text-gray-900 text-sm rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 mr-2"
+              />
+              <button 
+                type="submit" 
+                disabled={!userInput.trim() || isAiLoading}
+                className="bg-red-600 text-white p-2 rounded-full hover:bg-red-700 disabled:opacity-50 disabled:hover:bg-red-600 transition-colors"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
+        )}
+
+        {/* Toggle Button Group */}
+        <div className="flex items-center space-x-3">
+          {/* Scroll to Top (Hidden when chat is open on mobile to save space, or logic can be adjusted) */}
+          {showScrollTop && !isChatOpen && (
+             <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="bg-gray-700 text-white p-3 rounded-full shadow-lg hover:bg-gray-800 transition-colors"
+              aria-label="回到頂部"
+            >
+              <ChevronUp className="w-6 h-6" />
+            </button>
+          )}
+
+          {/* Chat Toggle Button */}
+          <button
+            onClick={() => setIsChatOpen(!isChatOpen)}
+            className={`${isChatOpen ? 'bg-gray-400' : 'bg-red-600'} text-white p-4 rounded-full shadow-xl hover:opacity-90 transition-all transform hover:scale-105 flex items-center justify-center`}
+            aria-label="開啟 AI 顧問"
+          >
+            {isChatOpen ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
