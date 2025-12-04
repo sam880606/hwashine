@@ -471,22 +471,26 @@
     <script>
         // Tab Switching Logic
         function switchTab(tabName) {
-            // Hide all content
-            document.getElementById('content-plastic').classList.add('hidden');
-            document.getElementById('content-coating').classList.add('hidden');
+            const tabs = ['plastic', 'coating'];
             
-            // Remove active styles from all buttons
-            document.getElementById('tab-plastic').classList.remove('bg-orange-50', 'text-original-vibrantorange-600', 'border-original-vibrantorange-600');
-            document.getElementById('tab-plastic').classList.add('text-gray-500', 'border-transparent');
-            
-            document.getElementById('tab-coating').classList.remove('bg-orange-50', 'text-original-vibrantorange-600', 'border-original-vibrantorange-600');
-            document.getElementById('tab-coating').classList.add('text-gray-500', 'border-transparent');
-
-            // Activate selected tab
-            document.getElementById('content-' + tabName).classList.remove('hidden');
-            const activeBtn = document.getElementById('tab-' + tabName);
-            activeBtn.classList.remove('text-gray-500', 'border-transparent');
-            activeBtn.classList.add('bg-orange-50', 'text-original-vibrantorange-600', 'border-original-vibrantorange-600');
+            tabs.forEach(t => {
+                const content = document.getElementById('content-' + t);
+                const btn = document.getElementById('tab-' + t);
+                
+                if (t === tabName) {
+                    content.classList.remove('hidden');
+                    content.classList.add('active');
+                    
+                    btn.classList.remove('text-gray-500', 'border-transparent');
+                    btn.classList.add('bg-orange-50', 'text-original-vibrantorange-600', 'border-original-vibrantorange-600');
+                } else {
+                    content.classList.add('hidden');
+                    content.classList.remove('active');
+                    
+                    btn.classList.remove('bg-orange-50', 'text-original-vibrantorange-600', 'border-original-vibrantorange-600');
+                    btn.classList.add('text-gray-500', 'border-transparent');
+                }
+            });
         }
 
         // Scroll to top
