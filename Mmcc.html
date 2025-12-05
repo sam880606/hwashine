@@ -1,1 +1,325 @@
-google-site-verification: google9b5a5d97ab2a44cc.html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>半結晶塑料技術指南 | 華翔興業有限公司</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+        }
+        .molecule-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white text-slate-800 p-4 shadow-md sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <!-- Updated Brand Link to Official Site -->
+            <a href="https://hwashine.tw/" target="_blank" class="flex items-center gap-3 hover:opacity-80 transition">
+                <!-- CHANGED WS to HS -->
+                <div class="bg-blue-900 text-white p-1.5 rounded font-bold tracking-tighter">HS</div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg tracking-wide text-blue-900 leading-tight">華翔興業</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="#precautions" class="text-sm font-medium text-slate-600 hover:text-blue-700 hidden sm:block">設計注意事項</a>
+                <!-- Updated MXD6 Link -->
+                <a href="https://hwashine.tw/PA-MXD6/indexMXD6" target="_blank" class="text-sm font-bold bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition shadow-lg shadow-blue-200">了解 MXD6</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white pt-20 pb-32 px-4 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-block bg-blue-800/50 backdrop-blur-sm border border-blue-500/30 px-4 py-1 rounded-full text-blue-200 text-sm mb-6">材料科學專欄</div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">掌握「半結晶塑料」的特性</h1>
+            <p class="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+                高強度、耐化學性、金屬替代。<br>
+                華翔興業帶您深入了解 <span class="text-cyan-400 font-bold">半結晶</span> 與 <span class="text-orange-400 font-bold">非結晶</span> 材料的決定性差異。
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 -mt-24 pb-20 relative z-20">
+
+        <!-- 1. Visual Structure Comparison -->
+        <div class="grid md:grid-cols-2 gap-6 mb-16">
+            
+            <!-- Amorphous Card -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:-translate-y-1 transition duration-300">
+                <div class="bg-orange-50 p-6 flex justify-center items-center h-48 border-b-4 border-orange-400 relative">
+                    <!-- Removed English "Amorphous" -->
+                    <div class="absolute top-4 left-4 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">無序結構</div>
+                    <svg width="200" height="150" viewBox="0 0 200 150" class="molecule-anim">
+                        <path d="M20,120 Q40,40 60,100 T100,50 T140,110 T180,60" fill="none" stroke="#f97316" stroke-width="4" stroke-opacity="0.6" stroke-linecap="round"/>
+                        <path d="M30,30 Q60,90 90,40 T150,120 T190,40" fill="none" stroke="#f97316" stroke-width="4" stroke-opacity="0.6" stroke-linecap="round"/>
+                        <path d="M10,80 Q50,140 100,90 T160,30" fill="none" stroke="#f97316" stroke-width="4" stroke-opacity="0.6" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-slate-800 mb-2">非結晶塑料</h2>
+                    <p class="text-slate-600 mb-4 text-sm">分子鏈雜亂無章，如煮熟的義大利麵。透明度高，但在耐化學性與疲勞強度上較弱。</p>
+                    <div class="text-xs text-slate-500">代表材料：PC, ABS, PMMA</div>
+                </div>
+            </div>
+
+            <!-- Semi-crystalline Card -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:-translate-y-1 transition duration-300 ring-4 ring-cyan-500/20">
+                <div class="bg-cyan-50 p-6 flex justify-center items-center h-48 border-b-4 border-cyan-500 relative">
+                    <!-- Removed English "Semi-crystalline" -->
+                    <div class="absolute top-4 left-4 bg-cyan-600 text-white text-xs font-bold px-2 py-1 rounded">半結晶結構</div>
+                    <svg width="200" height="150" viewBox="0 0 200 150" class="molecule-anim">
+                        <g stroke="#0891b2" stroke-width="4" stroke-linecap="round">
+                            <line x1="40" y1="40" x2="40" y2="90" />
+                            <line x1="50" y1="40" x2="50" y2="90" />
+                            <line x1="60" y1="40" x2="60" y2="90" />
+                            <line x1="140" y1="60" x2="140" y2="110" />
+                            <line x1="150" y1="60" x2="150" y2="110" />
+                            <line x1="160" y1="60" x2="160" y2="110" />
+                        </g>
+                        <path d="M60,40 C80,10 120,20 140,60" fill="none" stroke="#0891b2" stroke-width="3" stroke-dasharray="4,4"/>
+                        <path d="M60,90 C80,120 120,130 140,110" fill="none" stroke="#0891b2" stroke-width="3" stroke-dasharray="4,4"/>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-slate-800 mb-2">半結晶塑料</h2>
+                    <p class="text-slate-600 mb-4 text-sm">擁有緊密排列的「晶區」。這賦予了材料極佳的機械強度、耐磨性與耐化學腐蝕性。</p>
+                    <div class="text-xs text-slate-500">代表材料：尼龍 (PA), PP, PBT, <strong class="text-blue-700">MXD6</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Detailed Comparison Table -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-16">
+            <div class="bg-slate-50 p-4 border-b border-slate-200 font-bold text-slate-700">性能對照表</div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-100 text-xs text-slate-500 uppercase">
+                        <tr>
+                            <th class="p-4">特性</th>
+                            <th class="p-4 text-orange-600">非結晶 (如 PC, ABS)</th>
+                            <th class="p-4 text-cyan-700">半結晶 (如 尼龍, MXD6)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm">
+                        <tr>
+                            <td class="p-4 font-bold">耐化學性</td>
+                            <td class="p-4 text-slate-500">差 (易受溶劑侵蝕)</td>
+                            <td class="p-4 text-green-600 font-bold">優異 (結構緻密，阻擋滲透)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold">耐疲勞與耐磨</td>
+                            <td class="p-4 text-slate-500">普通</td>
+                            <td class="p-4 text-green-600 font-bold">極佳 (適合齒輪、滑動件)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold">成型收縮率</td>
+                            <td class="p-4 text-green-600 font-bold">低 (0.4%~0.7%)</td>
+                            <td class="p-4 text-red-500">高 (1.0%~2.5%) 需注意翹曲</td>
+                        </tr>
+                         <tr>
+                            <td class="p-4 font-bold">熔點</td>
+                            <td class="p-4 text-slate-500">不明顯 (逐漸軟化)</td>
+                            <td class="p-4 text-slate-700">明顯 (如冰融化成水，流動性好)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3. NEW SECTION: Precautions -->
+        <div id="precautions" class="mb-20 scroll-mt-24">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="bg-amber-100 p-2 rounded-lg text-amber-600">
+                    <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                </div>
+                <!-- Removed English "Semi-crystalline" -->
+                <h3 class="text-2xl font-bold text-slate-800">使用半結晶塑料的關鍵注意事項</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Point 1 -->
+                <div class="bg-white p-6 rounded-xl border-l-4 border-amber-400 shadow-sm hover:shadow-md transition">
+                    <h4 class="font-bold text-lg mb-3 flex items-center">
+                        <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-xs mr-2">1</span>
+                        模具溫度的控制
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        半結晶材料需要足夠的熱量與時間來生成結晶。
+                        <br><br>
+                        <span class="text-amber-700 bg-amber-50 px-1 font-medium">注意：</span> 若模溫過低，會導致「結晶度不足」，產品剛性下降，且後續可能因二次結晶導致尺寸變化。
+                    </p>
+                </div>
+
+                <!-- Point 2 -->
+                <div class="bg-white p-6 rounded-xl border-l-4 border-amber-400 shadow-sm hover:shadow-md transition">
+                    <h4 class="font-bold text-lg mb-3 flex items-center">
+                        <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-xs mr-2">2</span>
+                        收縮與翹曲管理
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        結晶過程會伴隨體積大幅收縮。
+                        <br><br>
+                        <span class="text-amber-700 bg-amber-50 px-1 font-medium">對策：</span> 產品設計時應保持「肉厚均勻」，避免不同區域冷卻速度不一導致內應力翹曲。進膠點位置需避開受力高風險區。
+                    </p>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="bg-white p-6 rounded-xl border-l-4 border-amber-400 shadow-sm hover:shadow-md transition">
+                    <h4 class="font-bold text-lg mb-3 flex items-center">
+                        <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-xs mr-2">3</span>
+                        纖維配向性 (加纖料)
+                    </h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        半結晶塑料常添加玻纖 (GF) 增強。纖維會沿流動方向排列。
+                        <br><br>
+                        <span class="text-amber-700 bg-amber-50 px-1 font-medium">影響：</span> 流動方向（縱向）與垂直方向（橫向）的收縮率差異極大，設計時需預留不同的縮水率。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Featured Product: MXD6 (Sales Focus) -->
+        <div id="mxd6" class="bg-gradient-to-br from-blue-900 to-slate-900 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
+            <!-- Background Element -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-20 -mr-16 -mt-16 pointer-events-none"></div>
+
+            <div class="relative z-10 grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-yellow-400 font-bold tracking-wider text-sm mb-4">
+                        <i data-lucide="star" class="w-4 h-4"></i>
+                        華翔興業嚴選推薦
+                    </div>
+                    <!-- Updated Headline to include Semi-aromatic -->
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">MXD6 (半芳香族尼龍)</h2>
+                    <h3 class="text-xl text-blue-200 mb-6 font-light">兼具「無定型」安定性與「結晶態」強度的完美平衡</h3>
+                    
+                    <!-- Updated Description for Semi-aromatic nature -->
+                    <div class="text-slate-300 mb-6 leading-relaxed space-y-4">
+                        <p>
+                            MXD6 屬於<strong>半芳香族聚醯胺 (Semi-aromatic Polyamide)</strong>。
+                            與一般完全脂肪族尼龍 (如 PA66) 不同，MXD6 的分子主鏈中含有特殊的「苯環」結構。
+                        </p>
+                        <p>這使它同時融合了兩大塑料陣營的優勢：</p>
+                        <ul class="list-disc pl-5 space-y-2 text-white/90">
+                            <li>
+                                <strong class="text-cyan-300">結晶態特性：</strong>
+                                保有緊密的晶體結構，提供極高的機械強度、剛性與優異的耐化學腐蝕能力。
+                            </li>
+                            <li>
+                                <strong class="text-orange-300">無定型特性：</strong>
+                                由於苯環降低了結晶速度，使其表現出極低的吸水率與成型收縮率，擁有如同無定型塑料（如 PC）般的尺寸安定性，解決了傳統尼龍易吸濕翹曲的問題。
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <div class="bg-white/10 backdrop-blur px-4 py-2 rounded-lg border border-white/10 flex items-center gap-2">
+                            <i data-lucide="droplets" class="text-cyan-400 w-4 h-4"></i>
+                            <span class="text-sm">低吸濕性</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur px-4 py-2 rounded-lg border border-white/10 flex items-center gap-2">
+                            <i data-lucide="dumbbell" class="text-yellow-400 w-4 h-4"></i>
+                            <span class="text-sm">超高剛性</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur px-4 py-2 rounded-lg border border-white/10 flex items-center gap-2">
+                            <i data-lucide="wind" class="text-green-400 w-4 h-4"></i>
+                            <span class="text-sm">高阻氣性</span>
+                        </div>
+                    </div>
+
+                    <!-- Updated Contact Button -->
+                    <a href="https://hwashine.tw/contact" target="_blank" class="inline-flex bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-full transition transform hover:scale-105 shadow-lg shadow-blue-900/50 items-center gap-2">
+                        <span>聯繫華翔取得 MXD6 規格</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-sm">
+                    <h4 class="font-bold text-lg mb-4 border-b border-white/10 pb-2">MXD6 應用領域</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="bg-blue-600/20 p-2 rounded text-blue-300">
+                                <i data-lucide="car-front" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-sm text-blue-100">汽車輕量化</strong>
+                                <span class="text-xs text-slate-400">引擎周邊零件、內裝結構件，替代金屬。</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-blue-600/20 p-2 rounded text-blue-300">
+                                <i data-lucide="smartphone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-sm text-blue-100">電子精密部件</strong>
+                                <span class="text-xs text-slate-400">需要高尺寸安定性與高流動性的薄壁外殼。</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-blue-600/20 p-2 rounded text-blue-300">
+                                <i data-lucide="package" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-sm text-blue-100">高阻隔包裝</strong>
+                                <span class="text-xs text-slate-400">利用優異的氣體阻隔性，延長食品保存期限。</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-12 py-12">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-blue-900 mb-2">華翔興業有限公司</h2>
+            <p class="text-slate-500 mb-6">您最值得信賴的工程塑膠合作夥伴</p>
+            <div class="text-sm text-slate-400">
+                &copy; 華翔興業有限公司 All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
+
