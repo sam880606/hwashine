@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization Start -->
+    <!-- 1. Title Tag: 包含中英文核心關鍵字與品牌 -->
+    <title>顏料黃191 (PY191) 耐水耐酸技術解析 | Pigment Yellow 191 - 華翔興業</title>
+    
+    <!-- 2. Meta Description: 搜尋結果下方的摘要，包含痛點(耐酸)與解決方案(封裝) -->
+    <meta name="description" content="專業解析顏料黃191 (PY191, Pigment Yellow 191) 的耐水性、耐酸性問題與化學機制。提供有效封裝解決方案與預分散母粒技術建議，解決塑膠著色遷移問題。華翔興業有限公司專業供應高品質有機顏料。">
+    
+    <!-- 3. Keywords: 針對特定搜尋意圖的關鍵字 -->
+    <meta name="keywords" content="顏料黃191, PY191, Pigment Yellow 191, C.I. Pigment Yellow 191, 耐水性, 耐酸性, 顏料封裝, 預分散母粒, 華翔興業, 塑膠著色, 鈣鹽顏料, 顏料遷移">
+    
+    <!-- Open Graph Tags (for Social Media Sharing) -->
+    <meta property="og:title" content="顏料黃191 (PY191) 技術解析：解決耐水與耐酸性挑戰">
+    <meta property="og:description" content="深入探討 PY191 在極端環境下的穩定性，並提供「有效封裝」技術方案。">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="華翔興業有限公司 Hwa Shine Co., Ltd.">
+    <!-- SEO Optimization End -->
+
+    <!-- Structured Data (JSON-LD) for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "顏料黃191 (PY191) 耐水性與耐酸性技術解析",
+      "alternativeHeadline": "Pigment Yellow 191 Technical Analysis: Water and Acid Resistance",
+      "description": "深入解析顏料黃191 (PY191) 在塑膠著色中的耐水性與耐酸性問題，並提供有效封裝與預分散母粒解決方案。",
+      "keywords": "PY191, 顏料黃191, Pigment Yellow 191, 耐水性, 耐酸性, 顏料封裝",
+      "author": {
+        "@type": "Organization",
+        "name": "華翔興業有限公司",
+        "url": "https://hwashine.tw/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "華翔興業有限公司",
+        "url": "https://hwashine.tw/"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Pigment Yellow 191",
+        "sameAs": "https://en.wikipedia.org/wiki/Pigment_Yellow_191"
+      }
+    }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        
+        .chemical-bg {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Custom Icon Components using SVG for reliability inside React
+        const Icons = {
+            Droplets: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.8-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.35"/><path d="M14.3 9.6C15.16 8.4 15.5 6.4 15.5 6.4"/></svg>,
+            Thermometer: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/><path d="M10 20h4"/></svg>,
+            ShieldAlert: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>,
+            Beaker: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 3h15"/><path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3"/><path d="M6 14h12"/></svg>,
+            Sun: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>,
+            CheckCircle: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>,
+            Info: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>,
+            Layers: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>,
+            ArrowRight: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        };
+
+        const TechnicalData = () => {
+            const [activeScenario, setActiveScenario] = useState('standard');
+
+            const scenarios = {
+                standard: {
+                    title: "標準室溫水洗",
+                    description: "在一般室溫（25°C）水環境下，PY191 表現極佳，不發生遷移或褪色。",
+                    score: 5,
+                    color: "bg-green-500",
+                    detail: "由於鈣鹽結構的離子鍵在低溫下穩定，水分子難以破壞晶格結構。"
+                },
+                boiling: {
+                    title: "沸水煮沸 (100°C)",
+                    description: "在沸水中長時間浸泡，雖然結構仍穩定，但可能會有極微量的色相變化。",
+                    score: 4,
+                    color: "bg-yellow-400",
+                    detail: "高溫水分子動能增加，可能導致顏料表面微觀層面的水合作用，但整體抗滲色性依然優良。"
+                },
+                acid: {
+                    title: "酸性環境 (長期/嚴苛條件)",
+                    description: "在一般短期耐酸測試中表現優良。但在「長時間浸泡」或「高溫酸性」條件下，穩定性會顯著下降。",
+                    score: 3,
+                    color: "bg-orange-500",
+                    detail: "一般條件下穩定。但長時間接觸強酸時，氫離子(H+)會逐漸競爭並置換鈣離子(Ca2+)，導致顏料結構裂解與色相偏移。"
+                },
+                alkali: {
+                    title: "鹼性環境 (pH > 10)",
+                    description: "相對穩定，但極端強鹼下可能發生部分溶解。",
+                    score: 3,
+                    color: "bg-orange-400",
+                    detail: "在一般洗滌劑的鹼性條件下穩定，但在高濃度燒鹼中，金屬離子交換可能發生。"
+                }
+            };
+
+            return (
+                <div className="bg-white rounded-xl shadow-lg p-6 my-8 border border-slate-200">
+                    <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                        <Icons.Beaker />
+                        <span className="ml-2">互動實驗室：環境耐受性模擬</span>
+                    </h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="space-y-2">
+                            <p className="text-sm text-slate-500 mb-2">點擊下方按鈕切換測試環境：</p>
+                            {Object.keys(scenarios).map((key) => (
+                                <button
+                                    key={key}
+                                    onClick={() => setActiveScenario(key)}
+                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all border ${
+                                        activeScenario === key 
+                                        ? 'bg-amber-50 border-amber-500 text-amber-900 shadow-sm' 
+                                        : 'bg-slate-50 border-transparent hover:bg-slate-100 text-slate-600'
+                                    }`}
+                                >
+                                    <div className="font-semibold">{scenarios[key].title}</div>
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="md:col-span-2 bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-center">
+                            <div className="flex justify-between items-center mb-4">
+                                <h4 className="text-lg font-bold text-slate-800">{scenarios[activeScenario].title}</h4>
+                                <span className={`px-3 py-1 rounded-full text-white text-sm font-bold ${scenarios[activeScenario].color}`}>
+                                    耐受等級: {scenarios[activeScenario].score}/5
+                                </span>
+                            </div>
+                            
+                            <div className="w-full bg-slate-200 rounded-full h-4 mb-6">
+                                <div 
+                                    className={`h-4 rounded-full transition-all duration-500 ${scenarios[activeScenario].color}`}
+                                    style={{ width: `${(scenarios[activeScenario].score / 5) * 100}%` }}
+                                ></div>
+                            </div>
+
+                            <p className="text-slate-700 mb-3 font-medium">
+                                {scenarios[activeScenario].description}
+                            </p>
+                            <p className="text-sm text-slate-500 bg-white p-3 rounded border border-slate-100">
+                                <strong className="block text-slate-700 mb-1">化學機制：</strong>
+                                {scenarios[activeScenario].detail}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => {
+            return (
+                <div className="min-h-screen chemical-bg pb-12">
+                    {/* Header */}
+                    <header className="bg-amber-600 text-white shadow-lg sticky top-0 z-50">
+                        <div className="max-w-4xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+                            <div className="flex items-center space-x-2">
+                                <div className="bg-white p-1 rounded-lg">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h1 className="text-lg md:text-xl font-bold tracking-wide leading-none">華翔興業有限公司</h1>
+                                </div>
+                            </div>
+                            <div className="flex items-center space-x-4">
+                                <span className="text-amber-100 text-sm font-medium hidden md:inline">C.I. Pigment Yellow 191</span>
+                                <a 
+                                    href="https://hwashine.tw/" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="bg-white text-amber-700 hover:bg-amber-50 px-4 py-2 rounded-full text-sm font-bold shadow-md transition-colors flex items-center"
+                                >
+                                    返回官網 <Icons.ArrowRight />
+                                </a>
+                            </div>
+                        </div>
+                    </header>
+
+                    <main className="max-w-4xl mx-auto px-4 mt-8">
+                        
+                        {/* Hero Section */}
+                        <div className="glass-panel rounded-2xl p-8 mb-8 text-center border-t-4 border-amber-500">
+                            {/* SEO Optimization: 標題同時包含中英文關鍵字 */}
+                            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+                                顏料黃191 (PY191) <br className="md:hidden" />
+                                <span className="text-2xl md:text-3xl text-slate-600 block mt-1">Pigment Yellow 191 技術解析</span>
+                            </h2>
+                            <p className="text-xl text-amber-700 font-medium mb-2">耐熱型單偶氮鈣鹽顏料 | 耐水性與耐酸性專題</p>
+                            <p className="text-slate-600 max-w-2xl mx-auto">
+                                行業標準的高性能黃色顏料，廣泛應用於塑膠著色。本文深入探討其<strong className="text-slate-800">耐水性</strong>與<strong className="text-slate-800">耐酸性</strong>特徵，並提供<span className="text-amber-600 font-bold bg-amber-50 px-1 rounded">有效封裝 (Encapsulation)</span> 之解決方案。
+                            </p>
+                        </div>
+
+                        {/* Quick Stats Grid */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                            <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-100 text-center">
+                                <div className="text-amber-500 flex justify-center mb-2"><Icons.Thermometer /></div>
+                                <div className="text-sm text-slate-500">耐熱性</div>
+                                <div className="font-bold text-slate-800">300°C</div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-100 text-center">
+                                <div className="text-blue-500 flex justify-center mb-2"><Icons.Droplets /></div>
+                                <div className="text-sm text-slate-500">耐水性 (1-5)</div>
+                                <div className="font-bold text-slate-800">5 (優良)</div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-100 text-center">
+                                <div className="text-orange-500 flex justify-center mb-2"><Icons.Sun /></div>
+                                <div className="text-sm text-slate-500">耐光性 (1-8)</div>
+                                <div className="font-bold text-slate-800">7 (極佳)</div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-100 text-center">
+                                <div className="text-red-500 flex justify-center mb-2"><Icons.Beaker /></div>
+                                <div className="text-sm text-slate-500">耐酸性</div>
+                                <div className="font-bold text-slate-800 text-xs mt-1">一般優良<br/><span className="text-red-500">長期不佳</span></div>
+                            </div>
+                        </div>
+
+                        {/* Core Content: Introduction to the Problem */}
+                        <section className="mb-8">
+                            <h3 className="text-2xl font-bold text-slate-800 mb-4 flex items-center border-l-4 border-amber-500 pl-4">
+                                為什麼探討 PY191 (顏料黃191) 的耐水與耐酸性？
+                            </h3>
+                            <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+                                <p className="mb-4">
+                                    顏料黃 191 (C.I. Pigment Yellow 191) 是一種<b>鈣鹽色澱（Calcium Salt Lake）</b>類型的單偶氮顏料。數據表上的耐水性與耐酸性評級通常很高（5級），這代表在標準的短期測試中，它幾乎不溶且不滲色。
+                                </p>
+                                <p>
+                                    然而，作為一種「金屬鹽」結構，其穩定性有條件限制：
+                                </p>
+                                <ul className="list-disc pl-6 space-y-2 bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                                    <li><b>一般條件：</b>在常溫、短時間接觸酸性物質時，鈣鹽鍵結穩定，表現優良。</li>
+                                    <li><b>極端條件：</b>在<b>長時間浸泡</b>或<b>高溫酸性</b>環境下，氫離子有足夠時間與能量置換鈣離子，導致游離酸生成與褪色。</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        {/* Interactive Data Section */}
+                        <TechnicalData />
+
+                        {/* Mechanism Deep Dive */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                            <div className="bg-slate-800 text-white rounded-xl p-6 shadow-lg">
+                                <h4 className="text-lg font-bold text-amber-400 mb-4 flex items-center">
+                                    <Icons.Info className="mr-2"/> PY191 化學結構弱點分析
+                                </h4>
+                                <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                                    Pigment Yellow 191 分子中含有 <b>磺酸基團 (-SO3-)</b> 與 <b>鈣離子 (Ca2+)</b> 形成的離子鍵。
+                                </p>
+                                <div className="bg-slate-700/50 p-4 rounded border border-slate-600 mb-4">
+                                    <p className="text-center font-mono text-amber-300 text-sm">
+                                        R-SO<sub>3</sub><sup>-</sup> ... Ca<sup>2+</sup> ... <sup>-</sup>O<sub>3</sub>S-R
+                                    </p>
+                                </div>
+                                <p className="text-slate-300 text-sm leading-relaxed">
+                                    一般環境下鍵結緊密。但在長時間酸侵蝕下，氫離子(H+)濃度持續作用，會破壞離子鍵平衡，將其還原為水溶性較高的磺酸形式。
+                                </p>
+                            </div>
+
+                            <div className="bg-white rounded-xl p-6 shadow-md border border-slate-200">
+                                <h4 className="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                                    <Icons.ShieldAlert className="mr-2 text-amber-600"/> 實際應用注意事項
+                                </h4>
+                                <ul className="space-y-4">
+                                    <li className="flex items-start">
+                                        <div className="bg-amber-100 p-1 rounded mt-1 mr-3 text-amber-600">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12l5 5l10 -10"/></svg>
+                                        </div>
+                                        <div>
+                                            <span className="font-bold text-slate-800">避免長時間酸接觸</span>
+                                            <p className="text-sm text-slate-600">若產品應用於長時間接觸酸性液體（如電池殼、化工容器），需進行老化測試。</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <div className="bg-amber-100 p-1 rounded mt-1 mr-3 text-amber-600">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12l5 5l10 -10"/></svg>
+                                        </div>
+                                        <div>
+                                            <span className="font-bold text-slate-800">吸濕性檢查</span>
+                                            <p className="text-sm text-slate-600">鈣鹽結構具輕微吸濕性，加工前需確保粉體乾燥，避免水痕。</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Solutions & Alternatives - Updated with Encapsulation */}
+                        <section className="mb-12">
+                             <h3 className="text-2xl font-bold text-slate-800 mb-6 flex items-center border-l-4 border-blue-500 pl-4">
+                                改善方案：導入「有效封裝」技術
+                            </h3>
+                            
+                            {/* New Encapsulation Section */}
+                            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-8 border border-indigo-100 mb-8 shadow-sm">
+                                <div className="flex items-start mb-4">
+                                    <div className="bg-indigo-600 text-white p-3 rounded-lg mr-4">
+                                        <Icons.Layers />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-xl font-bold text-indigo-900">什麼是有效封裝 (Effective Encapsulation)？</h4>
+                                        <p className="text-indigo-700 mt-1">透過物理或化學手段，在顏料粒子表面形成保護層，阻隔水分子與酸性物質的直接接觸，是提升 Pigment Yellow 191 性能的關鍵技術。</p>
+                                    </div>
+                                </div>
+                                
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                    <div className="bg-white p-5 rounded-lg border border-indigo-100">
+                                        <h5 className="font-bold text-slate-800 mb-2 border-b pb-2">1. 預分散母粒技術 (Masterbatch)</h5>
+                                        <p className="text-sm text-slate-600 leading-relaxed">
+                                            不直接使用乾粉，而是先將高濃度 PY191 預先分散於載體樹脂（如 PE、PP 蠟或特殊載體）中。樹脂載體會緊密包覆顏料粒子，形成第一道疏水屏障，大幅降低環境酸氣與水氣的侵蝕機會。
+                                        </p>
+                                    </div>
+                                    <div className="bg-white p-5 rounded-lg border border-indigo-100">
+                                        <h5 className="font-bold text-slate-800 mb-2 border-b pb-2">2. 表面包覆處理 (Surface Coating)</h5>
+                                        <p className="text-sm text-slate-600 leading-relaxed">
+                                            在顏料生產後處理階段，使用偶聯劑（Coupling agents）、特殊界面活性劑或二氧化矽進行表面修飾。這能封閉顏料表面的活性點，提升與塑料的相容性，同時阻隔離子交換反應。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                                    <h5 className="font-bold text-slate-800 mb-2">其他製程優化</h5>
+                                    <ul className="list-disc pl-5 text-sm text-slate-600 space-y-2">
+                                        <li><b>添加吸酸劑：</b>配方中加入水滑石 (Hydrotalcite) 或硬脂酸鈣，中和環境中的酸性物質。</li>
+                                        <li><b>提升分散性：</b>確保顏料不團聚，避免團聚體內部形成親水通道。</li>
+                                    </ul>
+                                </div>
+                                <div className="bg-amber-50 p-6 rounded-lg border border-amber-100">
+                                    <h5 className="font-bold text-amber-800 mb-2">極端條件替代方案</h5>
+                                    <p className="text-slate-700 text-sm mb-2">若封裝後仍無法滿足長時間耐酸需求：</p>
+                                    <ul className="list-disc pl-5 text-sm text-slate-600 space-y-1">
+                                        <li><b>PY 139</b>：異吲哚啉類 (Isoindoline)，紅光黃，耐熱耐候性優異，適用於工程塑膠。</li>
+                                        <li><b>PY 110</b>：異吲哚啉酮類 (Isoindolinone)，強紅光黃，具備頂級的耐熱、耐光與耐遷移性，適用於極端嚴苛環境。</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                    </main>
+
+                    <footer className="bg-slate-800 text-slate-400 py-12 mt-12 border-t border-slate-700">
+                        <div className="max-w-4xl mx-auto px-4 text-center">
+                            <h4 className="text-xl text-white font-bold mb-4">華翔興業有限公司</h4>
+                            
+                            <a 
+                                href="https://hwashine.tw/" 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block bg-amber-600 text-white px-6 py-2 rounded hover:bg-amber-500 transition-colors mb-8"
+                            >
+                                訪問官方網站
+                            </a>
+
+                            <div className="border-t border-slate-700 pt-8 text-xs text-slate-500">
+                                <p className="mb-2">免責聲明：本頁面提供之數據與建議僅供參考。實際應用性能可能因配方、加工條件及使用環境而異。</p>
+                                <p>Generated for Technical Analysis | Pigment Yellow 191</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
