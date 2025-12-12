@@ -1,41 +1,4 @@
-<!doctype html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>聯絡我們 | MXD6 高性能尼龍</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-  <script defer src="./app.js"></script>
-</head>
-<body>
-  <header class="site-header">
-    <!-- ...existing content... -->
-    <a href="./indexMXD6.html" class="brand">MXD6 高性能尼龍</a>
-    <button class="nav-toggle" aria-label="開啟導覽" aria-expanded="false">☰</button>
-    <nav class="site-nav" aria-label="主導覽">
-      <a href="./about.html">關於我們</a>
-      <a href="./products.html">產品中心</a>
-      <a href="./solutions.html">應用/數據</a>
-      <a href="./contact.html" aria-current="page">聯絡我們</a>
-    </nav>
-    <!-- ...existing content... -->
-  </header>
-
-  <main class="page">
-    <h1 class="animate-on-load" data-delay="0">聯絡我們</h1>
-    <div class="contact-grid">
-      <div class="animate-on-scroll">
-        <h2>聯絡方式</h2>
-        <p><strong>公司：</strong>華翔興業有限公司</p>
-        <p><strong>電話：</strong>02-77337581</p>
-        <p><strong>電子郵件：</strong>info@hwashine.tw</p>
-        <p><strong>地址：</strong>臺北市信義區信義路5段7號37樓</p>
-        <div class="mini-links">
-          <a class="mini-link" href="./products.html">回到產品中心</a>
-          <a class="mini-link" href="./solutions.html">查看應用/數據</a>
-        </div>
-      </div>
+<!-- ... existing code ... -->
       <form id="contactForm" class="card form animate-on-scroll" action="https://formspree.io/f/xblrnwnz" method="POST" novalidate>
         <h2>留下您的需求</h2>
         <label>
@@ -47,47 +10,11 @@
           <input type="email" name="email" required placeholder="you@example.com">
         </label>
         <label>
-          電話（選填）
-          <input type="tel" name="phone" placeholder="+886-">
+          電話
+          <input type="tel" name="phone" required placeholder="+886-">
         </label>
         <label>
           需求類型
           <select name="topic" required>
             <option value="">請選擇</option>
-            <option>工程塑料</option>
-            <option>阻隔包裝</option>
-            <option>技術支持</option>
-            <option>採購/報價</option>
-          </select>
-        </label>
-        <label>
-          訊息
-          <textarea name="message" rows="4" required placeholder="請描述您的應用、材料需求或數量..."></textarea>
-        </label>
-        <div class="form-actions">
-          <button type="submit" class="btn primary">送出</button>
-          <a class="btn" id="mailtoFallback" href="#">使用郵件發送</a>
-        </div>
-        <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <!-- ...existing content... -->
-    <div class="footer-grid">
-      <div>
-        <div class="brand small">華翔興業有限公司</div>
-        <p>專注於七彩化學 MXD6 材料推廣。專業、可靠、可追溯供應。</p>
-      </div>
-      <nav class="footer-nav" aria-label="頁尾導覽">
-        <a href="./index.html">首頁</a>
-        <a href="./products.html">產品中心</a>
-        <a href="./solutions.html">應用/數據</a>
-      </nav>
-    </div>
-    <small> 2025 華翔興業有限公司. All rights reserved.</small>
-    <!-- ...existing content... -->
-  </footer>
-</body>
-</html>
+<!-- ... existing code ... -->
