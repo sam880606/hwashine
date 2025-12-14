@@ -4,7 +4,7 @@
 <base href="https://hwashine.tw/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>產品總表 - 華翔化學</title>
+<title>產品總表 - 華翔顏料</title>
 <!-- 引入 Roboto Mono 用於顯示技術代碼，提升專業度 -->
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
@@ -665,7 +665,7 @@ const organicPigments = [
   { code: "PR122", name: "顏料紅 122", cat: "紅色", light: 8, heat: 5, cost: 4, mass: "#5B0011", tint: "#E88FD3", apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] },
   { code: "PR146", name: "顏料紅 146", cat: "紅色", light: 6, heat: 3, cost: 2, mass: "#D3170E", tint: "#E89FC1", apps: [] },
   { code: "PR170", name: "顏料紅 170", cat: "紅色", light: 5, heat: 3, cost: 2, mass: "#C21807", tint: "#FF5252", apps: ["無鹵素"] },
-  { code: "PR176", name: "顏料紅 176", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#8C001A", tint: "#E53935", apps: ["無鹵素"] },
+  { code: "PR176", name: "顏料紅 176", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#8C001A", tint: "#E53935", apps: ["無鹵素", "link: Pigmentred176.html"] },
   { code: "PR177", name: "顏料紅 177", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#89010F", tint: "#DA3555", apps: ["高耐候", "無鹵素"] },
   { code: "PR185", name: "顏料紅 185", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#B00D23", tint: "#FF4081", apps: ["無鹵素", "提供食品接觸等級"] },
   { code: "PR208", name: "顏料紅 208", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#EC2523", tint: "#FF7291", apps: ["無鹵素"] },
@@ -777,7 +777,7 @@ function initData() {
   const organicProcessed = organicPigments.map(p => ({
     ...p,
     type: 'organic',
-    link: `https://hwashine.tw/${p.code.replace(':', '-')}`
+    link: p.link || `https://hwashine.tw/${p.code.replace(':', '-')}`
   }));
   allProducts = [...organicProcessed, ...otherProducts];
 }
@@ -817,7 +817,11 @@ function getProductCard(p) {
   if (p.type !== 'fluorescent') {
       appTags = p.apps ? p.apps
         .filter(a => !hiddenApps.includes(a)) 
-        .map(a => `<span class="tag highlight">${a}</span>`)
+        .map(a => {
+            // Check if app is a special link (starts with "link:")
+            if (a.startsWith("link:")) return '';
+            return `<span class="tag highlight">${a}</span>`;
+        })
         .join('') : '';
   }
   
@@ -848,6 +852,15 @@ function getProductCard(p) {
 
   // Interaction Logic: Modal for TPO/Fluorescent, Link for others
   let cardAttribs = `href="${p.link || '#'}" target="_blank"`;
+  
+  // Custom link handling from apps array (e.g., for PR176)
+  if (p.apps) {
+      const customLink = p.apps.find(a => a.startsWith("link:"));
+      if (customLink) {
+          cardAttribs = `href="${customLink.split(':')[1].trim()}" target="_blank"`;
+      }
+  }
+
   let tagType = 'a';
   
   // Checks if it is TPO or Fluorescent type to use Modal
