@@ -408,4 +408,162 @@
                                         <p class="text-sm text-slate-400">地址</p>
                                         <span class="text-lg font-medium">臺北市信義區信義路5段7號37樓</span>
                                     </div>
-                                </
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="relative h-64 md:h-auto bg-slate-700">
+                             <!-- Google Maps Embed -->
+                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.002746876402!2d121.5623506!3d25.0339808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2zMTEw5Y-w5YyX5biC5L-h576p5Y2A5L-h576p6Lev5LqU5q61N-iZnw!5e0!3m2!1szh-TW!2stw!4v1700000000000!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="opacity-90 grayscale hover:grayscale-0 transition-all duration-500"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- === 7. 頁尾 (Footer) === -->
+    <footer class="bg-secondary text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <p class="text-white font-medium text-lg mb-2">© 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
+            </div>
+            <nav class="flex gap-6 text-sm">
+                <a href="/privacy" class="hover:text-white transition-colors">隱私政策</a>
+                <a href="/terms" class="hover:text-white transition-colors">使用條款</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // --- 新聞資料 (categories: 'pigment', 'functional', 'tech') ---
+        const newsData = [
+            { date: "2025-12-11", link: "/PY191NEWS.html", title: "顏料黃191 (PY191) 耐水耐酸技術解析", category: "pigment" },
+            { date: "2025-12-4", link: "/crystallization.html", title: "半結晶 vs 非結晶塑料特性比較 & MXD6 應用指南", category: "functional" },
+            { date: "2025-12-3", link: "/sudan.html", title: "蘇丹紅(Sudan Red)化學特性、毒理機制與食安風險評估報告", category: "tech" },
+            { date: "2025-12-1", link: "/PFAS.html", title: "顏料黃 154 (PY154) PFAS 替代方案", category: "pigment" },
+            { date: "2025-10-21", link: "/masterbatch-guide.html", title: "色母：定義、功能、限制", category: "functional" },
+            { date: "2025-10-6", link: "/plastic-processing-guide.html", title: "塑膠加工中顏料熱降解的預防與控制精要", category: "tech" },
+            { date: "2025-9-23", link: "/tinctorial-strength.html", title: "有機顏料著色力（Tinctorial Strength）數值詳解", category: "pigment" },
+            { date: "2025-8-1", link: "/mxd6m6400", title: "MXD6 阻氣材料：延長產品保鮮期的最佳選擇", category: "functional" },
+            { date: "2025-8-1", link: "/nl-mxd6", title: "MXD6 高性能工程塑膠新選擇：MXD6 如何滿足您的多樣化需求", category: "functional" },
+            { date: "2025-6-6", link: "/solventdyes", title: "溶劑染料 (Solvent Dyes) 在塑膠著色中的應用：類型、限制與實務考量", category: "pigment" },
+            { date: "2025-4-7", link: "/performance", title: "有機顏料性能與意義", category: "pigment" },
+            { date: "2025-3-4", link: "/pigmentin", title: "有機顏料的使用注意事項與案例分析", category: "pigment" },
+            { date: "2025-3-4", link: "/mxd6", title: "MXD6新品介紹：高性能尼龍材料", category: "functional" },
+            { date: "2025-3-4", link: "/masterbatch", title: "色母（Masterbatch）介紹：市場需求、應用與關鍵選擇", category: "functional" },
+            { date: "2025-3-3", link: "/FWAs", title: "螢光增白劑：種類、性能與應用指南", category: "functional" },
+            { date: "2025-2-7", link: "/concealment", title: "有機顏料的遮蔽性：粒徑大小的關鍵影響", category: "pigment" },
+            { date: "2025-2-5", link: "/PO72new", title: "高性能顏料橙 72（PO72）新品介紹", category: "pigment" },
+            { date: "2024-12-20", link: "/pigment-migration", title: "有機顏料遷移的成因與探討", category: "pigment" },
+            { date: "2024-12-10", link: "/benzidine-pigments", title: "聯苯胺顏料與相關法律規範概述", category: "tech" },
+            { date: "2024-12-5", link: "/fluorescent", title: "認識螢光增白劑", category: "functional" },
+            { date: "2024-11-18", link: "/organic-pigments", title: "什麼是有機顏料？", category: "pigment" },
+            { date: "2024-11-10", link: "/solvent-dyes", title: "認識溶劑染料", category: "pigment" },
+            { date: "2024-10-5", link: "/有機顏料-環保", title: "有機顏料替代重金屬顏料的解決方案", category: "pigment" },
+            { date: "2024-10-5", link: "/顏料目錄", title: "目前顏料主要銷售品種", category: "pigment" }
+        ];
+
+        let currentCategory = 'all';
+        let currentPage = 1;
+        const itemsPerPage = 6;
+        
+        const newsListContainer = document.getElementById('paginated-news-list');
+        const prevButton = document.getElementById('prevPage');
+        const nextButton = document.getElementById('nextPage');
+        const pageIndicator = document.getElementById('page-indicator');
+        const tabs = document.querySelectorAll('.news-tab');
+
+        function getFilteredNews() {
+            if (currentCategory === 'all') {
+                return newsData;
+            }
+            return newsData.filter(item => item.category === currentCategory);
+        }
+
+        function renderNews() {
+            const filteredNews = getFilteredNews();
+            const totalPages = Math.ceil(filteredNews.length / itemsPerPage);
+            
+            if (currentPage > totalPages && totalPages > 0) {
+                currentPage = totalPages;
+            } else if (totalPages === 0) {
+                currentPage = 1;
+            }
+
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageItems = filteredNews.slice(start, end);
+
+            newsListContainer.innerHTML = '';
+
+            if (pageItems.length === 0) {
+                newsListContainer.innerHTML = '<div class="text-center text-slate-400 py-10">此分類暫無文章</div>';
+            } else {
+                pageItems.forEach((item, index) => {
+                    let catName = "";
+                    let catColorClass = "bg-slate-100 text-slate-600";
+                    let icon = "fa-tag";
+                    
+                    if(item.category === 'pigment') { catName = "顏料/染料"; catColorClass = "bg-blue-50 text-blue-600 border border-blue-100"; icon="fa-palette"; }
+                    else if(item.category === 'functional') { catName = "機能材料"; catColorClass = "bg-green-50 text-green-600 border border-green-100"; icon="fa-flask"; }
+                    else if(item.category === 'tech') { catName = "技術知識"; catColorClass = "bg-amber-50 text-amber-600 border border-amber-100"; icon="fa-book-open"; }
+
+                    // 加入 style="animation-delay..." 創造 staggered 效果
+                    const newsHtml = `
+                        <a href="${item.link}" style="animation-delay: ${index * 0.05}s" class="animate-fade-in-up group block bg-white p-5 rounded-lg border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between">
+                                <div class="flex items-start gap-3">
+                                    <span class="mt-0.5 flex-shrink-0 text-xs px-2.5 py-1 rounded-full ${catColorClass} flex items-center gap-1 font-medium">
+                                        <i class="fas ${icon} text-[10px]"></i> ${catName}
+                                    </span>
+                                    <h3 class="text-base font-bold text-slate-700 group-hover:text-primary transition-colors leading-snug">${item.title}</h3>
+                                </div>
+                                <span class="text-sm text-slate-400 mt-2 md:mt-0 whitespace-nowrap md:ml-4 font-mono flex items-center gap-1">
+                                    <i class="far fa-clock text-xs"></i> ${item.date}
+                                </span>
+                            </div>
+                        </a>
+                    `;
+                    newsListContainer.insertAdjacentHTML('beforeend', newsHtml);
+                });
+            }
+
+            pageIndicator.textContent = totalPages > 0 ? `第 ${currentPage} 頁 / 共 ${totalPages} 頁` : `第 1 頁`;
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === totalPages || totalPages === 0;
+            
+            prevButton.className = `px-4 py-2 rounded border border-slate-300 transition-colors ${currentPage === 1 ? 'bg-slate-50 text-slate-300 cursor-not-allowed' : 'bg-white text-slate-500 hover:bg-slate-50 hover:text-primary'}`;
+            nextButton.className = `px-4 py-2 rounded border border-slate-300 transition-colors ${currentPage === totalPages || totalPages === 0 ? 'bg-slate-50 text-slate-300 cursor-not-allowed' : 'bg-white text-slate-700 hover:bg-slate-50 hover:text-primary'}`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderNews();
+                document.getElementById('news').scrollIntoView({behavior: 'smooth'});
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            const totalPages = Math.ceil(getFilteredNews().length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderNews();
+                document.getElementById('news').scrollIntoView({behavior: 'smooth'});
+            }
+        });
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentCategory = tab.getAttribute('data-category');
+                currentPage = 1;
+                renderNews();
+            });
+        });
+
+        renderNews();
+    </script>
+</body>
+</html>
