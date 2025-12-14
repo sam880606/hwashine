@@ -1,35 +1,68 @@
-<html><head><base href="https://hwashine.tw/">
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<base href="https://hwashine.tw/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>產品總表 - 華翔化學</title>
+<!-- 引入 Roboto Mono 用於顯示技術代碼，提升專業度 -->
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
 
   :root {
-    --primary-color: #2c8cb0;
-    --secondary-color: #1a5f7a;
-    --accent-color: #ff6b6b;
-    --text-color: #333;
-    --bg-color: #f8f9fa;
+    /* --- 頭部配色 (還原網站原始風格) --- */
+    --header-bg-start: #1b5e76; /* 深藍綠 */
+    --header-bg-end: #2c8cb0;   /* 亮藍 */
+    
+    /* --- 內容區專業配色 --- */
+    --corporate-blue: #0ea5e9;   /* 科技藍 (強調色) */
+    --corporate-blue-dim: #0284c7; 
+    
+    --bg-body: #f1f5f9;          /* 冷灰背景 */
+    --bg-card: #ffffff;
+    
+    --text-primary: #1e293b;     /* 主要文字 */
+    --text-secondary: #64748b;   /* 次要文字 */
+    --text-tertiary: #94a3b8;    /* 輔助文字 */
+    
+    --border-light: #e2e8f0;
+    
+    /* 陰影與圓角系統 */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
   }
 
   body {
-    font-family: 'Noto Sans TC', Arial, sans-serif;
+    font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
   }
 
+  /* --- 1. Header: 還原波紋動畫設計 --- */
   header {
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    background: linear-gradient(135deg, var(--header-bg-start), var(--header-bg-end));
     color: white;
     text-align: center;
-    padding: 2rem;
+    padding: 3rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* 確保波紋不溢出 */
+    z-index: 2;
   }
 
+  /* 還原：波紋動畫偽元素 */
   header::before {
     content: "";
     position: absolute;
@@ -37,9 +70,10 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
     animation: ripple 15s infinite linear;
     z-index: 1;
+    pointer-events: none;
   }
 
   @keyframes ripple {
@@ -50,639 +84,359 @@
   header h1 {
     margin: 0;
     font-size: 2.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    position: relative;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    position: relative; /* 確保文字在波紋之上 */
     z-index: 2;
   }
 
+  /* --- 2. Navigation: 還原毛玻璃效果 --- */
   nav {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.85); /* 半透明白 */
+    backdrop-filter: blur(12px); /* 毛玻璃模糊效果 */
+    -webkit-backdrop-filter: blur(12px); /* Safari 支援 */
+    padding: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
   }
 
   nav ul {
-    list-style-type: none;
-    padding: 0;
+    list-style: none;
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 0;
   }
 
-  nav ul li {
-    margin: 0.5rem;
-  }
+  nav ul li { margin: 0; }
 
   nav ul li a {
-    color: var(--text-color);
+    display: block;
+    color: #555;
     text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 1rem 1.5rem;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
   }
 
-  nav ul li a:hover {
-    background-color: var(--primary-color);
-    color: white;
+  nav ul li a:hover, nav ul li a.active {
+    color: var(--header-bg-end);
+    background-color: rgba(248, 250, 252, 0.5);
+    border-bottom-color: var(--header-bg-end);
   }
 
   main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem 1.5rem;
   }
 
-  .category-selector {
+  /* --- 3. Toolbar --- */
+  .toolbar-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
     margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-  }
-
-  .category-select {
-    padding: 0.75rem 1.5rem;
-    border: 2px solid var(--primary-color);
-    background: white;
-    color: var(--primary-color);
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    min-width: 200px;
-    transition: all 0.3s ease;
-  }
-
-  .category-select:hover {
-    border-color: var(--secondary-color);
-    color: var(--secondary-color);
-  }
-
-  .category-select:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(44, 140, 176, 0.2);
-  }
-
-  .search-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 1rem;
   }
 
-  .search-container input,
-  .search-container select {
+  .toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     flex: 1;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
     min-width: 200px;
   }
 
-  .search-container button {
-    background-color: var(--primary-color);
+  .toolbar-input, .toolbar-select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background-color: #fff;
+    color: var(--text-primary);
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .toolbar-input:focus, .toolbar-select:focus {
+    outline: none;
+    border-color: var(--corporate-blue);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  }
+  
+  .toolbar-btn {
+    background-color: var(--text-primary);
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+    transition: background 0.2s;
+    white-space: nowrap;
   }
+  
+  .toolbar-btn:hover { background-color: #000; }
 
-  .search-container button:hover {
-    background-color: var(--secondary-color);
-  }
-
+  /* --- 4. Product Grid --- */
   .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
   }
 
+  /* --- 5. Product Card --- */
   .product-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
   }
 
-  a .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: #cbd5e1;
   }
 
-  .color-sample {
-    height: 150px;
-    transition: height 0.3s ease;
+  /* Color Sample Area */
+  .color-display {
+    height: 140px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid var(--border-light);
   }
 
-  .product-content {
-    padding: 1.5rem;
+  .mass-tone, .tint-tone, .color-full {
+    flex: 1;
+    height: 100%;
+    position: relative;
   }
 
-  .product-card h3 {
-    margin: 0 0 1rem 0;
-    color: var(--primary-color);
+  /* 調整後的顏色標籤：本色 / 沖淡 */
+  .color-tag {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    letter-spacing: 1px;
+  }
+  
+  .tint-tone .color-tag { left: auto; right: 8px; }
+
+  .card-body {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
-  .product-info {
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 0.75rem;
+  }
+
+  .product-code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--corporate-blue-dim);
+    letter-spacing: -0.5px;
+  }
+  
+  .ci-badge {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      font-family: 'Roboto Mono', monospace;
+  }
+
+  .product-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+  }
+
+  /* 文字描述 - 用於非顏料產品 */
+  .product-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .app-tags {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .tag {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    border: 1px solid transparent;
+  }
+  
+  /* 特定標籤高亮 */
+  .tag.highlight {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      border-color: #bae6fd;
+  }
+  
+  .product-card:hover .tag {
+      border-color: #cbd5e1;
+      background: white;
+  }
+  .product-card:hover .tag.highlight {
+      background-color: #e0f2fe;
+  }
+
+  /* 數據化規格欄位 (Specs Grid) */
+  .specs-container {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+  }
+
+  .specs-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+  }
+  
+  .spec-label {
+      font-weight: 600;
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+      width: 60px;
+  }
+
+  .visual-bar {
+      display: flex;
+      gap: 3px;
+      flex: 1;
+      margin: 0 10px;
+  }
+  
+  .dot {
+      width: 100%; 
+      height: 6px; 
+      background: #e2e8f0;
+      border-radius: 2px;
+  }
+  
+  .dot.active { background: var(--corporate-blue); }
+  .dot.active.heat { background: #f59e0b; } /* 耐溫用橙色 */
+  .dot.active.cost { background: #64748b; } /* 成本用灰色 */
+
+  .spec-value {
+      font-weight: 700; 
+      font-family:'Roboto Mono';
+      width: 20px;
+      text-align: right;
+  }
+
+  /* --- Footer --- */
+  footer {
+    background: white;
+    border-top: 1px solid var(--border-light);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
     font-size: 0.9rem;
+    margin-top: 4rem;
+  }
+  
+  footer .company-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      display: block;
   }
 
-  .expanded-info {
-    display: none;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
+  /* --- Floating Contact --- */
+  .float-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--text-primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+      z-index: 999;
+      font-size: 1.2rem;
   }
-
-  .product-card.expanded .expanded-info {
-    display: block;
-  }
-
-  .product-card.expanded {
-    grid-column: 1 / -1;
-  }
-
-  .product-card.expanded .color-sample {
-    height: 200px;
-  }
-
-  a .product-card .expanded-info {
-    display: none;
-  }
-
-  a .product-card:hover .expanded-info {
-    display: none;
+  
+  .float-btn:hover {
+      transform: scale(1.1);
+      background: var(--header-bg-end);
   }
 
   @media (max-width: 768px) {
-    .search-container {
-      flex-direction: column;
-    }
-
-    .search-container input,
-    .search-container select,
-    .search-container button {
-      width: 100%;
-    }
-
-    .product-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  #back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--primary-color);
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    display: none;
-    border: none;
-    font-size: 20px;
-    transition: background-color 0.3s ease;
-  }
-
-  #back-to-top:hover {
-    background-color: var(--secondary-color);
-  }
-
-  #contact-us-float {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    border: none;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-  }
-
-  #contact-us-float:hover {
-    background-color: var(--secondary-color);
-    transform: scale(1.05);
+    header { padding: 2rem 1rem; }
+    header h1 { font-size: 2rem; }
+    nav ul { flex-wrap: wrap; padding: 0.5rem 0; }
+    nav ul li a { padding: 0.5rem 1rem; font-size: 0.9rem; }
+    .toolbar-container { flex-direction: column; align-items: stretch; }
+    .toolbar-group { flex-direction: column; align-items: stretch; }
+    .product-grid { grid-template-columns: 1fr; }
   }
 </style>
-<script>
-let products = [
-  { name: "藍色有機顏料 PB15:0", color: "#2341FA", category: "藍色", lightfastness: 8, description: "顏料藍15:0是紅像藍色。這種α型銅酞菁藍結晶體使用在較低的加工溫度,通常在200℃以下進行加工。顏料藍15:0在高溫或芳香烴環境中會不穩定,並可能轉變為綠色色相的β型形式。儘管如此該顏料仍是應用廣泛的選擇,特別是在較低溫加工的情況下。", applications: ["油墨", "塗料"], type: 'organic' },
-  { name: "藍色有機顏料 PB15:1", color: "#1941E6", category: "藍色", lightfastness: 8, description: "顏料藍15:1它以鮮明的緊光藍色而著稱,具有優異的著色力和牢度性能。與顏料藍15:0相比,顏料藍15:1在顏色鮮艷度和穩定性上有所提升,因此被廣泛應用於多種工業領域。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "藍色有機顏料 PB15:3", color: "#1755DC", category: "藍色", lightfastness: 8, description: "顏料藍15:3具有穩定的綠光藍色調。相較於顏料藍15:0和顏色鮮艷度上有顯著的提升,因而更常用於高需求的應用領域。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "橙色有機顏料 PO13", color: "#FC460D", category: "橙色", lightfastness: 4, description: "顏料橙13因其鮮豔的橙色光澤和優異的性能而被廣泛應用。優點在高性價比,缺點在耐溫略有不足,擁有穩定的色光和良好的耐光性,適合於多種工業和商業用途。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "橙色有機顏料 PO34", color: "#D1160A", category: "橙色", lightfastness: 6, description: "顏料橙34是一種高性能的有機偶氮顏料,以其鮮明的紅光橙色調、優異的耐久性和穩定性著稱。它在多種工業應用中被廣泛使用,尤其在要求高耐光性、耐熱性及化學穩定性的場合。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "橙色有機顏料 PO36", color: "#CC170D", category: "橙色", lightfastness: 8, description: "顏料橙36具有良好的耐光性和耐化學性,適用於各種涂料和油墨產品。", applications: ["油墨", "塗料"], type: 'organic' },
-  { name: "橙色有機顏料 PO64", color: "#FD4302", category: "橙色", lightfastness: 7, description: "顏料橙64因其卓越的性能而受到廣泛應用。它的主要特點包括優異的堅牢度、良好的熱穩定性及出色的抗遷移性,特別適合在增塑PVC中使用。此顏料的著色強度中等至高,使其成為理想的著色劑選擇。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "橙色有機顏料 PO72", color: "#F47C3C", category: "橙色", lightfastness: 8, description: "顏料橙36具有良好的耐光性和耐化學性,適用塑料產品。", applications: ["塑料"], type: 'organic' }, 
-  { name: "紅色有機顏料 PR122", color: "#5B0011", category: "紅色", lightfastness: 7, description: "顏料紅122是一種鮮豔紅紫色、高耐光性與耐候性的環保高性能有機顏料，廣泛應用於油墨、塗料和塗料著色等領域。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紅色有機顏料 PR146", color: "#8A020E", category: "紅色", lightfastness: 5, description: "顏料紅146具有良好的耐光性和耐化學性,適用於各種高標準油漆和工藝品。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紅色有機顏料 PR170", color: "#C8030A", category: "紅色", lightfastness: 5, description: "顏料紅170具有一定的耐光性和耐熱性,特別適合高性價比需求的工業用途。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紅色有機顏料 PR176", color: "#690110", category: "紅色", lightfastness: 6, description: "顏料紅176具有優異的耐光性和耐化學性,高色強度,常用於高端塗料和工業品。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紅色有機顏料 PR177", color: "#7C010F", category: "紅色", lightfastness: 7, description: "顏料紅177具有良好的透明、耐光性和耐熱性,常被用於汽機車漆。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紅色有機顏料 PR185", color: "#990213", category: "紅色", lightfastness: 6, description: "顏料紅185廣泛應用於工業塗料、印刷油墨以及塑料著色等領域,特別是在高品質的油墨和專業塗料中，需注意在PVC濃度過低時會發生遷移。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紅色有機顏料 PR208", color: "#7F0109", category: "紅色", lightfastness: 6, description: "顏料紅208耐溶剂且具化學惰性,可與黃83和碳黑拚棕色,在合成皮中是標準的中紅色。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紅色有機顏料 PR242", color: "#CF0C07", category: "紅色", lightfastness: 7, description: "顏料紅242展現出明亮而飽和的紅色調,具備高色彩飽和度,主要用於調製高飽和度的黃像粉紅色。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紅色有機顏料 PR254", color: "#CD0108", category: "紅色", lightfastness: 7, description: "顏料紅254卓越的耐光性和耐化學性,成為許多工業品中的理想選擇。到了現今有著規模經濟的價格優勢。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紫色有機顏料 PV19", color: "#960210", category: "紫色", lightfastness: 7, description: "顏料紫19主要有α和β晶型,良好的耐光性主要用於高端產品。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紫色有機顏料 PV23", color: "#080614", category: "紫色", lightfastness: 7, description: "顏料紫23具有優異的耐光性和耐化學性,需特別注意低濃度時的耐候性和微量溶解。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY14", color: "#FFDC02", category: "黃色", lightfastness: 4, description: "顏料黃14是性價比較高的選擇。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY74", color: "#FFD607", category: "黃色", lightfastness: 7, description: "顏料黃74具有優良的耐光性,廣泛應用於室內塗料。", applications: ["油墨", "塗料"], type: 'organic' },
-  { name: "黃色有機顏料 PY83", color: "#FDA003", category: "黃色", lightfastness: 6, description: "顏料黃83市場品種眾多，是最常被使用的黃色之一。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY110", color: "#FF7F02", category: "黃色", lightfastness: 7, description: "異吲哚啉黃顏料,具有優異的耐光性和耐化學性,適合戶外產品和特殊需求。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY128", color: "#FFDC02", category: "黃色", lightfastness: 7, description: "二吖華唑黃顏料,具有優異的耐光性和耐熱性,適合工業製造和設計。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY138", color: "#FFDE03", category: "黃色", lightfastness: 7, description: "具有極佳的耐光性和耐化學性,適合高製品和專業用途。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY139", color: "#FC9F01", category: "黃色", lightfastness: 7, description: "異吲哚啉黃顏料,具有極佳的耐光性和耐候性,適合戶外裝飾和工業用途。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY150", color: "#D27502", category: "黃色", lightfastness: 7, description: "偶氮黃顏料,具有優異的耐光性和耐化學性,適合各種高耐候需求商品。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY151", color: "#FEE400", category: "黃色", lightfastness: 7, description: "苯並咪唑酮黃顏料,具有優異的耐光性和耐熱性,適合多種應用場景。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY154", color: "#FFD303", category: "黃色", lightfastness: 7, description: "苯並咪唑酮黃顏料,具有極佳的耐光性和耐化學性,適合高端塗料產品和工業需求。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY155", color: "#FDC103", category: "黃色", lightfastness: 7, description: "該顏料在汽車塗料中使用,因其優秀的耐磨性和耐候性,可以保持汽車外觀的持久性。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY180", color: "#FFD303", category: "黃色", lightfastness: 7, description: "苯並咪唑酮黃顏料,具有極佳的耐光性和耐化學性。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY191", color: "#FCB106", category: "黃色", lightfastness: 7, description: "顏料黃 191 (Pigment Yellow 191) 是一種單偶氮鈣鹽 (Monoazo Ca-Lake) 類的高性能有機顏料。它呈現出極其鮮豔的紅光黃色 (Reddish Yellow)。", applications: ["塑料"], type: 'organic' },
-  { name: "黃色有機顏料 PY192", color: "#FFD303", category: "黃色", lightfastness: 7, description: "苯並咪唑酮黃顏料,主要被應用於PA6。", applications: ["塑料"], type: 'organic' }
-];
-
-let otherProducts = [
-  {
-    name: "TPO光啟始劑",
-    category: "光引發劑", 
-    description: "吸收波長: 295, 380, 393nm。用途:具固化速度快和光漂白作用,適合於厚膜深層固化,多用於白色體系,可用於紫外固化塗料、印刷油墨、紫外固化粘合劑、光導纖維塗料、抗光蝕劑、光聚合印版、立體平版樹脂、複合材料、牙齒填充料等。",
-    applications: ["UV塗料", "UV油墨"],
-    type: 'other'
-  },
-  {
-    name: "MXD6",
-    link: "https://hwashine.tw/PA-MXD6/indexMXD6", 
-    category: "特殊型的尼龍", 
-    description: "MXD6（間苯二甲胺與己二酸縮聚而成的尼龍）是一種具有優異氣體阻隔性能的半芳香族尼龍。其分子結構中含有剛性芳香環，使其具備良好的機械強度、耐熱性以及極佳的氧氣阻隔能力，尤其適用於對氣體阻隔性要求較高的包裝領域。",
-    applications: ["塑料"],
-    type: 'other'
-  }
-];
-
-products = products.concat(otherProducts);
-
-let solventDyes = [
-  {
-    name: "溶劑染料",
-    link: "https://hwashine.tw/solvent-dyes-showcase/",
-    category: "溶劑染料", 
-    description: "提供多種高品質溶劑染料，適用於各種工業應用。點擊查看更多詳情。",
-    applications: ["塑料", "油墨", "塗料"], 
-    type: 'solvent'
-  }
-];
-
-products = products.concat(solventDyes);
-
-// Add fluorescent products array after solventDyes array
-let fluorescentProducts = [
-  {
-    name: "螢光增白劑 OB",
-    category: "螢光增白劑",
-    description: "OB廣泛適用於PVC、PE、PP、PS、ABS、PMMA、POM等熱塑性塑膠以及熱固性塑膠、聚酯纖維、油漆、油墨、塗料等的增白。",
-    applications: ["塑料,塗料,油墨"],
-    type: 'fluorescent'
-  },
-  {
-    name: "螢光增白劑 OB-1",
-    category: "螢光增白劑", 
-    description: "增白強度高，有強烈螢光。適用性能廣，廣泛應用於聚酯、尼龍纖維及各種塑膠的增白。具有優秀的耐高溫性能。",
-    applications: ["塑料"],
-    type: 'fluorescent'
-  },
-  {
-    name: "螢光增白劑 KCB",
-    category: "螢光增白劑",
-    description: "螢光增白劑KCB主要用於合成纖維與塑膠製品的增白，對有色塑膠製品也有明顯的增艷效果，廣泛用於塑膠薄膜、壓膜成型材料、注塑成型材料等，對聚烯烴、PVC、發泡PVC、TPR、EVA及PU泡棉、合成橡膠等有極佳增白效果，還可用於塗料、天然漆等的增白，對發泡塑膠特別是EVA、PE發泡有特效。",
-    applications: ["塑料"],
-    type: 'fluorescent'
-  },
-  {
-    name: "螢光增白劑 KSN",
-    category: "螢光增白劑",
-    description: "適用於聚酯、聚醯胺、聚丙烯腈等纖維及絲織品、毛織品的增白。廣泛用於薄膜、射出成型和擠壓成型材料，適用於所有塑膠的加工。非常適合合成高聚物任何加工階段的增白，包括聚合階段。",
-    applications: ["塑料"],
-    type: 'fluorescent'
-  }
-];
-
-products = products.concat(fluorescentProducts);
-
-function getUrlParameter(name) {
-    try {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
-    } catch (err) {
-        console.warn('Error parsing URL parameters:', err);
-        return null;
-    }
-}
-
-function updateFilterOptions(category) {
-    const colorFilter = document.getElementById('color-filter');
-    const applicationFilter = document.getElementById('application-filter');
-    
-    if (category === 'all') {
-        // Show only search for "all products"
-        if (colorFilter) colorFilter.style.display = 'none';
-        if (applicationFilter) applicationFilter.style.display = 'none';
-    } else if (category === 'organic' || category === 'solvent') {
-        // Show all filters for organic pigments and solvent dyes
-        if (colorFilter) colorFilter.style.display = 'block';
-        if (applicationFilter) applicationFilter.style.display = 'block';
-    } else {
-        // Hide all filters for fluorescent and others
-        if (colorFilter) colorFilter.style.display = 'none';
-        if (applicationFilter) applicationFilter.style.display = 'none';
-    }
-}
-
-function filterProducts() {
-    const searchTerm = document.getElementById('search-input')?.value.toLowerCase() || '';
-    const selectedColor = document.getElementById('color-filter')?.value || '';
-    const selectedApplication = document.getElementById('application-filter')?.value || '';
-    const activeCategory = document.querySelector('.category-select')?.value || getUrlParameter('category') || 'all';
-    
-    let filtered = products;
-    
-    // 首先按类别筛选
-    if (activeCategory !== 'all') {
-        filtered = filtered.filter(product => product.type === activeCategory);
-    }
-    
-    // 如果有搜索词则继续筛选
-    if (searchTerm) {
-        filtered = filtered.filter(product => 
-            product.name.toLowerCase().includes(searchTerm) ||
-            (product.description && product.description.toLowerCase().includes(searchTerm))
-        );
-    }
-    
-    // 如果选择了颜色则继续筛选
-    if (selectedColor) {
-        filtered = filtered.filter(product => product.category === selectedColor);
-    }
-    
-    // 如果选择了应用领域则继续筛选
-    if (selectedApplication) {
-        filtered = filtered.filter(product => 
-            product.applications && product.applications.includes(selectedApplication)
-        );
-    }
-    
-    // 展示筛选后的结果
-    displayProducts(filtered);
-}
-
-function switchCategory(category) {
-    try {
-        // 更新筛选器可见性
-        updateFilterOptions(category);
-        
-        // 重置筛选器
-        const searchInput = document.getElementById('search-input');
-        const colorFilter = document.getElementById('color-filter');
-        const applicationFilter = document.getElementById('application-filter');
-        
-        if (searchInput) searchInput.value = '';
-        if (colorFilter) colorFilter.value = '';
-        if (applicationFilter) applicationFilter.value = '';
-        
-        // 执行筛选
-        filterProducts();
-        
-    } catch (err) {
-        console.error('Error switching category:', err);
-        // 如果出错则显示所有产品
-        displayProducts(products);
-    }
-}
-
-// 修改 DOMContentLoaded 事件监听器
-document.addEventListener('DOMContentLoaded', function() {
-    const categoryParam = getUrlParameter('category');
-    const categorySelect = document.getElementById('category-select');
-
-    // 设置初始类别
-    if (categoryParam) {
-        const validCategories = ['all', 'organic', 'solvent', 'fluorescent', 'other'];
-        if (validCategories.includes(categoryParam)) {
-            if (categorySelect) {
-                categorySelect.value = categoryParam;
-            }
-            // 初始化筛选器
-            updateFilterOptions(categoryParam);
-            // 立即执行筛选
-            filterProducts();
-        }
-    }
-
-    // Initialize grid element
-    const grid = document.getElementById('product-grid');
-    if (!grid) {
-        console.error('Product grid element not found');
-        return;
-    }
-
-    // Check for search parameter in URL
-    const searchParam = getUrlParameter('search');
-    if (searchParam) {
-        const searchInput = document.getElementById('search-input');
-        if (searchInput) {
-            searchInput.value = searchParam;
-            // Trigger the search
-            filterProducts();
-        }
-    }
-
-    // Add event listener for category select
-    if (categorySelect) {
-        categorySelect.addEventListener('change', (e) => {
-            switchCategory(e.target.value);
-            // Instead of using pushState, we'll use replaceState with relative URL
-            try {
-                const relativeUrl = `?category=${e.target.value}`;
-                window.history.replaceState({}, '', relativeUrl);
-            } catch (err) {
-                console.warn('Unable to update URL:', err);
-                // Continue with category switch even if URL update fails
-            }
-        });
-    }
-
-    // Add event listeners for search and filters
-    const searchButton = document.getElementById('search-button');
-    const searchInput = document.getElementById('search-input');
-    const colorFilter = document.getElementById('color-filter');
-    const applicationFilter = document.getElementById('application-filter');
-
-    if (searchButton) {
-        searchButton.addEventListener('click', filterProducts);
-    }
-    
-    if (searchInput) {
-        searchInput.addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
-                filterProducts();
-            }
-        });
-    }
-    
-    if (colorFilter) {
-        colorFilter.addEventListener('change', filterProducts);
-    }
-    
-    if (applicationFilter) {
-        applicationFilter.addEventListener('change', filterProducts);
-    }
-
-    // 初始显示筛选后的产品
-    filterProducts();
-
-    // Add back-to-top button functionality
-    const backToTopButton = document.getElementById('back-to-top');
-
-    window.onscroll = function() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            backToTopButton.style.display = "flex";
-        } else {
-            backToTopButton.style.display = "none";
-        }
-    };
-
-    backToTopButton.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Add click handler for contact us button
-    const contactUsButton = document.getElementById('contact-us-float');
-    if (contactUsButton) {
-        contactUsButton.addEventListener('click', function() {
-            window.location.href = '/contact'; // Navigate to contact page
-        });
-    }
-});
-
-// Helper function to create product card
-function createProductCard(product) {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    
-    // Only show color sample for organic pigments or solvent dyes that have a color
-    if (product.color && (product.type === 'organic' || product.type === 'solvent')) {
-        const colorSample = document.createElement('div');
-        colorSample.className = 'color-sample';
-        colorSample.style.backgroundColor = product.color || '#CCCCCC';
-        card.appendChild(colorSample);
-    }
-    
-    const content = document.createElement('div');
-    content.className = 'product-content';
-    
-    const basicInfo = `
-        <h3>${product.name}</h3>
-        <div class="product-info">
-            ${(product.type !== 'fluorescent' && product.type !== 'other') ? `<p>顏色: ${product.category || product.color || '未指定'}</p>` : ''}
-            <p>應用: ${Array.isArray(product.applications) ? product.applications.join(', ') : '未指定'}</p>
-        </div>
-    `;
-    
-    const expandedInfo = `
-        <div class="expanded-info">
-            <p>${product.description || '暫無描述'}</p>
-        </div>
-    `;
-    
-    content.innerHTML = basicInfo + expandedInfo;
-    card.appendChild(content);
-    
-    return card;
-}
-
-// Modify the displayProducts function 
-function displayProducts(filteredProducts = products) {
-    const grid = document.getElementById('product-grid');
-    if (!grid) {
-        console.error('Product grid element not found');
-        return;
-    }
-    
-    grid.innerHTML = '';
-
-    filteredProducts.forEach(product => {
-        if (product.type === 'organic') {
-            const link = document.createElement('a');
-            let pigmentCode = product.name
-                .match(/P[BRGYOV]\d+(?::\d+)?/i)?.[0]?.toUpperCase().replace(':', '-') || '';
-
-            if (pigmentCode === "PR176") {
-                link.href = "https://hwashine.tw/Pigmentred176";
-            } else if (pigmentCode) { 
-                link.href = `https://hwashine.tw/${pigmentCode}`;
-            } else {
-                link.href = '#'; 
-            }
-
-            link.style.textDecoration = 'none';
-            link.style.color = 'inherit';
-            
-            const card = createProductCard(product);
-            link.appendChild(card);
-            grid.appendChild(link);
-        } else if (product.type === 'solvent') {
-            const link = document.createElement('a');
-            link.href = product.link || 'https://hwashine.tw/solvent-dyes-showcase/';
-            link.style.textDecoration = 'none';
-            link.style.color = 'inherit';
-
-            const card = createProductCard(product);
-            link.appendChild(card);
-            grid.appendChild(link);
-        } else { 
-            if (product.link) {
-                const linkElement = document.createElement('a');
-                linkElement.href = product.link;
-                linkElement.style.textDecoration = 'none';
-                linkElement.style.color = 'inherit';
-
-                const card = createProductCard(product);
-                linkElement.appendChild(card);
-                grid.appendChild(linkElement);
-            } else {
-                const card = createProductCard(product);
-                card.addEventListener('click', () => {
-                    card.classList.toggle('expanded');
-                });
-                grid.appendChild(card);
-            }
-        }
-    });
-}
-</script>
 </head>
 <body>
 
@@ -692,49 +446,274 @@ function displayProducts(filteredProducts = products) {
 
 <nav>
   <ul>
-    <li><a href="/">首頁</a></li>
-    <li><a href="/about">關於我們</a></li>
-    <li><a href="/products">產品</a></li>
-    <li><a href="/contact">聯絡我們</a></li>
+    <li><a href="https://hwashine.tw/" class="home-link">首頁</a></li>
+    <li><a href="https://hwashine.tw/about">關於我們</a></li>
+    <li><a href="#" onclick="switchCategory('all'); return false;" class="active" id="nav-all">產品</a></li>
+    <li><a href="https://hwashine.tw/contact">聯絡我們</a></li>
   </ul>
 </nav>
 
 <main>
-  <div class="category-selector">
-    <select id="category-select" class="category-select">
-      <option value="all">所有產品</option>
-      <option value="organic">有機顏料</option>
-      <option value="solvent">溶劑染料</option>
-      <option value="fluorescent">螢光增白劑</option>
-      <option value="other">其他</option>
-    </select>
+  <div class="toolbar-container">
+      <div class="toolbar-group" style="flex: 2;">
+          <select id="category-select" class="toolbar-select" onchange="switchCategory(this.value)">
+              <option value="all">所有產品類別 (All Products)</option>
+              <option value="organic">有機顏料 (Organic Pigments)</option>
+              <option value="solvent">溶劑染料 (Solvent Dyes)</option>
+              <option value="fluorescent">螢光增白劑 (Optical Brighteners)</option>
+              <option value="other">助劑/樹脂 (Additives & Resins)</option>
+          </select>
+      </div>
+
+      <div class="toolbar-group" style="flex: 2;">
+          <input type="text" id="search-input" class="toolbar-input" placeholder="搜尋代號或名稱 (e.g. PO34)...">
+      </div>
+
+      <div class="toolbar-group" id="advanced-filters">
+          <select id="color-filter" class="toolbar-select">
+              <option value="">色系 (Color)</option>
+              <option value="藍色">藍色 Blue</option>
+              <option value="橙色">橙色 Orange</option>
+              <option value="紅色">紅色 Red</option>
+              <option value="紫色">紫色 Violet</option>
+              <option value="黃色">黃色 Yellow</option>
+          </select>
+          
+          <!-- 更新：專業應用篩選 -->
+          <select id="app-filter" class="toolbar-select">
+              <option value="">應用特性 (App)</option>
+              <option value="尼龍">尼龍 Nylon</option>
+              <option value="高耐候">高耐候 Weather-Resistant</option>
+              <option value="無鹵素">無鹵素 Halogen-Free</option>
+              <option value="提供食品接觸等級">提供食品接觸等級 Food Contact</option>
+          </select>
+      </div>
+      
+      <button id="search-button" class="toolbar-btn">查詢</button>
   </div>
 
-  <div class="search-container">
-    <input type="text" id="search-input" placeholder="關鍵字查詢(例如:139、111)">
-    <select id="color-filter">
-      <option value="">所有顏色</option>
-      <option value="藍色">藍色</option>
-      <option value="橙色">橙色</option>
-      <option value="紅色">紅色</option>
-      <option value="紫色">紫色</option>
-      <option value="黃色">黃色</option>
-      <option value="綠色">綠色</option>
-    </select>
-    <select id="application-filter">
-      <option value="">所有應用</option>
-      <option value="油墨">油墨</option>
-      <option value="塗料">塗料</option>
-      <option value="塑料">塑料</option>
-    </select>
-    <button id="search-button">搜索</button>
+  <div id="product-grid" class="product-grid">
+    <!-- Products populated via JS -->
   </div>
-
-  <div id="product-grid" class="product-grid"></div>
 </main>
 
-<button id="back-to-top" title="回到頂部">↑</button>
-<button id="contact-us-float">聯絡我們</button>
+<footer>
+    <span class="company-name">華翔興業有限公司 HwaShine Chemical Co., Ltd.</span>
+    <p>&copy; 2024 All Rights Reserved. | 專業有機顏料與助劑供應商</p>
+</footer>
+
+<a href="https://hwashine.tw/contact" class="float-btn" title="聯絡我們">✉</a>
+
+<script>
+// --- Data Source Updated with User Specified Values & Tags ---
+const organicPigments = [
+  // 藍色
+  { code: "PB15:0", name: "顏料藍 15:0", cat: "藍色", light: 7, heat: 3, cost: 1, mass: "#004687", tint: "#4A8BCA", apps: ["高耐候", "無鹵素"] },
+  { code: "PB15:1", name: "顏料藍 15:1", cat: "藍色", light: 8, heat: 4, cost: 1, mass: "#1941E6", tint: "#2A8CF5", apps: ["尼龍", "高耐候", "無鹵素"] },
+  { code: "PB15:3", name: "顏料藍 15:3", cat: "藍色", light: 8, heat: 5, cost: 1, mass: "#1755DC", tint: "#16A0E6", apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] },
+  // 橙色
+  { code: "PO13", name: "顏料橙 13", cat: "橙色", light: 3, heat: 1, cost: 1, mass: "#F2101A", tint: "#FD583E", apps: [] },
+  { code: "PO34", name: "顏料橙 34", cat: "橙色", light: 5, heat: 3, cost: 2, mass: "#EC2800", tint: "#FF976A", apps: [] },
+  { code: "PO36", name: "顏料橙 36", cat: "橙色", light: 8, heat: 2, cost: 3, mass: "#D84012", tint: "#FF7D4D", apps: ["高耐候"] },
+  { code: "PO64", name: "顏料橙 64", cat: "橙色", light: 7, heat: 4, cost: 4, mass: "#E84A05", tint: "#FF9E5E", apps: ["無鹵素"] },
+  { code: "PO72", name: "顏料橙 72", cat: "橙色", light: 8, heat: 5, cost: 5, mass: "#EF6C00", tint: "#FFCC80", apps: ["高耐候", "無鹵素"] },
+  // 紅色
+  { code: "PR122", name: "顏料紅 122", cat: "紅色", light: 8, heat: 5, cost: 4, mass: "#5B0011", tint: "#E88FD3", apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] },
+  { code: "PR146", name: "顏料紅 146", cat: "紅色", light: 6, heat: 3, cost: 2, mass: "#D3170E", tint: "#E89FC1", apps: [] },
+  { code: "PR170", name: "顏料紅 170", cat: "紅色", light: 5, heat: 3, cost: 2, mass: "#C21807", tint: "#FF5252", apps: ["無鹵素"] },
+  { code: "PR176", name: "顏料紅 176", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#8C001A", tint: "#E53935", apps: ["無鹵素"] },
+  { code: "PR177", name: "顏料紅 177", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#89010F", tint: "#DA3555", apps: ["高耐候", "無鹵素"] },
+  { code: "PR185", name: "顏料紅 185", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#B00D23", tint: "#FF4081", apps: ["無鹵素", "提供食品接觸等級"] },
+  { code: "PR208", name: "顏料紅 208", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#EC2523", tint: "#FF7291", apps: ["無鹵素"] },
+  { code: "PR242", name: "顏料紅 242", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#D50000", tint: "#FF5131", apps: ["高耐候"] },
+  { code: "PR254", name: "顏料紅 254", cat: "紅色", light: 8, heat: 5, cost: 2, mass: "#C40202", tint: "#FF4545", apps: ["高耐候"] },
+  // 紫色
+  { code: "PV19", name: "顏料紫 19", cat: "紫色", light: 8, heat: 5, cost: 5, mass: "#750045", tint: "#D56E96", apps: ["尼龍", "高耐候", "無鹵素"] },
+  { code: "PV23", name: "顏料紫 23", cat: "紫色", light: 7, heat: 4, cost: 4, mass: "#150028", tint: "#683FB5", apps: ["尼龍", "高耐候"] },
+  // 黃色
+  { code: "PY14", name: "顏料黃 14", cat: "黃色", light: 3, heat: 2, cost: 1, mass: "#FDD835", tint: "#FFF59D", apps: [] },
+  { code: "PY74", name: "顏料黃 74", cat: "黃色", light: 7, heat: 1, cost: 1, mass: "#FEEA3B", tint: "#FFFF8D", apps: [] },
+  { code: "PY83", name: "顏料黃 83", cat: "黃色", light: 7, heat: 3, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] },
+  { code: "PY110", name: "顏料黃 110", cat: "黃色", light: 8, heat: 5, cost: 5, mass: "#FB8C00", tint: "#FFCC80", apps: ["高耐候", "提供食品接觸等級"] },
+  { code: "PY128", name: "顏料黃 128", cat: "黃色", light: 8, heat: 4, cost: 5, mass: "#FFEE58", tint: "#FFF9C4", apps: ["高耐候"] },
+  { code: "PY138", name: "顏料黃 138", cat: "黃色", light: 8, heat: 5, cost: 4, mass: "#F9DA2E", tint: "#FFF176", apps: ["高耐候"] },
+  { code: "PY139", name: "顏料黃 139", cat: "黃色", light: 8, heat: 4, cost: 3, mass: "#FFA000", tint: "#FFECB3", apps: ["高耐候", "無鹵素"] },
+  { code: "PY150", name: "顏料黃 150", cat: "黃色", light: 8, heat: 5, cost: 3, mass: "#9E7E08", tint: "#FFD600", apps: ["尼龍", "高耐候"] },
+  { code: "PY151", name: "顏料黃 151", cat: "黃色", light: 7, heat: 3, cost: 3, mass: "#FFEB3B", tint: "#FFFF8D", apps: ["無鹵素"] },
+  { code: "PY154", name: "顏料黃 154", cat: "黃色", light: 8, heat: 2, cost: 3, mass: "#FFC107", tint: "#FFE57F", apps: ["高耐候"] },
+  { code: "PY155", name: "顏料黃 155", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FFCA28", tint: "#FFF59D", apps: ["無鹵素"] },
+  { code: "PY180", name: "顏料黃 180", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FDD835", tint: "#FFF9C4", apps: ["無鹵素", "提供食品接觸等級"] },
+  { code: "PY191", name: "顏料黃 191", cat: "黃色", light: 7, heat: 5, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] },
+  { code: "PY192", name: "顏料黃 192", cat: "黃色", light: 7, heat: 5, cost: 3, mass: "#FBC02D", tint: "#FFF176", apps: ["尼龍", "無鹵素"] }
+];
+
+const otherProducts = [
+  { code: "TPO", name: "光啟始劑 TPO", cat: "其他", color: "#f5f5f5", type: 'other', desc: "吸收波長: 295, 380, 393nm。固化快，適合厚膜。", apps: ["UV塗料", "UV油墨"] },
+  { code: "MXD6", name: "特殊尼龍 MXD6", cat: "其他", color: "#e0e0e0", type: 'other', link: "https://hwashine.tw/PA-MXD6/indexMXD6", desc: "高氣體阻隔性、高強度與耐熱性。", apps: ["塑料", "尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] },
+  { code: "Solvent", name: "溶劑染料系列", cat: "溶劑染料", color: "linear-gradient(135deg, #ef4444, #eab308, #3b82f6)", type: 'solvent', link: "https://hwashine.tw/solvent-dyes-showcase/", desc: "高透明度、高色彩強度。", apps: ["塑料", "油墨", "塗料", "尼龍"] },
+  { code: "OB", name: "螢光增白劑 OB", cat: "螢光增白劑", color: "#e1f5fe", type: 'fluorescent', desc: "通用型，透光性好。", apps: ["塑料", "塗料", "油墨"] },
+  { code: "OB-1", name: "螢光增白劑 OB-1", cat: "螢光增白劑", color: "#e0f2f1", type: 'fluorescent', desc: "耐高溫型，帶藍紫色螢光。", apps: ["塑料", "尼龍", "高耐候"] },
+  { code: "KCB", name: "螢光增白劑 KCB", cat: "螢光增白劑", color: "#f3e5f5", type: 'fluorescent', desc: "發泡專用，藍光色調。", apps: ["塑料"] },
+  { code: "KSN", name: "螢光增白劑 KSN", cat: "螢光增白劑", color: "#e8eaf6", type: 'fluorescent', desc: "耐曬型，適用聚酯、PA。", apps: ["塑料", "尼龍"] }
+];
+
+let allProducts = [];
+let currentCategory = 'all';
+
+function initData() {
+  const organicProcessed = organicPigments.map(p => ({
+    ...p,
+    type: 'organic',
+    link: `https://hwashine.tw/${p.code.replace(':', '-')}`
+  }));
+  allProducts = [...organicProcessed, ...otherProducts];
+}
+
+// 輔助函數：生成點狀條
+function renderBar(value, max, className) {
+    const dots = Array(max).fill(0).map((_, i) => 
+        `<div class="dot ${i < value ? 'active ' + className : ''}"></div>`
+    ).join('');
+    return `<div class="visual-bar">${dots}</div>`;
+}
+
+function getProductCard(p) {
+  let colorHtml = '';
+  
+  if (p.type === 'organic') {
+    // 有機顏料：雙色展示 (標籤已更新)
+    colorHtml = `
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: ${p.mass}">
+           <div class="color-tag">本色</div>
+        </div>
+        <div class="tint-tone" style="background-color: ${p.tint}">
+           <div class="color-tag">沖淡</div>
+        </div>
+      </div>`;
+  } else {
+    // 其他產品：單色或漸層展示
+    const style = p.color.includes('gradient') ? `background:${p.color}` : `background-color:${p.color}`;
+    colorHtml = `
+      <div class="color-display">
+        <div class="color-full" style="${style}"></div>
+      </div>`;
+  }
+
+  // 應用標籤邏輯：只顯示特殊應用，隱藏基礎應用
+  const hiddenApps = ["油墨", "塗料", "塑料"];
+  
+  const appTags = p.apps ? p.apps
+    .filter(a => !hiddenApps.includes(a)) // 隱藏基礎應用
+    .map(a => `<span class="tag highlight">${a}</span>`) // 剩下的都是特殊應用，全部高亮
+    .join('') : '';
+  
+  // 產品詳情區塊
+  let detailsHtml = '';
+  
+  if (p.type === 'organic') {
+      detailsHtml = `
+      <div class="specs-container">
+          <div class="specs-row">
+            <span class="spec-label">綜合性能</span>
+            ${renderBar(p.light, 8, 'light')}
+            <span class="spec-value">${p.light}</span>
+          </div>
+          <div class="specs-row">
+            <span class="spec-label">耐溫</span>
+            ${renderBar(p.heat, 5, 'heat')}
+            <span class="spec-value">${p.heat}</span>
+          </div>
+          <div class="specs-row">
+            <span class="spec-label">成本</span>
+            ${renderBar(p.cost, 5, 'cost')}
+            <span class="spec-value">${p.cost}</span>
+          </div>
+      </div>`;
+  } else {
+      detailsHtml = `<div class="product-desc">${p.desc}</div>`;
+  }
+
+  return `
+    <a href="${p.link || '#'}" target="_blank" class="product-card">
+      ${colorHtml}
+      <div class="card-body">
+        <div class="card-header">
+           <span class="product-code">${p.code}</span>
+           <span class="ci-badge">${p.type === 'organic' ? 'Organic' : 'Additive'}</span>
+        </div>
+        <div class="product-name">${p.name.replace(p.code, '').trim()}</div>
+        ${detailsHtml}
+        <div class="app-tags">${appTags}</div>
+      </div>
+    </a>
+  `;
+}
+
+function renderProducts(list) {
+  const grid = document.getElementById('product-grid');
+  if (list.length === 0) {
+      grid.innerHTML = `<div style="text-align:center; grid-column:1/-1; padding:4rem; color:#94a3b8;">
+        <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
+        <div>沒有找到符合條件的產品</div>
+      </div>`;
+  } else {
+      grid.innerHTML = list.map(getProductCard).join('');
+  }
+}
+
+function switchCategory(cat) {
+    currentCategory = cat;
+    
+    const select = document.getElementById('category-select');
+    if(select.value !== cat) select.value = cat;
+
+    const advFilters = document.getElementById('advanced-filters');
+    if(cat === 'other' || cat === 'fluorescent') {
+        advFilters.style.display = 'none';
+    } else {
+        advFilters.style.display = 'flex';
+    }
+    
+    filterProducts();
+}
+
+function filterProducts() {
+  const cat = document.getElementById('category-select').value;
+  const term = document.getElementById('search-input').value.toLowerCase();
+  const color = document.getElementById('color-filter').value;
+  const app = document.getElementById('app-filter').value;
+
+  const filtered = allProducts.filter(p => {
+      // 類別過濾
+      if(cat !== 'all' && p.type !== cat) return false;
+      
+      // 關鍵字過濾
+      if(term && !(p.code + p.name + p.desc).toLowerCase().includes(term)) return false;
+      
+      // 顏色過濾
+      if(color && p.cat !== color) return false;
+      
+      // 應用過濾 (包含新標籤)
+      if(app && p.apps && !p.apps.includes(app)) return false;
+      
+      return true;
+  });
+  renderProducts(filtered);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initData();
+    filterProducts(); // 初始渲染
+
+    document.getElementById('search-button').addEventListener('click', filterProducts);
+    document.getElementById('search-input').addEventListener('keyup', (e) => { if(e.key==='Enter') filterProducts(); });
+    
+    // 連動 Select 過濾器
+    document.getElementById('color-filter').addEventListener('change', filterProducts);
+    document.getElementById('app-filter').addEventListener('change', filterProducts);
+});
+</script>
 
 </body>
 </html>
