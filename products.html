@@ -971,7 +971,29 @@ function filterProducts() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initData();
-    filterProducts(); // Initial Render
+
+    // --- 新增：網址參數偵測邏輯 ---
+    // 取得網址中的查詢參數
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category'); // 例如 ?category=fluorescent
+
+    if (categoryParam) {
+        // 檢查該類別是否存在於下拉選單中，避免無效參數報錯
+        const select = document.getElementById('category-select');
+        const options = Array.from(select.options).map(opt => opt.value);
+        
+        if (options.includes(categoryParam)) {
+            // 如果參數有效，直接切換到該類別
+            switchCategory(categoryParam);
+        } else {
+            // 無效參數則顯示預設
+            filterProducts(); 
+        }
+    } else {
+        // 無參數時顯示預設
+        filterProducts(); 
+    }
+    // ----------------------------
 
     document.getElementById('search-button').addEventListener('click', filterProducts);
     document.getElementById('search-input').addEventListener('keyup', (e) => { if(e.key==='Enter') filterProducts(); });
