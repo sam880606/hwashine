@@ -1,611 +1,984 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags Optimization -->
-    <title>顏料紅176 (PR176) 高性能苯并咪唑酮紅 | 華翔興業 - 專業顏料供應商</title>
-    
-    <meta name="description" content="顏料紅176 (PR176) 是一款高性能苯并咪唑酮藍光紅色顏料。具備優異的耐熱性(260℃)、耐遷移性及高透明度。專為PVC合成革、包裝油墨及工程塑膠著色設計。">
-    
-    <meta name="keywords" content="顏料紅176, PR176, Pigment Red 176, 苯并咪唑酮紅, 藍光紅顏料, 胭脂紅顏料, 塑膠著色劑, 永固紅HF3C, Benzimidazolone Red, CI 12515">
-    <meta name="author" content="華翔興業有限公司">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="顏料紅176 (PR176) | 藍光紅標竿、耐熱抗遷移">
-    <meta property="og:description" content="鮮豔藍光紅色，耐熱260℃，耐遷移性優異。PVC與油墨的高級選擇，色相介於PR185與PR122之間。">
-    <meta property="og:type" content="product">
-    <meta property="og:url" content="https://hwashine.tw/PR176">
-    <meta property="og:site_name" content="華翔興業 Hwa Shine">
-    
-    <link rel="canonical" href="https://hwashine.tw/PR176">
+<base href="https://hwashine.tw/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>產品總表 - 華翔化學</title>
+<!-- 引入 Roboto Mono 用於顯示技術代碼，提升專業度 -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
 
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    [
-        {
-            "@context": "https://schema.org/",
-            "@type": "Product",
-            "name": "顏料紅176 (PR176) 苯并咪唑酮紅",
-            "image": [
-                "https://hwashine.tw/images/pr176-sample.jpg"
-            ],
-            "description": "顏料紅176 (Pigment Red 176) 是一種苯并咪唑酮類高性能有機顏料，呈現鮮豔的藍光紅色。具有優異的耐熱性、耐溶劑性及耐遷移性，是塑膠與油墨的高端選擇。",
-            "brand": {
-                "@type": "Brand",
-                "name": "華翔興業"
-            },
-            "sku": "PR176",
-            "mpn": "12515",
-            "productID": "CAS:12225-06-8",
-            "category": "High Performance Pigments",
-            "offers": {
-                "@type": "AggregateOffer",
-                "lowPrice": "900",
-                "highPrice": "1100",
-                "priceCurrency": "TWD",
-                "availability": "https://schema.org/InStock",
-                "url": "https://hwashine.tw/PR176"
-            },
-            "additionalProperty": [
-                { "@type": "PropertyValue", "name": "Heat Resistance", "value": "260℃" },
-                { "@type": "PropertyValue", "name": "Light Fastness", "value": "8" },
-                { "@type": "PropertyValue", "name": "Chemical Class", "value": "Benzimidazolone" }
-            ]
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [{
-                "@type": "Question",
-                "name": "PR176 與 PR185 有什麼不同？",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "主要區別在於「色相」與「應用」。PR176 是明顯的「藍光紅 (Carmine)」，色調較深、較冷，適合調配深紅或紫色；PR185 雖然也是苯并咪唑酮紅，但相對較偏「黃光/亮紅」，色調較暖。"
-                }
-            }, {
-                "@type": "Question",
-                "name": "PR176 適合用於 PVC 嗎？",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "非常適合。PR176 在軟質 PVC 中具有 5 級的抗遷移性，不會發生滲色或噴霜，是高級人造革和電纜護套的理想著色劑。"
-                }
-            }]
-        }
-    ]
-    </script>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  :root {
+    /* --- 頭部配色 (還原網站原始風格) --- */
+    --header-bg-start: #1b5e76; /* 深藍綠 */
+    --header-bg-end: #2c8cb0;   /* 亮藍 */
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    /* --- 內容區專業配色 --- */
+    --corporate-blue: #0ea5e9;   /* 科技藍 (強調色) */
+    --corporate-blue-dim: #0284c7; 
+    
+    --bg-body: #f1f5f9;          /* 冷灰背景 */
+    --bg-card: #ffffff;
+    
+    --text-primary: #1e293b;     /* 主要文字 */
+    --text-secondary: #64748b;   /* 次要文字 */
+    --text-tertiary: #94a3b8;    /* 輔助文字 */
+    
+    --border-light: #e2e8f0;
+    
+    /* 陰影與圓角系統 */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+  }
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Noto Sans TC', 'sans-serif'],
-                    },
-                    colors: {
-                        original: {
-                            primary: '#2c8cb0',
-                            secondary: '#1a5f7a',
-                            accent: '#ff6b6b',
-                            // Carmine/Bluish Red theme for PR176
-                            carmine: {
-                                500: '#e11d48', 
-                                600: '#be123c',
-                                700: '#9f1239',
-                                800: '#881337',
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+  body {
+    font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    <style>
-        .sticky-nav {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .prose h3 {
-            position: relative;
-            padding-left: 1rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            font-weight: 700;
-            color: #9f1239;
-        }
-        .prose h3::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 70%;
-            width: 4px;
-            background-color: #e11d48;
-            border-radius: 2px;
-        }
-        html { scroll-behavior: smooth; }
-        
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
+  /* --- 1. Header: 還原波紋動畫設計 --- */
+  header {
+    background: linear-gradient(135deg, var(--header-bg-start), var(--header-bg-end));
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden; /* 確保波紋不溢出 */
+    z-index: 2;
+  }
 
-        /* Tab Animation */
-        .tab-content {
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Tab Button Active State */
-        .tab-btn.active {
-            background-color: #be123c; /* carmine-600 */
-            color: white;
-            border-color: #be123c;
-        }
-    </style>
+  /* 還原：波紋動畫偽元素 */
+  header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+    animation: ripple 15s infinite linear;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  @keyframes ripple {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    position: relative; /* 確保文字在波紋之上 */
+    z-index: 2;
+  }
+
+  /* --- 2. Navigation: 還原毛玻璃效果 --- */
+  nav {
+    background-color: rgba(255, 255, 255, 0.85); /* 半透明白 */
+    backdrop-filter: blur(12px); /* 毛玻璃模糊效果 */
+    -webkit-backdrop-filter: blur(12px); /* Safari 支援 */
+    padding: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  }
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+
+  nav ul li { margin: 0; }
+
+  nav ul li a {
+    display: block;
+    color: #555;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 1rem 1.5rem;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+  }
+
+  nav ul li a:hover, nav ul li a.active {
+    color: var(--header-bg-end);
+    background-color: rgba(248, 250, 252, 0.5);
+    border-bottom-color: var(--header-bg-end);
+  }
+
+  main {
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem 1.5rem;
+  }
+
+  /* --- 3. Toolbar --- */
+  .toolbar-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .toolbar-input, .toolbar-select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background-color: #fff;
+    color: var(--text-primary);
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .toolbar-input:focus, .toolbar-select:focus {
+    outline: none;
+    border-color: var(--corporate-blue);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  }
+  
+  .toolbar-btn {
+    background-color: var(--text-primary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  
+  .toolbar-btn:hover { background-color: #000; }
+
+  /* --- 4. Product Grid --- */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* --- 5. Product Card --- */
+  .product-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer; /* 改為 pointer，因為有些是 div */
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: #cbd5e1;
+  }
+
+  /* Color Sample Area */
+  .color-display {
+    height: 140px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .mass-tone, .tint-tone, .color-full {
+    flex: 1;
+    height: 100%;
+    position: relative;
+  }
+
+  /* 調整後的顏色標籤：本色 / 沖淡 */
+  .color-tag {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    letter-spacing: 1px;
+  }
+  
+  .tint-tone .color-tag { left: auto; right: 8px; }
+
+  .card-body {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 0.75rem;
+  }
+
+  .product-code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--corporate-blue-dim);
+    letter-spacing: -0.5px;
+  }
+  
+  .ci-badge {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      font-family: 'Roboto Mono', monospace;
+  }
+
+  .product-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+  }
+
+  /* 文字描述 - 用於非顏料產品 */
+  .product-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .app-tags {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .tag {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    border: 1px solid transparent;
+  }
+  
+  /* 特定標籤高亮 */
+  .tag.highlight {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      border-color: #bae6fd;
+  }
+  
+  .product-card:hover .tag {
+      border-color: #cbd5e1;
+      background: white;
+  }
+  .product-card:hover .tag.highlight {
+      background-color: #e0f2fe;
+  }
+
+  /* 數據化規格欄位 (Specs Grid) */
+  .specs-container {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+  }
+
+  .specs-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+  }
+  
+  .spec-label {
+      font-weight: 600;
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+      width: 60px;
+  }
+
+  .visual-bar {
+      display: flex;
+      gap: 3px;
+      flex: 1;
+      margin: 0 10px;
+  }
+  
+  .dot {
+      width: 100%; 
+      height: 6px; 
+      background: #e2e8f0;
+      border-radius: 2px;
+  }
+  
+  .dot.active { background: var(--corporate-blue); }
+  .dot.active.heat { background: #f59e0b; } /* 耐溫用橙色 */
+  .dot.active.cost { background: #64748b; } /* 成本用灰色 */
+
+  .spec-value {
+      font-weight: 700; 
+      font-family:'Roboto Mono';
+      width: 20px;
+      text-align: right;
+  }
+
+  /* --- Modal Styles --- */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.7); /* Deep backdrop */
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+    opacity: 1;
+  }
+
+  .modal-card {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .modal-overlay.open .modal-card {
+    transform: scale(1);
+  }
+
+  .modal-header {
+    background: linear-gradient(135deg, var(--header-bg-start), var(--header-bg-end));
+    padding: 1.5rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  .modal-title h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  .modal-subtitle {
+    font-family: 'Roboto Mono', monospace;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  .close-modal-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .close-modal-btn:hover { background: rgba(255,255,255,0.4); }
+
+  .modal-body {
+    padding: 2rem;
+    overflow-y: auto;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .modal-section-title {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    display: block;
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--corporate-blue);
+    padding-left: 10px;
+  }
+  .modal-section-title:first-child { margin-top: 0; }
+
+  .modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0.5rem;
+  }
+
+  .modal-footer {
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--border-light);
+    background: #f8fafc;
+    text-align: right;
+  }
+
+  .contact-modal-btn {
+    display: inline-block;
+    background: var(--text-primary);
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .contact-modal-btn:hover { background: var(--header-bg-end); }
+
+  /* --- Footer --- */
+  footer {
+    background: white;
+    border-top: 1px solid var(--border-light);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 4rem;
+  }
+  
+  footer .company-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      display: block;
+  }
+
+  /* --- Floating Contact --- */
+  .float-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--text-primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+      z-index: 999;
+      font-size: 1.2rem;
+  }
+  
+  .float-btn:hover {
+      transform: scale(1.1);
+      background: var(--header-bg-end);
+  }
+
+  @media (max-width: 768px) {
+    header { padding: 2rem 1rem; }
+    header h1 { font-size: 2rem; }
+    nav ul { flex-wrap: wrap; padding: 0.5rem 0; }
+    nav ul li a { padding: 0.5rem 1rem; font-size: 0.9rem; }
+    .toolbar-container { flex-direction: column; align-items: stretch; }
+    .toolbar-group { flex-direction: column; align-items: stretch; }
+    .product-grid { grid-template-columns: 1fr; }
+    .modal-card { width: 95%; max-height: 85vh; }
+  }
+</style>
 </head>
-<body class="bg-gray-50 text-gray-700 font-sans antialiased">
+<body>
 
-    <!-- 1. Header -->
-    <header class="bg-gradient-to-br from-[#881337] to-[#e11d48] text-white text-center py-12 px-4 shadow-md">
-        <h1 class="text-3xl md:text-4xl font-bold tracking-wide text-shadow-sm">顏料紅176 (PR176)</h1>
-        <p class="mt-2 text-rose-100 text-sm md:text-base font-medium">高性能苯并咪唑酮藍光紅 | Pigment Red 176 | 永固紅HF3C</p>
-    </header>
+<header>
+  <h1>產品總表</h1>
+</header>
 
-    <!-- 2. Navigation -->
-    <nav class="sticky-nav w-full border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4">
-            <ul class="flex justify-center items-center gap-6 md:gap-10 py-4 text-sm md:text-base font-medium flex-wrap">
-                <li><a href="/" class="text-gray-600 hover:text-original-carmine-600 transition-colors">首頁</a></li>
-                <li><a href="/about" class="text-gray-600 hover:text-original-carmine-600 transition-colors">關於我們</a></li>
-                <li><a href="/products" class="text-original-carmine-600 font-bold">產品</a></li>
-                <li><a href="/contact" class="text-gray-600 hover:text-original-carmine-600 transition-colors">聯絡我們</a></li>
-            </ul>
+<nav>
+  <ul>
+    <li><a href="https://hwashine.tw/" class="home-link">首頁</a></li>
+    <li><a href="https://hwashine.tw/about">關於我們</a></li>
+    <li><a href="#" onclick="switchCategory('all'); return false;" class="active" id="nav-all">產品</a></li>
+    <li><a href="https://hwashine.tw/contact">聯絡我們</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="toolbar-container">
+      <div class="toolbar-group" style="flex: 2;">
+          <select id="category-select" class="toolbar-select" onchange="switchCategory(this.value)">
+              <option value="all">所有產品類別 (All Products)</option>
+              <option value="organic">有機顏料 (Organic Pigments)</option>
+              <option value="solvent">溶劑染料 (Solvent Dyes)</option>
+              <option value="fluorescent">螢光增白劑 (Optical Brighteners)</option>
+              <option value="other">助劑/樹脂 (Additives & Resins)</option>
+          </select>
+      </div>
+
+      <div class="toolbar-group" style="flex: 2;">
+          <input type="text" id="search-input" class="toolbar-input" placeholder="搜尋代號或名稱 (e.g. PO34)...">
+      </div>
+
+      <div class="toolbar-group" id="advanced-filters">
+          <select id="color-filter" class="toolbar-select">
+              <option value="">色系 (Color)</option>
+              <option value="藍色">藍色 Blue</option>
+              <option value="橙色">橙色 Orange</option>
+              <option value="紅色">紅色 Red</option>
+              <option value="紫色">紫色 Violet</option>
+              <option value="黃色">黃色 Yellow</option>
+          </select>
+          
+          <select id="app-filter" class="toolbar-select">
+              <option value="">應用特性 (App)</option>
+              <option value="尼龍">尼龍 Nylon</option>
+              <option value="高耐候">高耐候 Weather-Resistant</option>
+              <option value="無鹵素">無鹵素 Halogen-Free</option>
+              <option value="提供食品接觸等級">提供食品接觸等級 Food Contact</option>
+          </select>
+      </div>
+      
+      <button id="search-button" class="toolbar-btn">查詢</button>
+  </div>
+
+  <div id="product-grid" class="product-grid">
+    <!-- Products populated via JS -->
+  </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
+</footer>
+
+<a href="https://hwashine.tw/contact" class="float-btn" title="聯絡我們">✉</a>
+
+<!-- Modal Component -->
+<div id="product-modal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title">
+        <h2 id="modal-name">Product Name</h2>
+        <span id="modal-code" class="modal-subtitle">CODE</span>
+      </div>
+      <button class="close-modal-btn" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div id="modal-content">
+        <!-- Content injected via JS -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://hwashine.tw/contact" class="contact-modal-btn">詢問此產品</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// --- Data Source ---
+const organicPigments = [
+  // 藍色
+  { code: "PB15:0", name: "顏料藍 15:0", cat: "藍色", light: 7, heat: 3, cost: 1, mass: "#004687", tint: "#4A8BCA", apps: ["高耐候", "無鹵素"] },
+  { code: "PB15:1", name: "顏料藍 15:1", cat: "藍色", light: 8, heat: 4, cost: 1, mass: "#1941E6", tint: "#2A8CF5", apps: ["尼龍", "高耐候"] },
+  { code: "PB15:3", name: "顏料藍 15:3", cat: "藍色", light: 8, heat: 5, cost: 1, mass: "#1755DC", tint: "#16A0E6", apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] },
+  // 橙色
+  { code: "PO13", name: "顏料橙 13", cat: "橙色", light: 3, heat: 1, cost: 1, mass: "#F2101A", tint: "#FD583E", apps: [] },
+  { code: "PO34", name: "顏料橙 34", cat: "橙色", light: 5, heat: 3, cost: 2, mass: "#EC2800", tint: "#FF976A", apps: [] },
+  { code: "PO36", name: "顏料橙 36", cat: "橙色", light: 8, heat: 2, cost: 3, mass: "#D84012", tint: "#FF7D4D", apps: ["高耐候"] },
+  { code: "PO64", name: "顏料橙 64", cat: "橙色", light: 7, heat: 4, cost: 4, mass: "#E84A05", tint: "#FF9E5E", apps: ["無鹵素"] },
+  { code: "PO72", name: "顏料橙 72", cat: "橙色", light: 8, heat: 5, cost: 5, mass: "#EF6C00", tint: "#FFCC80", apps: ["高耐候", "無鹵素"] },
+  // 紅色
+  { code: "PR122", name: "顏料紅 122", cat: "紅色", light: 8, heat: 5, cost: 4, mass: "#5B0011", tint: "#E88FD3", apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] },
+  { code: "PR146", name: "顏料紅 146", cat: "紅色", light: 6, heat: 3, cost: 2, mass: "#D3170E", tint: "#E89FC1", apps: [] },
+  { code: "PR170", name: "顏料紅 170", cat: "紅色", light: 5, heat: 3, cost: 2, mass: "#C21807", tint: "#FF5252", apps: ["無鹵素"] },
+  { code: "PR176", name: "顏料紅 176", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#8C001A", tint: "#E53935", apps: ["無鹵素", "link: Pigmentred176.html"] },
+  { code: "PR177", name: "顏料紅 177", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#89010F", tint: "#DA3555", apps: ["高耐候", "無鹵素"] },
+  { code: "PR185", name: "顏料紅 185", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#B00D23", tint: "#FF4081", apps: ["無鹵素", "提供食品接觸等級"] },
+  { code: "PR208", name: "顏料紅 208", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#EC2523", tint: "#FF7291", apps: ["無鹵素"] },
+  { code: "PR242", name: "顏料紅 242", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#D50000", tint: "#FF5131", apps: ["高耐候"] },
+  { code: "PR254", name: "顏料紅 254", cat: "紅色", light: 8, heat: 5, cost: 2, mass: "#C40202", tint: "#FF4545", apps: ["高耐候", "提供食品接觸等級"] },
+  // 紫色
+  { code: "PV19", name: "顏料紫 19", cat: "紫色", light: 8, heat: 5, cost: 5, mass: "#750045", tint: "#D56E96", apps: ["尼龍", "高耐候", "無鹵素"] },
+  { code: "PV23", name: "顏料紫 23", cat: "紫色", light: 7, heat: 4, cost: 4, mass: "#150028", tint: "#683FB5", apps: ["尼龍", "高耐候"] },
+  // 黃色
+  { code: "PY14", name: "顏料黃 14", cat: "黃色", light: 3, heat: 2, cost: 1, mass: "#FDD835", tint: "#FFF59D", apps: [] },
+  { code: "PY74", name: "顏料黃 74", cat: "黃色", light: 7, heat: 1, cost: 1, mass: "#FEEA3B", tint: "#FFFF8D", apps: ["無鹵素"] },
+  { code: "PY83", name: "顏料黃 83", cat: "黃色", light: 7, heat: 3, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] },
+  { code: "PY110", name: "顏料黃 110", cat: "黃色", light: 8, heat: 5, cost: 5, mass: "#FB8C00", tint: "#FFCC80", apps: ["高耐候", "提供食品接觸等級"] },
+  { code: "PY128", name: "顏料黃 128", cat: "黃色", light: 8, heat: 4, cost: 5, mass: "#FFEE58", tint: "#FFF9C4", apps: ["高耐候"] },
+  { code: "PY138", name: "顏料黃 138", cat: "黃色", light: 8, heat: 5, cost: 4, mass: "#F9DA2E", tint: "#FFF176", apps: ["高耐候"] },
+  { code: "PY139", name: "顏料黃 139", cat: "黃色", light: 8, heat: 4, cost: 3, mass: "#FFA000", tint: "#FFECB3", apps: ["高耐候", "無鹵素"] },
+  { code: "PY150", name: "顏料黃 150", cat: "黃色", light: 8, heat: 5, cost: 3, mass: "#9E7E08", tint: "#FFD600", apps: ["尼龍", "高耐候"] },
+  { code: "PY151", name: "顏料黃 151", cat: "黃色", light: 7, heat: 3, cost: 3, mass: "#FFEB3B", tint: "#FFFF8D", apps: ["無鹵素"] },
+  { code: "PY154", name: "顏料黃 154", cat: "黃色", light: 8, heat: 2, cost: 3, mass: "#FFC107", tint: "#FFE57F", apps: ["高耐候"] },
+  { code: "PY155", name: "顏料黃 155", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FFCA28", tint: "#FFF59D", apps: ["無鹵素"] },
+  { code: "PY180", name: "顏料黃 180", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FDD835", tint: "#FFF9C4", apps: ["無鹵素", "提供食品接觸等級"] },
+  { code: "PY191", name: "顏料黃 191", cat: "黃色", light: 7, heat: 5, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] },
+  { code: "PY192", name: "顏料黃 192", cat: "黃色", light: 7, heat: 5, cost: 3, mass: "#FBC02D", tint: "#FFF176", apps: ["尼龍", "無鹵素"] }
+];
+
+// Added 'details' for Modal Content and 'usage' for "常見用途" section
+const otherProducts = [
+  { 
+    code: "TPO", 
+    name: "光啟始劑 TPO", 
+    cat: "其他", 
+    color: "#f5f5f5", 
+    type: 'other', 
+    desc: "吸收波長: 295, 380, 393nm。固化快，適合厚膜。", 
+    details: "TPO 是一種高效的自由基(I)型光引發劑，主要用於UV固化體系。它具有在長波長范圍（350-400nm）的有效吸收，這使得它非常適合於含鈦白粉的白色塗料和厚膜塗層的固化。特點包括：固化速度快、光漂白效果好（固化後不黃變）、低氣味。",
+    apps: ["UV塗料", "UV油墨"],
+    usage: ["UV木器塗料", "UV絲印油墨", "平版印刷油墨", "光固化膠粘劑"]
+  },
+  { 
+    code: "MXD6", 
+    name: "特殊尼龍 MXD6", 
+    cat: "其他", 
+    color: "#e0e0e0", 
+    type: 'other', 
+    link: "https://hwashine.tw/PA-MXD6/indexMXD6", 
+    desc: "高氣體阻隔性、高強度與耐熱性。", 
+    apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] 
+  },
+  { 
+    code: "Solvent", 
+    name: "溶劑染料系列", 
+    cat: "溶劑染料", 
+    color: "linear-gradient(135deg, #ef4444, #eab308, #3b82f6)", 
+    type: 'solvent', 
+    link: "https://hwashine.tw/solvent-dyes-showcase/", 
+    desc: "高透明度、高色彩強度。", 
+    apps: ["尼龍"] 
+  },
+  { 
+    code: "OB", 
+    name: "螢光增白劑 OB", 
+    cat: "螢光增白劑", 
+    color: "#e1f5fe", 
+    type: 'fluorescent', 
+    desc: "通用型，透光性好，耐熱穩定。", 
+    details: "螢光增白劑 OB 是一種苯並噁唑類增白劑，具有優異的熱穩定性、特殊的增白性能、良好的光穩定性和低揮發性。它能產生明亮的藍光，有效抵消聚合物基質的黃色色調。其高透光性使其特別適合透明塑料製品。",
+    apps: ["無鹵素", "高耐候", "提供食品接觸等級"],
+    usage: ["熱塑性塑膠 (PVC, PE, PP)", "油漆與塗料", "聚酯纖維", "透明塑膠製品"]
+  },
+  { 
+    code: "OB-1", 
+    name: "螢光增白劑 OB-1", 
+    cat: "螢光增白劑", 
+    color: "#e0f2f1", 
+    type: 'fluorescent', 
+    desc: "耐高溫型，適合聚酯與工程塑料。", 
+    details: "螢光增白劑 OB-1 是一種高效的雙苯並噁唑類增白劑，適用於聚酯纖維、尼龍纖維和各種塑料（如 PP, PC, ABS, PS）。它具有極高的熔點（>350°C），因此耐熱性極佳，非常適合高溫加工的工程塑料。",
+    apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"],
+    usage: ["聚酯纖維 (Polyester)", "尼龍 (PA) 工程塑膠", "高溫加工塑膠 (PC)", "回收塑料造粒"]
+  },
+  { 
+    code: "KCB", 
+    name: "螢光增白劑 KCB", 
+    cat: "螢光增白劑", 
+    color: "#f3e5f5", 
+    type: 'fluorescent', 
+    desc: "發泡專用，藍光色調，相容性佳。", 
+    details: "螢光增白劑 KCB 具有亮麗的藍色螢光色調，主要用於合成纖維和塑料製品的增白。它對 EVA 發泡材料具有特效，同時也適用於 PE、PP、PVC 等塑料薄膜和注塑件。KCB 具有良好的相容性和耐候性，不易發生遷移。",
+    apps: ["無鹵素", "高耐候"],
+    usage: ["EVA 發泡鞋材", "合成橡膠", "聚合物薄膜", "運動器材"]
+  },
+  { 
+    code: "KSN", 
+    name: "螢光增白劑 KSN", 
+    cat: "螢光增白劑", 
+    color: "#e8eaf6", 
+    type: 'fluorescent', 
+    desc: "耐曬型，適用聚酯、PA，用量少。", 
+    details: "螢光增白劑 KSN 的化學結構與 OB-1 相似，但具有更好的耐曬性和耐候性。它適用於對白度要求極高的聚酯、聚醯胺（尼龍）及聚丙烯腈纖維，也廣泛用於塑料薄膜、注塑成型材料。KSN 的增白強度高，用量少，效果顯著。",
+    apps: ["尼龍", "高耐候", "無鹵素"],
+    usage: ["高品質聚醯胺 (尼龍)", "聚酯薄膜", "注塑成型材料", "合成纖維"]
+  }
+];
+
+let allProducts = [];
+let currentCategory = 'all';
+
+function initData() {
+  const organicProcessed = organicPigments.map(p => ({
+    ...p,
+    type: 'organic',
+    link: p.link || `https://hwashine.tw/${p.code.replace(':', '-')}`
+  }));
+  allProducts = [...organicProcessed, ...otherProducts];
+}
+
+function renderBar(value, max, className) {
+    const dots = Array(max).fill(0).map((_, i) => 
+        `<div class="dot ${i < value ? 'active ' + className : ''}"></div>`
+    ).join('');
+    return `<div class="visual-bar">${dots}</div>`;
+}
+
+function getProductCard(p) {
+  let colorHtml = '';
+  
+  if (p.type === 'organic') {
+    colorHtml = `
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: ${p.mass}">
+           <div class="color-tag">本色</div>
         </div>
-    </nav>
-
-    <!-- 3. Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        
-        <!-- Breadcrumb -->
-        <div class="mb-6 text-sm text-gray-500">
-            <a href="/" class="hover:text-original-carmine-600">首頁</a> <span class="mx-2">/</span>
-            <a href="/products" class="hover:text-original-carmine-600">產品中心</a> <span class="mx-2">/</span>
-            <span class="text-original-carmine-600 font-bold">PR176</span>
+        <div class="tint-tone" style="background-color: ${p.tint}">
+           <div class="color-tag">沖淡</div>
         </div>
+      </div>`;
+  } else {
+    const style = p.color.includes('gradient') ? `background:${p.color}` : `background-color:${p.color}`;
+    colorHtml = `
+      <div class="color-display">
+        <div class="color-full" style="${style}"></div>
+      </div>`;
+  }
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            
-            <!-- Left Column: Detailed Content -->
-            <div class="lg:col-span-2 space-y-8">
-                
-                <!-- Intro Section -->
-                <section class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2 border-b pb-4">
-                        <i class="fas fa-info-circle text-original-carmine-500"></i> 產品簡介與特性
-                    </h2>
-                    <div class="prose max-w-none text-gray-600 leading-relaxed">
-                        <p class="mb-4">
-                            <strong>顏料紅 176 (Pigment Red 176)</strong> 是一種<strong>苯并咪唑酮 (Benzimidazolone)</strong> 類的高性能有機顏料。它呈現出明亮、深邃的<strong>藍光紅色 (Bluish Red)</strong>，色相接近胭脂紅。
-                        </p>
-                        <p class="mb-4">
-                            PR176 結合了<strong>優異的耐熱性 (260℃)</strong>、<strong>耐光性 (8級)</strong> 以及出色的耐遷移性能。它是塑膠加工（特別是 PVC 與聚烯烴）及高端油墨應用中，尋求藍光紅色調與高性能平衡的理想選擇。
-                        </p>
-                        
-                        <div class="grid md:grid-cols-2 gap-6 mt-6">
-                            <div class="bg-rose-50 p-4 rounded-lg">
-                                <h3 class="!mt-0 !mb-2 !text-rose-800">核心優勢</h3>
-                                <ul class="space-y-2 text-sm">
-                                    <li class="flex items-start gap-2"><i class="fas fa-check text-green-600 mt-1"></i> <strong>色彩鮮豔：</strong>純正藍光紅，適合調配紫色或深紅色。</li>
-                                    <li class="flex items-start gap-2"><i class="fas fa-check text-green-600 mt-1"></i> <strong>抗遷移性：</strong>在軟質 PVC 中不滲色 (5級)。</li>
-                                    <li class="flex items-start gap-2"><i class="fas fa-check text-green-600 mt-1"></i> <strong>耐熱穩定：</strong>耐溫 260℃，優於大多數偶氮紅。</li>
-                                </ul>
-                            </div>
-                            <div class="bg-orange-50 p-4 rounded-lg">
-                                <h3 class="!mt-0 !mb-2 !text-orange-800">應用提示</h3>
-                                <ul class="space-y-2 text-sm">
-                                    <li class="flex items-start gap-2"><i class="fas fa-info-circle text-orange-600 mt-1"></i> <strong>翹曲風險：</strong>在 HDPE 大型注塑中可能引起翹曲。</li>
-                                    <li class="flex items-start gap-2"><i class="fas fa-info-circle text-orange-600 mt-1"></i> <strong>尼龍限制：</strong>不建議用於尼龍注塑，可能變色。</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+  const hiddenApps = ["油墨", "塗料", "塑料"];
+  
+  let appTags = '';
+  // 如果不是螢光增白劑，才顯示卡片上的標籤
+  if (p.type !== 'fluorescent') {
+      appTags = p.apps ? p.apps
+        .filter(a => !hiddenApps.includes(a)) 
+        .map(a => {
+            // Check if app is a special link (starts with "link:")
+            if (a.startsWith("link:")) return '';
+            return `<span class="tag highlight">${a}</span>`;
+        })
+        .join('') : '';
+  }
+  
+  let detailsHtml = '';
+  
+  if (p.type === 'organic') {
+      detailsHtml = `
+      <div class="specs-container">
+          <div class="specs-row">
+            <span class="spec-label">綜合性能</span>
+            ${renderBar(p.light, 8, 'light')}
+            <span class="spec-value">${p.light}</span>
+          </div>
+          <div class="specs-row">
+            <span class="spec-label">耐溫</span>
+            ${renderBar(p.heat, 5, 'heat')}
+            <span class="spec-value">${p.heat}</span>
+          </div>
+          <div class="specs-row">
+            <span class="spec-label">成本</span>
+            ${renderBar(p.cost, 5, 'cost')}
+            <span class="spec-value">${p.cost}</span>
+          </div>
+      </div>`;
+  } else {
+      detailsHtml = `<div class="product-desc">${p.desc}</div>`;
+  }
 
-                <!-- Comparison Section -->
-                <section class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2 border-b pb-4">
-                        <i class="fas fa-balance-scale text-original-carmine-500"></i> 紅色顏料選購指南 (PR176 定位)
-                    </h2>
-                    
-                    <div class="overflow-x-auto mb-6">
-                        <table class="w-full text-sm text-left text-gray-600 border border-gray-200">
-                            <thead class="bg-gray-100 text-gray-700 uppercase font-bold">
-                                <tr>
-                                    <th class="px-4 py-3 border-b">型號</th>
-                                    <th class="px-4 py-3 border-b">色相</th>
-                                    <th class="px-4 py-3 border-b text-center">耐遷移性<br><span class="text-xs font-normal">(PVC)</span></th>
-                                    <th class="px-4 py-3 border-b text-center">耐熱性</th>
-                                    <th class="px-4 py-3 border-b">主要應用</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200">
-                                <tr class="bg-rose-50 border-l-4 border-original-carmine-600 shadow-inner">
-                                    <td class="px-4 py-3 font-bold text-original-carmine-600">PR176</td>
-                                    <td class="px-4 py-3 text-purple-700 font-bold">藍光紅 (偏深)</td>
-                                    <td class="px-4 py-3 text-green-600 font-bold text-center">優異 (5)</td>
-                                    <td class="px-4 py-3 text-center font-bold">260℃</td>
-                                    <td class="px-4 py-3 font-bold">PVC合成革、油墨、塑膠</td>
-                                </tr>
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-4 py-3 font-bold text-gray-800">PR185</td>
-                                    <td class="px-4 py-3 text-red-600">黃光紅 (偏亮)</td>
-                                    <td class="px-4 py-3 text-green-600 text-center">優異 (5)</td>
-                                    <td class="px-4 py-3 text-center">250℃</td>
-                                    <td class="px-4 py-3">包裝油墨、PVC</td>
-                                </tr>
-                                <tr class="hover:bg-gray-50 opacity-80">
-                                    <td class="px-4 py-3 font-bold text-gray-800">PR122</td>
-                                    <td class="px-4 py-3 text-pink-600">品紅 (Magenta)</td>
-                                    <td class="px-4 py-3 text-green-600 text-center">優異 (5)</td>
-                                    <td class="px-4 py-3 text-center">300℃</td>
-                                    <td class="px-4 py-3">戶外、汽車漆、標準色</td>
-                                </tr>
-                                <tr class="hover:bg-gray-50 opacity-70">
-                                    <td class="px-4 py-3 font-bold text-gray-800">PR254</td>
-                                    <td class="px-4 py-3 text-red-600">中性正紅</td>
-                                    <td class="px-4 py-3 text-green-600 text-center">優異 (5)</td>
-                                    <td class="px-4 py-3 text-center">300℃</td>
-                                    <td class="px-4 py-3">汽車原廠漆</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+  // Interaction Logic: Modal for TPO/Fluorescent, Link for others
+  let cardAttribs = `href="${p.link || '#'}" target="_blank"`;
+  
+  // Custom link handling from apps array (e.g., for PR176)
+  if (p.apps) {
+      const customLink = p.apps.find(a => a.startsWith("link:"));
+      if (customLink) {
+          cardAttribs = `href="${customLink.split(':')[1].trim()}" target="_blank"`;
+      }
+  }
 
-                    <!-- Expert Consultation Box -->
-                    <div class="bg-gradient-to-r from-gray-50 to-rose-100 border-l-4 border-original-carmine-600 p-4 rounded-r-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-lg mb-1">
-                                <i class="fas fa-swatchbook mr-2 text-original-carmine-600"></i>需要在 PVC 中調配深藍光紅？
-                            </h4>
-                            <p class="text-sm text-gray-600">
-                                PR176 是解決 PR57:1 遷移問題的最佳升級方案。它能提供更深邃的藍光紅色，且完全不會遷移到淺色基材上。
-                            </p>
-                        </div>
-                        <a href="/contact" class="flex-shrink-0 px-6 py-2 bg-original-carmine-600 text-white font-bold rounded-full hover:bg-original-carmine-700 transition-colors shadow-sm text-sm whitespace-nowrap">
-                            索取抗遷移樣品
-                        </a>
-                    </div>
-                </section>
+  let tagType = 'a';
+  
+  // Checks if it is TPO or Fluorescent type to use Modal
+  if (p.type === 'fluorescent' || p.code === 'TPO') {
+      tagType = 'div';
+      // Store object in a way we can retrieve. Using a global lookup or encoding simple data.
+      // Since we have 'p' object here, let's use the code to lookup in click handler.
+      cardAttribs = `onclick="openModal('${p.code}')"`;
+  }
 
-                <!-- Applications -->
-                <section>
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                        <i class="fas fa-layer-group text-original-carmine-500"></i> 建議應用領域
-                    </h2>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        
-                        <!-- Plastic (PVC) -->
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center text-original-carmine-600">
-                                <i class="fas fa-cube text-xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-gray-800 mb-2 !mt-0 !pl-0 before:!content-none">軟質 PVC 與合成革</h3>
-                                <p class="text-sm text-gray-600 mb-2">PR176 在含增塑劑的 PVC 中具有 5 級抗遷移性。特別適合用於高級人造革、汽車內飾膜及電纜。</p>
-                                <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">強烈推薦</span>
-                            </div>
-                        </div>
-
-                        <!-- Ink -->
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-600">
-                                <i class="fas fa-print text-xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-gray-800 mb-2 !mt-0 !pl-0 before:!content-none">包裝油墨</h3>
-                                <p class="text-sm text-gray-600 mb-2">適用於溶劑型凹版及柔版油墨。耐酯、耐酮性好，適合複合包裝印刷。</p>
-                            </div>
-                        </div>
-
-                        <!-- Polyolefins -->
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                                <i class="fas fa-cube text-xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-gray-800 mb-2 !mt-0 !pl-0 before:!content-none">聚烯烴 (PP/PE)</h3>
-                                <p class="text-sm text-gray-600 mb-2">適用於 HDPE, LDPE, PP 的著色。耐熱性佳 (260℃)，但在 HDPE 大型注塑中需注意翹曲問題。</p>
-                            </div>
-                        </div>
-
-                        <!-- Fiber -->
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600">
-                                <i class="fas fa-tshirt text-xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-gray-800 mb-2 !mt-0 !pl-0 before:!content-none">PP 紡絲</h3>
-                                <p class="text-sm text-gray-600 mb-2">分散性良好，可用於丙綸紡絲，提供鮮豔的藍光紅色，耐洗性佳。</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Technical Data (Tabbed Interface) -->
-                <section class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2 border-b pb-4">
-                        <i class="fas fa-microscope text-original-carmine-500"></i> 技術參數表 (TDS)
-                    </h2>
-                    
-                    <!-- Tabs Navigation -->
-                    <div class="flex space-x-2 mb-6 border-b border-gray-200 overflow-x-auto">
-                        <button onclick="switchTab('plastic')" id="tab-plastic" class="tab-btn active px-6 py-3 font-bold text-sm rounded-t-lg border-b-2 border-original-carmine-600 text-original-carmine-600 bg-rose-50 focus:outline-none transition-colors whitespace-nowrap">
-                            <i class="fas fa-cube mr-2"></i>塑料應用數據
-                        </button>
-                        <button onclick="switchTab('coating')" id="tab-coating" class="tab-btn px-6 py-3 font-bold text-sm rounded-t-lg border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50 focus:outline-none transition-colors whitespace-nowrap">
-                            <i class="fas fa-paint-roller mr-2"></i>油墨/塗料數據
-                        </button>
-                    </div>
-
-                    <!-- 1. Plastic Data Content -->
-                    <div id="content-plastic" class="tab-content block space-y-8">
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-700 mb-3 pl-3 border-l-4 border-original-carmine-500">塑料物理特性</h3>
-                            <table class="w-full text-sm text-left text-gray-600 border border-gray-200">
-                                <tbody class="divide-y divide-gray-100">
-                                    <tr class="hover:bg-gray-50"><td class="px-4 py-3 font-medium bg-gray-50 w-1/3">密度</td><td class="px-4 py-3">1.40 g/cm³</td></tr>
-                                    <tr class="hover:bg-gray-50"><td class="px-4 py-3 font-medium bg-gray-50">比表面積</td><td class="px-4 py-3">81 m²/g</td></tr>
-                                    <tr class="hover:bg-gray-50"><td class="px-4 py-3 font-medium bg-gray-50">色強度 (SD1/3 in PP)</td><td class="px-4 py-3">0.21</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-700 mb-3 pl-3 border-l-4 border-original-carmine-500">牢度性能</h3>
-                                <div class="border rounded-lg border-gray-200 overflow-hidden">
-                                    <table class="w-full text-sm">
-                                        <tbody class="divide-y divide-gray-100">
-                                            <tr><td class="px-4 py-2 bg-gray-50 font-medium">耐熱性 (HDPE)</td><td class="px-4 py-2 font-bold text-red-600 text-right">260°C</td></tr>
-                                            <tr><td class="px-4 py-2 bg-gray-50 font-medium">耐光性 (Full)</td><td class="px-4 py-2 font-bold text-green-600 text-right">8</td></tr>
-                                            <tr><td class="px-4 py-2 bg-gray-50 font-medium">耐光性 (Tint)</td><td class="px-4 py-2 font-bold text-green-600 text-right">7-8</td></tr>
-                                            <tr><td class="px-4 py-2 bg-gray-50 font-medium">耐遷移性 (PVC)</td><td class="px-4 py-2 font-bold text-green-600 text-right">5 (優異)</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-700 mb-3 pl-3 border-l-4 border-original-carmine-500">聚合物適用性</h3>
-                                <div class="border rounded-lg border-gray-200 overflow-hidden">
-                                    <table class="w-full text-sm">
-                                        <thead class="bg-gray-100 text-gray-700">
-                                            <tr><th class="px-4 py-2">材料</th><th class="px-4 py-2 text-right">推薦度</th></tr>
-                                        </thead>
-                                        <tbody class="divide-y divide-gray-100">
-                                            <tr><td class="px-4 py-2">PVC / Rubber / PUR</td><td class="px-4 py-2 text-right text-green-600 font-bold">● 推薦</td></tr>
-                                            <tr><td class="px-4 py-2">HDPE / PP / LDPE</td><td class="px-4 py-2 text-right text-green-600 font-bold">● 推薦</td></tr>
-                                            <tr><td class="px-4 py-2">PS / PC</td><td class="px-4 py-2 text-right text-green-600 font-bold">● 推薦</td></tr>
-                                            <tr><td class="px-4 py-2">PP Fibres</td><td class="px-4 py-2 text-right text-green-600 font-bold">● 推薦</td></tr>
-                                            <tr class="bg-red-50"><td class="px-4 py-2 font-bold text-red-800">ABS / PA / POM</td><td class="px-4 py-2 text-right text-red-600 font-bold">― 不推薦</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        
-                         <div>
-                            <h3 class="text-lg font-semibold text-gray-700 mb-3 pl-3 border-l-4 border-original-carmine-500">化學穩定性</h3>
-                            <table class="w-full text-sm text-left text-gray-600 border border-gray-200">
-                                <tbody class="divide-y divide-gray-100">
-                                    <tr class="hover:bg-gray-50"><td class="px-4 py-3 font-medium bg-gray-50 w-1/3">耐酸性</td><td class="px-4 py-3 font-bold text-green-600 text-right">5</td></tr>
-                                    <tr class="hover:bg-gray-50"><td class="px-4 py-3 font-medium bg-gray-50">耐鹼性</td><td class="px-4 py-3 font-bold text-green-600 text-right">5</td></tr>
-                                    <tr class="hover:bg-gray-50"><td class="px-4 py-3 font-medium bg-gray-50">HDPE中翹曲</td><td class="px-4 py-3 font-bold text-green-600 text-right">Low (低)</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- 2. Coating Data Content -->
-                    <div id="content-coating" class="tab-content hidden space-y-8">
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-700 mb-3 pl-3 border-l-4 border-original-carmine-500">塗料物理特性</h3>
-                            <table class="w-full text-sm text-left text-gray-600 border border-gray-200">
-                                <tbody class="divide-y divide-gray-100">
-                                    <tr class="hover:bg-gray-50"><td class="px-4 py-3 font-medium bg-gray-50 w-1/3">密度</td><td class="px-4 py-3">1.40 g/cm³</td></tr>
-                                    <tr class="hover:bg-gray-50"><td class="px-4 py-3 font-medium bg-gray-50">比表面積</td><td class="px-4 py-3">81 m²/g</td></tr>
-                                    <tr class="hover:bg-gray-50"><td class="px-4 py-3 font-medium bg-gray-50">吸油量</td><td class="px-4 py-3">50-70 ml/100g</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-700 mb-3 pl-3 border-l-4 border-original-carmine-500">耐溶劑性 (5=最佳)</h3>
-                                <div class="border rounded-lg border-gray-200 overflow-hidden">
-                                    <table class="w-full text-sm">
-                                        <tbody class="divide-y divide-gray-100">
-                                            <tr><td class="px-4 py-2 bg-gray-50 font-medium">水 / 鹼 / 酸</td><td class="px-4 py-2 font-bold text-green-600 text-right">5</td></tr>
-                                            <tr><td class="px-4 py-2 bg-gray-50 font-medium">乙醇 / MEK</td><td class="px-4 py-2 font-bold text-green-600 text-right">5</td></tr>
-                                            <tr><td class="px-4 py-2 bg-gray-50 font-medium">醋酸乙酯</td><td class="px-4 py-2 font-bold text-green-600 text-right">5</td></tr>
-                                            <tr><td class="px-4 py-2 bg-gray-50 font-medium">二甲苯</td><td class="px-4 py-2 font-bold text-green-600 text-right">5</td></tr>
-                                            <tr><td class="px-4 py-2 bg-gray-50 font-medium">抗滲色性</td><td class="px-4 py-2 font-bold text-green-600 text-right">5</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-700 mb-3 pl-3 border-l-4 border-original-carmine-500">油墨/塗料適用性</h3>
-                                <div class="border rounded-lg border-gray-200 overflow-hidden">
-                                    <table class="w-full text-sm">
-                                        <thead class="bg-gray-100 text-gray-700">
-                                            <tr><th class="px-4 py-2">體系</th><th class="px-4 py-2 text-right">建議</th></tr>
-                                        </thead>
-                                        <tbody class="divide-y divide-gray-100">
-                                            <tr><td class="px-4 py-2">溶劑型油墨</td><td class="px-4 py-2 text-right text-green-600 font-bold">● 推薦</td></tr>
-                                            <tr><td class="px-4 py-2">UV油墨</td><td class="px-4 py-2 text-right text-green-600 font-bold">● 推薦</td></tr>
-                                            <tr><td class="px-4 py-2">水性油墨</td><td class="px-4 py-2 text-right text-green-600 font-bold">● 推薦</td></tr>
-                                            <tr><td class="px-4 py-2">工業/汽車塗料</td><td class="px-4 py-2 text-right text-green-600 font-bold">● 推薦</td></tr>
-                                            <tr><td class="px-4 py-2">粉末塗料</td><td class="px-4 py-2 text-right text-green-600 font-bold">● 推薦</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- FAQ Section -->
-                <section class="bg-gray-50 rounded-xl p-6 md:p-8">
-                    <h2 class="text-xl font-bold text-gray-800 mb-4">常見問題 (FAQ)</h2>
-                    <div class="space-y-3">
-                        
-                        <details class="group bg-white rounded-lg p-4 shadow-sm cursor-pointer border border-gray-100">
-                            <summary class="font-bold text-gray-700 flex justify-between items-center select-none">
-                                PR176 適合用於戶外嗎？
-                                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
-                            </summary>
-                            <div class="mt-3 text-sm text-gray-600 leading-relaxed pl-2 border-l-2 border-original-carmine-500">
-                                <strong>非常適合。</strong> PR176 具有 8 級的優異耐光性和 4-5 級的耐候性，即使在戶外長期使用也不易褪色，優於 PR57:1 等經濟型顏料。
-                            </div>
-                        </details>
-
-                        <details class="group bg-white rounded-lg p-4 shadow-sm cursor-pointer border border-gray-100">
-                            <summary class="font-bold text-gray-700 flex justify-between items-center select-none">
-                                PR176 在軟質 PVC 中會遷移嗎？
-                                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
-                            </summary>
-                            <div class="mt-3 text-sm text-gray-600 leading-relaxed pl-2 border-l-2 border-original-carmine-500">
-                                <strong>不會。</strong> PR176 的抗遷移性達到最高等級 (5級)，完全不滲色，非常適合用於需要耐遷移的 PVC 合成革、電纜及薄膜。
-                            </div>
-                        </details>
-
-                    </div>
-                </section>
-            </div>
-
-            <!-- Right Column: Sidebar -->
-            <aside class="lg:col-span-1">
-                <div class="sticky top-24 space-y-6">
-                    
-                    <!-- Product Info Card -->
-                    <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-                        <div class="p-6 bg-gray-50 border-b border-gray-100 text-center">
-                            <h3 class="text-sm font-bold text-gray-500 uppercase mb-4">產品識別</h3>
-                            <div class="flex justify-center gap-4 mb-4">
-                                <div class="text-center">
-                                    <!-- Mass Tone Sample -->
-                                    <div class="w-20 h-20 rounded-full shadow-md ring-4 ring-white mx-auto mb-2" style="background-color: #E32321;"></div>
-                                    <span class="text-xs text-gray-500">本色</span>
-                                </div>
-                                <div class="text-center">
-                                    <!-- Tint Sample -->
-                                    <div class="w-20 h-20 rounded-full shadow-md ring-4 ring-white mx-auto mb-2" style="background-color: #FF6B88;"></div>
-                                    <span class="text-xs text-gray-500">沖淡</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <ul class="text-sm space-y-3">
-                                <li class="flex justify-between border-b border-gray-100 pb-2">
-                                    <span class="text-gray-500">通用名稱</span>
-                                    <span class="font-bold text-gray-700">Pigment Red 176</span>
-                                </li>
-                                <li class="flex justify-between border-b border-gray-100 pb-2">
-                                    <span class="text-gray-500">C.I. 編號</span>
-                                    <span class="font-mono text-gray-700">12515</span>
-                                </li>
-                                <li class="flex justify-between border-b border-gray-100 pb-2">
-                                    <span class="text-gray-500">CAS 編號</span>
-                                    <span class="font-mono text-gray-700">12225-06-8</span>
-                                </li>
-                                <li class="flex justify-between">
-                                    <span class="text-gray-500">化學結構</span>
-                                    <span class="text-gray-700 font-bold">Benzimidazolone</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- CTA Buttons -->
-                    <div class="space-y-3">
-                        <a href="/contact" class="block w-full py-3 bg-original-carmine-600 text-white text-center font-bold rounded-lg hover:bg-original-carmine-700 transition-colors shadow-md transform hover:-translate-y-1">
-                            <i class="fas fa-phone-alt mr-2"></i> 索取報價單
-                        </a>
-                        <p class="text-xs text-center text-gray-400 mt-2">提供 50g 樣品測試，歡迎工廠索取</p>
-                    </div>
-
-                </div>
-            </aside>
+  return `
+    <${tagType} ${cardAttribs} class="product-card">
+      ${colorHtml}
+      <div class="card-body">
+        <div class="card-header">
+           <span class="product-code">${p.code}</span>
+           <span class="ci-badge">${p.type === 'organic' ? 'Organic' : (p.type === 'fluorescent' ? 'Brightener' : 'Additive')}</span>
         </div>
-    </main>
+        <div class="product-name">${p.name.replace(p.code, '').trim()}</div>
+        ${detailsHtml}
+        <div class="app-tags">${appTags}</div>
+      </div>
+    </${tagType}>
+  `;
+}
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 py-8 mt-12 text-center text-sm">
-        <p>&copy; 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
-    </footer>
+function renderProducts(list) {
+  const grid = document.getElementById('product-grid');
+  if (list.length === 0) {
+      grid.innerHTML = `<div style="text-align:center; grid-column:1/-1; padding:4rem; color:#94a3b8;">
+        <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
+        <div>沒有找到符合條件的產品</div>
+      </div>`;
+  } else {
+      grid.innerHTML = list.map(getProductCard).join('');
+  }
+}
 
-    <!-- Back to top button -->
-    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-original-carmine-600 text-white w-10 h-10 rounded-full shadow-lg items-center justify-center hover:bg-original-carmine-700 transition-all hidden md:flex" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+// --- Modal Functions ---
+function openModal(code) {
+    const product = allProducts.find(p => p.code === code);
+    if (!product) return;
 
-    <script>
-        // Tab Switching Logic
-        function switchTab(tabName) {
-            const tabs = ['plastic', 'coating'];
-            
-            tabs.forEach(t => {
-                const content = document.getElementById('content-' + t);
-                const btn = document.getElementById('tab-' + t);
-                
-                if (t === tabName) {
-                    content.classList.remove('hidden');
-                    content.classList.add('active');
-                    
-                    btn.classList.remove('text-gray-500', 'border-transparent');
-                    btn.classList.add('bg-rose-50', 'text-original-carmine-600', 'border-original-carmine-600');
-                } else {
-                    content.classList.add('hidden');
-                    content.classList.remove('active');
-                    
-                    btn.classList.remove('bg-rose-50', 'text-original-carmine-600', 'border-original-carmine-600');
-                    btn.classList.add('text-gray-500', 'border-transparent');
-                }
-            });
-        }
+    document.getElementById('modal-name').textContent = product.name.replace(product.code, '').trim();
+    document.getElementById('modal-code').textContent = product.code;
+    
+    let contentHtml = '';
+    
+    if (product.details) {
+        contentHtml += `<span class="modal-section-title">產品介紹</span><p>${product.details}</p>`;
+    } else if (product.desc) {
+        contentHtml += `<span class="modal-section-title">產品描述</span><p>${product.desc}</p>`;
+    }
 
-        // Scroll to top
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.remove('hidden');
-            } else {
-                scrollToTopBtn.classList.add('hidden');
-            }
+    // Displays Common Uses (usage)
+    if (product.usage && product.usage.length > 0) {
+        contentHtml += `<span class="modal-section-title">常見用途</span><div class="modal-tags">`;
+        product.usage.forEach(u => {
+            contentHtml += `<span class="tag highlight">${u}</span>`;
         });
-    </script>
+        contentHtml += `</div>`;
+    }
+
+    document.getElementById('modal-content').innerHTML = contentHtml;
+    document.getElementById('product-modal').classList.add('open');
+}
+
+function closeModal(event) {
+    // If event is present (clicked overlay), only close if specific target
+    if (event && event.target.id !== 'product-modal' && !event.target.classList.contains('close-modal-btn')) {
+        return;
+    }
+    document.getElementById('product-modal').classList.remove('open');
+}
+
+// --- Filter Logic ---
+function switchCategory(cat) {
+    currentCategory = cat;
+    
+    const select = document.getElementById('category-select');
+    if(select.value !== cat) select.value = cat;
+
+    const advFilters = document.getElementById('advanced-filters');
+    if(cat === 'other' || cat === 'fluorescent') {
+        advFilters.style.display = 'none';
+    } else {
+        advFilters.style.display = 'flex';
+    }
+    
+    filterProducts();
+}
+
+function filterProducts() {
+  const cat = document.getElementById('category-select').value;
+  const term = document.getElementById('search-input').value.toLowerCase();
+  const color = document.getElementById('color-filter').value;
+  const app = document.getElementById('app-filter').value;
+
+  const filtered = allProducts.filter(p => {
+      if(cat !== 'all' && p.type !== cat) return false;
+      if(term && !(p.code + p.name + p.desc).toLowerCase().includes(term)) return false;
+      if(color && p.cat !== color) return false;
+      if(app && p.apps && !p.apps.includes(app)) return false;
+      return true;
+  });
+  renderProducts(filtered);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initData();
+    filterProducts(); // Initial Render
+
+    document.getElementById('search-button').addEventListener('click', filterProducts);
+    document.getElementById('search-input').addEventListener('keyup', (e) => { if(e.key==='Enter') filterProducts(); });
+    document.getElementById('color-filter').addEventListener('change', filterProducts);
+    document.getElementById('app-filter').addEventListener('change', filterProducts);
+});
+</script>
+
 </body>
 </html>
