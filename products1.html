@@ -287,14 +287,15 @@
 </style>
 <script>
 let products = [
-  { name: "藍色有機顏料 PB15:0", color: "#020674", category: "藍色", lightfastness: 8, description: "顏料藍15:0是紅像藍色。這種α型銅酞菁藍結晶體使用在較低的加工溫度,通常在200℃以下進行加工。顏料藍15:0在高溫或芳香烴環境中會不穩定,並可能轉變為綠色色相的β型形式。儘管如此該顏料仍是應用廣泛的選擇,特別是在較低溫加工的情況下。", applications: ["油墨", "塗料"], type: 'organic' },
-  { name: "藍色有機顏料 PB15:1", color: "#000559", category: "藍色", lightfastness: 8, description: "顏料藍15:1它以鮮明的緊光藍色而著稱,具有優異的著色力和牢度性能。與顏料藍15:0相比,顏料藍15:1在顏色鮮艷度和穩定性上有所提升,因此被廣泛應用於多種工業領域。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "藍色有機顏料 PB15:3", color: "#000263", category: "藍色", lightfastness: 8, description: "顏料藍15:3具有穩定的綠光藍色調。相較於顏料藍15:0和顏色鮮艷度上有顯著的提升,因而更常用於高需求的應用領域。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
+  { name: "藍色有機顏料 PB15:0", color: "#2341FA", category: "藍色", lightfastness: 8, description: "顏料藍15:0是紅像藍色。這種α型銅酞菁藍結晶體使用在較低的加工溫度,通常在200℃以下進行加工。顏料藍15:0在高溫或芳香烴環境中會不穩定,並可能轉變為綠色色相的β型形式。儘管如此該顏料仍是應用廣泛的選擇,特別是在較低溫加工的情況下。", applications: ["油墨", "塗料"], type: 'organic' },
+  { name: "藍色有機顏料 PB15:1", color: "#1941E6", category: "藍色", lightfastness: 8, description: "顏料藍15:1它以鮮明的緊光藍色而著稱,具有優異的著色力和牢度性能。與顏料藍15:0相比,顏料藍15:1在顏色鮮艷度和穩定性上有所提升,因此被廣泛應用於多種工業領域。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
+  { name: "藍色有機顏料 PB15:3", color: "#1755DC", category: "藍色", lightfastness: 8, description: "顏料藍15:3具有穩定的綠光藍色調。相較於顏料藍15:0和顏色鮮艷度上有顯著的提升,因而更常用於高需求的應用領域。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "橙色有機顏料 PO13", color: "#FC460D", category: "橙色", lightfastness: 4, description: "顏料橙13因其鮮豔的橙色光澤和優異的性能而被廣泛應用。優點在高性價比,缺點在耐溫略有不足,擁有穩定的色光和良好的耐光性,適合於多種工業和商業用途。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "橙色有機顏料 PO34", color: "#D1160A", category: "橙色", lightfastness: 6, description: "顏料橙34是一種高性能的有機偶氮顏料,以其鮮明的紅光橙色調、優異的耐久性和穩定性著稱。它在多種工業應用中被廣泛使用,尤其在要求高耐光性、耐熱性及化學穩定性的場合。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "橙色有機顏料 PO36", color: "#CC170D", category: "橙色", lightfastness: 8, description: "顏料橙36具有良好的耐光性和耐化學性,適用於各種涂料和油墨產品。", applications: ["油墨", "塗料"], type: 'organic' },
   { name: "橙色有機顏料 PO64", color: "#FD4302", category: "橙色", lightfastness: 7, description: "顏料橙64因其卓越的性能而受到廣泛應用。它的主要特點包括優異的堅牢度、良好的熱穩定性及出色的抗遷移性,特別適合在增塑PVC中使用。此顏料的著色強度中等至高,使其成為理想的著色劑選擇。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
-  { name: "紅色有機顏料 PR122", color: "#A30025", category: "紅色", lightfastness: 7, description: "顏料紅122是一種鮮豔紅紫色、高耐光性與耐候性的環保高性能有機顏料，廣泛應用於油墨、塗料和塗料著色等領域。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
+  { name: "橙色有機顏料 PO72", color: "#F47C3C", category: "橙色", lightfastness: 8, description: "顏料橙36具有良好的耐光性和耐化學性,適用塑料產品。", applications: ["塑料"], type: 'organic' }, 
+  { name: "紅色有機顏料 PR122", color: "#5B0011", category: "紅色", lightfastness: 7, description: "顏料紅122是一種鮮豔紅紫色、高耐光性與耐候性的環保高性能有機顏料，廣泛應用於油墨、塗料和塗料著色等領域。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "紅色有機顏料 PR146", color: "#8A020E", category: "紅色", lightfastness: 5, description: "顏料紅146具有良好的耐光性和耐化學性,適用於各種高標準油漆和工藝品。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "紅色有機顏料 PR170", color: "#C8030A", category: "紅色", lightfastness: 5, description: "顏料紅170具有一定的耐光性和耐熱性,特別適合高性價比需求的工業用途。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "紅色有機顏料 PR176", color: "#690110", category: "紅色", lightfastness: 6, description: "顏料紅176具有優異的耐光性和耐化學性,高色強度,常用於高端塗料和工業品。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
@@ -317,6 +318,7 @@ let products = [
   { name: "黃色有機顏料 PY154", color: "#FFD303", category: "黃色", lightfastness: 7, description: "苯並咪唑酮黃顏料,具有極佳的耐光性和耐化學性,適合高端塗料產品和工業需求。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "黃色有機顏料 PY155", color: "#FDC103", category: "黃色", lightfastness: 7, description: "該顏料在汽車塗料中使用,因其優秀的耐磨性和耐候性,可以保持汽車外觀的持久性。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
   { name: "黃色有機顏料 PY180", color: "#FFD303", category: "黃色", lightfastness: 7, description: "苯並咪唑酮黃顏料,具有極佳的耐光性和耐化學性。", applications: ["油墨", "塗料", "塑料"], type: 'organic' },
+  { name: "黃色有機顏料 PY191", color: "#FCB106", category: "黃色", lightfastness: 7, description: "顏料黃 191 (Pigment Yellow 191) 是一種單偶氮鈣鹽 (Monoazo Ca-Lake) 類的高性能有機顏料。它呈現出極其鮮豔的紅光黃色 (Reddish Yellow)。", applications: ["塑料"], type: 'organic' },
   { name: "黃色有機顏料 PY192", color: "#FFD303", category: "黃色", lightfastness: 7, description: "苯並咪唑酮黃顏料,主要被應用於PA6。", applications: ["塑料"], type: 'organic' }
 ];
 
@@ -327,6 +329,14 @@ let otherProducts = [
     description: "吸收波長: 295, 380, 393nm。用途:具固化速度快和光漂白作用,適合於厚膜深層固化,多用於白色體系,可用於紫外固化塗料、印刷油墨、紫外固化粘合劑、光導纖維塗料、抗光蝕劑、光聚合印版、立體平版樹脂、複合材料、牙齒填充料等。",
     applications: ["UV塗料", "UV油墨"],
     type: 'other'
+  },
+  {
+    name: "MXD6",
+    link: "https://hwashine.tw/PA-MXD6/indexMXD6", 
+    category: "特殊型的尼龍", 
+    description: "MXD6（間苯二甲胺與己二酸縮聚而成的尼龍）是一種具有優異氣體阻隔性能的半芳香族尼龍。其分子結構中含有剛性芳香環，使其具備良好的機械強度、耐熱性以及極佳的氧氣阻隔能力，尤其適用於對氣體阻隔性要求較高的包裝領域。",
+    applications: ["塑料"],
+    type: 'other'
   }
 ];
 
@@ -334,163 +344,11 @@ products = products.concat(otherProducts);
 
 let solventDyes = [
   {
-    name: "溶劑藍35", 
-    color: "#0047AB",
-    category: "藍色",
-    description: "台灣常備庫存。",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑藍78",
-    color: "#0047AB",
-    category: "藍色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑藍97",
-    color: "#0047AB",
-    category: "藍色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑藍104",
-    color: "#0047AB",
-    category: "藍色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑綠3",
-    color: "#008000",
-    category: "綠色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑綠5",
-    color: "#008000",
-    category: "綠色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑橙60", 
-    color: "#FF7F27",
-    category: "橙色",
-    description: "台灣常備庫存。",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑橙63",
-    color: "#FFA500",
-    category: "橙色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅52",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅111", 
-    color: "#FF0505",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅135",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅149",
-    color: "#FF0000",
-    category: "紅色",
-    description: "耐候型紅色溶剂染料",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅168",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅179",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅195",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紅207",
-    color: "#FF0000",
-    category: "紅色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑紫13", 
-    color: "#800080",
-    category: "紫色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑黃33",
-    color: "#FFFF00",
-    category: "黃色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑黃98", 
-    color: "#FFE605",
-    category: "黃色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
-    type: 'solvent'
-  },
-  {
-    name: "溶劑黃114",
-    color: "#FFFF00",
-    category: "黃色",
-    description: "台灣常備庫存",
-    applications: ["塑料"],
+    name: "溶劑染料",
+    link: "https://hwashine.tw/solvent-dyes-showcase/",
+    category: "溶劑染料", 
+    description: "提供多種高品質溶劑染料，適用於各種工業應用。點擊查看更多詳情。",
+    applications: ["塑料", "油墨", "塗料"], 
     type: 'solvent'
   }
 ];
@@ -734,7 +592,8 @@ function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
     
-    if (product.color && product.type !== 'fluorescent' && product.type !== 'other') {
+    // Only show color sample for organic pigments or solvent dyes that have a color
+    if (product.color && (product.type === 'organic' || product.type === 'solvent')) {
         const colorSample = document.createElement('div');
         colorSample.className = 'color-sample';
         colorSample.style.backgroundColor = product.color || '#CCCCCC';
@@ -775,27 +634,52 @@ function displayProducts(filteredProducts = products) {
     grid.innerHTML = '';
 
     filteredProducts.forEach(product => {
-        // For organic pigments, create a link wrapper
-       if (product.type === 'organic') {
-    const link = document.createElement('a');
-    // 提取並轉換顏料代碼為大寫
-    const pigmentCode = product.name
-        .match(/P[BRGYOV]\d+(?::\d+)?/i)?.[0]?.toUpperCase().replace(':', '-') || '';
-    link.href = `https://hwashine.tw/${pigmentCode}`; // 更新後的網址格式
-    link.style.textDecoration = 'none';
-    link.style.color = 'inherit';
-    
-    const card = createProductCard(product);
-    link.appendChild(card);
-    grid.appendChild(link);
-} else {
-    // 非有機產品，保持現有行為
-    const card = createProductCard(product);
-    card.addEventListener('click', () => {
-        card.classList.toggle('expanded');
-    });
-    grid.appendChild(card);
-}
+        if (product.type === 'organic') {
+            const link = document.createElement('a');
+            let pigmentCode = product.name
+                .match(/P[BRGYOV]\d+(?::\d+)?/i)?.[0]?.toUpperCase().replace(':', '-') || '';
+
+            if (pigmentCode === "PR176") {
+                link.href = "https://hwashine.tw/Pigmentred176";
+            } else if (pigmentCode) { 
+                link.href = `https://hwashine.tw/${pigmentCode}`;
+            } else {
+                link.href = '#'; 
+            }
+
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
+            
+            const card = createProductCard(product);
+            link.appendChild(card);
+            grid.appendChild(link);
+        } else if (product.type === 'solvent') {
+            const link = document.createElement('a');
+            link.href = product.link || 'https://hwashine.tw/solvent-dyes-showcase/';
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
+
+            const card = createProductCard(product);
+            link.appendChild(card);
+            grid.appendChild(link);
+        } else { 
+            if (product.link) {
+                const linkElement = document.createElement('a');
+                linkElement.href = product.link;
+                linkElement.style.textDecoration = 'none';
+                linkElement.style.color = 'inherit';
+
+                const card = createProductCard(product);
+                linkElement.appendChild(card);
+                grid.appendChild(linkElement);
+            } else {
+                const card = createProductCard(product);
+                card.addEventListener('click', () => {
+                    card.classList.toggle('expanded');
+                });
+                grid.appendChild(card);
+            }
+        }
     });
 }
 </script>
@@ -827,7 +711,7 @@ function displayProducts(filteredProducts = products) {
   </div>
 
   <div class="search-container">
-    <input type="text" id="search-input" placeholder="關鍵字查詢(例如:PR122、SR111)">
+    <input type="text" id="search-input" placeholder="關鍵字查詢(例如:139、111)">
     <select id="color-filter">
       <option value="">所有顏色</option>
       <option value="藍色">藍色</option>
