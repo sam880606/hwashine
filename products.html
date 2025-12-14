@@ -504,56 +504,56 @@
 <a href="https://hwashine.tw/contact" class="float-btn" title="聯絡我們">✉</a>
 
 <script>
-// --- Data Source Updated with User Specified Values & Tags ---
+// --- Data Source Updated with User Specified Values & Strictly Checked Halogen-Free Tags ---
 const organicPigments = [
   // 藍色
-  { code: "PB15:0", name: "顏料藍 15:0", cat: "藍色", light: 7, heat: 3, cost: 1, mass: "#004687", tint: "#4A8BCA", apps: ["高耐候", "無鹵素"] },
-  { code: "PB15:1", name: "顏料藍 15:1", cat: "藍色", light: 8, heat: 4, cost: 1, mass: "#1941E6", tint: "#2A8CF5", apps: ["尼龍", "高耐候", "無鹵素"] },
-  { code: "PB15:3", name: "顏料藍 15:3", cat: "藍色", light: 8, heat: 5, cost: 1, mass: "#1755DC", tint: "#16A0E6", apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] },
+  { code: "PB15:0", name: "顏料藍 15:0", cat: "藍色", light: 7, heat: 3, cost: 1, mass: "#004687", tint: "#4A8BCA", apps: ["高耐候", "無鹵素"] }, // In list
+  { code: "PB15:1", name: "顏料藍 15:1", cat: "藍色", light: 8, heat: 4, cost: 1, mass: "#1941E6", tint: "#2A8CF5", apps: ["尼龍", "高耐候"] }, // Not in list
+  { code: "PB15:3", name: "顏料藍 15:3", cat: "藍色", light: 8, heat: 5, cost: 1, mass: "#1755DC", tint: "#16A0E6", apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] }, // In list
   // 橙色
-  { code: "PO13", name: "顏料橙 13", cat: "橙色", light: 3, heat: 1, cost: 1, mass: "#F2101A", tint: "#FD583E", apps: [] },
-  { code: "PO34", name: "顏料橙 34", cat: "橙色", light: 5, heat: 3, cost: 2, mass: "#EC2800", tint: "#FF976A", apps: [] },
-  { code: "PO36", name: "顏料橙 36", cat: "橙色", light: 8, heat: 2, cost: 3, mass: "#D84012", tint: "#FF7D4D", apps: ["高耐候"] },
-  { code: "PO64", name: "顏料橙 64", cat: "橙色", light: 7, heat: 4, cost: 4, mass: "#E84A05", tint: "#FF9E5E", apps: ["無鹵素"] },
-  { code: "PO72", name: "顏料橙 72", cat: "橙色", light: 8, heat: 5, cost: 5, mass: "#EF6C00", tint: "#FFCC80", apps: ["高耐候", "無鹵素"] },
+  { code: "PO13", name: "顏料橙 13", cat: "橙色", light: 3, heat: 1, cost: 1, mass: "#F2101A", tint: "#FD583E", apps: [] }, // Not in list
+  { code: "PO34", name: "顏料橙 34", cat: "橙色", light: 5, heat: 3, cost: 2, mass: "#EC2800", tint: "#FF976A", apps: [] }, // Not in list
+  { code: "PO36", name: "顏料橙 36", cat: "橙色", light: 8, heat: 2, cost: 3, mass: "#D84012", tint: "#FF7D4D", apps: ["高耐候"] }, // Not in list
+  { code: "PO64", name: "顏料橙 64", cat: "橙色", light: 7, heat: 4, cost: 4, mass: "#E84A05", tint: "#FF9E5E", apps: ["無鹵素"] }, // In list
+  { code: "PO72", name: "顏料橙 72", cat: "橙色", light: 8, heat: 5, cost: 5, mass: "#EF6C00", tint: "#FFCC80", apps: ["高耐候"] }, // Not in list
   // 紅色
-  { code: "PR122", name: "顏料紅 122", cat: "紅色", light: 8, heat: 5, cost: 4, mass: "#5B0011", tint: "#E88FD3", apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] },
-  { code: "PR146", name: "顏料紅 146", cat: "紅色", light: 6, heat: 3, cost: 2, mass: "#D3170E", tint: "#E89FC1", apps: [] },
-  { code: "PR170", name: "顏料紅 170", cat: "紅色", light: 5, heat: 3, cost: 2, mass: "#C21807", tint: "#FF5252", apps: ["無鹵素"] },
-  { code: "PR176", name: "顏料紅 176", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#8C001A", tint: "#E53935", apps: ["無鹵素"] },
-  { code: "PR177", name: "顏料紅 177", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#89010F", tint: "#DA3555", apps: ["高耐候", "無鹵素"] },
-  { code: "PR185", name: "顏料紅 185", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#B00D23", tint: "#FF4081", apps: ["無鹵素", "提供食品接觸等級"] },
-  { code: "PR208", name: "顏料紅 208", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#EC2523", tint: "#FF7291", apps: ["無鹵素"] },
-  { code: "PR242", name: "顏料紅 242", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#D50000", tint: "#FF5131", apps: ["高耐候"] },
-  { code: "PR254", name: "顏料紅 254", cat: "紅色", light: 8, heat: 5, cost: 2, mass: "#C40202", tint: "#FF4545", apps: ["高耐候"] },
+  { code: "PR122", name: "顏料紅 122", cat: "紅色", light: 8, heat: 5, cost: 4, mass: "#5B0011", tint: "#E88FD3", apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] }, // In list
+  { code: "PR146", name: "顏料紅 146", cat: "紅色", light: 6, heat: 3, cost: 2, mass: "#D3170E", tint: "#E89FC1", apps: [] }, // Not in list
+  { code: "PR170", name: "顏料紅 170", cat: "紅色", light: 5, heat: 3, cost: 2, mass: "#C21807", tint: "#FF5252", apps: ["無鹵素"] }, // In list
+  { code: "PR176", name: "顏料紅 176", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#8C001A", tint: "#E53935", apps: ["無鹵素"] }, // In list
+  { code: "PR177", name: "顏料紅 177", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#89010F", tint: "#DA3555", apps: ["高耐候", "無鹵素"] }, // In list
+  { code: "PR185", name: "顏料紅 185", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#B00D23", tint: "#FF4081", apps: ["無鹵素", "提供食品接觸等級"] }, // In list
+  { code: "PR208", name: "顏料紅 208", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#EC2523", tint: "#FF7291", apps: ["無鹵素"] }, // In list
+  { code: "PR242", name: "顏料紅 242", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#D50000", tint: "#FF5131", apps: ["高耐候"] }, // Not in list
+  { code: "PR254", name: "顏料紅 254", cat: "紅色", light: 8, heat: 5, cost: 2, mass: "#C40202", tint: "#FF4545", apps: ["高耐候"] }, // Not in list
   // 紫色
-  { code: "PV19", name: "顏料紫 19", cat: "紫色", light: 8, heat: 5, cost: 5, mass: "#750045", tint: "#D56E96", apps: ["尼龍", "高耐候", "無鹵素"] },
-  { code: "PV23", name: "顏料紫 23", cat: "紫色", light: 7, heat: 4, cost: 4, mass: "#150028", tint: "#683FB5", apps: ["尼龍", "高耐候"] },
+  { code: "PV19", name: "顏料紫 19", cat: "紫色", light: 8, heat: 5, cost: 5, mass: "#750045", tint: "#D56E96", apps: ["尼龍", "高耐候", "無鹵素"] }, // In list
+  { code: "PV23", name: "顏料紫 23", cat: "紫色", light: 7, heat: 4, cost: 4, mass: "#150028", tint: "#683FB5", apps: ["尼龍", "高耐候"] }, // Not in list
   // 黃色
-  { code: "PY14", name: "顏料黃 14", cat: "黃色", light: 3, heat: 2, cost: 1, mass: "#FDD835", tint: "#FFF59D", apps: [] },
-  { code: "PY74", name: "顏料黃 74", cat: "黃色", light: 7, heat: 1, cost: 1, mass: "#FEEA3B", tint: "#FFFF8D", apps: [] },
-  { code: "PY83", name: "顏料黃 83", cat: "黃色", light: 7, heat: 3, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] },
-  { code: "PY110", name: "顏料黃 110", cat: "黃色", light: 8, heat: 5, cost: 5, mass: "#FB8C00", tint: "#FFCC80", apps: ["高耐候", "提供食品接觸等級"] },
-  { code: "PY128", name: "顏料黃 128", cat: "黃色", light: 8, heat: 4, cost: 5, mass: "#FFEE58", tint: "#FFF9C4", apps: ["高耐候"] },
-  { code: "PY138", name: "顏料黃 138", cat: "黃色", light: 8, heat: 5, cost: 4, mass: "#F9DA2E", tint: "#FFF176", apps: ["高耐候"] },
-  { code: "PY139", name: "顏料黃 139", cat: "黃色", light: 8, heat: 4, cost: 3, mass: "#FFA000", tint: "#FFECB3", apps: ["高耐候", "無鹵素"] },
-  { code: "PY150", name: "顏料黃 150", cat: "黃色", light: 8, heat: 5, cost: 3, mass: "#9E7E08", tint: "#FFD600", apps: ["尼龍", "高耐候"] },
-  { code: "PY151", name: "顏料黃 151", cat: "黃色", light: 7, heat: 3, cost: 3, mass: "#FFEB3B", tint: "#FFFF8D", apps: ["無鹵素"] },
-  { code: "PY154", name: "顏料黃 154", cat: "黃色", light: 8, heat: 2, cost: 3, mass: "#FFC107", tint: "#FFE57F", apps: ["高耐候"] },
-  { code: "PY155", name: "顏料黃 155", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FFCA28", tint: "#FFF59D", apps: ["無鹵素"] },
-  { code: "PY180", name: "顏料黃 180", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FDD835", tint: "#FFF9C4", apps: ["無鹵素", "提供食品接觸等級"] },
-  { code: "PY191", name: "顏料黃 191", cat: "黃色", light: 7, heat: 5, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] },
-  { code: "PY192", name: "顏料黃 192", cat: "黃色", light: 7, heat: 5, cost: 3, mass: "#FBC02D", tint: "#FFF176", apps: ["尼龍", "無鹵素"] }
+  { code: "PY14", name: "顏料黃 14", cat: "黃色", light: 3, heat: 2, cost: 1, mass: "#FDD835", tint: "#FFF59D", apps: [] }, // Not in list
+  { code: "PY74", name: "顏料黃 74", cat: "黃色", light: 7, heat: 1, cost: 1, mass: "#FEEA3B", tint: "#FFFF8D", apps: [] }, // Not in list
+  { code: "PY83", name: "顏料黃 83", cat: "黃色", light: 7, heat: 3, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] }, // Not in list
+  { code: "PY110", name: "顏料黃 110", cat: "黃色", light: 8, heat: 5, cost: 5, mass: "#FB8C00", tint: "#FFCC80", apps: ["高耐候", "提供食品接觸等級"] }, // Not in list
+  { code: "PY128", name: "顏料黃 128", cat: "黃色", light: 8, heat: 4, cost: 5, mass: "#FFEE58", tint: "#FFF9C4", apps: ["高耐候"] }, // Not in list
+  { code: "PY138", name: "顏料黃 138", cat: "黃色", light: 8, heat: 5, cost: 4, mass: "#F9DA2E", tint: "#FFF176", apps: ["高耐候"] }, // Not in list
+  { code: "PY139", name: "顏料黃 139", cat: "黃色", light: 8, heat: 4, cost: 3, mass: "#FFA000", tint: "#FFECB3", apps: ["高耐候", "無鹵素"] }, // In list
+  { code: "PY150", name: "顏料黃 150", cat: "黃色", light: 8, heat: 5, cost: 3, mass: "#9E7E08", tint: "#FFD600", apps: ["尼龍", "高耐候"] }, // Not in list
+  { code: "PY151", name: "顏料黃 151", cat: "黃色", light: 7, heat: 3, cost: 3, mass: "#FFEB3B", tint: "#FFFF8D", apps: ["無鹵素"] }, // In list
+  { code: "PY154", name: "顏料黃 154", cat: "黃色", light: 8, heat: 2, cost: 3, mass: "#FFC107", tint: "#FFE57F", apps: ["高耐候"] }, // Not in list
+  { code: "PY155", name: "顏料黃 155", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FFCA28", tint: "#FFF59D", apps: ["無鹵素"] }, // In list
+  { code: "PY180", name: "顏料黃 180", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FDD835", tint: "#FFF9C4", apps: ["無鹵素", "提供食品接觸等級"] }, // In list
+  { code: "PY191", name: "顏料黃 191", cat: "黃色", light: 7, heat: 5, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] }, // Not in list
+  { code: "PY192", name: "顏料黃 192", cat: "黃色", light: 7, heat: 5, cost: 3, mass: "#FBC02D", tint: "#FFF176", apps: ["尼龍"] } // Not in list
 ];
 
 const otherProducts = [
   { code: "TPO", name: "光啟始劑 TPO", cat: "其他", color: "#f5f5f5", type: 'other', desc: "吸收波長: 295, 380, 393nm。固化快，適合厚膜。", apps: ["UV塗料", "UV油墨"] },
-  { code: "MXD6", name: "特殊尼龍 MXD6", cat: "其他", color: "#e0e0e0", type: 'other', link: "https://hwashine.tw/PA-MXD6/indexMXD6", desc: "高氣體阻隔性、高強度與耐熱性。", apps: ["塑料", "尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] },
-  { code: "Solvent", name: "溶劑染料系列", cat: "溶劑染料", color: "linear-gradient(135deg, #ef4444, #eab308, #3b82f6)", type: 'solvent', link: "https://hwashine.tw/solvent-dyes-showcase/", desc: "高透明度、高色彩強度。", apps: ["塑料", "油墨", "塗料", "尼龍"] },
-  { code: "OB", name: "螢光增白劑 OB", cat: "螢光增白劑", color: "#e1f5fe", type: 'fluorescent', desc: "通用型，透光性好。", apps: ["塑料", "塗料", "油墨"] },
-  { code: "OB-1", name: "螢光增白劑 OB-1", cat: "螢光增白劑", color: "#e0f2f1", type: 'fluorescent', desc: "耐高溫型，帶藍紫色螢光。", apps: ["塑料", "尼龍", "高耐候"] },
-  { code: "KCB", name: "螢光增白劑 KCB", cat: "螢光增白劑", color: "#f3e5f5", type: 'fluorescent', desc: "發泡專用，藍光色調。", apps: ["塑料"] },
-  { code: "KSN", name: "螢光增白劑 KSN", cat: "螢光增白劑", color: "#e8eaf6", type: 'fluorescent', desc: "耐曬型，適用聚酯、PA。", apps: ["塑料", "尼龍"] }
+  { code: "MXD6", name: "特殊尼龍 MXD6", cat: "其他", color: "#e0e0e0", type: 'other', link: "https://hwashine.tw/PA-MXD6/indexMXD6", desc: "高氣體阻隔性、高強度與耐熱性。", apps: ["尼龍", "高耐候", "無鹵素", "提供食品接觸等級"] },
+  { code: "Solvent", name: "溶劑染料系列", cat: "溶劑染料", color: "linear-gradient(135deg, #ef4444, #eab308, #3b82f6)", type: 'solvent', link: "https://hwashine.tw/solvent-dyes-showcase/", desc: "高透明度、高色彩強度。", apps: ["尼龍"] },
+  { code: "OB", name: "螢光增白劑 OB", cat: "螢光增白劑", color: "#e1f5fe", type: 'fluorescent', desc: "通用型，透光性好。", apps: ["無鹵素"] },
+  { code: "OB-1", name: "螢光增白劑 OB-1", cat: "螢光增白劑", color: "#e0f2f1", type: 'fluorescent', desc: "耐高溫型，帶藍紫色螢光。", apps: ["尼龍", "高耐候", "無鹵素"] },
+  { code: "KCB", name: "螢光增白劑 KCB", cat: "螢光增白劑", color: "#f3e5f5", type: 'fluorescent', desc: "發泡專用，藍光色調。", apps: [] },
+  { code: "KSN", name: "螢光增白劑 KSN", cat: "螢光增白劑", color: "#e8eaf6", type: 'fluorescent', desc: "耐曬型，適用聚酯、PA。", apps: ["尼龍"] }
 ];
 
 let allProducts = [];
