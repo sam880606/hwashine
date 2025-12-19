@@ -240,7 +240,7 @@ export const allDyes = [
         common_name_en: 'Solvent Orange 60', colour_index_no: 'C.I. 564100', cas_no: '6925-69-5',
         applications: ['Engineering plastics', 'High temp applications', 'Transparent and opaque dyeing of PS, SAN, PMMA, PC, PA6 and PA6.6'],
         inquiry_link: 'https://hwashine.tw/contact/',
-        related_info_link: '#', 
+        related_info_link: 'https://hwashine.tw/SO60', 
         heat_stability_test: 'in °C at 1/3 standard depth with 1% TiO₂ (ABS 4% TiO₂, and PS 2% TiO₂) evaluated accoding to DIN EN 12877',
         heat_stability_data: [
             { polymer: 'PS', temp: '300' },
