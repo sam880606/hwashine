@@ -7,13 +7,13 @@
 <title>關於我們 - 華翔興業有限公司</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap'); /* 新增英文與數字字體 */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
   :root {
     --primary-color: #2c8cb0;
     --primary-dark: #1a5f7a;
     --accent-color: #ff6b6b;
-    --text-primary: #2c3e50; /* 加深主文字顏色，更顯穩重 */
+    --text-primary: #2c3e50;
     --text-secondary: #596e79;
     --bg-color: #f8f9fa;
     --card-bg: #ffffff;
@@ -38,12 +38,12 @@
     flex-direction: column;
   }
 
-  /* --- Header (已調整回原版布局大小) --- */
+  /* --- Header --- */
   header {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
     color: white;
     text-align: center;
-    padding: 2rem; /* 恢復原版 padding */
+    padding: 2rem;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
@@ -69,9 +69,9 @@
 
   header h1 {
     margin: 0;
-    font-size: 2.5rem; /* 恢復原版字體大小 */
+    font-size: 2.5rem;
     font-weight: 700;
-    letter-spacing: 2px; /* 字距稍微保留一點質感，但比之前小 */
+    letter-spacing: 2px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     position: relative;
     z-index: 2;
@@ -111,7 +111,6 @@
     letter-spacing: 1px;
   }
   
-  /* 導航連結 Hover 改為底部線條效果，更優雅 */
   nav ul li a::after {
     content: '';
     position: absolute;
@@ -126,15 +125,15 @@
   nav ul li a:hover::after {
     width: 100%;
     left: 0;
-  }
-  
+  }  
+
   nav ul li a:hover {
     color: var(--primary-color);
   }
 
   /* --- Main --- */
   main {
-    max-width: 1000px; /* 稍微縮減寬度，讓文字閱讀更集中 */
+    max-width: 1000px;
     margin: 4rem auto;
     padding: 0 1.5rem;
     width: 100%;
@@ -155,7 +154,6 @@
     transform: translateY(0);
   }
 
-  /* 雙語標題設計 */
   h2 {
     color: var(--primary-dark);
     text-align: center;
@@ -187,11 +185,11 @@
     margin: 20px auto 0;
   }
 
-  /* 公司簡介 - 專業排版 */
+  /* 公司簡介 */
   .intro-container {
     background: var(--card-bg);
     padding: 4rem;
-    border-radius: 4px; /* 更銳利的邊角更有商務感 */
+    border-radius: 4px;
     box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
@@ -202,8 +200,8 @@
     margin-bottom: 1.8rem;
     font-size: 1.1rem;
     color: var(--text-secondary);
-    text-align: justify; /* 左右對齊 */
-  }
+    text-align: justify;
+  }  
   
   .intro-text p strong {
     color: var(--primary-dark);
@@ -220,93 +218,78 @@
     padding-left: 20px;
   }
 
-  /* Timeline - 質感升級 */
-  .timeline {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 0;
+  /* --- 專注領域 Focus Areas (取代原本的 Timeline) --- */
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 雙欄佈局 */
+    gap: 2rem;
   }
 
-  .timeline::after {
-    content: '';
-    position: absolute;
-    width: 2px; /* 更細的線條 */
-    background-color: #d1d9e0;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -1px;
-  }
-
-  .timeline-item {
-    padding: 10px 50px;
-    position: relative;
-    background-color: transparent;
-    width: 50%;
-    box-sizing: border-box;
-  }
-
-  .timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    background-color: white;
-    border: 3px solid var(--primary-color);
-    top: 24px;
-    border-radius: 50%;
-    z-index: 2;
-    transition: all 0.3s ease;
-  }
-
-  .timeline-item:hover::after {
-    background-color: var(--primary-color);
-    transform: scale(1.3);
-    box-shadow: 0 0 10px rgba(44, 140, 176, 0.4);
-  }
-
-  .left { left: 0; text-align: right; }
-  .right { left: 50%; text-align: left; }
-  .left::after { right: -10px; }
-  .right::after { left: -10px; }
-
-  .timeline-content {
-    padding: 1.5rem 2rem;
-    background-color: white;
-    position: relative;
+  .focus-item {
+    background: white;
+    padding: 2.5rem;
     border-radius: 4px;
     box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
-    border-left: 3px solid transparent;
+    border-left: 5px solid transparent; /* 預留左側線條位置 */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .focus-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-left-color: var(--primary-color); /* Hover 時顯示左側強調線 */
+  }
+
+  /* 背景裝飾數字 */
+  .focus-item::before {
+    content: attr(data-index);
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 6rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: rgba(0,0,0,0.03);
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .focus-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .focus-title {
+    font-size: 1.4rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   
-  .timeline-item.right .timeline-content {
-     border-left: none;
-     border-right: 3px solid transparent;
+  .focus-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(44, 140, 176, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
   }
 
-  .timeline-item:hover .timeline-content {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--primary-color);
-  }
-
-  .timeline-content h3 {
-    margin: 0 0 0.5rem 0;
-    color: var(--primary-dark);
-    font-size: 1.6rem;
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-  }
-
-  .timeline-content p {
-    margin: 0;
+  .focus-desc {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
   }
 
-  /* 價值觀 - 簡約 ICON 風格 */
+  /* --- 價值觀 --- */
   .values-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -349,7 +332,6 @@
   }
   
   .value-card:hover .value-icon svg {
-    /* 確保 icon 翻轉後圖標方向正確 */
     transform: rotateY(-180deg); 
   }
 
@@ -366,7 +348,7 @@
     line-height: 1.7;
   }
 
-  /* 經營理念 (原團隊介紹) - 質感引言 */
+  /* --- 經營理念 --- */
   .team-section {
     background: white;
     border-radius: 4px;
@@ -377,7 +359,6 @@
     border-top: 5px solid var(--primary-dark);
   }
   
-  /* 添加引號裝飾 */
   .team-section::before {
     content: '“';
     font-family: serif;
@@ -401,7 +382,7 @@
     line-height: 2;
     margin-bottom: 2rem;
     color: var(--text-primary);
-    font-style: italic; /* 斜體增加引言感 */
+    font-style: italic;
   }
 
   .team-quote {
@@ -414,10 +395,10 @@
     letter-spacing: 2px;
   }
 
-  /* --- Footer - 極簡專業版 --- */
+  /* --- Footer --- */
   footer {
-    background-color: #f1f3f5; /* 淺灰色背景，更現代 */
-    color: #6c757d; /* 深灰色文字 */
+    background-color: #f1f3f5;
+    color: #6c757d;
     text-align: center;
     padding: 2rem 1rem;
     margin-top: auto;
@@ -444,20 +425,16 @@
       padding: 0.5rem 0.5rem;
       font-size: 0.95rem;
     }
-    nav ul li a::after { display: none; } /* 手機版移除 hover 線條 */
+    nav ul li a::after { display: none; }
 
     header h1 { font-size: 2rem; letter-spacing: 2px; }
     
     .intro-container { padding: 2rem 1.5rem; }
     .intro-highlight { font-size: 1.1rem !important; border-left-width: 3px; }
     
-    .timeline::after { left: 20px; }
-    .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; text-align: left; }
-    .timeline-item::after { left: 14px; }
-    .left, .right { left: 0; }
-    .left::after { right: auto; left: 14px; }
-    .right::after { left: 14px; }
-    .timeline-item.right .timeline-content { border-right: none; border-left: 3px solid transparent; }
+    /* Focus Areas RWD */
+    .focus-grid { grid-template-columns: 1fr; gap: 1.5rem; } /* 手機版變為單欄 */
+    .focus-item { padding: 2rem 1.5rem; }
     
     .team-section { padding: 3rem 1.5rem; }
     .team-section::before { font-size: 5rem; top: -10px; left: 10px; }
@@ -469,6 +446,7 @@
 </style>
 </head>
 <body>
+
   <!-- Header -->
   <header>
     <h1>關於華翔</h1>
@@ -505,49 +483,74 @@
       </div>
     </section>
 
-    <!-- 發展歷程 -->
-    <section id="history">
+    <!-- 專注領域 (原發展歷程) -->
+    <section id="focus-areas">
       <h2>
-        發展里程碑
-        <span class="en-title">Our Milestones</span>
+        專注領域
+        <span class="en-title">Our Expertise</span>
       </h2>
-      <div class="timeline">
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>2014</h3>
-            <p>華翔興業正式成立，專注於高端溶劑染料與顏料的開發銷售。</p>
+      <div class="focus-grid">
+        
+        <!-- 領域 1 -->
+        <div class="focus-item" data-index="01">
+          <div class="focus-content">
+            <div class="focus-title">
+              <div class="focus-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+              </div>
+              有機顏料與溶劑染料
+            </div>
+            <p class="focus-desc">
+              提供高彩度、高透明度及優異耐候性的色彩解決方案。我們的產品廣泛應用於塑膠射出、色母粒製造及各類工業塗料，確保色彩鮮豔持久。
+            </p>
           </div>
         </div>
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>2015</h3>
-            <p>推廣<strong>環保顏料</strong>，提供無重金屬及聯苯胺顏料的替代方案，領先市場。</p>
+
+        <!-- 領域 2 -->
+        <div class="focus-item" data-index="02">
+          <div class="focus-content">
+            <div class="focus-title">
+              <div class="focus-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              環保無毒方案
+            </div>
+            <p class="focus-desc">
+              響應全球綠色環保趨勢，推廣<strong>無重金屬</strong>及無聯苯胺顏料。我們協助客戶符合 RoHS、REACH 等國際法規，降低環境負擔。
+            </p>
           </div>
         </div>
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>2019</h3>
-            <p>引進高效能螢光增白劑，以卓越品質與經濟優勢獲得廣大客戶信賴。</p>
+
+        <!-- 領域 3 -->
+        <div class="focus-item" data-index="03">
+          <div class="focus-content">
+            <div class="focus-title">
+              <div class="focus-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+              </div>
+              功能性助劑
+            </div>
+            <p class="focus-desc">
+              精選高效能螢光增白劑、紫外線吸收劑及抗氧化劑。這些助劑能顯著提升產品的外觀白度與耐候性能，增加產品附加價值。
+            </p>
           </div>
         </div>
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>2022</h3>
-            <p>擴展產品線至光固化領域，正式銷售 TPO (光啟始劑)。</p>
+
+        <!-- 領域 4 -->
+        <div class="focus-item" data-index="04">
+          <div class="focus-content">
+            <div class="focus-title">
+              <div class="focus-icon-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </div>
+              特殊材料與光固化
+            </div>
+            <p class="focus-desc">
+              拓展至光固化領域（TPO）及高階尼龍材料（MXD6），為高阻氣包裝及精密工業提供先進材料支援，滿足高端市場需求。
+            </p>
           </div>
         </div>
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>2024</h3>
-            <p>啟動<strong>全球化佈局</strong>，開展三角貿易服務，將優質產品推向國際市場。</p>
-          </div>
-        </div>
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>2025</h3>
-            <p>推廣 MXD6 尼龍材料，為高阻氣、高尺寸穩定性等高端應用提供解決方案。</p>
-          </div>
-        </div>
+        
       </div>
     </section>
 
@@ -606,7 +609,7 @@
     </section>
   </main>
 
-  <!-- Footer - 簡潔版 -->
+  <!-- Footer -->
   <footer>
     <p>&copy; 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
   </footer>
@@ -637,6 +640,3 @@
   </script>
 </body>
 </html>
-
-
-
