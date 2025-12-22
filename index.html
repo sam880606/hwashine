@@ -1,572 +1,973 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQFQG56RSK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-CQFQG56RSK');
-    </script>
+  <base href="https://hwashine.tw/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>產品總表 - 華翔顏料</title>
+  <!-- 引入 Roboto Mono 用於顯示技術代碼，提升專業度 -->
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    /* --- 頭部配色 (還原網站原始風格) --- */
+    --header-bg-start: #1b5e76; /* 深藍綠 */
+    --header-bg-end: #2c8cb0;   /* 亮藍 */
     
-    <base href="https://hwashine.tw/">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <title>華翔興業有限公司 - 專業有機顏料與溶劑染料供應商</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Description" content="華翔興業有限公司專注於優質有機顏料和溶劑染料，提供有機顏料、溶劑染料、螢光增白劑、光啟始劑TPO等產品，為塗料、油墨、塑料提供專業解決方案。">
-    <meta name="keywords" content="顏料,溶劑染料,華翔,增白劑,光啟始劑TPO,顏料紅122,顏料紫19,顏料黃150,顏料紫23">
-
-    <!-- 引入 Tailwind CSS (用於內容區域的現代化設計) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    /* --- 內容區專業配色 --- */
+    --corporate-blue: #0ea5e9;   /* 科技藍 (強調色) */
+    --corporate-blue-dim: #0284c7;
     
-    <!-- 引入 Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    --bg-body: #f1f5f9;          /* 冷灰背景 */
+    --bg-card: #ffffff;
     
-    <!-- 引入 FontAwesome (用於圖示) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    --text-primary: #1e293b;     /* 主要文字 */
+    --text-secondary: #64748b;   /* 次要文字 */
+    --text-tertiary: #94a3b8;    /* 輔助文字 */
+    
+    --border-light: #e2e8f0;
+    
+    /* 陰影與圓角系統 */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans TC"', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#0ea5e9',
-                        secondary: '#0f172a',
-                        accent: '#ef4444',
-                        surface: '#f8fafc',
-                    }
-                }
-            },
-            corePlugins: {
-               preflight: true, // 保持開啟以重置瀏覽器預設樣式
-            }
-        }
-    </script>
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+  }
 
-    <style>
-      /* --- 原始 Header 與 Nav 的 CSS (完全還原) --- */
-      :root {
-        --original-primary: #3498db;
-        --original-secondary: #2c3e50;
-        --original-accent: #e74c3c;
-        --original-text: #333;
-        --original-bg: #f8f9fa;
-      }
+  body {
+    font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
 
-      header.original-header {
-        background: linear-gradient(135deg, var(--original-secondary), var(--original-primary));
-        color: white;
-        text-align: center;
-        padding: 2rem;
-        position: relative;
-        overflow: hidden;
-        display: block; 
-      }
+  /* --- 1. Header: 還原波紋動畫設計 --- */
+  header {
+    background: linear-gradient(135deg, var(--header-bg-start), var(--header-bg-end));
+    color: white;
+    text-align: center;
+    padding: 3rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden; /* 確保波紋不溢出 */
+    z-index: 2;
+  }
 
-      header.original-header::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-        animation: ripple 15s infinite linear;
-        z-index: 1;
-      }
+  /* 還原：波紋動畫偽元素 */
+  header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+    animation: ripple 15s infinite linear;
+    z-index: 1;
+    pointer-events: none;
+  }
 
-      @keyframes ripple {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
+  @keyframes ripple {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
-      header.original-header h1 {
-        margin: 0;
-        font-size: 2.5rem;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        position: relative;
-        z-index: 2;
-        line-height: 1.2;
-      }
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    position: relative; /* 確保文字在波紋之上 */
+    z-index: 2;
+  }
 
-      header.original-header p {
-        margin: 0.5rem 0 0;
-        font-size: 1.2rem;
-        opacity: 0.9;
-        position: relative;
-        z-index: 2;
-      }
+  /* --- 2. Navigation: 還原毛玻璃效果 --- */
+  nav {
+    background-color: rgba(255, 255, 255, 0.85); /* 半透明白 */
+    backdrop-filter: blur(12px); /* 毛玻璃模糊效果 */
+    -webkit-backdrop-filter: blur(12px); /* Safari 支援 */
+    padding: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  }
 
-      nav.original-nav {
-        background-color: rgba(255, 255, 255, 0.95);
-        border-bottom: 1px solid #eee;
-        backdrop-filter: blur(10px);
-        padding: 0.5rem;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
 
-      nav.original-nav ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
+  nav ul li { margin: 0; }
 
-      nav.original-nav ul li {
-        margin: 0.5rem;
-      }
+  nav ul li a {
+    display: block;
+    color: #555;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 1rem 1.5rem;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+  }
 
-      nav.original-nav ul li a {
-        color: var(--original-text);
-        text-decoration: none;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        font-size: 1rem;
-      }
+  nav ul li a:hover, nav ul li a.active {
+    color: var(--header-bg-end);
+    background-color: rgba(248, 250, 252, 0.5);
+    border-bottom-color: var(--header-bg-end);
+  }
 
-      nav.original-nav ul li a:hover {
-        background-color: var(--original-primary);
-        color: white;
-      }
+  main {
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem 1.5rem;
+  }
 
-      #news-ticker {
-        background-color: var(--original-accent);
-        color: white;
-        padding: 0.5rem;
-        text-align: center;
-        overflow: hidden;
-        white-space: nowrap;
-        position: relative;
-        font-size: 1rem;
-      }
+  /* --- 3. Toolbar --- */
+  .toolbar-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
 
-      #news-ticker-content {
-        display: inline-block;
-        padding-left: 100%;
-        animation: ticker 30s linear infinite;
-      }
+  .toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 200px;
+  }
 
-      @keyframes ticker {
-        0% { transform: translate3d(0, 0, 0); }
-        100% { transform: translate3d(-100%, 0, 0); }
-      }
+  .toolbar-input, .toolbar-select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background-color: #fff;
+    color: var(--text-primary);
+    transition: all 0.2s;
+    font-family: inherit;
+  }
 
-      @media (max-width: 768px) {
-        header.original-header h1 {
-          font-size: 2rem;
-        }
-      }
-      
-      /* --- 優化後的標籤與動畫樣式 --- */
-      .news-tab {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          position: relative;
-      }
-      .news-tab:not(.active):hover {
-          transform: translateY(-2px);
-          background-color: #f8fafc;
-          border-color: #cbd5e1;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      }
-      .news-tab.active {
-          background-color: #0ea5e9; /* Tailwind primary */
-          color: white;
-          border-color: #0ea5e9;
-          box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.3), 0 2px 4px -1px rgba(14, 165, 233, 0.1);
-          transform: translateY(0);
-      }
+  .toolbar-input:focus, .toolbar-select:focus {
+    outline: none;
+    border-color: var(--corporate-blue);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  }
+  
+  .toolbar-btn {
+    background-color: var(--text-primary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  
+  .toolbar-btn:hover { background-color: #000; }
 
-      /* 列表項目的淡入上浮動畫 */
-      @keyframes fadeInUp {
-          from {
-              opacity: 0;
-              transform: translateY(15px);
-          }
-          to {
-              opacity: 1;
-              transform: translateY(0);
-          }
-      }
-      
-      .animate-fade-in-up {
-          animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          opacity: 0; /* 初始隱藏，確保動畫從 0 開始 */
-      }
-    </style>
+  /* --- 4. Product Grid --- */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* --- 5. Product Card --- */
+  .product-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer; /* 改為 pointer，因為有些是 div */
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: #cbd5e1;
+  }
+
+  /* Color Sample Area */
+  .color-display {
+    height: 140px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .mass-tone, .tint-tone, .color-full {
+    flex: 1;
+    height: 100%;
+    position: relative;
+  }
+
+  /* 調整後的顏色標籤：本色 / 沖淡 */
+  .color-tag {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    letter-spacing: 1px;
+  }
+  
+  .tint-tone .color-tag { left: auto; right: 8px; }
+
+  .card-body {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 0.75rem;
+  }
+
+  .product-code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--corporate-blue-dim);
+    letter-spacing: -0.5px;
+  }
+  
+  .ci-badge {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      font-family: 'Roboto Mono', monospace;
+  }
+
+  .product-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+  }
+
+  /* 文字描述 - 用於非顏料產品 */
+  .product-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .app-tags {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .tag {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    border: 1px solid transparent;
+  }
+  
+  /* 特定標籤高亮 */
+  .tag.highlight {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      border-color: #bae6fd;
+  }
+  
+  .product-card:hover .tag {
+      border-color: #cbd5e1;
+      background: white;
+  }
+  .product-card:hover .tag.highlight {
+      background-color: #e0f2fe;
+  }
+
+  /* 數據化規格欄位 (Specs Grid) */
+  .specs-container {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+  }
+
+  .specs-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+  }
+  
+  .spec-label {
+      font-weight: 600;
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+      width: 60px;
+  }
+
+  .visual-bar {
+      display: flex;
+      gap: 3px;
+      flex: 1;
+      margin: 0 10px;
+  }
+  
+  .dot {
+      width: 100%; 
+      height: 6px; 
+      background: #e2e8f0;
+      border-radius: 2px;
+  }
+  
+  .dot.active { background: var(--corporate-blue); }
+  .dot.active.heat { background: #f59e0b; } /* 耐溫用橙色 */
+  .dot.active.cost { background: #64748b; } /* 成本用灰色 */
+
+  .spec-value {
+      font-weight: 700; 
+      font-family:'Roboto Mono';
+      width: 20px;
+      text-align: right;
+  }
+
+  /* --- Modal Styles --- */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.7); /* Deep backdrop */
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-overlay.open {
+    display: flex;
+    opacity: 1;
+  }
+
+  .modal-card {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .modal-overlay.open .modal-card {
+    transform: scale(1);
+  }
+
+  .modal-header {
+    background: linear-gradient(135deg, var(--header-bg-start), var(--header-bg-end));
+    padding: 1.5rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  .modal-title h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  .modal-subtitle {
+    font-family: 'Roboto Mono', monospace;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  .close-modal-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .close-modal-btn:hover { background: rgba(255,255,255,0.4); }
+
+  .modal-body {
+    padding: 2rem;
+    overflow-y: auto;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .modal-section-title {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    display: block;
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--corporate-blue);
+    padding-left: 10px;
+  }
+  .modal-section-title:first-child { margin-top: 0; }
+
+  .modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0.5rem;
+  }
+
+  .modal-footer {
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--border-light);
+    background: #f8fafc;
+    text-align: right;
+  }
+
+  .contact-modal-btn {
+    display: inline-block;
+    background: var(--text-primary);
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .contact-modal-btn:hover { background: var(--header-bg-end); }
+
+  /* --- Footer --- */
+  footer {
+    background: white;
+    border-top: 1px solid var(--border-light);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 4rem;
+  }
+  
+  footer .company-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      display: block;
+  }
+
+  /* --- Floating Contact --- */
+  .float-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--text-primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+      z-index: 999;
+      font-size: 1.2rem;
+  }
+  
+  .float-btn:hover {
+      transform: scale(1.1);
+      background: var(--header-bg-end);
+  }
+
+  @media (max-width: 768px) {
+    header { padding: 2rem 1rem; }
+    header h1 { font-size: 2rem; }
+    nav ul { flex-wrap: wrap; padding: 0.5rem 0; }
+    nav ul li a { padding: 0.5rem 1rem; font-size: 0.9rem; }
+    .toolbar-container { flex-direction: column; align-items: stretch; }
+    .toolbar-group { flex-direction: column; align-items: stretch; }
+    .product-grid { grid-template-columns: 1fr; }
+    .modal-card { width: 95%; max-height: 85vh; }
+  }
+  </style>
 </head>
-<body class="bg-surface text-slate-700 font-sans antialiased flex flex-col min-h-screen">
+<body>
 
-    <!-- === 1. 原始 Header (還原) === -->
-    <header class="original-header">
-        <h1>華翔興業有限公司</h1>
-        <p>專業有機顏料與溶劑染料供應商</p>
-    </header>
-    
-    <!-- === 2. 原始 Navigation (還原) === -->
-    <nav class="original-nav">
-        <ul>
-            <li><a href="index">首頁</a></li>
-            <li><a href="about">關於我們</a></li>
-            <li><a href="products">產品</a></li>
-            <li><a href="contact">聯絡我們</a></li>
-        </ul>
-    </nav>
+<header>
+  <h1>產品總表</h1>
+</header>
 
-    <!-- === 3. 跑馬燈 === -->
-    <div id="news-ticker">
-        <div id="news-ticker-content">
-            最新消息：新推出高性能尼龍材料 MXD6，具有低吸水、高阻氣，可補足傳統尼龍和 PET 的性能
-        </div>
+<nav>
+  <ul>
+    <li><a href="https://hwashine.tw/" class="home-link">首頁</a></li>
+    <li><a href="https://hwashine.tw/about">關於我們</a></li>
+    <li><a href="#" onclick="switchCategory('all'); return false;" class="active" id="nav-all">產品</a></li>
+    <li><a href="https://hwashine.tw/contact">聯絡我們</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="toolbar-container">
+      <div class="toolbar-group" style="flex: 2;">
+          <select id="category-select" class="toolbar-select" onchange="switchCategory(this.value)">
+              <option value="all">所有產品類別 (All Products)</option>
+              <option value="organic">有機顏料 (Organic Pigments)</option>
+              <option value="solvent">溶劑染料 (Solvent Dyes)</option>
+              <option value="fluorescent">螢光增白劑 (Optical Brighteners)</option>
+              <option value="other">助劑/樹脂 (Additives & Resins)</option>
+          </select>
+      </div>
+
+      <div class="toolbar-group" style="flex: 2;">
+          <input type="text" id="search-input" class="toolbar-input" placeholder="搜尋代號或名稱 (e.g. PO34)...">
+      </div>
+
+      <div class="toolbar-group" id="advanced-filters">
+          <select id="color-filter" class="toolbar-select">
+              <option value="">色系 (Color)</option>
+              <option value="藍色">藍色 Blue</option>
+              <option value="橙色">橙色 Orange</option>
+              <option value="紅色">紅色 Red</option>
+              <option value="紫色">紫色 Violet</option>
+              <option value="黃色">黃色 Yellow</option>
+          </select>
+          
+          <select id="app-filter" class="toolbar-select">
+              <option value="">應用特性 (App)</option>
+              <option value="尼龍">尼龍 Nylon</option>
+              <option value="高耐候">高耐候 Weather-Resistant</option>
+              <option value="無鹵素">無鹵素 Halogen-Free</option>
+              <!-- 移除了 食品接觸等級 選項 -->
+          </select>
+      </div>
+      
+      <button id="search-button" class="toolbar-btn">查詢</button>
+  </div>
+
+  <div id="product-grid" class="product-grid">
+    <!-- Products populated via JS -->
+  </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
+</footer>
+
+<a href="https://hwashine.tw/contact" class="float-btn" title="聯絡我們">✉</a>
+
+<!-- Modal Component -->
+<div id="product-modal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title">
+        <h2 id="modal-name">Product Name</h2>
+        <span id="modal-code" class="modal-subtitle">CODE</span>
+      </div>
+      <button class="close-modal-btn" onclick="closeModal()">×</button>
     </div>
+    <div class="modal-body">
+      <div id="modal-content">
+        <!-- Content injected via JS -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://hwashine.tw/contact" class="contact-modal-btn">詢問此產品</a>
+    </div>
+  </div>
+</div>
 
-    <main class="flex-grow">
-        
-        <!-- === 4. 產品展示區 === -->
-        <section id="products" class="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-800 mb-4 inline-block relative after:content-[''] after:block after:w-16 after:h-1 after:bg-primary after:mx-auto after:mt-4">
-                    主要產品
-                </h2>
-            </div>
+<script>
+// --- Data Source ---
+const organicPigments = [
+  // 藍色
+  { code: "PB15:0", name: "顏料藍 15:0", cat: "藍色", light: 7, heat: 3, cost: 1, mass: "#1941E6", tint: "#2A8CF5", apps: ["高耐候", "無鹵素"] },
+  { code: "PB15:1", name: "顏料藍 15:1", cat: "藍色", light: 8, heat: 4, cost: 1, mass: "#1941E6", tint: "#2A8CF5", apps: ["尼龍", "高耐候"] },
+  { code: "PB15:3", name: "顏料藍 15:3", cat: "藍色", light: 8, heat: 5, cost: 1, mass: "#1755DC", tint: "#16A0E6", apps: ["尼龍", "高耐候", "無鹵素"] },
+  { code: "PB15:4", name: "顏料藍 15:4", cat: "藍色", light: 8, heat: 4, cost: 3, mass: "#1755DC", tint: "#16A0E6", apps: ["高耐候", "無鹵素"] },
+  { code: "PB60", name: "顏料藍 60", cat: "藍色", light: 8, heat: 5, cost: 5, mass: "#102A63", tint: "#4a6fa5", apps: ["高耐候", "無鹵素"] },
+  // 橙色
+  { code: "PO13", name: "顏料橙 13", cat: "橙色", light: 3, heat: 1, cost: 1, mass: "#F2101A", tint: "#FD583E", apps: [] },
+  { code: "PO34", name: "顏料橙 34", cat: "橙色", light: 5, heat: 3, cost: 2, mass: "#EC2800", tint: "#FF976A", apps: [] },
+  { code: "PO36", name: "顏料橙 36", cat: "橙色", light: 8, heat: 2, cost: 3, mass: "#D84012", tint: "#FF7D4D", apps: ["高耐候"] },
+  { code: "PO64", name: "顏料橙 64", cat: "橙色", light: 7, heat: 4, cost: 4, mass: "#E84A05", tint: "#FF9E5E", apps: ["無鹵素"] },
+  { code: "PO72", name: "顏料橙 72", cat: "橙色", light: 8, heat: 5, cost: 5, mass: "#EF6C00", tint: "#FFCC80", apps: ["高耐候", "無鹵素"] },
+  // 紅色
+  { code: "PR122", name: "顏料紅 122", cat: "紅色", light: 8, heat: 5, cost: 4, mass: "#5B0011", tint: "#E88FD3", apps: ["尼龍", "高耐候", "無鹵素"] },
+  { code: "PR146", name: "顏料紅 146", cat: "紅色", light: 6, heat: 3, cost: 2, mass: "#D3170E", tint: "#E89FC1", apps: [] },
+  { code: "PR166", name: "顏料紅 166", cat: "紅色", light: 8, heat: 5, cost: 3, mass: "#E34234", tint: "#FF7F7F", apps: [] },
+  { code: "PR170", name: "顏料紅 170", cat: "紅色", light: 5, heat: 3, cost: 2, mass: "#C21807", tint: "#FF5252", apps: ["無鹵素"] },
+  { code: "PR176", name: "顏料紅 176", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#8C001A", tint: "#E53935", apps: ["無鹵素", "link: Pigmentred176.html"] },
+  { code: "PR177", name: "顏料紅 177", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#89010F", tint: "#DA3555", apps: ["高耐候", "無鹵素"] },
+  { code: "PR185", name: "顏料紅 185", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#B00D23", tint: "#FF4081", apps: ["無鹵素"] },
+  { code: "PR208", name: "顏料紅 208", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#EC2523", tint: "#FF7291", apps: ["無鹵素"] },
+  { code: "PR242", name: "顏料紅 242", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#D50000", tint: "#FF5131", apps: ["高耐候"] },
+  { code: "PR254", name: "顏料紅 254", cat: "紅色", light: 8, heat: 5, cost: 2, mass: "#C40202", tint: "#FF4545", apps: ["高耐候"] },
+  // 紫色
+  { code: "PV19", name: "顏料紫 19", cat: "紫色", light: 8, heat: 5, cost: 5, mass: "#750045", tint: "#D56E96", apps: ["尼龍", "高耐候", "無鹵素"] },
+  { code: "PV23", name: "顏料紫 23", cat: "紫色", light: 7, heat: 4, cost: 4, mass: "#150028", tint: "#683FB5", apps: ["尼龍", "高耐候"] },
+  // 黃色
+  { code: "PY14", name: "顏料黃 14", cat: "黃色", light: 3, heat: 2, cost: 1, mass: "#FDD835", tint: "#FFF59D", apps: [] },
+  { code: "PY74", name: "顏料黃 74", cat: "黃色", light: 7, heat: 1, cost: 1, mass: "#FEEA3B", tint: "#FFFF8D", apps: ["無鹵素"] },
+  { code: "PY83", name: "顏料黃 83", cat: "黃色", light: 7, heat: 3, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] },
+  { code: "PY110", name: "顏料黃 110", cat: "黃色", light: 8, heat: 5, cost: 5, mass: "#FB8C00", tint: "#FFCC80", apps: ["高耐候"] },
+  { code: "PY128", name: "顏料黃 128", cat: "黃色", light: 8, heat: 4, cost: 5, mass: "#FFEE58", tint: "#FFF9C4", apps: ["高耐候"] },
+  { code: "PY138", name: "顏料黃 138", cat: "黃色", light: 8, heat: 5, cost: 4, mass: "#F9DA2E", tint: "#FFF176", apps: ["高耐候"] },
+  { code: "PY139", name: "顏料黃 139", cat: "黃色", light: 8, heat: 4, cost: 3, mass: "#FFA000", tint: "#FFECB3", apps: ["高耐候", "無鹵素"] },
+  { code: "PY150", name: "顏料黃 150", cat: "黃色", light: 8, heat: 5, cost: 3, mass: "#9E7E08", tint: "#FFD600", apps: ["尼龍", "高耐候"] },
+  { code: "PY151", name: "顏料黃 151", cat: "黃色", light: 7, heat: 3, cost: 3, mass: "#FFEB3B", tint: "#FFFF8D", apps: ["無鹵素"] },
+  { code: "PY154", name: "顏料黃 154", cat: "黃色", light: 8, heat: 2, cost: 3, mass: "#FFC107", tint: "#FFE57F", apps: ["高耐候"] },
+  { code: "PY155", name: "顏料黃 155", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FFCA28", tint: "#FFF59D", apps: ["無鹵素"] },
+  { code: "PY180", name: "顏料黃 180", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FDD835", tint: "#FFF9C4", apps: ["無鹵素"] },
+  { code: "PY191", name: "顏料黃 191", cat: "黃色", light: 6, heat: 5, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] },
+  { code: "PY192", name: "顏料黃 192", cat: "黃色", light: 7, heat: 5, cost: 3, mass: "#FBC02D", tint: "#FFF176", apps: ["尼龍", "無鹵素"] }];
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 產品卡片 1 -->
-                <a href="products?category=organic" class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 flex flex-col h-full hover:-translate-y-1">
-                    <div class="relative h-48 bg-slate-100 overflow-hidden">
-                        <img src="/pigment.jpg" alt="有機顏料" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-blue-50 text-blue-300\'><i class=\'fas fa-palette text-5xl\'></i></div>'">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-primary transition-colors">有機顏料</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-grow">高品質有機顏料，適用於各類塑料、油墨和塗料應用。</p>
-                        <span class="text-primary text-sm font-semibold flex items-center">
-                            瀏覽產品 <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                        </span>
-                    </div>
-                </a>
+// Added 'details' for Modal Content and 'usage' for "常見用途" section
+const otherProducts = [
+  { 
+     code: "TPO", 
+     name: "光啟始劑 TPO", 
+     cat: "其他", 
+     color: "#f5f5f5", 
+     type: 'other', 
+     desc: "吸收波長: 295, 380, 393nm。固化快，適合厚膜。",
+     details: "TPO 是一種高效的自由基(I)型光引發劑，主要用於UV固化體系。它具有在長波長范圍（350-400nm）的有效吸收，這使得它非常適合於含鈦白粉的白色塗料和厚膜塗層的固化。特點包括：固化速度快、光漂白效果好（固化後不黃變）、低氣味。",
+    apps: ["UV塗料", "UV油墨"],
+    usage: ["UV木器塗料", "UV絲印油墨", "平版印刷油墨", "光固化膠粘劑"]
+  },
+  { 
+     code: "MXD6", 
+     name: "特殊尼龍 MXD6", 
+     cat: "其他", 
+     color: "#e0e0e0", 
+     type: 'other', 
+     link: "https://hwashine.tw/PA-MXD6/indexMXD6",
+     desc: "高氣體阻隔性、高強度與耐熱性。", 
+     apps: ["尼龍", "高耐候", "無鹵素"] 
+   },
+  { 
+     code: "Solvent", 
+     name: "溶劑染料系列", 
+     cat: "溶劑染料", 
+     color: "linear-gradient(135deg, #ef4444, #eab308, #3b82f6)", 
+     type: 'solvent', 
+     link: "https://hwashine.tw/solvent-dyes-showcase/",
+     desc: "高透明度、高色彩強度。", 
+     apps: ["尼龍"] 
+   },
+   /* --- 修改處：合併螢光增白劑為單一產品系列 --- */
+  { 
+     code: "Series", 
+     name: "螢光增白劑系列產品", 
+     cat: "螢光增白劑", 
+     color: "linear-gradient(135deg, #e0f2f1, #80deea)", /* 使用清新的漸層藍色 */
+     type: 'fluorescent',
+     link: "https://hwashine.tw/fluorescent/", /* 指定連結 */
+     desc: "包含 OB, OB-1, KCB, KSN 等多種規格。適用於塑膠、化纖、油墨等領域，增白效果顯著，耐候性佳。", 
+     apps: ["OB", "OB-1", "KCB", "KSN", "高耐候"] /* 標籤顯示包含的型號 */
+  }
+];
 
-                <!-- 產品卡片 2 -->
-                <a href="https://hwashine.tw/solvent-dyes-showcase/" class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 flex flex-col h-full hover:-translate-y-1">
-                    <div class="relative h-48 bg-slate-100 overflow-hidden">
-                        <img src="溶劑染料.webp" alt="溶劑染料" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-indigo-50 text-indigo-300\'><i class=\'fas fa-flask text-5xl\'></i></div>'">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-primary transition-colors">溶劑染料</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-grow">優質溶劑染料，具有優異的溶解性和著色力。</p>
-                        <span class="text-primary text-sm font-semibold flex items-center">
-                            瀏覽產品 <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                        </span>
-                    </div>
-                </a>
+let allProducts = [];
+let currentCategory = 'all';
 
-                <!-- 產品卡片 3 -->
-                <a href="products?category=fluorescent" class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 flex flex-col h-full hover:-translate-y-1">
-                    <div class="relative h-48 bg-slate-100 overflow-hidden">
-                        <img src="增白.webp" alt="螢光增白劑" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-yellow-50 text-yellow-300\'><i class=\'fas fa-sun text-5xl\'></i></div>'">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-primary transition-colors">螢光增白劑</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-grow">高效能螢光增白劑，提供優異的白度提升效果。</p>
-                        <span class="text-primary text-sm font-semibold flex items-center">
-                            瀏覽產品 <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                        </span>
-                    </div>
-                </a>
+function initData() {
+  const organicProcessed = organicPigments.map(p => ({
+    ...p,
+    type: 'organic',
+    link: p.link || `https://hwashine.tw/${p.code.replace(':', '-')}`
+  }));
+  allProducts = [...organicProcessed, ...otherProducts];
+}
 
-                <!-- 產品卡片 4 -->
-                <a href="https://hwashine.tw/PA-MXD6/indexMXD6" class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 flex flex-col h-full hover:-translate-y-1">
-                    <div class="relative h-48 bg-slate-100 overflow-hidden">
-                        <img src="PA-MXD6/logo.png" alt="MXD6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-green-50 text-green-300\'><i class=\'fas fa-shield-alt text-5xl\'></i></div>'">
-                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-3 py-1 m-2 rounded-full">新品</div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-primary transition-colors">MXD6</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-grow">MXD6是一種具有高阻隔性與耐熱性的尼龍材料。</p>
-                        <span class="text-primary text-sm font-semibold flex items-center">
-                            瀏覽產品 <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                        </span>
-                    </div>
-                </a>
+function renderBar(value, max, className) {
+    const dots = Array(max).fill(0).map((_, i) => 
+         `<div class="dot ${i < value ? 'active ' + className : ''}"></div>`
+    ).join('');
+    return `<div class="visual-bar">${dots}</div>`;
+}
 
-                <!-- 產品卡片 5 -->
-                <a href="products?category=other" class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-100 flex flex-col h-full hover:-translate-y-1">
-                    <div class="relative h-48 bg-slate-100 overflow-hidden">
-                        <img src="TPO.webp" alt="光起始劑" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-purple-50 text-purple-300\'><i class=\'fas fa-atom text-5xl\'></i></div>'">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-primary transition-colors">光起始劑 TPO & 其他</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-grow">具固化速度快和光漂白作用，以及其他產品。</p>
-                        <span class="text-primary text-sm font-semibold flex items-center">
-                            瀏覽產品 <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                        </span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- === 5. 新聞區塊 (分類功能增強) === -->
-        <section id="news" class="py-16 bg-slate-50 border-t border-slate-200">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold text-slate-800 mb-4 inline-block relative after:content-[''] after:block after:w-16 after:h-1 after:bg-primary after:mx-auto after:mt-4">最新消息</h2>
-                    <p class="text-slate-500">掌握產業脈動與技術新知</p>
-                </div>
-
-                <!-- 分類標籤 (Tabs) - 優化樣式與互動 -->
-                <div class="flex flex-wrap justify-center gap-3 mb-10">
-                    <button class="news-tab active px-6 py-2.5 rounded-full text-sm font-medium border border-slate-200 bg-white text-slate-600 cursor-pointer" data-category="all">
-                        <i class="fas fa-th-large mr-2"></i>全部消息
-                    </button>
-                    <button class="news-tab px-6 py-2.5 rounded-full text-sm font-medium border border-slate-200 bg-white text-slate-600 cursor-pointer" data-category="pigment">
-                        <i class="fas fa-palette mr-2"></i>顏料與染料
-                    </button>
-                    <button class="news-tab px-6 py-2.5 rounded-full text-sm font-medium border border-slate-200 bg-white text-slate-600 cursor-pointer" data-category="functional">
-                        <i class="fas fa-flask mr-2"></i>機能性材料
-                    </button>
-                    <button class="news-tab px-6 py-2.5 rounded-full text-sm font-medium border border-slate-200 bg-white text-slate-600 cursor-pointer" data-category="tech">
-                        <i class="fas fa-book-open mr-2"></i>技術與知識
-                    </button>
-                </div>
-
-                <div class="space-y-4" id="news-container">
-                    <!-- 置頂新聞 (永遠顯示) -->
-                    <a href="/Pigment change suggestions" class="news-item group block bg-white p-6 rounded-lg shadow-sm hover:shadow-md border-l-4 border-red-500 hover:border-red-600 transition-all mb-6">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between">
-                            <div>
-                                <span class="inline-block bg-red-100 text-red-600 text-xs px-2 py-1 rounded mb-2 font-bold tracking-wide">置頂公告</span>
-                                <h3 class="text-lg font-bold text-slate-800 group-hover:text-primary transition-colors">在工業應用中，替換有機顏料的挑戰與解決方案</h3>
-                            </div>
-                            <span class="text-sm text-slate-400 mt-2 md:mt-0 whitespace-nowrap md:ml-4"><i class="far fa-calendar-alt mr-1"></i> 2025-1-1</span>
-                        </div>
-                    </a>
-
-                    <!-- 這裡是用來顯示一般新聞的容器 -->
-                    <div id="paginated-news-list" class="space-y-3 min-h-[300px]">
-                        <!-- JS 將會渲染內容 -->
-                    </div>
-                </div>
-
-                <!-- 分頁按鈕 -->
-                <div class="flex justify-center gap-2 mt-10">
-                    <button id="prevPage" disabled class="px-4 py-2 rounded bg-white border border-slate-300 text-slate-500 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50 hover:text-primary transition-colors">
-                        <i class="fas fa-chevron-left mr-1"></i> 上一頁
-                    </button>
-                    <span id="page-indicator" class="px-4 py-2 text-slate-600 font-medium">Page 1</span>
-                    <button id="nextPage" class="px-4 py-2 rounded bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors">
-                        下一頁 <i class="fas fa-chevron-right ml-1"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- === 6. 聯絡我們 === -->
-        <section id="contact" class="py-16 bg-white relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-gradient-to-br from-secondary to-slate-800 rounded-2xl shadow-2xl overflow-hidden">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-10 md:p-12 text-white flex flex-col justify-center">
-                            <h2 class="text-3xl font-bold mb-6">聯絡我們</h2>
-                            <p class="mb-8 text-slate-300 text-lg">
-                                我們非常重視您的意見和查詢。請通過以下方式與我們聯繫：
-                            </p>
-                            <ul class="space-y-6">
-                                <li class="flex items-start">
-                                    <div class="bg-white/10 p-3 rounded-full mr-4">
-                                        <i class="fas fa-envelope text-primary"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-slate-400">電子郵件</p>
-                                        <a href="mailto:info@hwashine.tw" class="text-lg font-medium hover:text-primary transition-colors">info@hwashine.tw</a>
-                                    </div>
-                                </li>
-                                <li class="flex items-start">
-                                    <div class="bg-white/10 p-3 rounded-full mr-4">
-                                        <i class="fas fa-phone-alt text-primary"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-slate-400">電話</p>
-                                        <a href="tel:0277337581" class="text-lg font-medium hover:text-primary transition-colors">02-77337581</a>
-                                    </div>
-                                </li>
-                                <li class="flex items-start">
-                                    <div class="bg-white/10 p-3 rounded-full mr-4">
-                                        <i class="fas fa-map-marker-alt text-primary"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-slate-400">地址</p>
-                                        <span class="text-lg font-medium">臺北市信義區信義路5段7號37樓</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="relative h-64 md:h-auto bg-slate-700">
-                             <!-- Google Maps Embed -->
-                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.002746876402!2d121.5623506!3d25.0339808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2zMTEw5Y-w5YyX5biC5L-h576p5Y2A5L-h576p6Lev5LqU5q61N-iZnw!5e0!3m2!1szh-TW!2stw!4v1700000000000!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="opacity-90 grayscale hover:grayscale-0 transition-all duration-500"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- === 7. 頁尾 (Footer) === -->
-    <footer class="bg-secondary text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <p class="text-white font-medium text-lg mb-2">© 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
-            </div>
-            <nav class="flex gap-6 text-sm">
-                <a href="/privacy" class="hover:text-white transition-colors">隱私政策</a>
-                <a href="/terms" class="hover:text-white transition-colors">使用條款</a>
-            </nav>
+function getProductCard(p) {
+  let colorHtml = '';
+  
+  if (p.type === 'organic') {
+    colorHtml = `
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: ${p.mass}"> 
+           <div class="color-tag">本色</div>
         </div>
-    </footer>
+        <div class="tint-tone" style="background-color: ${p.tint}"> 
+           <div class="color-tag">沖淡</div>
+        </div>
+      </div>`;
+  } else {
+    const style = p.color.includes('gradient') ? `background:${p.color}` : `background-color:${p.color}`;
+    colorHtml = `
+      <div class="color-display">
+        <div class="color-full" style="${style}"></div>
+      </div>`;
+  }
 
-    <script>
-        // --- 新聞資料 (categories: 'pigment', 'functional', 'tech') ---
-        const newsData = [
-            { date: "2025-12-21", link: "/SG5.html", title: "溶劑綠5 (Solvent Green 5) 綜合技術研究報告", category: "pigment" },
-            { date: "2025-12-21", link: "/SR135.html", title: "溶劑紅135 (Solvent Red 135) 綜合技術研究報告", category: "pigment" },
-            { date: "2025-12-20", link: "/SO60.html", title: "溶劑橙60 (Solvent Orange 60) 技術與應用報告", category: "pigment" },
-            { date: "2025-12-11", link: "/PY191NEWS.html", title: "顏料黃191 (PY191) 耐水耐酸技術解析", category: "pigment" },
-            { date: "2025-12-4", link: "/crystallization.html", title: "半結晶 vs 非結晶塑料特性比較 & MXD6 應用指南", category: "functional" },
-            { date: "2025-12-3", link: "/sudan.html", title: "蘇丹紅(Sudan Red)化學特性、毒理機制與食安風險評估報告", category: "tech" },
-            { date: "2025-12-1", link: "/PFAS.html", title: "顏料黃 154 (PY154) PFAS 替代方案", category: "pigment" },
-            { date: "2025-10-21", link: "/masterbatch-guide.html", title: "色母：定義、功能、限制", category: "functional" },
-            { date: "2025-10-6", link: "/plastic-processing-guide.html", title: "塑膠加工中顏料熱降解的預防與控制精要", category: "tech" },
-            { date: "2025-9-23", link: "/tinctorial-strength.html", title: "有機顏料著色力（Tinctorial Strength）數值詳解", category: "pigment" },
-            { date: "2025-8-1", link: "/mxd6m6400", title: "MXD6 阻氣材料：延長產品保鮮期的最佳選擇", category: "functional" },
-            { date: "2025-8-1", link: "/nl-mxd6", title: "MXD6 高性能工程塑膠新選擇：MXD6 如何滿足您的多樣化需求", category: "functional" },
-            { date: "2025-6-6", link: "/solventdyes", title: "溶劑染料 (Solvent Dyes) 在塑膠著色中的應用：類型、限制與實務考量", category: "pigment" },
-            { date: "2025-4-7", link: "/performance", title: "有機顏料性能與意義", category: "pigment" },
-            { date: "2025-3-4", link: "/pigmentin", title: "有機顏料的使用注意事項與案例分析", category: "pigment" },
-            { date: "2025-3-4", link: "/mxd6", title: "MXD6新品介紹：高性能尼龍材料", category: "functional" },
-            { date: "2025-3-4", link: "/masterbatch", title: "色母（Masterbatch）介紹：市場需求、應用與關鍵選擇", category: "functional" },
-            { date: "2025-3-3", link: "/FWAs", title: "螢光增白劑：種類、性能與應用指南", category: "functional" },
-            { date: "2025-2-7", link: "/concealment", title: "有機顏料的遮蔽性：粒徑大小的關鍵影響", category: "pigment" },
-            { date: "2025-2-5", link: "/PO72new", title: "高性能顏料橙 72（PO72）新品介紹", category: "pigment" },
-            { date: "2024-12-20", link: "/pigment-migration", title: "有機顏料遷移的成因與探討", category: "pigment" },
-            { date: "2024-12-10", link: "/benzidine-pigments", title: "聯苯胺顏料與相關法律規範概述", category: "tech" },
-            { date: "2024-12-5", link: "/fluorescent", title: "認識螢光增白劑", category: "functional" },
-            { date: "2024-11-18", link: "/organic-pigments", title: "什麼是有機顏料？", category: "pigment" },
-            { date: "2024-11-10", link: "/solvent-dyes", title: "認識溶劑染料", category: "pigment" },
-            { date: "2024-10-5", link: "/有機顏料-環保", title: "有機顏料替代重金屬顏料的解決方案", category: "pigment" },
-            { date: "2024-10-5", link: "/顏料目錄", title: "目前顏料主要銷售品種", category: "pigment" }
-        ];
+  const hiddenApps = ["油墨", "塗料", "塑料"];
+  
+  let appTags = '';
+  // 螢光增白劑系列現在可以顯示標籤了，所以移除了舊的判斷限制
+  if (true) { 
+      appTags = p.apps ? p.apps
+        .filter(a => !hiddenApps.includes(a)) 
+         .map(a => {
+            // Check if app is a special link (starts with "link:")
+            if (a.startsWith("link:")) return '';
+            return `<span class="tag highlight">${a}</span>`;
+        })
+        .join('') : '';
+  }
+  
+  let detailsHtml = '';
+  
+  if (p.type === 'organic') {
+      detailsHtml = `
+      <div class="specs-container">
+          <div class="specs-row">
+            <span class="spec-label">綜合性能</span>
+            ${renderBar(p.light, 8, 'light')}
+            <span class="spec-value">${p.light}</span>
+          </div>
+          <div class="specs-row">
+            <span class="spec-label">耐溫</span>
+            ${renderBar(p.heat, 5, 'heat')}
+            <span class="spec-value">${p.heat}</span>
+          </div>
+          <div class="specs-row">
+            <span class="spec-label">成本</span>
+            ${renderBar(p.cost, 5, 'cost')}
+            <span class="spec-value">${p.cost}</span>
+          </div>
+      </div>`;
+  } else {
+      detailsHtml = `<div class="product-desc">${p.desc}</div>`;
+  }
 
-        let currentCategory = 'all';
-        let currentPage = 1;
-        const itemsPerPage = 6;
+  // Interaction Logic: Modal for TPO, Link for others
+  let cardAttribs = `href="${p.link || '#'}" target="_blank"`;
+  
+  // Custom link handling from apps array (e.g., for PR176)
+  if (p.apps) {
+      const customLink = p.apps.find(a => a.startsWith("link:"));
+      if (customLink) {
+          cardAttribs = `href="${customLink.split(':')[1].trim()}" target="_blank"`;
+      }
+  }
+
+  let tagType = 'a';
+  
+  // 修改處：只讓 TPO 使用 Modal，螢光增白劑系列現在走預設的 href 邏輯
+  if (p.code === 'TPO') {
+      tagType = 'div';
+      cardAttribs = `onclick="openModal('${p.code}')"`;
+  }
+
+  return `
+    <${tagType} ${cardAttribs} class="product-card">
+      ${colorHtml}
+      <div class="card-body">
+        <div class="card-header">
+           <span class="product-code">${p.code}</span>
+           <span class="ci-badge">${p.type === 'organic' ? 'Organic' : (p.type === 'fluorescent' ? 'Brightener' : 'Additive')}</span>
+        </div>
+        <div class="product-name">${p.name.replace(p.code, '').trim()}</div>
+        ${detailsHtml}
+        <div class="app-tags">${appTags}</div>
+      </div>
+    </${tagType}>
+  `;
+}
+
+function renderProducts(list) {
+  const grid = document.getElementById('product-grid');
+  if (list.length === 0) {
+      grid.innerHTML = `<div style="text-align:center; grid-column:1/-1; padding:4rem; color:#94a3b8;">
+        <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
+        <div>沒有找到符合條件的產品</div>
+      </div>`;
+  } else {
+      grid.innerHTML = list.map(getProductCard).join('');
+  }
+}
+
+// --- Modal Functions ---
+function openModal(code) {
+    const product = allProducts.find(p => p.code === code);
+    if (!product) return;
+
+    document.getElementById('modal-name').textContent = product.name.replace(product.code, '').trim();
+    document.getElementById('modal-code').textContent = product.code;
+    
+    let contentHtml = '';
+    
+    if (product.details) {
+        contentHtml += `<span class="modal-section-title">產品介紹</span><p>${product.details}</p>`;
+    } else if (product.desc) {
+        contentHtml += `<span class="modal-section-title">產品描述</span><p>${product.desc}</p>`;
+    }
+
+    // Displays Common Uses (usage)
+    if (product.usage && product.usage.length > 0) {
+        contentHtml += `<span class="modal-section-title">常見用途</span><div class="modal-tags">`;
+        product.usage.forEach(u => {
+            contentHtml += `<span class="tag highlight">${u}</span>`;
+        });
+        contentHtml += `</div>`;
+    }
+
+    document.getElementById('modal-content').innerHTML = contentHtml;
+    document.getElementById('product-modal').classList.add('open');
+}
+
+function closeModal(event) {
+    // If event is present (clicked overlay), only close if specific target
+    if (event && event.target.id !== 'product-modal' && !event.target.classList.contains('close-modal-btn')) {
+        return;
+    }
+    document.getElementById('product-modal').classList.remove('open');
+}
+
+// --- Filter Logic ---
+function switchCategory(cat) {
+    currentCategory = cat;
+    
+    const select = document.getElementById('category-select');
+    if(select.value !== cat) select.value = cat;
+
+    const advFilters = document.getElementById('advanced-filters');
+    if(cat === 'other' || cat === 'fluorescent') {
+        advFilters.style.display = 'none';
+    } else {
+        advFilters.style.display = 'flex';
+    }
+    
+    filterProducts();
+}
+
+function filterProducts() {
+  const cat = document.getElementById('category-select').value;
+  const term = document.getElementById('search-input').value.toLowerCase();
+  const color = document.getElementById('color-filter').value;
+  const app = document.getElementById('app-filter').value;
+
+  const filtered = allProducts.filter(p => {
+      if(cat !== 'all' && p.type !== cat) return false;
+      if(term && !(p.code + p.name + p.desc).toLowerCase().includes(term)) return false;
+      if(color && p.cat !== color) return false;
+      if(app && p.apps && !p.apps.includes(app)) return false;
+      return true;
+  });
+  renderProducts(filtered);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initData();
+
+    // --- 新增：網址參數偵測邏輯 ---
+    // 取得網址中的查詢參數
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category'); // 例如 ?category=fluorescent
+
+    if (categoryParam) {
+        // 檢查該類別是否存在於下拉選單中，避免無效參數報錯
+        const select = document.getElementById('category-select');
+        const options = Array.from(select.options).map(opt => opt.value);
         
-        const newsListContainer = document.getElementById('paginated-news-list');
-        const prevButton = document.getElementById('prevPage');
-        const nextButton = document.getElementById('nextPage');
-        const pageIndicator = document.getElementById('page-indicator');
-        const tabs = document.querySelectorAll('.news-tab');
-
-        function getFilteredNews() {
-            if (currentCategory === 'all') {
-                return newsData;
-            }
-            return newsData.filter(item => item.category === currentCategory);
+        if (options.includes(categoryParam)) {
+            // 如果參數有效，直接切換到該類別
+            switchCategory(categoryParam);
+        } else {
+            // 無效參數則顯示預設
+            filterProducts(); 
         }
+    } else {
+        // 無參數時顯示預設
+        filterProducts(); 
+    }
+    // ----------------------------
 
-        function renderNews() {
-            const filteredNews = getFilteredNews();
-            const totalPages = Math.ceil(filteredNews.length / itemsPerPage);
-            
-            if (currentPage > totalPages && totalPages > 0) {
-                currentPage = totalPages;
-            } else if (totalPages === 0) {
-                currentPage = 1;
-            }
-
-            const start = (currentPage - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            const pageItems = filteredNews.slice(start, end);
-
-            newsListContainer.innerHTML = '';
-
-            if (pageItems.length === 0) {
-                newsListContainer.innerHTML = '<div class="text-center text-slate-400 py-10">此分類暫無文章</div>';
-            } else {
-                pageItems.forEach((item, index) => {
-                    let catName = "";
-                    let catColorClass = "bg-slate-100 text-slate-600";
-                    let icon = "fa-tag";
-                    
-                    if(item.category === 'pigment') { catName = "顏料/染料"; catColorClass = "bg-blue-50 text-blue-600 border border-blue-100"; icon="fa-palette"; }
-                    else if(item.category === 'functional') { catName = "機能材料"; catColorClass = "bg-green-50 text-green-600 border border-green-100"; icon="fa-flask"; }
-                    else if(item.category === 'tech') { catName = "技術知識"; catColorClass = "bg-amber-50 text-amber-600 border border-amber-100"; icon="fa-book-open"; }
-
-                    // 加入 style="animation-delay..." 創造 staggered 效果
-                    const newsHtml = `
-                        <a href="${item.link}" style="animation-delay: ${index * 0.05}s" class="animate-fade-in-up group block bg-white p-5 rounded-lg border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
-                            <div class="flex flex-col md:flex-row md:items-center justify-between">
-                                <div class="flex items-start gap-3">
-                                    <span class="mt-0.5 flex-shrink-0 text-xs px-2.5 py-1 rounded-full ${catColorClass} flex items-center gap-1 font-medium">
-                                        <i class="fas ${icon} text-[10px]"></i> ${catName}
-                                    </span>
-                                    <h3 class="text-base font-bold text-slate-700 group-hover:text-primary transition-colors leading-snug">${item.title}</h3>
-                                </div>
-                                <span class="text-sm text-slate-400 mt-2 md:mt-0 whitespace-nowrap md:ml-4 font-mono flex items-center gap-1">
-                                    <i class="far fa-clock text-xs"></i> ${item.date}
-                                </span>
-                            </div>
-                        </a>
-                    `;
-                    newsListContainer.insertAdjacentHTML('beforeend', newsHtml);
-                });
-            }
-
-            pageIndicator.textContent = totalPages > 0 ? `第 ${currentPage} 頁 / 共 ${totalPages} 頁` : `第 1 頁`;
-            prevButton.disabled = currentPage === 1;
-            nextButton.disabled = currentPage === totalPages || totalPages === 0;
-            
-            prevButton.className = `px-4 py-2 rounded border border-slate-300 transition-colors ${currentPage === 1 ? 'bg-slate-50 text-slate-300 cursor-not-allowed' : 'bg-white text-slate-500 hover:bg-slate-50 hover:text-primary'}`;
-            nextButton.className = `px-4 py-2 rounded border border-slate-300 transition-colors ${currentPage === totalPages || totalPages === 0 ? 'bg-slate-50 text-slate-300 cursor-not-allowed' : 'bg-white text-slate-700 hover:bg-slate-50 hover:text-primary'}`;
-        }
-
-        prevButton.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                renderNews();
-                document.getElementById('news').scrollIntoView({behavior: 'smooth'});
-            }
-        });
-
-        nextButton.addEventListener('click', () => {
-            const totalPages = Math.ceil(getFilteredNews().length / itemsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                renderNews();
-                document.getElementById('news').scrollIntoView({behavior: 'smooth'});
-            }
-        });
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                currentCategory = tab.getAttribute('data-category');
-                currentPage = 1;
-                renderNews();
-            });
-        });
-
-        renderNews();
-    </script>
+    document.getElementById('search-button').addEventListener('click', filterProducts);
+    document.getElementById('search-input').addEventListener('keyup', (e) => { if(e.key==='Enter') filterProducts(); });
+    document.getElementById('color-filter').addEventListener('change', filterProducts);
+    document.getElementById('app-filter').addEventListener('change', filterProducts);
+});
+</script>
+<script src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" xintegrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"3e0e168fcc584b3aae69cd7f0b37248e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script><script src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" xintegrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"3e0e168fcc584b3aae69cd7f0b37248e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
