@@ -1,449 +1,780 @@
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>有機顏料著色力（Tinctorial Strength）數值詳解</title>
-  <meta name="description" content="深入了解有機顏料的著色力（Tinctorial Strength）定義、國際測試標準、分子結構關聯、對成本的影響以及在實際應用（如與鈦白粉混用）中的表現。">
-  <meta name="keywords" content="著色力, Tinctorial Strength, 有機顏料, 顏料測試, ISO 787-24, ASTM D2066, Kubelka–Munk, 顏料配方, 鈦白粉, 遮蓋力, 色相穩定性, 分散性">
+  <title>有機顏料著色力差異之綜合研究報告 - 華翔興業</title>
+  <meta name="description" content="從分子結構、晶體堆積到分散工程，全方位解析有機顏料著色力（Tinctorial Strength）差異的物理化學根源。">
   
-  <!-- Open Graph tags -->
-  <meta property="og:title" content="有機顏料著色力（Tinctorial Strength）數值詳解 - 華翔興業">
-  <meta property="og:description" content="深入了解有機顏料的著色力定義、國際測試標準、分子結構關聯、對成本的影響以及在實際應用中的表現。">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="/plastic_containers_still_life.webp">
-  <meta property="og:url" content="https://hwashine.tw/tinctorial-strength.html">
-  
-  <link rel="canonical" href="https://hwashine.tw/tinctorial-strength">
-  
+  <!-- MathJax for rendering equations -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <!-- Google Fonts -->
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700&display=swap');
 
     :root {
-      --primary-color: #2c8cb0;
-      --secondary-color: #1a5f7a;
-      --accent-color: #ff6b6b;
-      --text-color: #333;
-      --bg-color: #f8f9fa;
-      --content-bg-color: #ffffff;
-      --box-shadow-color: rgba(0, 0, 0, 0.1);
+      /* Color Palette - Scientific Blue & Teal */
+      --primary-dark: #0f4c75;
+      --primary: #3282b8;
+      --primary-light: #bbe1fa;
+      --accent: #e07a5f;
+      
+      --text-main: #2d3748;
+      --text-muted: #718096;
+      --bg-body: #f7fafc;
+      --bg-card: #ffffff;
+      
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      
+      --sidebar-width: 280px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Noto Sans TC', Arial, sans-serif;
+      font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.75;
     }
 
-    header {
-      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    /* --- Hero Section --- */
+    .hero-header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #1a365d 100%);
       color: white;
+      padding: 4rem 1.5rem 6rem; /* Extra padding bottom for overlap effect */
       text-align: center;
-      padding: 2rem;
       position: relative;
       overflow: hidden;
     }
 
-    header::before {
+    .hero-header::before {
       content: "";
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-      animation: ripple 15s infinite linear;
-      z-index: 1;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(50, 130, 184, 0.2) 0%, transparent 50%);
     }
 
-    @keyframes ripple {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    .hero-content {
       position: relative;
       z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    nav {
-      background-color: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 0.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    nav ul li {
-      margin: 0.5rem;
-    }
-
-    nav ul li a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-    }
-
-    nav ul li a:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    section {
-      background-color: var(--content-bg-color);
-      border-radius: 8px;
-      box-shadow: 0 4px 6px var(--box-shadow-color);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      transition: transform 0.3s ease;
-    }
-
-    section:hover {
-      transform: translateY(-5px);
-    }
-
-    h2, h3 {
-      color: var(--primary-color);
-      margin-bottom: 1.5rem;
-    }
-
-    p {
+    .hero-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
-    ul {
-      list-style-type: circle;
-      margin-left: 2rem;
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--primary-light);
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    li {
-      margin-bottom: 0.5rem;
+    /* --- Layout Grid --- */
+    .layout-container {
+      max-width: 1200px;
+      margin: -3rem auto 3rem; /* Negative margin to pull up overlapping cards */
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: var(--sidebar-width) 1fr;
+      gap: 2rem;
+      position: relative;
+      z-index: 10;
     }
 
-    li strong {
-      color: var(--secondary-color);
-    }
-
-    .equation {
-      text-align: center;
-      font-style: italic;
-      margin: 1.5rem 0;
-      font-size: 1.1rem;
-    }
-
-    .image-container {
-      text-align: center;
-      margin: 2rem 0;
-    }
-
-    .image-container img {
-      max-width: 80%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .image-container figcaption {
-      margin-top: 0.8rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .highlight {
-      background-color: #e6f7ff; /* Light blue background for emphasis */
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-    }
-
-    .cta-section {
-      text-align: center;
-      margin: 3rem 0;
-      padding: 3rem;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      border-radius: 12px;
-    }
-
-    .cta-section h2 {
-      color: white;
-    }
-
-    .contact-button {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: white;
-      color: var(--primary-color);
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: bold;
-      margin-top: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .contact-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    footer {
-      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      margin-top: 2rem;
-    }
-
-    footer nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-      transition: color 0.3s ease;
-    }
-
-    footer nav a:hover {
-      color: var(--accent-color);
-    }
-
-    #back-to-top {
-      display: none;
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 50px;
-      height: 50px;
-      font-size: 30px;
-      background-color: var(--primary-color);
-      color: white;
-      text-align: center;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 1000;
-      transition: opacity 0.3s ease;
-    }
-
-    #back-to-top.show {
+    /* --- Sidebar Navigation --- */
+    .sidebar {
       display: block;
     }
 
-    /* Responsive Design for Mobile */
-    @media (max-width: 768px) {
-      header {
-        padding: 1.5rem 1rem;
+    .sidebar-sticky {
+      position: sticky;
+      top: 2rem;
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .toc-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .toc-link {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+      border-left: 3px solid transparent;
+    }
+
+    .toc-link:hover {
+      background-color: #f0f4f8;
+      color: var(--primary);
+    }
+
+    .toc-link.active {
+      background-color: #e6fffa;
+      color: var(--primary-dark);
+      border-left-color: var(--primary);
+      font-weight: 500;
+    }
+
+    /* --- Main Content Area --- */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Card Styling */
+    section.card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    /* Section Headings inside Cards */
+    h2 {
+      color: var(--primary-dark);
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.75rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--primary-light);
+      display: flex;
+      align-items: center;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 24px;
+      background-color: var(--accent);
+      margin-right: 12px;
+      border-radius: 4px;
+    }
+
+    h3 {
+      color: var(--primary);
+      font-size: 1.35rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    h4 {
+      color: var(--text-main);
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      color: #4a5568;
+    }
+
+    /* --- Equation Box --- */
+    .equation-box {
+      background-color: #f8fbff;
+      border: 1px solid #e1ecf4;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      overflow-x: auto;
+      font-size: 1.1rem;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    /* --- Highlight Box --- */
+    .highlight-box {
+      background: linear-gradient(to right, #fffaf0, #fff);
+      border: 1px solid #feeebc;
+      border-left: 4px solid #ed8936;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .highlight-box h4 {
+      color: #c05621;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .highlight-box h4::before {
+      content: '💡';
+      margin-right: 8px;
+    }
+
+    /* --- Tables --- */
+    .table-responsive {
+      overflow-x: auto;
+      margin: 2rem 0;
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      font-size: 0.95rem;
+    }
+
+    th {
+      background-color: var(--primary-dark);
+      color: white;
+      font-weight: 500;
+      text-align: left;
+      padding: 1rem;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    tr:hover {
+      background-color: #e6fffa;
+    }
+
+    caption {
+      caption-side: top;
+      text-align: left;
+      font-weight: 700;
+      padding-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    /* --- CTA Elements (Marketing) --- */
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(224, 122, 95, 0.3);
+      border: 2px solid transparent;
+      text-align: center;
+    }
+
+    .cta-button:hover {
+      background-color: #d06045;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(224, 122, 95, 0.4);
+    }
+
+    /* Sidebar CTA */
+    .sidebar-cta {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed var(--border-color);
+      text-align: center;
+    }
+
+    .sidebar-cta h4 {
+      color: var(--primary-dark);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      margin-top: 0;
+      font-weight: 700;
+    }
+
+    .sidebar-cta p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .sidebar-cta .cta-button {
+      width: 100%;
+      font-size: 0.95rem;
+    }
+
+    /* Main Bottom CTA Section */
+    .main-cta-section {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-cta-section::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 0.5; }
+    }
+
+    .main-cta-section h2 {
+      color: white;
+      border-bottom: none;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 2.2rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .main-cta-section h2::before {
+      display: none;
+    }
+
+    .main-cta-section p {
+      color: var(--primary-light);
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .main-cta-section .cta-button {
+      background-color: white;
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      padding: 1rem 3rem;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .main-cta-section .cta-button:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    /* --- Footer --- */
+    .site-footer {
+      background-color: var(--primary-dark);
+      color: var(--primary-light);
+      text-align: center;
+      padding: 3rem 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .site-footer a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255,255,255,0.3);
+      transition: all 0.2s;
+    }
+
+    .site-footer a:hover {
+      border-bottom-style: solid;
+      color: var(--accent);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 900px) {
+      .layout-container {
+        grid-template-columns: 1fr;
+        margin-top: -2rem;
       }
-      header h1 {
+
+      .hero-title {
         font-size: 2rem;
       }
-      nav ul {
+
+      .sidebar {
+        display: none; /* Hide sidebar on mobile for simplicity, or convert to collapsible */
       }
-      nav ul li {
-        margin: 0.5rem 0.25rem;
+      
+      /* Mobile TOC (optional: could be a dropdown) */
+      .mobile-toc {
+        display: block;
+        background: white;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
       }
-      main {
-        margin: 1rem auto;
-      }
-      section {
+
+      section.card {
         padding: 1.5rem;
-        margin-bottom: 1.5rem;
-      }
-      ul {
-        margin-left: 1.5rem;
-      }
-      .equation {
-        font-size: 1rem;
-        word-wrap: break-word;
-      }
-      .cta-section {
-        padding: 2rem 1.5rem;
-      }
-      .contact-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
-      }
-      #back-to-top {
-        width: 40px;
-        height: 40px;
-        font-size: 24px;
-        line-height: 40px;
-        bottom: 20px;
-        right: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>有機顏料著色力（Tinctorial Strength）數值詳解</h1>
-    <p>深入探索顏料色彩表現的關鍵指標</p>
+
+  <!-- Hero Section -->
+  <header class="hero-header">
+    <div class="hero-content">
+      <h1 class="hero-title">有機顏料著色力差異之綜合研究報告</h1>
+      <p class="hero-subtitle">從分子結構、晶體堆積到分散工程，全方位解析色彩強度的物理化學根源</p>
+    </div>
   </header>
 
-  <nav>
-  <ul>
-    <li><a href="/">首頁</a></li>
-    <li><a href="/about">關於我們</a></li>
-    <li><a href="/products">產品</a></li>
-    <li><a href="/contact">聯絡我們</a></li>
-  </ul>
-</nav>
+  <!-- Layout Container -->
+  <div class="layout-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-sticky">
+        <div class="toc-title">目錄導航</div>
+        <ul class="toc-list">
+          <li><a href="#summary" class="toc-link">1. 摘要與引言</a></li>
+          <li><a href="#physics" class="toc-link">2. 物理光學基礎</a></li>
+          <li><a href="#molecular" class="toc-link">3. 分子結構解析</a></li>
+          <li><a href="#solid-state" class="toc-link">4. 固態物理層級</a></li>
+          <li><a href="#dispersion" class="toc-link">5. 顆粒工程與分散</a></li>
+          <li><a href="#comparison" class="toc-link">6. 顏料比較分析</a></li>
+          <li><a href="#measurement" class="toc-link">7. 測量標準</a></li>
+          <li><a href="#conclusion" class="toc-link">8. 結論與展望</a></li>
+        </ul>
 
-  <main>
-    <section id="introduction">
-      <h2>著色力（Tinctorial Strength）是什麼？</h2>
-      <p>
-        <strong>著色力（Tinctorial Strength）</strong>是衡量顏料給予基底顏色能力的指標。ISO 標準將其定義為「能吸收入射光線，從而使白色塗層產生著色或變暗的能力」；簡言之，著色力即顏料使被著色物體呈現色彩的能力。實際上，著色力反映的是顏料對光線的吸收和散射綜合效果（以吸收為主），吸收的表面積越大則著色力越高。在配方設計上，著色力決定了相同色深下所需顏料用量：著色力越大，所需添加量越少，有利於降低配方成本。因此，著色力不僅是品質控制和色彩管理的重要參數，也是優化成本和配色效率的關鍵指標。
-      </p>
-    </section>
+        <!-- Sidebar Marketing CTA -->
+        <div class="sidebar-cta">
+          <h4>尋找高品質有機顏料？</h4>
+          <p>華翔興業提供專業的顏料解決方案，滿足您對著色力與穩定性的嚴苛要求。</p>
+          <a href="https://hwashine.tw/" target="_blank" class="cta-button">前往華翔官網</a>
+        </div>
+      </div>
+    </aside>
 
-    <section id="testing-standards">
-      <h2>著色力的國際測試標準與方法</h2>
-      <p>
-        常見的著色力測試方法分為目視比色法與儀器光譜法兩類。目視比色法通常將待測顏料與標準樣品（或白色基底）按一定配比分散後，通過人眼或比色板配色，以達到相同色調時所需用量比值來計算相對著色力。儀器光譜法則採用分光光度儀測量混合物的反射光譜，利用 Kubelka–Munk 理論計算吸收散射比（K/S 值），再求比值得出著色力。
-      </p>
-      <p>
-        國際上規範此類測試的標準包括：
-      </p>
-      <ul>
-        <li><span class="highlight">ISO 787-24</span>（及其等效的DIN EN 13300）規定了對比試樣法：將相同質量的測試顏料和參考顏料各拌於相同質量的白色基漿中，測量兩者在最大吸收波長處的反射率，然後由相應的 K/S 值計算相對著色力。</li>
-        <li><span class="highlight">ASTM D2066</span> 規定了印刷油墨膏體的相對著色力測試（目視或儀器）。</li>
-        <li><span class="highlight">ASTM D6531</span> 則適用於水性油墨。</li>
-        <li>對於塗料，可參考 <span class="highlight">ASTM E308</span>、<span class="highlight">ASTM D387</span> 等規範（利用研磨機混合樣品），或 <span class="highlight">ISO 2814/ISO 2813</span> 等標準。</li>
-      </ul>
-      <p>
-        專業資料指出：塗料顏料常用方法包括 ASTM E308、ASTM D387、ISO 787 等；油墨類則可採用 ASTM D6531、D2066 等。具體操作上，可大致分為：調配一定比例的有色顏料與白色填料（如鈦白粉）混懸液，利用分光光度計測量反射率 R，再按Kubelka–Munk公式 <span class="equation">$K/S=(1-R)^2/2R$</span> 計算各樣本的 K/S 值，由公式 <span class="equation">$相對著色力 = (K/S)_{測試樣品} / (K/S)_{標準樣品} \times 100\%$</span> 求得相對著色力。需注意不同標準間對光源、波長、試樣製備和儀器條件可能有要求差異，實驗時應嚴格參照相應標準操作。
-      </p>
-    </section>
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Section 1 -->
+      <section id="summary" class="card">
+        <h2>1. 執行摘要與引言</h2>
+        <h3>1.1 研究背景與目的</h3>
+        <p>在現代色彩工業中，有機顏料（Organic Pigments）因其卓越的色相飽和度、廣泛的色域覆蓋以及相對較高的透明度，已成為塗料、油墨、塑料及高性能材料領域的核心著色劑。與無機顏料相比，有機顏料通常展現出更高的「著色力」（Tinctorial Strength），即在單位質量下改變介質顏色的能力。</p>
+        <p>本報告旨在深入探討並解析造成不同有機顏料著色力強弱的根本原因。研究範疇不僅限於宏觀的物理測量，更將深入至微觀的分子電子結構、介觀的晶體堆積效應（Crystallochromy）以及宏觀的分散工程學。</p>
+        
+        <h3>1.2 著色力的工業定義與經濟意義</h3>
+        <p>著色力是衡量顏料經濟價值最關鍵的指標之一。高著色力意味著在達到目標色深（Depth of Shade）時，所需的顏料用量更少，這直接降低了配方成本。在工業標準（如 ASTM D2745）中，相對著色力公式如下：</p>
+        <div class="equation-box">
+          $$TS_{rel} (\%) = \frac{(K/S)_{sample}}{(K/S)_{standard}} \times 100$$
+        </div>
+        <p>此公式揭示了著色力的物理本質：它是由顏料的吸收係數（$K$）與散射係數（$S$）之比決定的光學屬性。</p>
+      </section>
 
-    <section id="molecular-structure">
-      <h2>有機顏料著色力的差異與分子結構關聯</h2>
-      <p>
-        有機顏料因化學結構不同而表現出顯著的著色力差異。共軛結構與平面性是提升著色力的關鍵因素：分子內共軛雙鍵系統愈長、給/取電子取代基愈多，π電子的遷移能力增強，吸收波長向長波移動（紅移或加深效應），因此色彩更加飽滿、著色力更高；同時，分子平面性越強、對稱性越好，有利於光吸收，分子摩爾消光係數更高，呈現出更高的著色強度。例如，改變黃系偶氮顏料結構，增加偶氮基團數量可延長共軛鏈，顯著提高分子消光係數和著色力。
-      </p>
-      <p>
-        此外，有機顏料通常可通過精製和分散助劑處理達到粒徑均一，使得吸光更強、顏色鮮豔；在實際應用中，許多品種（如銅酞菁藍、銅酞菁綠、異吲哚啉酮、喹吖啶酮、苯並咪唑酮偶氮等）由於高度共軛和良好的結晶性，其著色力往往遠超傳統無機顏料。
-      </p>
-      <p>
-        顏料黃180是一種雙偶氮苯並咪唑酮類綠黃色顏料，具有良好的耐溶劑性、耐光性和著色力，廣泛用於油墨和塑膠行業。其例證了上文結論：化學結構中的胺基偶氮鏈和苯並咪唑酮構造提供了強吸光能力，使得該顏料在塑料和油墨中的著色力突出。總體而言，有機顏料因富含共軛發色團，對可見光吸收範圍廣且可高度純化，其著色力通常比無機顏料高出數倍至數十倍。
-      </p>
-    </section>
+      <!-- Section 2 -->
+      <section id="physics" class="card">
+        <h2>2. 著色力的物理光學基礎</h2>
+        <p>有機顏料的著色力並非單一屬性，而是光子在不均勻介質中傳輸、吸收與散射的綜合結果。</p>
 
-    <section id="cost-impact">
-      <h2>著色力對配方成本與使用量的影響</h2>
-      <p>
-        著色力直接影響配方中顏料的用量及成本。著色力越高，在達到相同色深時需要用量越少，從而降低原料消耗和成本。例如，同質量分數的彩色有機顏料和彩色無機顏料配入塗料時，有機顏料往往展現出更高的著色效果；要達到相同的著色強度，使用的有機顏料量比無機要少。
-      </p>
-      <p>
-        因此，在配方設計中，一般優先選擇著色力高的有機顏料，既可減少添加量，也可降低加工能耗（研磨作業較少）。不過也要考慮顏料單價：某些高性能有機顏料價格昂貴，需要在着色力提升與成本之間權衡。綜合來看，著色力的優化能有效提高配色效率，降低配方成本，是油漆、塑料、油墨等行業配方設計中的重要指標。
-      </p>
-    </section>
+        <h3>2.1 Kubelka-Munk 理論：吸收與散射的博弈</h3>
+        <p>Kubelka-Munk (K-M) 理論是描述塗層與著色材料光學行為的基石。對於不透明的沖淡色漆膜，反射率 $R_\infty$ 與吸收係數 $K$ 及散射係數 $S$ 的關係由著名的 K-M 方程給出：</p>
+        <div class="equation-box">
+          $$\frac{K}{S} = \frac{(1 - R_\infty)^2}{2R_\infty}$$
+        </div>
+        <div class="highlight-box">
+          <h4>關鍵洞察：K 值的來源</h4>
+          <p>在沖淡體系中，有機顏料主要貢獻吸收係數 ($K$)。$K$ 值取決於兩個因素：</p>
+          <ul>
+            <li><strong>分子層級：</strong>單個分子的光子捕獲截面（由摩爾消光係數 $\varepsilon$ 決定）。</li>
+            <li><strong>聚集態層級：</strong>單位體積內有效參與光吸收的分子數量及排列方式。</li>
+          </ul>
+        </div>
 
-    <section id="titanium-dioxide">
-      <h2>著色力在實際應用中的表現：與鈦白粉混用情況</h2>
-      <p>
-        在實際著色中，往往將有機顏料與鈦白粉（TiO₂）等白色顏料共同使用，以提高遮蓋力和調整色相。鈦白粉具有極高的消色力（即將顏色稀釋成白色的能力），其強散射特性大幅提升塗層不透明度。然而，同時也會「稀釋」有機顏料的顏色效果：在固定的油漆體系中加入大量鈦白粉後，原有顏料的顏色強度會下降，需要適當增加有機顏料用量才能達到預期色彩。一般彩色無機顏料（高折射率）與基材形成涂膜時的遮蓋力遠大於彩色有機顏料。
-      </p>
-      <p>
-        這意味著在配方中加入鈦白粉可以顯著提高遮蓋力，但過量則可能導致色彩偏淡、色相漂白，且降低了有機顏料的實際著色率。因此，調配時需平衡好有機顏料與鈦白粉的比重，避免過度稀釋導致色偏或飽和度不足。同時要注意控制顏料的總體體積濃度（CPVC），以防止配方中樹脂用量不足、塗膜脆化等問題。總的來說，與鈦白粉混用時，必須關注複配後的遮蓋力和色彩表現，合理選擇鈦白粉種類（銳鈦型或金紅石型）及用量，以兼顧遮蓋和色彩飽和度。
-      </p>
-    </section>
+        <h3>2.2 Mie 散射理論：粒徑與光學截面</h3>
+        <p>根據 Gustav Mie 的理論，著色力與粒徑（$D$）呈現出非單調的複雜關係。當粒徑減小至納米尺度（< 0.1 $\mu m$）時，顆粒進入類瑞利區，光線能穿透整個顆粒，獲得最大的 $K$ 值和著色力。</p>
 
-    <section id="diluted-performance">
-      <h2>稀釋後性能的重點：遮蓋力、色相穩定性與分散性</h2>
-      <p>
-        在實際塗料、塑料或油墨中，顏料均為低濃度分散體，此時需關注遮蓋力、色相穩定性與分散性等稀釋後性能。
-      </p>
-      <ul>
-        <li><strong>遮蓋力：</strong>指顏料在薄膜中阻擋底色的能力，通常由散射決定。一般而言，彩色有機顏料的遮蓋力不如無機顏料（因折射率較低），因此即使著色力很高，也可能需要搭配遮蓋力強的填料或使用多層塗佈才能達到理想遮蓋。</li>
-        <li><strong>色相穩定性：</strong>有機顏料對環境敏感：某些品種在稀釋和加工過程中可能發生晶型轉變或化學反應，導致色相漂移。例如文獻指出，顏料紅48:2在高溫下色相會增藍，而α相銅酞菁受熱可轉變為β型，使顏料由紅藍轉為綠藍。因此，實驗或生產條件（如溫度、pH、溶劑等）均可能影響著色劑的最終色相。</li>
-        <li><strong>分散性：</strong>決定顏料能否均勻分布於體系中並長期穩定懸浮。良好分散的顏料顆粒細小、表面處理優異，易被研磨和懸浮，其色層色相均勻且持久；反之，易聚集沉降的顏料會造成顏色不均和性能下降。因此，在塗料和油墨生產中，選擇合適的分散助劑、控制顆粒粒徑並進行表面處理等措施非常重要，以確保稀釋態下顏料的顏色均勻性與穩定性。</li>
-      </ul>
-      <p>
-        綜上所述，研究顏料的著色力時，除了關注原粉的色彩強度外，更應重視其稀釋後在基料中的遮蓋表現、色相維持與分散穩定性，以保證最終產品的質量和顏色效果。
-      </p>
-    </section>
+        <div class="table-responsive">
+          <table>
+            <caption>表 2.1：粒徑對光學性能的影響趨勢</caption>
+            <thead>
+              <tr>
+                <th>粒徑範圍</th>
+                <th>主要光學機制</th>
+                <th>著色力 (Tinting Strength)</th>
+                <th>透明度 (Transparency)</th>
+                <th>遮蓋力 (Opacity)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>粗顆粒 (> 1.0 $\mu m$)</td>
+                <td>幾何反射/吸收</td>
+                <td>低 (Low)</td>
+                <td>低 (Low)</td>
+                <td>中等</td>
+              </tr>
+              <tr>
+                <td>中等顆粒 (0.2 - 0.5 $\mu m$)</td>
+                <td>Mie 散射</td>
+                <td>中等 (Medium)</td>
+                <td>中等</td>
+                <td>高 (Maximum)</td>
+              </tr>
+              <tr>
+                <td>細顆粒 (< 0.1 $\mu m$)</td>
+                <td>吸收/瑞利散射</td>
+                <td>極高 (Maximum)</td>
+                <td>極高 (Maximum)</td>
+                <td>低 (Low)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    <section id="references">
-      <h2>參考資料</h2>
-      <p>依據最新文獻和標準（如ISO 787系列、ASTM D2066/D6531等）進行整理和說明。</p>
-    </section>
+      <!-- Section 3 -->
+      <section id="molecular" class="card">
+        <h2>3. 分子層級：化學結構的決定性作用</h2>
+        <p>有機顏料著色力的根本來源在於其分子結構。為什麼銅酞菁的著色力遠高於某些單偶氮顏料？答案在於其摩爾消光係數（$\varepsilon$）。</p>
 
-    <section class="cta-section">
-      <h2>尋找高品質有機顏料或技術諮詢？</h2>
-      <p>歡迎聯繫華翔，我們將提供最專業的諮詢與技術支援！</p>
-      <a href="/contact" class="contact-button">聯繫我們</a>
-    </section>
-  </main>
+        <h3>3.1 發色團與共軛體系的電子躍遷</h3>
+        <p>根據分子軌道理論，能隙（Energy Gap, $\Delta E$）決定了躍遷概率：</p>
+        <div class="equation-box">
+          $$\Delta E = E_{LUMO} - E_{HOMO} = \frac{hc}{\lambda_{max}}$$
+        </div>
+        <p>隨著共軛雙鍵數量的增加，吸收強度顯著增加（增色效應）。</p>
+        <p><strong>酞菁系（Phthalocyanines）的結構優勢：</strong>銅酞菁（CuPc）分子形成一個巨大的 18-$\pi$ 電子芳香族大環體系。這種高度對稱且完全平面的結構，使得電子雲高度離域，產生了極高的摩爾消光係數（$\varepsilon > 10^5 L \cdot mol^{-1} \cdot cm^{-1}$）。</p>
+      </section>
 
-  <footer>
-    <p>&copy; 2024 華翔興業有限公司 版權所有</p>
-    <nav>
-      <a href="/privacy">隱私政策</a> |
-      <a href="/terms">使用條款</a>
-    </nav>
+      <!-- Section 4 -->
+      <section id="solid-state" class="card">
+        <h2>4. 固態物理層級：晶體堆積與激子耦合</h2>
+        <p>有機顏料在應用中以固體微晶形式存在，<strong>晶體工程（Crystal Engineering）</strong>對著色力的影響甚至超過分子結構本身。</p>
+
+        <h3>4.1 激子耦合理論 (Exciton Coupling Theory)</h3>
+        <p>當顏料分子在晶格中緊密堆積時，相鄰分子的躍遷偶極矩會發生靜電相互作用：</p>
+        <ul>
+          <li><strong>J-聚集體 (Head-to-tail)：</strong>導致吸收峰紅移（J-band）且吸收係數顯著增強（超輻射現象）。若顏料晶體結構促進 J-聚集，其著色力會顯著高於單分子狀態。</li>
+          <li><strong>H-聚集體 (Face-to-face)：</strong>導致吸收峰藍移（H-band）且吸收強度可能降低。</li>
+        </ul>
+
+        <h3>4.2 案例：銅酞菁的多晶型</h3>
+        <p>銅酞菁（PB15）的 $\alpha$ 型（紅光藍）通常比 $\beta$ 型（綠光藍）具有更高的著色力（高出約 20-40%）。這與 $\alpha$ 型晶體堆積中較小的 Cu-Cu 間距（~3.8 Å）有關，更有利於激子耦合增強吸收。</p>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="dispersion" class="card">
+        <h2>5. 顆粒工程與分散科學</h2>
+        <p>即便一個顏料分子具有極高的消光係數，如果無法分散成足夠細小的顆粒，其著色力也無法體現。</p>
+
+        <h3>5.1 比表面積 (SSA) 與著色力</h3>
+        <p>著色力與比表面積呈正相關。比表面積越大（粒徑越小），著色力越高：</p>
+        <div class="equation-box">
+          $$TS \propto \frac{1}{d} \propto SSA$$
+        </div>
+
+        <h3>5.2 分散過程的影響矩陣</h3>
+        <p>值得注意的是，<strong>過度研磨</strong>可能導致晶格破壞（非晶化），使吸收峰變寬且強度下降，導致色光變暗，著色力反而下降。</p>
+
+        <div class="table-responsive">
+          <table>
+            <caption>表 5.1：分散狀態對著色力的影響</caption>
+            <thead>
+              <tr>
+                <th>分散狀態</th>
+                <th>粒徑特徵</th>
+                <th>光學表現</th>
+                <th>著色力評價</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>團聚</strong> (Agglomerated)</td>
+                <td>大 (> 5 $\mu m$)</td>
+                <td>光無法穿透，散射為主</td>
+                <td>極低</td>
+              </tr>
+              <tr>
+                <td><strong>最佳分散</strong> (Deflocculated)</td>
+                <td>初級粒子 (0.05-0.2 $\mu m$)</td>
+                <td>光完全穿透，最大吸收</td>
+                <td>極高 (100% 潛力)</td>
+              </tr>
+              <tr>
+                <td><strong>絮凝</strong> (Flocculated)</td>
+                <td>鬆散簇團 (1-10 $\mu m$)</td>
+                <td>有效面積減少，光路受阻</td>
+                <td>中低 (損失 20-40%)</td>
+              </tr>
+              <tr>
+                <td><strong>過度研磨</strong> (Over-ground)</td>
+                <td>極小但非晶化</td>
+                <td>晶格缺陷多，吸收峰鈍化</td>
+                <td>下降，色相變暗</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="comparison" class="card">
+        <h2>6. 不同化學類別顏料比較分析</h2>
+        
+        <div class="table-responsive">
+          <table>
+            <caption>表 6.1：主要有機顏料著色力與物理性質比較</caption>
+            <thead>
+              <tr>
+                <th>顏料家族</th>
+                <th>典型比重</th>
+                <th>著色力指數</th>
+                <th>透明度</th>
+                <th>主要影響因素</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Phthalocyanine Blue</strong> (PB 15:3)</td>
+                <td>1.62</td>
+                <td>100 (基準-極強)</td>
+                <td>高</td>
+                <td>大共軛環，納米粒徑</td>
+              </tr>
+              <tr>
+                <td><strong>Quinacridone Magenta</strong> (PR 122)</td>
+                <td>1.45</td>
+                <td>~85-95</td>
+                <td>極高</td>
+                <td>氫鍵堆積，高透明度</td>
+              </tr>
+              <tr>
+                <td><strong>Disazo Yellow</strong> (PY 83)</td>
+                <td>1.50</td>
+                <td>~60-80</td>
+                <td>高</td>
+                <td>雙發色團密度</td>
+              </tr>
+              <tr>
+                <td><strong>Naphthol Red</strong> (PR 112)</td>
+                <td>1.40</td>
+                <td>~70</td>
+                <td>半透明</td>
+                <td>單偶氮結構</td>
+              </tr>
+              <tr>
+                <td><strong>Inorganic Iron Oxide</strong> (PR 101)</td>
+                <td>5.00</td>
+                <td>~10-15</td>
+                <td>不透明</td>
+                <td>散射為主，密度大</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 7 & 8 -->
+      <section id="measurement" class="card">
+        <h2>7. 測量標準與誤差</h2>
+        <p>在科學分析中，必須認識到「測量值」受測試方法的影響。<strong>稀釋比影響：</strong>在高稀釋比（如 1:100）下，有機顏料顆粒被白顏料充分隔離，更能反映其內在的吸收能力（$K$ 值）。在低稀釋比下，有機顏料自身的散射和聚集可能干擾結果。</p>
+      </section>
+
+      <section id="conclusion" class="card">
+        <h2>8. 結論與展望</h2>
+        <p>綜合分析，不同有機顏料著色力強弱的原因歸納為四個層次：</p>
+        <ol>
+          <li><strong>分子基因：</strong>著色力的上限，由共軛體系與消光係數決定。</li>
+          <li><strong>晶體調控：</strong>著色力的放大器，晶體堆積若誘導 J-聚集可顯著增強吸收。</li>
+          <li><strong>幾何形態：</strong>著色力的物理基礎，粒徑越小著色力越高。</li>
+          <li><strong>工藝實現：</strong>著色力的實際體現，依賴高效的潤濕與空間位阻穩定。</li>
+        </ol>
+        <p><strong>展望：</strong>未來的有機顏料研發將更多轉向晶體工程與表面處理，通過精確控制分子排列及開發新型超分散劑，進一步突破著色力的極限。</p>
+      </section>
+
+      <!-- Bottom Marketing CTA Section -->
+      <section class="main-cta-section">
+        <h2>需要專業的顏料技術支持？</h2>
+        <p>無論是高著色力有機顏料，還是特殊的應用需求，華翔興業都是您最值得信賴的合作夥伴。</p>
+        <a href="https://hwashine.tw/" target="_blank" class="cta-button">立即訪問官網諮詢</a>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; 2024 <a href="https://hwashine.tw/" target="_blank">華翔興業有限公司</a> | <a href="https://hwashine.tw/contact" target="_blank">聯絡我們</a></p>
+    <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.7;">本報告內容基於當前科學理論整理，僅供學術與技術參考。</p>
   </footer>
 
-  <div id="back-to-top">&#8679;</div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      const sections = document.querySelectorAll('section');
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, observerOptions);
-
-      sections.forEach(section => {
-        section.style.opacity = 0;
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(section);
-      });
-
-      const backToTopButton = document.getElementById('back-to-top');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopButton.classList.add('show');
-        } else {
-          backToTopButton.classList.remove('show');
-        }
-      });
-
-      backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
-  </script>
 </body>
 </html>
