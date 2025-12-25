@@ -62,6 +62,7 @@
             font-family: 'Noto Sans TC', sans-serif;
             color: #334155; /* Slate 700 */
             line-height: 1.8;
+            -webkit-tap-highlight-color: transparent; /* 移除手機點擊高亮 */
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Noto Serif TC', serif;
@@ -88,9 +89,15 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 2rem 0;
+            margin: 0;
             font-size: 0.95rem;
+            white-space: nowrap; /* 手機版表格不換行，強制橫向捲動 */
         }
+        /* Mobile optimize table text wrap for description column if needed, but nowrap is usually better for data comparison */
+        @media (min-width: 768px) {
+            table { white-space: normal; }
+        }
+
         th, td {
             border: 1px solid #e2e8f0;
             padding: 0.75rem 1rem;
@@ -104,16 +111,23 @@
         tr:nth-child(even) {
             background-color: #f8fafc;
         }
-        /* Mobile Menu */
+        
+        /* Mobile Menu Transitions */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+            z-index: 100; /* Ensure high z-index on mobile */
+        }
         @media (max-width: 1024px) {
             #sidebar {
                 transform: translateX(-100%);
-                transition: transform 0.3s ease-in-out;
+                width: 85%; /* Slightly wider on mobile for better readability */
+                max-width: 320px;
             }
             #sidebar.open {
                 transform: translateX(0);
             }
         }
+        
         /* Custom Scrollbar for Sidebar */
         #sidebar-content::-webkit-scrollbar {
             width: 6px;
@@ -139,227 +153,248 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+        
+        /* Scroll Margin for sections to clear fixed header */
+        section {
+            scroll-margin-top: 5rem;
+        }
     </style>
 </head>
 <body class="bg-gray-50 relative">
 
-    <!-- Mobile Header -->
-    <header class="lg:hidden fixed top-0 left-0 w-full bg-white shadow-md z-50 h-16 flex items-center px-4 justify-between">
+    <!-- Mobile Header (Sticky & Optimized) -->
+    <header class="lg:hidden fixed top-0 left-0 w-full bg-white shadow-sm z-50 h-14 flex items-center px-4 justify-between border-b border-gray-100">
         <div class="flex items-center">
              <!-- Mobile Home Link -->
-            <a href="https://hwashine.tw/" class="text-blue-900 font-serif font-bold text-lg truncate mr-2 flex items-center gap-1">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                華翔興業有限公司
+            <a href="https://hwashine.tw/" class="text-blue-900 font-serif font-bold text-base flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                華翔興業
             </a>
         </div>
         
-        <div class="flex items-center gap-3">
-             <!-- Mobile Contact Button -->
-            <a href="https://hwashine.tw/contact" class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full font-medium hover:bg-blue-700 transition">
-                聯絡我們
-            </a>
-            <button id="menu-btn" class="text-slate-600 focus:outline-none p-1">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <div class="flex items-center gap-2">
+            <!-- Mobile TOC Toggle Button (More Explicit) -->
+            <button id="menu-btn" class="flex items-center gap-1 text-slate-700 bg-slate-100 px-3 py-1.5 rounded-md text-sm font-medium hover:bg-slate-200 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+                文章目錄
             </button>
         </div>
     </header>
 
     <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden backdrop-blur-sm transition-opacity"></div>
 
-    <div class="flex max-w-7xl mx-auto pt-16 lg:pt-0">
+    <div class="flex max-w-7xl mx-auto pt-14 lg:pt-0">
         
         <!-- Sidebar Navigation -->
-        <aside id="sidebar" class="fixed lg:sticky top-0 left-0 h-screen w-72 bg-white border-r border-gray-200 z-50 flex flex-col shadow-lg lg:shadow-none">
-            <div class="p-6 border-b border-gray-100 bg-slate-50">
-                <div class="text-xs font-bold text-blue-600 tracking-wider uppercase mb-2">Technical Guide</div>
-                <h2 class="text-xl font-bold font-serif text-slate-900 leading-tight mb-4">華翔興業有限公司<br>顏料應用指南</h2>
-                
-                <!-- Primary Navigation Buttons (Desktop Sidebar) -->
-                <div class="flex flex-col gap-2 mb-2">
-                    <a href="https://hwashine.tw/" class="cta-btn flex items-center justify-center w-full px-4 py-2 bg-white border-2 border-blue-600 text-blue-600 rounded-md font-semibold text-sm hover:bg-blue-50">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                        訪問官網首頁
+        <aside id="sidebar" class="fixed lg:sticky top-0 left-0 h-screen w-72 bg-white border-r border-gray-200 flex flex-col shadow-2xl lg:shadow-none">
+            <!-- Sidebar Header -->
+            <div class="p-5 border-b border-gray-100 bg-slate-50 flex justify-between items-start">
+                <div>
+                    <div class="text-[10px] font-bold text-blue-600 tracking-wider uppercase mb-1">Technical Guide</div>
+                    <h2 class="text-lg font-bold font-serif text-slate-900 leading-tight">華翔興業有限公司<br>顏料應用指南</h2>
+                </div>
+                <!-- Close Button (Mobile Only) -->
+                <button id="close-sidebar" class="lg:hidden text-slate-400 hover:text-slate-600 p-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Primary Navigation (Desktop & Mobile) -->
+            <div class="px-5 pt-4 pb-2 border-b border-gray-100">
+                <div class="grid grid-cols-2 gap-2">
+                    <a href="https://hwashine.tw/" class="flex items-center justify-center px-2 py-2 bg-white border border-slate-300 text-slate-700 rounded text-xs font-semibold hover:bg-slate-50">
+                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        回首頁
                     </a>
-                    <a href="https://hwashine.tw/contact" class="cta-btn flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-md font-semibold text-sm hover:bg-blue-700 shadow-sm">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <a href="https://hwashine.tw/contact" class="flex items-center justify-center px-2 py-2 bg-blue-600 text-white rounded text-xs font-semibold hover:bg-blue-700">
+                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         聯絡諮詢
                     </a>
                 </div>
             </div>
             
-            <nav id="sidebar-content" class="flex-1 overflow-y-auto p-4 space-y-1">
-                <div class="px-4 py-2 text-xs font-semibold text-gray-400 uppercase">文章目錄</div>
-                <a href="#intro" class="nav-link block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-r-md border-l-4 border-transparent transition-colors">1. 緒論：定義與範疇</a>
-                <a href="#quantum" class="nav-link block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-r-md border-l-4 border-transparent transition-colors">2. 顯色機制與光學原理</a>
-                <a href="#classification" class="nav-link block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-r-md border-l-4 border-transparent transition-colors">3. 化學分類與結構特點</a>
-                <a href="#solid-state" class="nav-link block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-r-md border-l-4 border-transparent transition-colors">4. 固態物理與晶體工程</a>
-                <a href="#manufacturing" class="nav-link block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-r-md border-l-4 border-transparent transition-colors">5. 製造與顏料化處理</a>
-                <a href="#dispersion" class="nav-link block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-r-md border-l-4 border-transparent transition-colors">6. 分散技術關鍵</a>
-                <a href="#applications" class="nav-link block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-r-md border-l-4 border-transparent transition-colors">7. 市場應用分析</a>
-                <a href="#regulations" class="nav-link block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-r-md border-l-4 border-transparent transition-colors">8. 法規監管與合規</a>
-                <a href="#conclusion" class="nav-link block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-r-md border-l-4 border-transparent transition-colors">9. 結論與展望</a>
-                <a href="#appendix" class="nav-link block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-r-md border-l-4 border-transparent transition-colors">附錄：顏料特性對比</a>
+            <nav id="sidebar-content" class="flex-1 overflow-y-auto p-4 space-y-1 pb-20 lg:pb-4">
+                <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wide">文章章節</div>
+                <!-- JS handles the scroll to avoid URL hash issues -->
+                <a href="#intro" class="nav-link block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors border-l-2 border-transparent">1. 緒論：定義與範疇</a>
+                <a href="#quantum" class="nav-link block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors border-l-2 border-transparent">2. 顯色機制與光學原理</a>
+                <a href="#classification" class="nav-link block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors border-l-2 border-transparent">3. 化學分類與結構特點</a>
+                <a href="#solid-state" class="nav-link block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors border-l-2 border-transparent">4. 固態物理與晶體工程</a>
+                <a href="#manufacturing" class="nav-link block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors border-l-2 border-transparent">5. 製造與顏料化處理</a>
+                <a href="#dispersion" class="nav-link block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors border-l-2 border-transparent">6. 分散技術關鍵</a>
+                <a href="#applications" class="nav-link block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors border-l-2 border-transparent">7. 市場應用分析</a>
+                <a href="#regulations" class="nav-link block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors border-l-2 border-transparent">8. 法規監管與合規</a>
+                <a href="#conclusion" class="nav-link block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors border-l-2 border-transparent">9. 結論與展望</a>
+                <a href="#appendix" class="nav-link block px-4 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors border-l-2 border-transparent">附錄：顏料特性對比</a>
             </nav>
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 p-6 lg:p-12 w-full max-w-4xl mx-auto bg-white min-h-screen">
+        <main class="flex-1 p-5 lg:p-12 w-full max-w-4xl mx-auto bg-white min-h-screen">
             
             <!-- Breadcrumb for SEO -->
-            <nav class="text-sm text-slate-500 mb-6" aria-label="Breadcrumb">
-                <ol class="list-none p-0 inline-flex">
+            <nav class="text-xs sm:text-sm text-slate-500 mb-6 overflow-x-auto whitespace-nowrap" aria-label="Breadcrumb">
+                <ol class="list-none p-0 inline-flex items-center">
                     <li class="flex items-center">
                         <a href="https://hwashine.tw/" class="hover:text-blue-600 hover:underline">首頁</a>
-                        <svg class="fill-current w-3 h-3 mx-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg>
+                        <span class="mx-2 text-slate-300">/</span>
                     </li>
                     <li class="flex items-center">
-                        <span class="text-slate-800">有機顏料技術指南</span>
+                        <span class="text-slate-800 font-medium">有機顏料技術指南</span>
                     </li>
                 </ol>
             </nav>
 
             <!-- Title Header -->
-            <div class="mb-12 border-b pb-8">
-                <h1 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-snug">2026什麼是有機顏料？完整介紹、優勢分析與應用指南 | 華翔興業有限公司</h1>
-                <div class="flex flex-wrap items-center justify-between gap-4">
-                    <div class="flex flex-wrap gap-2 text-sm text-slate-500">
-                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">專業知識</span>
-                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">應用指南</span>
-                        <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">法規趨勢</span>
+            <div class="mb-10 border-b border-gray-100 pb-8">
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-snug">2026什麼是有機顏料？完整介紹、優勢分析與應用指南 | 華翔興業有限公司</h1>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6">
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded border border-blue-100">專業知識</span>
+                        <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded border border-indigo-100">應用指南</span>
+                        <span class="bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded border border-emerald-100">法規趨勢</span>
                     </div>
-                    <div class="text-sm text-slate-400">
-                        發布者：<a href="https://hwashine.tw/" class="text-blue-600 hover:underline font-medium">華翔興業有限公司</a>
+                    <div class="text-xs text-slate-400">
+                        Author: <a href="https://hwashine.tw/" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">華翔興業有限公司</a>
                     </div>
                 </div>
             </div>
 
             <!-- Content Sections -->
-            <article class="prose-custom text-slate-700">
+            <article class="prose-custom text-slate-700 text-base lg:text-lg leading-relaxed">
 
-                <section id="intro" class="mb-16 scroll-mt-24">
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">1. 緒論：有機顏料的科學定義與範疇</h2>
+                <section id="intro" class="mb-16">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 pb-2 border-b border-gray-200 text-slate-800">1. 緒論：有機顏料的科學定義與範疇</h2>
                     <p>有機顏料（Organic Pigments）作為現代材料科學中的一個關鍵分支，是指一類具有特定光譜吸收特性、不溶於水及絕大多數應用介質的有機化合物。與染料（Dyes）在分子層級上溶解並通過化學鍵（如離子鍵、共價鍵）與基質結合的機制截然不同，有機顏料以微細固體顆粒（通常在亞微米至納米尺度）的形式存在，依靠物理分散機制懸浮於載體（Vehicle）或基質（Substrate）中。這種「不溶性」是有機顏料最本質的物理特徵，決定了其應用技術的核心在於顆粒的表面能控制、分散穩定性以及流變學特性。</p>
                     <p>從化學構成的角度分析，有機顏料主要由碳、氫、氧、氮等元素構成的有機骨架組成，部分高性能顏料分子中可能引入鹵素原子（氯、溴）或金屬原子（如銅酞菁中的銅配位中心）以增強其化學穩定性或調整色相，但其主體結構仍遵循有機化學的成鍵規律。相較於無機顏料（Inorganic Pigments，如氧化鐵、鈦白粉、鉻黃等），有機顏料通常展現出更高的色彩強度（Tinting Strength）、更寬廣且鮮豔的色域（Gamut）以及更高的透明度（Transparency）。然而，由於有機分子對光化學降解的敏感性，傳統有機顏料在耐光性（Lightfastness）、耐候性（Weatherfastness）及熱穩定性（Heat Stability）方面往往面臨挑戰，這推動了近半個世紀以來「高性能有機顏料」（High Performance Pigments, HPPs）的蓬勃發展。</p>
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 my-6 rounded-r-lg shadow-sm">
-                        <p class="mb-2 text-lg font-bold text-blue-900">專業指南說明</p>
-                        <p class="mb-4 text-blue-800">本文由<strong>華翔興業有限公司</strong>技術團隊整理，旨在以系統性的視角，深入探討有機顏料的分子設計原理、固態物理特性、合成與後處理工藝、以及在複雜工業體系中的應用行為。</p>
-                        <a href="https://hwashine.tw/contact" class="inline-block bg-blue-600 text-white text-sm px-4 py-2 rounded font-medium hover:bg-blue-700 transition">
-                            諮詢我們的技術專家 &rarr;
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-white border-l-4 border-blue-500 p-5 my-8 rounded-r-lg shadow-sm">
+                        <p class="mb-2 text-lg font-bold text-blue-900 font-serif">專業指南說明</p>
+                        <p class="mb-4 text-sm text-blue-800">本文由<strong>華翔興業有限公司</strong>技術團隊整理，旨在以系統性的視角，深入探討有機顏料的分子設計原理、固態物理特性、合成與後處理工藝、以及在複雜工業體系中的應用行為。</p>
+                        <a href="https://hwashine.tw/contact" class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-800 transition">
+                            諮詢我們的技術專家 
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </section>
 
-                <section id="quantum" class="mb-16 scroll-mt-24">
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">2. 色彩生成的量子力學與物理光學機制</h2>
+                <section id="quantum" class="mb-16">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 pb-2 border-b border-gray-200 text-slate-800">2. 色彩生成的量子力學與物理光學機制</h2>
                     <p>有機顏料的顯色機制涉及微觀的量子化學躍遷與宏觀的顆粒光學散射，兩者共同決定了顏料的最終視覺外觀。</p>
                     
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">2.1 分子軌域理論與能隙工程 (HOMO-LUMO Gap Engineering)</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">2.1 分子軌域理論與能隙工程 (HOMO-LUMO Gap Engineering)</h3>
                     <p>從量子力學的角度來看，有機顏料的顏色源於分子內部電子的激發躍遷。根據分子軌域理論（Molecular Orbital Theory, MOT），有機分子中存在一系列離散的能級，其中與光吸收最相關的是最高佔據分子軌域（Highest Occupied Molecular Orbital, HOMO）與最低未佔據分子軌域（Lowest Unoccupied Molecular Orbital, LUMO）。</p>
                     <p>當顏料分子受到光照射時，若入射光子的能量（$E = h\nu$）恰好等於 HOMO 與 LUMO 之間的能隙（Band Gap, $\Delta E$），處於基態（Ground State）的電子便會吸收光子能量躍遷至激發態（Excited State）。能隙與吸收波長（$\lambda$）的關係遵循普朗克-愛因斯坦關係式：</p>
                     
-                    <div class="bg-gray-50 p-4 rounded-lg my-6 text-center shadow-inner">
+                    <div class="bg-slate-50 border border-slate-100 p-6 rounded-lg my-6 text-center">
                         $$\Delta E = E_{LUMO} - E_{HOMO} = \frac{hc}{\lambda}$$
                     </div>
                     
                     <p>其中 $h$ 為普朗克常數，$c$ 為光速。對於大多數簡單的有機分子（如乙烯），其 $\Delta E$ 較大，吸收波長位於紫外區，因此人眼看來是無色的。有機顏料分子設計的核心在於構建龐大的共軛體系（Conjugated System），即單鍵與雙鍵交替排列的碳鏈或芳香環結構。隨著共軛體系的延長，$\pi$ 電子的離域化程度（Delocalization）增加，導致 HOMO 能級上升、LUMO 能級下降，從而顯著縮小能隙 $\Delta E$。</p>
                     <p>當能隙縮小至 1.6 eV 至 3.1 eV 之間時，分子便具有了吸收可見光（400-700 nm）的能力。例如，若分子選擇性地吸收了光譜中的藍色波段（高能量、短波長），則反射或透射的光將呈現其互補色——黃色或橙色。</p>
 
-                    <div class="overflow-x-auto my-8">
-                        <table class="min-w-full">
-                            <caption class="text-sm font-semibold text-gray-500 mb-2">表 2.1：有機顏料與無機材料能帶結構對比</caption>
-                            <thead>
-                                <tr>
-                                    <th class="w-1/4">特性</th>
-                                    <th class="w-1/3">有機顏料 (Organic Pigments)</th>
-                                    <th class="w-1/3">無機顏料/半導體 (Inorganic Pigments)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="font-medium text-slate-800">電子結構基礎</td>
-                                    <td>分子軌域 (Molecular Orbitals)</td>
-                                    <td>能帶理論 (Band Theory)</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-slate-800">關鍵參數</td>
-                                    <td>HOMO-LUMO 能隙</td>
-                                    <td>價帶 (Valence Band) - 導帶 (Conduction Band) 帶隙</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-slate-800">相互作用力</td>
-                                    <td>范德華力、氫鍵、$\pi-\pi$ 堆積</td>
-                                    <td>離子鍵、共價鍵、金屬鍵</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-slate-800">激發態性質</td>
-                                    <td>弗蘭克-康登原理 (Frank-Condon)，激子束縛能大</td>
-                                    <td>自由載流子，激子束縛能小</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-slate-800">調控手段</td>
-                                    <td>化學修飾（改變共軛長度、取代基）</td>
-                                    <td>晶體結構控制、摻雜</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-slate-800">典型代表</td>
-                                    <td>酞菁, 喹吖啶酮</td>
-                                    <td>鎘黃 (CdS), 氧化鐵 (Fe$_2$O$_3$)</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- Mobile-Optimized Table Wrapper -->
+                    <div class="my-8">
+                        <div class="text-xs text-center text-gray-400 mb-2 lg:hidden">
+                            <span>← 左右滑動查看表格 →</span>
+                        </div>
+                        <div class="overflow-x-auto shadow-sm rounded-lg border border-gray-200">
+                            <table class="min-w-full bg-white">
+                                <caption class="text-sm font-bold text-gray-700 p-3 bg-gray-50 border-b border-gray-200 text-left">表 2.1：有機顏料與無機材料能帶結構對比</caption>
+                                <thead>
+                                    <tr>
+                                        <th class="w-1/4 bg-slate-100 text-slate-700">特性</th>
+                                        <th class="w-1/3 bg-slate-100 text-slate-700">有機顏料 (Organic Pigments)</th>
+                                        <th class="w-1/3 bg-slate-100 text-slate-700">無機顏料/半導體 (Inorganic Pigments)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-bold text-slate-700">電子結構基礎</td>
+                                        <td>分子軌域 (Molecular Orbitals)</td>
+                                        <td>能帶理論 (Band Theory)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-700">關鍵參數</td>
+                                        <td>HOMO-LUMO 能隙</td>
+                                        <td>價帶 (Valence Band) - 導帶 (Conduction Band) 帶隙</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-700">相互作用力</td>
+                                        <td>范德華力、氫鍵、$\pi-\pi$ 堆積</td>
+                                        <td>離子鍵、共價鍵、金屬鍵</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-700">激發態性質</td>
+                                        <td>弗蘭克-康登原理 (Frank-Condon)，激子束縛能大</td>
+                                        <td>自由載流子，激子束縛能小</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-700">調控手段</td>
+                                        <td>化學修飾（改變共軛長度、取代基）</td>
+                                        <td>晶體結構控制、摻雜</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-700">典型代表</td>
+                                        <td>酞菁, 喹吖啶酮</td>
+                                        <td>鎘黃 (CdS), 氧化鐵 (Fe$_2$O$_3$)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">2.2 發色團與助色團的化學修飾</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">2.2 發色團與助色團的化學修飾</h3>
                     <p>為了精確調控顏色的色相（Hue）和強度，化學家利用發色團（Chromophores）與助色團（Auxochromes）的概念進行分子設計。</p>
-                    <ul class="list-disc pl-5 space-y-2">
+                    <ul class="list-disc pl-5 space-y-2 marker:text-blue-500">
                         <li><strong>發色團：</strong>分子中能夠導致光吸收的不飽和基團，如偶氮基（-N=N-）、羰基（>C=O）、亞硝基（-NO）、硝基（-NO$_2$）以及長鏈共軛雙鍵。這些基團提供了 $\pi$ 電子躍遷的基礎環境。</li>
                         <li><strong>助色團：</strong>本身不一定顯色，但當其與發色團相連時，能使吸收波長向長波方向移動（紅移，Bathochromic Shift），並增強吸收強度（增色效應，Hyperchromic Effect）。助色團通常是帶有孤對電子的基團，如氨基（-NH$_2$）、羥基（-OH）、鹵素（-Cl, -Br）或烷氧基（-OR）。它們通過誘導效應（Inductive Effect）或共振效應（Resonance Effect）與共軛體系發生相互作用，進一步降低激發所需的能量。</li>
                     </ul>
 
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">2.3 顆粒光學：米氏散射理論與外觀控制</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">2.3 顆粒光學：米氏散射理論與外觀控制</h3>
                     <p>雖然量子化學決定了顏料的「固有顏色」，但顏料在應用中的實際外觀則強烈依賴於顆粒的物理尺寸與形態。這一現象由 <strong>米氏散射理論（Mie Scattering Theory）</strong> 描述。</p>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
-                        <div class="bg-gray-50 p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-slate-800 mb-2">遮蓋力 (Opacity)</h4>
-                            <p class="text-sm">當顆粒直徑約為光波長的一半（約 0.2 - 0.4 $\mu$m）時，散射係數最大。光線被大量散射，遮蓋底材。適用於建築塗料和汽車面漆。</p>
+                        <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                            <h4 class="font-bold text-slate-800 mb-2 text-lg">遮蓋力 (Opacity)</h4>
+                            <p class="text-sm text-slate-600">當顆粒直徑約為光波長的一半（約 0.2 - 0.4 $\mu$m）時，散射係數最大。光線被大量散射，遮蓋底材。適用於建築塗料和汽車面漆。</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-slate-800 mb-2">透明度 (Transparency)</h4>
-                            <p class="text-sm">當顆粒尺寸遠小於光波長（如 < 50 nm）時，散射急劇下降，光線繞過顆粒。適用於金屬閃光漆和彩色濾光片。</p>
+                        <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                            <h4 class="font-bold text-slate-800 mb-2 text-lg">透明度 (Transparency)</h4>
+                            <p class="text-sm text-slate-600">當顆粒尺寸遠小於光波長（如 < 50 nm）時，散射急劇下降，光線繞過顆粒。適用於金屬閃光漆和彩色濾光片。</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded border border-gray-200">
-                            <h4 class="font-bold text-slate-800 mb-2">著色力 (Tinting Strength)</h4>
-                            <p class="text-sm">隨粒徑減小、比表面積增加而提高。但過小的粒子易團聚。需平衡粒徑以獲得最佳效果。</p>
+                        <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                            <h4 class="font-bold text-slate-800 mb-2 text-lg">著色力 (Tinting Strength)</h4>
+                            <p class="text-sm text-slate-600">隨粒徑減小、比表面積增加而提高。但過小的粒子易團聚。需平衡粒徑以獲得最佳效果。</p>
                         </div>
                     </div>
                 </section>
 
-                <section id="classification" class="mb-16 scroll-mt-24">
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">3. 有機顏料的化學分類架構與結構特性</h2>
+                <section id="classification" class="mb-16">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 pb-2 border-b border-gray-200 text-slate-800">3. 有機顏料的化學分類架構與結構特性</h2>
                     <p>有機顏料主要可劃分為兩大陣營：偶氮顏料（Azo Pigments）與多環顏料（Polycyclic Pigments）。</p>
 
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">3.1 偶氮顏料 (Azo Pigments)</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">3.1 偶氮顏料 (Azo Pigments)</h3>
                     <p>佔全球產量 60-70%，特徵是含有偶氮基（-N=N-）。</p>
                     <div class="space-y-4">
-                        <div>
-                            <strong class="text-slate-900 block mb-1">3.1.1 單偶氮顏料 (Monoazo)</strong>
-                            <p>結構簡單，如漢沙黃（Hansa Yellows）。色澤鮮豔但耐溶劑性差。特殊類別為色澱顏料（Lake Pigments），如 P.R.57:1，價格低廉但耐酸鹼性弱。</p>
+                        <div class="bg-white p-4 rounded border-l-4 border-slate-300 shadow-sm">
+                            <strong class="text-slate-900 block mb-1 text-lg">3.1.1 單偶氮顏料 (Monoazo)</strong>
+                            <p class="text-sm mb-0">結構簡單，如漢沙黃（Hansa Yellows）。色澤鮮豔但耐溶劑性差。特殊類別為色澱顏料（Lake Pigments），如 P.R.57:1，價格低廉但耐酸鹼性弱。</p>
                         </div>
-                        <div>
-                            <strong class="text-slate-900 block mb-1">3.1.2 雙偶氮顏料 (Disazo)</strong>
-                            <p>含有兩個偶氮基，代表為聯苯胺黃（Diarylide Yellows）。耐熱性優於單偶氮，但在超過 200°C 時可能熱分解釋放潛在致癌物。</p>
+                        <div class="bg-white p-4 rounded border-l-4 border-slate-300 shadow-sm">
+                            <strong class="text-slate-900 block mb-1 text-lg">3.1.2 雙偶氮顏料 (Disazo)</strong>
+                            <p class="text-sm mb-0">含有兩個偶氮基，代表為聯苯胺黃（Diarylide Yellows）。耐熱性優於單偶氮，但在超過 200°C 時可能熱分解釋放潛在致癌物。</p>
                         </div>
-                        <div>
-                            <strong class="text-slate-900 block mb-1">3.1.3 高性能偶氮顏料</strong>
-                            <p><strong>苯并咪唑酮顏料：</strong>引入苯并咪唑酮基團，形成強力氫鍵網絡，耐熱性達 300°C。<br>
-                            <strong>偶氮縮合顏料：</strong>通過縮合反應生成大分子，降低溶解度，提升耐遷移性。</p>
+                        <div class="bg-white p-4 rounded border-l-4 border-slate-300 shadow-sm">
+                            <strong class="text-slate-900 block mb-1 text-lg">3.1.3 高性能偶氮顏料</strong>
+                            <p class="text-sm mb-0"><span class="font-bold text-slate-700">苯并咪唑酮顏料：</span>引入苯并咪唑酮基團，形成強力氫鍵網絡，耐熱性達 300°C。<br>
+                            <span class="font-bold text-slate-700">偶氮縮合顏料：</span>通過縮合反應生成大分子，降低溶解度，提升耐遷移性。</p>
                         </div>
                     </div>
 
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">3.2 多環顏料 (Polycyclic Pigments)</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">3.2 多環顏料 (Polycyclic Pigments)</h3>
                     <p>大多屬於高性能顏料 (HPPs)，以卓越的穩定性著稱。</p>
-                    <ul class="list-disc pl-5 space-y-2">
+                    <ul class="list-disc pl-5 space-y-2 marker:text-blue-500">
                         <li><strong>酞菁顏料 (Phthalocyanine)：</strong> 藍綠色系的霸主（CuPc）。平面大環結構極其穩定。分為 $\alpha$（紅光藍，亞穩）和 $\beta$（綠光藍，穩定）晶型。</li>
                         <li><strong>喹吖啶酮 (Quinacridone)：</strong> 五個稠合環線性結構，色域覆蓋紅至紫。耐候性極佳，常作為汽車漆調色。</li>
                         <li><strong>二酮吡咯并吡咯 (DPP)：</strong> 分子核心為吡咯并吡咯二酮環，形成「磚牆」式氫鍵堆積。「法拉利紅」（P.R.254）是其代表。</li>
@@ -367,72 +402,77 @@
                     </ul>
                 </section>
 
-                <section id="solid-state" class="mb-16 scroll-mt-24">
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">4. 固態物理特性與晶體工程</h2>
+                <section id="solid-state" class="mb-16">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 pb-2 border-b border-gray-200 text-slate-800">4. 固態物理特性與晶體工程</h2>
                     <p><strong>晶體工程（Crystal Engineering）</strong> 是通過調控分子間相互作用力來設計和優化固體材料的性質。</p>
                     
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">4.1 超分子作用力</h3>
-                    <ul class="list-disc pl-5 space-y-2">
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">4.1 超分子作用力</h3>
+                    <ul class="list-disc pl-5 space-y-2 marker:text-blue-500">
                         <li><strong>氫鍵網絡：</strong> 在喹吖啶酮和 DPP 中，N-H $\cdots$ O=C 氫鍵形成一維鏈或二維片層，極大提升晶格能和熔點。</li>
                         <li><strong>$\pi-\pi$ 堆積：</strong> 平面芳香結構以面對於面方式堆積，穩定了晶體結構並影響電荷載流子遷移率及顏色深度。</li>
                     </ul>
 
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">4.2 多晶型現象 (Polymorphism)</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">4.2 多晶型現象 (Polymorphism)</h3>
                     <p>以喹吖啶酮 (PV19) 為例：</p>
-                    <div class="overflow-x-auto my-4">
-                        <table class="w-full text-sm">
-                            <thead>
-                                <tr>
-                                    <th>晶型</th>
-                                    <th>顏色特徵</th>
-                                    <th>穩定性與應用</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="font-bold">$\alpha$ 型</td>
-                                    <td>紅光紫</td>
-                                    <td>熱力學不穩定，應用價值低。</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-bold">$\beta$ 型</td>
-                                    <td>紫色 (Violet)</td>
-                                    <td>熱力學相對穩定，用於塑料和工業塗料。</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-bold">$\gamma$ 型</td>
-                                    <td>豔紅色</td>
-                                    <td>獨特的「交叉」排列，極高穩定性，汽車塗料關鍵顏料。</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="my-6">
+                        <div class="text-xs text-center text-gray-400 mb-2 lg:hidden">
+                            <span>← 左右滑動查看表格 →</span>
+                        </div>
+                        <div class="overflow-x-auto shadow-sm rounded-lg border border-gray-200">
+                            <table class="min-w-full text-sm">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-slate-100">晶型</th>
+                                        <th class="bg-slate-100">顏色特徵</th>
+                                        <th class="bg-slate-100">穩定性與應用</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-bold text-slate-700">$\alpha$ 型</td>
+                                        <td>紅光紫</td>
+                                        <td>熱力學不穩定，應用價值低。</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-700">$\beta$ 型</td>
+                                        <td>紫色 (Violet)</td>
+                                        <td>熱力學相對穩定，用於塑料和工業塗料。</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold text-slate-700">$\gamma$ 型</td>
+                                        <td>豔紅色</td>
+                                        <td>獨特的「交叉」排列，極高穩定性，汽車塗料關鍵顏料。</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
 
-                <section id="manufacturing" class="mb-16 scroll-mt-24">
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">5. 製造工藝工程：從合成到顏料化</h2>
+                <section id="manufacturing" class="mb-16">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 pb-2 border-b border-gray-200 text-slate-800">5. 製造工藝工程：從合成到顏料化</h2>
                     <p>生產分為兩個階段：化學合成（構建分子）與顏料化處理（優化物理狀態）。</p>
 
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">5.1 化學合成</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">5.1 化學合成</h3>
                     <p>偶氮顏料涉及重氮化（低溫控制）與偶合（pH 值控制）。多環顏料如銅酞菁則涉及高溫固相烘焙或液相縮合。</p>
 
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">5.2 顏料化處理技術 (Pigment Conditioning)</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">5.2 顏料化處理技術 (Pigment Conditioning)</h3>
                     <p>粗顏料（Crude）需經過處理才能具備應用性能：</p>
-                    <ul class="list-disc pl-5 space-y-2">
+                    <ul class="list-disc pl-5 space-y-2 marker:text-blue-500">
                         <li><strong>酸處理法：</strong> 利用濃硫酸溶解（酸溶法，細化粒徑）或溶脹（酸脹法，糾正晶格）。常用於酞菁。</li>
                         <li><strong>鹽磨法 (Salt Milling)：</strong> 機械力化學過程。將顏料、無機鹽和溶劑在捏合機中高強度研磨。能獲得極窄粒徑分佈和完美晶型，但能耗高。</li>
                         <li><strong>溶劑處理：</strong> 利用奧斯瓦爾德熟化效應，使小粒子溶解並在紅粒子表面重結晶，提高遮蓋力和耐候性。</li>
                     </ul>
                 </section>
 
-                <section id="dispersion" class="mb-16 scroll-mt-24">
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">6. 分散科學與界面化學</h2>
+                <section id="dispersion" class="mb-16">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 pb-2 border-b border-gray-200 text-slate-800">6. 分散科學與界面化學</h2>
                     <p>分散過程決定最終應用表現，分為三個階段：</p>
-                    <ol class="list-decimal pl-5 space-y-2">
+                    <ol class="list-decimal pl-5 space-y-2 marker:text-blue-500 marker:font-bold">
                         <li><strong>潤濕 (Wetting)：</strong> 介質取代顏料表面的空氣和水。需降低表面張力。</li>
                         <li><strong>研磨/解聚：</strong> 機械力打破附聚體，恢復至初級粒子狀態。</li>
                         <li><strong>穩定化：</strong> 防止絮凝。
-                            <ul class="list-disc pl-5 mt-1 text-sm text-gray-600">
+                            <ul class="list-disc pl-5 mt-2 text-sm text-slate-600">
                                 <li><strong>靜電穩定：</strong> 雙電層排斥（水性體系）。</li>
                                 <li><strong>空間位阻穩定：</strong> 高分子分散劑形成位阻層（溶劑型體系）。</li>
                             </ul>
@@ -441,117 +481,127 @@
                     <p class="mt-4"><strong>表面改性：</strong> 常使用松香處理（包覆表面，抑制團聚）或衍生物改性（提供分散劑錨定點）。</p>
                 </section>
 
-                <section id="applications" class="mb-16 scroll-mt-24">
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">7. 應用工程與市場領域</h2>
+                <section id="applications" class="mb-16">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 pb-2 border-b border-gray-200 text-slate-800">7. 應用工程與市場領域</h2>
                     <div class="space-y-6">
-                        <div class="border-l-4 border-indigo-400 pl-4">
+                        <div class="border-l-4 border-indigo-400 pl-4 py-1">
                             <h3 class="font-bold text-lg text-indigo-900">塗料工業</h3>
                             <p><strong>汽車原廠漆 (OEM)：</strong> 最高標準，需 5-10 年耐候。主要使用 DPP、喹吖啶酮。</p>
                         </div>
-                        <div class="border-l-4 border-emerald-400 pl-4">
+                        <div class="border-l-4 border-emerald-400 pl-4 py-1">
                             <h3 class="font-bold text-lg text-emerald-900">塑料與高分子</h3>
                             <p>需克服高溫加工（>280°C）帶來的熱分解問題。還需注意顏料對聚合物結晶的成核效應導致的翹曲。</p>
                         </div>
-                        <div class="border-l-4 border-amber-400 pl-4">
+                        <div class="border-l-4 border-amber-400 pl-4 py-1">
                             <h3 class="font-bold text-lg text-amber-900">印刷油墨</h3>
                             <p><strong>噴墨墨水：</strong> 增長最快。要求粒徑 < 150 nm 且分佈極窄，防止堵頭。</p>
                         </div>
-                        <div class="border-l-4 border-rose-400 pl-4">
+                        <div class="border-l-4 border-rose-400 pl-4 py-1">
                             <h3 class="font-bold text-lg text-rose-900">光電功能材料</h3>
                             <p><strong>彩色濾光片 (Color Filters)：</strong> 用於 LCD/OLED。要求極高純度與納米級分散（高透明）。</p>
                         </div>
                     </div>
                 </section>
 
-                <section id="regulations" class="mb-16 scroll-mt-24">
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">8. 法規監管、環境毒理與合規挑戰</h2>
+                <section id="regulations" class="mb-16">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 pb-2 border-b border-gray-200 text-slate-800">8. 法規監管、環境毒理與合規挑戰</h2>
                     
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">8.1 多氯聯苯 (PCBs) 的管控</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">8.1 多氯聯苯 (PCBs) 的管控</h3>
                     <p>含氯有機顏料（如聯苯胺黃、酞菁綠）生產中可能非故意生成微量 PCB（如 PCB-11）。</p>
                     <p><strong>歐盟 POPs Recast (2025 展望)：</strong> 計劃設定極嚴格的限值（可能低至 25 ppm，甚至 10 ppm），這對供應鏈構成巨大挑戰，迫使企業升級純化技術。</p>
 
-                    <h3 class="text-xl font-bold mb-4 mt-8 text-slate-800">8.2 初級芳香胺 (PAAs) 與 REACH</h3>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 mt-8 text-slate-800">8.2 初級芳香胺 (PAAs) 與 REACH</h3>
                     <p>某些偶氮顏料可能還原裂解釋放致癌芳香胺。REACH 法規嚴禁在皮膚接觸產品中使用。食品接觸材料（FCM）的遷移量限制更是達到了 ppb 級別（如 < 10 ppb）。</p>
                     
-                    <div class="mt-8 bg-amber-50 border border-amber-200 p-6 rounded-lg">
-                        <h4 class="font-bold text-amber-900 mb-2">需要合規的有機顏料解決方案？</h4>
-                        <p class="text-amber-800 text-sm mb-4">華翔興業有限公司提供符合 REACH、FDA 及最新歐盟環保規範的高性能顏料產品。如有合規性文件需求，請直接聯繫我們。</p>
-                        <a href="https://hwashine.tw/contact" class="inline-block bg-amber-600 text-white text-sm px-4 py-2 rounded font-medium hover:bg-amber-700 transition">
-                            聯繫合規部門
-                        </a>
+                    <div class="mt-8 bg-amber-50 border border-amber-200 p-6 rounded-lg shadow-sm">
+                        <div class="flex items-start">
+                            <svg class="w-6 h-6 text-amber-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            <div>
+                                <h4 class="font-bold text-amber-900 mb-2">需要合規的有機顏料解決方案？</h4>
+                                <p class="text-amber-800 text-sm mb-4">華翔興業有限公司提供符合 REACH、FDA 及最新歐盟環保規範的高性能顏料產品。如有合規性文件需求，請直接聯繫我們。</p>
+                                <a href="https://hwashine.tw/contact" class="inline-block bg-amber-600 text-white text-sm px-4 py-2 rounded font-medium hover:bg-amber-700 transition">
+                                    聯繫合規部門
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
-                <section id="conclusion" class="mb-16 scroll-mt-24">
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">9. 結論與展望</h2>
+                <section id="conclusion" class="mb-16">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 pb-2 border-b border-gray-200 text-slate-800">9. 結論與展望</h2>
                     <p>有機顏料產業正處於關鍵轉型期：從單純追求色彩到追求極致性能（耐候、耐熱）與環境合規（無 PCB/PAA）。未來，掌握晶體工程與綠色製造工藝的企業將主導市場，且顏料將向功能材料（OLED, 生物醫學）跨越。</p>
                 </section>
 
-                <section id="appendix" class="mb-16 scroll-mt-24">
-                    <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">附錄：主要有機顏料類別特性對比表</h2>
-                    <div class="overflow-x-auto shadow-md rounded-lg">
-                        <table class="min-w-full bg-white">
-                            <thead class="bg-gray-100">
-                                <tr>
-                                    <th class="py-3 px-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">顏料類別</th>
-                                    <th class="py-3 px-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">代表品種</th>
-                                    <th class="py-3 px-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">主要性能優勢</th>
-                                    <th class="py-3 px-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">典型應用</th>
-                                    <th class="py-3 px-4 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">缺點/法規風險</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200">
-                                <tr>
-                                    <td class="font-medium">經典單偶氮</td>
-                                    <td>P.Y.1, P.R.57:1</td>
-                                    <td>色彩鮮豔、成本低廉</td>
-                                    <td>建築裝飾漆、膠印油墨</td>
-                                    <td class="text-red-600 text-sm">耐熱性差、耐溶劑性差</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">雙偶氮 (聯苯胺)</td>
-                                    <td>P.Y.12, P.Y.83</td>
-                                    <td>著色力極強、經濟</td>
-                                    <td>塑料、包裝油墨</td>
-                                    <td class="text-red-600 text-sm">高溫易分解；PCB-11 風險</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">苯并咪唑酮</td>
-                                    <td>P.Y.151, P.O.36</td>
-                                    <td>極佳耐光、耐熱</td>
-                                    <td>高檔塗料、工程塑料</td>
-                                    <td class="text-gray-500 text-sm">合成成本較高</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">酞菁系</td>
-                                    <td>P.B.15:3, P.G.7</td>
-                                    <td>極佳穩定性、高耐候</td>
-                                    <td>幾乎所有領域</td>
-                                    <td class="text-red-600 text-sm">P.G.7 含 PCB 風險</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">喹吖啶酮</td>
-                                    <td>P.V.19, P.R.122</td>
-                                    <td>色域廣、高耐候</td>
-                                    <td>汽車原廠漆、噴墨</td>
-                                    <td class="text-gray-500 text-sm">分散難度大</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">DPP</td>
-                                    <td>P.R.254</td>
-                                    <td>極高飽和度、耐候</td>
-                                    <td>汽車原廠漆 (法拉利紅)</td>
-                                    <td class="text-gray-500 text-sm">價格昂貴</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium">二噁嗪紫</td>
-                                    <td>P.V.23</td>
-                                    <td>極高著色力</td>
-                                    <td>塑料、塗料調色</td>
-                                    <td class="text-red-600 text-sm">PCB 殘留風險較高</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <section id="appendix" class="mb-16">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 pb-2 border-b border-gray-200 text-slate-800">附錄：主要有機顏料類別特性對比表</h2>
+                    <div class="my-6">
+                        <div class="text-xs text-center text-gray-400 mb-2 lg:hidden">
+                            <span>← 左右滑動查看表格 →</span>
+                        </div>
+                        <div class="overflow-x-auto shadow-md rounded-lg border border-gray-200">
+                            <table class="min-w-full bg-white text-sm">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left font-bold text-gray-700 whitespace-nowrap">顏料類別</th>
+                                        <th class="py-3 px-4 text-left font-bold text-gray-700 whitespace-nowrap">代表品種</th>
+                                        <th class="py-3 px-4 text-left font-bold text-gray-700 whitespace-nowrap">主要性能優勢</th>
+                                        <th class="py-3 px-4 text-left font-bold text-gray-700 whitespace-nowrap">典型應用</th>
+                                        <th class="py-3 px-4 text-left font-bold text-gray-700 whitespace-nowrap">缺點/法規風險</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="font-medium bg-slate-50">經典單偶氮</td>
+                                        <td>P.Y.1, P.R.57:1</td>
+                                        <td>色彩鮮豔、成本低廉</td>
+                                        <td>建築裝飾漆、膠印油墨</td>
+                                        <td class="text-red-600">耐熱性差、耐溶劑性差</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium bg-slate-50">雙偶氮 (聯苯胺)</td>
+                                        <td>P.Y.12, P.Y.83</td>
+                                        <td>著色力極強、經濟</td>
+                                        <td>塑料、包裝油墨</td>
+                                        <td class="text-red-600">高溫易分解；PCB-11 風險</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium bg-slate-50">苯并咪唑酮</td>
+                                        <td>P.Y.151, P.O.36</td>
+                                        <td>極佳耐光、耐熱</td>
+                                        <td>高檔塗料、工程塑料</td>
+                                        <td class="text-gray-500">合成成本較高</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium bg-slate-50">酞菁系</td>
+                                        <td>P.B.15:3, P.G.7</td>
+                                        <td>極佳穩定性、高耐候</td>
+                                        <td>幾乎所有領域</td>
+                                        <td class="text-red-600">P.G.7 含 PCB 風險</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium bg-slate-50">喹吖啶酮</td>
+                                        <td>P.V.19, P.R.122</td>
+                                        <td>色域廣、高耐候</td>
+                                        <td>汽車原廠漆、噴墨</td>
+                                        <td class="text-gray-500">分散難度大</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium bg-slate-50">DPP</td>
+                                        <td>P.R.254</td>
+                                        <td>極高飽和度、耐候</td>
+                                        <td>汽車原廠漆 (法拉利紅)</td>
+                                        <td class="text-gray-500">價格昂貴</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium bg-slate-50">二噁嗪紫</td>
+                                        <td>P.V.23</td>
+                                        <td>極高著色力</td>
+                                        <td>塑料、塗料調色</td>
+                                        <td class="text-red-600">PCB 殘留風險較高</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
                 
@@ -578,6 +628,10 @@
                     <div>
                         <h4 class="font-bold text-slate-900 text-lg mb-4">華翔興業有限公司</h4>
                         <p class="text-slate-500 text-sm mb-4">致力於提供最先進的顏料技術與解決方案，成為您值得信賴的合作夥伴。</p>
+                        <div class="text-xs text-slate-400">
+                            台北市士林區承德路四段220號4樓<br>
+                            Tel: +886-2-2881-8888
+                        </div>
                     </div>
                     <div class="md:text-right">
                         <h4 class="font-bold text-slate-900 text-lg mb-4">快速連結</h4>
@@ -591,52 +645,99 @@
                     <p>&copy; 2026 華翔興業有限公司. All rights reserved.</p>
                 </div>
             </footer>
+            
+            <!-- Floating Back to Top Button (Mobile) -->
+            <button id="back-to-top" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 hover:bg-blue-700 focus:outline-none lg:hidden z-40">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+            </button>
 
         </main>
     </div>
 
-    <!-- Scroll & Interaction Scripts -->
+    <!-- Optimized Scroll & Interaction Scripts -->
     <script>
-        // Mobile Menu Logic
+        // DOM Elements
         const menuBtn = document.getElementById('menu-btn');
+        const closeSidebarBtn = document.getElementById('close-sidebar');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
         const navLinks = document.querySelectorAll('.nav-link');
+        const backToTopBtn = document.getElementById('back-to-top');
 
+        // Toggle Menu Function
         function toggleMenu() {
             sidebar.classList.toggle('open');
-            overlay.classList.toggle('hidden');
+            if (sidebar.classList.contains('open')) {
+                overlay.classList.remove('hidden');
+                // Allow CSS transition to happen
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            } else {
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
         }
 
+        // Event Listeners
         menuBtn.addEventListener('click', toggleMenu);
+        closeSidebarBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
 
-        // Close menu when a link is clicked (Mobile)
+        // Robust Smooth Scrolling Implementation (Solves base tag issues)
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 1024) {
-                    toggleMenu();
+            link.addEventListener('click', (e) => {
+                // Prevent default hash navigation which might fail with base tags
+                e.preventDefault();
+                
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    // Close mobile menu first
+                    if (window.innerWidth < 1024) {
+                        toggleMenu();
+                    }
+
+                    // Calculate position accounting for fixed headers
+                    const headerOffset = window.innerWidth < 1024 ? 80 : 20; 
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    // Manual smooth scroll
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                    
+                    // Optional: Update URL hash without jumping
+                    // history.pushState(null, null, targetId);
                 }
             });
         });
 
-        // Scroll Spy Logic (Highlight active TOC item)
+        // Scroll Spy Logic
         const sections = document.querySelectorAll('section');
         const observerOptions = {
             root: null,
-            rootMargin: '-20% 0px -70% 0px', // Trigger when section is near top
+            rootMargin: '-20% 0px -60% 0px', 
             threshold: 0
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Remove active class from all
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    // Add active class to corresponding link
+                    navLinks.forEach(link => {
+                        link.classList.remove('active', 'bg-blue-50', 'text-blue-600', 'border-blue-500');
+                        link.classList.add('border-transparent');
+                    });
+                    
                     const id = entry.target.getAttribute('id');
                     const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
-                    if (activeLink) activeLink.classList.add('active');
+                    if (activeLink) {
+                        activeLink.classList.add('active', 'bg-blue-50', 'text-blue-600', 'border-blue-500');
+                        activeLink.classList.remove('border-transparent');
+                        // Auto-scroll sidebar to active link
+                        activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
                 }
             });
         }, observerOptions);
@@ -644,651 +745,19 @@
         sections.forEach(section => {
             observer.observe(section);
         });
-    </script>
-</body>
-</html><html>
-<head><!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CQFQG56RSK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CQFQG56RSK');
-</script>
-  <base href="https://hwashine.tw/">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2025什麼是有機顏料？完整介紹、優勢分析與應用指南 | 華翔興業</title>
-  <meta name="description" content="探索有機顏料的特性、分類及應用優勢，適用於印刷油墨、塑料著色及汽車塗料等領域。華翔興業提供高品質有機顏料解決方案。">
-  <meta name="keywords" content="有機顏料, 顏料介紹, 色料,色粉">
-  <meta property="og:title" content="什麼是有機顏料 - 華翔興業">
-  <meta property="og:description" content="了解什麼是有機顏料，包括其特點、優勢和應用領域。">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://hwashine.tw/organic-pigments">
-  <link rel="canonical" href="https://hwashine.tw/organic-pigments">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
-
-    :root {
-      --primary-color: #2c8cb0;
-      --secondary-color: #1a5f7a;
-      --accent-color: #ff6b6b;
-      --text-color: #333;
-      --bg-color: #f8f9fa;
-    }
-
-    body {
-      font-family: 'Noto Sans TC', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-      animation: ripple 15s infinite linear;
-      z-index: 1;
-    }
-
-    @keyframes ripple {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      position: relative;
-      z-index: 2;
-    }
-
-    nav {
-      background-color: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 0.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    nav ul li {
-      margin: 0.5rem;
-    }
-
-    nav ul li a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-    }
-
-    nav ul li a:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    section {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-      transition: transform 0.3s ease;
-      margin-bottom: 2rem;
-    }
-
-    section:hover {
-      transform: translateY(-5px);
-    }
-
-    h2 {
-      color: var(--primary-color);
-      margin-bottom: 1.5rem;
-    }
-
-    footer {
-      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      margin-top: 2rem;
-    }
-
-    footer nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-      transition: color 0.3s ease;
-    }
-
-    footer nav a:hover {
-      color: var(--accent-color);
-    }
-
-    .organic-pigments h3 {
-      color: var(--secondary-color);
-      margin-top: 2rem;
-    }
-
-    .pigment-types {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .pigment-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .pigment-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .advantages-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .advantage-item {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      padding: 1rem;
-      border-radius: 6px;
-      text-align: center;
-    }
-
-    .applications {
-      margin-top: 2rem;
-    }
-
-    .applications ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .applications li {
-      margin: 1rem 0;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-
-    .applications li::before {
-      content: "•";
-      color: var(--primary-color);
-      font-weight: bold;
-      position: absolute;
-      left: 0;
-    }
-
-    #back-to-top {
-      display: none;
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 50px;
-      height: 50px;
-      font-size: 30px;
-      background-color: var(--primary-color);
-      color: white;
-      text-align: center;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 1000;
-      transition: opacity 0.3s ease;
-    }
-
-    #back-to-top.show {
-      display: block;
-    }
-
-    .comparison-table {
-      overflow-x: auto;
-      margin: 2rem 0;
-    }
-
-    .comparison-table table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-    }
-
-    .comparison-table th,
-    .comparison-table td {
-      padding: 1rem;
-      border: 1px solid #ddd;
-      text-align: left;
-    }
-
-    .comparison-table th {
-      background: var(--primary-color);
-      color: white;
-    }
-
-    .comparison-table tr:nth-child(even) {
-      background: #f5f5f5;
-    }
-
-    .market-trends {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .trend-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .trend-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .trend-card h3 {
-      color: var(--primary-color);
-      margin-top: 0;
-    }
-
-    .faq-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .faq-item {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .faq-item h3 {
-      color: var(--primary-color);
-      margin-top: 0;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>什麼是有機顏料？</h1>
-  </header>
-  
-  <nav>
-    <ul>
-      <li><a href="/">首頁</a></li>
-      <li><a href="/about">關於我們</a></li>
-      <li><a href="/products">產品</a></li>
-      <li><a href="/contact">聯絡我們</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <section>
-<h2>有機顏料介紹</h2>
-            <article>
-                <h3>發色原理</h3>
-                <p>有機顏料的發色原理主要是基於其分子結構中的共軛系統以及特定的化學基團（如發色團和助色團）的作用：</p>
-                
-                <ol>
-                    <li>
-                        <h4>共軛系統的作用</h4>
-                        <p>有機顏料分子通常包含長鏈的共軛雙鍵（π電子系統）。這些共軛系統允許電子在分子內自由移動，使分子可以吸收特定波長的光，從而產生顏色。</p>
-                        <ul>
-                            <li>共軛系統越長：吸收的光波長越長，顏色會向紅光方向（低能量）移動。</li>
-                            <li>共軛系統越短：吸收的光波長越短，顏色會向藍光方向（高能量）移動。</li>
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <h4>發色團（Chromophore）</h4>
-                        <p>發色團是分子中能夠吸收可見光並導致顏色的功能基團，如：</p>
-                        <ul>
-                            <li>羰基（C=O）</li>
-                            <li>硝基（-NO₂）</li>
-                            <li>偶氮基（-N=N-）</li>
-                        </ul>
-                        <p>這些基團能改變分子的電子結構，影響光的吸收。</p>
-                    </li>
-                    
-                    <li>
-                        <h4>助色團（Auxochrome）</h4>
-                        <p>助色團是不能直接產生顏色，但能與發色團互相影響，改變顏色強度或波長的基團，如：</p>
-                        <ul>
-                            <li>羥基（-OH）</li>
-                            <li>氨基（-NH₂）</li>
-                            <li>甲氧基（-OCH₃）</li>
-                        </ul>
-                        <p>這些基團可以通過電子給予或拉取效應（+M或-M效應）影響發色團，進一步改變顏料的顏色。</p>
-                    </li>
-                    
-                    <li>
-                        <h4>分子內的電子躍遷</h4>
-                        <p>當光照射到顏料分子時，光的能量使分子中的π電子從基態躍遷到激發態。這種能量差與光的波長對應，未被吸收的波長則以顏色的形式反射到我們眼中。</p>
-                    </li>
-                    
-                    <li>
-                        <h4>其他因素對顏色的影響</h4>
-                        <ul>
-                            <li>溶劑效應：溶劑染料溶於不同溶劑時，顏色會因極性變化而有所改變，有機顏料有晶型影響較小。</li>
-                            <li>環境pH值：某些有機顏料會因pH改變而產生顏色變化（例如：黃139）。</li>
-                            <li>分子排列：在固態時，顏料分子的排列方式（如晶型結構）也會影響顏色。</li>
-                        </ul>
-                    </li>
-                </ol>
-                
-                <p>綜上，有機顏料的發色原理是分子結構與外部條件共同作用的結果，其核心是基於分子的電子結構和光的交互作用。</p>
-            </article>
-    </section>
-
         
-        <div class="pigment-types">
-          <div class="pigment-card">
-            <h3>喹吖啶酮系列（Quinacridone Pigments）</h3>
-            <p>特點：色彩範圍：紅色至紫色，高耐光性和耐候性，高透明度或不透明性（可調節）</p>
-            <p>應用：高端汽車塗料、塑膠著色、印刷油墨</p>
-            <p>代表顏料：顏料紅122（PR122）、顏料紅202（PR202）</p>
-          </div>
-          <div class="pigment-card">
-            <h3>酞菁系列（Phthalocyanine Pigments）</h3>
-            <p>特點：色彩範圍：藍色和綠色，卓越的耐光性、耐候性和化學穩定性，顏色鮮豔且色彩強度高</p>
-            <p>應用：塗料、塑膠和油墨行業</p>
-            <p>代表顏料：酞菁藍（PB15:0、PB15:1、PB15:3、PB15:6）、酞菁綠（PG7、PG36）</p>
-          </div>
-          <div class="pigment-card">
-            <h3>偶氮系列（Azo Pigments）</h3>
-            <p>特點：色彩範圍：黃色、橙色、紅色，製作簡單，成本相對低，耐光性和耐候性視具體品種而定</p>
-            <p>應用：塗料、塑膠著色、印刷油墨</p>
-            <p>代表顏料：偶氮黃（PY12、PY14、PY83）、偶氮橙（PO13、PO34）</p>
-          </div>
-          <div class="pigment-card">
-            <h3>二酮吡咯吡咯系列（DPP Pigments）</h3>
-            <p>特點：色彩範圍：紅色至橙色，優異的耐光性、耐候性和熱穩定性，飽和度高，色彩亮麗</p>
-            <p>應用：高端汽車塗料、建築塗料</p>
-            <p>代表顏料：顏料紅254（PR254）</p>
-          </div>
-          <div class="pigment-card">
-            <h3>偶氮縮合系列（Monoazo Condensation Pigments）</h3>
-            <p>特點：色彩範圍：黃色至紅色，高遮蓋力，耐光性和耐候性良好</p>
-            <p>應用：塗料、塑膠和油墨</p>
-            <p>代表顏料：顏料紅144（PR144）</p>
-          </div>
-          <div class="pigment-card">
-            <h3>苯並咪唑酮系列（Benzimidazolone Pigments）</h3>
-            <p>特點：色彩範圍：黃色、橙色、紅色，高色彩純度和穩定性，極佳的耐光性和耐候性</p>
-            <p>應用：塗料和高端塑膠</p>
-            <p>代表顏料：顏料黃151（PY151）、顏料橙36（PO36）</p>
-          </div>
-          <div class="pigment-card">
-            <h3>二噁嗪紫系列（Dioxazine Violet Pigments）</h3>
-            <p>特點：色彩範圍：紫色，卓越的耐光性和透明度，用於調節其他顏料的色彩</p>
-            <p>應用：塗料、塑膠和油墨</p>
-            <p>代表顏料：顏料紫23（PV23）</p>
-          </div>
-          <div class="pigment-card">
-            <h3>異吲哚啉系列（Isoindolinone Pigments）</h3>
-            <p>特點：色彩範圍：黃色和橙色，高耐光性和熱穩定性</p>
-            <p>應用：塗料和高溫塑膠加工</p>
-            <p>代表顏料：顏料黃110（PY110）</p>
-          </div>
-        </div>
-        
-        <h2>有機顏料的優勢</h2>
-        <div class="advantages-grid">
-          <div class="advantage-item">
-            <h3>色彩鮮艷度</h3>
-            <p>提供更明亮、更純正的顏色</p>
-          </div>
-          <div class="advantage-item">
-            <h3>環保特性</h3>
-            <p>低毒性，符合全球環保法規</p>
-          </div>
-          <div class="advantage-item">
-            <h3>耐光性與耐候性</h3>
-            <p>優異的戶外使用穩定性</p>
-          </div>
-          <div class="advantage-item">
-            <h3>應用廣泛性</h3>
-            <p>適用於多種基質和行業</p>
-          </div>
-        </div>
-
-        <div class="applications">
-          <h2>應用領域</h2>
-          <ul>
-            <li>印刷油墨：高色彩強度和穩定性，適用於書籍、包裝和廣告印刷</li>
-            <li>塑料製品：不易褪色且易於加工</li>
-            <li>建築和汽車塗料：出色的耐候性能</li>
-            <li>紡織染料：提供均勻而持久的色彩效果</li>
-          </ul>
-        </div>
-
-        <h2>選擇合適的有機顏料</h2>
-        <ul>
-          <li>性能需求評估</li>
-          <li>環保標準符合度</li>
-          <li>成本效益分析</li>
-        </ul>
-        
-        <p>作為專注於有機顏料的專業公司，華翔以其高品質產品和客戶至上的服務為目標，為各行業提供創新而可靠的顏料解決方案。讓我們一起探索有機顏料的無限可能！</p>
-      </div>
-    </section>
-
-    <section>
-      <h2>顏料對比分析：有機顏料 vs. 無機顏料</h2>
-      <div class="comparison-table">
-        <table>
-          <thead>
-            <tr>
-              <th>比較項目</th>
-              <th>有機顏料</th>
-              <th>無機顏料</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>色彩特性</td>
-              <td>鮮艷度高，色域寬廣</td>
-              <td>色彩純度較低，但穩定性好</td>
-            </tr>
-            <tr>
-              <td>耐候性</td>
-              <td>依種類而異，高端產品表現優異</td>
-              <td>普遍具有優異的耐候性</td>
-            </tr>
-            <tr>
-              <td>透明度</td>
-              <td>可製成透明至半透明</td>
-              <td>主要為不透明性</td>
-            </tr>
-            <tr>
-              <td>價格</td>
-              <td>相對較高</td>
-              <td>一般較為經濟</td>
-            </tr>
-            <tr>
-              <td>應用靈活性</td>
-              <td>適用範圍廣，可調性強</td>
-              <td>應用較為傳統和固定</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section>
-      <h2>市場趨勢</h2>
-      <div class="market-trends">
-        <div class="trend-card">
-          <h3>環保產業升級</h3>
-          <p>隨著環保意識提升，水性塗料和低VOC產品需求增加，帶動環保型有機顏料發展。</p>
-        </div>
-        <div class="trend-card">
-          <h3>數位印刷革新</h3>
-          <p>數位印刷技術進步推動高性能有機顏料需求，特別是在包裝印刷領域。</p>
-        </div>
-        <div class="trend-card">
-          <h3>汽車工業應用</h3>
-          <p>電動車市場擴張帶動特殊效果塗料需求，促進高端有機顏料發展。</p>
-        </div>
-        <div class="trend-card">
-          <h3>智能包裝創新</h3>
-          <p>智能包裝材料興起，對高性能有機顏料提出新要求。</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>常見問題（FAQ）</h2>
-      <div class="faq-container">
-        <div class="faq-item">
-          <h3>Q: 有機顏料的使用壽命如何？</h3>
-          <p>A: 優質有機顏料在正確使用和存儲條件下，可保持5-10年的色彩穩定性。具體取決於產品類型和使用環境。</p>
-        </div>
-        <div class="faq-item">
-          <h3>Q: 有機顏料是否環保安全？</h3>
-          <p>A: 現代有機顏料普遍符合國際環保標準，多數產品無毒無害。建議選購具有環保認證的產品。</p>
-        </div>
-        <div class="faq-item">
-          <h3>Q: 如何選擇適合的有機顏料？</h3>
-          <p>A: 需考慮應用領域、性能要求、成本預算等因素，建議諮詢專業供應商獲取建議。</p>
-        </div>
-        <div class="faq-item">
-          <h3>Q: 有機顏料與染料的區別是什麼？</h3>
-          <p>A: 有機顏料不溶於介質，以粒子形式存在；染料則可溶於介質，能與基材形成化學鍵結。</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2023 華翔興業有限公司 版權所有</p>
-    <nav>
-      <a href="/privacy">隱私政策</a> |
-      <a href="/terms">使用條款</a>
-    </nav>
-  </footer>
-
-  <div id="back-to-top">&#8679;</div>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "什麼是有機顏料？全面解析與應用指南",
-    "description": "了解有機顏料的特性、種類、應用和優勢。華翔興業提供專業有機顏料解決方案。",
-    "image": "https://hwashine.tw/images/pigment.jpg",
-    "author": {
-      "@type": "Organization",
-      "name": "華翔興業有限公司"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "華翔興業有限公司",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://hwashine.tw/favicon.ico"
-      }
-    },
-    "datePublished": "2023-11-15",
-    "dateModified": "2024-11-29"
-  }
-  </script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      if(typeof gtag !== 'undefined') {
-        gtag('event', 'page_view', {
-          'page_title': '有機顏料介紹',
-          'page_path': '/organic-pigments'
-        });
-      }
-      
-      const sections = document.querySelectorAll('section');
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-            if(typeof gtag !== 'undefined') {
-              gtag('event', 'section_view', {
-                'section_title': entry.target.querySelector('h2')?.textContent || '未知區塊'
-              });
+        // Back to Top Button Logic
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
             }
-          }
         });
-      }, observerOptions);
-
-      sections.forEach(section => {
-        section.style.opacity = 0;
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(section);
-      });
-
-      const backToTopButton = document.getElementById('back-to-top');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopButton.classList.add('show');
-        } else {
-          backToTopButton.classList.remove('show');
-        }
-      });
-
-      backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
-  </script>
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
