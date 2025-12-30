@@ -30,6 +30,16 @@
         .modal-content::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+        /* Fluorescent Badge Glow */
+        .fluorescent-glow {
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.4); }
+            50% { box-shadow: 0 0 12px rgba(168, 85, 247, 0.7); }
+            100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.4); }
+        }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col">
@@ -50,18 +60,19 @@
                 <!-- Search & Filter & Contact -->
                 <div class="w-full md:w-auto flex flex-col sm:flex-row gap-3 items-center">
                     <div class="relative w-full sm:w-auto">
-                        <input type="text" id="searchInput" placeholder="搜尋名稱, CAS, C.I. No..." 
-                               class="w-full sm:w-56 pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm">
+                        <input type="text" id="searchInput" placeholder="搜尋名稱, CAS, 螢光..." 
+                                class="w-full sm:w-56 pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm">
                         <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
                     <select id="categoryFilter" class="w-full sm:w-auto px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-sm cursor-pointer">
                         <option value="all">所有色系</option>
                         <option value="Yellow">黃色系 (Yellow)</option>
+                        <option value="Orange">橙色系 (Orange)</option>
                         <option value="Red">紅色系 (Red)</option>
+                        <option value="Violet">紫色系 (Violet)</option>
                         <option value="Blue">藍色系 (Blue)</option>
                         <option value="Green">綠色系 (Green)</option>
-                        <option value="Orange">橙色系 (Orange)</option>
-                        <option value="Violet">紫色系 (Violet)</option>
+                        <option value="Fluorescent">僅顯示螢光 (Fluorescent)</option>
                     </select>
                     <a href="https://hwashine.tw/contact" target="_blank" class="w-full sm:w-auto px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium rounded-lg transition text-center shadow-sm whitespace-nowrap">
                         聯絡我們
@@ -105,7 +116,12 @@
                     
                     <!-- Modal Header with Color Band -->
                     <div id="modalColorHeader" class="h-24 w-full relative">
-                        <!-- Updated Close Button for better visibility on all backgrounds -->
+                        <!-- Fluorescent tag in modal -->
+                        <div id="modalFluorescentTag" class="absolute top-4 left-6 hidden bg-purple-600 text-white text-xs px-3 py-1 rounded-full shadow-md z-10 font-bold tracking-wide border border-purple-400 fluorescent-glow">
+                            螢光 Fluorescent
+                        </div>
+
+                        <!-- Close Button -->
                         <button onclick="closeModal()" class="absolute top-4 right-4 bg-white hover:bg-slate-100 text-slate-800 rounded-full p-2 shadow-md transition focus:outline-none z-10">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
@@ -130,8 +146,8 @@
                                     <div>
                                         <span class="block text-xs font-semibold text-slate-400 uppercase">CAS No.</span>
                                         <span id="modalCAS" class="text-slate-700 font-medium font-mono"></span>
-                                    </div>
-                                     <div id="modalChemicalClassWrapper">
+                                    </div> 
+                                    <div id="modalChemicalClassWrapper">
                                         <span class="block text-xs font-semibold text-slate-400 uppercase">化學類別</span>
                                         <span id="modalChemicalClass" class="text-slate-700 font-medium"></span>
                                     </div>
@@ -178,8 +194,6 @@
                                     <!-- Badges injected here -->
                                 </div>
 
-                                <!-- Application Section Removed -->
-
                                 <!-- Complex Data Tables (Hidden unless data exists) -->
                                 <div id="complexDataArea" class="space-y-4">
                                     <!-- Dynamic content for detailed tables like SY98 -->
@@ -193,16 +207,19 @@
     </div>
 
     <script>
-        // Data provided by user
+        // Data provided by user - UPDATED with is_fluorescent property
+        // Correction: S.Y. 157 removed from fluorescent list based on feedback
+        // REMOVED: S.B. 102, 122; S.R. 169; S.V. 11; S.Y. 93, 157, 176
         const allDyes = [
             // Solvent Yellow (SY)
             {
                 name: '溶劑黃 98', code: 'S.Y. 98', color: '#F4FF09',
+                is_fluorescent: true, // Verified
                 common_name_en: 'Solvent Yellow 98',
                 colour_index_no: 'C.I. 56238', 
                 cas_no: '12671-74-8',
                 chemical_class: 'Monoazo',
-                heat_stability: '300°C (PS)', // Simplified for card
+                heat_stability: '300°C (PS)', 
                 heat_stability_test: 'Tested at Transparent (0.05%) and Reduction (0.2%+1.0%TiO2) concentrations',
                 heat_stability_data: [
                     { polymer: 'PS', temp: '300' },
@@ -210,7 +227,7 @@
                     { polymer: 'PC', temp: '340' },
                     { polymer: 'PET', temp: '300' }
                 ],
-                light_fastness: '7 (PS)', // Simplified for card
+                light_fastness: '7 (PS)', 
                 light_fastness_test: 'Tested at Transparent (0.05%) and Reduction (0.2%+1.0%TiO2) concentrations',
                 light_fastness_data: {
                     PS: { 'Transparent (0.05%)': '7', 'Reduction (0.2%+1.0%TiO₂)': '4-5' },
@@ -238,21 +255,6 @@
                 inquiry_link: 'https://hwashine.tw/contact'
             },
             {
-                name: '溶劑黃 157', code: 'S.Y. 157', color: '#F2F469',
-                common_name_en: 'Solvent Yellow 157', colour_index_no: 'C.I. Not Available', cas_no: '27908-75-4',
-                heat_stability: '300°C', light_fastness: '7-8',
-                compatible_polymers: [
-                    { polymer: 'PS', status: 'recommended' },
-                    { polymer: 'ABS', status: 'recommended' },
-                    { polymer: 'PC', status: 'recommended' },
-                    { polymer: 'PMMA', status: 'recommended' },
-                    { polymer: 'PET', status: 'recommended' },
-                    { polymer: 'SAN', status: 'recommended' } 
-                ],
-                applications: ['Polyester coloring', 'Spin dyeing'],
-                inquiry_link: 'https://hwashine.tw/contact'
-            },
-            {
                 name: '溶劑黃 33', code: 'S.Y. 33', color: '#E3E64D',
                 common_name_en: 'Solvent Yellow 33',
                 colour_index_no: 'C.I. 47000', 
@@ -276,20 +278,6 @@
                     { polymer: 'Polyester Fiber', status: 'recommended' } 
                 ],
                 applications: ['Coloring of PS, ABS, PC, PMMA, PET, SAN and other resins', 'Dyeing of polyester superfine fibers', 'Used as solvent dye'], 
-                inquiry_link: 'https://hwashine.tw/contact'
-            },
-            {
-                name: '溶劑黃 93', code: 'S.Y. 93', color: '#F4EB1F',
-                common_name_en: 'Solvent Yellow 93', colour_index_no: 'C.I. 48160', cas_no: '4702-90-3',
-                heat_stability: '300°C', light_fastness: '7-8', 
-                compatible_polymers: [
-                    { polymer: 'PS', status: 'recommended' },
-                    { polymer: 'PC', status: 'recommended' },
-                    { polymer: 'PMMA', status: 'recommended' },
-                    { polymer: 'SAN', status: 'recommended' },
-                    { polymer: 'PET', status: 'recommended' }
-                ],
-                applications: ['Engineering plastics', 'High-performance applications'],
                 inquiry_link: 'https://hwashine.tw/contact'
             },
             {
@@ -322,21 +310,6 @@
                 inquiry_link: 'https://hwashine.tw/contact'
             },
             {
-                name: '溶劑黃 176', code: 'S.Y. 176', color: '#FFF93E',
-                common_name_en: 'Solvent Yellow 176', colour_index_no: 'C.I. Not Available', cas_no: '10319-14-9',
-                heat_stability: '300°C', light_fastness: '7-8',
-                compatible_polymers: [
-                    { polymer: 'PS', status: 'recommended' },
-                    { polymer: 'ABS', status: 'recommended' },
-                    { polymer: 'SAN', status: 'recommended' },
-                    { polymer: 'PMMA', status: 'recommended' },
-                    { polymer: 'PET', status: 'recommended' },
-                    { polymer: 'PC', status: 'recommended' }
-                ],
-                applications: ['Fiber coloring', 'Engineering plastics'],
-                inquiry_link: 'https://hwashine.tw/contact'
-            },
-            {
                 name: '溶劑黃 163', code: 'S.Y. 163', color: '#F7D643',
                 common_name_en: 'Solvent Yellow 163',
                 colour_index_no: 'C.I. 58840',
@@ -363,8 +336,8 @@
                     PET: { 'Rating': '8' }
                 },
                 migration_resistance: 'Good',
-                compatible_polymers: [
-                     { polymer: 'PS', status: 'recommended' },
+                compatible_polymers: [ 
+                    { polymer: 'PS', status: 'recommended' },
                     { polymer: 'ABS', status: 'recommended' },
                     { polymer: 'SAN', status: 'recommended' },
                     { polymer: 'PMMA', status: 'recommended' },
@@ -376,6 +349,7 @@
             },
             {
                 name: '溶劑黃 160:1', code: 'S.Y. 160:1', color: '#F4FF09',
+                is_fluorescent: true, // Verified
                 common_name_en: 'Solvent Yellow 160:1', colour_index_no: 'C.I. Not Available', cas_no: '35773-43-4',
                 heat_stability: '300°C', light_fastness: '7-8',
                 compatible_polymers: [
@@ -384,8 +358,8 @@
                     { polymer: 'SAN', status: 'recommended' },
                     { polymer: 'PMMA', status: 'recommended' },
                     { polymer: 'PET', status: 'recommended' },
-                    { polymer: 'PC', status: 'recommended' }  
-                ],
+                    { polymer: 'PC', status: 'recommended' }
+                  ],
                 applications: ['Engineering plastics', 'Polyester coloring'],
                 inquiry_link: 'https://hwashine.tw/contact'
             },
@@ -406,6 +380,7 @@
             },
             {
                 name: '溶劑綠 5', code: 'S.G. 5', color: '#deeb00',
+                is_fluorescent: true, // Verified
                 common_name_en: 'Solvent Green 5', colour_index_no: 'C.I. 59075', cas_no: '2744-50-5',
                 heat_stability: '300°C', light_fastness: '5-6',
                 compatible_polymers: [
@@ -487,6 +462,7 @@
             },
             {
                 name: '溶劑橙 63', code: 'S.O. 63', color: '#ff6300',
+                is_fluorescent: true, // Verified
                 common_name_en: 'Solvent Orange 63', colour_index_no: 'C.I. 68550', cas_no: '12694-75-0',
                 heat_stability: '280°C', light_fastness: '7-8',
                 compatible_polymers: [
@@ -504,6 +480,7 @@
             },
             {
                 name: '溶劑紅 197', code: 'S.R. 197', color: '#E52B50',
+                is_fluorescent: true, // Verified
                 common_name_en: 'Solvent Red 197', colour_index_no: 'C.I. 50370:1', cas_no: '52372-39-1',
                 heat_stability: '300°C', light_fastness: '7-8',
                 compatible_polymers: [
@@ -519,6 +496,7 @@
             },
             {
                 name: '溶劑紅 149', code: 'S.R. 149', color: '#f6004e',
+                is_fluorescent: true, // Verified
                 common_name_en: 'Solvent Red 149', colour_index_no: 'C.I. 674700', cas_no: '71902-18-6',
                 heat_stability: '290°C', light_fastness: '6-7',
                 compatible_polymers: [
@@ -536,6 +514,7 @@
             },
             {
                 name: '溶劑紅 196', code: 'S.R. 196', color: '#fe121a',
+                is_fluorescent: true, // Verified
                 common_name_en: 'Solvent Red 196', colour_index_no: 'C.I. 503745', cas_no: '52372-36-8',
                 heat_stability: '300°C', light_fastness: '7-8',
                 compatible_polymers: [
@@ -593,21 +572,6 @@
                     { polymer: 'PA6', status: 'recommended' } 
                 ],
                 applications: ['High temperature plastics', 'Spin dyeing'],
-                inquiry_link: 'https://hwashine.tw/contact'
-            },
-            {
-                name: '溶劑紅 169', code: 'S.R. 169', color: '#da2b21',
-                common_name_en: 'Solvent Red 169', colour_index_no: 'C.I. Not Available', cas_no: '27354-18-3',
-                heat_stability: '280°C', light_fastness: '6',
-                compatible_polymers: [
-                    { polymer: 'PS', status: 'recommended' },
-                    { polymer: 'ABS', status: 'recommended' },
-                    { polymer: 'PC', status: 'recommended' },
-                    { polymer: 'PMMA', status: 'recommended' },
-                    { polymer: 'SAN', status: 'recommended' },
-                    { polymer: 'PET', status: 'recommended' }
-                    ],
-                applications: ['General plastics'],
                 inquiry_link: 'https://hwashine.tw/contact'
             },
                        {
@@ -673,6 +637,7 @@
             },
             {
                 name: '溶劑紅 52', code: 'S.R. 52', color: '#b90187',
+                is_fluorescent: true, // Verified
                 common_name_en: 'Solvent Red 52', colour_index_no: 'C.I. 68210', cas_no: '81-39-0',
                 heat_stability: '280°C', light_fastness: '7',
                 compatible_polymers: [
@@ -700,21 +665,6 @@
                     { polymer: 'SAN', status: 'recommended' }
                 ],
                 applications: ['Engineering plastics', 'Clear violet shades'],
-                inquiry_link: 'https://hwashine.tw/contact'
-            },
-            {
-                name: '溶劑紫 11', code: 'S.V. 11', color: '#76006b',
-                common_name_en: 'Solvent Violet 11', colour_index_no: 'C.I. 61100', cas_no: '128-95-0',
-                heat_stability: '300°C', light_fastness: '5-6',
-                compatible_polymers: [
-                    { polymer: 'PS', status: 'recommended' },
-                    { polymer: 'ABS', status: 'recommended' },
-                    { polymer: 'PC', status: 'recommended' },
-                    { polymer: 'PMMA', status: 'recommended' },
-                    { polymer: 'PET', status: 'recommended' },
-                    { polymer: 'SAN', status: 'recommended' }
-                ],
-                applications: ['General plastics'],
                 inquiry_link: 'https://hwashine.tw/contact'
             },
             {
@@ -865,36 +815,6 @@
                 inquiry_link: 'https://hwashine.tw/contact'
             },
             {
-                name: '溶劑藍 102', code: 'S.B. 102', color: '#003075',
-                common_name_en: 'Solvent Blue 102', colour_index_no: 'C.I. Not Available', cas_no: '15403-56-2',
-                heat_stability: '300°C', light_fastness: '5',
-                compatible_polymers: [
-                    { polymer: 'PS', status: 'recommended' },
-                    { polymer: 'ABS', status: 'recommended' },
-                    { polymer: 'PC', status: 'recommended' },
-                    { polymer: 'PMMA', status: 'recommended' },
-                    { polymer: 'SAN', status: 'recommended' },
-                    { polymer: 'PET', status: 'recommended' }
-                ],
-                applications: ['Consult TDS'],
-                inquiry_link: 'https://hwashine.tw/contact'
-            },
-            {
-                name: '溶劑藍 122', code: 'S.B. 122', color: '#1e2462',
-                common_name_en: 'Solvent Blue 122', colour_index_no: 'C.I. 607260', cas_no: '67905-17-3',
-                heat_stability: '300°C', light_fastness: '6-7',
-                compatible_polymers: [
-                    { polymer: 'PS', status: 'recommended' },
-                    { polymer: 'ABS', status: 'recommended' },
-                    { polymer: 'PC', status: 'recommended' },
-                    { polymer: 'PMMA', status: 'recommended' },
-                    { polymer: 'SAN', status: 'recommended' },
-                    { polymer: 'PET', status: 'recommended' }
-                ],
-                applications: ['Plastics', 'Inks'],
-                inquiry_link: 'https://hwashine.tw/contact'
-            },
-            {
                 name: '溶劑藍 63', code: 'S.B. 63', color: '#002e5d',
                 common_name_en: 'Solvent Blue 63', colour_index_no: 'C.I. 61525', cas_no: '6408-50-0',
                 heat_stability: '280°C', light_fastness: '5',
@@ -926,12 +846,46 @@
         ];
 
         // --- Logic ---
-
         const container = document.getElementById('dyesContainer');
         const searchInput = document.getElementById('searchInput');
         const categoryFilter = document.getElementById('categoryFilter');
         const noResults = document.getElementById('noResults');
         const modal = document.getElementById('productModal');
+
+        // Automatic Sorting Logic
+        const colorOrder = {
+            'S.Y.': 1, // Yellow
+            'S.O.': 2, // Orange
+            'S.R.': 3, // Red
+            'S.V.': 4, // Violet
+            'S.B.': 5, // Blue
+            'S.G.': 6  // Green
+        };
+
+        allDyes.sort((a, b) => {
+            // 1. Get Prefix
+            const getPrefix = (code) => code.split(' ')[0];
+            const prefixA = getPrefix(a.code);
+            const prefixB = getPrefix(b.code);
+
+            const orderA = colorOrder[prefixA] || 99;
+            const orderB = colorOrder[prefixB] || 99;
+
+            if (orderA !== orderB) {
+                return orderA - orderB;
+            }
+
+            // 2. Get Number
+            const getNum = (code) => {
+                const parts = code.split(' ');
+                if (parts.length < 2) return 0;
+                // Handle cases like 160:1
+                return parseFloat(parts[1].replace(':', '.'));
+            };
+
+            return getNum(a.code) - getNum(b.code);
+        });
+
 
         // Initial Render
         renderDyes(allDyes);
@@ -950,11 +904,15 @@
                     dye.name.toLowerCase().includes(term) || 
                     dye.code.toLowerCase().includes(term) ||
                     dye.cas_no.includes(term) ||
-                    (dye.colour_index_no && dye.colour_index_no.toLowerCase().includes(term));
+                    (dye.colour_index_no && dye.colour_index_no.toLowerCase().includes(term)) ||
+                    (term.includes('螢光') && dye.is_fluorescent) || 
+                    (term.includes('fluorescent') && dye.is_fluorescent);
                 
-                // Category Match (Checking if english name contains the color)
+                // Category Match
                 let categoryMatch = true;
-                if (category !== 'all') {
+                if (category === 'Fluorescent') {
+                    categoryMatch = dye.is_fluorescent === true;
+                } else if (category !== 'all') {
                     categoryMatch = dye.common_name_en.includes(category);
                 }
 
@@ -981,10 +939,18 @@
                 // Check if color is very light to add border to swatch
                 const isLightColor = dye.color.toLowerCase() === '#ffffff' || dye.color.toLowerCase() === '#f4ff09';
 
+                // Badge Logic
+                const fluorescentBadge = dye.is_fluorescent 
+                    ? `<div class="absolute top-2 left-2 bg-purple-600 text-white text-[10px] px-2 py-0.5 rounded-full z-10 shadow-sm font-medium tracking-wide fluorescent-glow">螢光 Fluorescent</div>` 
+                    : '';
+
                 card.innerHTML = `
                     <div class="h-32 w-full relative overflow-hidden group cursor-pointer" onclick="openModal('${dye.code}')">
                         <div class="color-swatch absolute inset-0 w-full h-full" style="background-color: ${dye.color};"></div>
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition duration-300"></div>
+                        
+                        ${fluorescentBadge}
+
                         <div class="absolute bottom-2 right-2 bg-white bg-opacity-90 px-2 py-1 rounded text-xs font-mono font-bold text-slate-700 shadow-sm">
                             ${dye.code}
                         </div>
@@ -1030,6 +996,14 @@
             document.getElementById('modalCI').textContent = dye.colour_index_no;
             document.getElementById('modalCAS').textContent = dye.cas_no;
             
+            // Toggle Fluorescent Tag in Modal
+            const fluoTag = document.getElementById('modalFluorescentTag');
+            if (dye.is_fluorescent) {
+                fluoTag.classList.remove('hidden');
+            } else {
+                fluoTag.classList.add('hidden');
+            }
+
             const chemClassEl = document.getElementById('modalChemicalClass');
             if(dye.chemical_class) {
                 chemClassEl.textContent = dye.chemical_class;
@@ -1103,8 +1077,8 @@
             }
 
             // Light Fastness Table (Handling Nested Objects like in SY98)
-            if (dye.light_fastness_data && typeof dye.light_fastness_data === 'object') {
-                 const lightTitle = document.createElement('h4');
+            if (dye.light_fastness_data && typeof dye.light_fastness_data === 'object') { 
+                const lightTitle = document.createElement('h4');
                 lightTitle.className = 'font-bold text-sm text-slate-700 mt-4 mb-2';
                 lightTitle.textContent = `詳細耐光數據 (${dye.light_fastness_test || 'Rating'})`;
                 complexArea.appendChild(lightTitle);
