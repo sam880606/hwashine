@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>有機顏料耐熱性與濃度關係研究 | 稀釋穩定性悖論 | 華翔興業 HWASHINE</title>
+    <meta name="description" content="探討有機顏料在低濃度下的耐熱性衰減現象（稀釋穩定性悖論）。分析熱力學機制、TiO2協同效應及工程塑膠（PE, PP, PA, PC）著色解決方案。華翔興業提供專業高性能顏料與配方建議，解決塑膠加工色差問題。">
+    <meta name="keywords" content="有機顏料, 熱穩定性, 稀釋穩定性悖論, 塑膠著色, 顏料濃度, TiO2, 色母粒, 華翔興業, HWASHINE, 顏料耐熱測試, 工程塑膠">
+    <meta name="author" content="華翔興業有限公司">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hwashine.tw/technical-reports/organic-pigment-heat-stability"> <!-- 建議替換為實際頁面網址 -->
+
+    <!-- Open Graph / Facebook (社群分享優化) -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="有機顏料耐熱性與濃度關係研究 | 華翔興業">
+    <meta property="og:description" content="深入解析為何有機顏料在低濃度下耐熱性會變差。掌握「稀釋穩定性悖論」，解決塑膠加工色差與褪色問題。">
+    <meta property="og:site_name" content="華翔興業有限公司">
+    <meta property="og:url" content="https://hwashine.tw/">
+    <meta property="og:image" content="https://hwashine.tw/wp-content/uploads/2021/01/logo.png"> <!-- 若有特定文章封面圖請替換 -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="有機顏料耐熱性與濃度關係研究 | 華翔興業">
+    <meta name="twitter:description" content="探討有機顏料在低濃度下的耐熱性衰減現象，提供工業級解決方案。">
+
+    <!-- Schema.org Structured Data (結構化資料) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "工業聚合物應用中有機顏料濃度依賴性熱穩定性衰減現象之綜合研究報告",
+      "alternativeHeadline": "有機顏料稀釋穩定性悖論研究",
+      "description": "探討有機顏料在塑膠著色中，隨著濃度降低導致耐熱性衰減的現象（稀釋穩定性悖論），並提供熱力學分析與解決方案。",
+      "author": {
+        "@type": "Organization",
+        "name": "華翔興業有限公司",
+        "url": "https://hwashine.tw/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "華翔興業有限公司",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hwashine.tw/wp-content/uploads/2021/01/logo.png"
+        }
+      },
+      "keywords": "有機顏料, 熱穩定性, 塑膠著色, 華翔興業",
+      "inLanguage": "zh-TW"
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', '"Microsoft JhengHei"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', '"PMingLiU"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        
+        .prose p {
+            margin-bottom: 1.25em;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .prose h2 {
+            margin-top: 2em;
+            margin-bottom: 1em;
+            padding-bottom: 0.5em;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1e293b;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .prose h3 {
+            margin-top: 1.5em;
+            margin-bottom: 0.75em;
+            color: #334155;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+        .prose ul {
+            list-style-type: disc;
+            padding-left: 1.5em;
+            margin-bottom: 1.25em;
+        }
+        .prose li {
+            margin-bottom: 0.5em;
+        }
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 4px solid #0ea5e9;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        
+        @media (min-width: 1024px) {
+            .toc-sticky {
+                position: sticky;
+                top: 2rem;
+                max-height: calc(100vh - 4rem);
+                overflow-y: auto;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased pb-20 lg:pb-0">
+
+    <!-- Mobile Header -->
+    <header class="lg:hidden bg-white shadow-md sticky top-0 z-50 px-4 py-3 flex justify-between items-center">
+        <h1 class="text-lg font-bold text-slate-900 truncate">有機顏料濃度與耐熱性研究</h1>
+        <button id="menu-btn" onclick="toggleDrawer()" class="text-slate-600 focus:outline-none p-2 rounded hover:bg-slate-100" aria-label="開啟選單">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div id="drawer" class="fixed inset-0 bg-slate-900/50 z-40 hidden transition-opacity lg:hidden" onclick="toggleDrawer()">
+        <div class="absolute right-0 top-0 bottom-0 w-72 bg-white shadow-xl overflow-y-auto transform transition-transform translate-x-full flex flex-col" id="drawer-content" onclick="event.stopPropagation()">
+            <div class="p-4 border-b flex justify-between items-center bg-slate-50">
+                <h2 class="font-bold text-lg text-slate-800">章節導航</h2>
+                <button onclick="toggleDrawer()" class="text-slate-500 p-2 hover:bg-slate-200 rounded-full" aria-label="關閉選單">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="p-4 space-y-2 text-sm flex-1 overflow-y-auto">
+                <!-- Mobile Nav Items -->
+                <a href="#section-1" class="block py-3 px-2 text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded border-b border-slate-100" onclick="toggleDrawer()">1. 緒論：稀釋穩定性悖論</a>
+                <a href="#section-2" class="block py-3 px-2 text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded border-b border-slate-100" onclick="toggleDrawer()">2. 熱力學基礎</a>
+                <a href="#section-3" class="block py-3 px-2 text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded border-b border-slate-100" onclick="toggleDrawer()">3. 二氧化鈦(TiO₂)協同效應</a>
+                <a href="#section-4" class="block py-3 px-2 text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded border-b border-slate-100" onclick="toggleDrawer()">4. 關鍵顏料案例分析</a>
+                <a href="#section-5" class="block py-3 px-2 text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded border-b border-slate-100" onclick="toggleDrawer()">5. 聚合物基質影響</a>
+                <a href="#section-6" class="block py-3 px-2 text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded border-b border-slate-100" onclick="toggleDrawer()">6. 加工工藝參數</a>
+                <a href="#section-7" class="block py-3 px-2 text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded border-b border-slate-100" onclick="toggleDrawer()">7. 添加劑的作用</a>
+                <a href="#section-8" class="block py-3 px-2 text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded border-b border-slate-100" onclick="toggleDrawer()">8. 華翔興業解決方案</a>
+                <a href="#section-9" class="block py-3 px-2 text-slate-600 hover:text-brand-600 hover:bg-slate-50 rounded border-b border-slate-100" onclick="toggleDrawer()">9. 聯絡我們</a>
+            </nav>
+            
+            <!-- Drawer CTA -->
+            <div class="p-4 border-t bg-slate-50 space-y-3">
+                 <a href="https://hwashine.tw/contact" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-brand-600 text-white font-bold py-3 px-4 rounded-lg shadow hover:bg-brand-700 transition-colors">
+                    聯絡華翔興業
+                </a>
+                <a href="https://hwashine.tw/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full bg-white border border-slate-300 text-slate-700 font-bold py-3 px-4 rounded-lg hover:bg-slate-50 transition-colors">
+                    訪問官方網站
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Fixed Bottom Action Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-3 lg:hidden z-30 flex gap-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <a href="https://hwashine.tw/" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center bg-white border-2 border-slate-200 text-slate-700 font-bold py-2 rounded-lg text-sm active:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+            官方網站
+        </a>
+        <a href="https://hwashine.tw/contact" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center bg-brand-600 text-white font-bold py-2 rounded-lg text-sm shadow active:bg-brand-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            聯絡我們
+        </a>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+            
+            <!-- Sidebar Navigation (Desktop) -->
+            <aside class="hidden lg:block lg:col-span-3">
+                <nav class="toc-sticky space-y-1" aria-label="Sidebar">
+                    <div class="pb-4 border-b mb-4">
+                        <h3 class="font-bold text-slate-900 text-lg">內容目錄</h3>
+                    </div>
+                    <a href="#section-1" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 hover:text-brand-600 transition-colors">1. 緒論：稀釋穩定性悖論</a>
+                    <a href="#section-2" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 hover:text-brand-600 transition-colors">2. 熱力學基礎</a>
+                    <a href="#section-3" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 hover:text-brand-600 transition-colors">3. 二氧化鈦(TiO₂)協同效應</a>
+                    <a href="#section-4" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 hover:text-brand-600 transition-colors">4. 關鍵顏料案例分析</a>
+                    <a href="#section-5" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 hover:text-brand-600 transition-colors">5. 聚合物基質影響</a>
+                    <a href="#section-6" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 hover:text-brand-600 transition-colors">6. 加工工藝參數</a>
+                    <a href="#section-7" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 hover:text-brand-600 transition-colors">7. 添加劑的作用</a>
+                    <a href="#section-8" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 hover:text-brand-600 transition-colors">8. 華翔興業解決方案</a>
+                    <a href="#section-9" class="group flex items-center px-3 py-2 text-sm font-medium text-slate-600 rounded-md hover:bg-slate-100 hover:text-brand-600 transition-colors">9. 聯絡我們</a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="lg:col-span-9 prose prose-slate max-w-none bg-white p-6 md:p-10 rounded-xl shadow-sm border border-slate-100">
+                
+                <!-- Title Block -->
+                <div class="text-center pb-8 border-b border-slate-200 mb-8">
+                    <h1 class="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                        工業聚合物應用中<br class="hidden md:block">有機顏料濃度依賴性熱穩定性衰減現象<br><span class="text-brand-600 text-xl md:text-3xl">之綜合研究報告</span>
+                    </h1>
+                    <div class="flex items-center justify-center space-x-2 text-sm text-slate-500 mb-4">
+                        <span class="font-medium text-brand-700">發布單位：華翔興業有限公司</span>
+                        <span>|</span>
+                        <span>技術專題</span>
+                    </div>
+                    <p class="text-slate-500 italic">Exploring the "Dilution Stability Paradox" in Plastic Coloration</p>
+                </div>
+
+                <!-- Section 1 -->
+                <section id="section-1" class="scroll-mt-24">
+                    <h2>1. 緒論：塑料著色中的「稀釋穩定性悖論」</h2>
+                    <p>在現代高分子材料工程領域，顏料的選擇涉及化學穩定性、加工流變學及耐久性。隨著高性能工程塑料（PC, PA, PPS）應用增加，加工溫度攀升，加上市場對淺色系（Pastel shades）與高透明製品的需求，引發了一個技術難題：<strong>有機顏料的耐熱穩定性並非恆定，而是表現出顯著的濃度依賴性（Concentration Dependence）。</strong></p>
+                    
+                    <div class="highlight-box">
+                        <h4 class="font-bold text-brand-700 mb-2">稀釋穩定性悖論 (Dilution Stability Paradox)</h4>
+                        <p class="mb-0 text-slate-700">許多在全色（Full Shade）下能耐受 300℃ 高溫的顏料，一旦稀釋至 1/25 標準深度（SD）或更低濃度（如 0.01%-0.05%），其耐熱極限可能驟降至 220℃ 甚至更低，伴隨嚴重的色相漂移、褪色甚至化學分解。</p>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section id="section-2" class="scroll-mt-24">
+                    <h2>2. 熱力學基礎：從晶格能保護到溶解度極限</h2>
+                    <p>要理解此現象，必須摒棄「顏料總是惰性固體」的觀念。在聚合物熔體中，有機顏料表現出動態的溶解-沈澱平衡。</p>
+
+                    <h3>2.1 晶格能：熱穩定性之源</h3>
+                    <p>有機顏料分子（如酞菁環、喹吖啶酮環）通過范德華力、氫鍵及 π-π 堆積自組裝成晶格。這種結構提供了：</p>
+                    <ul>
+                        <li><strong>物理屏蔽</strong>：內部分子難以接觸氧氣或自由基。</li>
+                        <li><strong>能量穩定化</strong>：分解需克服巨大的晶格能（Lattice Energy）。</li>
+                    </ul>
+
+                    <h3>2.2 聚合物熔體中的溶解度行為</h3>
+                    <p>根據范特霍夫方程，溶解度隨溫度升高呈指數級上升。</p>
+                    <div class="grid md:grid-cols-2 gap-6 my-6">
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-2">全色 (Full Shade) 狀態</h4>
+                            <p class="text-sm">濃度 C<sub>total</sub> &gt;&gt; 溶解度 C<sub>sat</sub></p>
+                            <p class="text-sm text-slate-600 mt-2">大部分顏料以晶體顆粒存在，保留晶格能保護，宏觀耐熱性佳。</p>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                            <h4 class="font-bold text-red-800 mb-2">沖淡色 (Tint) 狀態</h4>
+                            <p class="text-sm">濃度 C<sub>total</sub> ≤ 溶解度 C<sub>sat</sub></p>
+                            <p class="text-sm text-slate-600 mt-2">晶體解體，形成<strong>分子級分散</strong>。失去保護的游離分子極易受熱氧化攻擊。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3 -->
+                <section id="section-3" class="scroll-mt-24">
+                    <h2>3. 二氧化鈦(TiO₂)的協同破壞機制</h2>
+                    <p>低濃度顏料常與 TiO₂ 共混，TiO₂ 不僅是稀釋劑，更是化學反應的加速劑。</p>
+                    <ul>
+                        <li><strong>表面化學活性</strong>：TiO₂ 表面的酸鹼位點及羥基可催化有機顏料分解。高溫下可能產生活性氧物種（ROS）。</li>
+                        <li><strong>局域熱點與散射</strong>：高折射率造成光學路徑延長，增加光熱吸收；輻射傳熱不均形成局部「熱點」。</li>
+                        <li><strong>機械磨蝕</strong>：硬度極高的 TiO₂ 顆粒在剪切流場中如磨球般粉碎有機顏料，暴露更多高能表面。</li>
+                    </ul>
+                </section>
+
+                <!-- Section 4 -->
+                <section id="section-4" class="scroll-mt-24">
+                    <h2>4. 關鍵顏料品種的濃度依賴性案例分析</h2>
+                    
+                    <h3>主要案例</h3>
+                    <ul class="space-y-4">
+                        <li><strong>二噁嗪紫 (PV 23)</strong>：極度敏感。在 1/3 SD 可耐 280°C，但在 1/25 SD 下超過 220°C 即崩潰，色相轉紅/棕。</li>
+                        <li><strong>喹酞酮黃 (PY 138)</strong>：高敏感。高溫下溶解度大增，冷卻時形成亞穩態微晶，耐熱性急劇下降。</li>
+                        <li><strong>DPP 紅 (PR 254 vs PO 73)</strong>：PR 254 因強氫鍵相對穩定；PO 73 因叔丁基降低晶格能，低濃度下耐熱性差。</li>
+                        <li><strong>聯苯胺黃 (PY 83)</strong>：有安全隱患。低濃度下熱應力集中，可能分解產生致癌物 PCB。</li>
+                        <li><strong>苯並咪唑酮黃 (PY 180)</strong>：<span class="text-green-600 font-bold">穩定性異常優異</span>。因極強氫鍵網絡，溶解度極低，耐熱性與濃度無關。</li>
+                    </ul>
+
+                    <h3 class="mt-8 mb-4">顏料性能綜合對比表</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-slate-300 border border-slate-200 shadow-sm rounded-lg">
+                            <thead class="bg-slate-100">
+                                <tr>
+                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-slate-900">顏料索引 (C.I.)</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-slate-900">化學結構</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-slate-900">全色耐熱性</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-slate-900 text-red-600">低濃度耐熱性</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-slate-900">敏感度</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 bg-white">
+                                <tr>
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-slate-900">PV 23</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">Dioxazine</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">280°C</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-red-600 font-bold">&lt; 220°C</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">極高</td>
+                                </tr>
+                                <tr class="bg-slate-50">
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-slate-900">PY 138</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">Quinophthalone</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">290°C</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-red-600 font-bold">&lt; 240°C</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">高</td>
+                                </tr>
+                                <tr>
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-slate-900">PO 73</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">DPP</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">280°C</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-red-600 font-bold">差 (Poor)</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">高</td>
+                                </tr>
+                                <tr class="bg-slate-50">
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-slate-900">PR 254</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">DPP</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">300°C</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">280°C</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">低</td>
+                                </tr>
+                                <tr>
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-slate-900">PY 180</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">Benzimidazolone</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">280°C</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-green-600 font-bold">280°C</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">無</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Section 5 -->
+                <section id="section-5" class="scroll-mt-24">
+                    <h2>5. 聚合物基質特性的影響分析</h2>
+                    <ul class="space-y-3">
+                        <li>
+                            <strong>聚烯烴 (PE, PP)</strong>：
+                            非極性基質。低濃度顏料易引發<strong>翹曲 (Warpage)</strong>，尤其在 HDPE 中，低濃度下的成核位點分佈不均導致各向異性收縮。同時易發生微觀遷移。
+                        </li>
+                        <li>
+                            <strong>工程塑料 (PA, PC)</strong>：
+                            <ul>
+                                <li><strong>PA (尼龍)</strong>：高極性與還原性熔體。許多偶氮顏料會溶解並反應分解。</li>
+                                <li><strong>PC (聚碳酸酯)</strong>：加工溫度極高 (>300°C)。通常放棄有機顏料，改用設計為「分子級溶解」的<strong>溶劑染料 (Solvent Dyes)</strong>。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>PVC</strong>：
+                            增塑劑 (如 DOP) 充當良溶劑，低濃度顏料易溶解並受 HCl 攻擊變色。
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Section 6 & 7 -->
+                <section id="section-6" class="scroll-mt-24">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h2>6. 加工工藝參數的放大效應</h2>
+                            <ul class="list-disc pl-5">
+                                <li><strong>剪切誘導加熱</strong>：高剪切力轉化為熱能，局部過熱可達 30-50°C。低濃度分散需要強剪切，反而破壞晶格。</li>
+                                <li><strong>停留時間</strong>：在熱流道或注塑機中長時間受熱 (Heat Soak)，溶解態分子跨越降解能壘，導致後續產品變色。</li>
+                            </ul>
+                        </div>
+                        <div id="section-7">
+                            <h2>7. 添加劑的作用</h2>
+                            <ul class="list-disc pl-5">
+                                <li><strong>穩定劑 (正向)</strong>：抗氧劑 (AO 1010/168) 與光穩定劑 (HALS) 可捕獲自由基，顯著減少色差。</li>
+                                <li><strong>分散劑 (潛在負面)</strong>：過量低分子量分散劑可能充當「溶劑」，助溶顏料並加速表面剝離。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 8 -->
+                <section id="section-8" class="scroll-mt-24">
+                    <h2>8. 華翔興業的專業解決方案</h2>
+                    <p>面對有機顏料的熱穩定性挑戰，<strong>華翔興業有限公司</strong> 提供全方位的技術支援與高性能產品，協助您解決「稀釋穩定性悖論」，確保產品在極端加工條件下的色彩品質。</p>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-brand-500 pl-4 py-3 bg-brand-50">
+                            <h4 class="font-bold text-slate-900">高性能顏料供應</h4>
+                            <p class="text-sm m-0 text-slate-700">我們代理並供應各類高晶格能顏料（如 PY 180, PR 144, 複合無機顏料 CICP），專為高溫與低濃度應用設計，避免一般顏料的色相漂移問題。</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-brand-500 pl-4 py-3 bg-brand-50">
+                            <h4 class="font-bold text-slate-900">客製化配方諮詢</h4>
+                            <p class="text-sm m-0 text-slate-700">我們的技術團隊依據您的基材（PE, PP, PA, PC）與加工參數，提供專業的「防禦性配方建議」，協助您選擇最適當的穩定劑與分散劑組合。</p>
+                        </div>
+
+                        <div class="mt-4">
+                            <a href="https://hwashine.tw/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-600 font-bold hover:text-brand-800 transition-colors">
+                                瀏覽華翔興業官網了解更多產品
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 9 -->
+                <section id="section-9" class="scroll-mt-24">
+                    <h2>9. 結論與聯絡我們</h2>
+                    <p>有機顏料在低濃度下的熱穩定性問題雖複雜，但透過正確的選材與專業的合作夥伴，完全可以克服。<strong>華翔興業</strong> 致力於為塑料著色工業提供最可靠的解決方案。</p>
+                    
+                    <div class="bg-slate-900 text-white rounded-xl p-8 mt-8 text-center shadow-lg">
+                        <h3 class="text-white text-2xl font-bold mb-4 mt-0">需要專業的顏料建議？</h3>
+                        <p class="text-slate-300 mb-8 max-w-2xl mx-auto">別讓顏色問題影響您的產品品質。立即聯繫我們，取得針對您專案的客製化解決方案。</p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="https://hwashine.tw/contact" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 px-8 rounded-full transition-colors shadow-md">
+                                聯絡我們
+                            </a>
+                            <a href="https://hwashine.tw/" target="_blank" rel="noopener noreferrer" class="inline-block bg-transparent border-2 border-slate-600 hover:border-white text-white font-bold py-3 px-8 rounded-full transition-colors">
+                                訪問官方網站
+                            </a>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-6">華翔興業有限公司 | HWASHINE CO., LTD.</p>
+                    </div>
+                </section>
+
+                <footer class="mt-16 pt-8 border-t border-slate-200 text-center text-slate-500 text-sm">
+                    <p>© 2026 華翔興業有限公司. All Rights Reserved.</p>
+                </footer>
+
+            </main>
+        </div>
+    </div>
+
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-20 lg:bottom-8 right-4 lg:right-8 bg-slate-800/80 backdrop-blur text-white p-3 rounded-full shadow-lg hover:bg-slate-900 transition-colors focus:outline-none z-20" title="回到頂部" aria-label="回到頂部">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <script>
+        // Drawer toggle logic
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            const drawerContent = document.getElementById('drawer-content');
+            
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+                // Small delay to allow display:block to apply before transition
+                setTimeout(() => {
+                    drawerContent.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                drawerContent.classList.add('translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300); // Match transition duration
+            }
+        }
+    </script>
+</body>
+</html>
