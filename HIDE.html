@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO 優化區塊 -->
+    <title>一次粒徑與最終分散粒徑對塗料遮蓋力影響深度報告 | 華翔興業有限公司</title>
+    <meta name="description" content="深入探討一次粒徑與最終分散粒徑對塗料體系遮蓋力的影響，解析米氏散射理論、擁擠效應及塗層光學性能優化策略。華翔興業有限公司提供專業塗料原物料解決方案。">
+    <meta name="keywords" content="塗料遮蓋力, 一次粒徑, 最終分散粒徑, 華翔興業, Hwashine Trading, 鈦白粉, TiO2, 米氏散射, 顏料分散, 塗料配方">
+    <meta name="author" content="華翔興業有限公司">
+    <meta property="og:title" content="一次粒徑與最終分散粒徑對塗料遮蓋力影響深度報告 | 華翔興業有限公司">
+    <meta property="og:description" content="專業技術報告：探討粒徑控制如何決定塗料遮蓋力與光學性能。">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="華翔興業有限公司">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        .math-block {
+            background-color: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            overflow-x: auto;
+        }
+
+        .section-card {
+            background: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: white; }
+            .sidebar, .mobile-header { display: none !important; }
+            .main-content { margin-left: 0 !important; width: 100% !important; }
+            .section-card { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+        .menu-open {
+            transform: translateX(0) !important;
+        }
+        .menu-closed {
+            transform: translateX(-100%) !important;
+        }
+    </style>
+</head>
+<body class="flex flex-col lg:flex-row min-h-screen">
+
+    <!-- Mobile Header / Nav (Hamburger) -->
+    <div class="lg:hidden bg-slate-800 text-white p-4 sticky top-0 z-50 shadow-md flex justify-between items-center mobile-header">
+        <h1 class="text-lg font-bold truncate pr-4">塗料遮蓋力深度研究報告</h1>
+        <button id="menu-btn" class="text-white focus:outline-none p-2" aria-label="選單">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Sidebar Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-y-0 left-0 w-64 bg-slate-900 text-white z-50 menu-closed transform lg:hidden shadow-2xl overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6 border-b border-slate-700 pb-4">
+                <span class="font-bold text-lg">選單</span>
+                <button id="close-menu-btn" class="text-slate-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Company Links (Mobile) -->
+            <div class="space-y-3 mb-8">
+                <a href="https://hwashine.tw/" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors">
+                    <i class="fas fa-globe mr-2"></i>華翔興業官網
+                </a>
+                <a href="https://hwashine.tw/contact" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors">
+                    <i class="fas fa-envelope mr-2"></i>聯絡我們
+                </a>
+            </div>
+
+            <h2 class="text-slate-400 font-bold text-sm uppercase mb-4 tracking-wider">目錄索引</h2>
+            <nav class="space-y-3 text-sm" id="mobile-nav-links">
+                <a href="#summary" class="block hover:text-blue-400 transition-colors py-1">1. 執行摘要</a>
+                <a href="#intro" class="block hover:text-blue-400 transition-colors py-1">2. 緒論與術語定義</a>
+                <a href="#physics" class="block hover:text-blue-400 transition-colors py-1">3. 光散射物理機制</a>
+                <a href="#primary" class="block hover:text-blue-400 transition-colors py-1">4. 一次粒徑</a>
+                <a href="#final" class="block hover:text-blue-400 transition-colors py-1">5. 最終分散粒徑</a>
+                <a href="#crowding" class="block hover:text-blue-400 transition-colors py-1">6. 依賴性散射與擁擠效應</a>
+                <a href="#wet-dry" class="block hover:text-blue-400 transition-colors py-1">7. 乾膜與濕膜差異</a>
+                <a href="#cases" class="block hover:text-blue-400 transition-colors py-1">8. 案例研究</a>
+                <a href="#measurement" class="block hover:text-blue-400 transition-colors py-1">9. 測量與表徵</a>
+                <a href="#conclusion" class="block hover:text-blue-400 transition-colors py-1">10. 結論與建議</a>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Overlay Background for Mobile Menu -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+
+    <!-- Sidebar Navigation (Desktop) -->
+    <aside class="sidebar hidden lg:flex w-72 bg-slate-800 text-slate-300 h-screen sticky top-0 overflow-y-auto shrink-0 z-40 flex-col">
+        <div class="p-6">
+            <!-- Company Branding (Desktop) -->
+            <div class="mb-8 pb-6 border-b border-slate-600">
+                <h2 class="text-white font-bold text-xl mb-1">華翔興業有限公司</h2>
+                <p class="text-xs text-slate-400 mb-4">Hwashine Trading Co., Ltd.</p>
+                <div class="space-y-2">
+                    <a href="https://hwashine.tw/" target="_blank" class="flex items-center justify-center w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded transition-colors">
+                        <i class="fas fa-globe mr-2"></i>前往官網
+                    </a>
+                    <a href="https://hwashine.tw/contact" target="_blank" class="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>聯絡我們
+                    </a>
+                </div>
+            </div>
+
+            <h2 class="text-slate-400 font-bold text-sm uppercase mb-4 tracking-wider">目錄索引</h2>
+            <nav class="space-y-2 text-sm">
+                <a href="#summary" class="flex items-center hover:bg-slate-700 p-2 rounded transition-colors group">
+                    <span class="bg-slate-700 group-hover:bg-slate-600 text-xs w-6 h-6 flex items-center justify-center rounded mr-2">1</span>
+                    執行摘要
+                </a>
+                <a href="#intro" class="flex items-center hover:bg-slate-700 p-2 rounded transition-colors group">
+                    <span class="bg-slate-700 group-hover:bg-slate-600 text-xs w-6 h-6 flex items-center justify-center rounded mr-2">2</span>
+                    緒論與術語
+                </a>
+                <a href="#physics" class="flex items-center hover:bg-slate-700 p-2 rounded transition-colors group">
+                    <span class="bg-slate-700 group-hover:bg-slate-600 text-xs w-6 h-6 flex items-center justify-center rounded mr-2">3</span>
+                    光散射物理
+                </a>
+                <a href="#primary" class="flex items-center hover:bg-slate-700 p-2 rounded transition-colors group">
+                    <span class="bg-slate-700 group-hover:bg-slate-600 text-xs w-6 h-6 flex items-center justify-center rounded mr-2">4</span>
+                    一次粒徑
+                </a>
+                <a href="#final" class="flex items-center hover:bg-slate-700 p-2 rounded transition-colors group">
+                    <span class="bg-slate-700 group-hover:bg-slate-600 text-xs w-6 h-6 flex items-center justify-center rounded mr-2">5</span>
+                    最終分散粒徑
+                </a>
+                <a href="#crowding" class="flex items-center hover:bg-slate-700 p-2 rounded transition-colors group">
+                    <span class="bg-slate-700 group-hover:bg-slate-600 text-xs w-6 h-6 flex items-center justify-center rounded mr-2">6</span>
+                    擁擠效應
+                </a>
+                <a href="#wet-dry" class="flex items-center hover:bg-slate-700 p-2 rounded transition-colors group">
+                    <span class="bg-slate-700 group-hover:bg-slate-600 text-xs w-6 h-6 flex items-center justify-center rounded mr-2">7</span>
+                    乾膜與濕膜
+                </a>
+                <a href="#cases" class="flex items-center hover:bg-slate-700 p-2 rounded transition-colors group">
+                    <span class="bg-slate-700 group-hover:bg-slate-600 text-xs w-6 h-6 flex items-center justify-center rounded mr-2">8</span>
+                    案例研究
+                </a>
+                <a href="#measurement" class="flex items-center hover:bg-slate-700 p-2 rounded transition-colors group">
+                    <span class="bg-slate-700 group-hover:bg-slate-600 text-xs w-6 h-6 flex items-center justify-center rounded mr-2">9</span>
+                    測量與表徵
+                </a>
+                <a href="#conclusion" class="flex items-center hover:bg-slate-700 p-2 rounded transition-colors group">
+                    <span class="bg-slate-700 group-hover:bg-slate-600 text-xs w-6 h-6 flex items-center justify-center rounded mr-2">10</span>
+                    結論與建議
+                </a>
+            </nav>
+        </div>
+        <div class="mt-auto p-6 text-xs text-slate-500 border-t border-slate-700">
+            <p>&copy; 2024 華翔興業有限公司</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content flex-1 max-w-5xl mx-auto p-4 lg:p-8">
+        
+        <!-- Header -->
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">一次粒徑與最終分散粒徑<br>對塗料體系遮蓋力影響之深度研究報告</h1>
+            <p class="text-slate-500 italic">Exploring the Impact of Primary and Final Dispersed Particle Size on Opacity</p>
+            <div class="mt-4 text-sm text-slate-400">
+                Provided by <a href="https://hwashine.tw/" target="_blank" class="text-blue-600 hover:underline font-bold">華翔興業有限公司 (Hwashine Trading Co., Ltd.)</a>
+            </div>
+        </header>
+
+        <!-- 1. Executive Summary -->
+        <section id="summary" class="section-card border-t-4 border-blue-600">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">1</span>
+                執行摘要 (Executive Summary)
+            </h2>
+            <div class="prose max-w-none text-slate-600 leading-relaxed">
+                <p class="mb-4">在現代塗料、油墨及高分子材料科學中，「遮蓋力」（Hiding Power / Opacity）不僅是衡量產品外觀品質的關鍵指標，更是決定配方經濟效益的核心參數。本研究報告旨在剖析一次粒徑與最終分散粒徑對遮蓋力的影響機制，並結合米氏散射理論（Mie Theory）與膠體化學原理，探討如何優化光學性能。</p>
+                <div class="bg-blue-50 p-4 rounded-md border border-blue-100">
+                    <h3 class="font-bold text-blue-800 mb-2">核心發現：</h3>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>最佳粒徑區間：</strong>對於 TiO2，存在一個「最佳粒徑區間」（約 0.2-0.3 μm），此時光散射截面最大。</li>
+                        <li><strong>分散的重要性：</strong>分散不足導致散射效率呈指數級衰減；過度研磨則可能引發藍移與遮蓋力下降。</li>
+                        <li><strong>擁擠效應：</strong>高濃度下，粒子間距小於光波長會導致相干干涉，降低單位質量的散射效率。</li>
+                        <li><strong>全鏈路優化：</strong>只有當「一次粒徑的精準合成」與「分散工藝的穩定控制」協同，才能實現極致遮蓋力。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Introduction -->
+        <section id="intro" class="section-card">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="bg-slate-100 text-slate-600 rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">2</span>
+                緒論與術語定義
+            </h2>
+            <p class="mb-6 text-slate-600">理解從微觀晶體光學到宏觀塗層性能的跨度，需要建立清晰的術語定義。以下是粒子在不同階段的形態分類：</p>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse border border-slate-200">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700">
+                            <th class="p-3 border border-slate-200 font-bold w-1/4">術語 (Term)</th>
+                            <th class="p-3 border border-slate-200 font-bold">定義與特徵</th>
+                            <th class="p-3 border border-slate-200 font-bold w-1/3">對遮蓋力的潛在影響</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm text-slate-600">
+                        <tr>
+                            <td class="p-3 border border-slate-200 font-bold text-slate-800">一次粒子<br><span class="text-xs font-normal text-slate-500">(Primary Particles)</span></td>
+                            <td class="p-3 border border-slate-200">由化學合成直接形成的單個微晶。顏料的最小結構單元，是顏料的「基因」。</td>
+                            <td class="p-3 border border-slate-200">設定了顏料光學性能的<strong>理論上限</strong>。若一次粒徑偏離最佳尺寸，後續工藝無法彌補。</td>
+                        </tr>
+                        <tr class="bg-slate-50">
+                            <td class="p-3 border border-slate-200 font-bold text-slate-800">聚集體<br><span class="text-xs font-normal text-slate-500">(Aggregates)</span></td>
+                            <td class="p-3 border border-slate-200">由多個一次粒子通過強大化學鍵緊密結合（面與面連接）。極難被打散。</td>
+                            <td class="p-3 border border-slate-200">光學上表現為較大的單一粒子，散射效率低於分散良好的一次粒子。</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border border-slate-200 font-bold text-slate-800">團聚體<br><span class="text-xs font-normal text-slate-500">(Agglomerates)</span></td>
+                            <td class="p-3 border border-slate-200">通過較弱的物理力（點與點接觸）鬆散堆積。可通過機械剪切力打破。</td>
+                            <td class="p-3 border border-slate-200">大幅減少光與顏料的有效接觸界面，是遮蓋力未達標的最常見原因。</td>
+                        </tr>
+                        <tr class="bg-slate-50">
+                            <td class="p-3 border border-slate-200 font-bold text-slate-800">絮凝體<br><span class="text-xs font-normal text-slate-500">(Flocculates)</span></td>
+                            <td class="p-3 border border-slate-200">體系不穩定導致粒子重新形成的鬆散網絡。內部包裹溶劑或樹脂。</td>
+                            <td class="p-3 border border-slate-200">降低「有效折射率」，導致散射顯著下降，並可能引起浮色發花。</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border border-slate-200 font-bold text-slate-800">最終分散粒徑<br><span class="text-xs font-normal text-slate-500">(Dispersed Particle Size)</span></td>
+                            <td class="p-3 border border-slate-200">顏料在最終應用體系中實際存在的幾何尺寸。</td>
+                            <td class="p-3 border border-slate-200">決定實際遮蓋力、光澤度與鮮映性的核心指標。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. Physics -->
+        <section id="physics" class="section-card">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="bg-slate-100 text-slate-600 rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">3</span>
+                光散射物理機制與理論框架
+            </h2>
+            
+            <h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">3.1 菲涅耳方程 (Fresnel Equations)</h3>
+            <p class="text-slate-600">反射強度與兩種介質的折射率差的平方成正比。這解釋了為何金紅石型 TiO2 (<i>n<sub>p</sub></i> ≈ 2.75) 具有最強的潛在遮蓋力。</p>
+            <div class="math-block text-center text-lg">
+                R = <span class="text-2xl">(</span><div class="inline-block align-middle text-center"><div class="border-b border-black">n<sub>p</sub> - n<sub>m</sub></div><div>n<sub>p</sub> + n<sub>m</sub></div></div><span class="text-2xl">)</span><sup>2</sup>
+            </div>
+            <p class="text-sm text-slate-500 bg-slate-100 p-2 rounded">註：<i>n<sub>p</sub></i> 為顏料折射率，<i>n<sub>m</sub></i> 為基體介質折射率。</p>
+
+            <h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">3.2 米氏理論 (Mie Theory) 與最佳粒徑</h3>
+            <p class="text-slate-600">當粒子尺寸與光波長相當（0.1 - 1.0 μm）時，需使用米氏理論。Weber 提出的最佳粒徑公式如下：</p>
+            <div class="math-block text-center text-lg">
+                D<sub>opt</sub> = <div class="inline-block align-middle text-center"><div class="border-b border-black">2&lambda;</div><div>&pi; (n<sub>p</sub> - n<sub>m</sub>)</div></div>
+            </div>
+            <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400 text-slate-700">
+                <p><strong>實際應用推導：</strong><br>對於金紅石型 TiO2 在醇酸樹脂中，最佳粒徑約為 <strong>0.28 μm</strong>。這解釋了為何顏料廠致力於將一次粒徑控制在 0.22 - 0.30 μm 之間。</p>
+            </div>
+        </section>
+
+        <!-- 4 & 5. Particle Sizes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <section id="primary" class="section-card mb-0">
+                <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="bg-slate-100 text-slate-600 rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">4</span>
+                    一次粒徑：內在極限
+                </h2>
+                <ul class="space-y-3 text-slate-600">
+                    <li class="flex items-start"><i class="fas fa-flask mt-1 mr-2 text-blue-500"></i> <span><strong>合成決定論：</strong>一次粒徑是顏料的「基因」，由合成工藝（硫酸法 vs 氯化法）決定。</span></li>
+                    <li class="flex items-start"><i class="fas fa-atom mt-1 mr-2 text-blue-500"></i> <span><strong>量子限域效應：</strong>當粒徑小於 100 nm，瑞利散射主導，塗層變透明（如納米防曬霜）。</span></li>
+                    <li class="flex items-start"><i class="fas fa-ban mt-1 mr-2 text-red-500"></i> <span><strong>物理下限：</strong>小於 0.15 μm 的粒子將失去對可見光的有效散射能力。</span></li>
+                </ul>
+            </section>
+
+            <section id="final" class="section-card mb-0">
+                <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                    <span class="bg-slate-100 text-slate-600 rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">5</span>
+                    最終分散粒徑：工藝控制
+                </h2>
+                <ul class="space-y-3 text-slate-600">
+                    <li class="flex items-start"><i class="fas fa-cogs mt-1 mr-2 text-green-500"></i> <span><strong>分散動力學：</strong>包含潤濕、機械解聚、穩定化三個競爭過程。</span></li>
+                    <li class="flex items-start"><i class="fas fa-layer-group mt-1 mr-2 text-green-500"></i> <span><strong>遮擋效應：</strong>團聚體內部粒子被遮擋，導致散射截面損失 20-40%。</span></li>
+                    <li class="flex items-start"><i class="fas fa-compress-arrows-alt mt-1 mr-2 text-red-500"></i> <span><strong>絮凝體效應：</strong>絮凝體包裹溶劑，降低「有效折射率」，即使粒徑看似不大，遮蓋力仍下降。</span></li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- 6. Crowding Effect -->
+        <section id="crowding" class="section-card border-l-4 border-purple-500">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">6. 依賴性散射與擁擠效應 (Crowding Effect)</h2>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="md:w-2/3 text-slate-600">
+                    <p class="mb-4">在高 PVC（顏料體積濃度）體系中，粒徑與遮蓋力的線性關係失效。當粒子間距小於光波長時，鄰近粒子的散射場發生<strong>相干干涉 (Coherent Scattering)</strong>，導致單位質量的散射效率急劇下降。</p>
+                    <h4 class="font-bold text-slate-700 mb-2">解決方案：間隔技術 (Spacing Technology)</h4>
+                    <ul class="list-disc list-inside space-y-1 ml-2">
+                        <li><strong>物理間隔劑：</strong>使用填料（如煅燒高嶺土）將 TiO2 粒子物理隔開。</li>
+                        <li><strong>工程化表面處理：</strong>如 Ti-Pure™ Select TS-6300，通過特殊表面處理創造空間位阻，強行保持粒子間距。</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/3 bg-purple-50 p-4 rounded flex flex-col justify-center items-center text-center">
+                    <i class="fas fa-people-arrows text-4xl text-purple-400 mb-3"></i>
+                    <p class="text-sm font-bold text-purple-800">臨界距離</p>
+                    <p class="text-xs text-purple-600">粒子表面間距應至少保持在 0.2 - 0.3 μm 以上（約一個粒子直徑）以維持獨立散射。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Wet vs Dry -->
+        <section id="wet-dry" class="section-card">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="bg-slate-100 text-slate-600 rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">7</span>
+                乾膜與濕膜遮蓋力的差異機制
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-slate-200 rounded-lg overflow-hidden">
+                <div class="bg-blue-50 p-6 border-b md:border-b-0 md:border-r border-slate-200">
+                    <h3 class="font-bold text-blue-800 mb-3">濕膜狀態 (Wet Film)</h3>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• <strong>高折射率差：</strong>溶劑 (n≈1.4) 低於樹脂，散射較強。</li>
+                        <li>• <strong>大間距：</strong>溶劑佔據體積，擁擠效應不明顯。</li>
+                        <li>• <strong>假象：</strong>容易讓人誤判遮蓋力良好。</li>
+                    </ul>
+                </div>
+                <div class="bg-orange-50 p-6">
+                    <h3 class="font-bold text-orange-800 mb-3">乾燥過程 (Drying)</h3>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>• <strong>體積收縮：</strong>粒子被迫靠近，若穩定性不足易發生<strong>再絮凝</strong>。</li>
+                        <li>• <strong>折射率差減小：</strong>介質變為純樹脂 (n≈1.5)，理論散射力下降。</li>
+                        <li>• <strong>CPVC 轉折：</strong>若超過 CPVC，空氣進入塗膜，乾膜遮蓋力會突然上升 (Dry Hiding)，但犧牲物性。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Case Studies -->
+        <section id="cases" class="section-card">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="bg-slate-100 text-slate-600 rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">8</span>
+                案例研究與體系對比
+            </h2>
+            <div class="space-y-4">
+                <div class="border-l-4 border-gray-800 pl-4">
+                    <h3 class="font-bold text-lg">二氧化鈦 (TiO2)</h3>
+                    <p class="text-slate-600 text-sm">追求 0.22-0.25 μm 的精確粒徑以獲得最高藍相白度。偏離 0.1 μm 可能導致散射係數下降 20%。</p>
+                </div>
+                <div class="border-l-4 border-pink-500 pl-4">
+                    <h3 class="font-bold text-lg">有機顏料</h3>
+                    <p class="text-slate-600 text-sm">邏輯相反。粒徑越小，透明度越高（用於金屬漆）。若需遮蓋力，需犧牲艷度選擇大粒徑或與無機顏料復配。</p>
+                </div>
+                <div class="border-l-4 border-gray-400 pl-4">
+                    <h3 class="font-bold text-lg">功能性填料</h3>
+                    <p class="text-slate-600 text-sm">折射率接近樹脂，自身透明。主要作用是作為「間隔劑」防止 TiO2 擁擠，間接提升效率。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Measurement -->
+        <section id="measurement" class="section-card">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="bg-slate-100 text-slate-600 rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">9</span>
+                測量與表徵技術
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="bg-slate-800 text-white">
+                            <th class="p-3">技術</th>
+                            <th class="p-3">原理</th>
+                            <th class="p-3">局限性</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                        <tr class="border-b">
+                            <td class="p-3 font-bold">激光繞射法</td>
+                            <td class="p-3">基於米氏理論，測量散射光角度分佈。</td>
+                            <td class="p-3">需準確的光學參數 (RI)。</td>
+                        </tr>
+                        <tr class="border-b bg-slate-50">
+                            <td class="p-3 font-bold">動態光散射 (DLS)</td>
+                            <td class="p-3">測量布朗運動導致的光強波動。</td>
+                            <td class="p-3">對大顆粒極度敏感，不適合寬分佈樣品。</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-3 font-bold">赫格曼細度計</td>
+                            <td class="p-3">物理刮板測量最大顆粒高度。</td>
+                            <td class="p-3 text-red-600"><strong>常見錯誤：</strong>無法檢測平均粒徑。細度合格不代表達到最佳散射尺寸。</td>
+                        </tr>
+                        <tr class="bg-slate-50">
+                            <td class="p-3 font-bold">Zeta 電位</td>
+                            <td class="p-3">測量粒子表面電荷電位。</td>
+                            <td class="p-3">僅適用於靜電穩定體系。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 10. Conclusion -->
+        <section id="conclusion" class="section-card bg-slate-800 text-slate-300">
+            <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">10</span>
+                結論與建議 (Conclusion)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-white font-bold mb-3 border-b border-slate-600 pb-2">關鍵總結</h3>
+                    <ul class="space-y-3 list-disc list-inside">
+                        <li><strong>物理極限不可逾越：</strong>TiO2 的 0.2-0.3 μm 是絕對甜蜜點。</li>
+                        <li><strong>分散是關鍵：</strong>團聚與絮凝會通過降低有效折射率嚴重損害遮蓋力。</li>
+                        <li><strong>非線性陷阱：</strong>高 PVC 下應引入間隔技術，而非盲目增加顏料。</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-3 border-b border-slate-600 pb-2">行動建議</h3>
+                    <p class="mb-4">對於追求極致遮蓋力的塗料產品，建議建立多維度品控體系：</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-slate-700 px-3 py-1 rounded-full text-sm border border-slate-600">粒徑分佈 (D50 & Span)</span>
+                        <span class="bg-slate-700 px-3 py-1 rounded-full text-sm border border-slate-600">Zeta 電位穩定性</span>
+                        <span class="bg-slate-700 px-3 py-1 rounded-full text-sm border border-slate-600">光學散射係數 S</span>
+                    </div>
+                    <p class="mt-4 text-sm italic text-slate-400">切勿僅依賴單一的細度計讀數。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-500 text-sm py-8 bg-slate-900 text-white mt-8">
+            <div class="mb-4">
+                <a href="https://hwashine.tw/" class="mx-2 hover:text-blue-400">華翔興業官網</a> | 
+                <a href="https://hwashine.tw/contact" class="mx-2 hover:text-green-400">聯絡我們</a>
+            </div>
+            <p>&copy; 2024 華翔興業有限公司 (Hwashine Trading Co., Ltd.) | 版權所有</p>
+            <p class="text-xs text-slate-500 mt-2">本報告引用格式請參考文中說明</p>
+        </footer>
+    </main>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const mobileNavLinks = document.querySelectorAll('#mobile-nav-links a');
+
+        function toggleMenu() {
+            if (mobileMenu.classList.contains('menu-closed')) {
+                // Open menu
+                mobileMenu.classList.remove('menu-closed');
+                mobileMenu.classList.add('menu-open');
+                menuOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            } else {
+                // Close menu
+                mobileMenu.classList.remove('menu-open');
+                mobileMenu.classList.add('menu-closed');
+                menuOverlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    </script>
+</body>
+</html>
