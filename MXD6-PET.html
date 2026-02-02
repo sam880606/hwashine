@@ -51,7 +51,7 @@
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-md fixed w-full z-50">
+    <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <a href="https://hwashine.tw/PA-MXD6/indexMXD6" class="flex items-center group">
@@ -59,6 +59,8 @@
                     <span class="ml-2 text-sm text-gray-500 border-l pl-2 border-gray-300">華翔興業</span>
                 </a>
             </div>
+            
+            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-6 items-center">
                 <a href="#features" class="text-gray-600 hover:text-blue-600 transition">核心優勢</a>
                 <a href="#data" class="text-gray-600 hover:text-blue-600 transition">數據實證</a>
@@ -72,10 +74,26 @@
                     聯繫我們
                 </a>
             </div>
+
             <!-- Mobile Menu Button -->
-            <button class="md:hidden text-gray-600 focus:outline-none">
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 focus:outline-none p-2 rounded-md hover:bg-gray-100">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg z-40">
+            <div class="px-6 py-4 space-y-4 flex flex-col">
+                <a href="#features" class="block text-gray-600 hover:text-blue-600 transition py-2 mobile-link">核心優勢</a>
+                <a href="#data" class="block text-gray-600 hover:text-blue-600 transition py-2 mobile-link">數據實證</a>
+                <a href="#calculator" class="block text-gray-600 hover:text-blue-600 transition py-2 mobile-link">成本分析</a>
+                <a href="https://hwashine.tw/PA-MXD6/indexMXD6" class="block text-blue-700 font-medium py-2">
+                    <i class="fas fa-cube mr-1"></i>MXD6 產品主頁
+                </a>
+                <a href="https://hwashine.tw/PA-MXD6/contact" class="block bg-blue-600 text-white px-5 py-3 rounded-lg text-center hover:bg-blue-700 transition">
+                    聯繫我們
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -464,6 +482,25 @@
 
             // Initial calculation run
             calculateSavings();
+
+            // Mobile Menu Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if(mobileMenuBtn && mobileMenu) {
+                // Toggle menu on button click
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Close menu when a link is clicked
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
         });
 
         // --- 2. Calculator Logic (Updated for Cost Reality) ---
