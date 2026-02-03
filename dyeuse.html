@@ -294,4 +294,109 @@
                         <tr class="bg-white border-b hover:bg-slate-50">
                             <td class="px-6 py-4 font-medium text-slate-900">耐熱性</td>
                             <td class="px-6 py-4">DIN EN 12877 (注塑機)</td>
-                            <td class="px-
+                            <td class="px-6 py-4">加工變色、碳化</td>
+                            <td class="px-6 py-4">選擇耐溫 >260°C 的型號</td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-slate-50">
+                            <td class="px-6 py-4 font-medium text-slate-900">耐遷移性</td>
+                            <td class="px-6 py-4">DIN 53775</td>
+                            <td class="px-6 py-4">顏色滲透到包裝紙</td>
+                            <td class="px-6 py-4">避免用於軟質PVC，選用高分子量染料</td>
+                        </tr>
+                        <tr class="bg-white hover:bg-slate-50">
+                            <td class="px-6 py-4 font-medium text-slate-900">耐光性</td>
+                            <td class="px-6 py-4">ISO 4892-2 (氙弧燈)</td>
+                            <td class="px-6 py-4">戶外使用快速褪色</td>
+                            <td class="px-6 py-4">選用蒽醌類結構 (Anthraquinone) 染料</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <div class="mb-6">
+                <h4 class="text-white text-lg font-bold mb-2">華翔興業有限公司</h4>
+                <p class="mb-4">台灣專業溶劑染料供應商，致力於提供最優質的色彩解決方案。</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://hwashine.tw/" target="_blank" class="text-slate-300 hover:text-white transition">官方網站</a>
+                    <a href="https://hwashine.tw/contact" target="_blank" class="text-slate-300 hover:text-white transition">聯絡我們</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 pt-6">
+                <p>&copy; 2024 華翔興業 (Hwashine Trading Co., Ltd.). All rights reserved.</p>
+                <p class="mt-2 text-xs">註：具體染料性能請參閱各產品TDS (Technical Data Sheet)。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function highlightScenario(type) {
+            // Reset all cards
+            document.querySelectorAll('.property-card').forEach(card => {
+                card.classList.remove('active-highlight', 'ring-2');
+                card.style.opacity = '0.5';
+            });
+            
+            // Reset buttons
+            document.querySelectorAll('.scenario-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-100', 'ring-2', 'ring-slate-300');
+            });
+
+            const desc = document.getElementById('scenario-desc');
+            let highlightedIds = [];
+
+            switch(type) {
+                case 'injection':
+                    highlightedIds = ['prop-heat', 'prop-solubility'];
+                    desc.textContent = '高溫注塑加工：必須關注「耐熱性」以防變色，以及「溶解性」以確保分散均勻。';
+                    desc.className = "mt-4 text-sm text-orange-600 font-medium text-center transition-all";
+                    break;
+                case 'outdoor':
+                    highlightedIds = ['prop-light'];
+                    desc.textContent = '戶外長期曝曬：首要考量「耐光性」，防止紫外線破壞發色團導致褪色。';
+                    desc.className = "mt-4 text-sm text-yellow-600 font-medium text-center transition-all";
+                    break;
+                case 'transparent':
+                    highlightedIds = ['prop-transparency', 'prop-color'];
+                    desc.textContent = '透明塑料著色：利用溶劑染料極佳的「透明度」與高「著色力」，維持塑膠的透光質感。';
+                    desc.className = "mt-4 text-sm text-blue-600 font-medium text-center transition-all";
+                    break;
+                case 'composite':
+                    highlightedIds = ['prop-migration', 'prop-heat'];
+                    desc.textContent = '多層複合材料：需特別注意「耐遷移性」，防止染料滲透至其他層材料中。';
+                    desc.className = "mt-4 text-sm text-purple-600 font-medium text-center transition-all";
+                    break;
+            }
+
+            // Highlight specific cards
+            highlightedIds.forEach(id => {
+                const card = document.getElementById(id);
+                if(card) {
+                    card.classList.add('active-highlight', 'ring-2');
+                    card.style.opacity = '1';
+                }
+            });
+
+            // If user clicked highlight, restore opacity of non-highlighted slightly for readability
+            setTimeout(() => {
+                document.querySelectorAll('.property-card').forEach(card => {
+                    if(!card.classList.contains('active-highlight')) {
+                        card.style.opacity = '0.4';
+                    }
+                });
+            }, 50);
+        }
+
+        // Initialize with all visible
+        window.onload = () => {
+             document.querySelectorAll('.property-card').forEach(card => {
+                card.style.opacity = '1';
+            });
+        };
+    </script>
+</body>
+</html>
