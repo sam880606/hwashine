@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企業每月業績與利潤追蹤儀表板</title>
+    <!-- 引入 Tailwind CSS 進行排版 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 SheetJS 解析 Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- 引入 Chart.js 繪製圖表 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 引入 html2pdf.js 支援匯出 PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- 引入 Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f3f4f6; }
+        .spinner { border: 4px solid rgba(0, 0, 0, 0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: #3b82f6; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* 自定義滾動條 */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+        /* PDF 輸出專用樣式，強制避免元素被切斷 */
+        .pdf-avoid-break { 
+            page-break-inside: avoid !important; 
+            break-inside: avoid !important; 
+            display: block; 
+        }
+    </style>
+</head>
+<body class="text-gray-800 h-screen flex flex-col">
+
+    <!-- 頂部導航 -->
+    <header class="bg-white shadow-sm flex flex-col z-10">
+        <div class="px-6 py-4 flex justify-between items-center border-b border-gray-100">
+            <div class="flex items-center gap-2">
+                <i data-lucide="bar-chart-3" class="text-blue-600"></i>
+                <h1 class="text-xl font-bold text-gray-800">年度銷售業績儀表板</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-sm text-gray-500 font-medium">檔案數量: <span id="file-count">0</span>/10</span>
+                <div id="file-upload-container" class="relative">
+                    <input type="file" id="excel-file" accept=".xlsx, .xls, .csv" multiple class="hidden" />
+                    <label for="excel-file" class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors shadow-sm">
+                        <i data-lucide="upload" class="w-4 h-4"></i>
+                        新增 Excel 報表
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- 檔案標籤列 (顯示目前上傳的檔案) -->
+        <div id="file-chips-container" class="px-6 py-3 bg-gray-50 flex flex-wrap gap-2 hidden">
+            <!-- 標籤將透過 JS 動態產生 -->
+        </div>
+    </header>
+
+    <!-- 載入中動畫 -->
+    <div id="loading" class="hidden absolute inset-0 bg-white/80 z-50 flex flex-col items-center justify-center">
+        <div class="spinner mb-4"></div>
+        <p class="text-gray-600 font-medium">正在解析數據，請稍候...</p>
+    </div>
+
+    <!-- 主要內容區 -->
+    <main class="flex-1 p-6 overflow-auto">
+        
+        <!-- 尚未上傳時的提示 -->
+        <div id="empty-state" class="h-full flex flex-col items-center justify-center text-gray-400">
+            <i data-lucide="file-spreadsheet" class="w-24 h-24 mb-4 text-gray-300"></i>
+            <h2 class="text-2xl font-semibold mb-2 text-gray-500">尚未載入資料</h2>
+            <p>請點擊右上方按鈕新增 Excel 檔案 (最多 10 個年度)</p>
+            <p class="text-sm mt-2">支援自動從檔名抓取年度，並以勾選方式自由篩選欲檢視的品項</p>
+        </div>
+
+        <!-- 儀表板區域 (載入後顯示) -->
+        <div id="dashboard" class="hidden max-w-7xl mx-auto space-y-6">
+            
+            <!-- 控制面板 (加入 pdf-avoid-break 防止列印被切斷) -->
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 pdf-avoid-break">
+                <div class="w-full md:w-1/3 flex flex-col gap-1">
+                    <label for="company-selector" class="block text-sm font-medium text-gray-600">請選擇要檢視的客戶：</label>
+                    <div class="flex gap-2">
+                        <select id="company-selector" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none shadow-sm">
+                            <!-- 選項由 JS 動態生成 -->
+                        </select>
+                        <button id="export-pdf-btn" onclick="exportToPDF()" class="whitespace-nowrap bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed" title="匯出目前畫面為 PDF">
+                            <i data-lucide="download" class="w-4 h-4"></i>
+                            另存 PDF
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 w-full md:w-auto">
+                    <div class="bg-blue-50 px-6 py-3 rounded-lg border border-blue-100 flex-1 md:flex-none">
+                        <p id="card-sales-title" class="text-sm text-blue-600 font-medium">所選品項總銷售額 (全部區間)</p>
+                        <p id="card-total-sales" class="text-2xl font-bold text-blue-900">$0</p>
+                    </div>
+                    <div class="bg-green-50 px-6 py-3 rounded-lg border border-green-100 flex-1 md:flex-none">
+                        <p id="card-profit-title" class="text-sm text-green-600 font-medium">所選品項總利潤 (全部區間)</p>
+                        <p id="card-total-profit" class="text-2xl font-bold text-green-900">$0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 圖表區 (加入 pdf-avoid-break 防止列印從中間切斷圖表) -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 pdf-avoid-break">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
+                    <h3 class="text-lg font-semibold text-gray-700 flex items-center gap-2">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-blue-500"></i>
+                        業績與利潤變化趨勢 (依勾選品項動態連動)
+                    </h3>
+                    <div class="flex bg-gray-100 p-1 rounded-lg">
+                        <button class="time-filter px-3 py-1 text-sm font-medium rounded-md bg-white text-blue-600 shadow-sm transition-colors" data-interval="1">1個月</button>
+                        <button class="time-filter px-3 py-1 text-sm font-medium rounded-md text-gray-600 hover:text-gray-900 transition-colors" data-interval="3">3個月</button>
+                        <button class="time-filter px-3 py-1 text-sm font-medium rounded-md text-gray-600 hover:text-gray-900 transition-colors" data-interval="6">半年</button>
+                        <button class="time-filter px-3 py-1 text-sm font-medium rounded-md text-gray-600 hover:text-gray-900 transition-colors" data-interval="12">1年</button>
+                    </div>
+                </div>
+                <!-- 縮小高度為 300px 並加入 id="chart-wrapper" -->
+                <div id="chart-wrapper" class="relative h-[300px] w-full">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 詳細數據表 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-8">
+                <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                    <h3 class="text-lg font-semibold text-gray-700">購買品項成效分析 (勾選以篩選上方圖表)</h3>
+                    <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">已按總銷售額排序</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-600 text-sm">
+                                <th class="p-4 border-b w-12 text-center">
+                                    <input type="checkbox" id="check-all-products" checked class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 cursor-pointer">
+                                </th>
+                                <th class="p-4 font-medium border-b">品項名稱</th>
+                                <th class="p-4 font-medium border-b text-right">交易次數</th>
+                                <th class="p-4 font-medium border-b text-right text-purple-600">總數量</th>
+                                <th class="p-4 font-medium border-b text-right text-blue-600">
+                                    總銷售額 <i data-lucide="arrow-down" class="inline w-4 h-4"></i>
+                                </th>
+                                <th class="p-4 font-medium border-b text-right">總創造利潤</th>
+                                <th class="p-4 font-medium border-b text-right">平均毛利率</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-body" class="divide-y divide-gray-100">
+                            <!-- JS 動態生成 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // --- 狀態變數 ---
+        const MAX_FILES = 10;
+        const monthNames = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+        
+        let uploadedFilesMap = new Map(); 
+        let globalData = {}; 
+        let globalLabels = []; 
+        let chartInstance = null;
+        let currentCompany = null;
+        let currentInterval = '1'; 
+
+        // --- 綁定事件 ---
+        document.getElementById('excel-file').addEventListener('change', handleFileUpload);
+        document.getElementById('company-selector').addEventListener('change', (e) => {
+            currentCompany = e.target.value;
+            renderProductTable();
+        });
+        document.getElementById('check-all-products').addEventListener('change', (e) => {
+            const isChecked = e.target.checked;
+            document.querySelectorAll('.product-toggle').forEach(cb => cb.checked = isChecked);
+            updateChartAndCards();
+        });
+
+        // 綁定時間篩選按鈕事件
+        document.querySelectorAll('.time-filter').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.time-filter').forEach(b => {
+                    b.classList.remove('bg-white', 'text-blue-600', 'shadow-sm');
+                    b.classList.add('text-gray-600', 'hover:text-gray-900');
+                });
+                e.target.classList.remove('text-gray-600', 'hover:text-gray-900');
+                e.target.classList.add('bg-white', 'text-blue-600', 'shadow-sm');
+                
+                currentInterval = e.target.getAttribute('data-interval');
+                updateChartAndCards();
+            });
+        });
+
+        // --- 檔案處理邏輯 ---
+        async function handleFileUpload(event) {
+            const files = event.target.files;
+            if (!files || files.length === 0) return;
+
+            document.getElementById('loading').classList.remove('hidden');
+            let exceedLimit = false;
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (uploadedFilesMap.size >= MAX_FILES && !uploadedFilesMap.has(file.name)) {
+                    exceedLimit = true;
+                    continue; 
+                }
+
+                const yearMatch = file.name.match(/(20\d{2})/);
+                const year = yearMatch ? yearMatch[1] : `未命名(${i+1})`;
+                const data = await readFileAsArrayBuffer(file);
+                const workbook = XLSX.read(data, {type: 'array'});
+                
+                // 保留先前的可見度狀態，若為新檔案則預設為 true (顯示)
+                const isVisible = uploadedFilesMap.has(file.name) ? uploadedFilesMap.get(file.name).visible : true;
+                uploadedFilesMap.set(file.name, { year, workbook, visible: isVisible });
+            }
+
+            event.target.value = '';
+
+            if (exceedLimit) {
+                alert(`注意：最多只能載入 ${MAX_FILES} 個檔案。超過的檔案已被忽略。`);
+            }
+            processAllData();
+        }
+
+        function readFileAsArrayBuffer(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = e => resolve(new Uint8Array(e.target.result));
+                reader.onerror = e => reject(e);
+                reader.readAsArrayBuffer(file);
+            });
+        }
+
+        function removeFile(fileName) {
+            uploadedFilesMap.delete(fileName);
+            processAllData();
+        }
+
+        // 新增切換檔案顯示/隱藏的函數
+        function toggleFileVisibility(fileName, isVisible) {
+            if (uploadedFilesMap.has(fileName)) {
+                uploadedFilesMap.get(fileName).visible = isVisible;
+                processAllData();
+            }
+        }
+
+        // --- 資料運算邏輯 ---
+        function processAllData() {
+            globalData = {};
+            globalLabels = [];
+            
+            document.getElementById('file-count').textContent = uploadedFilesMap.size;
+            renderFileChips();
+
+            if (uploadedFilesMap.size === 0) {
+                document.getElementById('dashboard').classList.add('hidden');
+                document.getElementById('empty-state').classList.remove('hidden');
+                document.getElementById('loading').classList.add('hidden');
+                return;
+            }
+
+            const sortedFiles = Array.from(uploadedFilesMap.entries()).sort((a, b) => a[1].year.localeCompare(b[1].year));
+
+            sortedFiles.forEach(([fileName, fileData]) => {
+                // 若檔案未被勾選顯示，則跳過該檔案的數據不計入圖表
+                if (!fileData.visible) return;
+
+                const { year, workbook } = fileData;
+
+                monthNames.forEach((monthName) => {
+                    const sheet = workbook.Sheets[monthName];
+                    if (!sheet) return;
+
+                    const label = `${year} ${monthName}`;
+                    if (!globalLabels.includes(label)) globalLabels.push(label);
+
+                    const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: null });
+                    
+                    let cIdx = 0, pIdx = 1, qIdx = 2, sIdx = 4, prIdx = 8; 
+                    let startRow = 1;
+
+                    for (let r = 0; r < Math.min(jsonData.length, 10); r++) {
+                        const row = jsonData[r];
+                        if (!row) continue;
+                        const rowStr = row.map(c => String(c || '').trim().toLowerCase());
+                        
+                        const tC = rowStr.findIndex(c => c === 'customer code' || c.includes('客戶'));
+                        const tP = rowStr.findIndex(c => c === 'product name' || c.includes('品名') || c.includes('品項'));
+                        const tQ = rowStr.findIndex(c => c === 'quantity' || c.includes('數量'));
+                        const tS = rowStr.findIndex(c => c === 'sales value' || c.includes('銷售額'));
+                        const tPr = rowStr.findIndex(c => c === 'gross margin' || c.includes('利潤') || c.includes('毛利'));
+
+                        if (tC !== -1 && tS !== -1) { 
+                            cIdx = tC;
+                            if (tP !== -1) pIdx = tP;
+                            if (tQ !== -1) qIdx = tQ;
+                            sIdx = tS;
+                            if (tPr !== -1) prIdx = tPr;
+                            startRow = r + 1; 
+                            break;
+                        }
+                    }
+                    
+                    for (let i = startRow; i < jsonData.length; i++) {
+                        const row = jsonData[i];
+                        if (!row || !row[cIdx]) continue;
+
+                        const company = String(row[cIdx]).trim();
+                        const product = row[pIdx] ? String(row[pIdx]).trim() : '未命名品項';
+                        const quantityValue = parseFloat(row[qIdx]) || 0;
+                        const salesValue = parseFloat(row[sIdx]) || 0;
+                        const profitValue = parseFloat(row[prIdx]) || 0;
+
+                        if (company === "#N/A" || company === "0" || company === "") continue;
+
+                        if (!globalData[company]) {
+                            globalData[company] = { products: {} };
+                        }
+                        if (!globalData[company].products[product]) {
+                            globalData[company].products[product] = {
+                                monthly: {},
+                                totalSales: 0,
+                                totalProfit: 0,
+                                totalQuantity: 0,
+                                count: 0
+                            };
+                        }
+                        if (!globalData[company].products[product].monthly[label]) {
+                            globalData[company].products[product].monthly[label] = { sales: 0, profit: 0, quantity: 0 };
+                        }
+
+                        globalData[company].products[product].monthly[label].sales += salesValue;
+                        globalData[company].products[product].monthly[label].profit += profitValue;
+                        globalData[company].products[product].monthly[label].quantity += quantityValue;
+                        globalData[company].products[product].totalSales += salesValue;
+                        globalData[company].products[product].totalProfit += profitValue;
+                        globalData[company].products[product].totalQuantity += quantityValue;
+                        globalData[company].products[product].count += 1;
+                    }
+                });
+            });
+
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            populateCompanyDropdown();
+        }
+
+        // --- UI 渲染邏輯 ---
+        function renderFileChips() {
+            const container = document.getElementById('file-chips-container');
+            container.innerHTML = '';
+            
+            if(uploadedFilesMap.size > 0) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+
+            uploadedFilesMap.forEach((fileData, fileName) => {
+                const chip = document.createElement('div');
+                // 未勾選時，標籤底色變暗以區分狀態
+                const bgClass = fileData.visible ? 'bg-white' : 'bg-gray-200 opacity-60';
+                chip.className = `${bgClass} border border-gray-200 text-gray-700 px-2 md:px-3 py-1 md:py-1.5 rounded-md text-xs md:text-sm font-medium flex items-center gap-1.5 shadow-sm transition-all`;
+                
+                // 1. 加入 Checkbox 作為顯示切換
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.className = 'w-3.5 h-3.5 text-blue-600 rounded border-gray-300 focus:ring-blue-500 cursor-pointer flex-shrink-0';
+                checkbox.checked = fileData.visible;
+                checkbox.title = "勾選以顯示/隱藏此檔案數據";
+                checkbox.onchange = (e) => toggleFileVisibility(fileName, e.target.checked);
+
+                // 2. 檔案圖示
+                const icon = document.createElement('i');
+                icon.setAttribute('data-lucide', 'file-spreadsheet');
+                icon.className = 'w-3.5 h-3.5 text-green-600 flex-shrink-0';
+
+                // 3. 檔案名稱
+                const textSpan = document.createElement('span');
+                textSpan.className = 'truncate max-w-[120px] md:max-w-none cursor-default';
+                textSpan.innerHTML = `年度 ${fileData.year} <span class="hidden md:inline text-xs text-gray-500 font-normal">(${fileName})</span>`;
+
+                // 4. 刪除按鈕
+                const delBtn = document.createElement('button');
+                delBtn.className = 'ml-1 text-gray-400 hover:text-red-500 transition-colors flex-shrink-0';
+                delBtn.title = '完全移除此檔案';
+                delBtn.onclick = () => removeFile(fileName);
+                delBtn.innerHTML = `<i data-lucide="x" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>`;
+
+                chip.appendChild(checkbox);
+                chip.appendChild(icon);
+                chip.appendChild(textSpan);
+                chip.appendChild(delBtn);
+
+                container.appendChild(chip);
+            });
+            lucide.createIcons();
+        }
+
+        function populateCompanyDropdown() {
+            const selector = document.getElementById('company-selector');
+            selector.innerHTML = '';
+            
+            const companiesWithSales = Object.keys(globalData).map(company => {
+                let companyTotalSales = 0;
+                for (const prod in globalData[company].products) {
+                    companyTotalSales += globalData[company].products[prod].totalSales;
+                }
+                return { name: company, sales: companyTotalSales };
+            });
+
+            companiesWithSales.sort((a, b) => b.sales - a.sales);
+            
+            if (companiesWithSales.length === 0) {
+                selector.innerHTML = '<option>找不到有效資料</option>';
+                currentCompany = null; // 清除狀態
+                renderProductTable();
+                return;
+            }
+
+            companiesWithSales.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.name;
+                option.textContent = `${item.name} (總銷售: $${item.sales.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })})`;
+                selector.appendChild(option);
+            });
+
+            currentCompany = companiesWithSales[0].name;
+            renderProductTable();
+        }
+
+        function renderProductTable() {
+            const data = globalData[currentCompany];
+            const tbody = document.getElementById('product-table-body');
+
+            // 防呆處理：當所有檔案都被取消勾選時，清空表格與圖表
+            if (!data) {
+                tbody.innerHTML = '<tr><td colspan="7" class="p-4 text-center text-gray-400">尚無顯示資料 (請勾選頂部的檔案)</td></tr>';
+                updateChartAndCards();
+                return;
+            }
+
+            tbody.innerHTML = '';
+
+            const productArr = Object.entries(data.products).map(([name, stats]) => ({
+                name,
+                ...stats
+            })).sort((a, b) => b.totalSales - a.totalSales);
+
+            productArr.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-blue-50/50 transition-colors';
+                
+                let marginStr = '0.0%';
+                if (item.totalSales > 0) {
+                    const margin = (item.totalProfit / item.totalSales) * 100;
+                    marginStr = margin.toFixed(1) + '%';
+                }
+
+                tr.innerHTML = `
+                    <td class="p-4 text-center">
+                        <input type="checkbox" class="product-toggle w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 cursor-pointer" value="${item.name}" checked>
+                    </td>
+                    <td class="p-4 text-gray-800 font-medium">${item.name}</td>
+                    <td class="p-4 text-right text-gray-600">${item.count} 筆</td>
+                    <td class="p-4 text-right text-purple-600 font-medium">${item.totalQuantity.toLocaleString('en-US')}</td>
+                    <td class="p-4 text-right text-blue-600 font-bold">$${item.totalSales.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</td>
+                    <td class="p-4 text-right text-green-600 font-medium">$${item.totalProfit.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}</td>
+                    <td class="p-4 text-right text-gray-500">${marginStr}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            if (productArr.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="p-4 text-center text-gray-400">尚無品項資料</td></tr>';
+            }
+
+            document.getElementById('check-all-products').checked = true;
+
+            document.querySelectorAll('.product-toggle').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const allChecked = Array.from(document.querySelectorAll('.product-toggle')).every(c => c.checked);
+                    document.getElementById('check-all-products').checked = allChecked;
+                    updateChartAndCards();
+                });
+            });
+
+            updateChartAndCards();
+        }
+
+        // --- 圖表連動邏輯 ---
+        function updateChartAndCards() {
+            const data = globalData[currentCompany];
+            
+            // 防呆處理：當無數據時將卡片歸零、清空圖表
+            if (!data) {
+                document.getElementById('card-total-sales').textContent = `$0`;
+                document.getElementById('card-total-profit').textContent = `$0`;
+                renderChart([], [], [], []);
+                return;
+            }
+
+            const checkedProducts = Array.from(document.querySelectorAll('.product-toggle:checked')).map(cb => cb.value);
+
+            let aggTotalSales = 0;
+            let aggTotalProfit = 0;
+            const groupedLabels = [];
+            const chartSales = [];
+            const chartProfit = [];
+            const chartQuantityDetails = []; // 改為儲存各產品明細的陣列
+
+            const interval = parseInt(currentInterval, 10);
+
+            for (let i = 0; i < globalLabels.length; i += interval) {
+                const chunkLabels = globalLabels.slice(i, i + interval);
+                
+                let displayLabel = chunkLabels[0];
+                if (interval > 1 && chunkLabels.length > 1) {
+                    const startLabelParts = chunkLabels[0].split(' ');
+                    const endLabelParts = chunkLabels[chunkLabels.length - 1].split(' ');
+                    
+                    if (startLabelParts[0] === endLabelParts[0]) {
+                        displayLabel = `${startLabelParts[0]} ${startLabelParts[1]}~${endLabelParts[1]}`;
+                    } else {
+                        displayLabel = `${chunkLabels[0]} ~ ${chunkLabels[chunkLabels.length - 1]}`;
+                    }
+                }
+
+                let chunkSales = 0;
+                let chunkProfit = 0;
+                let chunkDetails = {}; // 儲存該區間的各產品數量明細
+
+                chunkLabels.forEach(label => {
+                    checkedProducts.forEach(prodName => {
+                        const prodData = data.products[prodName];
+                        if (prodData && prodData.monthly[label]) {
+                            chunkSales += prodData.monthly[label].sales;
+                            chunkProfit += prodData.monthly[label].profit;
+                            
+                            // 紀錄各別產品的數量
+                            const qty = prodData.monthly[label].quantity;
+                            if (qty > 0) {
+                                if (!chunkDetails[prodName]) chunkDetails[prodName] = 0;
+                                chunkDetails[prodName] += qty;
+                            }
+                        }
+                    });
+                });
+
+                groupedLabels.push(displayLabel);
+                chartSales.push(chunkSales);
+                chartProfit.push(chunkProfit);
+                chartQuantityDetails.push(chunkDetails); // 寫入該月份的明細物件
+                aggTotalSales += chunkSales;
+                aggTotalProfit += chunkProfit;
+            }
+
+            document.getElementById('card-sales-title').textContent = `所選品項總銷售額 (全部區間)`;
+            document.getElementById('card-profit-title').textContent = `所選品項總利潤 (全部區間)`;
+
+            document.getElementById('card-total-sales').textContent = `$${aggTotalSales.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
+            document.getElementById('card-total-profit').textContent = `$${aggTotalProfit.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
+
+            renderChart(chartSales, chartProfit, chartQuantityDetails, groupedLabels);
+        }
+
+        function renderChart(salesData, profitData, quantityDetails, labels) {
+            const ctx = document.getElementById('trendChart').getContext('2d');
+            
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: '所選品項月銷售額',
+                            data: salesData,
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                            borderColor: 'rgb(59, 130, 246)',
+                            borderWidth: 1,
+                            yAxisID: 'y',
+                            order: 2
+                        },
+                        {
+                            label: '所選品項月利潤',
+                            data: profitData,
+                            type: 'line',
+                            backgroundColor: 'rgba(16, 185, 129, 1)',
+                            borderColor: 'rgb(16, 185, 129)',
+                            borderWidth: 3,
+                            pointBackgroundColor: 'white',
+                            pointBorderColor: 'rgb(16, 185, 129)',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            tension: 0.3,
+                            yAxisID: 'y1',
+                            order: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: false, // 關閉動畫，避免 PDF 截圖抓到一半的動畫
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) label += ': ';
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                },
+                                afterLabel: function(context) {
+                                    // 在銷售額(datasetIndex === 0)的提示框下方，展開所有產品明細
+                                    if (context.datasetIndex === 0) {
+                                        const details = quantityDetails[context.dataIndex];
+                                        const lines = ['']; // 增加一個空白行區隔上面的金額資訊
+                                        lines.push('【產品數量明細】');
+                                        
+                                        let totalQty = 0;
+                                        let hasData = false;
+                                        
+                                        // 將產品依據數量由大到小排序，方便檢視主力產品
+                                        const sortedDetails = Object.entries(details).sort((a, b) => b[1] - a[1]);
+
+                                        for (const [prod, qty] of sortedDetails) {
+                                            lines.push(` • ${prod}: ${new Intl.NumberFormat('en-US').format(qty)}`);
+                                            totalQty += qty;
+                                            hasData = true;
+                                        }
+
+                                        if (!hasData) return null;
+
+                                        lines.push('----------------');
+                                        lines.push(` 總數量: ${new Intl.NumberFormat('en-US').format(totalQty)}`);
+                                        return lines;
+                                    }
+                                    return null;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear', display: true, position: 'left',
+                            title: { display: true, text: '銷售額' },
+                            grid: { color: 'rgba(0,0,0,0.05)' }
+                        },
+                        y1: {
+                            type: 'linear', display: true, position: 'right',
+                            title: { display: true, text: '利潤' },
+                            grid: { drawOnChartArea: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- PDF 匯出邏輯 ---
+        function exportToPDF() {
+            const element = document.getElementById('dashboard');
+            const btn = document.getElementById('export-pdf-btn');
+            const originalContent = btn.innerHTML;
+            
+            // 變更按鈕狀態為處理中，防止重複點擊
+            btn.innerHTML = '處理中...';
+            btn.disabled = true;
+
+            // 1. 暫時移除表格的橫向捲軸限制
+            const tableContainer = document.querySelector('.overflow-x-auto');
+            if(tableContainer) {
+                tableContainer.classList.remove('overflow-x-auto');
+            }
+
+            // 2. 關鍵修復：暫時解除網頁鎖定高度與內部捲軸
+            document.body.classList.remove('h-screen');
+            const mainContent = document.querySelector('main');
+            mainContent.classList.remove('flex-1', 'overflow-auto');
+            mainContent.classList.add('overflow-visible');
+
+            // 3. 終極圖表防裁切：將 Canvas 轉換為靜態圖片
+            // (html2canvas 在處理分頁時很容易把 Canvas 畫布切斷，換成 img 標籤最穩定)
+            const canvas = document.getElementById('trendChart');
+            const chartWrapper = document.getElementById('chart-wrapper');
+            let tempImg = null;
+            
+            if (chartInstance) {
+                tempImg = document.createElement('img');
+                tempImg.src = chartInstance.toBase64Image();
+                tempImg.className = 'w-full h-full object-contain'; // 確保圖片比例與大小符合外框
+                tempImg.id = 'temp-chart-img';
+                
+                canvas.style.display = 'none'; // 隱藏原本的 canvas
+                chartWrapper.appendChild(tempImg); // 放入靜態圖片讓 PDF 拍攝
+            }
+
+            // 4. 給瀏覽器一點時間 (150ms) 重新計算佈局高度，然後才開始擷取畫面
+            setTimeout(() => {
+                // 設定 html2pdf 參數
+                const opt = {
+                    margin:       [0.5, 0.4, 0.5, 0.4], // 上, 右, 下, 左 (單位:英吋)
+                    filename:     `${currentCompany}_年度業績成效報表.pdf`,
+                    image:        { type: 'jpeg', quality: 1 },
+                    html2canvas:  { scale: 2, useCORS: true, windowWidth: 1200, scrollY: 0 }, 
+                    // 確保這些區塊絕對不從中間切斷
+                    pagebreak:    { mode: ['css', 'legacy'], avoid: ['.pdf-avoid-break', 'tr', 'thead'] }, 
+                    jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+                };
+
+                // 執行匯出
+                html2pdf().set(opt).from(element).save().then(() => {
+                    restoreExportState();
+                }).catch(err => {
+                    console.error("PDF 匯出失敗", err);
+                    alert("PDF 匯出失敗，請稍後再試。");
+                    restoreExportState();
+                });
+            }, 150);
+
+            // 5. 匯出完畢，將 UI 與圖表狀態復原
+            function restoreExportState() {
+                // 復原圖表 (移除圖片，顯示回原本的畫布)
+                if (tempImg && tempImg.parentNode) {
+                    tempImg.parentNode.removeChild(tempImg);
+                    canvas.style.display = 'block';
+                }
+
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+                if(tableContainer) tableContainer.classList.add('overflow-x-auto');
+                document.body.classList.add('h-screen');
+                mainContent.classList.add('flex-1', 'overflow-auto');
+                mainContent.classList.remove('overflow-visible');
+                lucide.createIcons();
+            }
+        }
+    </script>
+</body>
+</html>
