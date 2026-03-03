@@ -141,25 +141,31 @@
 
         // 初始化
         document.addEventListener('DOMContentLoaded', () => {
-            // 嘗試自動讀取根目錄下的 pigment.csv
-            fetch('pigment.csv')
-                .then(response => {
-                    if (!response.ok) throw new Error('找不到預設檔案 pigment.csv');
-                    return response.arrayBuffer();
-                })
-                .then(buffer => {
+            // 嘗試自動讀取根目錄下的 pigment.xlsx 或 pigment.csv
+            async function loadDefaultData() {
+                try {
+                    let response = await fetch('pigment.xlsx');
+                    if (!response.ok) {
+                        // 若找不到 xlsx，退而求其次找 csv
+                        response = await fetch('pigment.csv');
+                        if (!response.ok) throw new Error('找不到預設檔案 pigment.xlsx 或 pigment.csv');
+                    }
+                    
+                    const buffer = await response.arrayBuffer();
                     const data = new Uint8Array(buffer);
-                    // 呼叫 SheetJS 解析二進位資料
+                    // 呼叫 SheetJS 解析二進位資料 (相容 xlsx 與 csv)
                     const workbook = XLSX.read(data, {type: 'array'});
                     const firstSheetName = workbook.SheetNames[0];
                     const worksheet = workbook.Sheets[firstSheetName];
                     const jsonData = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
                     processJSONData(jsonData);
-                })
-                .catch(error => {
-                    console.warn('無法自動載入 pigment.csv (可能檔案不存在或直接雙擊開啟 HTML 受到瀏覽器安全性限制)，請手動上傳：', error);
+                } catch (error) {
+                    console.warn('無法自動載入預設檔案 (可能檔案不存在或直接雙擊開啟 HTML 受到瀏覽器安全性限制)，請手動上傳：', error);
                     updateChart([]); // 初始化空圖表
-                });
+                }
+            }
+            
+            loadDefaultData(); // 執行自動載入
             
             // 監聽下拉選單變化
             document.getElementById('materialFilter').addEventListener('change', updateView);
