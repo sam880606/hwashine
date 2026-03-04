@@ -170,10 +170,12 @@
             // 自動讀取根目錄下的檔案
             async function loadDefaultData() {
                 try {
-                    let response = await fetch('pigment.xlsx');
+                    // 加入時間戳記 (Cache-Busting)，強迫瀏覽器每次都抓最新檔案，防止載入舊的快取
+                    const timeStamp = new Date().getTime();
+                    let response = await fetch('pigment.xlsx?t=' + timeStamp);
                     let fileName = '預設檔案 (pigment.xlsx)';
                     if (!response.ok) {
-                        response = await fetch('pigment.csv');
+                        response = await fetch('pigment.csv?t=' + timeStamp);
                         fileName = '預設檔案 (pigment.csv)';
                         if (!response.ok) throw new Error('找不到預設檔案 pigment.xlsx 或 pigment.csv');
                     }
