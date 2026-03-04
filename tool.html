@@ -51,13 +51,16 @@
                     <p class="text-sm text-gray-500 mt-2 mb-3">上傳您的 Excel 或 CSV 檔案進行篩選與視覺化。</p>
                     
                     <!-- 新增：專屬官網與聯絡我們按鈕 -->
-                    <div class="flex gap-3">
+                    <div class="flex flex-wrap gap-3">
                         <a href="https://hwashine.tw/" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
                             🌐 華翔興業官網
                         </a>
                         <a href="https://hwashine.tw/contact" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-bold text-blue-700 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors shadow-sm">
                             ✉️ 聯絡我們
                         </a>
+                        <button id="openDisclaimerBtn" class="inline-flex items-center px-4 py-2 text-sm font-bold text-gray-600 bg-gray-100 border border-gray-200 rounded-lg hover:bg-gray-200 transition-colors shadow-sm">
+                            📄 免責聲明
+                        </button>
                     </div>
                 </div>
                 
@@ -154,6 +157,26 @@
 
     </div>
 
+    <!-- 新增：免責聲明 Modal 彈出視窗 -->
+    <div id="disclaimerModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-2xl shadow-xl p-6 max-w-md w-full mx-4 transform transition-all duration-300 scale-95" id="disclaimerContent">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-800">📄 免責聲明</h3>
+                <button id="closeDisclaimerBtn" class="text-gray-400 hover:text-gray-600 focus:outline-none transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="text-sm text-gray-600 space-y-3 leading-relaxed">
+                <p>本系統提供之顏料數據（含色相 Hue、彩度 Chroma、耐候、耐光、耐溫等各項理化指標）皆為實驗室標準條件下之測試結果，<strong>僅供初步評估與參考之用</strong>。</p>
+                <p>顏料之實際表現會因您的<strong>實際配方、加工條件（如溫度、時間）、載體材質（樹脂種類）及添加劑</strong>等因素而有所差異。</p>
+                <p>華翔興業有限公司不保證本系統數據之絕對準確性與適用性，強烈建議使用者在投入量產前，務必進行完整的實際打板與效能測試。本公司對於因使用本系統數據所衍生之任何直接或間接損失，恕不負任何法律責任。</p>
+            </div>
+            <div class="mt-6 flex justify-end">
+                <button id="closeDisclaimerBtn2" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors shadow-sm">我知道了</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // 全域變數
         let datasetsStore = []; 
@@ -167,6 +190,39 @@
 
         // 初始化
         document.addEventListener('DOMContentLoaded', () => {
+            // 免責聲明 Modal 邏輯
+            const disclaimerModal = document.getElementById('disclaimerModal');
+            const disclaimerContent = document.getElementById('disclaimerContent');
+            const openDisclaimerBtn = document.getElementById('openDisclaimerBtn');
+            
+            function openDisclaimer() {
+                disclaimerModal.classList.remove('hidden');
+                // 延遲一點點時間觸發 CSS 動畫
+                setTimeout(() => {
+                    disclaimerModal.classList.remove('opacity-0');
+                    disclaimerContent.classList.remove('scale-95');
+                }, 10);
+            }
+
+            function closeDisclaimer() {
+                disclaimerModal.classList.add('opacity-0');
+                disclaimerContent.classList.add('scale-95');
+                // 等待動畫結束後隱藏元素
+                setTimeout(() => {
+                    disclaimerModal.classList.add('hidden');
+                }, 300);
+            }
+
+            // 綁定按鈕事件
+            openDisclaimerBtn.addEventListener('click', openDisclaimer);
+            document.getElementById('closeDisclaimerBtn').addEventListener('click', closeDisclaimer);
+            document.getElementById('closeDisclaimerBtn2').addEventListener('click', closeDisclaimer);
+            
+            // 點擊背景空白處也能關閉
+            disclaimerModal.addEventListener('click', (e) => {
+                if (e.target === disclaimerModal) closeDisclaimer();
+            });
+
             // 自動讀取根目錄下的檔案
             async function loadDefaultData() {
                 try {
