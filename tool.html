@@ -48,7 +48,8 @@
                         華翔興業 - 顏料 Hue & Chroma 座標圖
                         <span class="text-sm font-medium bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full border border-blue-200">測試版</span>
                     </h1>
-                    <p class="text-sm text-gray-500 mt-2 mb-3">上傳您的 Excel 或 CSV 檔案進行篩選與視覺化。</p>
+                    <!-- 修改提示文字：僅保留 Excel -->
+                    <p class="text-sm text-gray-500 mt-2 mb-3">上傳您的 Excel 檔案進行篩選與視覺化。</p>
                     
                     <!-- 新增：專屬官網與聯絡我們按鈕 -->
                     <div class="flex flex-wrap gap-3">
@@ -66,8 +67,10 @@
                 
                 <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto mt-4 md:mt-0">
                     <div class="flex-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">匯入完整 Excel / CSV 資料</label>
-                        <input type="file" id="csvFileInput" accept=".csv, .xlsx, .xls" 
+                        <!-- 修改標籤：僅保留 Excel -->
+                        <label class="block text-sm font-medium text-gray-700 mb-1">匯入完整 Excel 資料</label>
+                        <!-- 修改 accept 屬性：限制只能選擇 .xlsx, .xls -->
+                        <input type="file" id="excelFileInput" accept=".xlsx, .xls" 
                                class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200 transition-colors">
                     </div>
                     <div class="flex-1">
@@ -230,10 +233,9 @@
                     const timeStamp = new Date().getTime();
                     let response = await fetch('pigment.xlsx?t=' + timeStamp);
                     let fileName = '預設檔案 (pigment.xlsx)';
+                    
                     if (!response.ok) {
-                        response = await fetch('pigment.csv?t=' + timeStamp);
-                        fileName = '預設檔案 (pigment.csv)';
-                        if (!response.ok) throw new Error('找不到預設檔案 pigment.xlsx 或 pigment.csv');
+                        throw new Error('找不到預設檔案 pigment.xlsx');
                     }
                     
                     const buffer = await response.arrayBuffer();
@@ -253,7 +255,8 @@
             loadDefaultData();
             
             document.getElementById('materialFilter').addEventListener('change', updateView);
-            document.getElementById('csvFileInput').addEventListener('change', handleFileUpload);
+            // 修改監聽器的 ID，對應新的 input ID
+            document.getElementById('excelFileInput').addEventListener('change', handleFileUpload);
 
             document.querySelectorAll('.filter-input').forEach(input => {
                 input.addEventListener('input', updateView);
