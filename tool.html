@@ -376,20 +376,34 @@
             updateView();
         }
 
+        // 動態產生下拉選單，自動偵測檔案內的材質並設定預設值
         function populateFilterDropdown() {
             const filterSelect = document.getElementById('materialFilter');
             const currentSelection = filterSelect.value;
             
-            filterSelect.innerHTML = `
-                <option value="ALL">全部 (All)</option>
-                <option value="PE">PE</option>
-                <option value="PVC">PVC</option>
-            `;
+            // 取得所有不重複的材質清單 (自動偵測，並過濾掉空值)
+            const uniqueMaterials = [...new Set(parsedData.map(row => row[materialColumn]))]
+                .filter(val => val !== undefined && val !== null && val.toString().trim() !== '')
+                .sort();
 
+            // 動態生成選項
+            let optionsHTML = `<option value="ALL">全部 (All)</option>`;
+            uniqueMaterials.forEach(material => {
+                optionsHTML += `<option value="${material}">${material}</option>`;
+            });
+            filterSelect.innerHTML = optionsHTML;
+
+            // 判斷預設顯示或維持選擇
             if (isFirstLoad) {
-                filterSelect.value = 'PE';
+                // 首次載入時，若材質清單內包含 PE，就預設選擇 PE，否則選 ALL
+                if (uniqueMaterials.includes('PE')) {
+                    filterSelect.value = 'PE';
+                } else {
+                    filterSelect.value = 'ALL';
+                }
                 isFirstLoad = false;
-            } else if (['ALL', 'PE', 'PVC'].includes(currentSelection)) {
+            } else if (currentSelection === 'ALL' || uniqueMaterials.includes(currentSelection)) {
+                // 若已經有選擇過，且該選項在新的資料集中依然存在，則保留該選項
                 filterSelect.value = currentSelection;
             } else {
                 filterSelect.value = 'ALL';
