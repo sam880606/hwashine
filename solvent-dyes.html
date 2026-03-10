@@ -12,6 +12,11 @@
     <meta property="og:url" content="https://hwashine.tw/solvent-dyes">
     <link rel="canonical" href="https://hwashine.tw/solvent-dyes">
     <style>
+        /* =========================================================================
+           【共用 CSS 樣式表】
+           建議將以下的 <style> 內容獨立存成一個 `style.css` 檔案，
+           然後在所有頁面的 <head> 中加入： <link rel="stylesheet" href="style.css">
+           ========================================================================= */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
         
         :root {
@@ -184,7 +189,7 @@
         }
         
         footer {
-            background-color: #112d3b; /* 替換為深色專業背景 */
+            background-color: #112d3b;
             color: #ecf0f1;
             padding: 4rem 1.5rem 1rem;
             margin-top: auto;
@@ -377,18 +382,9 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>認識溶劑染料</h1>
-    </header>  
 
-    <nav>
-        <ul>
-            <li><a href="/">首頁</a></li>
-            <li><a href="/about">關於我們</a></li>
-            <li><a href="/products">產品介紹</a></li>
-            <li><a href="/contact">聯絡我們</a></li>
-        </ul>
-    </nav>
+    <!-- 使用模組化組件：可透過 page-title 屬性改變每個頁面不同的標題 -->
+    <custom-header page-title="認識溶劑染料"></custom-header>  
 
     <main>
         <section>
@@ -445,40 +441,15 @@
         </section>
     </main>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-col brand-col">
-                <div class="footer-logo">華翔興業有限公司</div>
-                <p>專業的有機顏料、溶劑染料及特種化學品供應商，致力於為客戶提供高品質的色彩解決方案。</p>
-            </div>
-            <div class="footer-col links-col">
-                <h4>快速連結</h4>
-                <ul>
-                    <li><a href="/">首頁</a></li>
-                    <li><a href="/about">關於我們</a></li>
-                    <li><a href="/products">產品中心</a></li>
-                    <li><a href="/contact">聯絡我們</a></li>
-                </ul>
-            </div>
-            <div class="footer-col contact-col">
-                <h4>聯絡資訊</h4>
-                <p><strong>地址：</strong>臺北市信義區信義路5段7號37樓</p>
-                <p><strong>電話：</strong>02-77337581</p>
-                <p><strong>Email：</strong><a href="mailto:info@hwashine.tw">info@hwashine.tw</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 華翔興業有限公司 版權所有</p>
-            <div class="legal-links">
-                <a href="/privacy">隱私政策</a>
-                <a href="/terms">使用條款</a>
-            </div>
-        </div>
-    </footer>
+    <!-- 使用模組化組件：插入頁尾 -->
+    <custom-footer></custom-footer>
 
     <div id="back-to-top">&#8679;</div>
 
-    <!-- SEO 結構化資料 (JSON-LD) 更新為符合當前狀態 -->
+    <!-- 引入外部的共用組件腳本 (負責產生頁首與頁尾) -->
+    <script src="components.js"></script>
+
+    <!-- SEO 結構化資料 (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -503,6 +474,7 @@
     }
     </script>
 
+    <!-- 頁面特定邏輯 (GA分析與滾動效果) -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         // GA 模擬追蹤
@@ -532,7 +504,6 @@
                             'section_title': entry.target.querySelector('h2')?.textContent || '未知區塊'
                         });
                     }
-                    // 觸發後即取消觀察，避免重複動畫效能消耗
                     observer.unobserve(entry.target);
                 }
             });
