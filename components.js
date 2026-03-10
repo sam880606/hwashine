@@ -12,7 +12,7 @@ class CustomHeader extends HTMLElement {
             <nav>
                 <ul>
                     <li><a href="/">首頁</a></li>
-                    <li><a href="/about">關於我們</a></li>
+                    <li><a href="/about">關於我們1</a></li>
                     <li><a href="/products">產品介紹</a></li>
                     <li><a href="/contact">聯絡我們</a></li>
                 </ul>
