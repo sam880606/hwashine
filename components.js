@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <base href="https://hwashine.tw">
+  <!-- ⚠️ 注意：如果您在本地端(電腦上)測試，請先保持以下 base 標籤為註解狀態。
+       否則瀏覽器會強制去抓您「線上主機」的 components.js，導致抓不到您剛寫好的新版代碼。
+       等您確定要上傳到主機時，再把註解拿掉即可。 -->
+  <!-- <base href="https://hwashine.tw"> -->
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>有機顏料替代重金屬顏料的解決方案 | 華翔興業</title>
@@ -12,8 +16,8 @@
   <meta property="og:url" content="https://hwashine.tw/有機顏料-環保">
   <link rel="canonical" href="https://hwashine.tw/有機顏料-環保">
   
-  <!-- 引入您的共用頁首頁尾導航欄腳本 -->
-  <script src="https://hwashine.tw/components.js" defer></script>
+  <!-- 引入您的共用頁首頁尾導航欄腳本 (使用相對路徑，確保本地測試能讀取到) -->
+  <script src="./components.js" defer></script>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
@@ -35,9 +39,148 @@
       line-height: 1.6;  
       word-break: break-word;
     }
-    
-    /* 頁首、導航與頁尾的樣式應由您的全站共用 CSS 管理 */
 
+    /* 確保 Web Components 標籤能正確撐開畫面 */
+    custom-header, custom-footer {
+      display: block;
+      width: 100%;
+    }
+    
+    /* =======================================
+       共用元件樣式 (Header, Nav, Footer)
+       建議未來可將此區段移至獨立的共用 style.css 
+       ======================================= */
+    header {  
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));  
+      color: white;  
+      text-align: center;  
+      padding: 2rem;  
+      position: relative;  
+      overflow: hidden;
+    }
+    header::before {  
+      content: "";  
+      position: absolute;  
+      top: -50%;  
+      left: -50%;  
+      width: 200%;  
+      height: 200%;  
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);  
+      animation: ripple 15s infinite linear;  
+      z-index: 1;
+    }
+    @keyframes ripple {  
+      0% { transform: rotate(0deg); }  
+      100% { transform: rotate(360deg); }
+    }
+    header h1 {  
+      margin: 0;  
+      font-size: 2.5rem;  
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);  
+      position: relative;  
+      z-index: 2;
+    }
+    nav {  
+      background-color: rgba(255, 255, 255, 0.1);  
+      backdrop-filter: blur(10px);  
+      padding: 0.5rem;  
+      position: sticky;  
+      top: 0;  
+      z-index: 1000;
+    }
+    nav ul {  
+      list-style-type: none;  
+      padding: 0;  
+      margin: 0;  
+      display: flex;  
+      justify-content: center;  
+      flex-wrap: wrap;
+    }
+    nav ul li {  
+      margin: 0.5rem;
+    }
+    nav ul li a {  
+      color: var(--text-color);  
+      text-decoration: none;  
+      font-weight: bold;  
+      transition: all 0.3s ease;  
+      padding: 0.5rem 1rem;  
+      border-radius: 4px;
+    }
+    nav ul li a:hover {  
+      background-color: var(--primary-color);  
+      color: white;
+    }
+
+    /* 為您的 JS 共用 Footer 新增專屬排版樣式 */
+    footer {  
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));  
+      color: white;  
+      margin-top: 2rem;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem 1.5rem 1rem;
+      text-align: left;
+      gap: 2rem;
+    }
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+    }
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    .footer-col h4 {
+      color: var(--accent-color);
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.8rem;
+    }
+    .footer-col a, .legal-links a {
+      color: #e0e0e0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-col a:hover, .legal-links a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    .footer-col p {
+      margin-bottom: 0.8rem;
+    }
+    .footer-bottom {
+      background-color: rgba(0, 0, 0, 0.2);
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    .footer-bottom p {
+      margin: 0 0 0.5rem 0;
+    }
+    .legal-links a {
+      margin: 0 10px;
+      font-size: 0.9rem;
+    }
+
+    /* =======================================
+       內文區域專屬樣式
+       ======================================= */
     main {  
       max-width: 1200px;  
       margin: 2rem auto;  
@@ -85,6 +228,7 @@
       cursor: pointer;  
       z-index: 1000;  
       transition: opacity 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
     
     #back-to-top.show {  
