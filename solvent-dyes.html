@@ -29,6 +29,9 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         header {
@@ -103,9 +106,12 @@
         }
         
         main {
+            flex: 1;
+            width: 100%;
             max-width: 1000px;
-            margin: 3rem auto;
+            margin: 3rem auto 2rem;
             padding: 0 1.5rem;
+            box-sizing: border-box;
         }
         
         section {
@@ -178,27 +184,116 @@
         }
         
         footer {
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: white;
-            text-align: center;
-            padding: 2.5rem 1rem;
-            margin-top: 4rem;
+            background-color: #112d3b; /* 替換為深色專業背景 */
+            color: #ecf0f1;
+            padding: 4rem 1.5rem 1rem;
+            margin-top: auto;
+            font-size: 0.95rem;
         }
         
-        footer p {
-            text-align: center;
+        .footer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: #fff;
             margin-bottom: 1rem;
+            font-size: 1.1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
         }
-        
-        footer nav a {
-            color: rgba(255,255,255,0.8);
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-logo {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            display: block;
+            font-weight: 700;
+        }
+
+        .footer-col p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+            text-align: left;
+        }
+
+        .links-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .links-col li {
+            margin-bottom: 0.8rem;
+        }
+
+        .links-col a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .links-col a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-col strong {
+            color: #fff;
+        }
+
+        .contact-col a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
             transition: color 0.3s ease;
         }
         
-        footer nav a:hover {
+        .contact-col a:hover {
             color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            text-align: left;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            margin-left: 1rem;
+            transition: color 0.3s;
+        }
+
+        .legal-links a:hover {
+            color: #fff;
         }
         
         #back-to-top {
@@ -232,6 +327,52 @@
         
         .content-section {
             margin-bottom: 2rem;
+        }
+
+        /* 響應式設計：修復手機版導航列與整體排版 */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            .footer-bottom p {
+                text-align: center;
+            }
+            .legal-links a {
+                margin: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 2rem 1rem;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            nav ul {
+                gap: 0.3rem;
+            }
+            nav ul li {
+                margin: 0;
+            }
+            nav ul li a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.95rem;
+            }
+            main {
+                margin: 1.5rem auto;
+                padding: 0 1rem;
+            }
+            section {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -305,11 +446,34 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 華翔興業有限公司 版權所有</p>
-        <nav>
-            <a href="/privacy">隱私政策</a> |
-            <a href="/terms">使用條款</a>
-        </nav>
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <div class="footer-logo">華翔興業有限公司</div>
+                <p>專業的有機顏料、溶劑染料及特種化學品供應商，致力於為客戶提供高品質的色彩解決方案。</p>
+            </div>
+            <div class="footer-col links-col">
+                <h4>快速連結</h4>
+                <ul>
+                    <li><a href="/">首頁</a></li>
+                    <li><a href="/about">關於我們</a></li>
+                    <li><a href="/products">產品中心</a></li>
+                    <li><a href="/contact">聯絡我們</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-col">
+                <h4>聯絡資訊</h4>
+                <p><strong>地址：</strong>臺北市信義區信義路5段7號37樓</p>
+                <p><strong>電話：</strong>02-77337581</p>
+                <p><strong>Email：</strong><a href="mailto:info@hwashine.tw">info@hwashine.tw</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 華翔興業有限公司 版權所有</p>
+            <div class="legal-links">
+                <a href="/privacy">隱私政策</a>
+                <a href="/terms">使用條款</a>
+            </div>
+        </div>
     </footer>
 
     <div id="back-to-top">&#8679;</div>
