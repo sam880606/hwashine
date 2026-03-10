@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <!-- ⚠️ 注意：如果您在本地端(電腦上)測試，請先保持以下 base 標籤為註解狀態。
-       否則瀏覽器會強制去抓您「線上主機」的 components.js，導致抓不到您剛寫好的新版代碼。
-       等您確定要上傳到主機時，再把註解拿掉即可。 -->
-  <!-- <base href="https://hwashine.tw"> -->
+  <!-- 恢復線上環境專用的 base 標籤，確保圖片與連結路徑正確 -->
+  <base href="https://hwashine.tw">
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +14,8 @@
   <meta property="og:url" content="https://hwashine.tw/有機顏料-環保">
   <link rel="canonical" href="https://hwashine.tw/有機顏料-環保">
   
-  <!-- 引入您的共用頁首頁尾導航欄腳本 (使用相對路徑，確保本地測試能讀取到) -->
-  <script src="./components.js" defer></script>
+  <!-- 改回絕對路徑，確保在正式網址下能正確抓取共用腳本 -->
+  <script src="https://hwashine.tw/components.js" defer></script>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
