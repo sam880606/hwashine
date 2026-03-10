@@ -1,64 +1,249 @@
-// ==========================================
-// 全站共用頁首 (Header) 與 導航欄 (Nav)
-// ==========================================
-class CustomHeader extends HTMLElement {
-    connectedCallback() {
-        // 讀取標籤上的 page-title 屬性，若無則顯示預設文字
-        const title = this.getAttribute('page-title') || '華翔興業';
-        this.innerHTML = `
-            <header>
-                <h1>${title}</h1>
-            </header>  
-            <nav>
-                <ul>
-                    <li><a href="/">首頁</a></li>
-                    <li><a href="/about">關於我們</a></li>
-                    <li><a href="/products">產品介紹</a></li>
-                    <li><a href="/contact">聯絡我們</a></li>
-                </ul>
-            </nav>
-        `;
-    }
-}
-customElements.define('custom-header', CustomHeader);
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <base href="https://hwashine.tw">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>有機顏料替代重金屬顏料的解決方案 | 華翔興業</title>
+  <meta name="description" content="探索有機顏料的優勢及其取代含重金屬顏料的潛力，提供具體解決方案。">
+  <meta name="keywords" content="有機顏料, 重金屬顏料, 環保顏料, 替代方案, 華翔興業">
+  <meta property="og:title" content="有機顏料替代重金屬顏料的解決方案與實例 - 華翔興業">
+  <meta property="og:description" content="探討用有機顏料取代含重金屬顏料的可能性，提供具體實例和方法。">
+  <meta property="og:url" content="https://hwashine.tw/有機顏料-環保">
+  <link rel="canonical" href="https://hwashine.tw/有機顏料-環保">
+  
+  <!-- 引入您的共用頁首頁尾導航欄腳本 -->
+  <script src="https://hwashine.tw/components.js" defer></script>
 
-// ==========================================
-// 全站共用頁尾 (Footer)
-// ==========================================
-class CustomFooter extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
-            <footer>
-                <div class="footer-container">
-                    <div class="footer-col brand-col">
-                        <div class="footer-logo">華翔興業有限公司</div>
-                        <p>專業的有機顏料、溶劑染料及特種化學品供應商，致力於為客戶提供高品質的色彩解決方案。</p>
-                    </div>
-                    <div class="footer-col links-col">
-                        <h4>快速連結</h4>
-                        <ul>
-                            <li><a href="/">首頁</a></li>
-                            <li><a href="/about">關於我們</a></li>
-                            <li><a href="/products">產品中心</a></li>
-                            <li><a href="/contact">聯絡我們</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col contact-col">
-                        <h4>聯絡資訊</h4>
-                        <p><strong>地址：</strong>臺北市信義區信義路5段7號37樓</p>
-                        <p><strong>電話：</strong>02-77337581</p>
-                        <p><strong>Email：</strong><a href="mailto:info@hwashine.tw">info@hwashine.tw</a></p>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2026 華翔興業有限公司 版權所有</p>
-                    <div class="legal-links">
-                        <a href="/privacy">隱私政策</a>
-                        <a href="/terms">使用條款</a>
-                    </div>
-                </div>
-            </footer>
-        `;
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+    
+    :root {  
+      --primary-color: #2c8cb0;  
+      --secondary-color: #1a5f7a;  
+      --accent-color: #ff6b6b;  
+      --text-color: #333;  
+      --bg-color: #f8f9fa;
     }
-}
-customElements.define('custom-footer', CustomFooter);
+    
+    body {  
+      font-family: 'Noto Sans TC', Arial, sans-serif;  
+      margin: 0;  
+      padding: 0;  
+      background-color: var(--bg-color);  
+      color: var(--text-color);  
+      line-height: 1.6;  
+      word-break: break-word;
+    }
+    
+    /* 頁首、導航與頁尾的樣式應由您的全站共用 CSS 管理 */
+
+    main {  
+      max-width: 1200px;  
+      margin: 2rem auto;  
+      padding: 0 1rem;
+    }
+    
+    section {  
+      background-color: white;  
+      border-radius: 8px;  
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+      padding: 2rem;  
+      transition: transform 0.3s ease;  
+      margin-bottom: 2rem;
+    }
+    
+    section:hover {  
+      transform: translateY(-5px);
+    }
+    
+    h2, h3 {  
+      color: var(--primary-color);  
+      margin-bottom: 1.5rem;
+    }
+    
+    p, ul {  
+      margin-bottom: 1rem;
+    }
+    
+    strong {  
+      color: var(--accent-color);
+    }
+    
+    #back-to-top {  
+      display: none;  
+      position: fixed;  
+      bottom: 40px;  
+      right: 40px;  
+      width: 50px;  
+      height: 50px;  
+      font-size: 30px;  
+      background-color: var(--primary-color);  
+      color: white;  
+      text-align: center;  
+      border-radius: 50%;  
+      cursor: pointer;  
+      z-index: 1000;  
+      transition: opacity 0.3s ease;
+    }
+    
+    #back-to-top.show {  
+      display: block;
+    }
+    
+    .content-section {  
+      margin-bottom: 2rem;
+    }
+    
+    .content-section h3 {  
+      color: var(--secondary-color);  
+      margin-top: 1.5rem;
+    }
+    
+    .content-section ul {  
+      padding-left: 1.5rem;
+    }
+    
+    .content-section p {  
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= 共用組件區塊開始 ================= -->
+  <!-- 透過自定義標籤引入頁首與導航欄，並傳入頁面標題 -->
+  <custom-header page-title="有機顏料替代重金屬顏料的解決方案"></custom-header>
+  <!-- ================= 共用組件區塊結束 ================= -->
+
+  <main>
+    <section>
+      <h2>用有機顏料取代污染重金屬顏料的建議與展望</h2>
+      <div class="content-section">
+        <p>隨著環境保護意識的提高，傳統含重金屬顏料（如鉛鉻黃、鉛紅等）的使用逐漸受到限制。這些顏料在工業應用中雖具有良好的色彩性能和耐久性，但它們對環境和人體健康的危害不容忽視。為減少污染，推廣使用環保型有機顏料已成為行業發展的共識。本文將分析有機顏料的優勢，討論其應用挑戰，並提出取代重金屬顏料的具體建議。</p>
+        
+        <h3>為什麼選擇有機顏料？</h3>
+        <p>有機顏料是一類由碳氫化合物構成的色彩物質，其主要特性如下：</p>
+        <ul>
+          <li><strong>環保性：</strong> 有機顏料不含鉛、鎘、鉻等有害重金屬，對環境污染較小。此外，它們在分解後對生態系統的影響更低。</li>
+          <li><strong>顏色表現優異：</strong> 現代有機顏料具有高色濃度、鮮豔的色彩範圍，並可實現從紅色到黃色、藍色甚至綠色的多樣化調色。</li>
+          <li><strong>輕量化與高透明度：</strong> 有機顏料的分子量通常較低，能夠在應用中提供高透明度，適用於塗料和油墨的需求。</li>
+          <li><strong>功能多樣性：</strong> 一些改性有機顏料具有優良的光穩定性、耐溫性和抗紫外線性能，可滿足汽車塗料、塑膠和建築用塗料的需求。</li>
+        </ul>
+        
+        <h3>挑戰與解決方案</h3>
+        <ul>
+          <li>
+            <strong>耐久性不足：</strong> 傳統重金屬顏料因其結構穩定性，具備優異的耐光性和耐化學性，而有機顏料在這方面稍顯不足。
+            <br>建議：
+            <ul>
+              <li><strong>開發更高穩定性的有機顏料：</strong> 通過表面包覆技術增強其抗光性與抗化學腐蝕能力。</li>
+              <li><strong>複合顏料：</strong> 探索將有機顏料與無機填料結合形成複合顏料，實現性能提升。</li>
+            </ul>
+          </li>
+          <li>
+            <strong>耐高溫性能限制：</strong> 在一些高溫加工（如塑膠注塑）中，有機顏料可能發生分解或變色。
+            <br>建議：
+            <ul>
+              <li><strong>化學改性技術：</strong> 將化學改性技術應用於有機顏料，使其分解溫度提高，諸如引入耐高溫的官能基團如羧基或胺基。</li>
+              <li><strong>增強分子結構：</strong> 增強顏料分子結構的穩定性。</li>
+            </ul>
+          </li>
+          <li>
+            <strong>成本因素：</strong> 一些高性能有機顏料（如苝系顏料）的製造成本較高，對於經濟性要求高的應用場合並不適用。
+            <br>建議：
+            <ul>
+              <li><strong>技術創新降低成本：</strong> 通過技術創新降低生產成本，例如採用綠色合成工藝減少能源消耗。</li>
+              <li><strong>規模化生產：</strong> 推動規模化生產，利用產能提高來分攤固定成本。</li>
+            </ul>
+          </li>
+        </ul>
+        
+        <h3>具體應用場景與建議</h3>
+        <img src="/含鉛顏料替代.jpg" alt="一張顯示不同顏料色相和色度關係的圖表，標示了從紅色到綠色的色相變化，並標註了多種顏料代碼和名稱。圖表使用中英文雙語標示，x軸表示色相(紅-色相-綠)，y軸表示色度。" width="100%" height="auto" style="margin: 2rem 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        
+        <p><strong>在工業塗料中的應用：</strong> 使用耐光性強的有機顏料（如 PY154 和 PR254），作為汽車塗料或建築塗料的主要替代品。在戶外塗料中，可選擇經過改性處理的有機顏料以提升抗紫外線性能。</p>
+        <p><strong>在包裝印刷中的應用：</strong> 針對塑膠包裝，選擇低溶解性、耐遷移的有機顏料，確保顏料不影響包裝內部食品的安全性。使用具有高透明度的顏料實現鮮豔印刷效果，如 PO36 和 PY139。</p>
+        <p><strong>在紡織與塑膠行業中的應用：</strong> 使用具高溫穩定性的顏料作為纖維染料或塑膠添加劑，確保顏料在加工過程中不變質。通過混合色母粒技術進一步提高染料均勻性。</p>
+        
+        <h3>結語</h3>
+        <p>用有機顏料取代含重金屬顏料不僅是環保需求，更是實現可持續發展的重要一步。雖然目前仍有一些技術和成本上的挑戰，但隨著科學研究的推進和市場需求的驅動，未來有機顏料必將成為顏料行業的主力軍。在此過程中，政府、企業和研究機構需要攜手合作，共同推動環保型顏料的普及應用。</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= 共用頁尾區塊 ================= -->
+  <!-- 透過自定義標籤引入頁尾 -->
+  <custom-footer></custom-footer>
+  <!-- ================= 共用頁尾結束 ================= -->
+
+  <div id="back-to-top">&#8679;</div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "有機顏料替代重金屬顏料的解決方案與實例",
+    "description": "探索有機顏料的優勢及其取代含重金屬顏料的潛力，提供具體解決方案與實例。",
+    "image": "https://hwashine.tw/images/含鉛顏料替代.jpg",
+    "author": {
+      "@type": "Organization",
+      "name": "華翔興業有限公司"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "華翔興業有限公司",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hwashine.tw/favicon.ico"
+      }
+    },
+    "datePublished": "2023-11-20",
+    "dateModified": "2024-11-20"
+  }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const sections = document.querySelectorAll('section');
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+      
+      sections.forEach(section => {
+        section.style.opacity = 0;
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(section);
+      });
+      
+      const backToTopButton = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add('show');
+        } else {
+          backToTopButton.classList.remove('show');
+        }
+      });
+      
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+  
+  <!-- Cloudflare 追蹤代碼保持不變 -->
+  <script src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" xintegrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"3e0e168fcc584b3aae69cd7f0b37248e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
