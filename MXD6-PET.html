@@ -46,6 +46,47 @@
             -webkit-appearance: none; 
             margin: 0; 
         }
+
+        /* Chart Image Recreation Styles */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
+        }
+        .chart-bubble {
+            position: absolute;
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.75rem;
+            line-height: 1.2;
+            z-index: 20;
+            top: -90px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .chart-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 8px 0;
+            border-style: solid;
+        }
+        .bubble-gray { background-color: #a6b6c1; }
+        .bubble-gray::after { border-color: #a6b6c1 transparent transparent transparent; }
+        .bubble-teal { background-color: #6eb2a8; }
+        .bubble-teal::after { border-color: #6eb2a8 transparent transparent transparent; }
+        .bubble-dark { background-color: #0e807e; }
+        .bubble-dark::after { border-color: #0e807e transparent transparent transparent; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -174,6 +215,144 @@
     <!-- Data Visualization Section -->
     <section id="data" class="py-20 bg-gray-100">
         <div class="container mx-auto px-6">
+            
+            <!-- NEW SECTION: Shelf Life Comparison Chart (Recreated from image) -->
+            <div class="w-full bg-white rounded-xl shadow-lg mb-16 overflow-hidden border border-gray-200">
+                <div class="p-8 border-b border-gray-100">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-1">PET/MXD6 輕量瓶</h2>
+                    <h3 class="text-xl font-bold text-[#0e807e]">碳酸飲料瓶：<span class="text-gray-500 font-medium ml-1">26.5g to 20.5g</span></h3>
+                </div>
+                
+                <div class="relative w-full overflow-x-auto p-8 pt-16 pb-12 bg-gray-50/50">
+                    <div class="min-w-[700px] h-[350px] relative flex">
+                        
+                        <!-- Y-Axis (Grid lines) -->
+                        <div class="absolute left-0 top-0 w-full h-full flex flex-col justify-between text-xs text-gray-400 z-0">
+                            <!-- 90 -->
+                            <div class="w-full h-0 border-t border-gray-200 flex items-center relative mt-0">
+                                <span class="absolute -left-1 -top-2 bg-gray-50/50 pr-2">90</span>
+                            </div>
+                            <!-- 80 -->
+                            <div class="w-full h-0 border-t border-gray-200 flex items-center relative">
+                                <span class="absolute -left-1 -top-2 bg-gray-50/50 pr-2">80</span>
+                            </div>
+                            <!-- 70 -->
+                            <div class="w-full h-0 border-t border-gray-200 flex items-center relative">
+                                <span class="absolute -left-1 -top-2 bg-gray-50/50 pr-2">70</span>
+                            </div>
+                            <!-- 60 -->
+                            <div class="w-full h-0 border-t border-gray-200 flex items-center relative">
+                                <span class="absolute -left-1 -top-2 bg-gray-50/50 pr-2">60</span>
+                            </div>
+                            <!-- 50 -->
+                            <div class="w-full h-0 border-t border-gray-200 flex items-center relative">
+                                <span class="absolute -left-1 -top-2 bg-gray-50/50 pr-2">50</span>
+                            </div>
+                        </div>
+
+                        <!-- Bars Container -->
+                        <div class="relative z-10 w-full h-full flex justify-between ml-10">
+                            
+                            <!-- Left Group: Pure PET -->
+                            <div class="w-1/2 flex relative border-r border-gray-200 pr-10 pl-4">
+                                <div class="absolute top-[-30px] left-0 w-full text-center font-bold text-gray-400 text-xl tracking-wider">PET</div>
+                                
+                                <div class="w-full h-full flex justify-around items-end pb-[1px]">
+                                    <!-- PET 26.5g -->
+                                    <div class="flex flex-col items-center w-16 relative h-full justify-end">
+                                        <div class="w-full bg-[#a6b6c1] h-[75%] rounded-t-sm flex justify-center pt-4 opacity-90 transition hover:opacity-100">
+                                            <span class="vertical-text text-white font-medium text-sm">PET monolayer</span>
+                                        </div>
+                                        <div class="absolute -bottom-12 text-center w-full">
+                                            <p class="text-[10px] text-gray-400 mb-0">weight</p>
+                                            <p class="text-base font-bold text-gray-400">26.5g</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Arrow Icon between groups -->
+                                    <div class="absolute -bottom-9 left-1/2 transform -translate-x-1/2 text-gray-400">
+                                        <i class="fas fa-arrow-right text-sm"></i>
+                                    </div>
+
+                                    <!-- PET 20.5g SHORTER -->
+                                    <div class="flex flex-col items-center w-16 relative h-full justify-end">
+                                        <div class="chart-bubble bubble-gray">
+                                            <span>Shelf Life</span>
+                                            <span>SHORTER</span>
+                                        </div>
+                                        <div class="w-full bg-[#a6b6c1] h-[25%] rounded-t-sm flex justify-center pt-4 opacity-90 transition hover:opacity-100">
+                                        </div>
+                                        <div class="absolute -bottom-12 text-center w-full">
+                                            <p class="text-[10px] text-[#0e807e] mb-0">weight</p>
+                                            <p class="text-2xl font-bold text-[#0e807e]">20.5g</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Group: MX Nylon -->
+                            <div class="w-1/2 flex relative pl-10 pr-4">
+                                <div class="absolute top-[-30px] left-0 w-full text-center font-bold text-[#0e807e] text-xl tracking-wider">MX Nylon</div>
+                                
+                                <div class="w-full h-full flex justify-around items-end pb-[1px]">
+                                    <!-- PET 26.5g -->
+                                    <div class="flex flex-col items-center w-16 relative h-full justify-end">
+                                        <div class="w-full bg-[#a6b6c1] h-[75%] rounded-t-sm flex justify-center pt-4 opacity-90 transition hover:opacity-100">
+                                            <span class="vertical-text text-white font-medium text-sm">PET monolayer</span>
+                                        </div>
+                                        <div class="absolute -bottom-12 text-center w-full">
+                                            <p class="text-[10px] text-gray-400 mb-0">weight</p>
+                                            <p class="text-base font-bold text-gray-400">26.5g</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Arrow Icon -->
+                                    <div class="absolute -bottom-9 left-[40%] transform -translate-x-1/2 text-[#0e807e]">
+                                        <i class="fas fa-arrow-right text-sm"></i>
+                                    </div>
+
+                                    <!-- MX Nylon Blend 20.5g KEEP -->
+                                    <div class="flex flex-col items-center w-16 relative h-full justify-end">
+                                        <div class="chart-bubble bubble-teal">
+                                            <span>Shelf Life</span>
+                                            <span>KEEP</span>
+                                        </div>
+                                        <div class="w-full bg-[#6eb2a8] h-[75%] rounded-t-sm flex justify-center pt-4 transition hover:brightness-110">
+                                            <span class="vertical-text text-white font-medium text-xs leading-tight text-center">
+                                                + 5% MX Nylon<br>blend monolayer
+                                            </span>
+                                        </div>
+                                        <div class="absolute -bottom-12 text-center w-full">
+                                            <p class="text-[10px] text-[#0e807e] mb-0">weight</p>
+                                            <p class="text-2xl font-bold text-[#0e807e]">20.5g</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- MX Nylon Multilayer 20.5g LONGER -->
+                                    <div class="flex flex-col items-center w-16 relative h-full justify-end">
+                                        <div class="chart-bubble bubble-dark">
+                                            <span>Shelf Life</span>
+                                            <span>LONGER</span>
+                                        </div>
+                                        <div class="w-full bg-[#0e807e] h-[100%] rounded-t-sm flex justify-center pt-4 transition hover:brightness-110">
+                                            <span class="vertical-text text-white font-medium text-xs leading-tight text-center">
+                                                + 5% MX Nylon<br>multilayer
+                                            </span>
+                                        </div>
+                                        <div class="absolute -bottom-12 text-center w-full">
+                                            <p class="text-[10px] text-[#0e807e] mb-0">weight</p>
+                                            <p class="text-2xl font-bold text-[#0e807e]">20.5g</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Existing OTR Comparison & Technical Explanations -->
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <!-- Chart Container -->
                 <div class="w-full md:w-1/2 bg-white p-6 rounded-xl shadow-lg">
@@ -224,7 +403,7 @@
         </div>
     </section>
 
-    <!-- Recycling Section (New Added) -->
+    <!-- Recycling Section -->
     <section id="recycling" class="py-20 bg-white border-t border-gray-200">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row items-center gap-12">
@@ -281,15 +460,38 @@
                             </p>
                         </div>
 
-                        <!-- Card 4: Global Recognition -->
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition">
-                            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-                                <i class="fas fa-globe-americas text-yellow-600"></i>
+                        <!-- Card 4: Global Recognition (Detailed APR vs EPBP) -->
+                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition md:col-span-2">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-globe-americas text-yellow-600"></i>
+                                </div>
+                                <h3 class="font-bold text-lg">歐美回收規範對比 (APR vs EPBP)</h3>
                             </div>
-                            <h3 class="font-bold text-lg mb-2">符合國際規範</h3>
-                            <p class="text-sm text-gray-600">
-                                只要控制在特定比例內（通常 <6%~10%），含 MXD6 的 PET 瓶已被 APR (美國塑膠回收協會) 與 EPBP 認定為對 PET 回收流無負面影響。
+                            <p class="text-sm text-gray-600 mb-4">
+                                針對 MXD6 應用於 PET 回收流，歐美有嚴格的「結構」與「比例」認定標準，以避免影響再生 PET (rPET) 的品質：
                             </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <!-- APR -->
+                                <div class="bg-yellow-50/50 p-4 rounded-lg border border-yellow-100">
+                                    <h4 class="font-bold text-yellow-800 text-sm mb-2"><i class="fas fa-flag-usa mr-2"></i>美國 APR 規範</h4>
+                                    <ul class="text-sm text-gray-700 space-y-2 list-none">
+                                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2 text-xs"></i> <span><strong>認可比例：</strong>近期 (2024年) 針對特定的多層共射出技術，將關鍵指導原則上限提高至 <strong>3.3%</strong>。</span></li>
+                                        <li class="flex items-start"><i class="fas fa-layer-group text-blue-500 mt-1 mr-2 text-xs"></i> <span><strong>結構限制：</strong>以認可「多層結構」為主。</span></li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- EPBP -->
+                                <div class="bg-blue-50/50 p-4 rounded-lg border border-blue-100">
+                                    <h4 class="font-bold text-blue-800 text-sm mb-2"><i class="fas fa-globe-europe mr-2"></i>歐洲 EPBP 規範</h4>
+                                    <ul class="text-sm text-gray-700 space-y-2 list-none">
+                                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2 text-xs"></i> <span><strong>認可比例：</strong>透明/淺藍瓶最高 <strong>5 wt%</strong>；有色瓶最高 <strong>6 wt%</strong>。</span></li>
+                                        <li class="flex items-start"><i class="fas fa-exclamation-triangle text-red-500 mt-1 mr-2 text-xs"></i> <span><strong>結構極嚴格限制：</strong><span class="text-red-600 font-bold">必須為多層結構</span> (PET/MXD6/PET)，且<strong class="text-red-600">不可使用黏合層</strong> (No tie layers)。</span></li>
+                                        <li class="flex items-start"><i class="fas fa-ban text-gray-400 mt-1 mr-2 text-xs"></i> <span><strong>單層限制：</strong>單層混料 (Blend) 因容易產生霧度，通常不被 EPBP 認可於高透明 PET 循環流中。</span></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -578,7 +780,7 @@
             }
         });
 
-        // --- 2. Calculator Logic (Updated for Cost Reality) ---
+        // --- 2. Calculator Logic ---
         function calculateSavings() {
             // Get inputs
             const currentWeight = parseFloat(document.getElementById('currentWeight').value) || 0;
@@ -606,9 +808,7 @@
             const savedPlasticWeightKg = ((currentWeight - targetWeight) / 1000) * annualProduction;
             const savedPlasticWeightTons = savedPlasticWeightKg / 1000;
             
-            // Carbon savings (Approx: 1 ton PET = ~2.2 ton CO2e emission in production) 
-            // Simplified here to just calculate savings on tax for the raw material weight saved
-            // Or just use the user input Tax * Tons saved
+            // Carbon savings
             const totalCarbonSavings = savedPlasticWeightTons * carbonTax;
 
             // Logistics estimate (Simple assumption: 1 NTD saved per kg of weight reduced due to fuel/load efficiency)
