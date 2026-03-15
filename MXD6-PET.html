@@ -508,7 +508,7 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold mb-4">綜合成本與碳效益分析</h2>
-                <p class="text-blue-200">MXD6 單價較高是事實，但透過「輕量化」與「碳稅節省」，總體效益如何？</p>
+                <p class="text-blue-200">MXD6 單價較高是事實，但透過「輕量化」與「真實碳排節省」，總體效益如何？</p>
             </div>
 
             <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col lg:flex-row text-gray-800">
@@ -557,11 +557,18 @@
                             <input type="number" id="annualProduction" value="1000" class="w-full px-3 py-2 border border-blue-200 rounded bg-blue-50 font-bold">
                          </div>
 
-                         <div>
-                            <label class="block text-xs font-bold text-gray-500 mb-1">預估碳費/碳稅 (NTD/噸)</label>
-                            <input type="number" id="carbonTax" value="300" class="w-full px-3 py-2 border border-gray-300 rounded bg-white">
-                            <p class="text-[10px] text-gray-400 mt-1">參考：台灣碳費起徵約 300元/噸</p>
+                         <!-- Updated Carbon Section -->
+                         <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] font-bold text-gray-500 mb-1">PET 碳排係數 <br><span class="text-gray-400 font-normal">(kg CO2e/kg)</span></label>
+                                <input type="number" step="0.1" id="carbonFactor" value="2.5" class="w-full px-3 py-2 border border-gray-300 rounded bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-gray-500 mb-1">預估碳費 <br><span class="text-gray-400 font-normal">(NTD/噸 CO2e)</span></label>
+                                <input type="number" id="carbonTax" value="300" class="w-full px-3 py-2 border border-gray-300 rounded bg-white">
+                            </div>
                         </div>
+                        <p class="text-[10px] text-gray-400 mt-1">註：台灣碳費起徵約 300元/噸，PET 搖籃到大門碳排係數約 2.0~3.0</p>
 
                         <button onclick="calculateSavings()" class="w-full bg-blue-900 text-white py-3 rounded-lg font-bold hover:bg-blue-800 transition mt-2 shadow-lg">
                             重新計算
@@ -580,37 +587,48 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         
                         <!-- Material Cost Breakdown -->
-                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200">
-                            <h4 class="text-sm font-bold text-gray-500 uppercase mb-4">原料成本分析 (年)</h4>
-                            
-                            <div class="flex justify-between items-center mb-2 text-sm">
-                                <span class="text-gray-600">純 PET 舊方案成本:</span>
-                                <span id="oldCostDisplay" class="font-mono">--</span>
-                            </div>
-                            <div class="flex justify-between items-center mb-4 text-sm">
-                                <span class="text-gray-600">MXD6 輕量化成本:</span>
-                                <span id="newCostDisplay" class="font-mono font-bold">--</span>
-                            </div>
-                            
-                            <div class="border-t border-gray-300 my-2"></div>
-                            
-                            <div class="flex justify-between items-end">
-                                <span class="text-gray-700 font-bold">原料損益淨值</span>
-                                <div class="text-right">
-                                    <span id="materialNetSavings" class="text-2xl font-bold">--</span>
-                                    <span class="text-xs text-gray-400 block">NTD/年</span>
+                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-500 uppercase mb-4">原料成本分析 (年)</h4>
+                                
+                                <div class="flex justify-between items-center mb-2 text-sm">
+                                    <span class="text-gray-600">純 PET 舊方案成本:</span>
+                                    <span id="oldCostDisplay" class="font-mono">--</span>
                                 </div>
+                                <div class="flex justify-between items-center mb-4 text-sm">
+                                    <span class="text-gray-600">MXD6 輕量化成本:</span>
+                                    <span id="newCostDisplay" class="font-mono font-bold">--</span>
+                                </div>
+                                
+                                <div class="border-t border-gray-300 my-2"></div>
                             </div>
-                            <p id="materialNote" class="text-xs mt-2 text-right"></p>
+                            
+                            <div>
+                                <div class="flex justify-between items-end">
+                                    <span class="text-gray-700 font-bold">原料損益淨值</span>
+                                    <div class="text-right">
+                                        <span id="materialNetSavings" class="text-2xl font-bold">--</span>
+                                        <span class="text-xs text-gray-400 block">NTD/年</span>
+                                    </div>
+                                </div>
+                                <p id="materialNote" class="text-xs mt-2 text-right"></p>
+                            </div>
                         </div>
 
                         <!-- ESG & Logistics Breakdown -->
                         <div class="bg-green-50 p-5 rounded-xl border border-green-200">
                             <h4 class="text-sm font-bold text-green-700 uppercase mb-4">隱性效益 (ESG & 物流)</h4>
                             
-                            <div class="mb-4">
-                                <p class="text-xs text-gray-500">PET 減量 (噸/年)</p>
-                                <p id="plasticReduction" class="text-xl font-bold text-gray-800">--</p>
+                            <!-- Updated Terminologies for clear distinction -->
+                            <div class="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-green-200 border-dashed">
+                                <div>
+                                    <p class="text-[10px] text-gray-500 font-bold">包裝總減重 (噸/年)</p>
+                                    <p id="plasticReduction" class="text-xl font-bold text-gray-800">--</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-blue-700 font-bold">PET 實際減量 (噸/年)</p>
+                                    <p id="petRealReduction" class="text-xl font-bold text-blue-800">--</p>
+                                </div>
                             </div>
 
                             <div class="flex justify-between items-center mb-2">
@@ -622,9 +640,9 @@
                                 <span class="text-sm text-gray-600">物流效益 (估算) <i class="fas fa-truck text-blue-500 text-xs"></i></span>
                                 <span id="logisticSavings" class="font-bold text-blue-700">--</span>
                             </div>
-                             <p class="text-[10px] text-gray-400 text-right">*物流效益以每公斤運輸成本 1 元概估</p>
+                             <p class="text-[10px] text-gray-400 text-right mb-4">*物流效益以每公斤運輸成本 1 元概估</p>
 
-                             <div class="border-t border-green-200 my-2 pt-2">
+                             <div class="border-t border-green-300 pt-3">
                                  <div class="flex justify-between items-center">
                                     <span class="text-sm font-bold text-gray-800">總體綜合效益</span>
                                     <span id="totalBenefit" class="text-xl font-bold text-green-800">--</span>
@@ -638,7 +656,7 @@
                         <div>
                             <h5 class="font-bold text-blue-900 text-sm">華翔觀點</h5>
                             <p class="text-xs text-blue-800 leading-relaxed mt-1">
-                                即使原料成本持平或微增，但考慮到<strong class="text-red-600">碳稅開徵</strong>以及<strong class="text-red-600">品牌環保形象</strong>的溢價，輕量化仍是未來的唯一路徑。此外，輕瓶身能減少運輸油耗，這部分的隱性利潤常被忽略。
+                                即使原料成本微幅上升，但導入<strong class="text-red-600">準確的碳排係數</strong>進行碳費試算後，您會發現輕量化帶來的減碳效益遠超想像！加上運輸油耗降低等隱性紅利，高阻隔輕量化絕對是企業實現 ESG 目標的高回報戰略。
                             </p>
                         </div>
                     </div>
@@ -790,7 +808,10 @@
             const petPrice = parseFloat(document.getElementById('petPrice').value) || 0;
             const mxd6Price = parseFloat(document.getElementById('mxd6Price').value) || 0;
             const mxd6Percent = parseFloat(document.getElementById('mxd6Percentage').value) || 0;
-            const carbonTax = parseFloat(document.getElementById('carbonTax').value) || 0; // NTD per ton
+            
+            // ESG Inputs
+            const carbonFactor = parseFloat(document.getElementById('carbonFactor').value) || 0; 
+            const carbonTax = parseFloat(document.getElementById('carbonTax').value) || 0; 
 
             // 1. Material Cost Calculation
             const oldCostPerBottle = (currentWeight / 1000) * petPrice;
@@ -805,15 +826,24 @@
             const totalMaterialSavings = costDiffPerBottle * annualProduction;
 
             // 2. ESG & Logistics Calculation
-            const savedPlasticWeightKg = ((currentWeight - targetWeight) / 1000) * annualProduction;
-            const savedPlasticWeightTons = savedPlasticWeightKg / 1000;
             
-            // Carbon savings
-            const totalCarbonSavings = savedPlasticWeightTons * carbonTax;
+            // A. Total Packaging Weight Reduction (包裝總減重)
+            const savedTotalWeightKg = ((currentWeight - targetWeight) / 1000) * annualProduction;
+            const savedTotalWeightTons = savedTotalWeightKg / 1000;
+            
+            // B. Actual PET Reduction (PET 實際減量)
+            const oldPetTotalKg = (currentWeight / 1000) * annualProduction;
+            const newPetTotalKg = (petWeightNew / 1000) * annualProduction;
+            const realPetReductionTons = (oldPetTotalKg - newPetTotalKg) / 1000;
+            
+            // C. Carbon savings (使用碳排係數修正公式: 總減重 * 碳排係數 * 碳費單價)
+            // 將原本公式中的 savedTotalWeightTons 直接乘上碳排係數
+            const totalCarbonSavings = savedTotalWeightTons * carbonFactor * carbonTax;
 
-            // Logistics estimate (Simple assumption: 1 NTD saved per kg of weight reduced due to fuel/load efficiency)
-            const totalLogisticSavings = savedPlasticWeightKg * 1; 
+            // D. Logistics estimate (Simple assumption: 1 NTD saved per kg of weight reduced due to fuel/load efficiency)
+            const totalLogisticSavings = savedTotalWeightKg * 1; 
 
+            // Grand Total
             const grandTotalBenefit = totalMaterialSavings + totalCarbonSavings + totalLogisticSavings;
 
             // Update UI Numbers
@@ -839,11 +869,13 @@
                 matNoteElem.className = "text-xs mt-2 text-right text-red-500";
                 
                 statusBanner.className = "mb-6 p-4 rounded-lg text-center font-bold text-lg bg-yellow-100 text-yellow-800";
-                statusBanner.innerHTML = `<i class="fas fa-exclamation-triangle mr-2"></i>注意：原料成本增加，請參考綜合效益`;
+                statusBanner.innerHTML = `<i class="fas fa-exclamation-triangle mr-2"></i>注意：原料成本微升，請評估綜合 ESG 效益`;
             }
 
             // ESG updates
-            document.getElementById('plasticReduction').innerText = savedPlasticWeightTons.toLocaleString(undefined, {maximumFractionDigits: 1});
+            document.getElementById('plasticReduction').innerText = savedTotalWeightTons.toLocaleString(undefined, {maximumFractionDigits: 1});
+            document.getElementById('petRealReduction').innerText = realPetReductionTons.toLocaleString(undefined, {maximumFractionDigits: 1});
+            
             document.getElementById('carbonSavings').innerText = `+ NT$ ${Math.round(totalCarbonSavings).toLocaleString()}`;
             document.getElementById('logisticSavings').innerText = `+ NT$ ${Math.round(totalLogisticSavings).toLocaleString()}`;
             
