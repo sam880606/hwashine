@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顏料光催化自由基敏感結構研究報告 - 華翔興業有限公司</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e3a8a', // blue-900
+                        secondary: '#2563eb', // blue-600
+                        accent: '#0ea5e9', // sky-500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .toc-active {
+            color: #2563eb;
+            font-weight: 700;
+            border-left-color: #2563eb;
+            background-color: #eff6ff; /* blue-50 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <!-- 頂部導覽列 (Company Header) -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="https://hwashine.tw/" target="_blank" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 bg-primary rounded-md flex items-center justify-center text-white font-bold group-hover:bg-secondary transition-colors">
+                    H
+                </div>
+                <span class="text-gray-900 font-bold text-lg tracking-wide group-hover:text-primary transition-colors">華翔興業有限公司</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="https://hwashine.tw/" target="_blank" class="hidden md:block text-sm font-medium text-gray-600 hover:text-primary transition-colors">前往官網</a>
+                <a href="https://hwashine.tw/contact" target="_blank" class="hidden md:inline-flex items-center justify-center px-5 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-secondary hover:bg-primary shadow-sm transition-all hover:shadow-md transform hover:-translate-y-0.5">
+                    聯絡我們
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-primary text-white py-12 md:py-20 px-6 md:px-12 shadow-md relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="inline-block px-3 py-1 bg-blue-800/80 text-blue-100 text-sm font-semibold rounded-full mb-6 tracking-wider border border-blue-700/50 backdrop-blur-sm">
+                技術研究報告
+            </div>
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                鈦白粉光催化系統中影響<br class="hidden md:block"/>有機顏料自由基敏感性之<br class="hidden md:block"/>結構特徵與降解機制深度研究
+            </h1>
+            <p class="text-blue-100 text-lg md:text-xl max-w-3xl leading-relaxed opacity-90">
+                探討二氧化鈦光催化活性產生的活性氧物種對不同有機顏料結構的攻擊機制，並分析其微觀動力學與工業防護策略。
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex flex-col md:flex-row gap-10">
+        
+        <!-- Sidebar Navigation (Desktop) -->
+        <aside class="hidden md:block w-1/4 shrink-0">
+            <div class="sticky top-24 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 border-b pb-2">章節目錄</h3>
+                <nav id="toc" class="space-y-1 text-sm text-gray-600">
+                    <a href="#section-1" class="block py-2 px-3 border-l-2 border-transparent hover:text-secondary hover:bg-blue-50 transition-all rounded-r-md">1. 熱力學及物理化學機制</a>
+                    <a href="#section-2" class="block py-2 px-3 border-l-2 border-transparent hover:text-secondary hover:bg-blue-50 transition-all rounded-r-md">2. 微觀反應動力學與攻擊機制</a>
+                    <a href="#section-3" class="block py-2 px-3 border-l-2 border-transparent hover:text-secondary hover:bg-blue-50 transition-all rounded-r-md">3. 極度脆弱之有機顏料結構</a>
+                    <a href="#section-4" class="block py-2 px-3 border-l-2 border-transparent hover:text-secondary hover:bg-blue-50 transition-all rounded-r-md">4. 具備抵抗力之有機顏料</a>
+                    <a href="#section-5" class="block py-2 px-3 border-l-2 border-transparent hover:text-secondary hover:bg-blue-50 transition-all rounded-r-md">5. 介面與環境動力學參數</a>
+                    <a href="#section-6" class="block py-2 px-3 border-l-2 border-transparent hover:text-secondary hover:bg-blue-50 transition-all rounded-r-md">6. 工業防護策略</a>
+                    <a href="#section-7" class="block py-2 px-3 border-l-2 border-transparent hover:text-secondary hover:bg-blue-50 transition-all rounded-r-md">7. 結論</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Article Content -->
+        <main class="w-full md:w-3/4 bg-white p-5 sm:p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 content-section">
+            
+            <!-- Section 1 -->
+            <section id="section-1" class="mb-16 scroll-mt-24">
+                <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 flex items-start md:items-center">
+                    <span class="bg-blue-100 text-secondary w-8 h-8 rounded-full inline-flex items-center justify-center text-lg mr-3 shadow-sm shrink-0 mt-1 md:mt-0">1</span>
+                    <span>鈦白粉光催化活性與活性氧自由基生成之熱力學及物理化學機制</span>
+                </h2>
+                <div class="prose prose-blue max-w-none text-gray-700 leading-relaxed space-y-4">
+                    <p>在現代塗料、塑料、油墨與高分子複合材料工業中，二氧化鈦（Titanium Dioxide, 鈦白粉, TiO<sub>2</sub>）因其卓越的光學折射率、極佳的遮蓋力與化學惰性，成為全球應用最廣泛的無機白色顏料。然而，二氧化鈦本質上為一種具有獨特能帶結構的過渡金屬氧化物半導體。當其暴露於能量大於或等於其能隙（Band Gap）的光源時，會表現出強烈的光催化活性。</p>
+                    <p>具體而言，銳鈦礦（Anatase）的能隙約為 3.2 eV，而金紅石（Rutile）的能隙約為 3.0 eV，這意味著波長小於 387.5 nm 的紫外線輻射足以激發其價帶（Valence Band, VB）上的電子躍遷至導帶（Conduction Band, CB），進而在價帶留下具強氧化力的正電洞（h<sup>+</sup>），形成電子-電洞對（Electron-Hole Pairs）。</p>
+                    <p>光生電荷載子若未在晶格內部發生快速的非輻射複合（Recombination），便會遷移至二氧化鈦顆粒的表面，與吸附於表面的水分子、氫氧根離子或氧氣發生劇烈的介面氧化還原反應，生成多種高活性的<strong>活性氧物種（Reactive Oxygen Species, ROS）</strong>。在此一複雜的光物理化學過程中，價帶電洞具有極高的氧化電位（約 3.0 V vs. NHE），能夠直接將吸附的水分子（H<sub>2</sub>O）或氫氧根離子（OH<sup>-</sup>）氧化，生成氫氧自由基（Hydroxyl Radical, <sup>&bull;</sup>OH）。同時，導帶上的光生電子具有強還原力，能將溶解於環境中的氧氣分子（O<sub>2</sub>）還原為超氧陰離子自由基（Superoxide Anion Radical, O<sub>2</sub><sup>&bull;-</sup>）。</p>
+                </div>
+
+                <!-- Table 1 -->
+                <div class="mt-8 overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider whitespace-nowrap">活性氧物種 (ROS)</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider whitespace-nowrap">化學符號</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">主要生成路徑</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider min-w-[200px]">對有機顏料之攻擊特性</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr class="hover:bg-blue-50/50 transition-colors">
+                                <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">氫氧自由基</td>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-secondary font-bold"><sup>&bull;</sup>OH</td>
+                                <td class="px-4 py-3 text-sm text-gray-600">價帶電洞氧化 H<sub>2</sub>O 或 OH<sup>-</sup></td>
+                                <td class="px-4 py-3 text-sm text-gray-600">極強親電性，無選擇性氧化，導致芳香環破裂與礦化</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50/50 transition-colors">
+                                <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">超氧陰離子</td>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-secondary font-bold">O<sub>2</sub><sup>&bull;-</sup></td>
+                                <td class="px-4 py-3 text-sm text-gray-600">導帶電子還原 O<sub>2</sub></td>
+                                <td class="px-4 py-3 text-sm text-gray-600">具還原與氧化雙重性質，易攻擊帶正電的中間體</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <hr class="border-gray-100 my-10">
+
+            <!-- Section 2 -->
+            <section id="section-2" class="mb-16 scroll-mt-24">
+                <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 flex items-start md:items-center">
+                    <span class="bg-blue-100 text-secondary w-8 h-8 rounded-full inline-flex items-center justify-center text-lg mr-3 shadow-sm shrink-0 mt-1 md:mt-0">2</span>
+                    <span>自由基對有機顏料分子之微觀反應動力學與攻擊機制</span>
+                </h2>
+                <div class="prose prose-blue max-w-none text-gray-700 leading-relaxed space-y-4">
+                    <p>氫氧自由基（<sup>&bull;</sup>OH）與超氧陰離子自由基（O<sub>2</sub><sup>&bull;-</sup>）對有機顏料分子的攻擊，決定了顏料褪色、變色及最終礦化（Mineralization）的速率。其與有機顏料分子的微觀反應機制主要可歸納為三類核心路徑：<strong>親電加成（Electrophilic Addition）</strong>、<strong>氫摘取（Hydrogen Abstraction）</strong>以及<strong>單電子轉移（Single Electron Transfer）</strong>。</p>
+                    
+                    <div class="bg-blue-50 border-l-4 border-secondary p-5 my-6 rounded-r-lg shadow-sm">
+                        <h4 class="font-bold text-primary mb-2 text-lg">親電加成反應的破壞性</h4>
+                        <p class="text-sm md:text-base text-gray-700">由於 <sup>&bull;</sup>OH 具有強烈的親電特性，它會優先尋找並攻擊有機顏料分子中電子雲密度最高、空間位阻較小的區域。這些區域通常是發色團（Chromophore）中的不飽和雙鍵（如偶氮鍵 -N=N-、碳碳雙鍵 -C=C-）或是富電子的芳香環系統。加成後會立刻破壞原本高度離域的 &pi; 電子共軛網絡，直接導致分子吸收可見光波長的能力發生藍移或完全喪失，巨觀上即表現為顏料的迅速褪色或變色。</p>
+                    </div>
+
+                    <p>在氫摘取反應中，自由基會從有機分子的脂肪族側鏈或較弱的碳氫鍵中奪取氫原子，生成穩定的水分子，並在有機分子上留下一個高度不穩定的碳中心自由基。這個新生成的自由基會迅速與溶解在基質中的氧氣反應，生成過氧自由基（Peroxy Radicals），進一步引發自催化連鎖降解反應，導致分子骨架崩解。</p>
+                </div>
+            </section>
+
+            <hr class="border-gray-100 my-10">
+
+            <!-- Section 3 -->
+            <section id="section-3" class="mb-16 scroll-mt-24">
+                <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 flex items-start md:items-center">
+                    <span class="bg-blue-100 text-secondary w-8 h-8 rounded-full inline-flex items-center justify-center text-lg mr-3 shadow-sm shrink-0 mt-1 md:mt-0">3</span>
+                    <span>極度脆弱之有機顏料結構分析</span>
+                </h2>
+                
+                <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4 border-l-4 border-accent pl-3">偶氮類顏料（Azo Pigments）：光催化系統中最脆弱的發色骨架</h3>
+                <div class="prose prose-blue max-w-none text-gray-700 leading-relaxed space-y-4">
+                    <p>偶氮顏料是目前全球工業界應用最廣泛、產量最大的合成有機顏料類別。其結構特徵為含有一個或多個由氮-氮雙鍵構成的偶氮基（-N=N-）。</p>
+                    <p>在二氧化鈦引發的自由基攻擊下，偶氮鍵成為整個分子光穩定性上的致命弱點。<sup>&bull;</sup>OH 會優先以親電加成的方式攻擊偶氮鍵的氮原子或與偶氮鍵相鄰的芳香環碳原子，導致偶氮橋的斷裂（Azo Bond Cleavage）。</p>
+                </div>
+
+                <div class="mt-6 overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-red-50 text-red-900">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">偶氮顏料子類別</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">代表性顏料</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider">主要脆弱位點</th>
+                                <th scope="col" class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">光催化穩定性</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr class="hover:bg-red-50/30">
+                                <td class="px-4 py-3 text-sm font-medium text-gray-900">單偶氮 (Monoazo)</td>
+                                <td class="px-4 py-3 text-sm text-gray-600">PY1, PO5</td>
+                                <td class="px-4 py-3 text-sm text-gray-600">-N=N- 雙鍵</td>
+                                <td class="px-4 py-3 text-sm font-bold text-red-600">極低 (快速褪色)</td>
+                            </tr>
+                            <tr class="hover:bg-red-50/30">
+                                <td class="px-4 py-3 text-sm font-medium text-gray-900">聯苯胺黃 (Diarylide)</td>
+                                <td class="px-4 py-3 text-sm text-gray-600">PY13, PY83</td>
+                                <td class="px-4 py-3 text-sm text-gray-600">聯苯橋、-N=N- 雙鍵</td>
+                                <td class="px-4 py-3 text-sm font-bold text-orange-500">低至極低</td>
+                            </tr>
+                            <tr class="hover:bg-red-50/30">
+                                <td class="px-4 py-3 text-sm font-medium text-gray-900">苯并咪唑酮</td>
+                                <td class="px-4 py-3 text-sm text-gray-600">PY151, PY154</td>
+                                <td class="px-4 py-3 text-sm text-gray-600">相對受保護之偶氮鍵</td>
+                                <td class="px-4 py-3 text-sm font-bold text-yellow-600">中低</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <hr class="border-gray-100 my-10">
+
+            <!-- Section 4 -->
+            <section id="section-4" class="mb-16 scroll-mt-24">
+                <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 flex items-start md:items-center">
+                    <span class="bg-blue-100 text-secondary w-8 h-8 rounded-full inline-flex items-center justify-center text-lg mr-3 shadow-sm shrink-0 mt-1 md:mt-0">4</span>
+                    <span>具備中度至高度抵抗力之有機顏料</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all group">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold group-hover:scale-110 transition-transform">
+                                1
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900">酞菁類 (Phthalocyanine)</h4>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">如銅酞菁 (PB15)。高度對稱二維大環分子，半衰期可達偶氮顏料數百倍。</p>
+                        <ul class="text-sm text-gray-700 list-disc list-inside space-y-1">
+                            <li>18個 &pi; 電子能迅速分散破壞能量</li>
+                            <li>強烈的 N&rarr;Metal 配位鍵鎖定結構</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all group">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold group-hover:scale-110 transition-transform">
+                                2
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900">二酮吡咯并吡咯 (DPP)</h4>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">如 PR254。核心極度強烈的吸電子單元，大幅降低 HOMO 能階。</p>
+                        <ul class="text-sm text-gray-700 list-disc list-inside space-y-1">
+                            <li>極難失去電子被自由基氧化</li>
+                            <li>聚集誘導自由基穩定效應</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-gray-100 my-10">
+
+            <!-- Section 5 & 6 & 7 abbreviated for structure, keeping key info -->
+            
+            <section id="section-5" class="mb-16 scroll-mt-24">
+                <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 flex items-start md:items-center">
+                    <span class="bg-blue-100 text-secondary w-8 h-8 rounded-full inline-flex items-center justify-center text-lg mr-3 shadow-sm shrink-0 mt-1 md:mt-0">5</span>
+                    <span>介面與環境動力學參數</span>
+                </h2>
+                <div class="prose prose-blue max-w-none text-gray-700 leading-relaxed space-y-4">
+                    <p>表面電荷、pH 值與靜電吸附效應強烈影響降解。當顏料粒徑縮小至奈米級時，比表面積急遽增大，與 TiO<sub>2</sub> 或自由基接觸介面幾何級數放大。因此相同組成的顏料，奈米級分散體的抗自由基能力顯著低於微米級團聚體。</p>
+                </div>
+            </section>
+
+            <section id="section-6" class="mb-16 scroll-mt-24">
+                <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 flex items-start md:items-center">
+                    <span class="bg-blue-100 text-secondary w-8 h-8 rounded-full inline-flex items-center justify-center text-lg mr-3 shadow-sm shrink-0 mt-1 md:mt-0">6</span>
+                    <span>工業防護策略</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                        <h4 class="font-bold text-primary mb-2">無機表面包覆技術</h4>
+                        <p class="text-sm text-gray-600">透過沉積無機金屬氧化物（SiO<sub>2</sub>, Al<sub>2</sub>O<sub>3</sub>）形成緻密物理屏障，隔離氧氣與水分，切斷 ROS 生成鏈。</p>
+                    </div>
+                    <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                        <h4 class="font-bold text-primary mb-2">核殼微膠囊化技術</h4>
+                        <p class="text-sm text-gray-600">在有機顏料顆粒表面生長透明無機玻璃殼，實體阻擋從遠處擴散而來的 <sup>&bull;</sup>OH。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-7" class="mb-8 scroll-mt-24">
+                <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 flex items-start md:items-center">
+                    <span class="bg-blue-100 text-secondary w-8 h-8 rounded-full inline-flex items-center justify-center text-lg mr-3 shadow-sm shrink-0 mt-1 md:mt-0">7</span>
+                    <span>結論</span>
+                </h2>
+                <div class="bg-gray-900 text-gray-100 p-6 md:p-8 rounded-2xl shadow-md border-l-4 border-secondary">
+                    <p class="leading-relaxed mb-4">
+                        工業應用上，透過無機表面包覆二氧化鈦截斷 ROS 生成，並發展有機顏料微膠囊化與無機-有機混合載體顏料技術建立物理與光學屏障，是兼顧極致色彩表現與絕對光化學穩定性的關鍵解決方案。
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-gray-700 text-center md:text-left flex flex-col md:flex-row items-center justify-between">
+                        <span class="text-gray-400 mb-4 md:mb-0">需要更多技術支援與塗料顏料解決方案？</span>
+                        <a href="https://hwashine.tw/contact" target="_blank" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-secondary hover:bg-blue-500 shadow-lg transition-all hover:-translate-y-1">
+                            聯絡華翔興業技術團隊
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-10 md:py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <h2 class="text-white text-lg font-bold tracking-wider mb-2">華翔興業有限公司</h2>
+                <p class="text-sm">專業化工顏料與塗料解決方案</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 text-sm">
+                <a href="https://hwashine.tw/" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    官方首頁
+                </a>
+                <a href="https://hwashine.tw/contact" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    聯絡我們
+                </a>
+            </div>
+            <p class="text-xs text-gray-500 text-center md:text-right">&copy; 2026 Hwa Shine Industry Co., Ltd. <br class="hidden md:block"/>All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Floating Action Button (FAB) -->
+    <a href="https://hwashine.tw/contact" target="_blank" class="md:hidden fixed bottom-6 left-6 z-50 bg-secondary text-white py-3 px-5 rounded-full shadow-xl font-bold flex items-center gap-2 hover:bg-blue-700 transition-transform active:scale-95 border-2 border-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+        聯絡華翔
+    </a>
+
+    <!-- Back to top button (Moved to right to accommodate FAB on left) -->
+    <button id="backToTop" class="fixed bottom-6 right-6 z-40 bg-gray-800/80 backdrop-blur-sm text-white p-3.5 rounded-full shadow-lg opacity-0 transition-all duration-300 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 pointer-events-none hover:-translate-y-1" aria-label="回到最上層">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.content-section section');
+            const navLinks = document.querySelectorAll('#toc a');
+            const backToTopBtn = document.getElementById('backToTop');
+
+            // Intersection Observer for highlighting TOC
+            const observerOptions = {
+                root: null,
+                rootMargin: '-15% 0px -70% 0px', 
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        // Remove active class from all links
+                        navLinks.forEach(link => {
+                            link.classList.remove('toc-active');
+                            link.classList.add('border-transparent');
+                        });
+                        // Add active class to corresponding link
+                        const activeLink = document.querySelector(`#toc a[href="#${id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('toc-active');
+                            activeLink.classList.remove('border-transparent');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Back to Top functionality
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                    backToTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                    backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
