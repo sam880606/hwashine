@@ -677,6 +677,50 @@
                 }
             };
 
+            // 新增：在資料點右下角顯示色號的插件
+            const pointLabelPlugin = {
+                id: 'pointLabel',
+                afterDatasetsDraw: (chart) => {
+                    // 如果是全色域，因為點很多，所以不顯示以避免畫面太亂
+                    if (currentColorTab === 'ALL') return;
+
+                    const ctx = chart.ctx;
+                    ctx.save();
+                    ctx.font = 'bold 11px sans-serif';
+                    ctx.textBaseline = 'top'; 
+
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((element, index) => {
+                            const dataPoint = dataset.data[index];
+                            if (!dataPoint.raw) return;
+                            const text = dataPoint.raw['色號'] || '';
+                            
+                            if (!text) return;
+
+                            // 取得點在畫布上的 x, y 座標
+                            const x = element.x;
+                            const y = element.y;
+                            
+                            // 設定偏移量，讓文字出現在右下方
+                            const xOffset = 6;
+                            const yOffset = 6;
+                            
+                            const textWidth = ctx.measureText(text).width;
+                            
+                            // 畫一個半透明的白底，避免文字被背景或格線干擾
+                            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                            ctx.fillRect(x + xOffset - 1, y + yOffset - 1, textWidth + 2, 14);
+                            
+                            // 畫出深灰色的文字
+                            ctx.fillStyle = '#374151';
+                            ctx.fillText(text, x + xOffset, y + yOffset);
+                        });
+                    });
+                    ctx.restore();
+                }
+            };
+
             let scalesConfig = {};
             if (currentColorTab === 'ALL') {
                 scalesConfig = {
@@ -687,12 +731,12 @@
                 scalesConfig = {
                     x: {
                         display: true,
-                        title: { display: true, text: 'Hue (色口) ➔', font: { size: 14, weight: 'bold' } },
+                        title: { display: true, text: 'Hue (色相) ➔', font: { size: 14, weight: 'bold' } },
                         grid: { color: '#f3f4f6' }
                     },
                     y: {
                         display: true,
-                        title: { display: true, text: 'Chroma (飽和度) ➔', font: { size: 14, weight: 'bold' } },
+                        title: { display: true, text: 'Chroma (彩度/飽和度) ➔', font: { size: 14, weight: 'bold' } },
                         grid: { color: '#f3f4f6' },
                         beginAtZero: false 
                     }
@@ -701,7 +745,7 @@
 
             chartInstance = new Chart(ctx, {
                 type: 'scatter',
-                plugins: [polarGridPlugin], 
+                plugins: [polarGridPlugin, pointLabelPlugin], // 加入新的標籤插件
                 data: {
                     datasets: [{
                         label: '顏料資料點',
