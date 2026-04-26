@@ -677,17 +677,29 @@
                 }
             };
 
-            // 新增：在資料點右下角顯示色號的插件
+            // 新增：具備防重疊功能的標籤外掛
             const pointLabelPlugin = {
                 id: 'pointLabel',
                 afterDatasetsDraw: (chart) => {
-                    // 如果是全色域，因為點很多，所以不顯示以避免畫面太亂
                     if (currentColorTab === 'ALL') return;
 
                     const ctx = chart.ctx;
                     ctx.save();
                     ctx.font = 'bold 11px sans-serif';
                     ctx.textBaseline = 'top'; 
+
+                    const drawnBoxes = []; // 用來記錄已經畫上的標籤範圍
+
+                    // 檢查傳入的標籤框是否跟已經畫過的標籤重疊
+                    function checkCollision(box) {
+                        for (let b of drawnBoxes) {
+                            // 加上一些間距 (Padding) 防止貼太近
+                            if (!(box.right + 2 < b.left || box.left - 2 > b.right || box.bottom + 2 < b.top || box.top - 2 > b.bottom)) {
+                                return true; // 發生重疊
+                            }
+                        }
+                        return false; // 沒有重疊
+                    }
 
                     chart.data.datasets.forEach((dataset, i) => {
                         const meta = chart.getDatasetMeta(i);
@@ -698,23 +710,47 @@
                             
                             if (!text) return;
 
-                            // 取得點在畫布上的 x, y 座標
                             const x = element.x;
                             const y = element.y;
                             
-                            // 設定偏移量，讓文字出現在右下方
-                            const xOffset = 6;
-                            const yOffset = 6;
-                            
                             const textWidth = ctx.measureText(text).width;
+                            const textHeight = 14;
                             
-                            // 畫一個半透明的白底，避免文字被背景或格線干擾
-                            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-                            ctx.fillRect(x + xOffset - 1, y + yOffset - 1, textWidth + 2, 14);
-                            
-                            // 畫出深灰色的文字
-                            ctx.fillStyle = '#374151';
-                            ctx.fillText(text, x + xOffset, y + yOffset);
+                            // 定義 8 個可能放置標籤的相對位置 (優先嘗試右下，接著右上、左下、左上等)
+                            const positions = [
+                                { x: 6, y: 6 },                                  // 右下
+                                { x: 6, y: -textHeight - 6 },                    // 右上
+                                { x: -textWidth - 6, y: 6 },                     // 左下
+                                { x: -textWidth - 6, y: -textHeight - 6 },       // 左上
+                                { x: 10, y: -textHeight / 2 },                   // 正右
+                                { x: -textWidth - 10, y: -textHeight / 2 },      // 正左
+                                { x: -textWidth / 2, y: 10 },                    // 正下
+                                { x: -textWidth / 2, y: -textHeight - 10 }       // 正上
+                            ];
+
+                            // 依序測試這些位置
+                            for (let pos of positions) {
+                                const box = {
+                                    left: x + pos.x,
+                                    right: x + pos.x + textWidth,
+                                    top: y + pos.y,
+                                    bottom: y + pos.y + textHeight
+                                };
+
+                                // 如果這個位置沒有重疊，就畫在這裡
+                                if (!checkCollision(box)) {
+                                    ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+                                    ctx.fillRect(box.left - 2, box.top - 2, textWidth + 4, textHeight + 4);
+                                    
+                                    ctx.fillStyle = '#374151';
+                                    ctx.fillText(text, x + pos.x, y + pos.y);
+
+                                    // 記錄這個成功繪製的位置
+                                    drawnBoxes.push(box);
+                                    break; 
+                                }
+                            }
+                            // 備註：如果 8 個位置都滿了，我們就不畫這個點的文字標籤，保持畫面整潔
                         });
                     });
                     ctx.restore();
