@@ -9,8 +9,9 @@
     <meta name="description" content="華翔興業 (Hwashine) 深度解析歐盟 PPWR 法規對包裝材料與有機顏料的影響。探討可回收性、PFAS禁令、脫墨技術及NIR可偵測顏料，提供符合循環經濟的高品質染料與顏料解決方案。">
     <meta name="keywords" content="華翔興業, Hwashine, 染料, 顏料, 有機顏料, PPWR, 歐盟包裝與包裝廢棄物法規, 循環經濟, 脫墨技術, NIR可偵測顏料, 環保顏料, PFAS禁令">
     <meta name="author" content="華翔興業有限公司 Hwashine Trading Co., Ltd.">
+    <link rel="canonical" href="https://hwashine.tw/ppwr-report"> <!-- 建議加入標準網址 -->
     
-    <!-- Open Graph 標籤 (社群分享優化) -->
+    <!-- Open Graph 標籤 -->
     <meta property="og:title" content="歐盟包裝法規 (PPWR) 與有機顏料之關聯性研究 | 華翔興業">
     <meta property="og:description" content="深度剖析 PPWR 法規對印刷油墨、有機顏料的合規性要求，探討邁向循環經濟的材料科學與毒理學挑戰。">
     <meta property="og:type" content="article">
@@ -56,12 +57,8 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- MathJax (安全載入，已徹底移除會導致釣魚攻擊的 polyfill.io) -->
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
@@ -73,88 +70,43 @@
             scroll-behavior: smooth;
         }
 
-        /* 修正點擊錨點時被 Header 擋住的問題 */
-        html {
-            scroll-padding-top: 6rem; 
-        }
+        html { scroll-padding-top: 5rem; }
 
-        /* 自定義文章樣式 */
         .prose h2 {
-            color: #0f172a;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
-            scroll-margin-top: 6rem;
+            color: #0f172a; font-size: 1.5rem; font-weight: 700;
+            margin-top: 2.5rem; margin-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;
         }
         .prose h3 {
-            color: #1e293b;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            scroll-margin-top: 6rem;
+            color: #1e293b; font-size: 1.25rem; font-weight: 600;
+            margin-top: 1.5rem; margin-bottom: 0.75rem;
         }
-        .prose p {
-            margin-bottom: 1.25rem;
-            line-height: 1.8;
-            text-align: justify;
-        }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; text-align: justify; }
+        
         .prose table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            background-color: white;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            font-size: 0.95rem;
+            width: 100%; border-collapse: collapse; margin: 2rem 0;
+            background-color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 0.5rem; overflow: hidden;
         }
-        .prose th, .prose td {
-            border: 1px solid #e2e8f0;
-            padding: 0.75rem 1rem;
-            text-align: left;
+        .prose th, .prose td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; }
+        .prose th { background-color: #f1f5f9; font-weight: 600; color: #0f172a; }
+        .prose tr:nth-child(even) { background-color: #f8fafc; }
+        
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; list-style-type: disc; }
+        .prose li { margin-bottom: 0.5rem; line-height: 1.6; }
+
+        .toc-link {
+            transition: all 0.2s ease; display: block; padding: 0.35rem 0; color: #64748b; font-size: 0.95rem;
         }
-        .prose th {
-            background-color: #f1f5f9;
-            font-weight: 600;
-            color: #0f172a;
-        }
-        .prose tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-        .prose ul, .prose ol {
-            margin-bottom: 1.25rem;
-            padding-left: 1.5rem;
-            list-style-type: disc;
-        }
-        .prose li {
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
+        .toc-link:hover { color: #2563eb; transform: translateX(4px); }
+        .toc-link.active {
+            color: #2563eb; font-weight: 600; border-left: 2px solid #2563eb; padding-left: 0.5rem; margin-left: -2px;
         }
 
-        /* 目錄導航樣式 */
-        .toc-link {
-            transition: all 0.2s ease-in-out;
-            display: block;
-            padding: 0.35rem 0;
-            color: #64748b;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        .toc-link:hover {
-            color: #2563eb;
-            transform: translateX(4px);
-        }
-        .toc-link.active {
-            color: #2563eb;
-            font-weight: 600;
-            border-left: 2px solid #2563eb;
-            padding-left: 0.5rem;
-            margin-left: -2px;
-        }
+        /* 漢堡選單動畫 */
+        #mobile-menu { transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+        .menu-open { max-height: 300px; opacity: 1; }
+        .menu-closed { max-height: 0; opacity: 0; pointer-events: none; }
     </style>
 </head>
 <body class="antialiased">
@@ -171,34 +123,38 @@
                         </div>
                         <div class="flex flex-col">
                             <span class="font-bold text-lg leading-tight text-gray-900 group-hover:text-blue-600 transition">華翔興業有限公司</span>
-                            <span class="text-xs text-gray-500 hidden sm:block">Hwashine Trading Co., Ltd. | 專業染料顏料供應商</span>
+                            <span class="hidden sm:block text-xs text-gray-500">Hwashine Trading Co., Ltd. | 專業染料與顏料供應商</span>
                         </div>
                     </a>
                 </div>
                 
                 <!-- 桌面版導覽連結 -->
-                <nav class="hidden md:flex space-x-6 items-center">
+                <nav class="hidden md:flex items-center space-x-6">
                     <a href="https://hwashine.tw/" target="_blank" class="text-gray-600 hover:text-blue-600 font-medium transition flex items-center gap-1">
                         <i data-lucide="home" class="w-4 h-4"></i> 官方網站
                     </a>
-                    <a href="https://hwashine.tw/contact" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full font-medium transition flex items-center gap-1 text-sm shadow-sm">
+                    <a href="https://hwashine.tw/contact" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full font-medium transition flex items-center gap-1 text-sm shadow-sm">
                         <i data-lucide="phone-call" class="w-4 h-4"></i> 聯絡我們
                     </a>
                 </nav>
-                
-                <!-- 漢堡選單按鈕 (Mobile) -->
-                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
+
+                <!-- 手機版漢堡選單按鈕 -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+                    </button>
+                </div>
             </div>
-            
-            <!-- 手機版展開選單 (預設隱藏) -->
-            <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 py-3 space-y-2 bg-white pb-4 shadow-inner">
-                <a href="https://hwashine.tw/" target="_blank" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 flex items-center gap-3 transition">
-                    <i data-lucide="home" class="w-5 h-5 text-gray-500"></i> 前往官方網站
+        </div>
+
+        <!-- 手機版下拉選單 -->
+        <div id="mobile-menu" class="md:hidden menu-closed bg-white border-b border-gray-100 overflow-hidden shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="https://hwashine.tw/" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 flex items-center gap-2">
+                    <i data-lucide="home" class="w-5 h-5"></i> 官方網站
                 </a>
-                <a href="https://hwashine.tw/contact" target="_blank" class="block text-blue-700 font-medium py-3 px-4 rounded-lg bg-blue-50 hover:bg-blue-100 flex items-center gap-3 transition mx-2">
-                    <i data-lucide="phone-call" class="w-5 h-5"></i> 立即聯絡我們
+                <a href="https://hwashine.tw/contact" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 flex items-center gap-2 mt-2">
+                    <i data-lucide="phone-call" class="w-5 h-5"></i> 聯絡我們諮詢
                 </a>
             </div>
         </div>
@@ -207,14 +163,14 @@
     <!-- 主要佈局 -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col lg:flex-row gap-8">
         
-        <!-- 左側側邊欄：目錄 (桌面版顯示) -->
+        <!-- 左側側邊欄：桌面版目錄 (TOC) -->
         <aside class="w-full lg:w-1/4 hidden lg:block flex-shrink-0">
             <div class="sticky top-24 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2 pb-2 border-b border-gray-100">
                     <i data-lucide="list" class="w-5 h-5 text-blue-600"></i>
                     報告目錄
                 </h3>
-                <nav id="toc-container" class="space-y-1 border-l-2 border-gray-100 pl-2">
+                <nav id="toc-container" class="space-y-1">
                     <!-- JavaScript 將動態生成目錄 -->
                 </nav>
 
@@ -222,8 +178,8 @@
                 <div class="mt-8 bg-blue-50 p-5 rounded-lg border border-blue-100">
                     <h4 class="font-bold text-blue-900 mb-2 text-sm">尋求合規的顏料解決方案？</h4>
                     <p class="text-xs text-blue-700 mb-4 leading-relaxed">華翔興業提供符合 PPWR 與無有害物質標準的高品質有機顏料與染料。</p>
-                    <a href="https://hwashine.tw/contact" target="_blank" class="block w-full text-center bg-blue-600 text-white text-sm font-medium py-2 rounded shadow hover:bg-blue-700 transition">
-                        專業諮詢
+                    <a href="https://hwashine.tw/contact" target="_blank" class="block w-full text-center bg-blue-600 text-white text-sm font-medium py-2 rounded shadow hover:bg-blue-700 transition flex justify-center items-center gap-1">
+                        專人諮詢 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
@@ -233,6 +189,7 @@
         <main class="w-full lg:w-3/4 bg-white rounded-xl shadow-sm border border-gray-100 p-6 sm:p-10 lg:p-12">
             
             <article class="prose max-w-none relative">
+                <!-- 報告標頭 -->
                 <header class="mb-10 text-center lg:text-left">
                     <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full mb-4">
                         產業研究白皮書
@@ -243,14 +200,15 @@
                     <p class="text-lg sm:text-xl text-gray-600 font-medium mb-6">
                         邁向循環經濟之材料科學、毒理學與合規性深度分析
                     </p>
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-sm text-gray-500 border-t border-b py-3">
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 text-sm text-gray-500 border-t border-b py-4 bg-gray-50/50 rounded">
                         <div class="flex items-center gap-1">
-                            <i data-lucide="building-2" class="w-4 h-4"></i>
+                            <i data-lucide="building-2" class="w-4 h-4 text-blue-600"></i>
                             發布單位：<strong>華翔興業有限公司 (Hwashine)</strong>
                         </div>
+                        <div class="hidden sm:block text-gray-300">|</div>
                         <div class="flex items-center gap-1">
-                            <i data-lucide="calendar" class="w-4 h-4"></i>
-                            最新編撰
+                            <i data-lucide="book-open" class="w-4 h-4 text-blue-600"></i>
+                            領域：包裝法規與化學安全
                         </div>
                     </div>
                 </header>
@@ -259,237 +217,216 @@
                     <strong>編者按：</strong> 本深度研究報告由 <strong>華翔興業 (Hwashine Trading Co., Ltd.)</strong> 專業團隊彙整編撰。作為專業的染料與顏料供應商，我們致力於協助包裝與印刷產業夥伴掌握最新歐盟環保法規趨勢，提供具備高脫墨性、光學分選相容且符合化學安全的優質染顏料解決方案。
                 </div>
 
-                <!-- 手機版/平板版 快速導覽目錄 (大螢幕隱藏) -->
-                <div class="block lg:hidden bg-white border border-gray-200 p-5 rounded-xl shadow-sm mb-10">
-                    <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2 border-b border-gray-100 pb-3">
+                <!-- 手機/平板專屬快速導覽 (Desktop隱藏) -->
+                <div class="lg:hidden bg-white border border-gray-200 rounded-lg p-5 mb-8 shadow-sm">
+                    <h3 class="font-bold text-gray-900 mb-3 flex items-center gap-2 text-lg">
                         <i data-lucide="compass" class="w-5 h-5 text-blue-600"></i>
                         報告快速導覽
                     </h3>
-                    <nav id="mobile-toc-container" class="space-y-3 text-sm font-medium">
-                        <!-- JavaScript 將動態生成手機版目錄 -->
+                    <nav id="mobile-toc-container" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                        <!-- JS 動態填入 -->
                     </nav>
                 </div>
 
-                <!-- 報告內容開始 -->
-                <section id="section-1">
+                <!-- 報告正文開始 -->
+                <section>
                     <h2>1. 緒論：法規重塑下的包裝材料科學與顏料化學</h2>
                     <p>歐洲聯盟《包裝與包裝廢棄物法規》（Packaging and Packaging Waste Regulation，簡稱 PPWR，法規編號 (EU) 2025/40）於 2025 年 2 月 11 日正式生效，並將於 2026 年 8 月 12 日起全面適用。該法規之頒布，標誌著歐盟推動《歐洲綠色政綱》（European Green Deal）與《新循環經濟行動計畫》（Circular Economy Action Plan）進入了具備絕對法律強制力的新紀元。有別於過去的「指令（Directive）」，「法規（Regulation）」不需經過各成員國的國內立法轉換，即對歐盟全境產生直接且統一的約束力，旨在從根本上扭轉包裝廢棄物持續增加的趨勢，並終結各國包裝規範不一所導致的市場碎片化。</p>
                     <p>在此一宏觀的法規框架下，印刷油墨與有機顏料面臨了史無前例的嚴格檢視。儘管有機顏料與其載體（油墨、塗料、黏合劑）在整體包裝重量中的佔比極低——根據「為循環經濟設計」（Design for a Circular Economy, D4ACE）指引，為降低回收過程中的污染，建議將油墨總重量嚴格控制在包裝總重的 5% 以下——但這不到 5% 的化學物質，卻是決定整件包裝能否順利進入回收體系、能否符合食品接觸化學安全標準，以及能否達成高品質再生目標的關鍵少數。</p>
                     <p>PPWR 透過設定嚴苛的技術標準與明確的淘汰時間表，將有機顏料的化學穩定性、光學吸收特性（如近紅外光反射率）、高溫熱降解行為，以及流體動力學特徵（如脫墨與暈染現象），與包裝材料的可回收性分級（Recyclability Performance Grades）進行了深度綁定。本研究報告將系統性地剖析 PPWR 對於有機顏料與印刷油墨所帶來的具體合規要求，深入探討近紅外光可偵測顏料的光學原理、無有害物質（如 PFAS 及毒性重金屬）配方的演進、偶氮顏料（Azo Pigments）於熱機械回收中衍生之初級芳香胺（PAAs）毒理風險，以及涵蓋塑膠與紙基材料的脫墨（Deinking）技術在符合 PPWR 目標中的核心決定性作用。</p>
                 </section>
 
-                <section id="section-2">
+                <section>
                     <h2>2. PPWR 第 6 條與可回收性性能分級制度：設計思維的法制化</h2>
-                    <p>PPWR 的核心原則之一，即是從 2030 年 1 月 1 日起，所有投放至歐盟市場的包裝必須具備實質的可回收性（Recyclable at scale），而不僅僅是停留在實驗室階段的理論上可回收。法規第 6 條（Article 6）引入了前所未有的「可回收性性能分級（Recyclability Performance Grades）」制度，該制度將直接決定包裝的市場准入權限與延伸生產者責任（Extended Producer Responsibility, EPR）費用的高低，將環境外部成本徹底內部化。</p>
+                    <p>PPWR 的核心原則之一，即是從 2030 年 1 月 1 日起，所有投放至歐盟市場的包裝必須具備實質的可回收性（Recyclable at scale），而不僅僅是停留在實驗室階段的理論上可回收。法規第 6 條引入了前所未有的「可回收性性能分級（Recyclability Performance Grades）」制度，該制度將直接決定包裝的市場准入權限與延伸生產者責任（EPR）費用的高低，將環境外部成本徹底內部化。</p>
                     
-                    <h3 id="section-2-1">2.1 可回收性分級與市場准入時間表</h3>
-                    <p>PPWR 附件 II 針對包裝單元重量（per packaging unit by weight）明確定義了嚴格的可回收性比例門檻，並劃分出三種合格等級與一種不合格等級。歐盟委員會預計於 2028 年 1 月 1 日前透過授權法案（Delegated Acts）公布詳細的評估方法與設計準則，以銜接後續的執法。</p>
+                    <h3>2.1 可回收性分級與市場准入時間表</h3>
+                    <p>PPWR 附件 II 針對包裝單元重量明確定義了嚴格的可回收性比例門檻，並劃分出三種合格等級與一種不合格等級。歐盟委員會預計於 2028 年 1 月 1 日前透過授權法案（Delegated Acts）公布詳細的評估方法與設計準則。</p>
                     
-                    <div class="overflow-x-auto my-6">
+                    <div class="overflow-x-auto">
                         <table>
                             <thead>
                                 <tr>
                                     <th>性能分級 (Grade)</th>
-                                    <th>可回收性比例閾值</th>
+                                    <th>可回收比例閾值</th>
                                     <th>2030 年 1 月起狀態</th>
                                     <th>2038 年 1 月起狀態</th>
-                                    <th>延伸生產者責任 (EPR) 費用調節</th>
+                                    <th>EPR 費用調節</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><strong>A 級</strong></td>
-                                    <td>\(\geq 95\%\)</td>
+                                    <td>≥ 95%</td>
                                     <td class="text-green-600 font-medium">允許上市</td>
                                     <td class="text-green-600 font-medium">允許上市</td>
-                                    <td>最低費率 (Lowest fee)</td>
+                                    <td>最低費率</td>
                                 </tr>
                                 <tr>
                                     <td><strong>B 級</strong></td>
-                                    <td>\(\geq 80\%\) 且 \(< 95\%\)</td>
+                                    <td>≥ 80% 且 < 95%</td>
                                     <td class="text-green-600 font-medium">允許上市</td>
                                     <td class="text-green-600 font-medium">允許上市</td>
-                                    <td>中等費率 (Medium fee)</td>
+                                    <td>中等費率</td>
                                 </tr>
                                 <tr>
                                     <td><strong>C 級</strong></td>
-                                    <td>\(\geq 70\%\) 且 \(< 80\%\)</td>
-                                    <td class="text-amber-600 font-medium">允許上市 (作為過渡期)</td>
+                                    <td>≥ 70% 且 < 80%</td>
+                                    <td class="text-yellow-600 font-medium">允許上市 (過渡期)</td>
                                     <td class="text-red-600 font-bold">禁止上市</td>
-                                    <td>最高費率 (Highest fee)</td>
+                                    <td>最高費率</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>低於 C 級 (D/E 級)</strong></td>
-                                    <td>\(< 70\%\)</td>
+                                    <td><strong>低於 C 級 (D/E)</strong></td>
+                                    <td>< 70%</td>
                                     <td class="text-red-600 font-bold">全面禁止上市</td>
                                     <td class="text-red-600 font-bold">全面禁止上市</td>
-                                    <td class="text-gray-500">不適用 (剝奪市場准入)</td>
+                                    <td>剝奪市場准入</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="text-sm text-gray-500 italic mt-2">資料來源：彙整自 PPWR 附件 II 及相關合規解析。</p>
                     </div>
+                    <p class="text-sm text-gray-500 italic mt-2">資料來源：彙整自 PPWR 附件 II 法規文本。</p>
 
-                    <p>由上表可知，若包裝的可回收比例低於 70%（業界常稱為 D 級或 E 級），將在 2030 年面臨徹底的市場禁令；而 C 級僅被視為短期的過渡等級，至 2038 年，所有包裝必須至少達到 B 級（80% 以上）。此外，自 2035 年起，PPWR 疊加了一項額外條件：包裝必須在歐盟實際運作的收集、分選與回收基礎設施中達到「規模化回收（Recycled at scale）」，這代表依賴特殊或罕見回收工藝的包裝設計將無法過關。</p>
+                    <p>由上表可知，若包裝的可回收比例低於 70%，將在 2030 年面臨徹底的市場禁令；而 C 級僅被視為短期的過渡等級，至 2038 年，所有包裝必須至少達到 B 級（80% 以上）。此外，自 2035 年起，包裝必須在歐盟實際運作的基礎設施中達到「規模化回收（Recycled at scale）」。</p>
 
-                    <h3 id="section-2-2">2.2 決定分級的四大關鍵維度與有機顏料之牽連</h3>
-                    <p>一項包裝最終獲得何種分級，並非僅取決於主要基材（如 PET 或 PP），而是取決於整體包裝架構的綜合表現。評估過程涵蓋四大核心維度：<strong>分選兼容性</strong>（Sorting compatibility）、<strong>材料可分離性</strong>（Material separability）、<strong>污染避免</strong>（Contamination avoidance）以及<strong>易拆解性</strong>（Dismantling ease）。有機顏料與印刷油墨在這四個維度中，扮演了可能導致整件包裝直接降級的關鍵干擾變數：</p>
-                    <ul>
-                        <li><strong>污染避免：</strong>當包裝進入機械回收程序（如粉碎、高溫清洗、押出成型）時，若顏料或油墨無法被有效脫除（Deinking），或者在清洗階段發生暈染（Bleeding），將直接污染回收水系統與再生塑料（PCR）薄片。帶有深色顏料的再生料大幅降低了其二次應用的光學與機械價值，甚至使回收料無法通過食品接觸材料（FCM）的安全審查，從而導致該包裝在評估中被判定為不具備替代原生材料（Virgin raw materials）的品質，直接遭到降級甚至歸類為技術上不可回收。</li>
-                        <li><strong>分選兼容性：</strong>高度依賴現代回收廠的自動化光學分選系統。近紅外光（NIR）掃描儀是目前主流的材質辨識技術，然而，傳統配方中的特定顏料（尤其是炭黑）會吸收 NIR 訊號，導致光學感測器無法識別底材，致使該包裝被誤判並送往焚化或掩埋。若油墨製造商未能導入相容的光學反射顏料，該包裝將在分選階段即遭到淘汰。</li>
-                        <li><strong>材料可分離性與易拆解性：</strong>要求包裝組件（如標籤、熱縮膜與主瓶身）能夠在機械摩擦或浮選過程中輕易分離。這促使油墨與黏合劑配方必須具備特定的觸發釋放（Trigger-release）機制，確保在冷水或熱水洗滌條件下，標籤及其上的印刷顏料能與主體材料完美剝離，而不留下任何干擾再生產物純度的殘留物。</li>
+                    <h3>2.2 決定分級的四大關鍵維度與有機顏料之牽連</h3>
+                    <p>一項包裝最終獲得何種分級，取決於整體包裝架構的綜合表現。評估過程涵蓋四大核心維度。有機顏料與印刷油墨在這四個維度中，扮演了可能導致降級的關鍵干擾變數：</p>
+                    <ul class="space-y-3">
+                        <li><strong>污染避免 (Contamination avoidance)：</strong>當包裝進入機械回收程序時，若顏料或油墨無法被有效脫除（Deinking），或者在清洗階段發生暈染（Bleeding），將直接污染再生塑料（PCR）。帶有深色顏料的再生料大幅降低了二次應用的價值，甚至無法通過食品接觸材料審查，導致包裝被歸類為技術上不可回收。</li>
+                        <li><strong>分選兼容性 (Sorting compatibility)：</strong>高度依賴自動化光學分選系統。近紅外光（NIR）掃描儀是主流辨識技術，然而傳統特定顏料（特別是炭黑）會吸收 NIR 訊號，導致感測器無法識別底材，致使包裝送往焚化或掩埋。</li>
+                        <li><strong>材料可分離性與易拆解性：</strong>油墨與黏合劑配方必須具備觸發釋放機制，確保在洗滌條件下，標籤及其上的印刷顏料能與主體材料完美剝離，不留下干擾再生純度的殘留物。</li>
                     </ul>
                 </section>
 
-                <section id="section-3">
-                    <h2>3. 化學安全合規：PFAS 禁令、重金屬與供應鏈透明度的強制性</h2>
-                    <p>化學安全（Chemical Safety）構成了 PPWR 法規框架的另一根核心支柱。法規第 5 條（Article 5）針對食品接觸包裝提出了極為嚴格的物質限制，迫使有機顏料及色母粒（Masterbatch）供應鏈進行歷史性的大規模配方重組，以消除可能殘留的有害物質（Substances of concern）。</p>
+                <section>
+                    <h2>3. 化學安全合規：PFAS 禁令、重金屬與供應鏈透明度</h2>
+                    <p>法規第 5 條針對食品接觸包裝提出了極為嚴格的物質限制，迫使有機顏料及色母粒供應鏈進行歷史性的大規模配方重組，以消除有害物質。</p>
 
-                    <h3 id="section-3-1">3.1 消除全氟及多氟烷基物質 (PFAS) 之挑戰</h3>
-                    <p>全氟及多氟烷基物質（PFAS）因其卓越的表面張力控制能力、疏水與疏油特性，長期以來被作為油墨配方中的流平劑、潤濕劑、消泡劑，甚至存在於某些有機顏料的表面處理工藝中。然而，由於其極難在自然界中降解（被稱為「永久化學品」），並具有高度的生物累積性與毒性，PPWR 祭出了前所未有的嚴格禁令。</p>
-                    <p>依據 PPWR 規定，自 2026 年 8 月 12 日起，食品接觸包裝必須遵守以下具法律約束力的 PFAS 濃度極限：</p>
+                    <h3>3.1 消除全氟及多氟烷基物質 (PFAS) 之挑戰</h3>
+                    <p>全氟及多氟烷基物質（PFAS）長期被作為油墨配方中的流平劑、潤濕劑或存在於顏料表面處理工藝中。由於其極難降解與高毒性，自 2026 年 8 月 12 日起，食品接觸包裝必須遵守以下具法律約束力的 PFAS 濃度極限：</p>
                     
-                    <div class="overflow-x-auto my-6">
+                    <div class="overflow-x-auto">
                         <table>
                             <thead>
                                 <tr>
                                     <th>測量指標</th>
-                                    <th>PPWR 規定之濃度極限</th>
-                                    <th>合規策略與實務測試方法</th>
+                                    <th>PPWR 濃度極限</th>
+                                    <th>合規測試策略</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>單一目標 PFAS 物質</strong><br><span class="text-xs text-gray-500">(Individual PFAS)</span></td>
-                                    <td class="font-mono text-blue-700">\(25\ \text{ppb}\) \((25\ \mu\text{g/kg})\)</td>
-                                    <td>必須透過靶向分析 (Targeted analysis) 確認單一分子濃度</td>
+                                    <td><strong>單一目標 PFAS</strong></td>
+                                    <td>25 ppb (25 μg/kg)</td>
+                                    <td>透過靶向分析確認單一分子濃度</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>目標 PFAS 總和</strong><br><span class="text-xs text-gray-500">(Sum of measured PFAS)</span></td>
-                                    <td class="font-mono text-blue-700">\(250\ \text{ppb}\) \((250\ \mu\text{g/kg})\)</td>
-                                    <td>同樣依賴高解析度質譜靶向分析計算總和</td>
+                                    <td><strong>目標 PFAS 總和</strong></td>
+                                    <td>250 ppb (250 μg/kg)</td>
+                                    <td>依賴高解析度質譜靶向分析計算總和</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>總氟含量</strong><br><span class="text-xs text-gray-500">(Total Fluorine, TF)</span></td>
-                                    <td class="font-mono text-blue-700">\(50\ \text{ppm}\) \((50\ \text{mg/kg})\)</td>
-                                    <td>作為初步篩查測試。若 TF < 50 ppm，可推定合規且無需進一步靶向測試；若超出則需複檢</td>
+                                    <td><strong>總氟含量 (Total Fluorine)</strong></td>
+                                    <td>50 ppm (50 mg/kg)</td>
+                                    <td>初步篩查測試。若低於此值可推定合規</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <p>這種達到十億分之一（ppb）級別的微量極限，對整個化工供應鏈產生了深遠的影響。包裝轉化商（Converters）與品牌商不能再僅憑供應商提供的「一般性保證」或模糊的安全聲明，而是必須要求油墨與顏料製造商提供包含精確測量值與批次分析證書（Certificates of Analysis, CoA）在內的無縫合規文件。如同 Granula 等先進色母粒製造商所強調的，不僅要生產完全不含 PFAS 的產品，更必須提供具備「防審計（Audit-proof）」級別的檢驗證據，確保沒有任何含氟加工助劑或添加劑透過有機顏料進入供應鏈。若油墨製造商的有機顏料合成過程中不慎引入微量污染，將導致下游整個包裝批次報廢，引發產品強制下架與鉅額罰款。</p>
+                    <p>這種 ppb 級別的微量極限，迫使品牌商必須要求油墨與顏料製造商提供包含精確測量值與批次分析證書（CoA）在內的防審計級別合規文件。</p>
 
-                    <h3 id="section-3-2">3.2 毒性重金屬與高關注物質 (SVHC) 的系統性控制</h3>
-                    <p>除了 PFAS，PPWR 同時嚴格限制鉛（Pb）、鎘（Cd）、汞（Hg）以及六價鉻（Cr(VI)）等重金屬在包裝中的總量。儘管歐洲印刷油墨協會（EuPIA）的原材料選擇政策長期以來已規範印刷油墨中的重金屬總量不得超過 100 mg/kg，但 PPWR 的實施將限制範圍擴大，要求這些重金屬極限必須「跨越所有應用的塗層」計算。這意味著多層複合包裝的每一層材料，包含底漆、面漆、油墨與層壓黏合劑，皆須納入整體的化學負荷總量計算，不容許單一層面存在超標隱患。</p>
-                    <p>針對揮發性有機化合物（VOCs）與其他高關注物質（SVHCs），水性數位噴墨與水性柔版印刷技術（例如 SCREEN 的 Truepress PAC 系列）成為了符合 PPWR 理念的首選。這些水性油墨配方大幅降低了 VOCs 的排放與化學物質的整體負載量，不僅減輕了企業準備物質合規文件的負擔，也符合瑞士條例（Swiss Ordinance）、雀巢包裝油墨指南（Nestlé Guidance）以及 EuPIA 排除政策等業界最高標準，為食品接觸、衛生與保健食品應用提供了穩固的安全框架。</p>
+                    <h3>3.2 毒性重金屬與高關注物質 (SVHC)</h3>
+                    <p>PPWR 同時嚴格限制鉛、鎘、汞及六價鉻等重金屬。要求極限必須「跨越所有應用的塗層」計算，包含底漆、面漆、油墨與黏合劑。針對揮發性有機化合物（VOCs），水性數位噴墨與水性柔版印刷技術成為了符合 PPWR 理念的首選，為食品接觸應用提供了穩固的安全框架。</p>
                 </section>
 
-                <section id="section-4">
-                    <h2>4. 偶氮有機顏料 (Azo Pigments) 於回收過程中的熱降解與初級芳香胺 (PAAs) 毒理風險</h2>
-                    <p>在印刷油墨所使用的有機顏料市場中，偶氮顏料（Azo Pigments）佔據了絕對的主導地位（按體積計算超過全球有機顏料產量的 50%），被廣泛應用於產生鮮豔的黃色、橙色、紅色與洋紅色系。然而，隨著 PPWR 強制要求逐年提高消費後再生塑料（PCR）的使用比例（例如自 2030 年起，單次使用塑膠瓶與接觸敏感性塑膠須包含 30% 比例的 PCR，其他塑膠包裝須達 35%，至 2040 年更將大幅提升至 65%），偶氮顏料在塑料高溫機械回收迴圈中的熱動力學穩定性，成為了極其嚴峻的科學與食品安全挑戰。</p>
+                <section>
+                    <h2>4. 偶氮有機顏料 (Azo Pigments) 於回收過程中的熱降解與 PAAs 毒理風險</h2>
+                    <p>偶氮顏料按體積計算超過全球有機顏料產量的 50%。隨著 PPWR 強制要求提高 PCR 使用比例，偶氮顏料在塑料高溫機械回收中的熱動力學穩定性成為嚴峻挑戰。</p>
 
-                    <h3 id="section-4-1">4.1 機械回收與高溫擠出 (Extrusion) 下的裂解挑戰</h3>
-                    <p>傳統的機械回收流程，包含廢棄物分類、粉碎、水洗、乾燥，最後進入高溫擠出（Extrusion）機台重新造粒。當帶有未脫除印刷油墨的塑料廢棄物進入擠出階段時，所面臨的熱應力極為嚴酷。依據不同的塑膠聚合物種類，擠出溫度通常在 \(200^\circ\text{C}\) 以上，而聚對苯二甲酸乙二酯（PET）的處理溫度更可能高達 \(270^\circ\text{C}\)。</p>
-                    <p>EuPIA 在其關於高溫應用的油墨聲明中明確指出，超過 \(200^\circ\text{C}\) 的高溫會導致油墨成分（特別是特定的偶氮顏料與非耐熱樹脂）發生嚴重的熱分解與斷裂反應。偶氮顏料在高溫下發生的化學鍵斷裂，會導致再生塑料出現嚴重的變色現象（如泛黃或褐變）、產生因材料熔融指數（MFI）不匹配而形成的凝膠顆粒（Gel particles），以及強烈的異味。這些物理與光學性能的劣化，使得受污染的 PCR 無法再次用於高品質、敏感性的食品包裝，被迫「降級回收（Downcycling）」為低價值的垃圾袋、建築薄膜或塑膠棧板。然而，PPWR 追求的是「閉環回收（Closed-loop recycling）」以實現材料價值的最大化保留；因此，無法承受回收過程熱應力的傳統顏料，直接牴觸了 PPWR 提升回收質量、替代原生材料的核心精神。</p>
+                    <h3>4.1 機械回收與高溫擠出下的裂解挑戰</h3>
+                    <p>擠出造粒溫度通常在 200°C 以上（PET 甚至達 270°C）。高溫會導致油墨成分發生嚴重的熱分解與斷裂反應。偶氮顏料化學鍵斷裂會導致再生塑料嚴重變色、產生凝膠顆粒與強烈異味，迫使 PCR「降級回收」，牴觸了 PPWR 的閉環回收精神。</p>
 
-                    <h3 id="section-4-2">4.2 初級芳香胺 (Primary Aromatic Amines, PAAs) 的化學生成與遷移風險</h3>
-                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4 rounded-r-lg shadow-sm text-sm text-red-800">
-                        <i data-lucide="alert-triangle" class="w-5 h-5 inline-block mr-1 mb-1"></i> <strong>毒理學風險警告：</strong>多數 PAAs 具有強烈的急性或慢性毒性，其中至少 22 種被科學界認定為致癌、致突變及生殖毒性（CMR）物質。
-                    </div>
-                    <p>物理性能的劣化僅是問題的表象，偶氮顏料熱降解所帶來最深層的危機在於毒理學層面。偶氮顏料的工業合成過程，通常涉及將初級芳香胺（PAA）重氮化形成重氮鹽，隨後與偶合組分（Coupling component）進行反應。合成過程中的未完全反應物，或是後續在回收高溫裂解過程中所重新釋放的 PAAs，可能游離於顏料晶體表面，或深埋嵌入晶格內部（即使經過徹底的水洗程序也難以清除）。</p>
-                    <p>例如用於合成極為普遍的黃色油墨顏料 PY 13 和 PY 83 的 3,3'-二氯聯苯胺，以及用於合成 PY 74 的鄰茴香胺，皆屬於 CMR 級別的強毒性化合物，被法律嚴格禁止接觸食品。</p>
-                    <p>為應對此一風險，PPWR 偕同歐盟其他食品接觸材料規範（如 (EC) No. 10/2011 與德國 BfR IX 建議），將 PAAs 的管制框架發生了根本性的轉移。現今的規範轉向管制<strong>「最終包裝物品向食品的遷移量（Migration to food）」</strong>。針對 22 種 CMR 級別的 PAAs，BfR IX 將遷移極限設定為極端嚴格的單一物質 \(2\ \text{ppb}\)，總量 \(10\ \text{ppb}\)。根據 BASF 等大廠的評估，若要滿足此一嚴苛的遷移極限，顏料原物料中的 CMR PAA 含量實際上必須控制在 \(20\ \text{ppm}\) 以下。</p>
-                    <p>若再生塑料中因未脫除的偶氮油墨發生降解而殘留 PAAs，將直接導致該批次高價值的 PCR 被驗出毒性遷移，進而無法作為合規的食品級材料投放市場。因此，顏料工業必須採取雙軌策略：一是開發具備極高耐熱性、不易斷裂釋放 PAAs 的高性能有機顏料（High-Performance Pigments, HPPs）；二是完善脫墨技術，確保在擠出造粒的高溫階段前，將所有潛在危險的偶氮油墨自塑料表面徹底洗去。</p>
+                    <h3>4.2 初級芳香胺 (PAAs) 的化學生成與遷移風險</h3>
+                    <p>偶氮顏料合成過程中的未完全反應物，或在高溫裂解中重新釋放的 PAAs，多數具強烈毒性，其中至少 22 種為致癌、致突變及生殖毒性（CMR）物質。德國 BfR IX 建議將 22 種 CMR 級別 PAAs 的遷移極限設定為極端嚴格的單一物質 2 ppb，總量 10 ppb。若再生塑料因降解殘留 PAAs，將無法作為食品級材料。顏料工業必須開發高耐熱性能顏料並完善脫墨技術。</p>
                 </section>
 
-                <section id="section-5">
-                    <h2>5. 塑膠包裝光學分選技術與近紅外光 (NIR) 可偵測顏料的革命</h2>
-                    <p>在歐洲先進的大型固體廢棄物處理與回收設施中，混合聚合物的高速分選高度依賴自動化的近紅外光（Near-Infrared, NIR）反射光譜掃描技術。每種聚合物在 NIR 波段（大約介於 800 至 2500 奈米之間）都有獨特的光譜吸收特徵，感測器藉由分析反射回來的光譜峰值，即可在毫秒內判定塑膠種類並觸發氣動閥進行精準分流。然而，黑色或深色包裝長久以來一直是回收產業的一大夢魘。</p>
+                <section>
+                    <h2>5. 塑膠包裝光學分選技術與近紅外光 (NIR) 可偵測顏料</h2>
+                    <h3>5.1 炭黑 (Carbon Black) 的光學屏蔽效應與法規危機</h3>
+                    <p>炭黑會強烈吸收包含近紅外光在內的寬廣光譜。當 NIR 光束照射時，光線被完全吸收，分選系統無法識別底層聚合物，只能將其送往焚化。若未能改善，含有傳統炭黑的包裝在 2030 年後將無法獲得 C 級以上的可回收性分級。</p>
 
-                    <h3 id="section-5-1">5.1 炭黑 (Carbon Black) 的光學屏蔽效應與法規危機</h3>
-                    <p>這種分選障礙源於一種極為普及的無機/碳基顏料：炭黑（Carbon Black）。炭黑因其無與倫比的高著色力、優異的抗紫外線耐候性、以及極其低廉的成本，主導了所有黑色與深色塑膠包裝的市場。但在物理光學上，炭黑會強烈地吸收包含可見光與近紅外光在內的寬廣光譜。當 NIR 光束照射在含有炭黑的塑膠包裝上時，光線幾乎被完全吸收，沒有任何特徵波長被反射回探測器。在分選系統的「眼」中，這些黑色塑料形同「隱形」的黑洞，無法識別其底層的聚合物種類，只能將其視為不可回收的殘留物，分流至拒收流（Reject stream），最終送往焚化或掩埋場。</p>
-                    <p>在 PPWR 的法律框架下，這種設計直接牴觸了附件 II 關於「為回收而設計」的「分選兼容性（Sorting compatibility）」要求。若未能加以改善，含有傳統炭黑的包裝在 2030 年後將無法獲得 C 級以上的可回收性分級，從而面臨被逐出歐盟市場的命運。</p>
-
-                    <h3 id="section-5-2">5.2 NIR 可偵測之深色有機顏料與創新替代方案</h3>
-                    <p>為了解決炭黑所帶來的系統性失靈，全球顏料與色母粒巨頭投入大量研發資源，推出對 NIR 透明或具備反射特性的替代型暗色系有機顏料（NIR-detectable pigments）。這些替代顏料在視覺的絕對「黑度」上可能略遜於純炭黑，但其獨特的光學性質能讓紅外光穿透漆膜抵達底材，並將聚合物的特徵反射光譜傳遞回感測器。主要的光學替代策略包括：</p>
-                    <ul class="space-y-3 mt-4">
-                        <li><strong>苝系顏料 (Perylene Pigments)：</strong>例如苝四甲酸二酐（PTCDA）衍生物。這類有機分子具有高度共軛、極為穩定的多環芳香結構，其熔點可超過 \(500^\circ\text{C}\)，不僅在擠出成型的高溫環境下表現出絕佳的熱穩定性（無 PAAs 釋出風險），且在 NIR 區段呈現高透射率或反射率。</li>
-                        <li><strong>銅酞菁與複合有機分子 (Copper Phthalocyanine & Complex Organics)：</strong>透過藍色（如 Cu-Pc）、紅色與黃色有機顏料的精密調配，合成出類似黑色的深色視覺效果。這些配方不僅解決了回收分選問題，還因為其能有效反射近紅外光（降低熱量吸收），被應用於自駕車光達防撞漆面。</li>
-                        <li><strong>上轉換螢光標記 (Up-Conversion Fluorescence Markers)：</strong>在有機顏料基質中摻雜特定的螢光標記物。當分選機發出特定低波長的激發光時，標記物會發射出更高能量的螢光訊號（上轉換），提供比傳統 NIR 更高精度的辨識。</li>
-                        <li><strong>雙層/多層結構設計 (Bilayer Systems)：</strong>保留內層的炭黑以控制成本與遮蓋力，但在其表面覆蓋一層採用 NIR 可偵測顏料染色的同質聚合物外層。只要外層的反射訊號強度足以掩蓋內層的吸收，整件包裝依然能夠順利被判讀。</li>
+                    <h3>5.2 NIR 可偵測之深色有機顏料與創新替代方案</h3>
+                    <p>全球顏料巨頭推出對 NIR 透明或具備反射特性的替代型暗色系有機顏料（NIR-detectable pigments）。主要策略包括：</p>
+                    <ul class="space-y-2">
+                        <li><strong>苝系顏料 (Perylene Pigments)：</strong>如 PTCDA 衍生物，具高度共軛多環結構，極為耐熱且在 NIR 區段呈現高透射率。</li>
+                        <li><strong>銅酞菁與複合有機分子：</strong>透過精密調配合成深色，能有效反射近紅外光。</li>
+                        <li><strong>上轉換螢光標記：</strong>在顏料中摻雜螢光標記物，發射高能量螢光訊號供高精度辨識。</li>
+                        <li><strong>雙層結構設計：</strong>內層保留炭黑，外層覆蓋 NIR 可偵測顏料染色的同質聚合物。</li>
                     </ul>
                 </section>
 
-                <section id="section-6">
-                    <h2>6. 脫墨 (Deinking) 協議與防暈染 (Non-bleeding) 特性對基礎設施的深遠影響</h2>
-                    <p>要實踐 PPWR 提倡的「高品質材料循環」——確保再生材料具有足夠純度以替代原生材料，單靠 NIR 光學辨識與避免 PAAs 毒性釋出仍嫌不足。如果油墨在機械回收階段無法乾淨俐落地與聚合物底材剝離，殘留的顏料與降解的黏合劑將不可逆地污染 PCR 的顏色與機械強度。因此，「脫墨性（Deinkability）」與「防暈染（Non-bleeding）」已成為評估顏料與油墨配方能否符合 PPWR D4R 標準的新核心指標。</p>
+                <section>
+                    <h2>6. 脫墨 (Deinking) 協議與防暈染 (Non-bleeding) 特性</h2>
+                    <p>如果油墨在機械回收階段無法乾淨俐落地與底材剝離，殘留顏料將不可逆地污染 PCR。「脫墨性」與「防暈染」已成為評估顏料能否符合 D4R 標準的新核心指標。</p>
 
-                    <h3 id="section-6-1">6.1 暈染現象 (Bleeding) 之物理化學機制與危害</h3>
-                    <p>在標準的塑膠機械回收流程中，粉碎的塑膠薄片必須進入含有氫氧化鈉的鹼性熱水浴中（約 \(70^\circ\text{C}\) 至 \(80^\circ\text{C}\)）洗滌。某些未經優化、耐化學性較差的有機顏料在此環境中會發生部分溶解或溶出，即為「暈染（Bleeding）」。</p>
-                    <p>暈染會造成災難性的連鎖反應：它不僅會使洗滌水嚴重變色，增加廢水處理難度，溶解狀態的顏料分子更會滲透進其他透明再生塑料薄片微孔中，徹底毀掉該批次 PCR 的光學品質。因此，RecyClass 等機構明確規定，符合可回收設計的油墨必須絕對具備「防暈染」特性，洗滌水與乾燥薄片均不得檢測出明顯色度變化。</p>
+                    <h3>6.1 暈染現象 (Bleeding) 之機制與危害</h3>
+                    <p>在鹼性熱水浴中洗滌時，耐化學性差的有機顏料會溶解，即「暈染」。溶解的顏料分子會重新沉積進再生塑料微孔中，毀掉 PCR 光學品質。符合可回收設計的油墨必須絕對具備防暈染特性。</p>
 
-                    <h3 id="section-6-2">6.2 塑膠與紙基包裝的標準化脫墨協議</h3>
-                    <ul class="space-y-3 mt-4">
-                        <li><strong>塑膠底材之脫墨（RecyClass 與 EPBP QT 507）：</strong>針對塑膠薄膜與標籤，先進的油墨大廠成功開發出針對交聯 UV 柔版印刷油墨的脫墨技術。這種智慧型塗層置於薄膜與油墨之間，在高溫鹼液中能發揮「觸發溶解」機制，使上層的防暈染 UV 顏料以固體碎片的物理形態完整剝落，而非溶解於水中，讓底層 PE 薄膜能還原為高品質透明回收料。</li>
-                        <li><strong>紙基材料之脫墨（INGEDE Method 11）：</strong>評估印刷品在造紙迴圈中可回收性的黃金標準。印刷品在高鹼性環境下被打漿離解，油墨黏合劑必須失效，使顏料從紙纖維上脫離，並碎裂成適當的粒徑以便氣泡捕獲。為通過此測試，市場正全面轉向無礦物油（MOF）植物基油墨、特殊配方水性分散體及新一代 LED-UV 油墨系統。</li>
-                    </ul>
+                    <h3>6.2 塑膠與紙基包裝的標準化脫墨協議</h3>
+                    <p>產業界制定了嚴格的測試協議：塑膠底材廣泛採用 EPBP QT 507 洗滌協議；紙基材料則以 INGEDE Method 11 為黃金標準。智慧型塗層與植物基油墨的發展，確保了油墨能在洗滌中以固體碎片剝落或有效脫離纖維。</p>
 
-                    <h3 id="section-6-3">6.3 黏合劑樹脂系統的重塑：全面淘汰硝化纖維素 (Nitrocellulose)</h3>
-                    <p>油墨的脫墨與耐熱性能亦取決於黏合劑樹脂系統。長期以來，軟包裝薄膜印刷大量依賴硝化纖維素（NC）。然而，NC 樹脂在塑料機械擠出的高溫環境下極不穩定，會發生劇烈熱分解，產生腐蝕性氣體並導致再生塑料泛黃。</p>
-                    <p>為應對 PPWR 帶來的品質壓力，RecyClass 於 2025 年發布最新指南，限制彩色回收流的包裝表面及背面印刷中的 NC 乾重比例不得超過 0.8 wt%。這促使油墨供應商全面開發基於聚氨酯（PU）、丙烯酸酯或聚乙烯醇縮丁醛（PVB）的無硝化纖維素（NC-Free）系統。這些替代型黏合劑展現出優越的熱穩定性，為薄膜轉化商提供了邁向高分級可回收性的必要工具。</p>
+                    <h3>6.3 全面淘汰硝化纖維素 (Nitrocellulose)</h3>
+                    <p>軟包裝長期依賴的 NC 樹脂在高溫擠出時極不穩定。RecyClass 最新指南限制 NC 乾重比例不得超過 0.8 wt%。這促使油墨供應商全面開發基於聚氨酯 (PU) 或丙烯酸酯的無硝化纖維素 (NC-Free) 系統。</p>
                 </section>
 
-                <section id="section-7">
-                    <h2>7. 永續設計發展趨勢：極簡化印刷與次世代生物基顏料</h2>
-                    <p>PPWR 透過法規強制力，直接干預了包裝視覺設計的傳統美學思維。法規對包裝整體減量的宏觀要求，意味著將以最少的資源達成最大的功能性。</p>
-                    
-                    <h3 id="section-7-1">7.1 源頭減量與直接列印 (Direct-to-Shape) 的興起</h3>
-                    <p>為確保機械回收的純度並順利獲取 A 級或 B 級評等，D4ACE 準則明確建議將油墨用量控制在總重的 5% 以下。這迫使品牌商揚棄大面積全覆蓋實色印刷，轉向留白比例極高的極簡設計。水性數位噴墨直接列印技術預計將迎來爆發性成長。透過在容器本體直接噴印二維碼（QR codes），企業可以捨棄大面積標籤。消費者掃描條碼即可讀取產品資訊，這種將資訊「數位化」以換取實體油墨「減量化」的策略，完美契合了 PPWR。</p>
-
-                    <h3 id="section-7-2">7.2 生物基與循環型有機顏料 (Bio-based Colorants) 之探索</h3>
-                    <p>在降低產品碳足跡與對齊循環經濟目標的壓力下，生物基著色劑成為研究焦點。科研機構正積極從工業與農業副產品（如咖啡廢渣、林業廢棄物提取物）中萃取、純化生物著色劑。旨在開發出完全水基、可生物降解且碳中和的新一代印刷油墨與著色顏料。雖然此類技術在耐高溫擠出與長期保存性上仍面臨挑戰，但其有潛力在未來逐步替換具潛在毒性風險的合成偶氮顏料，提供一種生命週期末端零污染的綠色解答。</p>
+                <section>
+                    <h2>7. 永續設計發展趨勢：極簡化印刷與生物基顏料</h2>
+                    <p>為確保回收純度，D4ACE 準則建議油墨用量控制在總重 5% 以下，促使設計轉向極簡化。水性數位噴墨直接列印技術（如噴印 QR codes 替代標籤）預計爆發性成長。同時，材料科學界正積極從農業副產品中研發「生物基著色劑（Bio-based colorants）」，追求生命週期末端零污染的綠色解答。</p>
                 </section>
 
-                <section id="section-8">
-                    <h2>8. 產業經濟學與供應鏈重塑：符合性聲明與 EPR 費用的博弈</h2>
-                    <p>PPWR 的深遠影響不僅在於技術規範，更在於其創造了一套以經濟誘因與法律責任為驅動力的全新產業生態系，徹底顛覆了過往供應鏈間隱晦的化學品配方交易模式。</p>
-
-                    <h3 id="section-8-1">8.1 建立無縫隙的合規文件體系 (Conformity Documentation)</h3>
-                    <p>任何投放至歐盟市場的包裝，皆須配備極其詳盡的「符合性聲明（DoC）」。包裝轉化商承擔了「製造商」的法律責任，他們將極度依賴上游油墨與顏料供應商提供透明且數據詳實的技術支援。顏料供應商必須主動揭露受限物質（如 PFAS）的靶向檢測值與 SVHC 狀況。無法提供獨立審計級別測試數據與精密分析證書（CoA）的廠商，將迅速被排除在歐盟供應鏈之外。</p>
-
-                    <h3 id="section-8-2">8.2 延伸生產者責任 (EPR) 費用之生態調節 (Eco-modulation)</h3>
-                    <p>PPWR 最具威力的經濟手段在於「生態調節」機制。包裝獲得的可回收性分級將與 EPR 稅費直接掛鉤：分級越差，稅費越重。過去採用高性能有機顏料（HPPs）在採購端常遭遇阻力；但在 PPWR 框架下，若為節省顏料成本而採用會導致 NIR 盲區或熱降解污染的劣質油墨，將導致包裝落入 C 級甚至面臨禁售。其衍生的懲罰性最高級距 EPR 稅費與市場禁入的營收損失，將遠遠超越初期升級優質油墨配方的採購成本。歐盟藉此成功將 D4R 原則轉變為攸關企業存亡的絕對合規底線。</p>
+                <section>
+                    <h2>8. 產業經濟學與供應鏈重塑：EPR 費用的博弈</h2>
+                    <p>任何投放歐盟市場的包裝皆須配備詳盡的「符合性聲明（DoC）」。包裝轉化商極度依賴上游油墨供應商提供透明且數據詳實的技術支援。PPWR 最具威力的機制是「生態調節」，包裝的可回收性分級與 EPR 稅費直接掛鉤。若為節省顏料成本而採用劣質油墨導致包裝落入 C 級，衍生的懲罰性稅費與禁售損失將遠超升級成本，採用綠色顏料已成為最符合經濟效益的決策。</p>
                 </section>
 
-                <section id="section-9">
+                <section>
                     <h2>9. 結論與前瞻：材料創新作為合規的唯一解答</h2>
-                    <p>歐盟《包裝與包裝廢棄物法規》（PPWR）對全球包裝產業，以及深植其中的油墨與有機顏料化工業，投下了一顆極具破壞性的震撼彈。總結本研究之深度分析，PPWR 與有機顏料間之關聯性體現於以下幾項核心戰略洞察：</p>
-                    <ol class="space-y-3 mt-4 text-gray-800">
-                        <li><strong>光學識別構成市場准入的生死線：</strong>傳統炭黑顏料的光學盲區已成系統性缺陷，產業界必須全面轉向具備紅外穿透或反射特性的有機黑顏料（如苝系衍生物），不能被自動化設備有效分選的包裝將喪失歐盟市場准入資格。</li>
-                        <li><strong>熱降解與毒理學觸發的連鎖反應：</strong>必須正視傳統偶氮顏料在高溫機械回收中易發生化學裂解、釋出致癌初級芳香胺（PAAs）的致命弱點。供應鏈必須轉向更高熱動力學穩定性的分子結構。</li>
-                        <li><strong>脫墨技術是閉環回收系統的最後一哩路：</strong>即使通過光學分選，若缺乏有效、防暈染（Non-bleeding）的顏料搭配，仍將污染回收水與再生薄片。遵循 RecyClass 協議與 INGEDE 11 標準的脫墨與無硝化纖維素（NC-Free）技術將成為標準化基石。</li>
-                        <li><strong>絕對的化學透明度與嚴酷的經濟檢驗：</strong>面對嚴苛的 PFAS 限制與重金屬禁令，唯有能提供防審計科學量測數據的有機顏料方能存活；EPR 生態調節機制更確保了採用高價值的綠色顏料成為最符合經濟效益的企業決策。</li>
-                    </ol>
-                    <p class="mt-6">展望未來，材料科學家在研發下一代有機顏料配方時，必須將「生命週期終點的物理化學行為」作為首要先決條件。PPWR 的強勢實施是加速全球包裝材料與有機顏料技術邁向高值化、循環化與無毒化的催化劑。對於參與歐盟供應鏈的品牌商與顏料化學製造商而言，即刻啟動基於「為回收而設計（D4R）」的全面性材料審查與分子層級配方重構，將是規避 2030 年被市場淘汰的唯一途徑。</p>
+                    <p>PPWR 以 2026 年全面收緊的化學安全禁令與 2030 年強制實施的可回收性分級為兩大支柱，顛覆了傳統包裝設計邏輯。產業界必須體認到：光學識別構成市場准入的生死線；傳統偶氮顏料的熱降解存在嚴峻的 PAAs 毒理風險；脫墨與防暈染技術是閉環回收的基石；而絕對的化學透明度則是通過審計與 EPR 經濟檢驗的唯一憑證。</p>
                 </section>
 
-                <!-- 行動呼籲 (Call to Action) 區塊：引導至華翔興業 -->
-                <div class="mt-16 bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200 shadow-sm text-center">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full text-white mb-4 shadow-lg">
-                        <i data-lucide="flask-conical" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">尋求符合 PPWR 規範的染顏料解決方案？</h3>
-                    <p class="text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                        <strong>華翔興業 (Hwashine)</strong> 是您在染料與顏料領域值得信賴的專業合作夥伴。我們致力於提供符合環保標準、具備高效脫墨性、無有害物質及光學分選相容性的優質顏料，協助您的產品無縫接軌國際綠色供應鏈。
+                <!-- 免責聲明 (Disclaimer) -->
+                <div class="mt-12 p-6 bg-gray-100 rounded-lg text-sm text-gray-600 leading-relaxed border border-gray-200">
+                    <h4 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i data-lucide="scale" class="w-4 h-4"></i> 免責聲明 (Disclaimer)
+                    </h4>
+                    <p>
+                        本報告所載之內容與法規數據（包含但不限於 PPWR 法規條文解析、各項化學品限值、BfR IX 建議、RecyClass 指南以及 INGEDE 等測試協議）係基於當前可取得之產業公開資訊與技術指標彙整而成，僅供產業界參考與學術交流之用。
                     </p>
-                    <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="https://hwashine.tw/contact" target="_blank" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full transition shadow-md flex items-center justify-center gap-2">
-                            <i data-lucide="mail" class="w-5 h-5"></i> 立即聯絡我們
-                        </a>
-                        <a href="https://hwashine.tw/" target="_blank" class="px-8 py-3 bg-white hover:bg-gray-50 text-blue-600 font-bold rounded-full transition shadow border border-blue-200 flex items-center justify-center gap-2">
-                            <i data-lucide="globe" class="w-5 h-5"></i> 瀏覽官方網站
-                        </a>
+                    <p class="mt-2">
+                        儘管我們致力於確保資訊的準確性，但各國法規細節、執行標準與科學檢測方法可能隨時間推移或授權法案 (Delegated Acts) 的頒布而產生變動。本報告內容 <strong>不構成</strong> 正式的法律諮詢、合規背書或具約束力之保證。企業在進行最終的產品合規決策、配方變更或市場佈局前，請務必參閱歐盟官方公報（EUR-Lex）之正式法律文本，或諮詢專業法律顧問與第三方認證檢測機構。華翔興業有限公司對基於本報告內容所作出之任何商業決策不承擔直接或間接之法律責任。
+                    </p>
+                </div>
+
+                <!-- 行動呼籲 (Call to Action) 區塊 -->
+                <div class="mt-10 bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-2xl shadow-lg text-center text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 opacity-10 pointer-events-none transform translate-x-1/4 -translate-y-1/4">
+                        <i data-lucide="leaf" class="w-64 h-64"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl sm:text-3xl font-bold mb-4">尋求符合 PPWR 規範的染顏料解決方案？</h3>
+                        <p class="text-blue-100 mb-8 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+                            <strong>華翔興業 (Hwashine)</strong> 是您在染料與顏料領域值得信賴的專業合作夥伴。我們致力於提供符合環保標準、具備高效脫墨性、無有害物質及光學分選相容性的優質顏料，協助您的產品無縫接軌國際綠色供應鏈。
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-4">
+                            <a href="https://hwashine.tw/contact" target="_blank" class="px-8 py-3 bg-white text-blue-700 hover:bg-gray-50 font-bold rounded-full transition shadow-md flex items-center justify-center gap-2">
+                                <i data-lucide="mail" class="w-5 h-5"></i> 立即聯絡我們
+                            </a>
+                            <a href="https://hwashine.tw/" target="_blank" class="px-8 py-3 bg-transparent hover:bg-blue-700 border border-blue-300 text-white font-bold rounded-full transition flex items-center justify-center gap-2">
+                                <i data-lucide="globe" class="w-5 h-5"></i> 瀏覽官方網站
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -498,45 +435,50 @@
     </div>
 
     <!-- 頁尾 (Footer) -->
-    <footer class="bg-slate-900 text-gray-300 py-12 border-t border-slate-800">
+    <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
                 <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
-                    <i data-lucide="droplet" class="w-5 h-5 text-blue-400"></i>
+                    <i data-lucide="droplet" class="w-5 h-5 text-blue-500"></i>
                     <h2 class="text-xl font-bold text-white">華翔興業有限公司</h2>
                 </div>
-                <p class="text-sm text-gray-400">Hwashine Trading Co., Ltd. | 專業染料、顏料與化學助劑供應商</p>
+                <p class="text-sm text-slate-400">Hwashine Trading Co., Ltd. | 專業染料、顏料與化學助劑</p>
             </div>
             <div class="flex gap-6 text-sm">
                 <a href="https://hwashine.tw/" target="_blank" class="hover:text-white transition">官方網站</a>
                 <a href="https://hwashine.tw/contact" target="_blank" class="hover:text-white transition">聯絡資訊</a>
             </div>
-            <div class="text-sm text-gray-500 text-center md:text-right">
+            <div class="text-sm text-slate-500 text-center md:text-right">
                 &copy; <span id="year"></span> 華翔興業有限公司 版權所有.<br>
-                All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript：初始化 Icons 與 動態生成目錄 (TOC) -->
+    <!-- JavaScript 邏輯 -->
     <script>
-        // 渲染 Lucide Icons
+        // 渲染 Icons
         lucide.createIcons();
-        
-        // 設定當前年份
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // 漢堡選單切換邏輯
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        // 處理手機版漢堡選單
+        const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
+        const menuIcon = document.getElementById('menu-icon');
 
-        // 動態生成目錄 (Table of Contents)
+        menuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('menu-closed')) {
+                mobileMenu.classList.remove('menu-closed');
+                mobileMenu.classList.add('menu-open');
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.remove('menu-open');
+                mobileMenu.classList.add('menu-closed');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons(); // 重新渲染 icon
+        });
+
+        // 動態生成目錄
         document.addEventListener('DOMContentLoaded', () => {
             const tocContainer = document.getElementById('toc-container');
             const mobileTocContainer = document.getElementById('mobile-toc-container');
@@ -544,50 +486,36 @@
             
             if (headings.length > 0) {
                 headings.forEach((heading, index) => {
-                    // 如果沒有 id，則自動生成
                     if (!heading.id) {
-                        heading.id = `heading-${index}`;
+                        heading.id = `section-${index + 1}`;
                     }
                     
-                    // 1. 建立桌面版左側目錄連結
-                    if (tocContainer) {
-                        const a = document.createElement('a');
-                        a.href = `#${heading.id}`;
-                        // 保留完整標題文字
-                        a.textContent = heading.textContent;
-                        a.className = 'toc-link';
-                        tocContainer.appendChild(a);
-                    }
+                    // 桌面版側邊欄目錄
+                    const a = document.createElement('a');
+                    a.href = `#${heading.id}`;
+                    a.textContent = heading.textContent;
+                    a.className = 'toc-link';
+                    tocContainer.appendChild(a);
 
-                    // 2. 建立手機版內文上方目錄連結
-                    if (mobileTocContainer) {
-                        const mobileA = document.createElement('a');
-                        mobileA.href = `#${heading.id}`;
-                        mobileA.textContent = heading.textContent;
-                        mobileA.className = 'block text-gray-600 hover:text-blue-600 hover:translate-x-1 transition-transform border-l-2 border-transparent hover:border-blue-500 pl-3 py-1 leading-relaxed';
-                        mobileTocContainer.appendChild(mobileA);
-                    }
+                    // 手機版上方區塊快速目錄
+                    const mobileA = document.createElement('a');
+                    mobileA.href = `#${heading.id}`;
+                    mobileA.textContent = heading.textContent;
+                    mobileA.className = 'block p-2 bg-gray-50 hover:bg-blue-50 text-gray-700 hover:text-blue-600 rounded border border-gray-100 truncate transition';
+                    mobileTocContainer.appendChild(mobileA);
                 });
             }
 
-            // 滾動時標亮當前目錄項目 (Scroll Spy) - 針對桌面版
+            // 滾動監聽 (Scroll Spy)
             const tocLinks = document.querySelectorAll('.toc-link');
-            const observerOptions = {
-                root: null,
-                rootMargin: '-15% 0px -75% 0px', // 觸發範圍設定
-                threshold: 0
-            };
-
+            const observerOptions = { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 };
+            
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // 移除所有 active
                         tocLinks.forEach(link => link.classList.remove('active'));
-                        // 加上當前的 active
                         const activeLink = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
-                        if(activeLink) {
-                            activeLink.classList.add('active');
-                        }
+                        if(activeLink) activeLink.classList.add('active');
                     }
                 });
             }, observerOptions);
