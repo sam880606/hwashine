@@ -142,6 +142,12 @@
     background-color: white;
   }
 
+  /* 增加驗證碼區塊的間距 */
+  .cf-turnstile {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
   button {
     background-color: var(--primary-color);
     color: white;
@@ -297,22 +303,22 @@
         return;
       }
 
-      // 檢查 Turnstile 是否已驗證
-      const turnstileResponse = form.querySelector('[name="cf-turnstile-response"]').value;
+      // 修正點：使用 FormData 安全獲取，避免找不到元件時報錯當機
+      const formData = new FormData(form);
+      const turnstileResponse = formData.get('cf-turnstile-response');
+      
       if (!turnstileResponse) {
           alert("請完成驗證程序。");
           return;
       }
 
-      // 顯示發送中的狀態 (這裡可以做更進階的 loading UI，目前先簡單處理)
+      // 顯示發送中的狀態
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalBtnText = submitBtn.textContent;
       submitBtn.textContent = '發送中...';
       submitBtn.disabled = true;
 
       // 使用 fetch API 發送資料到 Formspree
-      const formData = new FormData(form);
-      
       fetch(form.action, {
         method: form.method,
         body: formData,
