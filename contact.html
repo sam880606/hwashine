@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>聯絡我們 - 華翔興業有限公司</title>
+<!-- 加入 Cloudflare Turnstile 的 API 腳本 -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
 
@@ -247,6 +249,9 @@
         <label for="message">訊息</label>
         <textarea id="message" name="message" rows="5" placeholder="請告知您的應用領域或想連絡的內容" required></textarea>
 
+        <!-- 加入 Cloudflare Turnstile 小工具 -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAFIOJCzUobpfBXLi"></div>
+
         <button type="submit">發送訊息</button>
       </form>
     </section>
@@ -292,6 +297,13 @@
         return;
       }
 
+      // 檢查 Turnstile 是否已驗證
+      const turnstileResponse = form.querySelector('[name="cf-turnstile-response"]').value;
+      if (!turnstileResponse) {
+          alert("請完成驗證程序。");
+          return;
+      }
+
       // 顯示發送中的狀態 (這裡可以做更進階的 loading UI，目前先簡單處理)
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalBtnText = submitBtn.textContent;
@@ -311,6 +323,9 @@
         if (response.ok) {
           alert('感謝您的訊息！我們會盡快回覆您。');
           form.reset(); // 清空表單
+          if (window.turnstile) {
+              window.turnstile.reset(); // 成功後重置驗證碼
+          }
         } else {
           // 嘗試讀取錯誤訊息，若無法讀取則顯示通用錯誤
           response.json().then(data => {
@@ -322,10 +337,16 @@
           }).catch(() => {
             alert('發送失敗，請稍後再試或是直接來信 info@hwashine.tw');
           });
+          if (window.turnstile) {
+              window.turnstile.reset(); // 失敗後也重置驗證碼
+          }
         }
       }).catch(error => {
         console.error('Error:', error);
         alert('發送發生錯誤，請稍後再試或是直接來信 info@hwashine.tw');
+        if (window.turnstile) {
+              window.turnstile.reset();
+          }
       }).finally(() => {
         // 恢復按鈕狀態
         submitBtn.textContent = originalBtnText;
