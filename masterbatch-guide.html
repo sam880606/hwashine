@@ -1,444 +1,1259 @@
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>色母：定義、功能、限制｜華翔興業有限公司</title>
-  <meta name="description" content="深入了解色母（Masterbatch）的定義、功能與應用限制，確保塑膠與纖維著色品質的關鍵指南">
-  <meta name="keywords" content="色母, Masterbatch, 塑膠著色, 纖維著色, 華翔興業, 顏料分散, 載體樹脂">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>色母(Masterbatch)配方核心：有機顏料與溶劑染料選用指南｜華翔興業</title>
+  <meta name="description" content="深入解析色母（Masterbatch）組成、分散工藝與應用限制。探討如何為PP、PE、PET、PC與工程塑膠選擇高耐熱、抗遷移的有機顏料與溶劑染料，提升母粒品質。">
+  <meta name="keywords" content="色母, Masterbatch, 有機顏料, 溶劑染料, 塑膠著色, 母粒配方, 顏料分散, 耐熱顏料, 抗遷移顏料, 華翔興業">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="華翔興業有限公司 Hwashine Trading Co., Ltd.">
   
   <!-- Open Graph tags -->
-  <meta property="og:title" content="色母：定義、功能、限制｜華翔興業有限公司">
-  <meta property="og:description" content="深入了解色母（Masterbatch）的定義、功能與應用限制，確保塑膠與纖維著色品質的關鍵指南">
+  <meta property="og:title" content="色母(Masterbatch)配方核心：有機顏料與溶劑染料選用指南｜華翔興業">
+  <meta property="og:description" content="從色母製造與塑膠加工視角，探討有機顏料與溶劑染料在耐熱性、分散度與抗遷移的關鍵指標。">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="/plastic_containers_still_life.webp">
+  <meta property="og:image" content="https://hwashine.tw/plastic_containers_still_life.webp">
   <meta property="og:url" content="https://hwashine.tw/masterbatch-guide">
+  <meta property="og:site_name" content="華翔興業有限公司 Hwashine Trading Co., Ltd.">
   
   <link rel="canonical" href="https://hwashine.tw/masterbatch-guide">
   
+  <!-- JSON-LD 結構化資料 (提升搜尋引擎精選摘要與 FAQ 曝光) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "色母(Masterbatch)配方核心：有機顏料與溶劑染料選用指南",
+        "description": "深入解析色母（Masterbatch）組成、分散工藝與應用限制。探討如何為PP、PE、PET、PC與工程塑膠選擇高耐熱、抗遷移的有機顏料與溶劑染料。",
+        "image": "https://hwashine.tw/plastic_containers_still_life.webp",
+        "author": {
+          "@type": "Organization",
+          "name": "華翔興業有限公司 Hwashine Trading Co., Ltd.",
+          "url": "https://hwashine.tw/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "華翔興業有限公司 Hwashine Trading Co., Ltd.",
+          "url": "https://hwashine.tw/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://hwashine.tw/logo.png"
+          }
+        },
+        "mainEntityOfPage": "https://hwashine.tw/masterbatch-guide"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "製作色母時，該選擇有機顏料還是溶劑染料？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "取決於最終塑膠基材與透明度需求。有機顏料（Organic Pigments）以微粒分散於樹脂中，適合通用塑膠（如PE、PP）及需要高遮蓋力、耐遷移的製品；溶劑染料（Solvent Dyes）則能分子級溶解於樹脂中，展現極高透明度與鮮豔度，特別適用於PS、ABS、PC、PET及PMMA等硬質與工程塑膠。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "色母生產中常見的「色點」與「濾網壓力過高（FPV）」如何解決？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "色點與濾網堵塞通常源於有機顏料的二次凝聚（Agglomeration）或分散劑匹配不當。解決方案包括選用經過表面處理、低吸油量且粒徑分佈集中的高品質有機顏料，並搭配適當分子量的分散蠟。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "為什麼塑膠製品在使用一段時間後會出現表面吐色（遷移現象）？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "這是因為著色劑在樹脂中的溶解度與相容性不匹配，特別是在軟質PVC或低結晶度聚烯烴（PE/PP）中使用了不耐遷移的染料或小分子顏料。應改用高分子量、具備抗遷移結構的高性能有機顏料。"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
 
     :root {
-      --primary-color: #2c8cb0;
-      --secondary-color: #1a5f7a;
-      --accent-color: #ff6b6b;
-      --text-color: #333;
-      --bg-color: #f8f9fa;
-      --content-bg-color: #ffffff;
-      --box-shadow-color: rgba(0, 0, 0, 0.1);
+      --primary-color: #0f4c81;
+      --secondary-color: #1b6ca8;
+      --accent-color: #e65100;
+      --accent-light: #fff3e0;
+      --text-color: #2c3e50;
+      --text-muted: #596a7a;
+      --bg-color: #f4f6f9;
+      --content-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --success-color: #2e7d32;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      font-family: 'Noto Sans TC', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      line-height: 1.6;
+      line-height: 1.75;
+      font-size: 16px;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
-    header {
-      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-      animation: ripple 15s infinite linear;
-      z-index: 1;
-    }
-
-    @keyframes ripple {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      position: relative;
-      z-index: 2;
-    }
-
-    nav {
-      background-color: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 0.5rem;
+    /* 頂部導覽列 */
+    nav.main-nav {
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
       position: sticky;
       top: 0;
       z-index: 1000;
+      padding: 0 1.5rem;
     }
 
-    nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
-      justify-content: center;
-      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+
+    .brand-logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary-color);
+      text-decoration: none;
+      letter-spacing: 0.5px;
       white-space: nowrap;
-      overflow-x: auto;
     }
 
-    nav ul li {
-      margin: 0.5rem;
-      flex-shrink: 0;
+    nav.main-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
     }
 
-    nav ul li a {
+    nav.main-nav ul li a {
       color: var(--text-color);
       text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+      font-weight: 500;
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      display: inline-block;
     }
 
-    nav ul li a:hover {
+    nav.main-nav ul li a:hover {
+      background-color: var(--bg-color);
+      color: var(--primary-color);
+    }
+
+    nav.main-nav ul li a.nav-cta {
       background-color: var(--primary-color);
       color: white;
     }
 
-    main {
+    nav.main-nav ul li a.nav-cta:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* 麵包屑導航 */
+    .breadcrumb-bar {
+      background-color: #e9ecef;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb-container {
       max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      margin: 0 auto;
+      white-space: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
 
-    section {
-      background-color: var(--content-bg-color);
-      border-radius: 8px;
-      box-shadow: 0 4px 6px var(--box-shadow-color);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      transition: transform 0.3s ease;
-    }
-
-    section:hover {
-      transform: translateY(-5px);
-    }
-
-    h2, h3 {
-      color: var(--primary-color);
-      margin-bottom: 1.5rem;
-    }
-
-    p {
-      margin-bottom: 1rem;
-    }
-
-    ul {
-      list-style-type: circle;
-      margin-left: 2rem;
-    }
-
-    li {
-      margin-bottom: 0.5rem;
-    }
-
-    li strong {
-      color: var(--secondary-color);
-    }
-
-    .equation {
-      text-align: center;
-      font-style: italic;
-      margin: 1.5rem 0;
-      font-size: 1.1rem;
-    }
-
-    .image-container {
+    .breadcrumb-container::-webkit-scrollbar {
       display: none;
     }
 
-    .image-container img {
-      max-width: 80%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .image-container figcaption {
-      margin-top: 0.8rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    .highlight {
-      background-color: #e6f7ff; /* Light blue background for emphasis */
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-    }
-
-    .cta-section {
-      text-align: center;
-      margin: 3rem 0;
-      padding: 3rem;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      border-radius: 12px;
-    }
-
-    .cta-section h2 {
-      color: white;
-    }
-
-    .contact-button {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: white;
+    .breadcrumb-bar a {
       color: var(--primary-color);
       text-decoration: none;
+    }
+
+    /* Hero Header */
+    header.hero {
+      background: linear-gradient(135deg, #0a355c 0%, var(--primary-color) 60%, var(--secondary-color) 100%);
+      color: white;
+      padding: 3.5rem 1.5rem;
+      position: relative;
+    }
+
+    .hero-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.3rem 0.8rem;
       border-radius: 50px;
-      font-weight: bold;
-      margin-top: 1rem;
-      transition: all 0.3s ease;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
     }
 
-    .contact-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    header.hero h1 {
+      margin: 0 0 1rem 0;
+      font-size: clamp(1.5rem, 4vw, 2.35rem);
+      line-height: 1.35;
+      font-weight: 700;
     }
 
-    footer {
-      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    header.hero p.subtitle {
+      font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+      opacity: 0.92;
+      max-width: 820px;
+      margin: 0;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* 主內容雙欄佈局 */
+    .layout-container {
+      max-width: 1200px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* 側邊快速目錄 (TOC) */
+    aside.toc-sidebar {
+      position: sticky;
+      top: 84px;
+      background: var(--content-bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    .toc-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--primary-color);
+      margin-top: 0;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary-color);
+      display: block;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .toc-list li {
+      margin-bottom: 0.65rem;
+    }
+
+    .toc-list a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: block;
+      line-height: 1.45;
+    }
+
+    .toc-list a:hover {
+      color: var(--accent-color);
+      font-weight: 500;
+    }
+
+    .sidebar-cta-box {
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed var(--border-color);
+      font-size: 0.85rem;
+    }
+
+    .sidebar-cta-box p {
+      margin: 0 0 0.8rem 0;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    .btn-small {
+      display: block;
+      text-align: center;
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      padding: 0.65rem;
+      border-radius: 6px;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+
+    .btn-small:hover {
+      background-color: #bf360c;
+    }
+
+    /* 文章內容區 */
+    main.article-content {
+      min-width: 0;
+      width: 100%;
+    }
+
+    section.content-card {
+      background-color: var(--content-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--border-color);
+      padding: 2.2rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: clamp(1.25rem, 3vw, 1.65rem);
+      line-height: 1.4;
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    h3 {
+      color: var(--secondary-color);
+      font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+      line-height: 1.45;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 1.1rem;
+    }
+
+    .highlight-key {
+      background-color: var(--accent-light);
+      color: #b23c00;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 500;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    /* 圖片容器 */
+    figure.article-figure {
+      margin: 1.8rem 0;
+      text-align: center;
+      background: #fafafa;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    figure.article-figure img {
+      max-width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    figure.article-figure figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* 資訊圖表卡片組 */
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-top: 4px solid var(--primary-color);
+      padding: 1.25rem;
+      border-radius: 6px;
+    }
+
+    .info-box.core-product {
+      border-top-color: var(--accent-color);
+      background: #fffbf7;
+    }
+
+    .info-box h4 {
+      margin: 0 0 0.5rem 0;
+      color: var(--primary-color);
+      font-size: 1.05rem;
+    }
+
+    .info-box.core-product h4 {
+      color: var(--accent-color);
+    }
+
+    .info-box p {
+      font-size: 0.92rem;
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* 專業對照表格 */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    table.comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      background: white;
+    }
+
+    table.comparison-table th,
+    table.comparison-table td {
+      border-bottom: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      padding: 0.9rem 1rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    table.comparison-table th:last-child,
+    table.comparison-table td:last-child {
+      border-right: none;
+    }
+
+    table.comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.comparison-table th {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 500;
+    }
+
+    table.comparison-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    table.comparison-table td strong {
+      color: var(--primary-color);
+    }
+
+    /* 技術提示框 */
+    .tech-callout {
+      background-color: #eef6fb;
+      border-left: 4px solid var(--secondary-color);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.5rem 0;
+    }
+
+    .tech-callout h4 {
+      margin: 0 0 0.5rem 0;
+      color: var(--primary-color);
+      font-size: 1.05rem;
+    }
+
+    .tech-callout p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* 痛點與解決方案對照 */
+    .problem-solution-item {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      background: #fff;
+    }
+
+    .problem-solution-item h3 {
+      margin-top: 0;
+      font-size: 1.12rem;
+      color: #c62828;
+    }
+
+    .solution-tag {
+      display: inline-block;
+      background: #e8f5e9;
+      color: var(--success-color);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+      margin-right: 0.4rem;
+      vertical-align: baseline;
+    }
+
+    /* 產品導流卡片 */
+    .product-bridge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .product-card {
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fff;
+    }
+
+    .product-card:hover {
+      border-color: var(--secondary-color);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .product-card h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    .product-card ul {
+      padding-left: 1.2rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .product-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    .product-link {
+      display: inline-block;
+      color: var(--accent-color);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .product-link:hover {
+      text-decoration: underline;
+    }
+
+    /* FAQ 區塊樣式 */
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.2rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .faq-question {
+      font-weight: 700;
+      color: var(--primary-color);
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.45;
+    }
+
+    .faq-answer {
+      margin: 0;
+      color: var(--text-color);
+      font-size: 0.95rem;
+    }
+
+    /* 底部 CTA */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary-color), #072a47);
       color: white;
       text-align: center;
-      padding: 2rem;
+      padding: 2.5rem 1.75rem;
+      border-radius: 12px;
       margin-top: 2rem;
     }
 
-    footer nav a {
+    .cta-banner h2 {
       color: white;
+      border: none;
+      padding-bottom: 0;
+      margin-bottom: 0.8rem;
+      font-size: clamp(1.2rem, 3vw, 1.55rem);
+    }
+
+    .cta-banner p {
+      max-width: 680px;
+      margin: 0 auto 1.6rem auto;
+      opacity: 0.92;
+      font-size: 0.95rem;
+    }
+
+    .cta-btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary-cta,
+    .btn-outline-cta {
+      padding: 0.85rem 1.75rem;
+      border-radius: 50px;
       text-decoration: none;
-      margin: 0 10px;
-      transition: color 0.3s ease;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-primary-cta {
+      background-color: var(--accent-color);
+      color: white;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(230, 81, 0, 0.4);
+    }
+
+    .btn-outline-cta {
+      background-color: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.7);
+      transition: background 0.2s;
+    }
+
+    .btn-outline-cta:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    /* 頁尾 */
+    footer {
+      background-color: #0b2239;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 2.5rem 1.25rem;
+      margin-top: 3rem;
+      font-size: 0.88rem;
+    }
+
+    footer p {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+
+    footer nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.25rem;
+      margin-top: 0.75rem;
+    }
+
+    footer nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
     footer nav a:hover {
-      color: var(--accent-color);
+      color: white;
     }
 
     #back-to-top {
       display: none;
       position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 50px;
-      height: 50px;
-      font-size: 30px;
+      bottom: 24px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      font-size: 20px;
       background-color: var(--primary-color);
       color: white;
       text-align: center;
       border-radius: 50%;
       cursor: pointer;
       z-index: 1000;
-      transition: opacity 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
 
     #back-to-top.show {
       display: block;
     }
 
-    /* Mobile Responsive Styles */
-    @media (max-width: 768px) {
-      body {
-        font-size: 17px;
-        line-height: 1.8;
-      }
-
-      header {
-        padding: 1.5rem;
-      }
-      
-      header h1 {
-        font-size: 2.2rem;
-      }
-      
-      main {
+    /* =========================================
+       平板與手機版響應式設計 (RWD 深度優化)
+       ========================================= */
+    @media (max-width: 960px) {
+      .layout-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
         margin: 1.5rem auto;
       }
 
-      section {
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
+      aside.toc-sidebar {
+        position: static;
+        padding: 1.25rem;
       }
 
-      h2 {
-        font-size: 1.8rem;
+      .toc-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.5rem 1rem;
       }
 
-      h3 {
-        font-size: 1.5rem;
+      .toc-list li {
+        margin-bottom: 0.25rem;
       }
 
-      .image-container img {
-        max-width: 100%;
+      .grid-3col {
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
 
-      #back-to-top {
-        width: 45px;
-        height: 45px;
-        font-size: 24px;
-        bottom: 20px;
-        right: 20px;
-        line-height: 45px;
+      .product-bridge-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        font-size: 15.5px;
+        line-height: 1.7;
+      }
+
+      nav.main-nav {
+        padding: 0.6rem 1rem;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        gap: 0.5rem;
+      }
+
+      .brand-logo {
+        text-align: center;
+        font-size: 1.15rem;
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid #f0f4f8;
+      }
+
+      nav.main-nav ul {
+        justify-content: center;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.2rem;
+        gap: 0.5rem;
+        scrollbar-width: none;
+      }
+
+      nav.main-nav ul::-webkit-scrollbar {
+        display: none;
+      }
+
+      nav.main-nav ul li {
+        flex-shrink: 0;
+      }
+
+      nav.main-nav ul li a {
+        padding: 0.4rem 0.85rem;
+        font-size: 0.88rem;
+      }
+
+      .breadcrumb-bar {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+
+      header.hero {
+        padding: 2rem 1rem;
+      }
+
+      .hero-badge {
+        font-size: 0.78rem;
+        padding: 0.25rem 0.65rem;
+      }
+
+      .layout-container {
+        padding: 0 0.85rem;
+        margin: 1rem auto;
+        gap: 1.2rem;
+      }
+
+      aside.toc-sidebar {
+        padding: 1.1rem;
+      }
+
+      .toc-list {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      section.content-card {
+        padding: 1.25rem 1.1rem;
+        margin-bottom: 1.25rem;
+        border-radius: 8px;
+      }
+
+      figure.article-figure {
+        margin: 1.25rem 0;
+        padding: 0.65rem;
+      }
+
+      .info-box,
+      .problem-solution-item,
+      .product-card {
+        padding: 1.1rem;
+      }
+
+      .tech-callout {
+        padding: 1rem 1.1rem;
+      }
+
+      .table-responsive {
+        border: none;
+        overflow-x: visible;
+      }
+
+      table.comparison-table,
+      table.comparison-table thead,
+      table.comparison-table tbody,
+      table.comparison-table th,
+      table.comparison-table td,
+      table.comparison-table tr {
+        display: block;
+        width: 100%;
+      }
+
+      table.comparison-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      table.comparison-table tbody tr {
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        background: #ffffff;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+        overflow: hidden;
+      }
+
+      table.comparison-table td {
+        border: none;
+        border-bottom: 1px solid #f0f4f8;
+        padding: 0.75rem 1rem;
+        position: relative;
+        text-align: left;
+      }
+
+      table.comparison-table td:first-child {
+        background-color: var(--primary-color);
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 0.65rem 1rem;
+      }
+
+      table.comparison-table td:first-child strong {
+        color: #ffffff;
+      }
+
+      table.comparison-table td:not(:first-child)::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-bottom: 0.25rem;
+        text-transform: uppercase;
+      }
+
+      .cta-banner {
+        padding: 1.75rem 1.15rem;
+      }
+
+      .cta-btn-group {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .btn-primary-cta,
+      .btn-outline-cta {
+        width: 100%;
+        padding: 0.85rem 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>色母：定義、功能、限制</h1>
-    <p>深入了解色母（Masterbatch）的定義、功能與應用限制，確保塑膠與纖維著色品質的關鍵指南</p>
+
+  <!-- 頂部導航 (僅保留官網首頁與聯絡我們) -->
+  <nav class="main-nav" aria-label="主要導覽">
+    <div class="nav-container">
+      <a href="https://hwashine.tw/" class="brand-logo">華翔興業有限公司 Hwashine</a>
+      <ul>
+        <li><a href="https://hwashine.tw/">官網首頁</a></li>
+        <li><a href="https://hwashine.tw/contact" class="nav-cta">索取樣品與報價</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 麵包屑導航 -->
+  <div class="breadcrumb-bar">
+    <div class="breadcrumb-container">
+      <a href="https://hwashine.tw/">華翔興業官網</a> &gt; <span>色母(Masterbatch)與著色劑選用指南</span>
+    </div>
+  </div>
+
+  <!-- 頁首視覺區 -->
+  <header class="hero">
+    <div class="hero-container">
+      <span class="hero-badge">塑膠與化纖著色技術專欄</span>
+      <h1>色母（Masterbatch）全解析：定義、製程限制與核心「有機顏料／溶劑染料」選用指南</h1>
+      <p class="subtitle">色母的品質上限，取決於核心「著色劑」的物理與化學特性。本文從母粒配方設計與塑膠加工視角，探討如何透過精準選用有機顏料與溶劑染料，克服熱裂解、色點凝聚與遷移難題。</p>
+    </div>
   </header>
 
-  <nav>
-  <ul>
-    <li><a href="/">首頁</a></li>
-    <li><a href="/about">關於我們</a></li>
-    <li><a href="/products">產品</a></li>
-    <li><a href="/contact">聯絡我們</a></li>
-  </ul>
-</nav>
-
-  <main>
-    <section id="introduction">
-      <h2>色母在塑膠與纖維著色的關鍵角色</h2>
-      <p>在塑膠與纖維著色領域中，<span class="highlight">「色母」（Masterbatch）</span>扮演著不可或缺的角色。它不僅是顏料分散的媒介，更是提升產品穩定性與加工效率的關鍵材料。了解色母的定義、功能與限制，有助於選擇最適合的原料與配方，確保製品在顏色、光澤與耐候性上達到理想水準。</p>
-      
-      <div class="image-container">
-        <img src="/plastic_containers_still_life.webp" alt="多樣化塑膠容器展示">
-        <figcaption>色母廣泛應用於各類塑膠製品的著色，提供穩定且鮮豔的色彩表現</figcaption>
+  <!-- 主體雙欄架構 -->
+  <div class="layout-container">
+    
+    <!-- 左側懸浮目錄 (頁內錨點 + 唯一對外聯絡連結) -->
+    <aside class="toc-sidebar" aria-label="文章目錄">
+      <div class="toc-title">本文目錄導覽</div>
+      <ul class="toc-list">
+        <li><a href="#definition">一、色母的定義與三大核心結構</a></li>
+        <li><a href="#colorant-comparison">二、核心關鍵：有機顏料 vs. 溶劑染料怎麼選？</a></li>
+        <li><a href="#functions">三、色母在塑膠與抽絲加工的四大功能</a></li>
+        <li><a href="#limitations-solutions">四、色母常見加工限制與原料解決方案</a></li>
+        <li><a href="#resin-matching">五、各類塑膠基材（PP/PE/PET/PC）配伍建議</a></li>
+        <li><a href="#faq">六、色母配方與著色劑常見問題 (FAQ)</a></li>
+        <li><a href="#about-hwashine">七、華翔興業：色母廠信賴的顏料夥伴</a></li>
+      </ul>
+      <div class="sidebar-cta-box">
+        <p>正在尋找高分散性、高耐熱的母粒用顏料或染料？</p>
+        <a href="https://hwashine.tw/contact" class="btn-small">諮詢華翔技術團隊</a>
       </div>
-    </section>
+    </aside>
 
-    <section id="definition">
-      <h2>一、色母的定義</h2>
-      <p>色母（Masterbatch）是將顏料或染料、分散劑與相容性樹脂預先混合、熔融並造粒後的濃縮體。它的主要組成包括：</p>
-      <ul>
-        <li><strong>著色劑：</strong>有機顏料或染料，是色彩的來源。</li>
-        <li><strong>載體樹脂：</strong>與最終塑膠基材（如 PP、PE、PET、PA 等）相容的樹脂。</li>
-        <li><strong>分散劑與助劑：</strong>協助顏料在樹脂中均勻分散，改善流動與加工性能。</li>
-      </ul>
-      <p>藉由色母，顏料得以在塑膠加工過程中更容易混合、分散，達到穩定的色彩表現與物性一致性。</p>
-    </section>
+    <!-- 右側文章主體 -->
+    <main class="article-content">
 
-    <section id="functions">
-      <h2>二、色母的主要功能</h2>
-      
-      <h3>1. 穩定配色與品質控制</h3>
-      <p>色母可確保每一批產品的色彩一致，減少色差與操作誤差。</p>
+      <!-- 導言與定義 -->
+      <section id="definition" class="content-card">
+        <h2>一、色母（Masterbatch）的定義與三大核心結構</h2>
+        <p>在塑膠射出、押出、吹膜以及合成纖維（化纖抽絲）領域中，<strong>色母（Masterbatch，又稱色母粒）</strong>是將超高濃度的著色劑（顏料或染料）透過雙螺桿押出機，預先均勻分散於載體樹脂中所形成的濃縮顆粒。</p>
+        <p>一顆高品質的色母粒，其配方架構主要由以下三個核心部分所決定，其中<span class="highlight-key">「著色劑的選用」直接決定了最終塑膠製品的耐溫上限、耐候等級與色彩飽和度</span>：</p>
 
-      <h3>2. 提高顏料分散性</h3>
-      <p>顏料在色母中經過預分散，能在成型過程中快速均勻混合，避免結團與色點。</p>
+        <div class="grid-3col">
+          <div class="info-box core-product">
+            <h4>1. 核心著色劑 (Colorants)</h4>
+            <p>色母的靈魂。主要分為<strong>有機顏料（Organic Pigments）</strong>、無機顏料與<strong>溶劑染料（Solvent Dyes）</strong>。色母中著色劑含量通常高達 $20\%$ 至 $60\%$，其原始粒徑、吸油量與耐熱性是決定母粒成敗的首要因素。</p>
+          </div>
+          <div class="info-box">
+            <h4>2. 分散劑與助劑 (Dispersants)</h4>
+            <p>常見如 PE 蠟、PP 蠟或硬脂酸鹽類。負責潤濕顏料表面，打破顏料的凡德瓦爾力，防止顏料在押出造粒過程中發生二次凝聚（Re-agglomeration）。</p>
+          </div>
+          <div class="info-box">
+            <h4>3. 載體樹脂 (Carrier Resin)</h4>
+            <p>用於包覆顏料並與下游塑膠廠的基材樹脂（如 PE、PP、ABS、PET、PA）進行熔融共混。載體的熔融指數（MI 值）必須與基材高度匹配。</p>
+          </div>
+        </div>
 
-      <h3>3. 提升生產效率</h3>
-      <p>減少現場配粉與研磨步驟，降低粉塵汙染與操作難度。</p>
+        <figure class="article-figure">
+          <img src="https://hwashine.tw/plastic_containers_still_life.webp" alt="使用高品質有機顏料與溶劑染料色母著色的多樣化塑膠製品" loading="lazy">
+          <figcaption>圖：從日用包材到高階工程塑膠，色母的穩定度源自於上游有機顏料與溶劑染料的純度與分散技術。</figcaption>
+        </figure>
+      </section>
 
-      <h3>4. 遷移與法規限制</h3>
-      <p>食品接觸與醫療級應用需符合法規要求，選用經認證的顏料與染料。</p>
+      <!-- 核心橋樑章節：將色母流量導向核心業務 (有機顏料 & 溶劑染料) -->
+      <section id="colorant-comparison" class="content-card">
+        <h2>二、色母配方的靈魂：該選擇「有機顏料」還是「溶劑染料」？</h2>
+        <p>許多色母研發人員與塑膠射出廠在開發新色號時，最常面臨的抉擇便是：<strong>究竟該採用有機顏料，還是溶劑染料來製作色母？</strong>這兩者在塑膠基材中的著色機制截然不同：</p>
 
-      <h3>5. 分散工藝依賴性</h3>
-      <p>若色母製程控制不當，顏料仍可能出現再聚集現象，影響外觀品質。</p>
-    </section>
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>比較維度</th>
+                <th>有機顏料 (Organic Pigments)</th>
+                <th>溶劑染料 (Solvent Dyes)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="比較維度"><strong>在樹脂中的存在狀態</strong></td>
+                <td data-label="有機顏料 (Organic Pigments)">以微細「固體顆粒」均勻懸浮分散於樹脂中（不溶解）。</td>
+                <td data-label="溶劑染料 (Solvent Dyes)">以「分子狀態」完全溶解於熔融的高分子樹脂中。</td>
+              </tr>
+              <tr>
+                <td data-label="比較維度"><strong>光學與透明度表現</strong></td>
+                <td data-label="有機顏料 (Organic Pigments)">具半透明至高遮蓋力，可搭配鈦白粉（$\text{TiO}_2$）調配實色。</td>
+                <td data-label="溶劑染料 (Solvent Dyes)"><strong>極高透明度</strong>、高光澤度，色彩極為鮮豔飽和。</td>
+              </tr>
+              <tr>
+                <td data-label="比較維度"><strong>分散工藝要求</strong></td>
+                <td data-label="有機顏料 (Organic Pigments)">高。需仰賴雙螺桿剪切力與分散劑打開顏料聚集體，考驗濾網壓力值（$\text{FPV}$）。</td>
+                <td data-label="溶劑染料 (Solvent Dyes)">低。受熱即溶於樹脂，無顆粒聚集問題，極少堵塞紡絲或押出濾網。</td>
+              </tr>
+              <tr>
+                <td data-label="比較維度"><strong>抗遷移性 (Migration)</strong></td>
+                <td data-label="有機顏料 (Organic Pigments)">優異（特別是偶氮縮合類、喹吖啶酮、苝系等高性能顏料）。</td>
+                <td data-label="溶劑染料 (Solvent Dyes)">於軟質塑膠（如軟質 PVC、LDPE）易遷移；於硬質工程塑膠中則極為穩定。</td>
+              </tr>
+              <tr>
+                <td data-label="比較維度"><strong>主要適用塑膠基材</strong></td>
+                <td data-label="有機顏料 (Organic Pigments)"><strong>PE、PP、PVC、EVA、橡膠</strong>及各類工程塑膠與化纖抽絲。</td>
+                <td data-label="溶劑染料 (Solvent Dyes)"><strong>PS、ABS、PC、PMMA（壓克力）、PET、PA（尼龍）</strong>等硬質與透明塑料。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-    <section id="limitations">
-      <h2>三、色母的應用限制</h2>
-      
-      <h3>1. 相容性問題</h3>
-      <p>載體樹脂須與最終基材相容，否則可能產生表面缺陷或物性下降。</p>
+        <div class="tech-callout">
+          <h4>💡 華翔配方師實務建議：</h4>
+          <p>若您的終端產品為<strong>PE/PP 吹膜、塑膠瓶蓋、電線電纜或長效戶外製品</strong>，請務必選用結晶穩定、低吸油量的<strong>有機顏料</strong>，以避免表面吐色（遷移）；若您的產品為<strong>PC 光學鏡片、PET 透明瓶胚、壓克力板材或 ABS 高光澤家電外殼</strong>，選用高耐熱等級的<strong>溶劑染料</strong>將能大幅降低母粒加工成本並獲得極致的透明光澤感。</p>
+        </div>
+      </section>
 
-      <h3>2. 熱穩定性挑戰</h3>
-      <p>在高溫加工條件下，某些顏料或助劑可能分解、變色或失效。</p>
+      <!-- 色母的主要功能 -->
+      <section id="functions" class="content-card">
+        <h2>三、色母在塑膠與纖維加工中的四大核心功能</h2>
+        <p>相較於傳統直接使用「乾粉（色粉）」進行拌料射出，採用色母粒進行著色具備以下不可替代的工業優勢：</p>
 
-      <h3>3. 添加量控制</h3>
-      <p>色母比例過高可能導致力學性能下降，過低則影響著色效果。</p>
+        <h3>1. 消除色差，實現批次間的色彩高重現性</h3>
+        <p>色粉直接計量容易受靜電吸附與粉體飛散影響。色母經過預分散造粒後，可透過自動計量機精準控制添加比例（Let-down Ratio，通常為 $1\%$ 至 $5\%$），確保不同生產批次的色差值（$\Delta E$）控制在極小範圍內。</p>
 
-      <h3>4. 遷移與法規限制</h3>
-      <p>食品接觸與醫療級應用需符合法規要求，選用經認證的顏料與染料。</p>
+        <h3>2. 預分散技術，徹底解決「色點」與「條紋」</h3>
+        <p>有機顏料的原始粒徑雖小（約 $0.01 \sim 0.5\ \mu\text{m}$），但在乾燥狀態下極易形成堅硬的聚集體（Agglomerates）。色母廠透過高剪切混煉將顏料預先打開並包覆，使下游成型廠在一般射出機的短暫混煉時間內，即可獲得無色點、無流紋的均勻外觀。</p>
 
-      <h3>5. 分散工藝依賴性</h3>
-      <p>若色母製程控制不當，顏料仍可能出現再聚集現象，影響外觀品質。</p>
-    </section>
+        <h3>3. 無粉塵污染，符合環保與潔淨車間規範</h3>
+        <p>顆粒狀的色母完全解決了有機顏料粉末飛揚的問題，不僅保護現場操作人員的呼吸道健康，更避免跨機台的交叉染污，大幅縮短換色清機的時間與洗機料損耗。</p>
 
-    <section id="recommendations">
-      <h2>四、專業建議</h2>
-      <p>在選擇色母或設計配方時，建議：</p>
-      <ul>
-        <li>明確確認基材樹脂種類（PP、PE、PET、PA 等）。</li>
-        <li>進行熱穩定性、光牢度與遷移測試。</li>
-        <li>優先採用高分散性、低吸油值的有機顏料，搭配相容載體。</li>
-        <li>與有經驗的顏料供應商合作，確保品質穩定與技術支援。</li>
-      </ul>
-    </section>
+        <h3>4. 複合功能化整合（機能性色母）</h3>
+        <p>色母載體除了承載有機顏料與溶劑染料外，亦可同步添加紫外線吸收劑（UV Stabilizer）、抗氧化劑、抗靜電劑或成核劑，在賦予色彩的同時提升塑膠製品的耐候性與機械物性。</p>
+      </section>
 
-    <section id="about-hwashine">
-      <h2>五、華翔興業有限公司 — 您的色彩與材料合作夥伴</h2>
-      <p>華翔興業有限公司（Hwashine Trading Co., Ltd.）專業供應<span class="highlight">有機顏料（Organic Pigments）</span>與<span class="highlight">溶劑染料（Solvent Dyes）</span>，服務範圍涵蓋塑膠、油墨、塗料與纖維領域。我們深耕亞洲市場多年，與多家台灣與國際母粒廠、色粉廠及色母製造商合作，能夠提供：</p>
-      <ul>
-        <li>高分散性與高穩定性的顏料原料</li>
-        <li>適用各類樹脂（PP、PE、PET、PA、PC 等）的專業建議</li>
-        <li>完整的技術資料與品質控管支援</li>
-      </ul>
-      <p>我們深知，色母品質的穩定，取決於顏料的選擇與分散技術。華翔興業以<span class="highlight">「穩定品質、誠信合作」</span>為核心理念，協助客戶打造更可靠、更具競爭力的色彩系統。</p>
-      <p>若您正在尋找值得信賴的有機顏料與溶劑染料供應商，歡迎聯繫華翔興業，我們將以專業經驗與誠懇服務，提供最合適的著色與應用解決方案。</p>
-    </section>
+      <!-- 色母的應用限制與技術解決方案 -->
+      <section id="limitations-solutions" class="content-card">
+        <h2>四、色母常見的五大加工限制與「上游原料」解決對策</h2>
+        <p>儘管色母極為便利，但在高溫成型、薄壁射出或微細丹尼（Denier）抽絲過程中，仍常遇到加工瓶頸。事實上，<strong>多數色母的應用限制，皆可透過升級上游的「顏料與染料規格」來克服</strong>：</p>
 
-    <section class="cta-section">
-      <h2>需要更多技術支援？</h2>
-      <p>華翔的專業團隊可為您提供完整的色母應用諮詢服務</p>
-      <a href="/contact" class="contact-button">聯絡我們</a>
-    </section>
-  </main>
+        <div class="problem-solution-item">
+          <h3>限制 1：高溫加工下的「熱裂解與變色」</h3>
+          <p><strong>現象：</strong>在工程塑膠（如 PA66、PC、PEEK）或高速抽絲製程中，加工溫度常高達 $280^\circ\text{C} \sim 320^\circ\text{C}$。一般通用型偶氮顏料在此溫度下會發生分子鍵斷裂，導致顏色變暗、偏色甚至產生氣泡。</p>
+          <p><span class="solution-tag">原料對策</span>改用高耐熱結構的<strong>高性能有機顏料（HPP）</strong>或專為高溫設計的<strong>蒽醌類／雜環類溶劑染料</strong>，確保耐熱指標達 $300^\circ\text{C}$ 以上且滯留時間（Dwell time）達 5 分鐘不變色。</p>
+        </div>
 
+        <div class="problem-solution-item">
+          <h3>限制 2：顏料二次凝聚導致「濾網壓力值（FPV）飆升」</h3>
+          <p><strong>現象：</strong>在生產 PET/PP 化纖絲或 BOPP 薄膜時，分散不良的顏料顆粒會迅速堵塞熔體過濾網，導致模頭壓力急遽升高、斷絲或薄膜破孔。</p>
+          <p><span class="solution-tag">原料對策</span>選擇經過特殊表面改質、粒徑分佈窄且低吸油量的<strong>抽絲級／薄膜級專用有機顏料</strong>，或於透明色系中改用完全無顆粒問題的<strong>溶劑染料</strong>。</p>
+        </div>
+
+        <div class="problem-solution-item">
+          <h3>限制 3：遷移現象（Migration：滲色、起霜與轉印）</h3>
+          <p><strong>現象：</strong>著色劑從塑膠內部向表面析出（起霜 Blooming），或接觸其他淺色塑膠時發生顏色轉移（滲色 Bleeding）。</p>
+          <p><span class="solution-tag">原料對策</span>在軟質 PVC 與聚烯烴（PE/PP）配方中，嚴格避免使用一般溶劑染料或單偶氮小分子顏料；應選用分子量較大、帶有極性基團或色澱結構的<strong>抗遷移有機顏料</strong>。</p>
+        </div>
+
+        <div class="problem-solution-item">
+          <h3>限制 4：大型射出件的「翹曲變形（Warpage）」</h3>
+          <p><strong>現象：</strong>在 HDPE 周轉箱、啤酒箱或大型薄壁容器中，部分有機顏料（如酞菁藍 PB15:3、酞菁綠 PG7）會扮演「成核劑」的角色，改變結晶型塑膠的收縮率，導致成品扭曲變形。</p>
+          <p><span class="solution-tag">原料對策</span>選用<strong>低翹曲（Low-warpage）改質顏料規格</strong>，或在配方設計階段由顏料供應商提供結晶影響度評估。</p>
+        </div>
+
+        <div class="problem-solution-item">
+          <h3>限制 5：食品接觸、玩具與環保法規限制</h3>
+          <p><strong>現象：</strong>外銷歐美之食品包材、兒童玩具或電子產品，若色母中的顏料含有禁用芳香胺（Azo dyes）、重金屬或過量多環芳香烴（PAHs），將面臨退運與重罰。</p>
+          <p><span class="solution-tag">原料對策</span>採購源頭即要求供應商提供符合 <strong>RoHS、REACH、EN71-3（玩具安全）及 FDA 食品接觸規範</strong>的高純度顏料與染料。</p>
+        </div>
+      </section>
+
+      <!-- 各類樹脂基材配伍指南 -->
+      <section id="resin-matching" class="content-card">
+        <h2>五、常見塑膠基材（PP/PE/PET/ABS/PC）著色劑選用速查表</h2>
+        <p>為了協助色母廠與塑膠成型廠快速鎖定合適的原料，華翔興業整理了各大樹脂體系的著色劑匹配原則：</p>
+
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>塑膠基材</th>
+                <th>典型加工溫度</th>
+                <th>建議著色劑類型</th>
+                <th>配方選用重點</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="塑膠基材"><strong>PE / PP (聚烯烴)</strong></td>
+                <td data-label="典型加工溫度">$180^\circ\text{C} \sim 260^\circ\text{C}$</td>
+                <td data-label="建議著色劑類型">有機顏料為主</td>
+                <td data-label="配方選用重點">結晶度影響遷移性，嚴禁誤用一般溶劑染料；大型射出件需注意顏料引起的結晶收縮（翹曲）。</td>
+              </tr>
+              <tr>
+                <td data-label="塑膠基材"><strong>PS / ABS / SAN</strong></td>
+                <td data-label="典型加工溫度">$200^\circ\text{C} \sim 260^\circ\text{C}$</td>
+                <td data-label="建議著色劑類型">溶劑染料 / 有機顏料皆可</td>
+                <td data-label="配方選用重點">追求高透明或高光澤黑、紅、黃色系時，首選<strong>溶劑染料</strong>；實色家電外殼則可搭配有機顏料與鈦白粉。</td>
+              </tr>
+              <tr>
+                <td data-label="塑膠基材"><strong>PC (聚碳酸酯)</strong></td>
+                <td data-label="典型加工溫度">$280^\circ\text{C} \sim 320^\circ\text{C}$</td>
+                <td data-label="建議著色劑類型">高耐熱溶劑染料</td>
+                <td data-label="配方選用重點">加工溫度極高且要求高透光率，必須選用耐熱達 $300^\circ\text{C}$ 以上的專用溶劑染料。</td>
+              </tr>
+              <tr>
+                <td data-label="塑膠基材"><strong>PET (瓶胚/抽絲)</strong></td>
+                <td data-label="典型加工溫度">$270^\circ\text{C} \sim 295^\circ\text{C}$</td>
+                <td data-label="建議著色劑類型">溶劑染料 / 高分散有機顏料</td>
+                <td data-label="配方選用重點">包裝瓶胚多採用溶劑染料保持透明；化纖原液著色（Dope Dyeing）則要求極低 $\text{FPV}$ 值的微細有機顏料。</td>
+              </tr>
+              <tr>
+                <td data-label="塑膠基材"><strong>PA (尼龍 6 / 66)</strong></td>
+                <td data-label="典型加工溫度">$250^\circ\text{C} \sim 290^\circ\text{C}$</td>
+                <td data-label="建議著色劑類型">特定耐還原顏料 / 染料</td>
+                <td data-label="配方選用重點">熔融態尼龍具強還原性（弱鹼性），許多一般有機顏料會褪色，需指名選用「尼龍專用級」著色劑。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FAQ 常見問題區塊 -->
+      <section id="faq" class="content-card">
+        <h2>六、色母配方與著色劑常見問題 (FAQ)</h2>
+        
+        <div class="faq-item">
+          <div class="faq-question">Q1：製作色母時，該選擇有機顏料還是溶劑染料？</div>
+          <p class="faq-answer">取決於最終塑膠基材與透明度需求。<strong>有機顏料（Organic Pigments）</strong>以微粒分散於樹脂中，適合通用塑膠（如 PE、PP、PVC）及需要高遮蓋力、耐遷移、戶外耐候的製品；<strong>溶劑染料（Solvent Dyes）</strong>則能分子級溶解於樹脂中，展現極高透明度與鮮豔度，特別適用於 PS、ABS、PC、PET 及 PMMA 等硬質與工程塑膠。</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Q2：色母生產中常見的「色點」與「濾網壓力過高（FPV）」如何解決？</div>
+          <p class="faq-answer">色點與濾網堵塞通常源於有機顏料的二次凝聚（Agglomeration）或分散劑匹配不當。解決方案包括選用經過表面處理、低吸油量且粒徑分佈集中的高分散性有機顏料，並確保雙螺桿押出機的剪切區配置與分散蠟黏度相匹配。</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Q3：為什麼塑膠製品在使用一段時間後會出現表面吐色（遷移現象）？</div>
+          <p class="faq-answer">這是因為著色劑在樹脂中的溶解度與相容性不匹配，特別是在軟質 PVC 或低結晶度聚烯烴（PE/PP）中使用了不耐遷移的染料或小分子顏料，受熱後分子游離至表面。應改用高分子量、具備抗遷移結構的高性能有機顏料。</p>
+        </div>
+      </section>
+
+      <!-- 品牌與產品導流區 (對外連結全數收斂至指定網址) -->
+      <section id="about-hwashine" class="content-card">
+        <h2>七、華翔興業有限公司 — 色母製造商與塑膠廠的核心原料夥伴</h2>
+        <p>色母品質的穩定與否，有 $70\%$ 取決於源頭顏料與染料的批次穩定度。<strong>華翔興業有限公司（Hwashine Trading Co., Ltd.）</strong>深耕亞洲色彩化學品市場多年，長期為台灣及國際各大<strong>色母粒廠（Masterbatch Makers）、抽絲母粒廠、色粉配色廠及塑膠改質廠</strong>提供高品質的著色劑原料。</p>
+        <p>我們不銷售成品塑膠，而是專注於提供您打造頂尖色母所需的核心原料與技術支援：</p>
+
+        <div class="product-bridge-grid">
+          <div class="product-card">
+            <h3>🎨 塑膠與母粒專用：有機顏料系列</h3>
+            <ul>
+              <li><strong>高濃度母粒適用：</strong>低吸油量、易潤濕分散，大幅提升母粒顏料載入量（Loading）。</li>
+              <li><strong>嚴格物性把關：</strong>提供高耐熱（$260^\circ\text{C} \sim 300^\circ\text{C}$）、高耐光（$7 \sim 8$ 級）與抗遷移規格。</li>
+              <li><strong>低 FPV 抽絲級：</strong>專為丙綸（PP）、滌綸（PET）原液著色與薄壁薄膜設計。</li>
+            </ul>
+            <a href="https://hwashine.tw/contact" class="product-link">洽詢有機顏料規格與樣品 &rarr;</a>
+          </div>
+
+          <div class="product-card">
+            <h3>✨ 工程塑膠與透明件專用：溶劑染料系列</h3>
+            <ul>
+              <li><strong>分子級高透明溶解：</strong>色澤鮮豔明亮，完全不影響 PC、PMMA、GPPS 與 PET 的光學透光率。</li>
+              <li><strong>卓越熱穩定性：</strong>耐受工程塑膠高達 $300^\circ\text{C}$ 以上之射出與押出加工溫度。</li>
+              <li><strong>高純度低游離：</strong>嚴格控制水分與不溶物含量，保護精密模具與熱流道系統。</li>
+            </ul>
+            <a href="https://hwashine.tw/contact" class="product-link">洽詢溶劑染料規格與樣品 &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 行動呼籲 Banner -->
+        <div class="cta-banner">
+          <h2>遇到色母分散不良、耐熱不足或配色瓶頸嗎？</h2>
+          <p>無論您是正在開發新款色母配方，或是需要符合環保法規（RoHS / REACH / FDA）的替代顏料與溶劑染料，華翔興業的技術團隊隨時為您提供 TDS 技術資料、物性對照表與測試樣品。</p>
+          <div class="cta-btn-group">
+            <a href="https://hwashine.tw/contact" class="btn-primary-cta">立即索取免費樣品與報價</a>
+            <a href="https://hwashine.tw/" class="btn-outline-cta">前往華翔興業官方網站</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- 頁尾 (僅保留指定之兩個對外連結) -->
   <footer>
-    <p>&copy; 2024 華翔興業有限公司 版權所有</p>
-    <nav>
-      <a href="/privacy">隱私政策</a> |
-      <a href="/terms">使用條款</a>
+    <p>&copy; 2026 華翔興業有限公司 (Hwashine Trading Co., Ltd.) 版權所有｜專業有機顏料與溶劑染料供應商</p>
+    <nav aria-label="頁尾導覽">
+      <a href="https://hwashine.tw/">華翔興業官網</a>
+      <a href="https://hwashine.tw/contact">聯絡我們</a>
     </nav>
   </footer>
 
-  <div id="back-to-top">&#8679;</div>
+  <div id="back-to-top" title="回到頂部">&#8679;</div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      const sections = document.querySelectorAll('section');
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, observerOptions);
-
-      sections.forEach(section => {
-        section.style.opacity = 0;
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(section);
-      });
-
+    document.addEventListener('DOMContentLoaded', () => {
       const backToTopButton = document.getElementById('back-to-top');
+      
       window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
           backToTopButton.classList.add('show');
