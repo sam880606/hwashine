@@ -3,9 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>華翔興業 - 顏料資料分析與座標圖 (測試版)</title>
+    
+    <!-- 核心 SEO 標籤 (Title & Meta Description) -->
+    <title>顏料 Hue & Chroma 座標圖與耐溫耐光查詢系統 | 華翔興業 Hwashine</title>
+    <meta name="description" content="華翔興業提供專業塑膠顏料、有機顏料、無機顏料與溶劑染料之 Hue（色相）與 Chroma（彩度）分佈座標圖。支援 PE、PP、ABS 等材質篩選，快速查詢顏料耐溫、耐光、耐候及耐遷移等理化指標，協助配色與打板評估。">
+    <meta name="keywords" content="華翔興業, 顏料座標圖, Hue, Chroma, 色相, 彩度, 塑膠顏料, 有機顏料, 無機顏料, 溶劑染料, 顏料耐溫, 顏料耐光, 顏料耐候, 顏料耐遷移, PR122, PB15, PV19, 塑膠配色">
+    <meta name="author" content="華翔興業有限公司 Hwashine">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hwashine.tw/">
+
+    <!-- Open Graph (FB / LINE 社群分享優化) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="華翔興業有限公司">
+    <meta property="og:title" content="顏料 Hue & Chroma 座標圖與耐溫耐光查詢系統 | 華翔興業">
+    <meta property="og:description" content="線上互動式顏料色相(Hue)與彩度(Chroma)座標分析工具。支援材質篩選與耐溫、耐光、耐候、耐遷移等關鍵指標快速檢索。">
+    <meta property="og:url" content="https://hwashine.tw/">
+    <meta property="og:locale" content="zh_TW">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="顏料 Hue & Chroma 座標圖與耐溫耐光查詢系統 | 華翔興業">
+    <meta name="twitter:description" content="線上互動式顏料色相(Hue)與彩度(Chroma)座標分析工具，快速檢索塑膠顏料與染料之耐溫、耐光、耐候指標。">
+
     <!-- 企業標識 Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- JSON-LD 結構化資料 (Schema.org：包含 WebApplication、Organization 與 FAQPage) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://hwashine.tw/#organization",
+          "name": "華翔興業有限公司",
+          "url": "https://hwashine.tw/",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "url": "https://hwashine.tw/contact",
+            "contactType": "customer service",
+            "areaServed": "TW",
+            "availableLanguage": ["zh-Hant", "en"]
+          }
+        },
+        {
+          "@type": "WebApplication",
+          "name": "華翔興業 - 顏料 Hue & Chroma 座標圖查詢系統",
+          "url": "https://hwashine.tw/",
+          "description": "提供塑膠顏料、有機顏料與溶劑染料之色相(Hue)與彩度(Chroma)視覺化座標分析，並支援耐溫、耐光、耐候與耐遷移指標篩選。",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "provider": {
+            "@id": "https://hwashine.tw/#organization"
+          },
+          "featureList": [
+            "全色域極座標與分色系直角座標切換",
+            "Excel 顏料數據多工作表匯入與疊加比對",
+            "PE/PP/ABS 等應用材質與色號關鍵字即時檢索",
+            "耐溫、本色耐光、沖淡色耐光、耐候、耐遷移數值篩選"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "什麼是顏料的 Hue（色相）與 Chroma（彩度）？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "在 CIE L*C*h* 色彩空間中，Hue（色相角度，0°~360°）代表顏色的基本相貌（如紅、橙、黃、綠、藍、紫）；Chroma（彩度/飽和度）則代表顏色的鮮豔程度，數值越高表示顏色越鮮豔純粹，越靠近圓心則越偏灰暗。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "如何根據耐溫、耐光與耐候指標挑選塑膠顏料？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "透過本系統的進階篩選功能，您可以輸入加工溫度需求（如耐溫 ≧ 250°C）、耐光等級（1~8級，8級最佳）以及耐候與耐遷移等級（1~5級，5級最佳），系統會即時過濾出符合條件的顏料色號並標示於座標圖上。"
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <!-- 引入 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入 Chart.js -->
@@ -34,133 +116,185 @@
         }
     </style>
 </head>
-<body class="min-h-screen p-4 md:p-8">
+<body class="min-h-screen p-4 md:p-8 flex flex-col justify-between">
 
-    <div class="max-w-7xl mx-auto space-y-6">
+    <main class="max-w-7xl mx-auto space-y-6 w-full">
         
-        <!-- 標頭與控制區 -->
-        <div class="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-5">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <!-- 標頭與控制區 (語意化 Header) -->
+        <header class="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-5">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                 <div>
                     <h1 class="text-2xl font-bold text-gray-800 flex items-center flex-wrap gap-3">
-                        <!-- 在大標題左側加入企業 Logo -->
-                        <img src="favicon.ico" alt="華翔興業" class="w-8 h-8 object-contain">
+                        <!-- 在大標題左側加入企業 Logo (加入 onerror 防止破圖) -->
+                        <img src="favicon.ico" alt="華翔興業有限公司 Logo" class="w-8 h-8 object-contain" onerror="this.style.display='none'">
                         華翔興業 - 顏料 Hue & Chroma 座標圖
-                        <span class="text-sm font-medium bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full border border-blue-200">測試版</span>
+                        <span class="text-sm font-medium bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full border border-blue-200">線上分析工具</span>
                     </h1>
-                    <!-- 修改提示文字：僅保留 Excel -->
-                    <p class="text-sm text-gray-500 mt-2 mb-3">上傳您的 Excel 檔案進行篩選與視覺化。</p>
+                    <p class="text-sm text-gray-500 mt-2 mb-3">專業塑膠顏料、有機顏料與溶劑染料之色相（Hue）與彩度（Chroma）分佈視覺化工具，支援 Excel 匯入與耐溫、耐光、耐候指標篩選。</p>
                     
-                    <!-- 新增：專屬官網與聯絡我們按鈕 -->
-                    <div class="flex flex-wrap gap-3">
-                        <a href="https://hwashine.tw/" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+                    <!-- 專屬官網與聯絡我們按鈕 (加入 rel="noopener" 提升安全性與 SEO 評分) -->
+                    <nav aria-label="主要連結" class="flex flex-wrap gap-3">
+                        <a href="https://hwashine.tw/" target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
                             🌐 華翔興業官網
                         </a>
-                        <a href="https://hwashine.tw/contact" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-bold text-blue-700 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors shadow-sm">
+                        <a href="https://hwashine.tw/contact" target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 text-sm font-bold text-blue-700 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors shadow-sm">
                             ✉️ 聯絡我們
                         </a>
-                        <button id="openDisclaimerBtn" class="inline-flex items-center px-4 py-2 text-sm font-bold text-gray-600 bg-gray-100 border border-gray-200 rounded-lg hover:bg-gray-200 transition-colors shadow-sm">
+                        <button id="openDisclaimerBtn" type="button" class="inline-flex items-center px-4 py-2 text-sm font-bold text-gray-600 bg-gray-100 border border-gray-200 rounded-lg hover:bg-gray-200 transition-colors shadow-sm">
                             📄 免責聲明
                         </button>
-                    </div>
+                    </nav>
                 </div>
                 
-                <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto mt-4 md:mt-0">
-                    <div class="flex-1">
-                        <!-- 修改標籤：僅保留 Excel -->
-                        <label class="block text-sm font-medium text-gray-700 mb-1">匯入完整 Excel 資料</label>
-                        <!-- 修改 accept 屬性：限制只能選擇 .xlsx, .xls -->
-                        <input type="file" id="excelFileInput" accept=".xlsx, .xls" 
-                               class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200 transition-colors">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full lg:w-auto mt-4 lg:mt-0">
+                    <div>
+                        <label for="excelFileInput" class="block text-sm font-medium text-gray-700 mb-1">匯入完整 Excel 資料</label>
+                        <input type="file" id="excelFileInput" accept=".xlsx, .xls" aria-label="匯入 Excel 顏料資料檔"
+                               class="block w-full text-sm text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors cursor-pointer">
                     </div>
-                    <div class="flex-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">以材質篩選</label>
-                        <select id="materialFilter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                            <!-- 選項會透過 JS 動態生成 -->
+                    <div>
+                        <label for="materialFilter" class="block text-sm font-medium text-gray-700 mb-1">以應用材質篩選</label>
+                        <select id="materialFilter" aria-label="以應用材質篩選顏料" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <option value="ALL">全部 (All)</option>
                         </select>
+                    </div>
+                    <div>
+                        <label for="keywordSearch" class="block text-sm font-medium text-gray-700 mb-1">搜尋色號 / 關鍵字</label>
+                        <input type="search" id="keywordSearch" placeholder="例: PR122, PB15, PV19..." aria-label="搜尋顏料色號或關鍵字"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
                 </div>
             </div>
 
-            <!-- 多資料來源切換區 -->
+            <!-- 多資料來源切換區 (支援多檔案與多分頁切換) -->
             <div id="dataSourceToggleArea" class="hidden pt-4 border-t border-gray-100">
-                <label class="block text-sm font-medium text-gray-700 mb-2">顯示資料來源 (勾選以疊加顯示)：</label>
-                <div id="dataSourceCheckboxes" class="flex flex-wrap gap-4">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="block text-sm font-medium text-gray-700">顯示資料來源 / 工作表分頁 (勾選以疊加顯示)：</span>
+                    <div class="space-x-2">
+                        <button id="selectAllSourcesBtn" type="button" class="text-xs text-blue-600 hover:underline">全選</button>
+                        <span class="text-gray-300">|</span>
+                        <button id="deselectAllSourcesBtn" type="button" class="text-xs text-gray-500 hover:underline">全不選</button>
+                    </div>
+                </div>
+                <div id="dataSourceCheckboxes" class="flex flex-wrap gap-3">
                     <!-- 核取方塊會透過 JS 動態生成 -->
                 </div>
             </div>
-        </div>
+        </header>
 
         <!-- 色系切換區與圖表區 -->
-        <div class="bg-white rounded-2xl shadow-sm p-6 flex flex-col">
+        <section aria-label="顏料色相與彩度座標圖" class="bg-white rounded-2xl shadow-sm p-6 flex flex-col">
             <!-- 色系切換按鈕 -->
-            <div class="flex flex-wrap gap-2 mb-6 pb-4 border-b border-gray-100" id="colorTabContainer">
-                <button class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-800 text-white shadow-sm" data-color="ALL">🌈 全色域 (圓形)</button>
-                <button class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-red-50 hover:text-red-600" data-color="RED">🔴 紅色系</button>
-                <button class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-amber-50 hover:text-amber-800" data-color="BROWN">🟤 棕色系</button>
-                <button class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600" data-color="ORANGE">🟠 橘色系</button>
-                <button class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600" data-color="YELLOW">🟡 黃色系</button>
-                <button class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-green-50 hover:text-green-600" data-color="GREEN">🟢 綠色系</button>
-                <button class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-blue-50 hover:text-blue-600" data-color="BLUE">🔵 藍色系</button>
-                <button class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-purple-50 hover:text-purple-600" data-color="PURPLE">🟣 紫色系</button>
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-gray-100">
+                <div class="flex flex-wrap gap-2" id="colorTabContainer" role="tablist" aria-label="顏料色系分類">
+                    <button type="button" role="tab" class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-800 text-white shadow-sm" data-color="ALL">🌈 全色域 (圓形)</button>
+                    <button type="button" role="tab" class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-red-50 hover:text-red-600" data-color="RED">🔴 紅色系</button>
+                    <button type="button" role="tab" class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-amber-50 hover:text-amber-800" data-color="BROWN">🟤 棕色系</button>
+                    <button type="button" role="tab" class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600" data-color="ORANGE">🟠 橘色系</button>
+                    <button type="button" role="tab" class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-yellow-50 hover:text-yellow-600" data-color="YELLOW">🟡 黃色系</button>
+                    <button type="button" role="tab" class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-green-50 hover:text-green-600" data-color="GREEN">🟢 綠色系</button>
+                    <button type="button" role="tab" class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-blue-50 hover:text-blue-600" data-color="BLUE">🔵 藍色系</button>
+                    <button type="button" role="tab" class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-purple-50 hover:text-purple-600" data-color="PURPLE">🟣 紫色系</button>
+                    <button type="button" role="tab" class="color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800" data-color="OTHER">⚫ 黑/白/其他</button>
+                </div>
+
+                <!-- 座標點數量提示 -->
+                <div class="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-200">
+                    圖表座標點：<span id="chartPointCount" class="font-bold text-blue-600">0</span> 筆 
+                    <span id="missingCoordBadge" class="hidden ml-1 text-amber-600">(另有 <span id="missingCoordCount">0</span> 筆無 Hue/Chroma 僅列於下方表格)</span>
+                </div>
             </div>
 
             <!-- 圖表容器 -->
             <div id="chartContainer" class="relative w-full max-w-[650px] mx-auto aspect-square transition-all duration-500">
-                <canvas id="scatterChart"></canvas>
+                <canvas id="scatterChart" aria-label="顏料 Hue 色相與 Chroma 彩度分佈散佈圖" role="img"></canvas>
             </div>
-        </div>
+        </section>
 
         <!-- 數據表格區 -->
-        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <section aria-label="顏料規格與理化指標明細表" class="bg-white rounded-2xl shadow-sm overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200 bg-gray-50 flex flex-col gap-4">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-lg font-semibold text-gray-800">資料明細 (<span id="rowCount">0</span> 筆)</h2>
-                    <button id="clearFiltersBtn" class="text-sm text-blue-600 hover:text-blue-800 transition-colors">清除進階篩選</button>
+                <div class="flex flex-wrap justify-between items-center gap-2">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-lg font-semibold text-gray-800">顏料資料明細 (<span id="rowCount">0</span> 筆)</h2>
+                        <label class="inline-flex items-center cursor-pointer text-xs text-gray-600 bg-white px-2.5 py-1 rounded-md border border-gray-200">
+                            <input type="checkbox" id="includeNoCoordCheckbox" checked class="w-3.5 h-3.5 text-blue-600 rounded focus:ring-blue-500 mr-1.5">
+                            在表格中包含無 Hue/Chroma 座標之顏料 (如黑/白/填料)
+                        </label>
+                    </div>
+                    <button id="clearFiltersBtn" type="button" class="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors">↻ 重置所有篩選條件</button>
                 </div>
                 <!-- 進階效能篩選區塊 -->
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
                     <div>
-                        <label class="block text-xs font-medium text-gray-600 mb-1">沖淡色耐光 ≧ (1-8)</label>
+                        <label for="filterTintLight" class="block text-xs font-medium text-gray-600 mb-1">沖淡色耐光 ≧ (1-8)</label>
                         <input type="number" min="1" max="8" id="filterTintLight" class="filter-input bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="例: 6">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-gray-600 mb-1">本色耐光 ≧ (1-8)</label>
+                        <label for="filterFullLight" class="block text-xs font-medium text-gray-600 mb-1">本色耐光 ≧ (1-8)</label>
                         <input type="number" min="1" max="8" id="filterFullLight" class="filter-input bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="例: 7">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-gray-600 mb-1">耐溫 ≧</label>
+                        <label for="filterHeat" class="block text-xs font-medium text-gray-600 mb-1">耐溫 (°C) ≧</label>
                         <input type="number" id="filterHeat" class="filter-input bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="例: 250">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-gray-600 mb-1">耐候 ≧ (1-5)</label>
+                        <label for="filterWeather" class="block text-xs font-medium text-gray-600 mb-1">耐候 ≧ (1-5)</label>
                         <input type="number" min="1" max="5" id="filterWeather" class="filter-input bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="例: 4">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-gray-600 mb-1">耐遷移 ≧ (1-5)</label>
+                        <label for="filterMigration" class="block text-xs font-medium text-gray-600 mb-1">耐遷移 ≧ (1-5)</label>
                         <input type="number" min="1" max="5" id="filterMigration" class="filter-input bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2" placeholder="例: 4">
                     </div>
                 </div>
             </div>
-            <div class="overflow-x-auto max-h-[40vh]">
+            <div class="overflow-x-auto max-h-[50vh]">
                 <table class="w-full text-sm text-left text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-100 sticky top-0">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100 sticky top-0 z-20 shadow-sm">
                         <tr id="tableHeader">
                             <!-- 表頭動態生成 -->
                         </tr>
                     </thead>
                     <tbody id="tableBody">
                         <tr>
-                            <td colspan="10" class="px-6 py-8 text-center text-gray-400">請先從左上方上傳資料檔案或等待系統載入</td>
+                            <td colspan="10" class="px-6 py-8 text-center text-gray-400">請先從右上方上傳資料檔案或等待系統載入</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+        </section>
+
+        <!-- SEO 友善技術說明與常見問題區塊 (協助搜尋引擎檢索關鍵字，同時提供使用者專業指引) -->
+        <section aria-label="顏料座標圖與理化指標說明" class="bg-white rounded-2xl shadow-sm p-6 text-gray-600 space-y-4">
+            <h2 class="text-lg font-bold text-gray-800 border-b border-gray-100 pb-3">關於華翔興業顏料 Hue & Chroma 座標分析系統</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm leading-relaxed pt-1">
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-1.5">🎨 色相 (Hue) 與彩度 (Chroma) 視覺化</h3>
+                    <p>本工具基於 CIE L*C*h* 色彩空間概念，將各類<strong>有機顏料、無機顏料與溶劑染料</strong>標示於極座標與直角座標圖上。<strong>Hue（色相角度 0°~360°）</strong>決定顏料的紅、橙、黃、綠、藍、紫落點；<strong>Chroma（彩度）</strong>則反映色彩飽和度，協助工程師與調色人員直觀比對近似色號（如 PR122、PV19、PB15:3、PY139 等）。</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-1.5">🔬 塑膠應用材質與理化指標篩選</h3>
+                    <p>針對不同塑膠載體與加工條件（如 <strong>PE、PP、ABS、PS、PC、PVC、工程塑膠</strong>），系統提供快速的耐性過濾功能。您可依據產品需求設定<strong>本色耐光、沖淡色耐光（1-8級）、耐溫（°C）、耐候性及耐遷移性（1-5級）</strong>下限，快速鎖定符合規格的高性能顏料。</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-1.5">📊 支援多工作表 Excel 匯入與互動比對</h3>
+                    <p>除了載入預設顏料資料庫外，您亦可上傳自訂的 Excel 規格表（支援多 Sheet 工作表自動解析與勾選疊加）。點擊座標圖上的圓點或下方明細表列，即可雙向連動高亮顯示，大幅提升塑膠配色、母粒開發與打板評估的效率。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾版權與 SEO 內部連結區 -->
+    <footer class="max-w-7xl mx-auto w-full mt-8 pt-4 pb-2 text-center text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-2 border-t border-gray-200">
+        <p>© 華翔興業有限公司 Hwashine Trading Co., Ltd. All Rights Reserved.</p>
+        <div class="space-x-4">
+            <a href="https://hwashine.tw/" target="_blank" rel="noopener" class="hover:text-gray-600 transition-colors">官方網站</a>
+            <a href="https://hwashine.tw/contact" target="_blank" rel="noopener" class="hover:text-gray-600 transition-colors">產品諮詢與索樣</a>
         </div>
+    </footer>
 
-    </div>
-
-    <!-- 新增：免責聲明 Modal 彈出視窗 -->
+    <!-- 免責聲明 Modal 彈出視窗 -->
     <div id="disclaimerModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-2xl shadow-xl p-6 max-w-md w-full mx-4 transform transition-all duration-300 scale-95" id="disclaimerContent">
             <div class="flex justify-between items-center mb-4">
@@ -188,6 +322,7 @@
         let chartInstance = null;
         let isFirstLoad = true; 
         let materialColumn = '應用'; 
+        let colorCodeColumn = '色號';
         let currentColorTab = 'ALL'; 
         let currentPointBorderColors = []; 
 
@@ -200,7 +335,6 @@
             
             function openDisclaimer() {
                 disclaimerModal.classList.remove('hidden');
-                // 延遲一點點時間觸發 CSS 動畫
                 setTimeout(() => {
                     disclaimerModal.classList.remove('opacity-0');
                     disclaimerContent.classList.remove('scale-95');
@@ -210,42 +344,28 @@
             function closeDisclaimer() {
                 disclaimerModal.classList.add('opacity-0');
                 disclaimerContent.classList.add('scale-95');
-                // 等待動畫結束後隱藏元素
                 setTimeout(() => {
                     disclaimerModal.classList.add('hidden');
                 }, 300);
             }
 
-            // 綁定按鈕事件
             openDisclaimerBtn.addEventListener('click', openDisclaimer);
             document.getElementById('closeDisclaimerBtn').addEventListener('click', closeDisclaimer);
             document.getElementById('closeDisclaimerBtn2').addEventListener('click', closeDisclaimer);
-            
-            // 點擊背景空白處也能關閉
             disclaimerModal.addEventListener('click', (e) => {
                 if (e.target === disclaimerModal) closeDisclaimer();
             });
 
-            // 自動讀取根目錄下的檔案
+            // 自動讀取根目錄下的預設檔案 (包含所有分頁)
             async function loadDefaultData() {
                 try {
-                    // 加入時間戳記 (Cache-Busting)，強迫瀏覽器每次都抓最新檔案，防止載入舊的快取
                     const timeStamp = new Date().getTime();
                     let response = await fetch('pigment.xlsx?t=' + timeStamp);
-                    let fileName = '預設檔案 (pigment.xlsx)';
-                    
                     if (!response.ok) {
                         throw new Error('找不到預設檔案 pigment.xlsx');
                     }
-                    
                     const buffer = await response.arrayBuffer();
-                    const data = new Uint8Array(buffer);
-                    const workbook = XLSX.read(data, {type: 'array'});
-                    const firstSheetName = workbook.SheetNames[0];
-                    const worksheet = workbook.Sheets[firstSheetName];
-                    const jsonData = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
-                    
-                    addDataset(fileName, jsonData);
+                    processExcelBuffer(buffer, '預設檔案');
                 } catch (error) {
                     console.warn('自動載入預設檔案失敗，請手動上傳。', error);
                     updateChart([]); 
@@ -254,8 +374,10 @@
             
             loadDefaultData();
             
+            // 綁定篩選器與控制項事件
             document.getElementById('materialFilter').addEventListener('change', updateView);
-            // 修改監聽器的 ID，對應新的 input ID
+            document.getElementById('keywordSearch').addEventListener('input', updateView);
+            document.getElementById('includeNoCoordCheckbox').addEventListener('change', updateView);
             document.getElementById('excelFileInput').addEventListener('change', handleFileUpload);
 
             document.querySelectorAll('.filter-input').forEach(input => {
@@ -264,75 +386,146 @@
 
             document.getElementById('clearFiltersBtn').addEventListener('click', () => {
                 document.querySelectorAll('.filter-input').forEach(input => input.value = '');
+                document.getElementById('keywordSearch').value = '';
+                document.getElementById('materialFilter').value = 'ALL';
                 updateView();
             });
 
+            document.getElementById('selectAllSourcesBtn').addEventListener('click', () => {
+                datasetsStore.forEach(ds => ds.checked = true);
+                renderDatasetCheckboxes();
+                refreshCombinedData();
+            });
+
+            document.getElementById('deselectAllSourcesBtn').addEventListener('click', () => {
+                datasetsStore.forEach(ds => ds.checked = false);
+                renderDatasetCheckboxes();
+                refreshCombinedData();
+            });
+
+            // 色系切換按鈕事件
             document.querySelectorAll('.color-tab').forEach(btn => {
                 btn.addEventListener('click', (e) => {
+                    const targetBtn = e.currentTarget;
                     document.querySelectorAll('.color-tab').forEach(b => {
                         b.className = 'color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-100 text-gray-600 hover:bg-gray-200';
                     });
                     
-                    const selectedColor = e.target.getAttribute('data-color');
+                    const selectedColor = targetBtn.getAttribute('data-color');
                     currentColorTab = selectedColor;
                     
-                    if (selectedColor === 'ALL') e.target.className = 'color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-gray-800 text-white shadow-sm';
-                    if (selectedColor === 'RED') e.target.className = 'color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-red-500 text-white shadow-sm';
-                    if (selectedColor === 'BROWN') e.target.className = 'color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-amber-800 text-white shadow-sm';
-                    if (selectedColor === 'ORANGE') e.target.className = 'color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-orange-500 text-white shadow-sm';
-                    if (selectedColor === 'YELLOW') e.target.className = 'color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-yellow-400 text-gray-900 shadow-sm';
-                    if (selectedColor === 'GREEN') e.target.className = 'color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-green-500 text-white shadow-sm';
-                    if (selectedColor === 'BLUE') e.target.className = 'color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-blue-500 text-white shadow-sm';
-                    if (selectedColor === 'PURPLE') e.target.className = 'color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-purple-500 text-white shadow-sm';
-
+                    const activeStyles = {
+                        'ALL': 'bg-gray-800 text-white shadow-sm',
+                        'RED': 'bg-red-500 text-white shadow-sm',
+                        'BROWN': 'bg-amber-800 text-white shadow-sm',
+                        'ORANGE': 'bg-orange-500 text-white shadow-sm',
+                        'YELLOW': 'bg-yellow-400 text-gray-900 shadow-sm',
+                        'GREEN': 'bg-green-500 text-white shadow-sm',
+                        'BLUE': 'bg-blue-500 text-white shadow-sm',
+                        'PURPLE': 'bg-purple-500 text-white shadow-sm',
+                        'OTHER': 'bg-gray-700 text-white shadow-sm'
+                    };
+                    
+                    targetBtn.className = `color-tab px-4 py-2 rounded-lg font-medium text-sm transition-colors ${activeStyles[selectedColor] || activeStyles['ALL']}`;
                     updateView(); 
                 });
             });
         });
 
+        // 處理手動上傳檔案
         function handleFileUpload(event) {
             const file = event.target.files[0];
             if (!file) return;
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                const data = new Uint8Array(e.target.result);
-                const workbook = XLSX.read(data, {type: 'array'});
-                const firstSheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[firstSheetName];
-                const jsonData = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
-                
-                addDataset(file.name, jsonData);
+                processExcelBuffer(e.target.result, file.name);
                 event.target.value = '';
             };
             reader.readAsArrayBuffer(file);
         }
 
-        function addDataset(name, jsonData) {
-            if (!jsonData || jsonData.length === 0) return;
+        // 關鍵修正 1：讀取 Excel 內「所有工作表 (Sheets)」，並自動尋找真實表頭列
+        function processExcelBuffer(buffer, fileLabel) {
+            const data = new Uint8Array(buffer);
+            const workbook = XLSX.read(data, {type: 'array'});
+            
+            workbook.SheetNames.forEach(sheetName => {
+                const worksheet = workbook.Sheets[sheetName];
+                
+                // 先以 2D 陣列讀取，用來偵測真實表頭在哪一列 (避免第一列是合併儲存格大標題導致整頁抓不到)
+                const rawRows = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: "" });
+                if (!rawRows || rawRows.length === 0) return;
 
-            const cleanData = jsonData.map(row => {
-                const cleanRow = {};
-                for (let key in row) {
-                    let cleanKey = key.trim();
-                    if (cleanKey === 'SD 1/3所需濃度%' || cleanKey === 'SD 1/3') {
-                        cleanKey = 'SD 1/3所用量g/kg';
+                let headerRowIndex = 0;
+                for (let i = 0; i < Math.min(10, rawRows.length); i++) {
+                    const rowStr = rawRows[i].join(' ').toLowerCase();
+                    if (rowStr.includes('hue') || rowStr.includes('色號') || rowStr.includes('chroma') || rowStr.includes('耐溫')) {
+                        headerRowIndex = i;
+                        break;
                     }
-                    const val = row[key];
-                    cleanRow[cleanKey] = typeof val === 'string' ? val.trim() : val;
                 }
-                return cleanRow;
-            });
 
-            datasetsStore.push({
-                id: Date.now() + Math.random(),
-                name: name,
-                data: cleanData,
-                checked: true 
+                const jsonData = XLSX.utils.sheet_to_json(worksheet, { range: headerRowIndex, defval: "" });
+                if (jsonData && jsonData.length > 0) {
+                    const displayName = workbook.SheetNames.length > 1 ? `${fileLabel} - ${sheetName}` : fileLabel;
+                    addDataset(displayName, jsonData, sheetName);
+                }
             });
 
             renderDatasetCheckboxes();
             refreshCombinedData();
+        }
+
+        // 關鍵修正 2：標準化所有欄位名稱，消除大小寫與前後空白差異
+        function addDataset(name, jsonData, sheetName = '') {
+            if (!jsonData || jsonData.length === 0) return;
+
+            const cleanData = [];
+            jsonData.forEach(row => {
+                const cleanRow = {};
+                let hasMeaningfulContent = false;
+
+                for (let key in row) {
+                    if (key.startsWith('__EMPTY')) continue; // 忽略空白無名欄位
+
+                    let cleanKey = key.toString().trim();
+                    const lowerKey = cleanKey.toLowerCase();
+
+                    // 統一關鍵欄位名稱
+                    if (lowerKey === 'hue' || cleanKey === '色相' || lowerKey.includes('hue')) {
+                        cleanKey = 'Hue';
+                    } else if (lowerKey === 'chroma' || cleanKey === '彩度' || lowerKey.includes('chroma')) {
+                        cleanKey = 'Chroma';
+                    } else if (cleanKey === 'SD 1/3所需濃度%' || cleanKey === 'SD 1/3') {
+                        cleanKey = 'SD 1/3所用量g/kg';
+                    } else if (cleanKey === '品名' || cleanKey === '顏料名稱' || cleanKey === '型號' || cleanKey === 'Color Index' || cleanKey === 'CI') {
+                        if (!row['色號']) cleanKey = '色號';
+                    }
+
+                    const val = row[key];
+                    const trimmedVal = typeof val === 'string' ? val.trim() : val;
+                    if (trimmedVal !== '' && trimmedVal !== null && trimmedVal !== undefined) {
+                        hasMeaningfulContent = true;
+                    }
+                    cleanRow[cleanKey] = trimmedVal;
+                }
+
+                // 如果該列沒有材質欄位，但分頁名稱本身就是材質 (如 PE, PP, ABS)，可作為輔助資訊
+                if (hasMeaningfulContent) {
+                    cleanRow['_sheetName'] = sheetName;
+                    cleanData.push(cleanRow);
+                }
+            });
+
+            if (cleanData.length > 0) {
+                datasetsStore.push({
+                    id: Date.now() + Math.random(),
+                    name: name,
+                    data: cleanData,
+                    checked: true 
+                });
+            }
         }
 
         function renderDatasetCheckboxes() {
@@ -349,7 +542,7 @@
                 label.className = 'inline-flex items-center cursor-pointer bg-blue-50 px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-colors';
                 label.innerHTML = `
                     <input type="checkbox" class="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500" ${ds.checked ? 'checked' : ''}>
-                    <span class="ml-2 text-sm font-medium text-blue-800">${ds.name}</span>
+                    <span class="ml-2 text-sm font-medium text-blue-800">${ds.name} <span class="text-xs text-blue-500">(${ds.data.length})</span></span>
                 `;
                 
                 const checkbox = label.querySelector('input');
@@ -364,63 +557,123 @@
 
         function refreshCombinedData() {
             parsedData = [];
+            const headerSet = new Set();
+
             datasetsStore.forEach(ds => {
                 if (ds.checked) {
                     parsedData = parsedData.concat(ds.data);
+                    ds.data.forEach(row => {
+                        Object.keys(row).forEach(k => {
+                            if (k !== '_sheetName') headerSet.add(k);
+                        });
+                    });
                 }
             });
 
-            if (parsedData.length > 0) {
-                headers = Object.keys(parsedData[0]);
-                materialColumn = headers.find(h => h.includes('材質') || h.includes('應用')) || '應用';
+            headers = Array.from(headerSet);
+            if (headers.length > 0) {
+                materialColumn = headers.find(h => h.includes('材質') || h.includes('應用') || h.includes('樹脂') || h.includes('載體')) || '應用';
+                colorCodeColumn = headers.find(h => h === '色號' || h.includes('色號') || h.includes('編號') || h.includes('型號')) || '色號';
             }
 
             populateFilterDropdown();
             updateView();
         }
 
-        // 動態產生下拉選單，自動偵測檔案內的材質並設定預設值
+        // 動態產生下拉選單，支援分割複合材質 (例如 "PE/PP" 或 "PE, PP")
         function populateFilterDropdown() {
             const filterSelect = document.getElementById('materialFilter');
             const currentSelection = filterSelect.value;
             
-            // 取得所有不重複的材質清單 (自動偵測，並過濾掉空值)
-            const uniqueMaterials = [...new Set(parsedData.map(row => row[materialColumn]))]
-                .filter(val => val !== undefined && val !== null && val.toString().trim() !== '')
-                .sort();
+            const rawMaterials = parsedData.map(row => row[materialColumn])
+                .filter(val => val !== undefined && val !== null && val.toString().trim() !== '');
 
-            // 動態生成選項
-            let optionsHTML = `<option value="ALL">全部 (All)</option>`;
+            const uniqueMaterials = [...new Set(rawMaterials.map(m => m.toString().trim()))].sort();
+
+            let optionsHTML = `<option value="ALL">全部材質 (All - 共 ${parsedData.length} 筆)</option>`;
             uniqueMaterials.forEach(material => {
                 optionsHTML += `<option value="${material}">${material}</option>`;
             });
             filterSelect.innerHTML = optionsHTML;
 
-            // 判斷預設顯示或維持選擇
+            // 修正預設行為：若只有部分資料是 PE，強制預設選 PE 會讓其他材質的顏料看起來像「抓不到」，因此預設改為 ALL，或當全部都有 PE 時才選
             if (isFirstLoad) {
-                // 首次載入時，若材質清單內包含 PE，就預設選擇 PE，否則選 ALL
-                if (uniqueMaterials.includes('PE')) {
-                    filterSelect.value = 'PE';
-                } else {
-                    filterSelect.value = 'ALL';
-                }
+                filterSelect.value = 'ALL';
                 isFirstLoad = false;
             } else if (currentSelection === 'ALL' || uniqueMaterials.includes(currentSelection)) {
-                // 若已經有選擇過，且該選項在新的資料集中依然存在，則保留該選項
                 filterSelect.value = currentSelection;
             } else {
                 filterSelect.value = 'ALL';
             }
         }
 
-        function extractNumber(str) {
-            if (!str || str === '~') return NaN;
-            const match = str.toString().match(/\d+(\.\d+)?/);
+        // 關鍵修正 3：更強健的數值解析 (支援全形數字、逗號、大於小於符號如 ">300"、"7-8"、"6~7")
+        function extractNumber(val) {
+            if (val === undefined || val === null || val === '' || val === '~' || val === '-' || val === 'N/A') return NaN;
+            if (typeof val === 'number') return val;
+            
+            // 將全形數字轉半形，並移除千分位逗號
+            let str = val.toString()
+                .replace(/[０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0))
+                .replace(/，/g, '.')
+                .replace(/,/g, '');
+
+            const match = str.match(/[-+]?\d+(\.\d+)?/);
             return match ? parseFloat(match[0]) : NaN;
+        }
+
+        // 關鍵修正 4：全面支援顏料 (Pigment) 與溶劑染料 (Solvent Dye) 色系分類與正規化
+        function classifyPigmentCategory(rawName, hue, chroma) {
+            const nameStr = (rawName || '').toString().trim();
+            const upper = nameStr.toUpperCase();
+            // 移除空白、連字號與縮寫點，方便統一比對 (例如 "P.R. 122" -> "PR122", "S.R. 135" -> "SR135")
+            const normalized = upper.replace(/[\s\.\-]/g, '');
+
+            // 特例處理：PV19(γ) 或含 γ 的 PV19 歸類為紅色系
+            if (normalized.includes('PV19') && (nameStr.includes('γ') || upper.includes('GAMMA') || upper.includes('Γ') || nameStr.includes('紅'))) {
+                return 'RED';
+            }
+
+            // 識別字首 (含顏料 P 與溶劑染料 S、分散染料 D、螢光顏料 F 等，以及中文關鍵字)
+            const isPBr = /^PBR\d*/.test(normalized) || /^SBR\d*/.test(normalized) || nameStr.includes('棕');
+            const isPBk = /^PBK\d*/.test(normalized) || /^SBK\d*/.test(normalized) || nameStr.includes('黑');
+            const isPW  = /^PW\d*/.test(normalized)  || nameStr.includes('白') || nameStr.includes('鈦白');
+            const isPR  = /^PR\d*/.test(normalized)  || /^SR\d*/.test(normalized) || /^DR\d*/.test(normalized) || nameStr.includes('紅');
+            const isPO  = /^PO\d*/.test(normalized)  || /^SO\d*/.test(normalized) || nameStr.includes('橘') || nameStr.includes('橙');
+            const isPY  = /^PY\d*/.test(normalized)  || /^SY\d*/.test(normalized) || /^DY\d*/.test(normalized) || nameStr.includes('黃');
+            const isPG  = /^PG\d*/.test(normalized)  || /^SG\d*/.test(normalized) || nameStr.includes('綠');
+            const isPB  = (/^PB\d*/.test(normalized) || /^SB\d*/.test(normalized) || nameStr.includes('藍')) && !isPBr && !isPBk;
+            const isPV  = /^PV\d*/.test(normalized)  || /^SV\d*/.test(normalized) || nameStr.includes('紫');
+
+            if (isPBk || isPW) return 'OTHER';
+            if (isPBr) return 'BROWN';
+            if (isPR)  return 'RED';
+            if (isPO)  return 'ORANGE';
+            if (isPY)  return 'YELLOW';
+            if (isPG)  return 'GREEN';
+            if (isPB)  return 'BLUE';
+            if (isPV)  return 'PURPLE';
+
+            // 若無標準字首，則依賴 Hue 與 Chroma 角度進行無縫分類 (確保 0~360 度沒有任何死角)
+            if (!isNaN(hue)) {
+                let h = ((hue % 360) + 360) % 360;
+                if (h >= 345 || h <= 35) return 'RED';
+                if (h > 35 && h <= 65) {
+                    return (!isNaN(chroma) && chroma < 45) ? 'BROWN' : 'ORANGE';
+                }
+                if (h > 65 && h <= 105) return 'YELLOW';
+                if (h > 105 && h <= 200) return 'GREEN';
+                if (h > 200 && h <= 285) return 'BLUE';
+                if (h > 285 && h < 345) return 'PURPLE';
+            }
+
+            return 'OTHER';
         }
 
         function updateView() {
             const selectedMaterial = document.getElementById('materialFilter').value;
+            const keyword = document.getElementById('keywordSearch').value.trim().toLowerCase();
+            const includeNoCoord = document.getElementById('includeNoCoordCheckbox').checked;
             
             const minTintLight = parseFloat(document.getElementById('filterTintLight').value);
             const minFullLight = parseFloat(document.getElementById('filterFullLight').value);
@@ -428,107 +681,108 @@
             const minWeather = parseFloat(document.getElementById('filterWeather').value);
             const minMigration = parseFloat(document.getElementById('filterMigration').value);
             
+            let missingCoordCount = 0;
+
             const filteredData = parsedData.filter(row => {
-                const hue = parseFloat(row['Hue']);
-                const chroma = parseFloat(row['Chroma']);
-                if (isNaN(hue) || isNaN(chroma)) return false;
-
-                if (currentColorTab !== 'ALL') {
-                    const rawColorName = row['色號'] || '';
-                    const colorCode = rawColorName.toUpperCase();
-                    
-                    let isPR = colorCode.startsWith('PR');
-                    let isPO = colorCode.startsWith('PO');
-                    let isPY = colorCode.startsWith('PY');
-                    let isPG = colorCode.startsWith('PG');
-                    let isPB = colorCode.startsWith('PB') && !colorCode.startsWith('PBR') && !colorCode.startsWith('PBK'); 
-                    let isPV = colorCode.startsWith('PV');
-                    let isPBr = colorCode.startsWith('PBR');
-                    
-                    // 新增：特例處理 PV19(γ) 歸類為紅色系
-                    if (rawColorName.includes('PV19(γ') || colorCode.includes('PV19(Γ')) {
-                        isPR = true;
-                        isPV = false;
-                    }
-
-                    const hasStandardPrefix = isPR || isPO || isPY || isPG || isPB || isPV || isPBr;
-
-                    if (hasStandardPrefix) {
-                        if (currentColorTab === 'RED' && !isPR) return false;
-                        if (currentColorTab === 'ORANGE' && !isPO) return false;
-                        if (currentColorTab === 'YELLOW' && !isPY) return false;
-                        if (currentColorTab === 'GREEN' && !isPG) return false;
-                        if (currentColorTab === 'BLUE' && !isPB) return false;
-                        if (currentColorTab === 'PURPLE' && !isPV) return false;
-                        if (currentColorTab === 'BROWN' && !isPBr) return false;
-                    } else {
-                        if (currentColorTab === 'RED') {
-                            if (!(hue >= 345 || hue <= 35)) return false;
-                        } else if (currentColorTab === 'BROWN') {
-                            if (!(hue > 35 && hue <= 65 && chroma < 50)) return false;
-                        } else if (currentColorTab === 'ORANGE') {
-                            if (!(hue > 35 && hue <= 65 && chroma >= 50)) return false;
-                        } else if (currentColorTab === 'YELLOW') {
-                            if (!(hue > 65 && hue <= 105)) return false;
-                        } else if (currentColorTab === 'GREEN') {
-                            if (!(hue > 105 && hue <= 200)) return false;
-                        } else if (currentColorTab === 'BLUE') {
-                            if (!(hue > 200 && hue <= 285)) return false;
-                        } else if (currentColorTab === 'PURPLE') {
-                            if (!(hue > 285 && hue < 345)) return false;
-                        }
+                // 1. 材質篩選 (容許前後空白差異或複合材質包含匹配)
+                if (selectedMaterial !== 'ALL') {
+                    const rowMat = (row[materialColumn] || '').toString().trim();
+                    if (rowMat !== selectedMaterial && !rowMat.split(/[\/,、]/).map(s => s.trim()).includes(selectedMaterial)) {
+                        return false;
                     }
                 }
 
-                if (selectedMaterial !== 'ALL' && row[materialColumn] !== selectedMaterial) return false;
-                
-                // 新增：只要欄位是 ~ 或者空值，一律視為放行，不被過濾掉
+                // 2. 關鍵字搜尋 (搜尋所有欄位，方便找特定顏料)
+                if (keyword !== '') {
+                    const matched = Object.values(row).some(val => 
+                        val !== null && val !== undefined && val.toString().toLowerCase().includes(keyword)
+                    );
+                    if (!matched) return false;
+                }
+
+                // 3. 進階理化指標篩選 (只要欄位是 ~ 或空值，一律放行)
                 if (!isNaN(minTintLight)) {
                     const rawVal = row['沖淡色耐光'];
                     if (rawVal !== '~' && rawVal !== '' && rawVal !== undefined) {
                         const val = extractNumber(rawVal);
-                        if (isNaN(val) || val < minTintLight) return false;
+                        if (!isNaN(val) && val < minTintLight) return false;
                     }
                 }
                 if (!isNaN(minFullLight)) {
                     const rawVal = row['本色耐光'];
                     if (rawVal !== '~' && rawVal !== '' && rawVal !== undefined) {
                         const val = extractNumber(rawVal);
-                        if (isNaN(val) || val < minFullLight) return false;
+                        if (!isNaN(val) && val < minFullLight) return false;
                     }
                 }
                 if (!isNaN(minHeat)) {
                     const rawVal = row['耐溫'];
                     if (rawVal !== '~' && rawVal !== '' && rawVal !== undefined) {
                         const val = extractNumber(rawVal);
-                        if (isNaN(val) || val < minHeat) return false;
+                        if (!isNaN(val) && val < minHeat) return false;
                     }
                 }
                 if (!isNaN(minWeather)) {
                     const rawVal = row['耐候'];
                     if (rawVal !== '~' && rawVal !== '' && rawVal !== undefined) {
                         const val = extractNumber(rawVal);
-                        if (isNaN(val) || val < minWeather) return false;
+                        if (!isNaN(val) && val < minWeather) return false;
                     }
                 }
                 if (!isNaN(minMigration)) {
                     const rawVal = row['耐遷移'];
                     if (rawVal !== '~' && rawVal !== '' && rawVal !== undefined) {
                         const val = extractNumber(rawVal);
-                        if (isNaN(val) || val < minMigration) return false;
+                        if (!isNaN(val) && val < minMigration) return false;
                     }
+                }
+
+                // 4. 解析 Hue 與 Chroma
+                const hue = extractNumber(row['Hue']);
+                const chroma = extractNumber(row['Chroma']);
+                const hasValidCoords = !isNaN(hue) && !isNaN(chroma);
+
+                const rawColorName = row[colorCodeColumn] || row['色號'] || '';
+                const category = classifyPigmentCategory(rawColorName, hue, chroma);
+
+                // 5. 色系分頁篩選
+                if (currentColorTab !== 'ALL') {
+                    if (currentColorTab === 'OTHER') {
+                        if (category !== 'OTHER' && hasValidCoords) return false;
+                    } else {
+                        // 在特定色系分頁時：只要字首符合該色系，或者 (無字首但色相角度符合) 皆予以保留
+                        if (category !== currentColorTab) return false;
+                    }
+                }
+
+                // 6. 檢查是否有座標
+                if (!hasValidCoords) {
+                    if (includeNoCoord || currentColorTab === 'OTHER') {
+                        missingCoordCount++;
+                        return true;
+                    }
+                    return false;
                 }
 
                 return true;
             });
 
+            // 更新無座標提示徽章
+            const missingBadge = document.getElementById('missingCoordBadge');
+            if (missingCoordCount > 0) {
+                missingBadge.classList.remove('hidden');
+                document.getElementById('missingCoordCount').textContent = missingCoordCount;
+            } else {
+                missingBadge.classList.add('hidden');
+            }
+
             updateChart(filteredData);
             updateTable(filteredData);
         }
 
-        function getColorFromHue(hueStr) {
-            const dataHue = parseFloat(hueStr);
-            if (isNaN(dataHue)) return 'rgba(100, 100, 100, 0.6)'; 
+        function getColorFromHue(hueVal) {
+            const dataHue = extractNumber(hueVal);
+            if (isNaN(dataHue)) return 'rgba(156, 163, 175, 0.8)'; 
             
             let h = dataHue % 360;
             if (h < 0) h += 360;
@@ -576,7 +830,7 @@
 
             let maxChroma = 0;
             data.forEach(row => {
-                const c = parseFloat(row['Chroma']);
+                const c = extractNumber(row['Chroma']);
                 if (!isNaN(c) && c > maxChroma) maxChroma = c;
             });
             let maxBound = Math.ceil(maxChroma / 20) * 20;
@@ -587,9 +841,9 @@
             const pointColors = [];
             const pointBorderColors = [];
 
-            data.forEach(row => {
-                let hue = parseFloat(row['Hue']);
-                let chroma = parseFloat(row['Chroma']);
+            data.forEach((row, tableIndex) => {
+                let hue = extractNumber(row['Hue']);
+                let chroma = extractNumber(row['Chroma']);
                 
                 if (!isNaN(hue) && !isNaN(chroma)) {
                     let finalX, finalY;
@@ -599,8 +853,11 @@
                         finalX = chroma * Math.cos(hueRad);
                         finalY = chroma * Math.sin(hueRad);
                     } else {
-                        if (currentColorTab === 'RED' && hue >= 300) {
+                        // 在紅色或紫色系中，處理跨越 360° / 0° 交界處的連續性
+                        if (currentColorTab === 'RED' && hue >= 270) {
                             hue = hue - 360; 
+                        } else if (currentColorTab === 'PURPLE' && hue < 90) {
+                            hue = hue + 360;
                         }
                         finalX = hue;
                         finalY = chroma;
@@ -609,7 +866,8 @@
                     chartDataPoints.push({
                         x: finalX,
                         y: finalY,
-                        raw: row 
+                        raw: row,
+                        tableIndex: tableIndex // 記錄對應的表格列索引，確保點擊高亮精準對應
                     });
                     
                     const color = getColorFromHue(row['Hue']); 
@@ -618,6 +876,7 @@
                 }
             });
 
+            document.getElementById('chartPointCount').textContent = chartDataPoints.length;
             currentPointBorderColors = [...pointBorderColors]; 
 
             if (chartInstance) {
@@ -677,7 +936,7 @@
                 }
             };
 
-            // 新增：具備防重疊功能的標籤外掛
+            // 具備防重疊功能的標籤外掛
             const pointLabelPlugin = {
                 id: 'pointLabel',
                 afterDatasetsDraw: (chart) => {
@@ -688,26 +947,23 @@
                     ctx.font = 'bold 11px sans-serif';
                     ctx.textBaseline = 'top'; 
 
-                    const drawnBoxes = []; // 用來記錄已經畫上的標籤範圍
+                    const drawnBoxes = [];
 
-                    // 檢查傳入的標籤框是否跟已經畫過的標籤重疊
                     function checkCollision(box) {
                         for (let b of drawnBoxes) {
-                            // 加上一些間距 (Padding) 防止貼太近
                             if (!(box.right + 2 < b.left || box.left - 2 > b.right || box.bottom + 2 < b.top || box.top - 2 > b.bottom)) {
-                                return true; // 發生重疊
+                                return true;
                             }
                         }
-                        return false; // 沒有重疊
+                        return false;
                     }
 
                     chart.data.datasets.forEach((dataset, i) => {
                         const meta = chart.getDatasetMeta(i);
                         meta.data.forEach((element, index) => {
                             const dataPoint = dataset.data[index];
-                            if (!dataPoint.raw) return;
-                            const text = dataPoint.raw['色號'] || '';
-                            
+                            if (!dataPoint || !dataPoint.raw) return;
+                            const text = dataPoint.raw[colorCodeColumn] || dataPoint.raw['色號'] || '';
                             if (!text) return;
 
                             const x = element.x;
@@ -716,7 +972,6 @@
                             const textWidth = ctx.measureText(text).width;
                             const textHeight = 14;
                             
-                            // 定義 8 個可能放置標籤的相對位置 (優先嘗試右下，接著右上、左下、左上等)
                             const positions = [
                                 { x: 6, y: 6 },                                  // 右下
                                 { x: 6, y: -textHeight - 6 },                    // 右上
@@ -728,7 +983,6 @@
                                 { x: -textWidth / 2, y: -textHeight - 10 }       // 正上
                             ];
 
-                            // 依序測試這些位置
                             for (let pos of positions) {
                                 const box = {
                                     left: x + pos.x,
@@ -737,20 +991,17 @@
                                     bottom: y + pos.y + textHeight
                                 };
 
-                                // 如果這個位置沒有重疊，就畫在這裡
                                 if (!checkCollision(box)) {
-                                    ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+                                    ctx.fillStyle = 'rgba(255, 255, 255, 0.78)';
                                     ctx.fillRect(box.left - 2, box.top - 2, textWidth + 4, textHeight + 4);
                                     
                                     ctx.fillStyle = '#374151';
                                     ctx.fillText(text, x + pos.x, y + pos.y);
 
-                                    // 記錄這個成功繪製的位置
                                     drawnBoxes.push(box);
                                     break; 
                                 }
                             }
-                            // 備註：如果 8 個位置都滿了，我們就不畫這個點的文字標籤，保持畫面整潔
                         });
                     });
                     ctx.restore();
@@ -767,7 +1018,7 @@
                 scalesConfig = {
                     x: {
                         display: true,
-                        title: { display: true, text: 'Hue (色相) ➔', font: { size: 14, weight: 'bold' } },
+                        title: { display: true, text: 'Hue (色相角度) ➔', font: { size: 14, weight: 'bold' } },
                         grid: { color: '#f3f4f6' }
                     },
                     y: {
@@ -781,7 +1032,7 @@
 
             chartInstance = new Chart(ctx, {
                 type: 'scatter',
-                plugins: [polarGridPlugin, pointLabelPlugin], // 加入新的標籤插件
+                plugins: [polarGridPlugin, pointLabelPlugin],
                 data: {
                     datasets: [{
                         label: '顏料資料點',
@@ -798,9 +1049,10 @@
                     maintainAspectRatio: false,
                     onClick: (event, elements) => {
                         if (elements.length > 0) {
-                            const idx = elements[0].index;
-                            highlightChartPoint(idx);
-                            highlightTableRow(idx, true); 
+                            const chartIdx = elements[0].index;
+                            const pointObj = chartDataPoints[chartIdx];
+                            highlightChartPoint(chartIdx);
+                            highlightTableRow(pointObj ? pointObj.tableIndex : -1, false); 
                         } else {
                             highlightChartPoint(-1);
                             highlightTableRow(-1, true);
@@ -811,7 +1063,7 @@
                             display: false
                         },
                         tooltip: {
-                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.96)',
                             titleColor: '#1f2937',
                             bodyColor: '#374151',
                             borderColor: '#e5e7eb',
@@ -823,8 +1075,9 @@
                                 label: function(context) {
                                     const row = context.raw.raw;
                                     return [
-                                        `色號: ${row['色號'] || 'N/A'}`,
+                                        `色號: ${row[colorCodeColumn] || row['色號'] || 'N/A'}`,
                                         `材質: ${row[materialColumn] || 'N/A'}`,
+                                        `Hue / Chroma: ${row['Hue'] ?? '~'} / ${row['Chroma'] ?? '~'}`,
                                         `本色耐光: ${row['本色耐光'] || '~'}`,
                                         `耐溫: ${row['耐溫'] || '~'}`
                                     ];
@@ -837,7 +1090,7 @@
             });
         }
 
-        function highlightChartPoint(index) {
+        function highlightChartPoint(chartIndex) {
             if (!chartInstance) return;
             const dataset = chartInstance.data.datasets[0];
             const count = dataset.data.length;
@@ -846,12 +1099,12 @@
             const borderWidths = new Array(count).fill(1);
             const borderColors = [...currentPointBorderColors];
             
-            if (index >= 0 && index < count) {
-                radii[index] = 18; 
-                borderWidths[index] = 4; 
-                borderColors[index] = '#111827'; 
+            if (chartIndex >= 0 && chartIndex < count) {
+                radii[chartIndex] = 18; 
+                borderWidths[chartIndex] = 4; 
+                borderColors[chartIndex] = '#111827'; 
 
-                chartInstance.tooltip.setActiveElements([{ datasetIndex: 0, index: index }], { x: 0, y: 0 });
+                chartInstance.tooltip.setActiveElements([{ datasetIndex: 0, index: chartIndex }], { x: 0, y: 0 });
             } else {
                 chartInstance.tooltip.setActiveElements([], { x: 0, y: 0 });
             }
@@ -863,11 +1116,11 @@
             chartInstance.update();
         }
 
-        function highlightTableRow(index, preventScroll = false) {
+        function highlightTableRow(tableIndex, preventScroll = false) {
             const rows = document.querySelectorAll('#tableBody tr[data-index]');
             rows.forEach(tr => {
                 const idx = parseInt(tr.dataset.index);
-                if (idx === index) {
+                if (idx === tableIndex) {
                     tr.className = 'border-b transition-colors cursor-pointer bg-blue-100 ring-2 ring-inset ring-blue-500 relative z-10';
                     if (!preventScroll) {
                         tr.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -888,11 +1141,11 @@
             thead.innerHTML = '';
             tbody.innerHTML = '';
 
-            const hiddenColumns = ['Hue', 'Chroma'];
+            const hiddenColumns = ['Hue', 'Chroma', '_sheetName'];
 
             if (data.length === 0) {
                 const tr = document.createElement('tr');
-                tr.innerHTML = '<td colspan="10" class="px-6 py-8 text-center text-gray-400">目前沒有符合的資料</td>';
+                tr.innerHTML = '<td colspan="12" class="px-6 py-8 text-center text-gray-400">目前沒有符合篩選條件的資料</td>';
                 tbody.appendChild(tr);
                 return;
             }
@@ -906,16 +1159,23 @@
                 thead.appendChild(th);
             });
 
-            data.forEach((row, index) => {
+            data.forEach((row, tableIndex) => {
                 const tr = document.createElement('tr');
-                tr.dataset.index = index; 
-                const bgClass = index % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+                tr.dataset.index = tableIndex; 
+                const bgClass = tableIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50';
                 tr.className = `border-b transition-colors cursor-pointer hover:bg-blue-50 ${bgClass}`;
                 
                 tr.addEventListener('click', () => {
-                    highlightTableRow(index);
-                    highlightChartPoint(index);
-                    document.getElementById('chartContainer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    highlightTableRow(tableIndex, true);
+                    // 尋找該筆資料在圖表中的對應點索引
+                    if (chartInstance) {
+                        const chartPoints = chartInstance.data.datasets[0].data;
+                        const chartIdx = chartPoints.findIndex(pt => pt.tableIndex === tableIndex);
+                        highlightChartPoint(chartIdx);
+                        if (chartIdx !== -1) {
+                            document.getElementById('chartContainer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    }
                 });
                 
                 headers.forEach(h => {
@@ -923,12 +1183,19 @@
 
                     const td = document.createElement('td');
                     td.className = 'px-6 py-4 whitespace-nowrap';
-                    td.textContent = row[h] || '';
+                    td.textContent = (row[h] !== undefined && row[h] !== null) ? row[h] : '';
                     
-                    if (h === '色號' && row['Hue'] && !isNaN(parseFloat(row['Hue']))) {
+                    if (h === colorCodeColumn || h === '色號') {
+                        const hueVal = extractNumber(row['Hue']);
                         const colorSpan = document.createElement('span');
-                        colorSpan.className = 'inline-block w-3 h-3 rounded-full mr-2 align-middle border border-gray-200';
-                        colorSpan.style.backgroundColor = getColorFromHue(row['Hue']);
+                        colorSpan.className = 'inline-block w-3 h-3 rounded-full mr-2 align-middle border border-gray-300';
+                        if (!isNaN(hueVal)) {
+                            colorSpan.style.backgroundColor = getColorFromHue(hueVal);
+                        } else {
+                            // 若無 Hue 座標 (例如黑色、白色)，給予灰白標記
+                            colorSpan.style.backgroundColor = '#e5e7eb';
+                            colorSpan.title = '此顏料無 Hue/Chroma 座標數據';
+                        }
                         td.insertBefore(colorSpan, td.firstChild);
                     }
                     
