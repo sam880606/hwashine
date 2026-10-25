@@ -903,17 +903,9 @@
                         ctx.beginPath();
                         ctx.arc(centerX, centerY, r, 0, 2 * Math.PI);
                         ctx.stroke();
-                        
-                        ctx.fillStyle = '#9ca3af';
-                        ctx.font = '11px sans-serif';
-                        ctx.textAlign = 'center';
-                        ctx.fillText(i.toString(), centerX, centerY - r + 12);
                     }
 
                     const angles = [0, 45, 90, 135, 180, 225, 270, 315];
-                    ctx.fillStyle = '#6b7280';
-                    ctx.font = '12px sans-serif';
-                    ctx.textBaseline = 'middle';
                     
                     angles.forEach(angle => {
                         const rad = angle * Math.PI / 180;
@@ -924,12 +916,6 @@
                         ctx.moveTo(centerX, centerY);
                         ctx.lineTo(xEnd, yEnd);
                         ctx.stroke();
-                        
-                        const lx = xAxis.getPixelForValue((maxBound * 1.08) * Math.cos(rad));
-                        const ly = yAxis.getPixelForValue((maxBound * 1.08) * Math.sin(rad));
-                        
-                        ctx.textAlign = (angle > 90 && angle < 270) ? 'right' : (angle === 90 || angle === 270) ? 'center' : 'left';
-                        ctx.fillText(`${angle}°`, lx, ly);
                     });
                     
                     ctx.restore();
@@ -1019,11 +1005,13 @@
                     x: {
                         display: true,
                         title: { display: true, text: 'Hue (色相角度) ➔', font: { size: 14, weight: 'bold' } },
+                        ticks: { display: false },
                         grid: { color: '#f3f4f6' }
                     },
                     y: {
                         display: true,
                         title: { display: true, text: 'Chroma (彩度/飽和度) ➔', font: { size: 14, weight: 'bold' } },
+                        ticks: { display: false },
                         grid: { color: '#f3f4f6' },
                         beginAtZero: false 
                     }
@@ -1077,7 +1065,6 @@
                                     return [
                                         `色號: ${row[colorCodeColumn] || row['色號'] || 'N/A'}`,
                                         `材質: ${row[materialColumn] || 'N/A'}`,
-                                        `Hue / Chroma: ${row['Hue'] ?? '~'} / ${row['Chroma'] ?? '~'}`,
                                         `本色耐光: ${row['本色耐光'] || '~'}`,
                                         `耐溫: ${row['耐溫'] || '~'}`
                                     ];
