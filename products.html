@@ -4,6 +4,7 @@
   <base href="https://hwashine.tw/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="華翔顏料產品總表，提供有機顏料（藍、橙、紅、紫、黃色系）、溶劑染料、螢光增白劑、光啟始劑 TPO 與特殊尼龍 MXD6 等完整規格與應用資訊。">
   <title>產品總表 - 華翔顏料</title>
   <!-- 引入 Roboto Mono 用於顯示技術代碼，提升專業度 -->
   <style>
@@ -13,20 +14,20 @@
     /* --- 頭部配色 (還原網站原始風格) --- */
     --header-bg-start: #1b5e76; /* 深藍綠 */
     --header-bg-end: #2c8cb0;   /* 亮藍 */
-    
+
     /* --- 內容區專業配色 --- */
     --corporate-blue: #0ea5e9;   /* 科技藍 (強調色) */
     --corporate-blue-dim: #0284c7;
-    
+
     --bg-body: #f1f5f9;          /* 冷灰背景 */
     --bg-card: #ffffff;
-    
+
     --text-primary: #1e293b;     /* 主要文字 */
     --text-secondary: #64748b;   /* 次要文字 */
     --text-tertiary: #94a3b8;    /* 輔助文字 */
-    
+
     --border-light: #e2e8f0;
-    
+
     /* 陰影與圓角系統 */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -58,11 +59,10 @@
     padding: 3rem 1rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: relative;
-    overflow: hidden; /* 確保波紋不溢出 */
+    overflow: hidden;
     z-index: 2;
   }
 
-  /* 還原：波紋動畫偽元素 */
   header::before {
     content: "";
     position: absolute;
@@ -87,15 +87,15 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    position: relative; /* 確保文字在波紋之上 */
+    position: relative;
     z-index: 2;
   }
 
   /* --- 2. Navigation: 還原毛玻璃效果 --- */
   nav {
-    background-color: rgba(255, 255, 255, 0.85); /* 半透明白 */
-    backdrop-filter: blur(12px); /* 毛玻璃模糊效果 */
-    -webkit-backdrop-filter: blur(12px); /* Safari 支援 */
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 0;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     position: sticky;
@@ -180,7 +180,7 @@
     border-color: var(--corporate-blue);
     box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
   }
-  
+
   .toolbar-btn {
     background-color: var(--text-primary);
     color: white;
@@ -193,7 +193,7 @@
     transition: background 0.2s;
     white-space: nowrap;
   }
-  
+
   .toolbar-btn:hover { background-color: #000; }
 
   /* --- 4. Product Grid --- */
@@ -201,6 +201,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
+  }
+
+  .empty-state {
+    display: none;
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 4rem;
+    color: #94a3b8;
   }
 
   /* --- 5. Product Card --- */
@@ -213,8 +221,14 @@
     display: flex;
     flex-direction: column;
     text-decoration: none;
+    color: inherit;
     position: relative;
-    cursor: pointer; /* 改為 pointer，因為有些是 div */
+    cursor: pointer;
+  }
+
+  /* 篩選隱藏時保留 DOM 中的 <a> 結構，利於 SEO 且效能更佳 */
+  .product-card.is-hidden {
+    display: none;
   }
 
   .product-card:hover {
@@ -238,7 +252,6 @@
     position: relative;
   }
 
-  /* 調整後的顏色標籤：本色 / 沖淡 */
   .color-tag {
     position: absolute;
     bottom: 8px;
@@ -252,7 +265,7 @@
     box-shadow: 0 1px 3px rgba(0,0,0,0.15);
     letter-spacing: 1px;
   }
-  
+
   .tint-tone .color-tag { left: auto; right: 8px; }
 
   .card-body {
@@ -278,27 +291,26 @@
     color: var(--corporate-blue-dim);
     letter-spacing: -0.5px;
   }
-  
+
   .ci-badge {
-      font-size: 0.75rem;
-      color: var(--text-tertiary);
-      font-weight: 500;
-      font-family: 'Roboto Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    font-family: 'Roboto Mono', monospace;
   }
 
   .product-name {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
   }
 
-  /* 文字描述 - 用於非顏料產品 */
   .product-desc {
     font-size: 0.85rem;
     color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -311,7 +323,7 @@
     flex-wrap: wrap;
     gap: 6px;
   }
-  
+
   .tag {
     font-size: 0.75rem;
     color: var(--text-secondary);
@@ -321,68 +333,89 @@
     font-weight: 500;
     border: 1px solid transparent;
   }
-  
-  /* 特定標籤高亮 */
+
   .tag.highlight {
-      background-color: #e0f2fe;
-      color: #0369a1;
-      border-color: #bae6fd;
-  }
-  
-  .product-card:hover .tag {
-      border-color: #cbd5e1;
-      background: white;
-  }
-  .product-card:hover .tag.highlight {
-      background-color: #e0f2fe;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border-color: #bae6fd;
   }
 
-  /* 數據化規格欄位 (Specs Grid) */
+  .product-card:hover .tag {
+    border-color: #cbd5e1;
+    background: white;
+  }
+
+  .product-card:hover .tag.highlight {
+    background-color: #e0f2fe;
+  }
+
+  /* 數據化規格欄位 (純 CSS 呈現，不依賴 JS) */
   .specs-container {
-      margin-bottom: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .specs-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
   }
-  
+
   .spec-label {
-      font-weight: 600;
-      color: var(--text-tertiary);
-      font-size: 0.85rem;
-      width: 60px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+    width: 60px;
   }
 
   .visual-bar {
-      display: flex;
-      gap: 3px;
-      flex: 1;
-      margin: 0 10px;
+    display: flex;
+    gap: 3px;
+    flex: 1;
+    margin: 0 10px;
   }
-  
-  .dot {
-      width: 100%; 
-      height: 6px; 
-      background: #e2e8f0;
-      border-radius: 2px;
+
+  .visual-bar i {
+    display: block;
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 2px;
   }
-  
-  .dot.active { background: var(--corporate-blue); }
-  .dot.active.heat { background: #f59e0b; } /* 耐溫用橙色 */
-  .dot.active.cost { background: #64748b; } /* 成本用灰色 */
+
+  /* 綜合性能 (1-8) */
+  .visual-bar.light.v-1 i:nth-child(-n+1),
+  .visual-bar.light.v-2 i:nth-child(-n+2),
+  .visual-bar.light.v-3 i:nth-child(-n+3),
+  .visual-bar.light.v-4 i:nth-child(-n+4),
+  .visual-bar.light.v-5 i:nth-child(-n+5),
+  .visual-bar.light.v-6 i:nth-child(-n+6),
+  .visual-bar.light.v-7 i:nth-child(-n+7),
+  .visual-bar.light.v-8 i:nth-child(-n+8) { background: var(--corporate-blue); }
+
+  /* 耐溫 (1-5) */
+  .visual-bar.heat.v-1 i:nth-child(-n+1),
+  .visual-bar.heat.v-2 i:nth-child(-n+2),
+  .visual-bar.heat.v-3 i:nth-child(-n+3),
+  .visual-bar.heat.v-4 i:nth-child(-n+4),
+  .visual-bar.heat.v-5 i:nth-child(-n+5) { background: #f59e0b; }
+
+  /* 成本 (1-5) */
+  .visual-bar.cost.v-1 i:nth-child(-n+1),
+  .visual-bar.cost.v-2 i:nth-child(-n+2),
+  .visual-bar.cost.v-3 i:nth-child(-n+3),
+  .visual-bar.cost.v-4 i:nth-child(-n+4),
+  .visual-bar.cost.v-5 i:nth-child(-n+5) { background: #64748b; }
 
   .spec-value {
-      font-weight: 700; 
-      font-family:'Roboto Mono';
-      width: 20px;
-      text-align: right;
+    font-weight: 700;
+    font-family: 'Roboto Mono', monospace;
+    width: 20px;
+    text-align: right;
   }
 
   /* --- Modal Styles --- */
@@ -393,7 +426,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(15, 23, 42, 0.7); /* Deep backdrop */
+    background-color: rgba(15, 23, 42, 0.7);
     backdrop-filter: blur(4px);
     z-index: 2000;
     justify-content: center;
@@ -438,6 +471,7 @@
     margin: 0;
     font-size: 1.5rem;
   }
+
   .modal-subtitle {
     font-family: 'Roboto Mono', monospace;
     opacity: 0.8;
@@ -460,6 +494,7 @@
     justify-content: center;
     transition: background 0.2s;
   }
+
   .close-modal-btn:hover { background: rgba(255,255,255,0.4); }
 
   .modal-body {
@@ -479,6 +514,7 @@
     border-left: 4px solid var(--corporate-blue);
     padding-left: 10px;
   }
+
   .modal-section-title:first-child { margin-top: 0; }
 
   .modal-tags {
@@ -506,6 +542,7 @@
     font-size: 0.9rem;
     transition: background 0.2s;
   }
+
   .contact-modal-btn:hover { background: var(--header-bg-end); }
 
   /* --- Footer --- */
@@ -518,37 +555,30 @@
     font-size: 0.9rem;
     margin-top: 4rem;
   }
-  
-  footer .company-name {
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-      display: block;
-  }
 
   /* --- Floating Contact --- */
   .float-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--text-primary);
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: all 0.3s;
-      z-index: 999;
-      font-size: 1.2rem;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--text-primary);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+    z-index: 999;
+    font-size: 1.2rem;
   }
-  
+
   .float-btn:hover {
-      transform: scale(1.1);
-      background: var(--header-bg-end);
+    transform: scale(1.1);
+    background: var(--header-bg-end);
   }
 
   @media (max-width: 768px) {
@@ -569,77 +599,831 @@
   <h1>產品總表</h1>
 </header>
 
-<nav>
+<nav aria-label="主導覽列">
   <ul>
     <li><a href="https://hwashine.tw/" class="home-link">首頁</a></li>
     <li><a href="https://hwashine.tw/about">關於我們</a></li>
-    <li><a href="#" onclick="switchCategory('all'); return false;" class="active" id="nav-all">產品</a></li>
+    <li><a href="https://hwashine.tw/products" onclick="switchCategory('all'); return false;" class="active" id="nav-all">產品</a></li>
     <li><a href="https://hwashine.tw/contact">聯絡我們</a></li>
   </ul>
 </nav>
 
 <main>
+  <!-- 搜尋與篩選工具列 -->
   <div class="toolbar-container">
-      <div class="toolbar-group" style="flex: 2;">
-          <select id="category-select" class="toolbar-select" onchange="switchCategory(this.value)">
-              <option value="all">所有產品類別 (All Products)</option>
-              <option value="organic">有機顏料 (Organic Pigments)</option>
-              <option value="solvent">溶劑染料 (Solvent Dyes)</option>
-              <option value="fluorescent">螢光增白劑 (Optical Brighteners)</option>
-              <option value="other">助劑/樹脂 (Additives & Resins)</option>
-          </select>
-      </div>
+    <div class="toolbar-group" style="flex: 2;">
+      <select id="category-select" class="toolbar-select" aria-label="產品類別" onchange="switchCategory(this.value)">
+        <option value="all">所有產品類別 (All Products)</option>
+        <option value="organic">有機顏料 (Organic Pigments)</option>
+        <option value="solvent">溶劑染料 (Solvent Dyes)</option>
+        <option value="fluorescent">螢光增白劑 (Optical Brighteners)</option>
+        <option value="other">助劑/樹脂 (Additives &amp; Resins)</option>
+      </select>
+    </div>
 
-      <div class="toolbar-group" style="flex: 2;">
-          <input type="text" id="search-input" class="toolbar-input" placeholder="搜尋代號或名稱 (e.g. PO34)...">
-      </div>
+    <div class="toolbar-group" style="flex: 2;">
+      <input type="text" id="search-input" class="toolbar-input" aria-label="搜尋產品" placeholder="搜尋代號或名稱 (e.g. PO34)...">
+    </div>
 
-      <div class="toolbar-group" id="advanced-filters">
-          <select id="color-filter" class="toolbar-select">
-              <option value="">色系 (Color)</option>
-              <option value="藍色">藍色 Blue</option>
-              <option value="橙色">橙色 Orange</option>
-              <option value="紅色">紅色 Red</option>
-              <option value="紫色">紫色 Violet</option>
-              <option value="黃色">黃色 Yellow</option>
-          </select>
-          
-          <select id="app-filter" class="toolbar-select">
-              <option value="">應用特性 (App)</option>
-              <option value="尼龍">尼龍 Nylon</option>
-              <option value="高耐候">高耐候 Weather-Resistant</option>
-              <option value="無鹵素">無鹵素 Halogen-Free</option>
-              <!-- 移除了 食品接觸等級 選項 -->
-          </select>
-      </div>
-      
-      <button id="search-button" class="toolbar-btn">查詢</button>
+    <div class="toolbar-group" id="advanced-filters">
+      <select id="color-filter" class="toolbar-select" aria-label="色系篩選">
+        <option value="">色系 (Color)</option>
+        <option value="藍色">藍色 Blue</option>
+        <option value="橙色">橙色 Orange</option>
+        <option value="紅色">紅色 Red</option>
+        <option value="紫色">紫色 Violet</option>
+        <option value="黃色">黃色 Yellow</option>
+      </select>
+
+      <select id="app-filter" class="toolbar-select" aria-label="應用特性篩選">
+        <option value="">應用特性 (App)</option>
+        <option value="尼龍">尼龍 Nylon</option>
+        <option value="高耐候">高耐候 Weather-Resistant</option>
+        <option value="無鹵素">無鹵素 Halogen-Free</option>
+      </select>
+    </div>
+
+    <button id="search-button" class="toolbar-btn" type="button">查詢</button>
   </div>
 
+  <!-- 靜態產品總表：所有連結直接寫入 HTML，搜尋引擎可直接索引 -->
   <div id="product-grid" class="product-grid">
-    <!-- Products populated via JS -->
+
+    <!-- ==================== 有機顏料：藍色系 ==================== -->
+    <a href="https://hwashine.tw/PB15-0" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="藍色" data-apps="高耐候,無鹵素" data-search="pb15:0 顏料藍 15:0">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #1941E6;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #2A8CF5;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PB15:0</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料藍 15:0</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-1"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">1</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PB15-1" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="藍色" data-apps="尼龍,高耐候" data-search="pb15:1 顏料藍 15:1">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #1941E6;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #2A8CF5;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PB15:1</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料藍 15:1</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-1"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">1</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">尼龍</span><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PB15-3" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="藍色" data-apps="尼龍,高耐候,無鹵素" data-search="pb15:3 顏料藍 15:3">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #1755DC;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #16A0E6;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PB15:3</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料藍 15:3</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-1"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">1</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">尼龍</span><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PB15-4" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="藍色" data-apps="高耐候,無鹵素" data-search="pb15:4 顏料藍 15:4">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #1755DC;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #16A0E6;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PB15:4</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料藍 15:4</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-2"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">2</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PB15-6" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="藍色" data-apps="高耐候,無鹵素" data-search="pb15:6 顏料藍 15:6">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #0235B2;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #008EF0;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PB15:6</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料藍 15:6</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PB60" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="藍色" data-apps="高耐候,無鹵素" data-search="pb60 顏料藍 60">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #102A63;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #4a6fa5;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PB60</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料藍 60</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <!-- ==================== 有機顏料：橙色系 ==================== -->
+    <a href="https://hwashine.tw/PO13" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="橙色" data-apps="" data-search="po13 顏料橙 13">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #F2101A;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FD583E;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PO13</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料橙 13</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-1"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">1</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-1"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">1</span></div>
+        </div>
+        <div class="app-tags"></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PO34" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="橙色" data-apps="" data-search="po34 顏料橙 34">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #EC2800;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FF976A;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PO34</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料橙 34</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-5"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-2"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">2</span></div>
+        </div>
+        <div class="app-tags"></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PO36" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="橙色" data-apps="高耐候" data-search="po36 顏料橙 36">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #D84012;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FF7D4D;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PO36</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料橙 36</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-2"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">2</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PO43" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="橙色" data-apps="高耐候" data-search="po43 顏料橙 43">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #E84A1A;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FBA67A;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PO43</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料橙 43</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PO64" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="橙色" data-apps="無鹵素" data-search="po64 顏料橙 64">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #E84A05;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FF9E5E;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PO64</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料橙 64</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PO72" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="橙色" data-apps="高耐候,無鹵素" data-search="po72 顏料橙 72">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #EF6C00;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFCC80;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PO72</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料橙 72</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <!-- ==================== 有機顏料：紅色系 ==================== -->
+    <a href="https://hwashine.tw/PR122" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="尼龍,高耐候,無鹵素" data-search="pr122 顏料紅 122">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #5B0011;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #E88FD3;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR122</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 122</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">尼龍</span><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PR146" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="" data-search="pr146 顏料紅 146">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #D3170E;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #E89FC1;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR146</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 146</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-6"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">6</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-2"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">2</span></div>
+        </div>
+        <div class="app-tags"></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PR166" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="" data-search="pr166 顏料紅 166">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #E34234;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FF7F7F;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR166</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 166</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+        </div>
+        <div class="app-tags"></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PR168" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="高耐候" data-search="pr168 顏料紅 168">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #DC2626;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FCA5A5;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR168</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 168</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PR170" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="無鹵素" data-search="pr170 顏料紅 170">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #C21807;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FF5252;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR170</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 170</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-5"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-2"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">2</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/Pigmentred176.html" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="無鹵素" data-search="pr176 顏料紅 176">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #8C001A;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #E53935;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR176</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 176</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PR177" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="高耐候,無鹵素" data-search="pr177 顏料紅 177">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #89010F;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #DA3555;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR177</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 177</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PR185" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="無鹵素" data-search="pr185 顏料紅 185">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #B00D23;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FF4081;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR185</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 185</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PR208" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="無鹵素" data-search="pr208 顏料紅 208">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #EC2523;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FF7291;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR208</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 208</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PR242" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="高耐候" data-search="pr242 顏料紅 242">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #D50000;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FF5131;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR242</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 242</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PR254" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紅色" data-apps="高耐候" data-search="pr254 顏料紅 254">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #C40202;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FF4545;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PR254</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紅 254</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-2"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">2</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <!-- ==================== 有機顏料：紫色系 ==================== -->
+    <a href="https://hwashine.tw/PV19" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紫色" data-apps="尼龍,高耐候,無鹵素" data-search="pv19 顏料紫 19">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #750045;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #D56E96;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PV19</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紫 19</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">尼龍</span><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PV23" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="紫色" data-apps="尼龍,高耐候" data-search="pv23 顏料紫 23">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #150028;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #683FB5;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PV23</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料紫 23</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">尼龍</span><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <!-- ==================== 有機顏料：黃色系 ==================== -->
+    <a href="https://hwashine.tw/PY14" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="" data-search="py14 顏料黃 14">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FDD835;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFF59D;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY14</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 14</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-2"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">2</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-1"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">1</span></div>
+        </div>
+        <div class="app-tags"></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY74" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="無鹵素" data-search="py74 顏料黃 74">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FEEA3B;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFFF8D;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY74</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 74</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-1"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">1</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-1"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">1</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY83" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="" data-search="py83 顏料黃 83">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FFB300;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFE082;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY83</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 83</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-2"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">2</span></div>
+        </div>
+        <div class="app-tags"></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY110" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="高耐候" data-search="py110 顏料黃 110">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FB8C00;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFCC80;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY110</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 110</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY128" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="高耐候" data-search="py128 顏料黃 128">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FFEE58;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFF9C4;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY128</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 128</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY138" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="高耐候" data-search="py138 顏料黃 138">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #F9DA2E;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFF176;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY138</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 138</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY139" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="高耐候,無鹵素" data-search="py139 顏料黃 139">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FFA000;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFECB3;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY139</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 139</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY150" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="尼龍,高耐候" data-search="py150 顏料黃 150">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #9E7E08;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFD600;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY150</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 150</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">尼龍</span><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY151" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="無鹵素" data-search="py151 顏料黃 151">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FFEB3B;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFFF8D;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY151</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 151</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY154" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="高耐候" data-search="py154 顏料黃 154">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FFC107;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFE57F;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY154</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 154</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-2"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">2</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">高耐候</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY155" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="無鹵素" data-search="py155 顏料黃 155">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FFCA28;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFF59D;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY155</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 155</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY180" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="無鹵素" data-search="py180 顏料黃 180">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FDD835;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFF9C4;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY180</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 180</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-4"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">4</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY181" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="無鹵素" data-search="py181 顏料黃 181">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FFA722;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFCC76;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY181</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 181</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-8"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">8</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY191" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="" data-search="py191 顏料黃 191">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FFB300;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFE082;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY191</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 191</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-6"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">6</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-2"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">2</span></div>
+        </div>
+        <div class="app-tags"></div>
+      </div>
+    </a>
+
+    <a href="https://hwashine.tw/PY192" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="黃色" data-apps="尼龍,無鹵素" data-search="py192 顏料黃 192">
+      <div class="color-display">
+        <div class="mass-tone" style="background-color: #FBC02D;"><div class="color-tag">本色</div></div>
+        <div class="tint-tone" style="background-color: #FFF176;"><div class="color-tag">沖淡</div></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">PY192</span><span class="ci-badge">Organic</span></div>
+        <h2 class="product-name">顏料黃 192</h2>
+        <div class="specs-container">
+          <div class="specs-row"><span class="spec-label">綜合性能</span><div class="visual-bar light v-7"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">7</span></div>
+          <div class="specs-row"><span class="spec-label">耐溫</span><div class="visual-bar heat v-5"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">5</span></div>
+          <div class="specs-row"><span class="spec-label">成本</span><div class="visual-bar cost v-3"><i></i><i></i><i></i><i></i><i></i></div><span class="spec-value">3</span></div>
+        </div>
+        <div class="app-tags"><span class="tag highlight">尼龍</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <!-- ==================== 其他產品類別 ==================== -->
+
+    <!-- 光啟始劑 TPO（點擊開啟介紹視窗） -->
+    <div role="button" tabindex="0" onclick="openModal('TPO')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('TPO');}" class="product-card" data-type="other" data-color="其他" data-apps="UV塗料,UV油墨" data-search="tpo 光啟始劑 tpo 吸收波長: 295, 380, 393nm。固化快，適合厚膜。">
+      <div class="color-display">
+        <div class="color-full" style="background-color: #f5f5f5;"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">TPO</span><span class="ci-badge">Additive</span></div>
+        <h2 class="product-name">光啟始劑</h2>
+        <p class="product-desc">吸收波長: 295, 380, 393nm。固化快，適合厚膜。</p>
+        <div class="app-tags"><span class="tag highlight">UV塗料</span><span class="tag highlight">UV油墨</span></div>
+      </div>
+    </div>
+
+    <!-- 特殊尼龍 MXD6 -->
+    <a href="https://hwashine.tw/PA-MXD6/indexMXD6" target="_blank" rel="noopener" class="product-card" data-type="other" data-color="其他" data-apps="尼龍,高耐候,無鹵素" data-search="mxd6 特殊尼龍 mxd6 高氣體阻隔性、高強度與耐熱性。">
+      <div class="color-display">
+        <div class="color-full" style="background-color: #e0e0e0;"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">MXD6</span><span class="ci-badge">Additive</span></div>
+        <h2 class="product-name">特殊尼龍</h2>
+        <p class="product-desc">高氣體阻隔性、高強度與耐熱性。</p>
+        <div class="app-tags"><span class="tag highlight">尼龍</span><span class="tag highlight">高耐候</span><span class="tag highlight">無鹵素</span></div>
+      </div>
+    </a>
+
+    <!-- 溶劑染料系列 -->
+    <a href="https://hwashine.tw/solvent-dyes-showcase/" target="_blank" rel="noopener" class="product-card" data-type="solvent" data-color="溶劑染料" data-apps="尼龍" data-search="solvent 溶劑染料系列 高透明度、高色彩強度。">
+      <div class="color-display">
+        <div class="color-full" style="background: linear-gradient(135deg, #ef4444, #eab308, #3b82f6);"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">Solvent</span><span class="ci-badge">Solvent Dye</span></div>
+        <h2 class="product-name">溶劑染料系列</h2>
+        <p class="product-desc">高透明度、高色彩強度。</p>
+        <div class="app-tags"><span class="tag highlight">尼龍</span></div>
+      </div>
+    </a>
+
+    <!-- 螢光增白劑系列產品 -->
+    <a href="https://hwashine.tw/fluorescent/" target="_blank" rel="noopener" class="product-card" data-type="fluorescent" data-color="螢光增白劑" data-apps="OB,OB-1,KCB,KSN" data-search="series 螢光增白劑系列產品 包含 ob, ob-1, kcb, ksn, fp-127 等多種規格。適用於塑膠、化纖、油墨等領域，增白效果顯著。">
+      <div class="color-display">
+        <div class="color-full" style="background: linear-gradient(135deg, #e0f2f1, #80deea);"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-header"><span class="product-code">Series</span><span class="ci-badge">Brightener</span></div>
+        <h2 class="product-name">螢光增白劑系列產品</h2>
+        <p class="product-desc">包含 OB, OB-1, KCB, KSN, FP-127 等多種規格。適用於塑膠、化纖、油墨等領域，增白效果顯著。</p>
+        <div class="app-tags"><span class="tag highlight">OB</span><span class="tag highlight">OB-1</span><span class="tag highlight">KCB</span><span class="tag highlight">KSN</span></div>
+      </div>
+    </a>
+
+    <!-- 查無結果提示 -->
+    <div id="empty-state" class="empty-state">
+      <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+      <div>沒有找到符合條件的產品</div>
+    </div>
+
   </div>
 </main>
 
 <footer>
-    <p>&copy; 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
+  <p>&copy; 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
 </footer>
 
-<a href="https://hwashine.tw/contact" class="float-btn" title="聯絡我們">✉</a>
+<a href="https://hwashine.tw/contact" class="float-btn" title="聯絡我們" aria-label="聯絡我們">✉</a>
 
-<!-- Modal Component -->
-<div id="product-modal" class="modal-overlay" onclick="closeModal(event)">
+<!-- Modal Component (供 TPO 使用) -->
+<div id="product-modal" class="modal-overlay" onclick="closeModal(event)" role="dialog" aria-modal="true" aria-labelledby="modal-name">
   <div class="modal-card" onclick="event.stopPropagation()">
     <div class="modal-header">
       <div class="modal-title">
-        <h2 id="modal-name">Product Name</h2>
-        <span id="modal-code" class="modal-subtitle">CODE</span>
+        <h2 id="modal-name">光啟始劑</h2>
+        <span id="modal-code" class="modal-subtitle">TPO</span>
       </div>
-      <button class="close-modal-btn" onclick="closeModal()">×</button>
+      <button class="close-modal-btn" type="button" onclick="closeModal()" aria-label="關閉視窗">×</button>
     </div>
     <div class="modal-body">
       <div id="modal-content">
-        <!-- Content injected via JS -->
+        <span class="modal-section-title">產品介紹</span>
+        <p>TPO 是一種高效的自由基(I)型光引發劑，主要用於UV固化體系。它具有在長波長范圍（350-400nm）的有效吸收，這使得它非常適合於含鈦白粉的白色塗料和厚膜塗層的固化。特點包括：固化速度快、光漂白效果好（固化後不黃變）、低氣味。</p>
+        <span class="modal-section-title">常見用途</span>
+        <div class="modal-tags">
+          <span class="tag highlight">UV木器塗料</span>
+          <span class="tag highlight">UV絲印油墨</span>
+          <span class="tag highlight">平版印刷油墨</span>
+          <span class="tag highlight">光固化膠粘劑</span>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
@@ -649,329 +1433,129 @@
 </div>
 
 <script>
-// --- Data Source ---
-const organicPigments = [
-  // 藍色
-  { code: "PB15:0", name: "顏料藍 15:0", cat: "藍色", light: 7, heat: 3, cost: 1, mass: "#1941E6", tint: "#2A8CF5", apps: ["高耐候", "無鹵素"] },
-  { code: "PB15:1", name: "顏料藍 15:1", cat: "藍色", light: 8, heat: 4, cost: 1, mass: "#1941E6", tint: "#2A8CF5", apps: ["尼龍", "高耐候"] },
-  { code: "PB15:3", name: "顏料藍 15:3", cat: "藍色", light: 8, heat: 5, cost: 1, mass: "#1755DC", tint: "#16A0E6", apps: ["尼龍", "高耐候", "無鹵素"] },
-  { code: "PB15:4", name: "顏料藍 15:4", cat: "藍色", light: 8, heat: 4, cost: 2, mass: "#1755DC", tint: "#16A0E6", apps: ["高耐候", "無鹵素"] },
-  { code: "PB15:6", name: "顏料藍 15:6", cat: "藍色", light: 8, heat: 5, cost: 5, mass: "#0235B2", tint: "#008EF0", apps: ["高耐候", "無鹵素"] },
-  { code: "PB60", name: "顏料藍 60", cat: "藍色", light: 8, heat: 5, cost: 5, mass: "#102A63", tint: "#4a6fa5", apps: ["高耐候", "無鹵素"] },
-  // 橙色
-  { code: "PO13", name: "顏料橙 13", cat: "橙色", light: 3, heat: 1, cost: 1, mass: "#F2101A", tint: "#FD583E", apps: [] },
-  { code: "PO34", name: "顏料橙 34", cat: "橙色", light: 5, heat: 3, cost: 2, mass: "#EC2800", tint: "#FF976A", apps: [] },
-  { code: "PO36", name: "顏料橙 36", cat: "橙色", light: 8, heat: 2, cost: 3, mass: "#D84012", tint: "#FF7D4D", apps: ["高耐候"] },
-  { code: "PO43", name: "顏料橙 43", cat: "橙色", light: 8, heat: 4, cost: 5, mass: "#E84A1A", tint: "#FBA67A", apps: ["高耐候"] },
-  { code: "PO64", name: "顏料橙 64", cat: "橙色", light: 7, heat: 4, cost: 4, mass: "#E84A05", tint: "#FF9E5E", apps: ["無鹵素"] },
-  { code: "PO72", name: "顏料橙 72", cat: "橙色", light: 8, heat: 5, cost: 5, mass: "#EF6C00", tint: "#FFCC80", apps: ["高耐候", "無鹵素"] },
-  // 紅色
-  { code: "PR122", name: "顏料紅 122", cat: "紅色", light: 8, heat: 5, cost: 4, mass: "#5B0011", tint: "#E88FD3", apps: ["尼龍", "高耐候", "無鹵素"] },
-  { code: "PR146", name: "顏料紅 146", cat: "紅色", light: 6, heat: 3, cost: 2, mass: "#D3170E", tint: "#E89FC1", apps: [] },
-  { code: "PR166", name: "顏料紅 166", cat: "紅色", light: 8, heat: 5, cost: 3, mass: "#E34234", tint: "#FF7F7F", apps: [] },
-  { code: "PR168", name: "顏料紅 168", cat: "紅色", light: 8, heat: 5, cost: 5, mass: "#DC2626", tint: "#FCA5A5", apps: ["高耐候"] },
-  { code: "PR170", name: "顏料紅 170", cat: "紅色", light: 5, heat: 3, cost: 2, mass: "#C21807", tint: "#FF5252", apps: ["無鹵素"] },
-  { code: "PR176", name: "顏料紅 176", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#8C001A", tint: "#E53935", apps: ["無鹵素", "link: Pigmentred176.html"] },
-  { code: "PR177", name: "顏料紅 177", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#89010F", tint: "#DA3555", apps: ["高耐候", "無鹵素"] },
-  { code: "PR185", name: "顏料紅 185", cat: "紅色", light: 7, heat: 4, cost: 4, mass: "#B00D23", tint: "#FF4081", apps: ["無鹵素"] },
-  { code: "PR208", name: "顏料紅 208", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#EC2523", tint: "#FF7291", apps: ["無鹵素"] },
-  { code: "PR242", name: "顏料紅 242", cat: "紅色", light: 7, heat: 4, cost: 5, mass: "#D50000", tint: "#FF5131", apps: ["高耐候"] },
-  { code: "PR254", name: "顏料紅 254", cat: "紅色", light: 8, heat: 5, cost: 2, mass: "#C40202", tint: "#FF4545", apps: ["高耐候"] },
-  // 紫色
-  { code: "PV19", name: "顏料紫 19", cat: "紫色", light: 8, heat: 5, cost: 5, mass: "#750045", tint: "#D56E96", apps: ["尼龍", "高耐候", "無鹵素"] },
-  { code: "PV23", name: "顏料紫 23", cat: "紫色", light: 7, heat: 4, cost: 4, mass: "#150028", tint: "#683FB5", apps: ["尼龍", "高耐候"] },
-  // 黃色
-  { code: "PY14", name: "顏料黃 14", cat: "黃色", light: 3, heat: 2, cost: 1, mass: "#FDD835", tint: "#FFF59D", apps: [] },
-  { code: "PY74", name: "顏料黃 74", cat: "黃色", light: 7, heat: 1, cost: 1, mass: "#FEEA3B", tint: "#FFFF8D", apps: ["無鹵素"] },
-  { code: "PY83", name: "顏料黃 83", cat: "黃色", light: 7, heat: 3, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] },
-  { code: "PY110", name: "顏料黃 110", cat: "黃色", light: 8, heat: 5, cost: 5, mass: "#FB8C00", tint: "#FFCC80", apps: ["高耐候"] },
-  { code: "PY128", name: "顏料黃 128", cat: "黃色", light: 8, heat: 4, cost: 5, mass: "#FFEE58", tint: "#FFF9C4", apps: ["高耐候"] },
-  { code: "PY138", name: "顏料黃 138", cat: "黃色", light: 8, heat: 5, cost: 4, mass: "#F9DA2E", tint: "#FFF176", apps: ["高耐候"] },
-  { code: "PY139", name: "顏料黃 139", cat: "黃色", light: 8, heat: 4, cost: 3, mass: "#FFA000", tint: "#FFECB3", apps: ["高耐候", "無鹵素"] },
-  { code: "PY150", name: "顏料黃 150", cat: "黃色", light: 8, heat: 5, cost: 3, mass: "#9E7E08", tint: "#FFD600", apps: ["尼龍", "高耐候"] },
-  { code: "PY151", name: "顏料黃 151", cat: "黃色", light: 7, heat: 3, cost: 3, mass: "#FFEB3B", tint: "#FFFF8D", apps: ["無鹵素"] },
-  { code: "PY154", name: "顏料黃 154", cat: "黃色", light: 8, heat: 2, cost: 3, mass: "#FFC107", tint: "#FFE57F", apps: ["高耐候"] },
-  { code: "PY155", name: "顏料黃 155", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FFCA28", tint: "#FFF59D", apps: ["無鹵素"] },
-  { code: "PY180", name: "顏料黃 180", cat: "黃色", light: 7, heat: 4, cost: 3, mass: "#FDD835", tint: "#FFF9C4", apps: ["無鹵素"] },
-  { code: "PY181", name: "顏料黃 181", cat: "黃色", light: 8, heat: 5, cost: 5, mass: "#FFA722", tint: "#FFCC76", apps: ["無鹵素"] },
-  { code: "PY191", name: "顏料黃 191", cat: "黃色", light: 6, heat: 5, cost: 2, mass: "#FFB300", tint: "#FFE082", apps: [] },
-  { code: "PY192", name: "顏料黃 192", cat: "黃色", light: 7, heat: 5, cost: 3, mass: "#FBC02D", tint: "#FFF176", apps: ["尼龍", "無鹵素"] }];
-
-// Added 'details' for Modal Content and 'usage' for "常見用途" section
-const otherProducts = [
-  { 
-     code: "TPO", 
-     name: "光啟始劑 TPO", 
-     cat: "其他", 
-     color: "#f5f5f5", 
-     type: 'other', 
-     desc: "吸收波長: 295, 380, 393nm。固化快，適合厚膜。",
-     details: "TPO 是一種高效的自由基(I)型光引發劑，主要用於UV固化體系。它具有在長波長范圍（350-400nm）的有效吸收，這使得它非常適合於含鈦白粉的白色塗料和厚膜塗層的固化。特點包括：固化速度快、光漂白效果好（固化後不黃變）、低氣味。",
-    apps: ["UV塗料", "UV油墨"],
+// --- Modal 彈窗資料（僅用於無獨立頁面的產品如 TPO） ---
+const modalProducts = {
+  TPO: {
+    code: "TPO",
+    name: "光啟始劑",
+    details: "TPO 是一種高效的自由基(I)型光引發劑，主要用於UV固化體系。它具有在長波長范圍（350-400nm）的有效吸收，這使得它非常適合於含鈦白粉的白色塗料和厚膜塗層的固化。特點包括：固化速度快、光漂白效果好（固化後不黃變）、低氣味。",
     usage: ["UV木器塗料", "UV絲印油墨", "平版印刷油墨", "光固化膠粘劑"]
-  },
-  { 
-     code: "MXD6", 
-     name: "特殊尼龍 MXD6", 
-     cat: "其他", 
-     color: "#e0e0e0", 
-     type: 'other', 
-     link: "https://hwashine.tw/PA-MXD6/indexMXD6",
-     desc: "高氣體阻隔性、高強度與耐熱性。", 
-     apps: ["尼龍", "高耐候", "無鹵素"] 
-   },
-  { 
-     code: "Solvent", 
-     name: "溶劑染料系列", 
-     cat: "溶劑染料", 
-     color: "linear-gradient(135deg, #ef4444, #eab308, #3b82f6)", 
-     type: 'solvent', 
-     link: "https://hwashine.tw/solvent-dyes-showcase/",
-     desc: "高透明度、高色彩強度。", 
-     apps: ["尼龍"] 
-   },
-   /* --- 修改處：合併螢光增白劑為單一產品系列 --- */
-  { 
-     code: "Series", 
-     name: "螢光增白劑系列產品", 
-     cat: "螢光增白劑", 
-     color: "linear-gradient(135deg, #e0f2f1, #80deea)", /* 使用清新的漸層藍色 */
-     type: 'fluorescent',
-     link: "https://hwashine.tw/fluorescent/", /* 指定連結 */
-     desc: "包含 OB, OB-1, KCB, KSN, FP-127 等多種規格。適用於塑膠、化纖、油墨等領域，增白效果顯著。", 
-     apps: ["OB", "OB-1", "KCB", "KSN"] /* 標籤顯示包含的型號 */
   }
-];
+};
 
-let allProducts = [];
-let currentCategory = 'all';
-
-function initData() {
-  const organicProcessed = organicPigments.map(p => ({
-    ...p,
-    type: 'organic',
-    link: p.link || `https://hwashine.tw/${p.code.replace(':', '-')}`
-  }));
-  allProducts = [...organicProcessed, ...otherProducts];
-}
-
-function renderBar(value, max, className) {
-    const dots = Array(max).fill(0).map((_, i) => 
-         `<div class="dot ${i < value ? 'active ' + className : ''}"></div>`
-    ).join('');
-    return `<div class="visual-bar">${dots}</div>`;
-}
-
-function getProductCard(p) {
-  let colorHtml = '';
-  
-  if (p.type === 'organic') {
-    colorHtml = `
-      <div class="color-display">
-        <div class="mass-tone" style="background-color: ${p.mass}"> 
-           <div class="color-tag">本色</div>
-        </div>
-        <div class="tint-tone" style="background-color: ${p.tint}"> 
-           <div class="color-tag">沖淡</div>
-        </div>
-      </div>`;
-  } else {
-    const style = p.color.includes('gradient') ? `background:${p.color}` : `background-color:${p.color}`;
-    colorHtml = `
-      <div class="color-display">
-        <div class="color-full" style="${style}"></div>
-      </div>`;
-  }
-
-  const hiddenApps = ["油墨", "塗料", "塑料"];
-  
-  let appTags = '';
-  // 螢光增白劑系列現在可以顯示標籤了，所以移除了舊的判斷限制
-  if (true) { 
-      appTags = p.apps ? p.apps
-        .filter(a => !hiddenApps.includes(a)) 
-         .map(a => {
-            // Check if app is a special link (starts with "link:")
-            if (a.startsWith("link:")) return '';
-            return `<span class="tag highlight">${a}</span>`;
-        })
-        .join('') : '';
-  }
-  
-  let detailsHtml = '';
-  
-  if (p.type === 'organic') {
-      detailsHtml = `
-      <div class="specs-container">
-          <div class="specs-row">
-            <span class="spec-label">綜合性能</span>
-            ${renderBar(p.light, 8, 'light')}
-            <span class="spec-value">${p.light}</span>
-          </div>
-          <div class="specs-row">
-            <span class="spec-label">耐溫</span>
-            ${renderBar(p.heat, 5, 'heat')}
-            <span class="spec-value">${p.heat}</span>
-          </div>
-          <div class="specs-row">
-            <span class="spec-label">成本</span>
-            ${renderBar(p.cost, 5, 'cost')}
-            <span class="spec-value">${p.cost}</span>
-          </div>
-      </div>`;
-  } else {
-      detailsHtml = `<div class="product-desc">${p.desc}</div>`;
-  }
-
-  // Interaction Logic: Modal for TPO, Link for others
-  let cardAttribs = `href="${p.link || '#'}" target="_blank"`;
-  
-  // Custom link handling from apps array (e.g., for PR176)
-  if (p.apps) {
-      const customLink = p.apps.find(a => a.startsWith("link:"));
-      if (customLink) {
-          cardAttribs = `href="${customLink.split(':')[1].trim()}" target="_blank"`;
-      }
-  }
-
-  let tagType = 'a';
-  
-  // 修改處：只讓 TPO 使用 Modal，螢光增白劑系列現在走預設的 href 邏輯
-  if (p.code === 'TPO') {
-      tagType = 'div';
-      cardAttribs = `onclick="openModal('${p.code}')"`;
-  }
-
-  return `
-    <${tagType} ${cardAttribs} class="product-card">
-      ${colorHtml}
-      <div class="card-body">
-        <div class="card-header">
-           <span class="product-code">${p.code}</span>
-           <span class="ci-badge">${p.type === 'organic' ? 'Organic' : (p.type === 'fluorescent' ? 'Brightener' : 'Additive')}</span>
-        </div>
-        <div class="product-name">${p.name.replace(p.code, '').trim()}</div>
-        ${detailsHtml}
-        <div class="app-tags">${appTags}</div>
-      </div>
-    </${tagType}>
-  `;
-}
-
-function renderProducts(list) {
-  const grid = document.getElementById('product-grid');
-  if (list.length === 0) {
-      grid.innerHTML = `<div style="text-align:center; grid-column:1/-1; padding:4rem; color:#94a3b8;">
-        <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
-        <div>沒有找到符合條件的產品</div>
-      </div>`;
-  } else {
-      grid.innerHTML = list.map(getProductCard).join('');
-  }
-}
-
-// --- Modal Functions ---
 function openModal(code) {
-    const product = allProducts.find(p => p.code === code);
+  try {
+    const product = modalProducts[code];
     if (!product) return;
 
-    document.getElementById('modal-name').textContent = product.name.replace(product.code, '').trim();
+    document.getElementById('modal-name').textContent = product.name;
     document.getElementById('modal-code').textContent = product.code;
-    
-    let contentHtml = '';
-    
-    if (product.details) {
-        contentHtml += `<span class="modal-section-title">產品介紹</span><p>${product.details}</p>`;
-    } else if (product.desc) {
-        contentHtml += `<span class="modal-section-title">產品描述</span><p>${product.desc}</p>`;
-    }
 
-    // Displays Common Uses (usage)
+    let contentHtml = `<span class="modal-section-title">產品介紹</span><p>${product.details}</p>`;
     if (product.usage && product.usage.length > 0) {
-        contentHtml += `<span class="modal-section-title">常見用途</span><div class="modal-tags">`;
-        product.usage.forEach(u => {
-            contentHtml += `<span class="tag highlight">${u}</span>`;
-        });
-        contentHtml += `</div>`;
+      contentHtml += `<span class="modal-section-title">常見用途</span><div class="modal-tags">`;
+      product.usage.forEach(u => {
+        contentHtml += `<span class="tag highlight">${u}</span>`;
+      });
+      contentHtml += `</div>`;
     }
 
     document.getElementById('modal-content').innerHTML = contentHtml;
     document.getElementById('product-modal').classList.add('open');
+  } catch (err) {
+    console.error('開啟產品彈窗時發生錯誤:', err);
+  }
 }
 
 function closeModal(event) {
-    // If event is present (clicked overlay), only close if specific target
-    if (event && event.target.id !== 'product-modal' && !event.target.classList.contains('close-modal-btn')) {
-        return;
-    }
-    document.getElementById('product-modal').classList.remove('open');
+  if (event && event.target.id !== 'product-modal' && !event.target.classList.contains('close-modal-btn')) {
+    return;
+  }
+  document.getElementById('product-modal').classList.remove('open');
 }
 
-// --- Filter Logic ---
+// --- 類別切換與 DOM 篩選邏輯（不破壞靜態 HTML 連結） ---
 function switchCategory(cat) {
-    currentCategory = cat;
-    
-    const select = document.getElementById('category-select');
-    if(select.value !== cat) select.value = cat;
+  const select = document.getElementById('category-select');
+  if (select && select.value !== cat) {
+    select.value = cat;
+  }
 
-    const advFilters = document.getElementById('advanced-filters');
-    if(cat === 'other' || cat === 'fluorescent') {
-        advFilters.style.display = 'none';
+  const advFilters = document.getElementById('advanced-filters');
+  if (advFilters) {
+    if (cat === 'other' || cat === 'fluorescent') {
+      advFilters.style.display = 'none';
+      // 隱藏進階篩選時重置色系與應用選項，避免誤過濾
+      document.getElementById('color-filter').value = '';
+      document.getElementById('app-filter').value = '';
     } else {
-        advFilters.style.display = 'flex';
+      advFilters.style.display = 'flex';
     }
-    
-    filterProducts();
+  }
+
+  filterProducts();
 }
 
 function filterProducts() {
-  const cat = document.getElementById('category-select').value;
-  const term = document.getElementById('search-input').value.toLowerCase();
-  const color = document.getElementById('color-filter').value;
-  const app = document.getElementById('app-filter').value;
+  try {
+    const cat = document.getElementById('category-select').value;
+    const term = document.getElementById('search-input').value.trim().toLowerCase();
+    const color = document.getElementById('color-filter').value;
+    const app = document.getElementById('app-filter').value;
 
-  const filtered = allProducts.filter(p => {
-      if(cat !== 'all' && p.type !== cat) return false;
-      if(term && !(p.code + p.name + p.desc).toLowerCase().includes(term)) return false;
-      if(color && p.cat !== color) return false;
-      if(app && p.apps && !p.apps.includes(app)) return false;
-      return true;
-  });
-  renderProducts(filtered);
+    const cards = document.querySelectorAll('#product-grid .product-card');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const cardType = card.dataset.type || '';
+      const cardColor = card.dataset.color || '';
+      const cardSearch = card.dataset.search || '';
+      const cardApps = card.dataset.apps ? card.dataset.apps.split(',') : [];
+
+      let isMatch = true;
+      if (cat !== 'all' && cardType !== cat) isMatch = false;
+      if (term && !cardSearch.includes(term)) isMatch = false;
+      if (color && cardColor !== color) isMatch = false;
+      if (app && !cardApps.includes(app)) isMatch = false;
+
+      card.classList.toggle('is-hidden', !isMatch);
+      if (isMatch) visibleCount++;
+    });
+
+    const emptyState = document.getElementById('empty-state');
+    if (emptyState) {
+      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+  } catch (err) {
+    console.error('篩選產品時發生錯誤:', err);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    initData();
+  // 偵測網址查詢參數，例如 ?category=fluorescent
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryParam = urlParams.get('category');
 
-    // --- 新增：網址參數偵測邏輯 ---
-    // 取得網址中的查詢參數
-    const urlParams = new URLSearchParams(window.location.search);
-    const categoryParam = urlParams.get('category'); // 例如 ?category=fluorescent
-
-    if (categoryParam) {
-        // 檢查該類別是否存在於下拉選單中，避免無效參數報錯
-        const select = document.getElementById('category-select');
-        const options = Array.from(select.options).map(opt => opt.value);
-        
-        if (options.includes(categoryParam)) {
-            // 如果參數有效，直接切換到該類別
-            switchCategory(categoryParam);
-        } else {
-            // 無效參數則顯示預設
-            filterProducts(); 
-        }
-    } else {
-        // 無參數時顯示預設
-        filterProducts(); 
+  if (categoryParam) {
+    const select = document.getElementById('category-select');
+    const options = Array.from(select.options).map(opt => opt.value);
+    if (options.includes(categoryParam)) {
+      switchCategory(categoryParam);
     }
-    // ----------------------------
+  }
 
-    document.getElementById('search-button').addEventListener('click', filterProducts);
-    document.getElementById('search-input').addEventListener('keyup', (e) => { if(e.key==='Enter') filterProducts(); });
-    document.getElementById('color-filter').addEventListener('change', filterProducts);
-    document.getElementById('app-filter').addEventListener('change', filterProducts);
+  document.getElementById('search-button').addEventListener('click', filterProducts);
+  document.getElementById('search-input').addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') filterProducts();
+  });
+  document.getElementById('color-filter').addEventListener('change', filterProducts);
+  document.getElementById('app-filter').addEventListener('change', filterProducts);
+
+  // 支援按 Esc 關閉彈窗
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
 });
 </script>
-<script src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" xintegrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"3e0e168fcc584b3aae69cd7f0b37248e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script><script src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" xintegrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"3e0e168fcc584b3aae69cd7f0b37248e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
