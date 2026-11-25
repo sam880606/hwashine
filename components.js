@@ -40,6 +40,58 @@
     { label: '關於我們', href: '/about' },
   ];
 
+  const SUBNAV_GROUPS = [
+    {
+      prefix: '/pa-mxd6/',
+      label: 'MXD6 專區',
+      items: [
+        { label: 'MXD6 首頁', href: '/PA-MXD6/indexMXD6.html' },
+        { label: '關於 MXD6', href: '/PA-MXD6/about.html' },
+        { label: '產品中心', href: '/PA-MXD6/products.html' },
+        { label: '應用 / 數據', href: '/PA-MXD6/solutions.html' },
+        { label: '無人機方案', href: '/PA-MXD6/solution-drone.html' },
+        { label: '聯絡我們', href: '/PA-MXD6/contact.html' },
+      ],
+    },
+    {
+      prefix: '/fluorescent/',
+      label: '螢光增白劑專區',
+      items: [
+        { label: '產品總覽', href: '/fluorescent/index.html' },
+        { label: 'KCB', href: '/fluorescent/kcb.html' },
+        { label: 'OB', href: '/fluorescent/ob.html' },
+        { label: 'OB-1', href: '/fluorescent/ob-1.html' },
+        { label: 'KSN', href: '/fluorescent/ksn.html' },
+        { label: 'FP-127', href: '/fluorescent/127.html' },
+      ],
+    },
+  ];
+
+  function getSubnavHtml() {
+    const path = window.location.pathname.toLowerCase();
+    const group = SUBNAV_GROUPS.find((g) => path.startsWith(g.prefix));
+    if (!group) return '';
+
+    const links = group.items
+      .map((item) => {
+        const target = item.href.toLowerCase();
+        const targetNoExt = target.replace(/\.html$/, '');
+        const isIndex = target.endsWith('/index.html') && (path === group.prefix || path === target);
+        const isActive = isIndex || path === target || path === targetNoExt;
+        return `<a href="${item.href}" class="${isActive ? 'active' : ''}">${item.label}</a>`;
+      })
+      .join('');
+
+    return `
+      <div class="hs-subnav" role="navigation" aria-label="${group.label}導覽">
+        <div class="hs-subnav-inner">
+          <span class="hs-subnav-label">${group.label}</span>
+          <div class="hs-subnav-links">${links}</div>
+        </div>
+      </div>
+    `;
+  }
+
   // ==========================================
   // 1. 全站共用頁首 & 導航列 (<custom-header>)
   //    屬性：
@@ -106,6 +158,7 @@
             <a href="/contact">聯絡我們</a>
           </div>
         </header>
+        ${getSubnavHtml()}
         ${heroHtml}
       `;
 
