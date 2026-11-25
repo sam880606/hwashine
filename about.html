@@ -1,152 +1,26 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<base href="https://hwashine.tw/about">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 <title>關於我們 - 華翔興業有限公司</title>
+<link rel="stylesheet" href="/assets/css/theme.css">
+<script src="/components.js" defer></script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-
-  :root {
-    --primary-color: #2c8cb0;
-    --primary-dark: #1a5f7a;
-    --accent-color: #ff6b6b;
-    --text-primary: #2c3e50;
-    --text-secondary: #596e79;
-    --bg-color: #f8f9fa;
-    --card-bg: #ffffff;
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.08);
-    --shadow-lg: 0 15px 30px rgba(0,0,0,0.1);
-  }
-
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: 'Noto Sans TC', 'Montserrat', Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    line-height: 1.8;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* --- Header --- */
-  header {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-    color: white;
-    text-align: center;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  header::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-    animation: ripple 15s infinite linear;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  @keyframes ripple {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 2;
-  }
-
-  /* --- Nav --- */
-  nav {
-    background-color: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 0.8rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-  }
-
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0 auto;
-    max-width: 1100px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-
-  nav ul li a {
-    color: var(--primary-dark);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    position: relative;
-    letter-spacing: 1px;
-  }
-  
-  nav ul li a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    background-color: var(--primary-color);
-    transition: all 0.3s ease;
-  }
-
-  nav ul li a:hover::after {
-    width: 100%;
-    left: 0;
-  }  
-
-  nav ul li a:hover {
-    color: var(--primary-color);
-  }
-
-  /* --- Main --- */
   main {
-    max-width: 1000px;
-    margin: 4rem auto;
-    padding: 0 1.5rem;
+    max-width: 1120px;
     width: 100%;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 4rem;
     box-sizing: border-box;
-    flex: 1;
   }
 
-  /* Section Styling */
   section {
-    margin-bottom: 6rem;
+    margin-bottom: 4.5rem;
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
   section.visible {
@@ -154,312 +28,225 @@
     transform: translateY(0);
   }
 
-  h2 {
-    color: var(--primary-dark);
-    text-align: center;
-    margin-bottom: 3.5rem;
-    font-size: 2.2rem;
+  section > h2,
+  .team-section h2 {
+    font-size: 1.85rem;
     font-weight: 700;
-    position: relative;
-    letter-spacing: 2px;
+    color: var(--hs-text-primary);
+    margin: 0 0 2rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--hs-border-subtle);
   }
 
-  h2 span.en-title {
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    color: var(--primary-color);
-    font-weight: 600;
-    letter-spacing: 3px;
+  section > h2::before,
+  .team-section h2::before {
+    content: "";
+    width: 4px;
+    height: 1.15em;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--hs-brand-primary), var(--hs-brand-accent));
+    align-self: center;
+  }
+
+  .en-title {
+    font-family: var(--hs-font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-top: 8px;
-    opacity: 0.8;
-  }
-
-  h2::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 3px;
-    background: var(--accent-color);
-    margin: 20px auto 0;
+    color: var(--hs-brand-primary);
+    font-weight: 500;
   }
 
   /* 公司簡介 */
   .intro-container {
-    background: var(--card-bg);
-    padding: 4rem;
-    border-radius: 4px;
-    box-shadow: var(--shadow-md);
-    position: relative;
-    overflow: hidden;
-    border-top: 4px solid var(--primary-color);
+    background: var(--hs-bg-card);
+    border: 1px solid var(--hs-border-subtle);
+    border-left: 3px solid var(--hs-brand-primary);
+    border-radius: var(--hs-radius-lg);
+    padding: 2.25rem 2.5rem;
+    box-shadow: var(--hs-shadow-md);
   }
 
   .intro-text p {
-    margin-bottom: 1.8rem;
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    text-align: justify;
-  }  
-  
-  .intro-text p strong {
-    color: var(--primary-dark);
-    font-weight: 600;
+    margin: 0 0 1.25rem;
+    color: var(--hs-text-secondary);
+    font-size: 1.02rem;
   }
 
   .intro-highlight {
-    font-size: 1.35rem !important;
-    font-weight: 400;
-    color: var(--text-primary) !important;
-    margin-bottom: 2.5rem !important;
-    line-height: 1.6;
-    border-left: 4px solid var(--accent-color);
-    padding-left: 20px;
+    font-size: 1.15rem !important;
+    color: var(--hs-text-primary) !important;
+    font-weight: 500;
   }
 
-  /* --- 專注領域 Focus Areas (取代原本的 Timeline) --- */
+  .intro-text strong,
+  .focus-desc strong {
+    color: var(--hs-brand-primary);
+    font-weight: 600;
+  }
+
+  /* 專注領域 */
   .focus-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 雙欄佈局 */
-    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 
   .focus-item {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 4px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
-    border-left: 5px solid transparent; /* 預留左側線條位置 */
     position: relative;
+    background: var(--hs-bg-card);
+    border: 1px solid var(--hs-border-subtle);
+    border-radius: var(--hs-radius-lg);
+    padding: 1.75rem;
     overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .focus-item::after {
+    content: attr(data-index);
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-family: var(--hs-font-mono);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: rgba(56, 189, 248, 0.12);
+    line-height: 1;
+    pointer-events: none;
   }
 
   .focus-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
-    border-left-color: var(--primary-color); /* Hover 時顯示左側強調線 */
-  }
-
-  /* 背景裝飾數字 */
-  .focus-item::before {
-    content: attr(data-index);
-    position: absolute;
-    top: -10px;
-    right: 10px;
-    font-size: 6rem;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    color: rgba(0,0,0,0.03);
-    z-index: 0;
-    line-height: 1;
-  }
-
-  .focus-content {
-    position: relative;
-    z-index: 1;
+    transform: translateY(-4px);
+    border-color: var(--hs-border-accent);
+    box-shadow: var(--hs-shadow-md);
   }
 
   .focus-title {
-    font-size: 1.4rem;
-    color: var(--primary-dark);
-    margin-bottom: 1rem;
-    font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.85rem;
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--hs-text-primary);
+    margin-bottom: 0.85rem;
   }
-  
+
   .focus-icon-wrapper {
     width: 40px;
     height: 40px;
-    background-color: rgba(44, 140, 176, 0.1);
-    border-radius: 50%;
-    display: flex;
+    border-radius: 10px;
+    background: var(--hs-brand-primary-soft);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: var(--hs-brand-primary);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-color);
+    flex-shrink: 0;
   }
 
   .focus-desc {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.7;
     margin: 0;
+    color: var(--hs-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
   }
 
-  /* --- 價值觀 --- */
+  /* 核心價值 */
   .values-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 
   .value-card {
-    background: white;
-    padding: 3rem 2rem;
-    border-radius: 4px;
+    background: var(--hs-bg-card);
+    border: 1px solid var(--hs-border-subtle);
+    border-radius: var(--hs-radius-lg);
+    padding: 1.75rem 1.4rem;
     text-align: center;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.4s ease;
-    border: 1px solid #eee;
+    transition: transform 0.25s ease, border-color 0.25s ease;
   }
 
   .value-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-    border-color: transparent;
+    transform: translateY(-4px);
+    border-color: var(--hs-border-accent);
   }
 
   .value-icon {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, rgba(44, 140, 176, 0.1), rgba(26, 95, 122, 0.1));
-    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 1rem;
+    border-radius: 12px;
+    background: var(--hs-brand-primary-soft);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    color: var(--hs-brand-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.5rem;
-    color: var(--primary-color);
-    transition: all 0.4s ease;
-  }
-
-  .value-card:hover .value-icon {
-    background: var(--primary-color);
-    color: white;
-    transform: rotateY(180deg);
-  }
-  
-  .value-card:hover .value-icon svg {
-    transform: rotateY(-180deg); 
   }
 
   .value-card h3 {
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    letter-spacing: 1px;
+    margin: 0 0 0.6rem;
+    font-size: 1.1rem;
+    color: var(--hs-text-primary);
   }
 
   .value-card p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--hs-text-muted);
+    line-height: 1.65;
   }
 
-  /* --- 經營理念 --- */
+  /* 經營理念 */
   .team-section {
-    background: white;
-    border-radius: 4px;
-    padding: 5rem 3rem;
-    text-align: center;
-    box-shadow: var(--shadow-md);
-    position: relative;
-    border-top: 5px solid var(--primary-dark);
-  }
-  
-  .team-section::before {
-    content: '“';
-    font-family: serif;
-    font-size: 8rem;
-    color: rgba(44, 140, 176, 0.1);
-    position: absolute;
-    top: 0;
-    left: 20px;
-    line-height: 1;
-  }
-
-  .team-content {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
+    background: linear-gradient(135deg, #ffffff, #eff6ff);
+    border: 1px solid var(--hs-border-default);
+    border-radius: var(--hs-radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--hs-shadow-md);
   }
 
   .team-content p {
-    font-size: 1.2rem;
-    line-height: 2;
-    margin-bottom: 2rem;
-    color: var(--text-primary);
-    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--hs-text-primary);
+    line-height: 1.9;
+    margin: 0 0 1.25rem;
   }
 
   .team-quote {
     display: inline-block;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-    font-weight: 600;
-    color: var(--primary-dark);
-    font-size: 1rem;
-    letter-spacing: 2px;
+    font-family: var(--hs-font-mono);
+    font-size: 0.9rem;
+    color: var(--hs-brand-accent);
+    letter-spacing: 0.04em;
   }
 
-  /* --- Footer --- */
-  footer {
-    background-color: #f1f3f5;
-    color: #6c757d;
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-top: auto;
-    flex-shrink: 0;
-    border-top: 1px solid #e9ecef;
+  @media (max-width: 900px) {
+    .focus-grid { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
-  footer p {
-    margin: 0;
-    font-size: 0.85rem;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 0.5px;
-  }
-
-  /* --- RWD --- */
-  @media screen and (max-width: 768px) {
-    nav { padding: 0.8rem 0; }
-    nav ul {
-      justify-content: space-evenly;
-      gap: 0;
-      flex-wrap: nowrap;
-    }
-    nav ul li a {
-      padding: 0.5rem 0.5rem;
-      font-size: 0.95rem;
-    }
-    nav ul li a::after { display: none; }
-
-    header h1 { font-size: 2rem; letter-spacing: 2px; }
-    
-    .intro-container { padding: 2rem 1.5rem; }
-    .intro-highlight { font-size: 1.1rem !important; border-left-width: 3px; }
-    
-    /* Focus Areas RWD */
-    .focus-grid { grid-template-columns: 1fr; gap: 1.5rem; } /* 手機版變為單欄 */
-    .focus-item { padding: 2rem 1.5rem; }
-    
-    .team-section { padding: 3rem 1.5rem; }
-    .team-section::before { font-size: 5rem; top: -10px; left: 10px; }
-    .team-content p { font-size: 1rem; line-height: 1.8; }
-    
-    h2 { font-size: 1.8rem; }
-    h2 span.en-title { font-size: 0.8rem; }
+  @media (max-width: 560px) {
+    .values-grid { grid-template-columns: 1fr; }
+    .intro-container, .team-section { padding: 1.5rem; }
   }
 </style>
 </head>
-<body>
+<body class="hs-dark">
 
-  <!-- Header -->
-  <header>
+  <!-- 全站統一頁首與導航列 -->
+  <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <div class="hs-hero-badge">COMPANY PROFILE · EST. 30+ YEARS</div>
     <h1>關於華翔</h1>
-  </header>
-  
-  <nav>
-    <ul>
-      <li><a href="/">首頁</a></li>
-      <li><a href="/about">關於我們</a></li>
-      <li><a href="/products">產品</a></li>
-      <li><a href="/contact">聯絡我們</a></li>
-    </ul>
-  </nav>
+    <p>專業有機顏料、溶劑染料與高性能特種化學品供應商，深耕產業超過 30 年</p>
+  </div>
+</section>
 
   <main>
     <!-- 公司簡介 -->
@@ -483,15 +270,13 @@
       </div>
     </section>
 
-    <!-- 專注領域 (原發展歷程) -->
+    <!-- 專注領域 -->
     <section id="focus-areas">
       <h2>
         專注領域
         <span class="en-title">Our Expertise</span>
       </h2>
       <div class="focus-grid">
-        
-        <!-- 領域 1 -->
         <div class="focus-item" data-index="01">
           <div class="focus-content">
             <div class="focus-title">
@@ -506,7 +291,6 @@
           </div>
         </div>
 
-        <!-- 領域 2 -->
         <div class="focus-item" data-index="02">
           <div class="focus-content">
             <div class="focus-title">
@@ -521,7 +305,6 @@
           </div>
         </div>
 
-        <!-- 領域 3 -->
         <div class="focus-item" data-index="03">
           <div class="focus-content">
             <div class="focus-title">
@@ -536,7 +319,6 @@
           </div>
         </div>
 
-        <!-- 領域 4 -->
         <div class="focus-item" data-index="04">
           <div class="focus-content">
             <div class="focus-title">
@@ -550,7 +332,6 @@
             </p>
           </div>
         </div>
-        
       </div>
     </section>
 
@@ -609,33 +390,21 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
-  </footer>
+  <!-- 全站統一頁尾 -->
+  <custom-footer></custom-footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      const sections = document.querySelectorAll('section');
-      
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1 
-      };
-
-      const observer = new IntersectionObserver((entries, observer) => {
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('main section');
+      const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target); 
+            obs.unobserve(entry.target);
           }
         });
-      }, observerOptions);
-
-      sections.forEach(section => {
-        observer.observe(section);
-      });
+      }, { threshold: 0.08 });
+      sections.forEach(s => observer.observe(s));
     });
   </script>
 </body>

@@ -36,8 +36,11 @@
         /* 確保 smooth scroll */
         html { scroll-behavior: smooth; }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-gray-50 font-sans text-gray-800 selection:bg-red-100 selection:text-red-900">
+<body class="hs-dark bg-gray-50 font-sans text-gray-800 selection:bg-red-100 selection:text-red-900">
     
     <div id="root"></div>
 
@@ -180,24 +183,13 @@
                     <main className="flex-1 lg:ml-64 p-4 md:p-8 lg:p-12 max-w-4xl mx-auto relative">
                     
                     {/* Header/Title Block */}
-                    <header className="mb-12 text-center md:text-left border-b border-gray-200 pb-8">
-                        <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                            <span className="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-red-600 uppercase bg-red-100 rounded-full self-center md:self-start">
-                            深度專題報導
-                            </span>
-                            <span className="text-xs text-gray-400 mt-2 md:mt-0 font-medium">
-                                Presented by 華翔興業有限公司
-                            </span>
-                        </div>
-                        
-                        <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-                        蘇丹紅 (Sudan Red)<br/>
-                        <span className="text-red-700">化學特性、毒理機制及風險評估</span>
-                        </h1>
-                        <p className="text-lg text-gray-600 max-w-2xl mb-6">
-                        從工業染料到餐桌隱形殺手：解析偶氮染料的雙重面貌與2024年台灣食安風暴的科學省思。
-                        </p>
-                    </header>
+                    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>蘇丹紅 (Sudan Red) 化學特性、毒理機制及風險評估</h1>
+    <p>從工業染料到餐桌隱形殺手：解析偶氮染料的雙重面貌與2024年台灣食安風暴的科學省思。</p>
+  </div>
+</section>
 
                     {/* Chapter 1: Introduction */}
                     <section id="intro" className="mb-16 scroll-mt-24">
@@ -643,11 +635,7 @@
                     </section>
 
                     {/* Footer */}
-                    <footer className="text-center text-gray-500 text-sm pb-24 lg:pb-12 border-t border-gray-200 pt-8">
-                        <p className="font-medium mb-1">© 2024 華翔興業有限公司 | 食品安全科學綜合評估報告</p>
-                        <p>本報告內容基於科學文獻與 IARC 數據整理</p>
-                        <p className="mt-2 text-xs">關鍵詞：蘇丹紅、偶氮染料、鄰-甲苯胺、食品安全、2024台灣食安事件</p>
-                    </footer>
+                    <custom-footer></custom-footer>
 
                     </main>
                 </div>

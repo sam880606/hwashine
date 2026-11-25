@@ -96,9 +96,9 @@
         .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, visibility; }
         .fade-in-section.is-visible { opacity: 1; transform: none; }
         .tech-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        .tech-table th { background-color: #f8fafc; color: #334155; font-weight: 700; text-align: left; padding: 0.75rem; border-bottom: 2px solid #cbd5e1; white-space: nowrap; }
-        .tech-table td { padding: 0.75rem; border-bottom: 1px solid #e2e8f0; color: #475569; }
-        .tech-table tr:hover td { background-color: #f1f5f9; }
+        .tech-table th { background-color: var(--hs-bg-card); color: var(--hs-text-secondary); font-weight: 700; text-align: left; padding: 0.75rem; border-bottom: 2px solid #cbd5e1; white-space: nowrap; }
+        .tech-table td { padding: 0.75rem; border-bottom: 1px solid #e2e8f0; color: var(--hs-text-secondary); }
+        .tech-table tr:hover td { background-color: var(--hs-bg-card); }
         /* Gradient for SB67 (Cyan/Teal) */
         .cyan-gradient { background: linear-gradient(135deg, #0f766e 0%, #0e7490 50%, #06b6d4 100%); }
         .prose-text { line-height: 1.8; text-align: justify; }
@@ -106,14 +106,17 @@
         /* Print Styles */
         @media print {
             .no-print { display: none !important; }
-            body { background: white; color: black; }
+            body { background: var(--hs-bg-card); color: var(--hs-text-secondary); }
             header { color: black !important; background: white !important; padding: 20px 0; }
-            header h1 { color: black; }
+            header h1 { color: var(--hs-text-secondary); }
             .tech-table th { background-color: #eee !important; color: black !important; -webkit-print-color-adjust: exact; }
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed selection:bg-cyan-200 selection:text-cyan-900 pb-24 md:pb-0">
+<body class="hs-dark bg-slate-50 text-slate-800 font-sans leading-relaxed selection:bg-cyan-200 selection:text-cyan-900 pb-24 md:pb-0">
 
     <!-- Top Bar -->
     <div class="bg-brand-900 text-white h-10 flex items-center no-print sticky top-0 z-50">
@@ -130,62 +133,13 @@
     </div>
 
     <!-- Hero Section -->
-    <header class="bg-science-900 text-white pt-16 pb-20 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
-                        <path d="M25 0 L50 12.5 L50 37.5 L25 50 L0 37.5 L0 12.5 Z" stroke="#22d3ee" stroke-width="1" fill="none"/>
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#hexagons)"/>
-            </svg>
-        </div>
-        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center">
-            <div class="md:w-3/5 mb-10 md:mb-0">
-                <div class="inline-flex items-center px-3 py-1 mb-4 text-xs font-bold tracking-wider uppercase bg-cyan-600 rounded-full text-white shadow-lg border border-cyan-400">
-                    <i class="fa-solid fa-palette mr-2"></i> 獨一無二的色相 The Unique Shade
-                </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
-                    Solvent Blue 67<br><span class="text-cyan-400">極致的鮮豔綠光藍</span>
-                </h1>
-                <p class="text-xl text-slate-300 font-light max-w-xl mb-8 leading-relaxed">
-                    這支產品最特別之處在於其<strong>色光 (Shade)</strong>。源自銅酞青的分子結構，賦予了它其他蒽醌類染料無法模仿的純淨、高飽和度「青藍色 (Cyan)」。
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 no-print">
-                    <a href="https://hwashine.tw/contact" target="_blank" class="bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-lg font-bold shadow-lg transition-transform transform hover:-translate-y-1 text-center"><i class="fa-solid fa-paper-plane mr-2"></i> 索取樣品</a>
-                    <a href="#executive-summary" class="bg-transparent border border-slate-500 hover:bg-white/10 text-white px-8 py-4 rounded-lg font-medium transition-all text-center"><i class="fa-solid fa-book-open mr-2"></i> 開始閱讀</a>
-                </div>
-            </div>
-            <div class="md:w-2/5 flex flex-col gap-4">
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 rounded-xl flex items-start">
-                    <div class="w-10 h-10 rounded-full bg-cyan-500 text-white flex items-center justify-center text-xl mr-4 shrink-0"><i class="fa-solid fa-swatchbook"></i></div>
-                    <div><h3 class="font-bold text-lg">無可替代的色光</h3><p class="text-sm text-slate-400">市場上最鮮豔、最純淨的綠光藍溶劑染料。</p></div>
-                </div>
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 rounded-xl flex items-start">
-                    <div class="w-10 h-10 rounded-full bg-yellow-500 text-white flex items-center justify-center text-xl mr-4 shrink-0"><i class="fa-regular fa-sun"></i></div>
-                    <div><h3 class="font-bold text-lg">耐光優異</h3><p class="text-sm text-slate-400">Blue Scale 7-8 級，優於傳統染料。</p></div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="sticky top-10 z-40 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm no-print">
-        <div class="container mx-auto px-6 flex items-center justify-between">
-            <div class="overflow-x-auto no-scrollbar">
-                <div class="flex space-x-6 whitespace-nowrap min-w-max">
-                    <a href="#executive-summary" class="py-4 text-sm font-medium text-slate-600 hover:text-cyan-700 border-b-2 border-transparent hover:border-cyan-600 transition-colors">執行摘要</a>
-                    <a href="#chemistry" class="py-4 text-sm font-medium text-slate-600 hover:text-cyan-700 border-b-2 border-transparent hover:border-cyan-600 transition-colors">色光與配色學</a>
-                    <a href="#tech-specs" class="py-4 text-sm font-medium text-slate-600 hover:text-cyan-700 border-b-2 border-transparent hover:border-cyan-600 transition-colors">技術參數</a>
-                    <a href="#processing" class="py-4 text-sm font-medium text-slate-600 hover:text-cyan-700 border-b-2 border-transparent hover:border-cyan-600 transition-colors">加工優勢</a>
-                    <a href="#applications" class="py-4 text-sm font-medium text-slate-600 hover:text-cyan-700 border-b-2 border-transparent hover:border-cyan-600 transition-colors">關鍵應用</a>
-                    <a href="#comparison" class="py-4 text-sm font-medium text-slate-600 hover:text-cyan-700 border-b-2 border-transparent hover:border-cyan-600 transition-colors">競品對標</a>
-                    <a href="#guide" class="py-4 text-sm font-medium text-slate-600 hover:text-cyan-700 border-b-2 border-transparent hover:border-cyan-600 transition-colors">採購指南</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>Solvent Blue 67極致的鮮豔綠光藍</h1>
+    <p>這支產品最特別之處在於其色光 (Shade)。源自銅酞青的分子結構，賦予了它其他蒽醌類染料無法模仿的純淨、高飽和度「青藍色 (Cyan)」。</p>
+  </div>
+</section>
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-12">
@@ -546,29 +500,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-science-900 text-slate-400 py-12 border-t border-science-800 no-print">
-        <div class="container mx-auto px-6 text-center md:text-left">
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h4 class="text-white text-lg font-bold mb-4">華翔興業有限公司</h4>
-                    <p class="text-sm max-w-md">
-                        本技術綜述由華翔興業有限公司整理提供。我們致力於為塑膠、塗料及油墨產業提供最優質的化學著色解決方案。
-                    </p>
-                    <div class="mt-4 flex space-x-4 justify-center md:justify-start">
-                        <a href="https://hwashine.tw/" class="text-slate-400 hover:text-white transition-colors"><i class="fa-solid fa-globe"></i> 官方網站</a>
-                        <a href="tel:+886-2-77337581" class="text-slate-400 hover:text-white transition-colors flex items-center"><i class="fa-solid fa-phone mr-1"></i> 02-77337581</a>
-                        <a href="https://hwashine.tw/contact" class="text-slate-400 hover:text-white transition-colors"><i class="fa-solid fa-envelope"></i> 聯絡我們</a>
-                    </div>
-                </div>
-                <div class="md:text-right">
-                    <p class="text-xs text-slate-500 mt-4">
-                        &copy; 2024 華翔興業有限公司 Hwashine Trading Co., Ltd.<br>
-                        保留所有權利。<br>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <!-- Mobile Sticky CTA -->
     <div class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-4 flex gap-3 z-50 md:hidden shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] no-print">

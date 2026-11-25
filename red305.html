@@ -56,51 +56,13 @@
             transition-duration: 300ms;
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="antialiased selection:bg-primary selection:text-white">
+<body class="hs-dark antialiased selection:bg-primary selection:text-white">
 
-    <nav class="fixed w-full z-50 top-0 bg-darkBg/90 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="w-8 h-8 rounded bg-primary flex items-center justify-center font-bold text-white shadow-[0_0_10px_rgba(255,42,42,0.6)]">HS</div>
-                    <span class="font-bold text-xl tracking-wider">華翔興業</span>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="text-textGray hover:text-white transition-colors">技術優勢</a>
-                    <a href="#specs" class="text-textGray hover:text-white transition-colors">規格參數</a>
-                    <a href="#contact" class="text-textGray hover:text-white transition-colors">聯絡我們</a>
-                    <a href="https://hwashine.tw/" target="_blank" class="text-primary hover:text-primaryHover font-medium transition-colors flex items-center gap-1">
-                        <i class="ph ph-globe"></i> 官方網站
-                    </a>
-                </div>
-
-                <!-- Action Button -->
-                <div class="hidden md:flex items-center gap-4">
-                    <a href="#contact" class="bg-primary hover:bg-primaryHover text-white px-6 py-2 rounded-full font-medium transition-all shadow-[0_4px_14px_0_rgba(255,42,42,0.39)]">索取樣品</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-white focus:outline-none">
-                        <i class="ph ph-list text-3xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-cardBg border-t border-white/10">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-textGray hover:text-white hover:bg-white/5">技術優勢</a>
-                <a href="#specs" class="block px-3 py-2 rounded-md text-base font-medium text-textGray hover:text-white hover:bg-white/5">規格參數</a>
-                <a href="https://hwashine.tw/" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-primary hover:text-primaryHover hover:bg-white/5"><i class="ph ph-globe inline-block mr-1"></i>官方網站</a>
-                <a href="#contact" class="block w-full text-center mt-4 bg-primary text-white px-3 py-2 rounded-md text-base font-medium">索取樣品</a>
-            </div>
-        </div>
-    </nav>
+    <custom-header compact="true"></custom-header>
 
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
         <!-- Background Effects -->
@@ -524,18 +486,7 @@
         </div>
     </section>
 
-    <footer class="bg-darkBg border-t border-white/10 py-8">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center text-center text-textGray text-sm">
-            <div class="mb-6">
-                <a href="https://hwashine.tw/" target="_blank" class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-2.5 rounded-full text-white hover:text-primary transition-all">
-                    <i class="ph ph-globe text-lg"></i>
-                    前往華翔興業官方網站
-                </a>
-            </div>
-            <p>&copy; 2026 華翔興業有限公司. All rights reserved.</p>
-            <p class="mt-2 text-xs opacity-60">專業有機顏料與溶劑染料供應商</p>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <script>
         // Mobile Menu Toggle

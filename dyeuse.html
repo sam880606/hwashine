@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: #f8fafc;
+            background-color: var(--hs-bg-card);
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.95);
@@ -50,8 +50,11 @@
             background: #94a3b8;
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="text-slate-800 min-h-screen flex flex-col">
+<body class="hs-dark text-slate-800 min-h-screen flex flex-col">
 
     <!-- Navbar -->
     <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
@@ -73,30 +76,13 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="bg-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-50"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-            <div class="text-center">
-                <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold mb-4 tracking-wide">台灣溶劑染料供應商首選</span>
-                <h1 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">
-                    了解溶劑染料的<span class="gradient-text">關鍵性能</span>
-                </h1>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-8">
-                    華翔興業提供高品質溶劑染料，廣泛應用於塑料著色、油墨、蠟製品等領域。選擇正確的染料取決於以下五大核心性能。
-                </p>
-                <div class="flex justify-center gap-4 flex-wrap">
-                    <a href="https://hwashine.tw/" target="_blank" class="px-8 py-3 rounded-xl bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        前往官網查看產品
-                    </a>
-                    <a href="https://hwashine.tw/contact" target="_blank" class="px-8 py-3 rounded-xl bg-white text-slate-700 border border-slate-200 font-bold text-lg hover:bg-slate-50 transition shadow-sm hover:shadow-md flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        聯絡我們
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>了解溶劑染料的關鍵性能</h1>
+    <p>華翔興業提供高品質溶劑染料，廣泛應用於塑料著色、油墨、蠟製品等領域。選擇正確的染料取決於以下五大核心性能。</p>
+  </div>
+</section>
 
     <!-- Main Content Area -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
@@ -316,22 +302,7 @@
 
     </main>
 
-    <footer class="bg-slate-800 text-slate-400 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
-            <div class="mb-6">
-                <h4 class="text-white text-lg font-bold mb-2">華翔興業有限公司</h4>
-                <p class="mb-4">台灣專業溶劑染料供應商，致力於提供最優質的色彩解決方案。</p>
-                <div class="flex justify-center space-x-6">
-                    <a href="https://hwashine.tw/" target="_blank" class="text-slate-300 hover:text-white transition">官方網站</a>
-                    <a href="https://hwashine.tw/contact" target="_blank" class="text-slate-300 hover:text-white transition">聯絡我們</a>
-                </div>
-            </div>
-            <div class="border-t border-slate-700 pt-6">
-                <p>&copy; 2024 華翔興業 (Hwashine Trading Co., Ltd.). All rights reserved.</p>
-                <p class="mt-2 text-xs">註：具體染料性能請參閱各產品TDS (Technical Data Sheet)。</p>
-            </div>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <script>
         function highlightScenario(type) {

@@ -45,12 +45,12 @@
     <style>
         body {
             font-family: 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif;
-            background-color: #f8fafc;
+            background-color: var(--hs-bg-card);
         }
         .content-container {
             max-width: 900px;
             margin: 2rem auto;
-            background-color: #ffffff;
+            background-color: var(--hs-bg-card);
             padding: 3rem 4rem;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
             border-radius: 0.5rem;
@@ -65,7 +65,7 @@
             }
         }
         h1 {
-            color: #1e293b;
+            color: var(--hs-text-secondary);
             line-height: 1.35;
             letter-spacing: -0.025em;
         }
@@ -77,13 +77,13 @@
             margin-bottom: 1.25rem;
         }
         h3 {
-            color: #334155;
+            color: var(--hs-text-secondary);
             margin-top: 1.5rem;
             margin-bottom: 0.75rem;
             font-weight: 600;
         }
         p {
-            color: #475569;
+            color: var(--hs-text-secondary);
             line-height: 1.8;
             margin-bottom: 1.25rem;
             text-align: justify;
@@ -96,8 +96,8 @@
             font-size: 0.95rem;
         }
         th {
-            background-color: #f1f5f9;
-            color: #1e293b;
+            background-color: var(--hs-bg-card);
+            color: var(--hs-text-secondary);
             font-weight: 600;
             text-align: left;
             padding: 0.75rem 1rem;
@@ -106,13 +106,13 @@
         td {
             padding: 0.75rem 1rem;
             border: 1px solid #e2e8f0;
-            color: #475569;
+            color: var(--hs-text-secondary);
         }
         tr:nth-child(even) {
-            background-color: #f8fafc;
+            background-color: var(--hs-bg-card);
         }
         tr:hover {
-            background-color: #f1f5f9;
+            background-color: var(--hs-bg-card);
         }
         .highlight-box {
             background-color: #fff1f2;
@@ -136,8 +136,11 @@
             letter-spacing: 0.05em;
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
+<body class="hs-dark">
 
     <div class="content-container">
         
@@ -150,10 +153,13 @@
             </div>
         </div>
 
-        <header class="mb-10 text-center">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4">美國食品藥物管理局 (FDA) 對食品間接接觸材料中有機顏料法規之深度研究</h1>
-            <p class="text-gray-500 text-sm mt-3">發布單位：華翔興業法規與技術研發中心</p>
-        </header>
+        <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>美國食品藥物管理局 (FDA) 對食品間接接觸材料中有機顏料法規之深度研究</h1>
+    <p>發布單位：華翔興業法規與技術研發中心</p>
+  </div>
+</section>
 
         <main itemscope itemtype="https://schema.org/Article">
             <section id="introduction" class="intro">
@@ -259,14 +265,7 @@
             </section>
         </main>
 
-        <footer class="mt-12 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
-            <div class="mb-4 space-x-4">
-                <a href="https://hwashine.tw/" title="前往華翔興業首頁" class="hover:text-red-700 font-medium transition-colors">華翔興業首頁</a>
-                <span class="text-gray-300">|</span>
-                <a href="https://hwashine.tw/contact" title="聯絡華翔興業業務團隊" class="hover:text-red-700 font-medium transition-colors">聯絡業務團隊</a>
-            </div>
-            <p>&copy; 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
-        </footer>
+        <custom-footer></custom-footer>
     </div>
 
 </body>

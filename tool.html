@@ -115,72 +115,22 @@
             background: #94a3b8; 
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="min-h-screen p-4 md:p-8 flex flex-col justify-between">
+<body class="hs-dark min-h-screen p-4 md:p-8 flex flex-col justify-between">
 
     <main class="max-w-7xl mx-auto space-y-6 w-full">
         
         <!-- 標頭與控制區 (語意化 Header) -->
-        <header class="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-5">
-            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
-                <div>
-                    <h1 class="text-2xl font-bold text-gray-800 flex items-center flex-wrap gap-3">
-                        <!-- 在大標題左側加入企業 Logo (加入 onerror 防止破圖) -->
-                        <img src="favicon.ico" alt="華翔興業有限公司 Logo" class="w-8 h-8 object-contain" onerror="this.style.display='none'">
-                        華翔興業 - 顏料 Hue & Chroma 座標圖
-                        <span class="text-sm font-medium bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-full border border-blue-200">線上分析工具</span>
-                    </h1>
-                    <p class="text-sm text-gray-500 mt-2 mb-3">專業塑膠顏料、有機顏料與溶劑染料之色相（Hue）與彩度（Chroma）分佈視覺化工具，支援 Excel 匯入與耐溫、耐光、耐候指標篩選。</p>
-                    
-                    <!-- 專屬官網與聯絡我們按鈕 (加入 rel="noopener" 提升安全性與 SEO 評分) -->
-                    <nav aria-label="主要連結" class="flex flex-wrap gap-3">
-                        <a href="https://hwashine.tw/" target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 text-sm font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
-                            🌐 華翔興業官網
-                        </a>
-                        <a href="https://hwashine.tw/contact" target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 text-sm font-bold text-blue-700 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors shadow-sm">
-                            ✉️ 聯絡我們
-                        </a>
-                        <button id="openDisclaimerBtn" type="button" class="inline-flex items-center px-4 py-2 text-sm font-bold text-gray-600 bg-gray-100 border border-gray-200 rounded-lg hover:bg-gray-200 transition-colors shadow-sm">
-                            📄 免責聲明
-                        </button>
-                    </nav>
-                </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full lg:w-auto mt-4 lg:mt-0">
-                    <div>
-                        <label for="excelFileInput" class="block text-sm font-medium text-gray-700 mb-1">匯入完整 Excel 資料</label>
-                        <input type="file" id="excelFileInput" accept=".xlsx, .xls" aria-label="匯入 Excel 顏料資料檔"
-                               class="block w-full text-sm text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors cursor-pointer">
-                    </div>
-                    <div>
-                        <label for="materialFilter" class="block text-sm font-medium text-gray-700 mb-1">以應用材質篩選</label>
-                        <select id="materialFilter" aria-label="以應用材質篩選顏料" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                            <option value="ALL">全部 (All)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="keywordSearch" class="block text-sm font-medium text-gray-700 mb-1">搜尋色號 / 關鍵字</label>
-                        <input type="search" id="keywordSearch" placeholder="例: PR122, PB15, PV19..." aria-label="搜尋顏料色號或關鍵字"
-                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                    </div>
-                </div>
-            </div>
-
-            <!-- 多資料來源切換區 (支援多檔案與多分頁切換) -->
-            <div id="dataSourceToggleArea" class="hidden pt-4 border-t border-gray-100">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="block text-sm font-medium text-gray-700">顯示資料來源 / 工作表分頁 (勾選以疊加顯示)：</span>
-                    <div class="space-x-2">
-                        <button id="selectAllSourcesBtn" type="button" class="text-xs text-blue-600 hover:underline">全選</button>
-                        <span class="text-gray-300">|</span>
-                        <button id="deselectAllSourcesBtn" type="button" class="text-xs text-gray-500 hover:underline">全不選</button>
-                    </div>
-                </div>
-                <div id="dataSourceCheckboxes" class="flex flex-wrap gap-3">
-                    <!-- 核取方塊會透過 JS 動態生成 -->
-                </div>
-            </div>
-        </header>
+        <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>華翔興業 - 顏料 Hue &amp; Chroma 座標圖 線上分析工具</h1>
+    <p>專業塑膠顏料、有機顏料與溶劑染料之色相（Hue）與彩度（Chroma）分佈視覺化工具，支援 Excel 匯入與耐溫、耐光、耐候指標篩選。</p>
+  </div>
+</section>
 
         <!-- 色系切換區與圖表區 -->
         <section aria-label="顏料色相與彩度座標圖" class="bg-white rounded-2xl shadow-sm p-6 flex flex-col">
@@ -286,13 +236,7 @@
     </main>
 
     <!-- 頁尾版權與 SEO 內部連結區 -->
-    <footer class="max-w-7xl mx-auto w-full mt-8 pt-4 pb-2 text-center text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-2 border-t border-gray-200">
-        <p>© 華翔興業有限公司 Hwashine Trading Co., Ltd. All Rights Reserved.</p>
-        <div class="space-x-4">
-            <a href="https://hwashine.tw/" target="_blank" rel="noopener" class="hover:text-gray-600 transition-colors">官方網站</a>
-            <a href="https://hwashine.tw/contact" target="_blank" rel="noopener" class="hover:text-gray-600 transition-colors">產品諮詢與索樣</a>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <!-- 免責聲明 Modal 彈出視窗 -->
     <div id="disclaimerModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300 opacity-0">

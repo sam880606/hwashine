@@ -72,15 +72,18 @@
         html { scroll-behavior: smooth; }
         .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, visibility; }
         .fade-in-section.is-visible { opacity: 1; transform: none; }
-        .tech-table th { background-color: #f8fafc; color: #475569; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; }
-        .tech-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #f1f5f9; color: #334155; }
+        .tech-table th { background-color: var(--hs-bg-card); color: var(--hs-text-secondary); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; }
+        .tech-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #f1f5f9; color: var(--hs-text-secondary); }
         .tech-table tr:last-child td { border-bottom: none; }
         /* Custom Gradient for Fluorescence Representation */
         .fluoro-gradient { background: linear-gradient(90deg, #EAB308 0%, #FAFA20 50%, #84CC16 100%); }
         .text-shadow { text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed selection:bg-brand-200 selection:text-brand-900 pb-24 md:pb-0">
+<body class="hs-dark bg-slate-50 text-slate-800 font-sans leading-relaxed selection:bg-brand-200 selection:text-brand-900 pb-24 md:pb-0">
 
     <!-- Top Bar -->
     <div class="bg-brand-700 text-white py-2">
@@ -97,65 +100,13 @@
     </div>
 
     <!-- Hero Section -->
-    <header class="bg-science-900 text-white pt-16 pb-24 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
-                        <path d="M25 0 L50 12.5 L50 37.5 L25 50 L0 37.5 L0 12.5 Z" stroke="white" stroke-width="1" fill="none"/>
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#hexagons)"/>
-            </svg>
-        </div>
-        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center">
-            <div class="md:w-3/5 mb-10 md:mb-0">
-                <div class="inline-flex items-center px-3 py-1 mb-6 text-xs font-bold tracking-wider uppercase bg-brand-500 rounded-full text-white shadow-lg border border-brand-400">
-                    <i class="fa-solid fa-lightbulb mr-2"></i> 螢光黃 Fluorescent Yellow
-                </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
-                    Solvent Yellow 98<br><span class="text-brand-400">PET/PMMA 專用螢光黃</span>
-                </h1>
-                <p class="text-xl text-slate-300 font-light max-w-xl mb-8 leading-relaxed">
-                    通用名稱 Fluorescent Yellow 3G。高性能硫雜蒽 (Thioxanthene) 螢光染料，具備卓越的光轉換效率與 300°C 耐熱性，是安全防護纖維與集光材料的業界標準。
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://hwashine.tw/contact" target="_blank" class="bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-lg font-bold shadow-lg transition-transform transform hover:-translate-y-1 text-center"><i class="fa-solid fa-paper-plane mr-2"></i> 立即詢價</a>
-                    <a href="#summary" class="bg-transparent border border-slate-500 hover:bg-white/10 text-white px-8 py-4 rounded-lg font-medium transition-all text-center"><i class="fa-solid fa-book-open mr-2"></i> 閱讀報告</a>
-                </div>
-            </div>
-            <div class="md:w-2/5 flex flex-col gap-4">
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 rounded-xl flex items-start">
-                    <div class="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center text-xl mr-4 shrink-0"><i class="fa-solid fa-bolt"></i></div>
-                    <div><h3 class="font-bold text-lg">強烈螢光</h3><p class="text-sm text-slate-400">吸收藍紫光，發射高強度黃綠色螢光。</p></div>
-                </div>
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 rounded-xl flex items-start">
-                    <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center text-xl mr-4 shrink-0"><i class="fa-solid fa-shirt"></i></div>
-                    <div><h3 class="font-bold text-lg">PET 紡絲級</h3><p class="text-sm text-slate-400">耐高溫紡絲，適用於 EN 20471 安全服。</p></div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
-        <div class="container mx-auto px-6 flex items-center justify-between">
-            <div class="overflow-x-auto no-scrollbar">
-                <div class="flex space-x-6 whitespace-nowrap min-w-max">
-                    <a href="#summary" class="py-4 text-sm font-medium text-slate-600 hover:text-brand-700 border-b-2 border-transparent hover:border-brand-600 transition-colors">產品概覽</a>
-                    <a href="#chemistry" class="py-4 text-sm font-medium text-slate-600 hover:text-brand-700 border-b-2 border-transparent hover:border-brand-600 transition-colors">分子科學</a>
-                    <a href="#properties" class="py-4 text-sm font-medium text-slate-600 hover:text-brand-700 border-b-2 border-transparent hover:border-brand-600 transition-colors">規格與性能</a>
-                    <a href="#applications" class="py-4 text-sm font-medium text-slate-600 hover:text-brand-700 border-b-2 border-transparent hover:border-brand-600 transition-colors">應用領域</a>
-                    <a href="#risk" class="py-4 text-sm font-bold text-red-600 hover:text-red-800 border-b-2 border-transparent hover:border-red-600 transition-colors">禁忌與安全</a>
-                </div>
-            </div>
-            <div class="hidden md:block pl-4 border-l border-slate-200 ml-4">
-                <a href="https://hwashine.tw/contact" target="_blank" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded text-sm font-bold transition-colors shadow-sm whitespace-nowrap">
-                    聯絡華翔
-                </a>
-            </div>
-        </div>
-    </nav>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>Solvent Yellow 98PET/PMMA 專用螢光黃</h1>
+    <p>通用名稱 Fluorescent Yellow 3G。高性能硫雜蒽 (Thioxanthene) 螢光染料，具備卓越的光轉換效率與 300°C 耐熱性，是安全防護纖維與集光材料的業界標準。</p>
+  </div>
+</section>
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-12">
@@ -380,29 +331,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-science-900 text-slate-400 py-12 border-t border-science-800">
-        <div class="container mx-auto px-6 text-center md:text-left">
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h4 class="text-white text-lg font-bold mb-4">華翔興業有限公司</h4>
-                    <p class="text-sm max-w-md">
-                        本技術綜述由華翔興業有限公司整理提供。我們致力於為塑膠、塗料及油墨產業提供最優質的化學著色解決方案。
-                    </p>
-                    <div class="mt-4 flex space-x-4 justify-center md:justify-start">
-                        <a href="https://hwashine.tw/" class="text-slate-400 hover:text-white transition-colors"><i class="fa-solid fa-globe"></i> 官方網站</a>
-                        <a href="tel:+886-2-77337581" class="text-slate-400 hover:text-white transition-colors flex items-center"><i class="fa-solid fa-phone mr-1"></i> 02-77337581</a>
-                        <a href="https://hwashine.tw/contact" class="text-slate-400 hover:text-white transition-colors"><i class="fa-solid fa-envelope"></i> 聯絡我們</a>
-                    </div>
-                </div>
-                <div class="md:text-right">
-                    <p class="text-xs text-slate-500 mt-4">
-                        &copy; 2024 華翔興業有限公司 Hwashine Trading Co., Ltd.<br>
-                        保留所有權利。<br>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <!-- Mobile Sticky CTA -->
     <div class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-4 flex gap-3 z-50 md:hidden shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">

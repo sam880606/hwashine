@@ -40,49 +40,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>html { scroll-behavior: smooth; } .fade-in { animation: fadeIn 0.5s ease-in; } @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }</style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-slate-50 font-sans text-slate-900 selection:bg-blue-200 fade-in flex flex-col min-h-screen">
+<body class="hs-dark bg-slate-50 font-sans text-slate-900 selection:bg-blue-200 fade-in flex flex-col min-h-screen">
 
     <!-- 導覽列 -->
-    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center cursor-pointer hover:opacity-90 transition">
-                    <i data-lucide="sun" class="h-8 w-8 text-blue-400 mr-2"></i>
-                    <div class="flex flex-col">
-                        <span class="font-bold text-xl tracking-wide leading-none">華翔興業</span>
-                        <span class="text-xs text-blue-300 tracking-wider">螢光增白劑專區</span>
-                    </div>
-                </a>
-                <div class="hidden lg:flex ml-10 items-center space-x-2">
-                    <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium bg-blue-600 text-white transition-colors">產品總覽</a>
-                    <a href="kcb.html" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-700 transition-colors">KCB</a>
-                    <a href="ob.html" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-700 transition-colors">OB</a>
-                    <a href="ob-1.html" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-700 transition-colors">OB-1</a>
-                    <a href="ksn.html" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-700 transition-colors">KSN</a>
-                    <a href="127.html" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-700 transition-colors">FP-127</a>
-                    <div class="h-6 w-px bg-slate-700 mx-2"></div>
-                    <a href="https://hwashine.tw/" class="flex items-center px-3 py-2 rounded-md text-sm font-medium text-blue-200 hover:text-white hover:bg-slate-700 transition-colors"><i data-lucide="globe" class="h-4 w-4 mr-1"></i> 回官網首頁</a>
-                    <a href="https://hwashine.tw/contact" class="flex items-center px-3 py-2 rounded-md text-sm font-medium bg-green-600 hover:bg-green-700 text-white transition-colors shadow-sm"><i data-lucide="phone" class="h-4 w-4 mr-1"></i> 聯絡我們</a>
-                </div>
-                <div class="lg:hidden"><button id="mobile-menu-btn" class="p-2 rounded-md text-gray-400 hover:text-white hover:bg-slate-700"><i data-lucide="menu" class="h-6 w-6"></i></button></div>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-slate-800 border-t border-slate-700">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block bg-blue-600 text-white px-3 py-2 rounded-md text-base font-medium">產品總覽</a>
-                <a href="kcb.html" class="block text-gray-300 hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium">螢光增白劑 KCB</a>
-                <a href="ob.html" class="block text-gray-300 hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium">螢光增白劑 OB</a>
-                <a href="ob-1.html" class="block text-gray-300 hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium">螢光增白劑 OB-1</a>
-                <a href="ksn.html" class="block text-gray-300 hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium">螢光增白劑 KSN</a>
-                <a href="127.html" class="block text-gray-300 hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium">螢光增白劑 FP-127</a>
-                <div class="border-t border-slate-700 my-2 pt-2">
-                    <a href="https://hwashine.tw/" class="block text-blue-300 px-3 py-2">← 回華翔官網</a>
-                    <a href="https://hwashine.tw/contact" class="block text-green-400 px-3 py-2">聯絡我們</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <custom-header compact="true"></custom-header>
 
     <!-- Main Content Wrapper for Semantic SEO -->
     <main class="flex-grow">
@@ -188,45 +153,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center mb-4 text-white">
-                         <i data-lucide="sun" class="h-6 w-6 text-blue-400 mr-2"></i>
-                         <span class="font-bold text-xl">華翔興業</span>
-                    </div>
-                    <p class="text-sm mb-4">華翔興業有限公司 專注於提供高品質工業級螢光增白劑，為您的產品創造最佳的視覺價值。</p>
-                </div>
-                <div>
-                    <h3 class="text-white font-semibold mb-4">產品快速連結</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="kcb.html" class="hover:text-blue-400 transition-colors">螢光增白劑 KCB</a></li>
-                        <li><a href="ob.html" class="hover:text-blue-400 transition-colors">螢光增白劑 OB</a></li>
-                        <li><a href="ob-1.html" class="hover:text-blue-400 transition-colors">螢光增白劑 OB-1</a></li>
-                        <li><a href="ksn.html" class="hover:text-blue-400 transition-colors">螢光增白劑 KSN</a></li>
-                        <li><a href="127.html" class="hover:text-blue-400 transition-colors">螢光增白劑 FP-127</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-white font-semibold mb-4">網站導航</h3>
-                    <ul class="space-y-2 text-sm">
-                         <li><a href="https://hwashine.tw/" class="hover:text-white transition-colors">回官網首頁</a></li>
-                         <li><a href="index.html" class="hover:text-white transition-colors">螢光增白劑專區</a></li>
-                         <li><a href="https://hwashine.tw/contact" class="hover:text-white transition-colors">聯絡我們</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-white font-semibold mb-4">聯絡資訊</h3>
-                    <p class="text-sm mb-2">如有樣品需求或技術諮詢，歡迎聯繫：</p>
-                    <a href="https://hwashine.tw/contact" class="inline-block mt-2 text-sm bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">前往聯絡頁面</a>
-                </div>
-            </div>
-            <div class="mt-12 pt-8 border-t border-slate-800 text-center text-xs">
-                &copy; <span id="year"></span> 華翔興業有限公司 All rights reserved.
-            </div>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <script>
         lucide.createIcons();

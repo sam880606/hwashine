@@ -117,7 +117,7 @@
 
     /* 頂部導覽列 */
     nav.main-nav {
-      background-color: #ffffff;
+      background-color: var(--hs-bg-card);
       box-shadow: 0 2px 10px rgba(0,0,0,0.06);
       position: sticky;
       top: 0;
@@ -415,7 +415,7 @@
     }
 
     .info-box {
-      background: #f8fafc;
+      background: var(--hs-bg-card);
       border: 1px solid var(--border-color);
       border-top: 4px solid var(--primary-color);
       padding: 1.25rem;
@@ -458,7 +458,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 0.95rem;
-      background: white;
+      background: var(--hs-bg-card);
     }
 
     table.comparison-table th,
@@ -486,7 +486,7 @@
     }
 
     table.comparison-table tr:nth-child(even) {
-      background-color: #f8fafc;
+      background-color: var(--hs-bg-card);
     }
 
     table.comparison-table td strong {
@@ -519,7 +519,7 @@
       border-radius: 8px;
       padding: 1.25rem;
       margin-bottom: 1rem;
-      background: #fff;
+      background: var(--hs-bg-card);
     }
 
     .problem-solution-item h3 {
@@ -553,7 +553,7 @@
       border-radius: 10px;
       padding: 1.5rem;
       transition: border-color 0.2s, box-shadow 0.2s;
-      background: #fff;
+      background: var(--hs-bg-card);
     }
 
     .product-card:hover {
@@ -890,7 +890,7 @@
         border: 1px solid var(--border-color);
         border-radius: 8px;
         margin-bottom: 1rem;
-        background: #ffffff;
+        background: var(--hs-bg-card);
         box-shadow: 0 1px 4px rgba(0,0,0,0.03);
         overflow: hidden;
       }
@@ -941,8 +941,11 @@
       }
     }
   </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
+<body class="hs-dark">
 
   <!-- 頂部導航 (僅保留官網首頁與聯絡我們) -->
   <nav class="main-nav" aria-label="主要導覽">
@@ -963,13 +966,13 @@
   </div>
 
   <!-- 頁首視覺區 -->
-  <header class="hero">
-    <div class="hero-container">
-      <span class="hero-badge">塑膠與化纖著色技術專欄</span>
-      <h1>色母（Masterbatch）全解析：定義、製程限制與核心「有機顏料／溶劑染料」選用指南</h1>
-      <p class="subtitle">色母的品質上限，取決於核心「著色劑」的物理與化學特性。本文從母粒配方設計與塑膠加工視角，探討如何透過精準選用有機顏料與溶劑染料，克服熱裂解、色點凝聚與遷移難題。</p>
-    </div>
-  </header>
+  <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>色母（Masterbatch）全解析：定義、製程限制與核心「有機顏料／溶劑染料」選用指南</h1>
+    <p>色母的品質上限，取決於核心「著色劑」的物理與化學特性。本文從母粒配方設計與塑膠加工視角，探討如何透過精準選用有機顏料與溶劑染料，克服熱裂解、色點凝聚與遷移難題。</p>
+  </div>
+</section>
 
   <!-- 主體雙欄架構 -->
   <div class="layout-container">
@@ -1240,13 +1243,7 @@
   </div>
 
   <!-- 頁尾 (僅保留指定之兩個對外連結) -->
-  <footer>
-    <p>&copy; 2026 華翔興業有限公司 (Hwashine Trading Co., Ltd.) 版權所有｜專業有機顏料與溶劑染料供應商</p>
-    <nav aria-label="頁尾導覽">
-      <a href="https://hwashine.tw/">華翔興業官網</a>
-      <a href="https://hwashine.tw/contact">聯絡我們</a>
-    </nav>
-  </footer>
+  <custom-footer></custom-footer>
 
   <div id="back-to-top" title="回到頂部">&#8679;</div>
 

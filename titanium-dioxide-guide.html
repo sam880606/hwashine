@@ -122,27 +122,14 @@
       ]
     }
     </script>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-200 selection:text-blue-900">
+<body class="hs-dark bg-slate-50 text-slate-800 antialiased selection:bg-blue-200 selection:text-blue-900">
 
     <!-- Header / Navigation -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="https://hwashine.tw/" target="_blank" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                <i data-lucide="flask-conical" class="text-blue-600 h-6 w-6"></i>
-                <span class="font-bold text-xl tracking-tight text-slate-900">華翔興業有限公司</span>
-            </a>
-            <nav class="hidden md:flex gap-6 font-medium text-slate-600">
-                <a href="#what-is" class="hover:text-blue-600 transition-colors">認識鈦白粉</a>
-                <a href="#types" class="hover:text-blue-600 transition-colors">規格分類</a>
-                <a href="#applications" class="hover:text-blue-600 transition-colors">應用與法規</a>
-                <a href="#faq" class="hover:text-blue-600 transition-colors">常見問題</a>
-            </nav>
-            <a href="https://hwashine.tw/contact" target="_blank" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm">
-                聯絡我們
-            </a>
-        </div>
-    </header>
+    <custom-header compact="true"></custom-header>
 
     <!-- Hero Section (H1 is crucial for SEO) -->
     <main>
@@ -428,35 +415,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <div class="flex items-center justify-center md:justify-start gap-2 mb-4 text-white">
-                    <i data-lucide="flask-conical" class="h-6 w-6"></i>
-                    <span class="font-bold text-xl tracking-tight">華翔興業有限公司</span>
-                </div>
-                <p class="text-sm">Hwashine Trading Co., Ltd. 專業提供各類優質染料、顏料及化工原料，為企業提供最可靠的色彩與材料解決方案。</p>
-            </div>
-            <div>
-                <h4 class="text-white font-semibold mb-4">快速連結</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="https://hwashine.tw/" target="_blank" class="hover:text-blue-400 transition-colors">華翔興業官方網站</a></li>
-                    <li><a href="https://hwashine.tw/contact" target="_blank" class="hover:text-blue-400 transition-colors">線上聯絡表單</a></li>
-                    <li><a href="#what-is" class="hover:text-blue-400 transition-colors">鈦白粉知識庫</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-semibold mb-4">聯絡我們</h4>
-                <ul class="space-y-2 text-sm">
-                    <li class="flex items-center justify-center md:justify-start gap-2"><i data-lucide="globe" class="h-4 w-4"></i> <a href="https://hwashine.tw/" target="_blank" class="hover:text-white transition">hwashine.tw</a></li>
-                    <li class="flex items-center justify-center md:justify-start gap-2"><i data-lucide="mail" class="h-4 w-4"></i> <a href="https://hwashine.tw/contact" target="_blank" class="hover:text-white transition">點此前往聯絡我們</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-800 text-center text-sm">
-            &copy; 2026 華翔興業有限公司 Hwashine Trading Co., Ltd. All rights reserved.
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <!-- Initialize Icons -->
     <script>

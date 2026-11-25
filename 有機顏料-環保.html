@@ -2,8 +2,6 @@
 <html lang="zh-TW">
 <head>
   <!-- 恢復線上環境專用的 base 標籤，確保圖片與連結路徑正確 -->
-  <base href="https://hwashine.tw">
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>有機顏料替代重金屬顏料的解決方案 | 華翔興業</title>
@@ -15,8 +13,6 @@
   <link rel="canonical" href="https://hwashine.tw/有機顏料-環保">
   
   <!-- 改回絕對路徑，確保在正式網址下能正確抓取共用腳本 -->
-  <script src="https://hwashine.tw/components.js" defer></script>
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
     
@@ -186,7 +182,7 @@
     }
     
     section {  
-      background-color: white;  
+      background-color: var(--hs-bg-card);  
       border-radius: 8px;  
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
       padding: 2rem;  
@@ -250,12 +246,20 @@
       text-align: justify;
     }
   </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
+<body class="hs-dark">
 
   <!-- ================= 共用組件區塊開始 ================= -->
   <!-- 透過自定義標籤引入頁首與導航欄，並傳入頁面標題 -->
-  <custom-header page-title="有機顏料替代重金屬顏料的解決方案"></custom-header>
+  <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>有機顏料替代重金屬顏料的解決方案</h1>
+  </div>
+</section>
   <!-- ================= 共用組件區塊結束 ================= -->
 
   <main>

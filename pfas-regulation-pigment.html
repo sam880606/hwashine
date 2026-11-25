@@ -152,8 +152,11 @@
             border-left: 5px solid #10b981;
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 leading-relaxed">
+<body class="hs-dark bg-gray-50 text-gray-800 leading-relaxed">
 
     <!-- 導航列 -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
@@ -180,23 +183,13 @@
     </nav>
 
     <!-- 文章標頭 Hero Section -->
-    <header class="gradient-bg-green text-white py-16 md:py-24 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 pattern-grid-lg"></div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-            <!-- Breadcrumb for UX -->
-            <nav class="text-sm text-green-200 mb-4 font-light">
-                技術專欄 > 法規新知 > PFAS 替代方案
-            </nav>
-            <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-                PFAS 顏料替代全攻略<br>
-                <span class="text-green-300">P.Y.154/128/P.R.242 合規解決方案</span>
-            </h1>
-            <p class="text-lg md:text-xl text-green-50 max-w-3xl mx-auto">
-                歐盟 PFAS 禁令在即，您的顏料配方合規嗎？<br>
-                華翔興業提供完整的<strong>無氟 (PFAS-Free)</strong> 替代方案，助您無痛轉型，符合 REACH 規範。
-            </p>
-        </div>
-    </header>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>PFAS 顏料替代全攻略 P.Y.154/128/P.R.242 合規解決方案</h1>
+    <p>歐盟 PFAS 禁令在即，您的顏料配方合規嗎？ 華翔興業提供完整的無氟 (PFAS-Free) 替代方案，助您無痛轉型，符合 REACH 規範。</p>
+  </div>
+</section>
 
     <!-- 主要內容區塊 -->
     <main id="article" class="max-w-6xl mx-auto px-4 sm:px-6 py-12 -mt-10 relative z-20">
@@ -447,15 +440,7 @@
     </main>
 
     <!-- 頁尾 -->
-    <footer class="bg-white border-t border-gray-200 py-8">
-        <div class="max-w-6xl mx-auto px-4 text-center text-gray-500 text-sm">
-            <p class="mb-2">&copy; 華翔興業有限公司 Hwashine Trading Co., Ltd. All Rights Reserved.</p>
-            <p>
-                <a href="https://hwashine.tw/" class="hover:text-blue-900 transition">官方網站</a> | 
-                <a href="https://hwashine.tw/contact" class="hover:text-blue-900 transition">聯絡我們</a>
-            </p>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
 </body>
 </html>

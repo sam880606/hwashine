@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <base href="https://hwashine.tw/solvent-dyes">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>認識溶劑染料 | 華翔興業</title>
@@ -120,7 +119,7 @@
         }
         
         section {
-            background-color: white;
+            background-color: var(--hs-bg-card);
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             padding: 2.5rem;
@@ -159,7 +158,7 @@
         }
         
         h4 {
-            color: #444;
+            color: var(--hs-text-secondary);
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
@@ -380,11 +379,19 @@
             }
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
+<body class="hs-dark">
 
     <!-- 使用模組化組件：可透過 page-title 屬性改變每個頁面不同的標題 -->
-    <custom-header page-title="認識溶劑染料"></custom-header>  
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>認識溶劑染料</h1>
+  </div>
+</section>  
 
     <main>
         <section>
@@ -447,8 +454,6 @@
     <div id="back-to-top">&#8679;</div>
 
     <!-- 引入外部的共用組件腳本 (負責產生頁首與頁尾) -->
-    <script src="components.js"></script>
-
     <!-- SEO 結構化資料 (JSON-LD) -->
     <script type="application/ld+json">
     {

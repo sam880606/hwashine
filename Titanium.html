@@ -20,7 +20,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--hs-text-secondary);
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
@@ -39,7 +39,7 @@
             letter-spacing: 1px;
         }
         main {
-            background-color: #fff;
+            background-color: var(--hs-bg-card);
             padding: 30px;
             border-radius: 0 0 10px 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -133,17 +133,23 @@
             color: #7f8c8d;
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
+<body class="hs-dark">
 
 <!-- 新增：頂部品牌導覽 -->
 <div class="company-top-bar">
     <a href="https://hwashine.tw/" target="_blank">華翔興業有限公司 Hwashine Trading Co., Ltd.</a> - 您的專業染料與顏料供應夥伴
 </div>
 
-<header>
+<custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
     <h1>鈦白粉上漲的背後推手：硫磺價格解析</h1>
-</header>
+  </div>
+</section>
 
 <main>
     <!-- 修改：首段自然帶入品牌與業務關鍵字 -->
@@ -199,10 +205,7 @@
     </section>
 
     <!-- 新增：頁尾版權與官網連結 (強化 SEO 內部連結) -->
-    <footer class="site-footer">
-        <p>&copy; 2026 華翔興業有限公司 Hwashine Trading Co., Ltd. 保留所有權利。</p>
-        <p>官方網站：<a href="https://hwashine.tw/" target="_blank" style="color: #2980b9; text-decoration: none;">https://hwashine.tw/</a></p>
-    </footer>
+    <custom-footer></custom-footer>
 </main>
 
 </body>

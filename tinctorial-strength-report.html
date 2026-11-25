@@ -240,7 +240,7 @@
       padding: 1rem 1.5rem;
       font-weight: 700;
       cursor: pointer;
-      background-color: #fff;
+      background-color: var(--hs-bg-card);
       color: var(--primary-dark);
       list-style: none; /* Remove default triangle in some browsers */
       display: flex;
@@ -266,7 +266,7 @@
     
     .mobile-toc[open] summary {
       border-bottom: 1px solid var(--border-color);
-      background-color: #f8fafc;
+      background-color: var(--hs-bg-card);
     }
 
     .mobile-toc ul {
@@ -407,13 +407,13 @@
       border-radius: 8px;
       box-shadow: var(--shadow-sm);
       -webkit-overflow-scrolling: touch;
-      background: white;
+      background: var(--hs-bg-card);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background: white;
+      background: var(--hs-bg-card);
       font-size: 0.95rem;
       min-width: 600px; /* Force scroll on mobile if content is wide */
     }
@@ -438,7 +438,7 @@
     }
 
     tr:nth-child(even) {
-      background-color: #f8fafc;
+      background-color: var(--hs-bg-card);
     }
 
     tr:hover {
@@ -556,7 +556,7 @@
     }
     
     .main-cta-section .cta-button {
-      background-color: white;
+      background-color: var(--hs-bg-card);
       color: var(--primary-dark);
       font-size: 1.2rem;
       padding: 1rem 3rem;
@@ -692,16 +692,20 @@
       }
     }
   </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
+<body class="hs-dark">
 
   <!-- Hero Section -->
-  <header class="hero-header">
-    <div class="hero-content">
-      <h1 class="hero-title">有機顏料著色力差異之綜合研究報告</h1>
-      <p class="hero-subtitle">從分子結構、晶體堆積到分散工程，全方位解析色彩強度的物理化學根源</p>
-    </div>
-  </header>
+  <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>有機顏料著色力差異之綜合研究報告</h1>
+    <p>從分子結構、晶體堆積到分散工程，全方位解析色彩強度的物理化學根源</p>
+  </div>
+</section>
 
   <!-- Layout Container -->
   <div class="layout-container">
@@ -994,10 +998,7 @@
     </main>
   </div>
 
-  <footer class="site-footer">
-    <p>&copy; 2024 <a href="https://hwashine.tw/" target="_blank">華翔興業有限公司</a> | <a href="https://hwashine.tw/contact" target="_blank">聯絡我們</a></p>
-    <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.7;">本報告內容基於當前科學理論整理，僅供學術與技術參考。</p>
-  </footer>
+  <custom-footer></custom-footer>
 
   <!-- Back to Top Button -->
   <button id="backToTop" class="back-to-top" aria-label="回到頂部">

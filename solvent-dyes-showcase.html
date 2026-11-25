@@ -41,46 +41,19 @@
             100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.4); }
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col">
+<body class="hs-dark bg-slate-50 min-h-screen flex flex-col">
 
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <!-- Logo / Company Name -->
-                <a href="https://hwashine.tw/" target="_blank" class="flex items-center gap-3 group hover:opacity-90 transition">
-                    <img src="https://hwashine.tw/favicon.ico" alt="華翔興業 Logo" class="w-10 h-10 rounded-lg shadow-sm group-hover:shadow-md transition object-contain">
-                    <div class="flex flex-col">
-                        <h1 class="text-xl font-bold text-slate-800 leading-tight">華翔興業有限公司</h1>
-                        <span class="text-xs font-normal text-slate-500">溶劑染料目錄 Solvent Dyes</span>
-                    </div>
-                </a>
-                
-                <!-- Search & Filter & Contact -->
-                <div class="w-full md:w-auto flex flex-col sm:flex-row gap-3 items-center">
-                    <div class="relative w-full sm:w-auto">
-                        <input type="text" id="searchInput" placeholder="搜尋名稱, CAS, 螢光..." 
-                                class="w-full sm:w-56 pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm">
-                        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    </div>
-                    <select id="categoryFilter" class="w-full sm:w-auto px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-sm cursor-pointer">
-                        <option value="all">所有色系</option>
-                        <option value="Yellow">黃色系 (Yellow)</option>
-                        <option value="Orange">橙色系 (Orange)</option>
-                        <option value="Red">紅色系 (Red)</option>
-                        <option value="Violet">紫色系 (Violet)</option>
-                        <option value="Blue">藍色系 (Blue)</option>
-                        <option value="Green">綠色系 (Green)</option>
-                        <option value="Fluorescent">僅顯示螢光 (Fluorescent)</option>
-                    </select>
-                    <a href="https://hwashine.tw/contact" target="_blank" class="w-full sm:w-auto px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium rounded-lg transition text-center shadow-sm whitespace-nowrap">
-                        聯絡我們
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>華翔興業有限公司</h1>
+  </div>
+</section>
 
     <!-- Main Content -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
@@ -98,11 +71,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-800 text-slate-300 py-6 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 text-center text-sm">
-            <p>&copy; 2025 <a href="https://hwashine.tw/" target="_blank" class="hover:text-white underline decoration-slate-500 hover:decoration-white transition">華翔興業有限公司</a> 版權所有</p>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <!-- Product Detail Modal (Hidden by default) -->
     <div id="productModal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">

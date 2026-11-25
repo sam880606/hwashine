@@ -33,7 +33,7 @@ body {
 }
 
 .filter-section {
-  background: white;
+  background: var(--hs-bg-card);
   padding: 1rem;
   margin: 1rem;
   border-radius: 8px;
@@ -60,7 +60,7 @@ body {
   max-width: 800px;
   margin: 0 auto 2rem auto; 
   padding: 1rem;
-  background: white;
+  background: var(--hs-bg-card);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -143,13 +143,19 @@ body {
   border-radius: 4px;
 }
 </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
+<body class="hs-dark">
 
-<header class="header">
-  <h1>工業用有機顏料篩選與匹配(開發中)</h1>
-  <p>為您的產品找到最適合的有機顏料解決方案</p>
-</header>
+<custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>工業用有機顏料篩選與匹配(開發中)</h1>
+    <p>為您的產品找到最適合的有機顏料解決方案</p>
+  </div>
+</section>
 
 <section class="search-section">
   <input type="text" class="search-box" placeholder="搜尋顏料或應用領域..." id="searchInput">
@@ -807,5 +813,6 @@ filterInputs.forEach(input => {
 
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <custom-footer></custom-footer>
 </body>
 </html>

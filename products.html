@@ -1,653 +1,657 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <base href="https://hwashine.tw/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <meta name="description" content="華翔顏料產品總表，提供有機顏料（藍、橙、紅、紫、黃色系）、溶劑染料、螢光增白劑、光啟始劑 TPO 與特殊尼龍 MXD6 等完整規格與應用資訊。">
-  <title>產品總表 - 華翔顏料</title>
-  <!-- 引入 Roboto Mono 用於顯示技術代碼，提升專業度 -->
+  <title>產品總表｜有機顏料・溶劑染料・機能材料 - 華翔興業</title>
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <script src="/components.js" defer></script>
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
-
-  :root {
-    /* --- 頭部配色 (還原網站原始風格) --- */
-    --header-bg-start: #1b5e76; /* 深藍綠 */
-    --header-bg-end: #2c8cb0;   /* 亮藍 */
-
-    /* --- 內容區專業配色 --- */
-    --corporate-blue: #0ea5e9;   /* 科技藍 (強調色) */
-    --corporate-blue-dim: #0284c7;
-
-    --bg-body: #f1f5f9;          /* 冷灰背景 */
-    --bg-card: #ffffff;
-
-    --text-primary: #1e293b;     /* 主要文字 */
-    --text-secondary: #64748b;   /* 次要文字 */
-    --text-tertiary: #94a3b8;    /* 輔助文字 */
-
-    --border-light: #e2e8f0;
-
-    /* 陰影與圓角系統 */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
-    --radius-sm: 4px;
-    --radius-md: 6px;
-    --radius-lg: 8px;
-  }
-
-  body {
-    font-family: 'Inter', 'Noto Sans TC', sans-serif;
-    background-color: var(--bg-body);
-    color: var(--text-primary);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* --- 1. Header: 還原波紋動畫設計 --- */
-  header {
-    background: linear-gradient(135deg, var(--header-bg-start), var(--header-bg-end));
-    color: white;
-    text-align: center;
-    padding: 3rem 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative;
-    overflow: hidden;
-    z-index: 2;
-  }
-
-  header::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
-    animation: ripple 15s infinite linear;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  @keyframes ripple {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    position: relative;
-    z-index: 2;
-  }
-
-  /* --- 2. Navigation: 還原毛玻璃效果 --- */
-  nav {
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-  }
-
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 0;
-  }
-
-  nav ul li { margin: 0; }
-
-  nav ul li a {
-    display: block;
-    color: #555;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.05rem;
-    padding: 1rem 1.5rem;
-    transition: all 0.2s;
-    border-bottom: 3px solid transparent;
-  }
-
-  nav ul li a:hover, nav ul li a.active {
-    color: var(--header-bg-end);
-    background-color: rgba(248, 250, 252, 0.5);
-    border-bottom-color: var(--header-bg-end);
-  }
-
-  main {
-    flex: 1;
-    max-width: 1400px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 2rem 1.5rem;
-  }
-
-  /* --- 3. Toolbar --- */
-  .toolbar-container {
-    background: var(--bg-card);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    padding: 1rem;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow-sm);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .toolbar-group {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .toolbar-input, .toolbar-select {
-    width: 100%;
-    padding: 0.6rem 0.8rem;
-    font-size: 0.95rem;
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    background-color: #fff;
-    color: var(--text-primary);
-    transition: all 0.2s;
-    font-family: inherit;
-  }
-
-  .toolbar-input:focus, .toolbar-select:focus {
-    outline: none;
-    border-color: var(--corporate-blue);
-    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
-  }
-
-  .toolbar-btn {
-    background-color: var(--text-primary);
-    color: white;
-    border: none;
-    padding: 0.6rem 1.5rem;
-    border-radius: var(--radius-sm);
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    white-space: nowrap;
-  }
-
-  .toolbar-btn:hover { background-color: #000; }
-
-  /* --- 4. Product Grid --- */
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .empty-state {
-    display: none;
-    text-align: center;
-    grid-column: 1 / -1;
-    padding: 4rem;
-    color: #94a3b8;
-  }
-
-  /* --- 5. Product Card --- */
-  .product-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: inherit;
-    position: relative;
-    cursor: pointer;
-  }
-
-  /* 篩選隱藏時保留 DOM 中的 <a> 結構，利於 SEO 且效能更佳 */
-  .product-card.is-hidden {
-    display: none;
-  }
-
-  .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
-    border-color: #cbd5e1;
-  }
-
-  /* Color Sample Area */
-  .color-display {
-    height: 140px;
-    width: 100%;
-    display: flex;
-    position: relative;
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .mass-tone, .tint-tone, .color-full {
-    flex: 1;
-    height: 100%;
-    position: relative;
-  }
-
-  .color-tag {
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2px 8px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-    letter-spacing: 1px;
-  }
-
-  .tint-tone .color-tag { left: auto; right: 8px; }
-
-  .card-body {
-    padding: 1.25rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #f1f5f9;
-    padding-bottom: 0.75rem;
-  }
-
-  .product-code {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--corporate-blue-dim);
-    letter-spacing: -0.5px;
-  }
-
-  .ci-badge {
-    font-size: 0.75rem;
-    color: var(--text-tertiary);
-    font-weight: 500;
-    font-family: 'Roboto Mono', monospace;
-  }
-
-  .product-name {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0 0 1rem 0;
-  }
-
-  .product-desc {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0 0 1rem 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .app-tags {
-    margin-top: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tag {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    background: #f1f5f9;
-    padding: 3px 8px;
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    border: 1px solid transparent;
-  }
-
-  .tag.highlight {
-    background-color: #e0f2fe;
-    color: #0369a1;
-    border-color: #bae6fd;
-  }
-
-  .product-card:hover .tag {
-    border-color: #cbd5e1;
-    background: white;
-  }
-
-  .product-card:hover .tag.highlight {
-    background-color: #e0f2fe;
-  }
-
-  /* 數據化規格欄位 (純 CSS 呈現，不依賴 JS) */
-  .specs-container {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .specs-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-  }
-
-  .spec-label {
-    font-weight: 600;
-    color: var(--text-tertiary);
-    font-size: 0.85rem;
-    width: 60px;
-  }
-
-  .visual-bar {
-    display: flex;
-    gap: 3px;
-    flex: 1;
-    margin: 0 10px;
-  }
-
-  .visual-bar i {
-    display: block;
-    width: 100%;
-    height: 6px;
-    background: #e2e8f0;
-    border-radius: 2px;
-  }
-
-  /* 綜合性能 (1-8) */
-  .visual-bar.light.v-1 i:nth-child(-n+1),
-  .visual-bar.light.v-2 i:nth-child(-n+2),
-  .visual-bar.light.v-3 i:nth-child(-n+3),
-  .visual-bar.light.v-4 i:nth-child(-n+4),
-  .visual-bar.light.v-5 i:nth-child(-n+5),
-  .visual-bar.light.v-6 i:nth-child(-n+6),
-  .visual-bar.light.v-7 i:nth-child(-n+7),
-  .visual-bar.light.v-8 i:nth-child(-n+8) { background: var(--corporate-blue); }
-
-  /* 耐溫 (1-5) */
-  .visual-bar.heat.v-1 i:nth-child(-n+1),
-  .visual-bar.heat.v-2 i:nth-child(-n+2),
-  .visual-bar.heat.v-3 i:nth-child(-n+3),
-  .visual-bar.heat.v-4 i:nth-child(-n+4),
-  .visual-bar.heat.v-5 i:nth-child(-n+5) { background: #f59e0b; }
-
-  /* 成本 (1-5) */
-  .visual-bar.cost.v-1 i:nth-child(-n+1),
-  .visual-bar.cost.v-2 i:nth-child(-n+2),
-  .visual-bar.cost.v-3 i:nth-child(-n+3),
-  .visual-bar.cost.v-4 i:nth-child(-n+4),
-  .visual-bar.cost.v-5 i:nth-child(-n+5) { background: #64748b; }
-
-  .spec-value {
-    font-weight: 700;
-    font-family: 'Roboto Mono', monospace;
-    width: 20px;
-    text-align: right;
-  }
-
-  /* --- Modal Styles --- */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(4px);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .modal-overlay.open {
-    display: flex;
-    opacity: 1;
-  }
-
-  .modal-card {
-    background: white;
-    width: 90%;
-    max-width: 600px;
-    max-height: 90vh;
-    border-radius: 12px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transform: scale(0.95);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  .modal-overlay.open .modal-card {
-    transform: scale(1);
-  }
-
-  .modal-header {
-    background: linear-gradient(135deg, var(--header-bg-start), var(--header-bg-end));
-    padding: 1.5rem;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-  }
-
-  .modal-title h2 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
-
-  .modal-subtitle {
-    font-family: 'Roboto Mono', monospace;
-    opacity: 0.8;
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-    display: block;
-  }
-
-  .close-modal-btn {
-    background: rgba(255,255,255,0.2);
-    border: none;
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-  }
-
-  .close-modal-btn:hover { background: rgba(255,255,255,0.4); }
-
-  .modal-body {
-    padding: 2rem;
-    overflow-y: auto;
-    color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
-  .modal-section-title {
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-    display: block;
-    margin-top: 1.5rem;
-    border-left: 4px solid var(--corporate-blue);
-    padding-left: 10px;
-  }
-
-  .modal-section-title:first-child { margin-top: 0; }
-
-  .modal-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 0.5rem;
-  }
-
-  .modal-footer {
-    padding: 1rem 2rem;
-    border-top: 1px solid var(--border-light);
-    background: #f8fafc;
-    text-align: right;
-  }
-
-  .contact-modal-btn {
-    display: inline-block;
-    background: var(--text-primary);
-    color: white;
-    padding: 0.6rem 1.5rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: background 0.2s;
-  }
-
-  .contact-modal-btn:hover { background: var(--header-bg-end); }
-
-  /* --- Footer --- */
-  footer {
-    background: white;
-    border-top: 1px solid var(--border-light);
-    padding: 2rem;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-top: 4rem;
-  }
-
-  /* --- Floating Contact --- */
-  .float-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--text-primary);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: all 0.3s;
-    z-index: 999;
-    font-size: 1.2rem;
-  }
-
-  .float-btn:hover {
-    transform: scale(1.1);
-    background: var(--header-bg-end);
-  }
-
-  @media (max-width: 768px) {
-    header { padding: 2rem 1rem; }
-    header h1 { font-size: 2rem; }
-    nav ul { flex-wrap: wrap; padding: 0.5rem 0; }
-    nav ul li a { padding: 0.5rem 1rem; font-size: 0.9rem; }
-    .toolbar-container { flex-direction: column; align-items: stretch; }
-    .toolbar-group { flex-direction: column; align-items: stretch; }
-    .product-grid { grid-template-columns: 1fr; }
-    .modal-card { width: 95%; max-height: 85vh; }
-  }
+    main {
+      flex: 1;
+      max-width: 1360px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* --- 1. Category Tabs --- */
+    .catalog-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cat-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.15rem;
+      border-radius: 10px;
+      background: var(--hs-bg-card);
+      border: 1px solid var(--hs-border-default);
+      color: var(--hs-text-secondary);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .cat-tab:hover {
+      border-color: var(--hs-brand-primary);
+      color: var(--hs-text-primary);
+      background: var(--hs-bg-subtle);
+    }
+
+    .cat-tab.active {
+      background: var(--hs-brand-primary-strong);
+      border-color: var(--hs-brand-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(56, 189, 248, 0.28);
+    }
+
+    .cat-count {
+      font-family: var(--hs-font-mono);
+      font-size: 0.76rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: inherit;
+    }
+
+    .cat-star {
+      font-size: 0.68rem;
+      padding: 0.12rem 0.42rem;
+      border-radius: 4px;
+      background: var(--hs-brand-accent);
+      color: #080d17;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    /* --- 2. Filter Control Panel --- */
+    .filter-panel {
+      background: var(--hs-bg-card);
+      border: 1px solid var(--hs-border-subtle);
+      border-radius: 14px;
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--hs-shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .filter-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1 1 280px;
+    }
+
+    .search-box input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.7rem 1rem 0.7rem 2.5rem;
+      font-size: 0.95rem;
+      background: var(--hs-bg-subtle);
+      border: 1px solid var(--hs-border-default);
+      border-radius: 8px;
+      color: var(--hs-text-primary);
+      font-family: inherit;
+    }
+
+    .search-box input::placeholder {
+      color: var(--hs-text-muted);
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--hs-brand-primary);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--hs-text-muted);
+      pointer-events: none;
+      font-size: 0.95rem;
+    }
+
+    .app-pills {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .filter-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--hs-text-muted);
+      letter-spacing: 0.04em;
+      margin-right: 0.25rem;
+      white-space: nowrap;
+    }
+
+    .pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.42rem 0.85rem;
+      border-radius: 999px;
+      background: var(--hs-bg-subtle);
+      border: 1px solid var(--hs-border-subtle);
+      color: var(--hs-text-secondary);
+      font-size: 0.84rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .pill-btn:hover {
+      border-color: var(--hs-brand-primary);
+      color: var(--hs-text-primary);
+    }
+
+    .pill-btn.active {
+      background: rgba(2, 132, 199, 0.12);
+      border-color: var(--hs-brand-primary);
+      color: var(--hs-brand-primary-strong);
+      font-weight: 700;
+    }
+
+    .color-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      flex-shrink: 0;
+    }
+
+    .filter-bottom-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--hs-border-subtle);
+    }
+
+    .color-pills {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .result-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--hs-text-muted);
+    }
+
+    .result-count strong {
+      color: var(--hs-brand-primary);
+      font-family: var(--hs-font-mono);
+      font-size: 1rem;
+    }
+
+    .reset-btn {
+      padding: 0.45rem 0.95rem;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid var(--hs-border-default);
+      color: var(--hs-text-secondary);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .reset-btn:hover {
+      border-color: var(--hs-brand-primary);
+      color: var(--hs-brand-primary);
+      background: var(--hs-brand-primary-soft);
+    }
+
+    /* --- 3. Product Grid & Cards --- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.35rem;
+    }
+
+    .empty-state {
+      display: none;
+      text-align: center;
+      grid-column: 1 / -1;
+      padding: 4rem 1.5rem;
+      background: var(--hs-bg-card);
+      border: 1px dashed var(--hs-border-default);
+      border-radius: 14px;
+      color: var(--hs-text-muted);
+    }
+
+    .product-card {
+      background: var(--hs-bg-card);
+      border: 1px solid var(--hs-border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none !important;
+      color: inherit;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .product-card.is-hidden {
+      display: none;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--hs-border-accent);
+      box-shadow: var(--hs-shadow-md);
+    }
+
+    .color-display {
+      height: 132px;
+      width: 100%;
+      display: flex;
+      position: relative;
+      border-bottom: 1px solid var(--hs-border-subtle);
+    }
+
+    .mass-tone, .tint-tone, .color-full {
+      flex: 1;
+      height: 100%;
+      position: relative;
+    }
+
+    .color-tag {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(8, 13, 23, 0.85);
+      backdrop-filter: blur(4px);
+      padding: 2px 8px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+      letter-spacing: 0.06em;
+    }
+
+    .tint-tone .color-tag { left: auto; right: 8px; }
+
+    .card-body {
+      padding: 1.15rem 1.2rem 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.55rem;
+      border-bottom: 1px solid var(--hs-border-subtle);
+      padding-bottom: 0.65rem;
+    }
+
+    .product-code {
+      font-family: var(--hs-font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--hs-brand-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .ci-badge {
+      font-size: 0.74rem;
+      color: var(--hs-text-muted);
+      font-weight: 500;
+      font-family: var(--hs-font-mono);
+    }
+
+    .product-name {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--hs-text-primary);
+      margin: 0 0 0.85rem 0;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--hs-text-secondary);
+      line-height: 1.65;
+      margin: 0 0 0.95rem 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .specs-container {
+      margin-bottom: 0.95rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .specs-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--hs-text-secondary);
+    }
+
+    .spec-label {
+      font-weight: 600;
+      color: var(--hs-text-muted);
+      font-size: 0.8rem;
+      width: 58px;
+    }
+
+    .visual-bar {
+      display: flex;
+      gap: 3px;
+      flex: 1;
+      margin: 0 10px;
+    }
+
+    .visual-bar i {
+      display: block;
+      width: 100%;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 2px;
+    }
+
+    .visual-bar.light.v-1 i:nth-child(-n+1),
+    .visual-bar.light.v-2 i:nth-child(-n+2),
+    .visual-bar.light.v-3 i:nth-child(-n+3),
+    .visual-bar.light.v-4 i:nth-child(-n+4),
+    .visual-bar.light.v-5 i:nth-child(-n+5),
+    .visual-bar.light.v-6 i:nth-child(-n+6),
+    .visual-bar.light.v-7 i:nth-child(-n+7),
+    .visual-bar.light.v-8 i:nth-child(-n+8) { background: var(--hs-brand-primary); }
+
+    .visual-bar.heat.v-1 i:nth-child(-n+1),
+    .visual-bar.heat.v-2 i:nth-child(-n+2),
+    .visual-bar.heat.v-3 i:nth-child(-n+3),
+    .visual-bar.heat.v-4 i:nth-child(-n+4),
+    .visual-bar.heat.v-5 i:nth-child(-n+5) { background: var(--hs-brand-accent); }
+
+    .visual-bar.cost.v-1 i:nth-child(-n+1),
+    .visual-bar.cost.v-2 i:nth-child(-n+2),
+    .visual-bar.cost.v-3 i:nth-child(-n+3),
+    .visual-bar.cost.v-4 i:nth-child(-n+4),
+    .visual-bar.cost.v-5 i:nth-child(-n+5) { background: #64748b; }
+
+    .spec-value {
+      font-weight: 700;
+      font-family: var(--hs-font-mono);
+      color: var(--hs-text-primary);
+      width: 22px;
+      text-align: right;
+    }
+
+    .app-tags {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      color: var(--hs-text-secondary);
+      background: var(--hs-bg-subtle);
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-weight: 500;
+      border: 1px solid var(--hs-border-subtle);
+    }
+
+    .tag.highlight {
+      background-color: rgba(2, 132, 199, 0.1);
+      color: #0369a1;
+      border-color: rgba(2, 132, 199, 0.28);
+    }
+
+    /* --- 4. Modal & Floating Contact --- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(5, 9, 17, 0.78);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-card {
+      background: var(--hs-bg-card);
+      border: 1px solid var(--hs-border-default);
+      width: 92%;
+      max-width: 600px;
+      max-height: 88vh;
+      border-radius: 14px;
+      box-shadow: var(--hs-shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, #0f172a, #1e3a5f);
+      border-bottom: 1px solid var(--hs-border-subtle);
+      padding: 1.4rem 1.6rem;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    }
+
+    .modal-title h2 { margin: 0; font-size: 1.4rem; color: #ffffff; }
+    .modal-subtitle {
+      font-family: var(--hs-font-mono);
+      color: var(--hs-brand-primary);
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    .close-modal-btn {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.15rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-modal-btn:hover { background: rgba(255, 255, 255, 0.28); }
+
+    .modal-body {
+      padding: 1.6rem;
+      overflow-y: auto;
+      color: var(--hs-text-secondary);
+      line-height: 1.75;
+    }
+
+    .modal-section-title {
+      font-weight: 700;
+      color: var(--hs-text-primary);
+      margin: 1.25rem 0 0.5rem;
+      display: block;
+      border-left: 3px solid var(--hs-brand-primary);
+      padding-left: 10px;
+    }
+
+    .modal-section-title:first-child { margin-top: 0; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.5rem; }
+
+    .modal-footer {
+      padding: 1rem 1.6rem;
+      border-top: 1px solid var(--hs-border-subtle);
+      background: var(--hs-bg-surface);
+      text-align: right;
+    }
+
+    .contact-modal-btn {
+      display: inline-block;
+      background: var(--hs-brand-primary-strong);
+      color: #ffffff !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.45);
+    }
+
+    .contact-modal-btn:hover {
+      background: var(--hs-brand-primary);
+      color: #080d17 !important;
+    }
+
+    .float-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--hs-brand-primary-strong);
+      color: #ffffff !important;
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      z-index: 999;
+      font-size: 1.25rem;
+    }
+
+    .float-btn:hover {
+      transform: translateY(-3px);
+      background: var(--hs-brand-primary);
+      color: #080d17 !important;
+    }
+
+    @media (max-width: 640px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-<body>
+<body class="hs-dark">
 
-<header>
-  <h1>產品總表</h1>
-</header>
-
-<nav aria-label="主導覽列">
-  <ul>
-    <li><a href="https://hwashine.tw/" class="home-link">首頁</a></li>
-    <li><a href="https://hwashine.tw/about">關於我們</a></li>
-    <li><a href="https://hwashine.tw/products" onclick="switchCategory('all'); return false;" class="active" id="nav-all">產品</a></li>
-    <li><a href="https://hwashine.tw/contact">聯絡我們</a></li>
-  </ul>
-</nav>
+<custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <div class="hs-hero-badge">PRODUCT CATALOG · 44 ITEMS</div>
+    <h1>產品總表</h1>
+    <p>完整收錄華翔興業主力有機顏料（藍・橙・紅・紫・黃全色系）、溶劑染料、螢光增白劑、光起始劑 TPO 與 MXD6 高性能材料</p>
+  </div>
+</section>
 
 <main>
-  <!-- 搜尋與篩選工具列 -->
-  <div class="toolbar-container">
-    <div class="toolbar-group" style="flex: 2;">
-      <select id="category-select" class="toolbar-select" aria-label="產品類別" onchange="switchCategory(this.value)">
-        <option value="all">所有產品類別 (All Products)</option>
-        <option value="organic">有機顏料 (Organic Pigments)</option>
-        <option value="solvent">溶劑染料 (Solvent Dyes)</option>
-        <option value="fluorescent">螢光增白劑 (Optical Brighteners)</option>
-        <option value="other">助劑/樹脂 (Additives &amp; Resins)</option>
-      </select>
-    </div>
-
-    <div class="toolbar-group" style="flex: 2;">
-      <input type="text" id="search-input" class="toolbar-input" aria-label="搜尋產品" placeholder="搜尋代號或名稱 (e.g. PO34)...">
-    </div>
-
-    <div class="toolbar-group" id="advanced-filters">
-      <select id="color-filter" class="toolbar-select" aria-label="色系篩選">
-        <option value="">色系 (Color)</option>
-        <option value="藍色">藍色 Blue</option>
-        <option value="橙色">橙色 Orange</option>
-        <option value="紅色">紅色 Red</option>
-        <option value="紫色">紫色 Violet</option>
-        <option value="黃色">黃色 Yellow</option>
-      </select>
-
-      <select id="app-filter" class="toolbar-select" aria-label="應用特性篩選">
-        <option value="">應用特性 (App)</option>
-        <option value="尼龍">尼龍 Nylon</option>
-        <option value="高耐候">高耐候 Weather-Resistant</option>
-        <option value="無鹵素">無鹵素 Halogen-Free</option>
-      </select>
-    </div>
-
-    <button id="search-button" class="toolbar-btn" type="button">查詢</button>
+  <!-- 1. 產品大類頁籤 -->
+  <div class="catalog-tabs" role="tablist" aria-label="產品分類">
+    <button type="button" class="cat-tab active" data-cat="all">
+      全部產品 <span class="cat-count">44</span>
+    </button>
+    <button type="button" class="cat-tab" data-cat="organic">
+      <span class="cat-star">主力</span> 有機顏料 <span class="cat-count">40</span>
+    </button>
+    <button type="button" class="cat-tab" data-cat="solvent">
+      溶劑染料 <span class="cat-count">1</span>
+    </button>
+    <button type="button" class="cat-tab" data-cat="fluorescent">
+      螢光增白劑 <span class="cat-count">1</span>
+    </button>
+    <button type="button" class="cat-tab" data-cat="other">
+      助劑 / 機能材料 <span class="cat-count">2</span>
+    </button>
   </div>
 
-  <!-- 靜態產品總表：所有連結直接寫入 HTML，搜尋引擎可直接索引 -->
-  <div id="product-grid" class="product-grid">
+  <!-- 2. 搜尋與篩選控制面板 -->
+  <div class="filter-panel">
+    <div class="filter-top-row">
+      <div class="search-box">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input type="text" id="search-input" aria-label="搜尋產品代號或名稱" placeholder="即時搜尋型號或名稱（例如 PY155、PB15:3、PO34、紅、尼龍...）">
+      </div>
+
+      <div class="app-pills" id="app-filter-group">
+        <span class="filter-label">應用特性：</span>
+        <button type="button" class="pill-btn active" data-app="">全部</button>
+        <button type="button" class="pill-btn" data-app="尼龍">尼龍</button>
+        <button type="button" class="pill-btn" data-app="高耐候">高耐候</button>
+        <button type="button" class="pill-btn" data-app="無鹵素">無鹵素</button>
+      </div>
+    </div>
+
+    <div class="filter-bottom-row" id="color-filter-row">
+      <div class="color-pills" id="color-filter-group">
+        <span class="filter-label">有機顏料色系：</span>
+        <button type="button" class="pill-btn active" data-color="">全部色系</button>
+        <button type="button" class="pill-btn" data-color="藍色"><span class="color-dot" style="background:#2563eb;"></span>藍色 (6)</button>
+        <button type="button" class="pill-btn" data-color="橙色"><span class="color-dot" style="background:#f97316;"></span>橙色 (6)</button>
+        <button type="button" class="pill-btn" data-color="紅色"><span class="color-dot" style="background:#dc2626;"></span>紅色 (11)</button>
+        <button type="button" class="pill-btn" data-color="紫色"><span class="color-dot" style="background:#9333ea;"></span>紫色 (2)</button>
+        <button type="button" class="pill-btn" data-color="黃色"><span class="color-dot" style="background:#facc15;"></span>黃色 (15)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 結果數量列 -->
+  <div class="result-bar">
+    <div class="result-count">目前顯示 <strong id="visible-count">44</strong> / 44 項產品</div>
+    <button type="button" class="reset-btn" id="reset-filters">清除所有篩選</button>
+  </div>
+<div id="product-grid" class="product-grid">
 
     <!-- ==================== 有機顏料：藍色系 ==================== -->
     <a href="https://hwashine.tw/PB15-0" target="_blank" rel="noopener" class="product-card" data-type="organic" data-color="藍色" data-apps="高耐候,無鹵素" data-search="pb15:0 顏料藍 15:0">
@@ -1397,21 +1401,22 @@
   </div>
 </main>
 
-<footer>
-  <p>&copy; 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
-</footer>
+<custom-footer></custom-footer>
 
 <a href="https://hwashine.tw/contact" class="float-btn" title="聯絡我們" aria-label="聯絡我們">✉</a>
 
 <!-- Modal Component (供 TPO 使用) -->
-<div id="product-modal" class="modal-overlay" onclick="closeModal(event)" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+</main>
+
+<!-- Modal 詳情彈窗 -->
+<div id="product-modal" class="modal-overlay" onclick="closeModal(event)">
   <div class="modal-card" onclick="event.stopPropagation()">
     <div class="modal-header">
       <div class="modal-title">
         <h2 id="modal-name">光啟始劑</h2>
-        <span id="modal-code" class="modal-subtitle">TPO</span>
+        <span class="modal-subtitle" id="modal-code">TPO</span>
       </div>
-      <button class="close-modal-btn" type="button" onclick="closeModal()" aria-label="關閉視窗">×</button>
+      <button class="close-modal-btn" onclick="closeModal()" aria-label="關閉">&times;</button>
     </div>
     <div class="modal-body">
       <div id="modal-content">
@@ -1427,13 +1432,17 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a href="https://hwashine.tw/contact" class="contact-modal-btn">詢問此產品</a>
+      <a href="/contact" class="contact-modal-btn">詢問此產品</a>
     </div>
   </div>
 </div>
 
+<!-- 浮動聯絡按鈕 -->
+<a href="/contact" class="float-btn" title="聯絡我們" aria-label="聯絡我們">✉</a>
+
+<custom-footer></custom-footer>
+
 <script>
-// --- Modal 彈窗資料（僅用於無獨立頁面的產品如 TPO） ---
 const modalProducts = {
   TPO: {
     code: "TPO",
@@ -1444,117 +1453,132 @@ const modalProducts = {
 };
 
 function openModal(code) {
-  try {
-    const product = modalProducts[code];
-    if (!product) return;
-
-    document.getElementById('modal-name').textContent = product.name;
-    document.getElementById('modal-code').textContent = product.code;
-
-    let contentHtml = `<span class="modal-section-title">產品介紹</span><p>${product.details}</p>`;
-    if (product.usage && product.usage.length > 0) {
-      contentHtml += `<span class="modal-section-title">常見用途</span><div class="modal-tags">`;
-      product.usage.forEach(u => {
-        contentHtml += `<span class="tag highlight">${u}</span>`;
-      });
-      contentHtml += `</div>`;
-    }
-
-    document.getElementById('modal-content').innerHTML = contentHtml;
-    document.getElementById('product-modal').classList.add('open');
-  } catch (err) {
-    console.error('開啟產品彈窗時發生錯誤:', err);
+  const product = modalProducts[code];
+  if (!product) return;
+  document.getElementById('modal-name').textContent = product.name;
+  document.getElementById('modal-code').textContent = product.code;
+  let contentHtml = `<span class="modal-section-title">產品介紹</span><p>${product.details}</p>`;
+  if (product.usage && product.usage.length > 0) {
+    contentHtml += `<span class="modal-section-title">常見用途</span><div class="modal-tags">`;
+    product.usage.forEach(u => { contentHtml += `<span class="tag highlight">${u}</span>`; });
+    contentHtml += `</div>`;
   }
+  document.getElementById('modal-content').innerHTML = contentHtml;
+  document.getElementById('product-modal').classList.add('open');
 }
 
 function closeModal(event) {
-  if (event && event.target.id !== 'product-modal' && !event.target.classList.contains('close-modal-btn')) {
-    return;
-  }
+  if (event && event.target.id !== 'product-modal' && !event.target.classList.contains('close-modal-btn')) return;
   document.getElementById('product-modal').classList.remove('open');
 }
 
-// --- 類別切換與 DOM 篩選邏輯（不破壞靜態 HTML 連結） ---
-function switchCategory(cat) {
-  const select = document.getElementById('category-select');
-  if (select && select.value !== cat) {
-    select.value = cat;
-  }
+const state = { cat: 'all', color: '', app: '', term: '' };
 
-  const advFilters = document.getElementById('advanced-filters');
-  if (advFilters) {
-    if (cat === 'other' || cat === 'fluorescent') {
-      advFilters.style.display = 'none';
-      // 隱藏進階篩選時重置色系與應用選項，避免誤過濾
-      document.getElementById('color-filter').value = '';
-      document.getElementById('app-filter').value = '';
-    } else {
-      advFilters.style.display = 'flex';
-    }
-  }
+function syncActiveButtons() {
+  document.querySelectorAll('.cat-tab').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cat === state.cat);
+  });
+  document.querySelectorAll('#color-filter-group .pill-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.color === state.color);
+  });
+  document.querySelectorAll('#app-filter-group .pill-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.app === state.app);
+  });
 
-  filterProducts();
+  const colorRow = document.getElementById('color-filter-row');
+  if (colorRow) {
+    const showColors = (state.cat === 'all' || state.cat === 'organic');
+    colorRow.style.display = showColors ? 'flex' : 'none';
+  }
 }
 
 function filterProducts() {
-  try {
-    const cat = document.getElementById('category-select').value;
-    const term = document.getElementById('search-input').value.trim().toLowerCase();
-    const color = document.getElementById('color-filter').value;
-    const app = document.getElementById('app-filter').value;
+  const cards = document.querySelectorAll('#product-grid .product-card');
+  let visibleCount = 0;
 
-    const cards = document.querySelectorAll('#product-grid .product-card');
-    let visibleCount = 0;
+  cards.forEach(card => {
+    const cardType = card.dataset.type || '';
+    const cardColor = card.dataset.color || '';
+    const cardSearch = (card.dataset.search || '').toLowerCase();
+    const cardApps = card.dataset.apps ? card.dataset.apps.split(',') : [];
 
-    cards.forEach(card => {
-      const cardType = card.dataset.type || '';
-      const cardColor = card.dataset.color || '';
-      const cardSearch = card.dataset.search || '';
-      const cardApps = card.dataset.apps ? card.dataset.apps.split(',') : [];
+    let isMatch = true;
+    if (state.cat !== 'all' && cardType !== state.cat) isMatch = false;
+    if (state.term && !cardSearch.includes(state.term)) isMatch = false;
+    if (state.color && cardColor !== state.color) isMatch = false;
+    if (state.app && !cardApps.includes(state.app)) isMatch = false;
 
-      let isMatch = true;
-      if (cat !== 'all' && cardType !== cat) isMatch = false;
-      if (term && !cardSearch.includes(term)) isMatch = false;
-      if (color && cardColor !== color) isMatch = false;
-      if (app && !cardApps.includes(app)) isMatch = false;
+    card.classList.toggle('is-hidden', !isMatch);
+    if (isMatch) visibleCount++;
+  });
 
-      card.classList.toggle('is-hidden', !isMatch);
-      if (isMatch) visibleCount++;
-    });
+  const countEl = document.getElementById('visible-count');
+  if (countEl) countEl.textContent = visibleCount;
 
-    const emptyState = document.getElementById('empty-state');
-    if (emptyState) {
-      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
-    }
-  } catch (err) {
-    console.error('篩選產品時發生錯誤:', err);
-  }
+  const emptyState = document.getElementById('empty-state');
+  if (emptyState) emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 偵測網址查詢參數，例如 ?category=fluorescent
   const urlParams = new URLSearchParams(window.location.search);
   const categoryParam = urlParams.get('category');
-
-  if (categoryParam) {
-    const select = document.getElementById('category-select');
-    const options = Array.from(select.options).map(opt => opt.value);
-    if (options.includes(categoryParam)) {
-      switchCategory(categoryParam);
-    }
+  if (['all', 'organic', 'solvent', 'fluorescent', 'other'].includes(categoryParam)) {
+    state.cat = categoryParam;
   }
 
-  document.getElementById('search-button').addEventListener('click', filterProducts);
-  document.getElementById('search-input').addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') filterProducts();
+  document.querySelectorAll('.cat-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.cat = btn.dataset.cat;
+      if (state.cat !== 'all' && state.cat !== 'organic') {
+        state.color = '';
+        state.app = '';
+      }
+      syncActiveButtons();
+      filterProducts();
+    });
   });
-  document.getElementById('color-filter').addEventListener('change', filterProducts);
-  document.getElementById('app-filter').addEventListener('change', filterProducts);
 
-  // 支援按 Esc 關閉彈窗
+  document.querySelectorAll('#color-filter-group .pill-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.color = btn.dataset.color;
+      if (state.color && state.cat !== 'organic') {
+        state.cat = 'organic';
+      }
+      syncActiveButtons();
+      filterProducts();
+    });
+  });
+
+  document.querySelectorAll('#app-filter-group .pill-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.app = btn.dataset.app;
+      syncActiveButtons();
+      filterProducts();
+    });
+  });
+
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', () => {
+    state.term = searchInput.value.trim().toLowerCase();
+    filterProducts();
+  });
+
+  document.getElementById('reset-filters').addEventListener('click', () => {
+    state.cat = 'all';
+    state.color = '';
+    state.app = '';
+    state.term = '';
+    searchInput.value = '';
+    syncActiveButtons();
+    filterProducts();
+  });
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
   });
+
+  syncActiveButtons();
+  filterProducts();
 });
 </script>
 </body>

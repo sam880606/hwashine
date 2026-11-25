@@ -44,32 +44,14 @@
         .delay-300 { animation-delay: 300ms; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-brand-500 selection:text-white">
+<body class="hs-dark font-sans text-gray-800 bg-gray-50 antialiased selection:bg-brand-500 selection:text-white">
 
     <!-- 導覽列 -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <a href="https://hwashine.tw/" target="_blank" class="flex items-center gap-2 hover:opacity-80 transition">
-                    <!-- Logo Icon -->
-                    <div class="w-8 h-8 bg-gradient-to-br from-brand-600 to-brand-500 rounded-lg flex items-center justify-center text-white font-bold shadow-lg">
-                        H
-                    </div>
-                    <span class="text-2xl font-black tracking-tighter text-brand-900">華翔興業 <span class="text-brand-500 text-sm font-bold ml-1">Hwashine</span></span>
-                </a>
-                <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
-                    <a href="#problem" class="hover:text-brand-600 transition">產業挑戰</a>
-                    <a href="#value" class="hover:text-brand-600 transition">核心優勢</a>
-                    <a href="#market" class="hover:text-brand-600 transition">應用領域</a>
-                    <a href="https://hwashine.tw/PA-MXD6/indexMXD6" target="_blank" class="text-brand-600 font-bold hover:text-brand-800 transition">MXD6 產品專區</a>
-                </div>
-                <a href="https://hwashine.tw/contact" target="_blank" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-brand-900 hover:bg-brand-800 shadow-md transition transform hover:-translate-y-0.5">
-                    聯絡我們
-                </a>
-            </div>
-        </div>
-    </nav>
+    <custom-header compact="true"></custom-header>
 
     <!-- Hero Section -->
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-brand-900 text-white">
@@ -284,18 +266,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
-            <div class="mb-4 md:mb-0">
-                &copy; 2026 華翔興業有限公司 Hwashine Trading Co., Ltd. All rights reserved.
-            </div>
-            <div class="flex space-x-6">
-                <a href="https://hwashine.tw/" target="_blank" class="hover:text-white transition">華翔興業首頁</a>
-                <a href="https://hwashine.tw/PA-MXD6/indexMXD6" target="_blank" class="hover:text-white transition">PA-MXD6 產品專區</a>
-                <a href="https://hwashine.tw/contact" target="_blank" class="hover:text-white transition">聯絡我們</a>
-            </div>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
 </body>
 </html>

@@ -86,41 +86,14 @@
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50 flex flex-col min-h-screen">
+<body class="hs-dark font-sans text-gray-800 bg-gray-50 flex flex-col min-h-screen">
 
     <!-- Header Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo & Company Name -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="https://hwashine.tw/" class="flex items-center gap-3 group" title="前往華翔興業官網">
-                        <div class="w-10 h-10 bg-brand-800 text-white rounded flex items-center justify-center font-bold text-xl group-hover:bg-brand-600 transition">
-                            H
-                        </div>
-                        <div class="flex flex-col">
-                            <span class="font-bold text-xl text-gray-900 tracking-wide">華翔興業有限公司</span>
-                            <span class="text-xs text-gray-500 font-medium">Hwashine Trading Co., Ltd.</span>
-                        </div>
-                    </a>
-                </div>
-                <!-- Desktop Menu -->
-                <nav class="hidden md:flex space-x-8 items-center">
-                    <a href="#features" class="text-gray-600 hover:text-brand-600 font-medium transition">產品特性</a>
-                    <a href="#applications" class="text-gray-600 hover:text-brand-600 font-medium transition">應用領域</a>
-                    <a href="#specs" class="text-gray-600 hover:text-brand-600 font-medium transition">技術規格</a>
-                    <a href="https://hwashine.tw/contact" class="bg-brand-600 text-white px-6 py-2.5 rounded-md font-medium hover:bg-brand-800 transition shadow-sm" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-envelope mr-2"></i> 聯絡報價
-                    </a>
-                </nav>
-                <!-- Mobile Menu Button (simplified for landing page) -->
-                <div class="md:hidden flex items-center">
-                    <a href="https://hwashine.tw/contact" class="text-brand-600 font-medium">聯絡我們</a>
-                </div>
-            </div>
-        </div>
-    </header>
+    <custom-header compact="true"></custom-header>
 
     <main class="flex-grow">
         <!-- Hero Section -->
@@ -454,44 +427,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-white text-lg font-bold mb-4">華翔興業有限公司</h3>
-                    <p class="text-sm mb-4 leading-relaxed">專業的染料、顏料及化學助劑供應商，致力於為各行業提供高品質的著色解決方案。</p>
-                </div>
-                <div>
-                    <h3 class="text-white text-lg font-bold mb-4">快速連結</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="https://hwashine.tw/" class="hover:text-white transition">公司官網</a></li>
-                        <li><a href="https://hwashine.tw/contact" class="hover:text-white transition">聯絡我們</a></li>
-                        <li><a href="#features" class="hover:text-white transition">產品特性</a></li>
-                        <li><a href="#specs" class="hover:text-white transition">產品規格</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-white text-lg font-bold mb-4">聯絡資訊</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-start">
-                            <i class="fas fa-globe mt-1 mr-3 w-4 text-center"></i>
-                            <a href="https://hwashine.tw" class="hover:text-white transition">hwashine.tw</a>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3 w-4 text-center"></i>
-                            <a href="https://hwashine.tw/contact" class="hover:text-white transition">透過網站表單聯絡</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-12 pt-8 border-t border-gray-800 text-sm text-center md:text-left flex flex-col md:flex-row justify-between items-center">
-                <p>&copy; <script>document.write(new Date().getFullYear())</script> 華翔興業有限公司 Hwashine Trading Co., Ltd. All rights reserved.</p>
-                <div class="mt-4 md:mt-0">
-                    <span class="text-xs">專注品質・創造色彩</span>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
 </body>
 </html>

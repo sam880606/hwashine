@@ -172,7 +172,7 @@
     .image-container figcaption {
       margin-top: 0.8rem;
       font-size: 0.9rem;
-      color: #555;
+      color: var(--hs-text-secondary);
     }
 
     .highlight {
@@ -197,7 +197,7 @@
     .contact-button {
       display: inline-block;
       padding: 1rem 2rem;
-      background: white;
+      background: var(--hs-bg-card);
       color: var(--primary-color);
       text-decoration: none;
       border-radius: 50px;
@@ -297,21 +297,18 @@
       }
     }
   </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
-  <header>
+<body class="hs-dark">
+  <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
     <h1>塑膠加工中顏料熱降解的預防與控制精要</h1>
     <p>確保塑膠加工品質的關鍵技術指南</p>
-  </header>
-
-  <nav>
-  <ul>
-    <li><a href="/">首頁</a></li>
-    <li><a href="/about">關於我們</a></li>
-    <li><a href="/products">產品</a></li>
-    <li><a href="/contact">聯絡我們</a></li>
-  </ul>
-</nav>
+  </div>
+</section>
 
   <main>
     <section id="summary">
@@ -367,13 +364,7 @@
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2024 華翔興業有限公司 版權所有</p>
-    <nav>
-      <a href="/privacy">隱私政策</a> |
-      <a href="/terms">使用條款</a>
-    </nav>
-  </footer>
+  <custom-footer></custom-footer>
 
   <div id="back-to-top">&#8679;</div>
 

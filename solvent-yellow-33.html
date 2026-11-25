@@ -94,9 +94,9 @@
         .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, visibility; }
         .fade-in-section.is-visible { opacity: 1; transform: none; }
         .tech-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        .tech-table th { background-color: #f1f5f9; color: #334155; font-weight: 700; text-align: left; padding: 0.75rem; border-bottom: 2px solid #cbd5e1; white-space: nowrap; }
-        .tech-table td { padding: 0.75rem; border-bottom: 1px solid #e2e8f0; color: #475569; }
-        .tech-table tr:hover td { background-color: #f8fafc; }
+        .tech-table th { background-color: var(--hs-bg-card); color: var(--hs-text-secondary); font-weight: 700; text-align: left; padding: 0.75rem; border-bottom: 2px solid #cbd5e1; white-space: nowrap; }
+        .tech-table td { padding: 0.75rem; border-bottom: 1px solid #e2e8f0; color: var(--hs-text-secondary); }
+        .tech-table tr:hover td { background-color: var(--hs-bg-card); }
         .yellow-gradient { background: linear-gradient(135deg, #703c10 0%, #c08006 50%, #f4c015 100%); }
         .text-shadow { text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
         .prose-text { line-height: 1.8; text-align: justify; }
@@ -104,14 +104,17 @@
         /* Print Styles */
         @media print {
             .no-print { display: none !important; }
-            body { background: white; color: black; }
+            body { background: var(--hs-bg-card); color: var(--hs-text-secondary); }
             header { color: black !important; background: white !important; padding: 20px 0; }
-            header h1 { color: black; }
+            header h1 { color: var(--hs-text-secondary); }
             .tech-table th { background-color: #eee !important; color: black !important; -webkit-print-color-adjust: exact; }
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed selection:bg-brand-200 selection:text-brand-900 pb-24 md:pb-0">
+<body class="hs-dark bg-slate-50 text-slate-800 font-sans leading-relaxed selection:bg-brand-200 selection:text-brand-900 pb-24 md:pb-0">
 
     <div class="bg-science-900 text-brand-100 h-10 flex items-center no-print sticky top-0 z-50 border-b border-white/10">
         <div class="container mx-auto px-6 flex justify-between items-center text-sm w-full">
@@ -125,60 +128,13 @@
         </div>
     </div>
 
-    <header class="bg-science-800 text-white pt-16 pb-20 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
-                        <path d="M25 0 L50 12.5 L50 37.5 L25 50 L0 37.5 L0 12.5 Z" stroke="#f4c015" stroke-width="1" fill="none"/>
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#hexagons)"/>
-            </svg>
-        </div>
-        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center">
-            <div class="md:w-3/5 mb-10 md:mb-0">
-                <div class="inline-flex items-center px-3 py-1 mb-4 text-xs font-bold tracking-wider uppercase bg-brand-500 rounded-full text-science-900 shadow-lg border border-brand-300">
-                    <i class="fa-solid fa-file-lines mr-2"></i> 工業與軍事跨界技術分析報告
-                </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
-                    Solvent Yellow 33<br><span class="text-brand-400">工業與軍事中不可撼動的基準</span>
-                </h1>
-                <p class="text-xl text-slate-300 font-light max-w-xl mb-8 leading-relaxed">
-                    完美對標業界知名通用型號 <strong class="text-white">Quinoline Yellow SS</strong>。深入解析其在 PC (320°C)、PS/PMMA 工程塑料著色與軍事氣膠發煙中的完美物理跨界。
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 no-print">
-                    <a href="https://hwashine.tw/contact" target="_blank" class="bg-brand-500 hover:bg-brand-400 text-science-900 px-8 py-4 rounded-lg font-bold shadow-[0_0_15px_rgba(244,192,21,0.4)] transition-transform transform hover:-translate-y-1 text-center"><i class="fa-solid fa-paper-plane mr-2"></i> 索取樣品與報價</a>
-                    <a href="#executive-summary" class="bg-transparent border border-brand-500/50 hover:bg-white/5 text-brand-100 px-8 py-4 rounded-lg font-medium transition-all text-center"><i class="fa-solid fa-book-open mr-2"></i> 開始閱讀</a>
-                </div>
-            </div>
-            <div class="md:w-2/5 flex flex-col gap-4">
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 rounded-xl flex items-start">
-                    <div class="w-10 h-10 rounded-full bg-brand-500 text-science-900 flex items-center justify-center text-xl mr-4 shrink-0"><i class="fa-solid fa-shield-halved"></i></div>
-                    <div><h3 class="font-bold text-lg text-brand-100">ESIPT 耐光量子機制</h3><p class="text-sm text-slate-400">激發態質子轉移消散高能 UV，免除自由基降解，提供 5-6 級的穩定耐光牢度。</p></div>
-                </div>
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-5 rounded-xl flex items-start">
-                    <div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center text-xl mr-4 shrink-0"><i class="fa-solid fa-temperature-arrow-up"></i></div>
-                    <div><h3 class="font-bold text-lg text-brand-100">高達 320°C (PC) 加工耐熱</h3><p class="text-sm text-slate-400">專為 PC (320°C)、PS (280°C) 及 PMMA/ABS 調色設計，呈現無與倫比的高透明綠光黃。</p></div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <nav class="sticky top-10 z-40 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm no-print">
-        <div class="container mx-auto px-6 flex items-center justify-between">
-            <div class="overflow-x-auto no-scrollbar">
-                <div class="flex space-x-6 whitespace-nowrap min-w-max">
-                    <a href="#executive-summary" class="py-4 text-sm font-medium text-slate-600 hover:text-brand-600 border-b-2 border-transparent hover:border-brand-500 transition-colors">執行摘要</a>
-                    <a href="#chemistry" class="py-4 text-sm font-medium text-slate-600 hover:text-brand-600 border-b-2 border-transparent hover:border-brand-500 transition-colors">分子科學</a>
-                    <a href="#mechanisms" class="py-4 text-sm font-medium text-slate-600 hover:text-brand-600 border-b-2 border-transparent hover:border-brand-500 transition-colors">氣膠與昇華</a>
-                    <a href="#comparison" class="py-4 text-sm font-medium text-slate-600 hover:text-brand-600 border-b-2 border-transparent hover:border-brand-500 transition-colors">技術對標</a>
-                    <a href="#applications" class="py-4 text-sm font-medium text-slate-600 hover:text-brand-600 border-b-2 border-transparent hover:border-brand-500 transition-colors">工業與盲點</a>
-                    <a href="#tech-data" class="py-4 text-sm font-medium text-slate-600 hover:text-brand-600 border-b-2 border-transparent hover:border-brand-500 transition-colors">理化數據</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>Solvent Yellow 33工業與軍事中不可撼動的基準</h1>
+    <p>完美對標業界知名通用型號 Quinoline Yellow SS。深入解析其在 PC (320°C)、PS/PMMA 工程塑料著色與軍事氣膠發煙中的完美物理跨界。</p>
+  </div>
+</section>
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-12">
@@ -525,32 +481,7 @@
 
     </main>
 
-    <footer class="bg-science-900 text-slate-400 py-16 border-t border-science-800 no-print">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between gap-12">
-            <!-- Left Side -->
-            <div class="md:w-1/2">
-                <h4 class="text-white text-xl font-bold mb-6">華翔興業有限公司</h4>
-                <p class="text-sm leading-relaxed mb-8 max-w-md">
-                    本技術綜述由華翔興業有限公司彙整實驗數據與文獻提供。我們在台灣備有豐富的工程級染顏料庫存，致力於為高端塑膠與紡織產業提供最穩固的化學著色解決方案。
-                </p>
-                <div class="flex flex-wrap gap-6 text-sm">
-                    <a href="https://hwashine.tw/" class="hover:text-white transition-colors flex items-center"><i class="fa-solid fa-globe mr-2"></i> 官方網站</a>
-                    <a href="tel:+886-2-77337581" class="hover:text-white transition-colors flex items-center"><i class="fa-solid fa-phone mr-2"></i> 02-77337581</a>
-                    <a href="https://hwashine.tw/contact" class="hover:text-white transition-colors flex items-center"><i class="fa-solid fa-envelope mr-2"></i> 聯絡我們</a>
-                </div>
-            </div>
-            
-            <!-- Right Side -->
-            <div class="md:w-1/2 flex flex-col justify-end md:text-right mt-8 md:mt-0">
-                <p class="text-sm text-slate-400 mb-4">
-                    &copy; 2024 華翔興業有限公司 Hwashine Trading Co., Ltd. 保留所有權利。
-                </p>
-                <p class="text-[11px] text-slate-500 leading-relaxed italic md:ml-auto max-w-lg">
-                    * 法律商標免責聲明：網頁中提及之 Quinoline Yellow SS 及 Yellow YC 等型號商標，僅作為化學物質與物理性能之學術對標、型號指引與市場溝通參考，屬合理使用範疇。華翔興業不擁有上述商標之權利，本公司供應之產品為其同等規格之高純度等效替代品 (Equivalent)。
-                </p>
-            </div>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <!-- Mobile Sticky CTA -->
     <div class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-4 flex gap-3 z-50 md:hidden shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] no-print">

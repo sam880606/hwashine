@@ -1,5 +1,4 @@
-<html><head><base href="https://hwashine.tw/">
-<meta charset="UTF-8">
+<html><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
@@ -106,7 +105,7 @@
   .category-select {
     padding: 0.75rem 1.5rem;
     border: 2px solid var(--primary-color);
-    background: white;
+    background: var(--hs-bg-card);
     color: var(--primary-color);
     border-radius: 4px;
     font-size: 1rem;
@@ -126,7 +125,7 @@
   }
 
   .search-container {
-    background-color: white;
+    background-color: var(--hs-bg-card);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
@@ -168,7 +167,7 @@
   }
 
   .product-card {
-    background-color: white;
+    background-color: var(--hs-bg-card);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -683,21 +682,18 @@ function displayProducts(filteredProducts = products) {
     });
 }
 </script>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
+<body class="hs-dark">
 
-<header>
-  <h1>產品總表</h1>
-</header>
-
-<nav>
-  <ul>
-    <li><a href="/">首頁</a></li>
-    <li><a href="/about">關於我們</a></li>
-    <li><a href="/products">產品</a></li>
-    <li><a href="/contact">聯絡我們</a></li>
-  </ul>
-</nav>
+<custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>產品總表</h1>
+  </div>
+</section>
 
 <main>
   <div class="category-selector">
@@ -736,5 +732,6 @@ function displayProducts(filteredProducts = products) {
 <button id="back-to-top" title="回到頂部">↑</button>
 <button id="contact-us-float">聯絡我們</button>
 
+    <custom-footer></custom-footer>
 </body>
 </html>

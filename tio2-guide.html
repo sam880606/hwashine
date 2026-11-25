@@ -44,35 +44,20 @@
             -webkit-text-fill-color: transparent;
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased leading-relaxed">
+<body class="hs-dark bg-gray-50 text-gray-800 antialiased leading-relaxed">
 
     <!-- Header / Navigation -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo Area -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="https://hwashine.tw/" class="flex items-center gap-2" target="_blank" rel="noopener noreferrer">
-                        <i data-lucide="globe-2" class="w-8 h-8 text-primary"></i>
-                        <div>
-                            <h1 class="text-xl font-bold text-gray-900 tracking-wider">華翔興業有限公司</h1>
-                            <p class="text-xs text-gray-500 font-medium tracking-widest">HWASHINE TRADING CO., LTD.</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Desktop Nav -->
-                <nav class="hidden md:flex space-x-8 items-center">
-                    <a href="https://hwashine.tw/" class="text-gray-600 hover:text-primary font-medium transition-colors" target="_blank">官網首頁</a>
-                    <a href="#applications" class="text-gray-600 hover:text-primary font-medium transition-colors">應用領域</a>
-                    <a href="https://hwashine.tw/contact" target="_blank" class="bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-blue-800 transition-all shadow-md hover:shadow-lg flex items-center gap-2">
-                        <i data-lucide="mail" class="w-4 h-4"></i>
-                        聯絡我們詢價
-                    </a>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>華翔興業有限公司</h1>
+    <p>HWASHINE TRADING CO., LTD.</p>
+  </div>
+</section>
 
     <!-- Hero Section -->
     <section class="relative bg-primary overflow-hidden">
@@ -425,38 +410,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <i data-lucide="globe-2" class="w-6 h-6 text-blue-400"></i>
-                    <h2 class="text-xl font-bold text-white tracking-wider">華翔興業有限公司</h2>
-                </div>
-                <p class="text-sm mb-4">HWASHINE TRADING CO., LTD.</p>
-                <p class="text-sm">我們致力於引進中國最具優勢的化工原料，為台灣產業提供最佳的性價比、品質與服務。</p>
-            </div>
-            <div>
-                <h3 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">快速連結</h3>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="https://hwashine.tw/" target="_blank" class="hover:text-white transition-colors">官網首頁</a></li>
-                    <li><a href="#applications" class="hover:text-white transition-colors">鈦白粉應用領域</a></li>
-                    <li><a href="https://hwashine.tw/contact" target="_blank" class="hover:text-white transition-colors">聯絡我們</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">聯絡資訊</h3>
-                <ul class="space-y-3 text-sm">
-                    <li class="flex items-start gap-2">
-                        <i data-lucide="external-link" class="w-4 h-4 mt-0.5 shrink-0"></i>
-                        <a href="https://hwashine.tw/contact" target="_blank" class="hover:text-white transition-colors underline underline-offset-4">前往官網填寫表單</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 text-sm text-center">
-            <p>&copy; <span id="year"></span> 華翔興業有限公司 Hwashine Trading Co., Ltd. All rights reserved.</p>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <!-- Initialize Icons -->
     <script>

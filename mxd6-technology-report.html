@@ -67,8 +67,11 @@
             page-break-before: always;
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-800 leading-relaxed">
+<body class="hs-dark bg-slate-50 text-slate-800 leading-relaxed">
 
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm border-b border-slate-200">
@@ -106,21 +109,13 @@
     </nav>
 
     <!-- Hero Header -->
-    <header class="glossy-bg text-white py-16 sm:py-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-                高光澤玻纖增強尼龍複合材料的表面工程
-            </h1>
-            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-light">
-                MXD6 (聚間苯二甲胺己二酰胺) 的作用機制與應用研究
-            </p>
-            <div class="mt-8 flex justify-center gap-4">
-                <span class="px-4 py-2 bg-blue-600 rounded-full text-sm font-semibold shadow-lg shadow-blue-500/30">消除浮纖</span>
-                <span class="px-4 py-2 bg-indigo-600 rounded-full text-sm font-semibold shadow-lg shadow-indigo-500/30">鏡面效果</span>
-                <span class="px-4 py-2 bg-slate-600 rounded-full text-sm font-semibold border border-slate-500">高剛性</span>
-            </div>
-        </div>
-    </header>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>高光澤玻纖增強尼龍複合材料的表面工程</h1>
+    <p>MXD6 (聚間苯二甲胺己二酰胺) 的作用機制與應用研究</p>
+  </div>
+</section>
 
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
 
@@ -365,19 +360,7 @@
 
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 py-12 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="mb-1 font-bold text-white text-lg">華翔興業有限公司</p>
-            <p class="mb-4 text-sm text-slate-500 font-medium">Hwashine Trading Co., Ltd.</p>
-            <p class="mb-4">高光澤玻纖增強尼龍複合材料技術報告</p>
-            <div class="flex justify-center space-x-6 text-sm mb-6">
-                 <a href="https://hwashine.tw/PA-MXD6/indexMXD6" class="hover:text-white transition">MXD6 產品首頁</a>
-                 <span class="text-slate-600">|</span>
-                 <a href="https://hwashine.tw/PA-MXD6/contact" class="hover:text-white transition">聯絡我們</a>
-            </div>
-            <p class="text-xs text-slate-600">&copy; Hwashine Trading Co., Ltd. All rights reserved.</p>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
 </body>
 </html>

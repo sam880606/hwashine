@@ -53,7 +53,7 @@
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: #f8fafc;
+            background-color: var(--hs-bg-card);
         }
         .molecule-anim {
             animation: float 6s ease-in-out infinite;
@@ -67,8 +67,11 @@
             scroll-behavior: smooth;
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="text-slate-800">
+<body class="hs-dark text-slate-800">
 
     <!-- Navbar -->
     <nav class="bg-white text-slate-800 p-4 shadow-md sticky top-0 z-50 border-b border-slate-200">
@@ -87,24 +90,13 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white pt-20 pb-32 px-4 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
-                </pattern>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
-        </div>
-
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">半結晶 vs 非結晶塑料特性比較</h1>
-            <p class="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-                了解分子結構差異，掌握<strong class="text-cyan-400">高強度</strong>與<strong class="text-orange-400">尺寸安定性</strong>的平衡關鍵。<br>
-                華翔興業技術專欄：從基礎原理到 <span class="text-white font-bold border-b border-white/50">MXD6 金屬替代方案</span>。
-            </p>
-        </div>
-    </header>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>半結晶 vs 非結晶塑料特性比較</h1>
+    <p>了解分子結構差異，掌握高強度與尺寸安定性的平衡關鍵。 華翔興業技術專欄：從基礎原理到 MXD6 金屬替代方案。</p>
+  </div>
+</section>
 
     <!-- Main Content Container -->
     <main class="max-w-6xl mx-auto px-4 -mt-24 pb-20 relative z-20">
@@ -334,15 +326,7 @@
 
     </main>
 
-    <footer class="bg-white border-t border-slate-200 mt-12 py-12">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold text-blue-900 mb-2">華翔興業有限公司 HS</h2>
-            <p class="text-slate-500 mb-6">您最值得信賴的工程塑膠合作夥伴 | 專業代理 MXD6</p>
-            <div class="text-sm text-slate-400">
-                &copy; 華翔興業有限公司 All Rights Reserved.
-            </div>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <script>
         lucide.createIcons();

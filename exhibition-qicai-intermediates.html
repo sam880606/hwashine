@@ -114,7 +114,7 @@
     <style>
         /* Base Styling & Subtle Decorative Grid */
         body {
-            background-color: #f8fafc;
+            background-color: var(--hs-bg-card);
             color: #0f172a;
         }
         .chem-grid-bg {
@@ -137,8 +137,11 @@
             box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="antialiased selection:bg-sky-500 selection:text-white">
+<body class="hs-dark antialiased selection:bg-sky-500 selection:text-white">
 
     <!-- Top Brand & Distributor Navigation Bar -->
     <nav aria-label="主導覽列" class="bg-slate-900 text-slate-300 text-xs sm:text-sm py-3 px-4 border-b border-slate-800 sticky top-0 z-40 shadow-md">
@@ -168,104 +171,13 @@
     </nav>
 
     <!-- Editorial Header / Hero Section -->
-    <header class="relative bg-slate-950 text-white overflow-hidden border-b border-slate-800">
-        <!-- Background decorative pattern & soft radial glow -->
-        <div class="absolute inset-0 chem-grid-bg opacity-40"></div>
-        <div class="absolute -top-24 -right-24 w-96 h-96 bg-sky-600/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-            <!-- SEO Breadcrumb -->
-            <nav aria-label="Breadcrumb" class="mb-4 text-xs text-slate-400 flex flex-wrap items-center gap-1.5">
-                <a href="https://hwashine.tw/" target="_blank" rel="noopener" class="hover:text-sky-400">華翔興業首頁 (染料/顏料)</a>
-                <span>/</span>
-                <span class="text-slate-300">七彩化學台灣代理專區</span>
-                <span>/</span>
-                <span class="text-sky-400 font-medium">新材料化學品與特種中間體 CAS 專題報導</span>
-            </nav>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-
-                <!-- Left Column: News Article Title & Lead -->
-                <div class="lg:col-span-8 space-y-6">
-                    <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-medium text-sky-400">
-                        <span class="bg-sky-950 border border-sky-800 px-3 py-1 rounded-md">化工產業深度報導</span>
-                        <span>•</span>
-                        <span>七彩化學顏料台灣代理商：華翔興業</span>
-                        <span>•</span>
-                        <span class="text-slate-400">CAS 號碼精準索引</span>
-                    </div>
-
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
-                        從高性能有機顏料跨足新材料單體：<span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-indigo-400">七彩化學「三大系列特種中間體」</span>重磅登場
-                    </h1>
-
-                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
-                        <strong class="text-white font-semibold"><a href="https://hwashine.tw/" target="_blank" rel="noopener" class="underline decoration-sky-500/60 hover:text-sky-300">華翔興業有限公司（Hwashine Trading Co., Ltd.）</a></strong>深耕台灣色料市場，專業提供各類高品質<strong class="text-white">染料與有機顏料</strong>，並身為<strong class="text-sky-300">七彩化學（Qicai Chemistry）顏料之台灣代理商</strong>。本篇專題報導依展會展板整理七彩化學展示之<strong class="text-sky-300">「新材料化學品」</strong>——涵蓋<strong class="text-white">特種二胺（Functional Diamines）</strong>、<strong class="text-white">特種異氰酸酯（Functional Diisocyanates）</strong>以及標註為聚合樹脂用高性能單體的<strong class="text-white">TCD（三環癸烷）系列化學品</strong>。
-                    </p>
-
-                    <!-- Highlighted CAS Quick Tags -->
-                    <div class="pt-2">
-                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2.5 flex items-center">
-                            <i class="fa-solid fa-hashtag text-sky-400 mr-1.5"></i> 本篇報導核心曝光 CAS 編號（點擊可直接複製）：
-                        </div>
-                        <div class="flex flex-wrap gap-2" id="hero-cas-tags">
-                            <!-- Populated dynamically via JS -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Exhibition Board Summary Visual Card -->
-                <div class="lg:col-span-4">
-                    <div class="bg-slate-900/90 backdrop-blur-md border border-slate-700/80 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-sky-500 text-slate-950 text-xs font-extrabold px-3 py-1 rounded-bl-xl">
-                            展板品項整理
-                        </div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <div class="w-10 h-10 rounded-xl bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-400">
-                                <i class="fa-solid fa-flask-vial text-lg"></i>
-                            </div>
-                            <div>
-                                <h2 class="text-lg font-bold text-white">新材料化學品矩陣</h2>
-                                <p class="text-xs text-slate-400">展會展板三大系列特種中間體總覽</p>
-                            </div>
-                        </div>
-
-                        <div class="space-y-3 text-sm">
-                            <div class="p-3 rounded-xl bg-slate-800/70 border border-slate-700/60">
-                                <div class="font-bold text-sky-400 flex justify-between gap-2">
-                                    <span>01. 特種二胺系列</span>
-                                    <span class="text-xs text-slate-400">Functional Diamines</span>
-                                </div>
-                                <p class="text-xs text-slate-300 mt-1">MXDA (1477-55-0) / 1,3-BAC (2579-20-6) / 1,4-BAC (2549-93-1)</p>
-                            </div>
-                            <div class="p-3 rounded-xl bg-slate-800/70 border border-slate-700/60">
-                                <div class="font-bold text-cyan-400 flex justify-between gap-2">
-                                    <span>02. 特種異氰酸酯</span>
-                                    <span class="text-xs text-slate-400">Functional Diisocyanates</span>
-                                </div>
-                                <p class="text-xs text-slate-300 mt-1">XDI (3634-83-1) / 1,3-H6XDI (38661-72-2) / 1,4-H6XDI (10347-54-3) / PPDI (104-49-4)</p>
-                            </div>
-                            <div class="p-3 rounded-xl bg-slate-800/70 border border-slate-700/60">
-                                <div class="font-bold text-indigo-400 flex flex-wrap justify-between gap-1">
-                                    <span>03. TCD 系列化學品</span>
-                                    <span class="text-xs text-slate-400">聚合樹脂用高性能單體</span>
-                                </div>
-                                <p class="text-[11px] text-indigo-300/90 mt-0.5">高Tg・高耐熱・高耐黃變・高透明（實際表現依配方）</p>
-                                <p class="text-xs text-slate-300 mt-1">TCD-Alcohol DM (26896-48-0) / TCD-Alcohol M (57526-50-8) / TCD-Diamine (68889-71-4)</p>
-                            </div>
-                        </div>
-
-                        <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                            <span><i class="fa-solid fa-certificate text-amber-400 mr-1"></i> 七彩顏料台灣代理：華翔興業</span>
-                            <a href="https://hwashine.tw/contact" target="_blank" rel="noopener" class="text-sky-400 hover:underline font-medium">聯絡我們 <i class="fa-solid fa-arrow-up-right-from-square ml-0.5"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </header>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>從高性能有機顏料跨足新材料單體：七彩化學「三大系列特種中間體」重磅登場</h1>
+    <p>華翔興業有限公司（Hwashine Trading Co., Ltd.）深耕台灣色料市場，專業提供各類高品質染料與有機顏料，並身為七彩化學（Qicai Chemistry）顏料之台灣代理商。本篇專題報導依展會展板整理七彩化學展示之「新材料化學品」——涵蓋特種二胺（Functional Diamines）、特種異氰酸酯（Functional Diisocyanates）以及標註為聚合樹脂用高性能單體的TCD（三環癸烷）系列化學品。</p>
+  </div>
+</section>
 
     <!-- Main Editorial Content & Interactive CAS Hub -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
@@ -520,49 +432,7 @@
     </main>
 
     <!-- SEO Optimized Footer -->
-    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800/80">
-                <div class="md:col-span-6 space-y-3">
-                    <div class="text-lg font-extrabold text-white flex items-center space-x-2">
-                        <span>華翔興業有限公司</span>
-                        <span class="text-sm font-normal text-sky-400">Hwashine Trading Co., Ltd.</span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xl">
-                        專業提供塑膠、塗料、油墨產業高品質<strong>染料與有機顏料</strong>。我們是<strong>七彩化學有機顏料台灣代理商</strong>，提供高性能有機顏料與色料解決方案；新材料中間體品項之供應詳情歡迎洽詢。
-                    </p>
-                </div>
-                <div class="md:col-span-3 space-y-2 text-xs sm:text-sm">
-                    <div class="font-bold text-white uppercase tracking-wider">快速連結</div>
-                    <ul class="space-y-1.5">
-                        <li><a href="https://hwashine.tw/" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors"><i class="fa-solid fa-angle-right mr-1.5 text-sky-500"></i>華翔興業官方網站 (染料/顏料)</a></li>
-                        <li><a href="https://hwashine.tw/contact" target="_blank" rel="noopener" class="hover:text-sky-400 transition-colors"><i class="fa-solid fa-angle-right mr-1.5 text-sky-500"></i>聯絡我們 (線上詢價與樣品索取)</a></li>
-                        <li><a href="#product-cards" class="hover:text-sky-400 transition-colors"><i class="fa-solid fa-angle-right mr-1.5 text-sky-500"></i>七彩化學新材料結構式一覽</a></li>
-                        <li><a href="#cas-table" class="hover:text-sky-400 transition-colors"><i class="fa-solid fa-angle-right mr-1.5 text-sky-500"></i>全系列 CAS 編號快速檢索表</a></li>
-                    </ul>
-                </div>
-                <div class="md:col-span-3 space-y-2 text-xs">
-                    <div class="font-bold text-white uppercase tracking-wider">核心曝光 CAS 索引</div>
-                    <div class="flex flex-wrap gap-1.5 font-mono text-slate-400">
-                        <span class="bg-slate-900 px-2 py-0.5 rounded border border-slate-800">1477-55-0</span>
-                        <span class="bg-slate-900 px-2 py-0.5 rounded border border-slate-800">2579-20-6</span>
-                        <span class="bg-slate-900 px-2 py-0.5 rounded border border-slate-800">2549-93-1</span>
-                        <span class="bg-slate-900 px-2 py-0.5 rounded border border-slate-800">3634-83-1</span>
-                        <span class="bg-slate-900 px-2 py-0.5 rounded border border-slate-800">38661-72-2</span>
-                        <span class="bg-slate-900 px-2 py-0.5 rounded border border-slate-800">10347-54-3</span>
-                        <span class="bg-slate-900 px-2 py-0.5 rounded border border-slate-800">104-49-4</span>
-                        <span class="bg-slate-900 px-2 py-0.5 rounded border border-slate-800">26896-48-0</span>
-                        <span class="bg-slate-900 px-2 py-0.5 rounded border border-slate-800">57526-50-8</span>
-                        <span class="bg-slate-900 px-2 py-0.5 rounded border border-slate-800">68889-71-4</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-                <div>© 華翔興業有限公司 Hwashine Trading Co., Ltd. All Rights Reserved.</div>
-                <div>七彩化學有機顏料台灣代理商｜專業染料・顏料・特種化學品供應</div>
-            </div>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <!-- Floating Toast Notification for Clipboard -->
     <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 flex items-center space-x-3">

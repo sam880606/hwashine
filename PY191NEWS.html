@@ -66,8 +66,8 @@
         
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: #f8fafc;
-            color: #334155;
+            background-color: var(--hs-bg-card);
+            color: var(--hs-text-secondary);
         }
         
         .chemical-bg {
@@ -82,8 +82,11 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
+<body class="hs-dark">
     <div id="root"></div>
 
     <script type="text/babel">
@@ -193,32 +196,12 @@
             return (
                 <div className="min-h-screen chemical-bg pb-12">
                     {/* Header */}
-                    <header className="bg-amber-600 text-white shadow-lg sticky top-0 z-50">
-                        <div className="max-w-4xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-                            <div className="flex items-center space-x-2">
-                                <div className="bg-white p-1 rounded-lg">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h1 className="text-lg md:text-xl font-bold tracking-wide leading-none">華翔興業有限公司</h1>
-                                </div>
-                            </div>
-                            <div className="flex items-center space-x-4">
-                                <span className="text-amber-100 text-sm font-medium hidden md:inline">C.I. Pigment Yellow 191</span>
-                                <a 
-                                    href="https://hwashine.tw/" 
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="bg-white text-amber-700 hover:bg-amber-50 px-4 py-2 rounded-full text-sm font-bold shadow-md transition-colors flex items-center"
-                                >
-                                    返回官網 <Icons.ArrowRight />
-                                </a>
-                            </div>
-                        </div>
-                    </header>
+                    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>華翔興業有限公司</h1>
+  </div>
+</section>
 
                     <main className="max-w-4xl mx-auto px-4 mt-8">
                         
@@ -382,25 +365,7 @@
 
                     </main>
 
-                    <footer className="bg-slate-800 text-slate-400 py-12 mt-12 border-t border-slate-700">
-                        <div className="max-w-4xl mx-auto px-4 text-center">
-                            <h4 className="text-xl text-white font-bold mb-4">華翔興業有限公司</h4>
-                            
-                            <a 
-                                href="https://hwashine.tw/" 
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block bg-amber-600 text-white px-6 py-2 rounded hover:bg-amber-500 transition-colors mb-8"
-                            >
-                                訪問官方網站
-                            </a>
-
-                            <div className="border-t border-slate-700 pt-8 text-xs text-slate-500">
-                                <p className="mb-2">免責聲明：本頁面提供之數據與建議僅供參考。實際應用性能可能因配方、加工條件及使用環境而異。</p>
-                                <p>Generated for Technical Analysis | Pigment Yellow 191</p>
-                            </div>
-                        </div>
-                    </footer>
+                    <custom-footer></custom-footer>
                 </div>
             );
         };

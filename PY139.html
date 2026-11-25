@@ -242,35 +242,20 @@
             display: none;
         }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-700 font-sans antialiased">
+<body class="hs-dark bg-gray-50 text-gray-700 font-sans antialiased">
 
     <!-- 1. Header -->
-    <header class="bg-gradient-to-br from-[#92400e] via-[#d97706] to-[#f59e0b] text-white text-center py-12 px-4 shadow-md">
-        <div class="max-w-4xl mx-auto">
-            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium tracking-wider uppercase mb-3 border border-white/20">
-                <span>C.I. 56298</span>
-                <span>•</span>
-                <span>CAS 36888-99-0</span>
-                <span>•</span>
-                <span>EC 253-256-2</span>
-            </div>
-            <h1 class="text-3xl md:text-4xl font-bold tracking-wide">顏料黃139 (PY139) 異吲哚啉紅光黃</h1>
-            <p class="mt-2 text-amber-100 text-sm md:text-base">高耐光耐遷移無鹵結構紅光黃 | C.I. Pigment Yellow 139 (Isoindoline Reddish Yellow)</p>
-        </div>
-    </header>
-
-    <!-- 2. Global Site Navigation -->
-    <nav class="sticky-nav w-full border-b border-gray-200" aria-label="全站主選單">
-        <div class="max-w-7xl mx-auto px-4">
-            <ul class="flex justify-center items-center gap-6 md:gap-10 py-4 text-sm md:text-base font-medium flex-wrap">
-                <li><a href="/" class="text-gray-600 hover:text-original-isoindoline-600 transition-colors">首頁</a></li>
-                <li><a href="/about" class="text-gray-600 hover:text-original-isoindoline-600 transition-colors">關於我們</a></li>
-                <li><a href="/products" class="text-original-isoindoline-600 font-bold">產品中心</a></li>
-                <li><a href="/contact" class="text-gray-600 hover:text-original-isoindoline-600 transition-colors">聯絡我們</a></li>
-            </ul>
-        </div>
-    </nav>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>顏料黃139 (PY139) 異吲哚啉紅光黃</h1>
+    <p>高耐光耐遷移無鹵結構紅光黃 | C.I. Pigment Yellow 139 (Isoindoline Reddish Yellow)</p>
+  </div>
+</section>
 
     <!-- 3. Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -1112,14 +1097,7 @@
     </main>
 
     <!-- Footer with B2B Technical & Legal Disclaimer -->
-    <footer class="bg-gray-800 text-gray-400 py-8 mt-12 text-center text-sm">
-        <div class="max-w-5xl mx-auto px-4 space-y-3">
-            <p class="text-xs text-gray-400 leading-relaxed">
-                <strong>技術與法規免責聲明：</strong>本頁面所載之物理常數、耐遷移牢度、耐光耐熱溫度、耐鹼性及化學結構資訊，係基於公開化學文獻與各供應商常見技術資料整理之參考範圍，不構成特定牌號或特定用途之明示或默示保證。顏料於最終產品中之實際表現（包含耐熱上限、耐候性、鹼性環境穩定性及對 HDPE 收縮率之影響），受所選牌號粒徑規格、客戶端樹脂基材、配方助劑、分散研磨工藝及加工成型條件影響，批量投產前請務必索取對應規格之原廠 TDS 與樣品進行實測驗證。本頁提及之國際法規、無鹵特性與名錄狀態僅供初步篩選參考，各出貨批次之具體重金屬、初級芳香胺 (PAA)、總鹵素/離子鹵素檢測數據與歐盟 REACH 唯一代表 (OR) 噸位涵蓋狀態，請以供應商出具之當批次 COA、SDS 與正式合規聲明書為準。
-            </p>
-            <p class="pt-2 border-t border-gray-700">&copy; 2026 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口供應商</p>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <!-- Back to top button -->
     <button id="scrollToTop" type="button" aria-label="回到頁面頂端" class="fixed bottom-8 right-8 bg-original-isoindoline-600 text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-original-isoindoline-700 transition-all duration-300 opacity-0 pointer-events-none translate-y-2 z-50" onclick="window.scrollTo({top:0, behavior:'smooth'})">

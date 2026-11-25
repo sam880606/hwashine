@@ -59,40 +59,20 @@
         tr:last-child td:first-child { border-bottom-left-radius: 0.5rem; }
         tr:last-child td:last-child { border-bottom-right-radius: 0.5rem; }
     </style>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased leading-relaxed">
+<body class="hs-dark bg-slate-50 text-slate-800 antialiased leading-relaxed">
 
     <!-- Header / Hero Section -->
-    <header class="bg-gradient-to-br from-brand-900 to-brand-800 text-white shadow-xl relative overflow-hidden">
-        <!-- Abstract background pattern -->
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
-        
-        <!-- Company Top Bar -->
-        <div class="relative z-20 bg-black/20 backdrop-blur-sm border-b border-white/10">
-            <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center text-sm">
-                <div class="font-medium flex items-center gap-2">
-                    <i class="fa-solid fa-gem text-brand-400"></i>
-                    華翔興業有限公司 Hwashine Trading Co., Ltd. | 專業染料與顏料供應商
-                </div>
-                <div class="hidden md:flex gap-4">
-                    <a href="https://hwashine.tw/" target="_blank" class="hover:text-brand-300 transition-colors">官方網站</a>
-                    <a href="https://hwashine.tw/contact" target="_blank" class="hover:text-brand-300 transition-colors">聯絡我們</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-6 py-16 md:py-20 relative z-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/30 border border-brand-500/50 text-brand-100 text-sm font-medium mb-6 backdrop-blur-sm">
-                <i class="fa-solid fa-file-contract"></i> 深度評估報告 (2026版)
-            </div>
-            <h1 class="text-3xl md:text-5xl font-black leading-tight mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-brand-100">
-                中國精細化工產業自動化升級<br class="hidden md:block" />對有機顏料與溶劑染料中間體生產之<br class="hidden md:block" />影響與限制深度評估報告
-            </h1>
-            <p class="text-brand-100 text-lg md:text-xl max-w-3xl opacity-90 font-light">
-                本報告深入剖析安全政策與自動化技術如何重塑化學品供應鏈，為化學工程與產業經濟領域的專業人士提供深度洞察。
-            </p>
-        </div>
-    </header>
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>中國精細化工產業自動化升級對有機顏料與溶劑染料中間體生產之影響與限制深度評估報告</h1>
+    <p>本報告深入剖析安全政策與自動化技術如何重塑化學品供應鏈，為化學工程與產業經濟領域的專業人士提供深度洞察。</p>
+  </div>
+</section>
 
     <!-- Main Content Container -->
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -391,14 +371,7 @@
         </main>
     </div>
 
-    <footer class="bg-slate-900 text-slate-400 py-10 text-center text-sm border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-4">
-                <a href="https://hwashine.tw/" target="_blank" class="text-brand-400 hover:text-brand-300 font-medium transition-colors">華翔興業有限公司 Hwashine Trading Co., Ltd.</a>
-            </div>
-            <p>&copy; 2026 專業染料與顏料供應商. 保留所有權利。</p>
-        </div>
-    </footer>
+    <custom-footer></custom-footer>
 
     <!-- Back to Top Button -->
     <button id="backToTopBtn" class="fixed bottom-8 right-8 bg-brand-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-brand-700 hover:-translate-y-1 focus:outline-none z-50">

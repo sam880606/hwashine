@@ -10,20 +10,20 @@
       gtag('config', 'G-CQFQG56RSK');
     </script>
     
-    <base href="https://hwashine.tw/">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <title>華翔興業有限公司 - 專業有機顏料與溶劑染料供應商</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Description" content="華翔興業有限公司專注於優質有機顏料和溶劑染料，提供有機顏料、溶劑染料、螢光增白劑、光啟始劑TPO等產品，為塗料、油墨、塑料提供專業解決方案。">
     <meta name="keywords" content="顏料,溶劑染料,華翔,增白劑,光啟始劑TPO,顏料紅122,顏料紫19,顏料黃150,顏料紫23">
 
-    <!-- 引入 Tailwind CSS (用於內容區域的現代化設計) -->
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
+
+    <!-- 引入 Tailwind CSS (用於版面網格與間距) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- 引入 Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+
     <!-- 引入 FontAwesome (用於圖示) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -32,203 +32,65 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        sans: ['"Noto Sans TC"', 'Inter', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#0ea5e9',
+                        primary: '#0284c7',
                         secondary: '#0f172a',
-                        accent: '#ef4444',
-                        surface: '#f8fafc',
+                        accent: '#d97706',
+                        surface: '#f4f7fb',
                     }
                 }
-            },
-            corePlugins: {
-               preflight: true, // 保持開啟以重置瀏覽器預設樣式
             }
         }
     </script>
 
     <style>
-      /* --- 原始 Header 與 Nav 的 CSS (完全還原) --- */
-      :root {
-        --original-primary: #3498db;
-        --original-secondary: #2c3e50;
-        --original-accent: #e74c3c;
-        --original-text: #333;
-        --original-bg: #f8f9fa;
-      }
-
-      header.original-header {
-        background: linear-gradient(135deg, var(--original-secondary), var(--original-primary));
-        color: white;
-        text-align: center;
-        padding: 2rem;
-        position: relative;
-        overflow: hidden;
-        display: block; 
-      }
-
-      header.original-header::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-        animation: ripple 15s infinite linear;
-        z-index: 1;
-      }
-
-      @keyframes ripple {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-
-      header.original-header h1 {
-        margin: 0;
-        font-size: 2.5rem;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        position: relative;
-        z-index: 2;
-        line-height: 1.2;
-      }
-
-      header.original-header p {
-        margin: 0.5rem 0 0;
-        font-size: 1.2rem;
-        opacity: 0.9;
-        position: relative;
-        z-index: 2;
-      }
-
-      nav.original-nav {
-        background-color: rgba(255, 255, 255, 0.95);
-        border-bottom: 1px solid #eee;
-        backdrop-filter: blur(10px);
-        padding: 0.5rem;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      }
-
-      nav.original-nav ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      nav.original-nav ul li {
-        margin: 0.5rem;
-      }
-
-      nav.original-nav ul li a {
-        color: var(--original-text);
-        text-decoration: none;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        font-size: 1rem;
-      }
-
-      nav.original-nav ul li a:hover {
-        background-color: var(--original-primary);
-        color: white;
-      }
-
-      #news-ticker {
-        background-color: var(--original-accent);
-        color: white;
-        padding: 0.5rem;
-        text-align: center;
-        overflow: hidden;
-        white-space: nowrap;
-        position: relative;
-        font-size: 1rem;
-      }
-
-      #news-ticker-content {
-        display: inline-block;
-        padding-left: 100%;
-        animation: ticker 30s linear infinite;
-      }
-
-      @keyframes ticker {
-        0% { transform: translate3d(0, 0, 0); }
-        100% { transform: translate3d(-100%, 0, 0); }
-      }
-
-      @media (max-width: 768px) {
-        header.original-header h1 {
-          font-size: 2rem;
-        }
-      }
-      
-      /* --- 優化後的標籤與動畫樣式 --- */
       .news-tab {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          position: relative;
+          transition: all 0.25s ease;
+          background-color: var(--hs-bg-card);
+          border: 1px solid var(--hs-border-default);
+          color: var(--hs-text-secondary);
       }
       .news-tab:not(.active):hover {
           transform: translateY(-2px);
-          background-color: #f8fafc;
-          border-color: #cbd5e1;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          background-color: var(--hs-bg-subtle);
+          border-color: var(--hs-brand-primary);
+          color: var(--hs-text-primary);
       }
       .news-tab.active {
-          background-color: #0ea5e9; /* Tailwind primary */
-          color: white;
-          border-color: #0ea5e9;
-          box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.3), 0 2px 4px -1px rgba(14, 165, 233, 0.1);
-          transform: translateY(0);
+          background-color: var(--hs-brand-primary-strong);
+          color: #ffffff;
+          border-color: var(--hs-brand-primary);
+          box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
       }
-
-      /* 列表項目的淡入上浮動畫 */
       @keyframes fadeInUp {
-          from {
-              opacity: 0;
-              transform: translateY(15px);
-          }
-          to {
-              opacity: 1;
-              transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
       }
-      
       .animate-fade-in-up {
-          animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          opacity: 0; /* 初始隱藏，確保動畫從 0 開始 */
+          animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          opacity: 0;
       }
     </style>
 </head>
-<body class="bg-surface text-slate-700 font-sans antialiased flex flex-col min-h-screen">
+<body class="hs-dark font-sans antialiased flex flex-col min-h-screen">
 
-    <!-- === 1. 原始 Header (還原) === -->
-    <header class="original-header">
-        <h1>華翔興業有限公司</h1>
-        <p>專業有機顏料與溶劑染料供應商</p>
-    </header>
-    
-    <!-- === 2. 原始 Navigation (還原) === -->
-    <nav class="original-nav">
-        <ul>
-            <li><a href="index">首頁</a></li>
-            <li><a href="about">關於我們</a></li>
-            <li><a href="products">產品</a></li>
-            <li><a href="contact">聯絡我們</a></li>
-        </ul>
-    </nav>
+    <!-- 全站統一頁首與導航列 -->
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <div class="hs-hero-badge">HWA SHINE · SPECIALTY CHEMICALS</div>
+    <h1>華翔興業有限公司</h1>
+    <p>專業有機顏料、溶劑染料、螢光增白劑與高性能阻氣材料供應商</p>
+  </div>
+</section>
 
-    <!-- === 3. 跑馬燈 === -->
-    <div id="news-ticker">
-        <div id="news-ticker-content">
-            最新消息：新推出高性能尼龍材料 MXD6，具有低吸水、高阻氣，可補足傳統尼龍和 PET 的性能
+    <!-- 跑馬燈公告列 -->
+    <div class="hs-ticker">
+        <div class="hs-ticker-content">
+            <span class="hs-ticker-tag">最新消息</span>
+            <span>新推出高性能尼龍材料 MXD6，具有低吸水、高阻氣，可補足傳統尼龍和 PET 的性能</span>
         </div>
     </div>
 
@@ -421,18 +283,8 @@
         </section>
     </main>
 
-    <!-- === 7. 頁尾 (Footer) === -->
-    <footer class="bg-secondary text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <p class="text-white font-medium text-lg mb-2">© 2024 華翔興業有限公司. All Rights Reserved. | 專業顏料進出口</p>
-            </div>
-            <nav class="flex gap-6 text-sm">
-                <a href="/privacy" class="hover:text-white transition-colors">隱私政策</a>
-                <a href="/terms" class="hover:text-white transition-colors">使用條款</a>
-            </nav>
-        </div>
-    </footer>
+    <!-- 全站統一頁尾 -->
+    <custom-footer></custom-footer>
 
     <script>
         // --- 新聞資料 (categories: 'pigment', 'functional', 'tech') ---

@@ -7,20 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <script defer src="./app.js"></script>
+    <!-- 全站統一深色質感工業風設計系統 -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <script src="/components.js" defer></script>
 </head>
-<body>
-  <header class="site-header">
-    <!-- ...existing content... -->
-    <a href="./indexMXD6.html" class="brand">MXD6 高性能尼龍</a>
-    <button class="nav-toggle" aria-label="開啟導覽" aria-expanded="false">☰</button>
-    <nav class="site-nav" aria-label="主導覽">
-      <a href="./about.html" aria-current="page">關於我們</a>
-      <a href="./products.html">產品中心</a>
-      <a href="./solutions.html">應用/數據</a>
-      <a href="./contact.html">聯絡我們</a>
-    </nav>
-    <!-- ...existing content... -->
-  </header>
+<body class="hs-dark">
+  <custom-header compact="true"></custom-header>
 
   <main class="page">
     <h1 class="animate-on-load" data-delay="0">關於我們</h1>
@@ -48,21 +40,6 @@
     </div>
   </main>
 
-  <footer class="site-footer">
-    <!-- ...existing content... -->
-    <div class="footer-grid">
-      <div>
-        <div class="brand small">華翔興業有限公司</div>
-        <p>專注於七彩化學 MXD6 材料推廣。專業、可靠、可追溯供應。</p>
-      </div>
-      <nav class="footer-nav" aria-label="頁尾導覽">
-        <a href="./index.html">首頁</a>
-        <a href="./solutions.html">應用/數據</a>
-        <a href="./contact.html">聯絡我們</a>
-      </nav>
-    </div>
-    <small>© 2025 華翔興業有限公司. All rights reserved.</small>
-    <!-- ...existing content... -->
-  </footer>
+  <custom-footer></custom-footer>
 </body>
 </html>
