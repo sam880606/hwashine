@@ -87,6 +87,13 @@
     <script src="/components.js" defer></script>
 </head>
 <body class="hs-dark">
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>華翔興業有限公司</h1>
+  </div>
+</section>
+
     <div id="root"></div>
 
     <script type="text/babel">
@@ -196,12 +203,7 @@
             return (
                 <div className="min-h-screen chemical-bg pb-12">
                     {/* Header */}
-                    <custom-header compact="true"></custom-header>
-<section class="hs-hero">
-  <div class="hs-hero-inner">
-    <h1>華翔興業有限公司</h1>
-  </div>
-</section>
+                    
 
                     <main className="max-w-4xl mx-auto px-4 mt-8">
                         
@@ -365,7 +367,7 @@
 
                     </main>
 
-                    <custom-footer></custom-footer>
+                    
                 </div>
             );
         };
@@ -373,5 +375,6 @@
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
+    <custom-footer></custom-footer>
 </body>
 </html>

@@ -41,6 +41,14 @@
     <script src="/components.js" defer></script>
 </head>
 <body class="hs-dark bg-gray-50 font-sans text-gray-800 selection:bg-red-100 selection:text-red-900">
+    <custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <h1>蘇丹紅 (Sudan Red) 化學特性、毒理機制及風險評估</h1>
+    <p>從工業染料到餐桌隱形殺手：解析偶氮染料的雙重面貌與2024年台灣食安風暴的科學省思。</p>
+  </div>
+</section>
+
     
     <div id="root"></div>
 
@@ -183,13 +191,7 @@
                     <main className="flex-1 lg:ml-64 p-4 md:p-8 lg:p-12 max-w-4xl mx-auto relative">
                     
                     {/* Header/Title Block */}
-                    <custom-header compact="true"></custom-header>
-<section class="hs-hero">
-  <div class="hs-hero-inner">
-    <h1>蘇丹紅 (Sudan Red) 化學特性、毒理機制及風險評估</h1>
-    <p>從工業染料到餐桌隱形殺手：解析偶氮染料的雙重面貌與2024年台灣食安風暴的科學省思。</p>
-  </div>
-</section>
+                    
 
                     {/* Chapter 1: Introduction */}
                     <section id="intro" className="mb-16 scroll-mt-24">
@@ -635,7 +637,7 @@
                     </section>
 
                     {/* Footer */}
-                    <custom-footer></custom-footer>
+                    
 
                     </main>
                 </div>
@@ -657,5 +659,6 @@
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<SudanRedReport />);
     </script>
+    <custom-footer></custom-footer>
 </body>
 </html>
