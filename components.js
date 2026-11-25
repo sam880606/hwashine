@@ -39,20 +39,32 @@
     initSiteEnhancements();
   }
 
+  const BILINGUAL_SLUGS = new Set([
+    'pb15-0','pb15-1','pb15-3','pb15-4','pb15-6','pb60',
+    'po13','po34','po36','po43','po64','po72',
+    'pr122','pr146','pr166','pr168','pr170','pigmentred176','pr177','pr185','pr208','pr242','pr254',
+    'pv19','pv23',
+    'py14','py74','py83','py110','py128','py138','py139','py150','py151','py154','py155','py180','py181','py191','py192',
+    'solvent-dyes-showcase'
+  ]);
+
   function getAlternateLangUrl(isEn) {
-    const path = window.location.pathname.toLowerCase();
+    const rawPath = window.location.pathname;
+    const path = rawPath.toLowerCase();
     const search = window.location.search || '';
     if (isEn) {
       if (path === '/en' || path === '/en/' || path === '/en/index' || path === '/en/index.html') return '/';
-      if (path.startsWith('/en/products')) return '/products' + search;
-      if (path.startsWith('/en/about')) return '/about';
-      if (path.startsWith('/en/contact')) return '/contact' + search;
-      return '/';
+      if (path.startsWith('/en/fluorescent')) return rawPath.replace(/^\/en/i, '') || '/fluorescent/';
+      const stripped = rawPath.replace(/^\/en/i, '');
+      return (stripped || '/') + search;
     } else {
       if (path === '/' || path === '/index' || path === '/index.html') return '/en/';
       if (path === '/products' || path === '/products.html') return '/en/products' + search;
       if (path === '/about' || path === '/about.html') return '/en/about';
       if (path === '/contact' || path === '/contact.html') return '/en/contact' + search;
+      if (path.startsWith('/fluorescent')) return '/en' + rawPath;
+      const slug = path.replace(/^\//, '').replace(/\.html$/, '');
+      if (BILINGUAL_SLUGS.has(slug)) return '/en' + rawPath;
       return '/en/';
     }
   }
@@ -91,8 +103,10 @@
   const NAV_ITEMS_EN = [
     { label: 'Home', href: '/en/' },
     { label: 'Organic Pigments', href: '/en/products?category=organic' },
-    { label: 'Product Catalog', href: '/en/products' },
-    { label: 'About Us', href: '/en/about' },
+    { label: 'Solvent Dyes', href: '/en/solvent-dyes-showcase' },
+    { label: 'Brighteners', href: '/en/fluorescent/' },
+    { label: 'Catalog', href: '/en/products' },
+    { label: 'About', href: '/en/about' },
   ];
 
   const SUBNAV_GROUPS = [
@@ -116,6 +130,18 @@
         { label: 'OB-1', href: '/fluorescent/ob-1.html' },
         { label: 'KSN', href: '/fluorescent/ksn.html' },
         { label: 'FP-127', href: '/fluorescent/127.html' },
+      ],
+    },
+    {
+      prefix: '/en/fluorescent/',
+      label: 'Optical Brighteners',
+      items: [
+        { label: 'Overview', href: '/en/fluorescent/index.html' },
+        { label: 'KCB', href: '/en/fluorescent/kcb.html' },
+        { label: 'OB', href: '/en/fluorescent/ob.html' },
+        { label: 'OB-1', href: '/en/fluorescent/ob-1.html' },
+        { label: 'KSN', href: '/en/fluorescent/ksn.html' },
+        { label: 'FP-127', href: '/en/fluorescent/127.html' },
       ],
     },
   ];
@@ -219,7 +245,7 @@
             <a href="${langHref}" style="color:#38bdf8 !important;">🌐 ${isEn ? '切換至繁體中文版' : 'English Version (EN)'}</a>
           </div>
         </header>
-        ${isEn ? '' : getSubnavHtml()}
+        ${getSubnavHtml()}
         ${heroHtml}
       `;
 
@@ -262,8 +288,8 @@
                 <h4>Product Lines</h4>
                 <ul>
                   <li><a href="/en/products?category=organic">Organic Pigments (40 Grades)</a></li>
-                  <li><a href="/en/products?category=solvent">Solvent Dyes</a></li>
-                  <li><a href="/en/products?category=fluorescent">Optical Brighteners</a></li>
+                  <li><a href="/en/solvent-dyes-showcase">Solvent Dyes (35 Grades)</a></li>
+                  <li><a href="/en/fluorescent/">Optical Brighteners (5 Grades)</a></li>
                   <li><a href="/en/products?category=other">MXD6 Nylon &amp; Photoinitiator TPO</a></li>
                 </ul>
               </div>

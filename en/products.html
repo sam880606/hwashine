@@ -223,10 +223,22 @@ function render() {
       : `<p style="font-size:0.83rem;color:var(--hs-text-secondary);line-height:1.6;margin:0 0 0.8rem;">${p.desc}</p>`;
 
     const tagsHtml = p.apps.map((a) => `<span class="tag">${a}</span>`).join('');
-    const contactUrl = `/en/contact?product=${encodeURIComponent(p.code)}&type=sample`;
+    let targetUrl = `/en/contact?product=${encodeURIComponent(p.code)}&type=sample`;
+    let ctaText = 'Request 50g Sample / TDS';
+    if (p.cat === 'organic') {
+      const slug = p.code === 'PR176' ? 'Pigmentred176' : p.code.replace(':', '-');
+      targetUrl = `/en/${slug}`;
+      ctaText = 'View Full Specifications';
+    } else if (p.cat === 'solvent') {
+      targetUrl = '/en/solvent-dyes-showcase';
+      ctaText = 'Open 35 Solvent Dyes Catalog';
+    } else if (p.cat === 'fluorescent') {
+      targetUrl = '/en/fluorescent/';
+      ctaText = 'Open Optical Brighteners Hub';
+    }
 
     return `
-      <a href="${contactUrl}" class="product-card">
+      <a href="${targetUrl}" class="product-card">
         <div class="color-display">${swatchHtml}</div>
         <div class="card-body">
           <div class="card-header">
@@ -236,7 +248,7 @@ function render() {
           <h3 class="product-name">${p.name}</h3>
           ${bodyDetail}
           <div class="app-tags">${tagsHtml}</div>
-          <div class="card-cta"><span>Request 50g Sample / TDS</span><span>→</span></div>
+          <div class="card-cta"><span>${ctaText}</span><span>→</span></div>
         </div>
       </a>
     `;
