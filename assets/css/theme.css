@@ -111,10 +111,16 @@ body.hs-dark > section {
   min-width: 0;
 }
 
-/* 防止手機版 Grid 欄位與寬表格撐爆整個視窗寬度 */
+/* 防止所有 Grid/Flex 容器（含非 Tailwind 自訂 Grid）被寬表格撐爆螢幕寬度 */
+body.hs-dark main,
+body.hs-dark article,
+body.hs-dark section,
+body.hs-dark aside,
 body.hs-dark .grid > *,
+body.hs-dark .layout-container > *,
 body.hs-dark [class*="col-span-"] {
   min-width: 0;
+  box-sizing: border-box;
 }
 
 body.hs-dark img,
