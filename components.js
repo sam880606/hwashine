@@ -227,10 +227,6 @@
 
           <div class="hs-footer-bottom">
             <span>&copy; 2026 華翔興業有限公司 Hwa Shine Co., Ltd. 版權所有</span>
-            <div class="hs-footer-legal">
-              <a href="/privacy">隱私政策</a>
-              <a href="/terms">使用條款</a>
-            </div>
           </div>
         </footer>
       `;
