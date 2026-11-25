@@ -49,7 +49,6 @@
         { label: '關於 MXD6', href: '/PA-MXD6/about.html' },
         { label: '產品中心', href: '/PA-MXD6/products.html' },
         { label: '應用 / 數據', href: '/PA-MXD6/solutions.html' },
-        { label: '聯絡我們', href: '/PA-MXD6/contact.html' },
       ],
     },
     {
