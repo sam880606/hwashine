@@ -99,22 +99,37 @@ body.hs-dark main {
   flex: 1 0 auto;
 }
 
-body.hs-dark h1,
-body.hs-dark h2,
-body.hs-dark h3,
-body.hs-dark h4,
-body.hs-dark h5,
-body.hs-dark h6 {
+:where(body.hs-dark) :where(h1, h2, h3, h4, h5, h6) {
   color: var(--hs-text-primary);
   letter-spacing: -0.01em;
 }
 
-body.hs-dark a {
+/* 保護深色區塊內的標題維持亮白字體 */
+.text-white h1,
+.text-white h2,
+.text-white h3,
+.text-white h4,
+.bg-slate-900 h1,
+.bg-slate-900 h2,
+.bg-slate-900 h3,
+.bg-slate-800 h1,
+.bg-slate-800 h2,
+.bg-slate-800 h3,
+.bg-gray-900 h1,
+.bg-gray-900 h2,
+.bg-gray-900 h3,
+.bg-gray-800 h1,
+.bg-gray-800 h2,
+.bg-gray-800 h3 {
+  color: #ffffff;
+}
+
+:where(body.hs-dark) :where(a) {
   color: var(--hs-brand-primary);
   transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-body.hs-dark a:hover {
+:where(body.hs-dark) :where(a:hover) {
   color: var(--hs-brand-primary-strong);
 }
 
