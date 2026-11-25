@@ -318,6 +318,21 @@ header.hs-navbar nav {
   color: #080d17 !important;
 }
 
+.hs-lang-btn {
+  padding: 0.38rem 0.75rem !important;
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  border-radius: 999px !important;
+  font-size: 0.82rem !important;
+  color: #e2e8f0 !important;
+  margin-left: 0.25rem;
+}
+
+.hs-lang-btn:hover {
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.12) !important;
+}
+
 .hs-mobile-toggle {
   display: none;
   background: rgba(30, 41, 59, 0.9);

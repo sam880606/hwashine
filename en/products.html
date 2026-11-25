@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <title>Product Catalog | 40 Organic Pigments, Solvent Dyes &amp; MXD6 — Hwa Shine</title>
+  <meta name="description" content="Explore Hwa Shine's complete catalog of 44 specialty chemical grades: 40 organic pigments (Blue, Orange, Red, Violet, Yellow), solvent dyes, optical brighteners, MXD6 barrier nylon, and Photoinitiator TPO.">
+
+  <link rel="canonical" href="https://hwashine.tw/en/products">
+  <link rel="alternate" hreflang="zh-Hant" href="https://hwashine.tw/products">
+  <link rel="alternate" hreflang="en" href="https://hwashine.tw/en/products">
+  <link rel="alternate" hreflang="x-default" href="https://hwashine.tw/products">
+
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <script src="/components.js" defer></script>
+  <style>
+    main { flex: 1; max-width: 1360px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 2rem 1.25rem 4rem; }
+    .catalog-tabs { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 1.5rem; }
+    .cat-tab { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.15rem; border-radius: 10px; background: #fff; border: 1px solid var(--hs-border-default); color: var(--hs-text-secondary); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .cat-tab:hover { border-color: var(--hs-brand-primary); color: var(--hs-text-primary); }
+    .cat-tab.active { background: var(--hs-brand-primary); border-color: var(--hs-brand-primary); color: #fff; box-shadow: 0 4px 14px rgba(2,132,199,0.25); }
+    .cat-count { font-family: var(--hs-font-mono); font-size: 0.75rem; padding: 0.1rem 0.45rem; border-radius: 999px; background: rgba(15,23,42,0.08); }
+    .cat-tab.active .cat-count { background: rgba(255,255,255,0.22); }
+    .cat-star { font-size: 0.68rem; padding: 0.12rem 0.42rem; border-radius: 4px; background: #f59e0b; color: #080d17; font-weight: 800; }
+
+    .filter-panel { background: #fff; border: 1px solid var(--hs-border-subtle); border-radius: 14px; padding: 1.25rem 1.35rem; margin-bottom: 1.5rem; box-shadow: var(--hs-shadow-sm); display: flex; flex-direction: column; gap: 1rem; }
+    .filter-top-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.85rem; }
+    .search-box { position: relative; flex: 1 1 280px; }
+    .search-box input { width: 100%; box-sizing: border-box; padding: 0.7rem 1rem 0.7rem 2.5rem; font-size: 0.95rem; background: #f8fafc; border: 1px solid var(--hs-border-default); border-radius: 8px; color: var(--hs-text-primary); font-family: inherit; }
+    .search-icon { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--hs-text-muted); pointer-events: none; }
+    .app-pills, .color-pills { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+    .filter-label { font-size: 0.8rem; font-weight: 600; color: var(--hs-text-muted); margin-right: 0.25rem; white-space: nowrap; }
+    .pill-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; border-radius: 999px; background: #f1f5f9; border: 1px solid var(--hs-border-subtle); color: var(--hs-text-secondary); font-size: 0.84rem; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: inherit; white-space: nowrap; }
+    .pill-btn:hover { border-color: var(--hs-brand-primary); color: var(--hs-text-primary); }
+    .pill-btn.active { background: rgba(2,132,199,0.12); border-color: var(--hs-brand-primary); color: var(--hs-brand-primary-strong); font-weight: 700; }
+    .color-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; border: 1px solid rgba(15,23,42,0.25); flex-shrink: 0; }
+    .filter-bottom-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.85rem; padding-top: 0.85rem; border-top: 1px solid var(--hs-border-subtle); }
+
+    .result-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem; font-size: 0.9rem; color: var(--hs-text-muted); }
+    .result-count strong { color: var(--hs-brand-primary); font-family: var(--hs-font-mono); font-size: 1rem; }
+    .reset-btn { padding: 0.45rem 0.95rem; border-radius: 8px; background: #fff; border: 1px solid var(--hs-border-default); color: var(--hs-text-secondary); font-size: 0.84rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+    .reset-btn:hover { border-color: var(--hs-brand-primary); color: var(--hs-brand-primary); }
+
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.35rem; }
+    .product-card { background: #fff; border: 1px solid var(--hs-border-subtle); border-radius: 12px; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; text-decoration: none !important; color: inherit; }
+    .product-card:hover { transform: translateY(-4px); border-color: var(--hs-border-accent); box-shadow: var(--hs-shadow-md); }
+    .color-display { height: 126px; width: 100%; display: flex; position: relative; border-bottom: 1px solid var(--hs-border-subtle); }
+    .mass-tone, .tint-tone, .color-full { flex: 1; height: 100%; position: relative; }
+    .color-tag { position: absolute; bottom: 8px; left: 8px; background: rgba(8,13,23,0.82); padding: 2px 8px; font-size: 0.72rem; font-weight: 600; color: #f8fafc; border: 1px solid rgba(255,255,255,0.22); border-radius: 4px; }
+    .tint-tone .color-tag { left: auto; right: 8px; }
+    .card-body { padding: 1.15rem 1.2rem 1.2rem; flex: 1; display: flex; flex-direction: column; }
+    .card-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.45rem; border-bottom: 1px solid var(--hs-border-subtle); padding-bottom: 0.6rem; }
+    .product-code { font-family: var(--hs-font-mono); font-size: 1.1rem; font-weight: 700; color: var(--hs-brand-primary); }
+    .ci-badge { font-size: 0.72rem; color: var(--hs-text-muted); font-family: var(--hs-font-mono); }
+    .product-name { font-size: 0.94rem; font-weight: 700; color: var(--hs-text-primary); margin: 0 0 0.75rem 0; }
+    .specs-container { margin-bottom: 0.85rem; display: flex; flex-direction: column; gap: 5px; }
+    .specs-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--hs-text-secondary); }
+    .spec-label { font-weight: 600; color: var(--hs-text-muted); width: 52px; }
+    .visual-bar { display: flex; gap: 3px; flex: 1; margin: 0 8px; }
+    .visual-bar i { display: block; width: 100%; height: 6px; background: #e2e8f0; border-radius: 2px; }
+    .visual-bar.light i.on { background: #0284c7; }
+    .visual-bar.heat i.on { background: #d97706; }
+    .visual-bar.cost i.on { background: #64748b; }
+    .spec-value { font-weight: 700; font-family: var(--hs-font-mono); width: 20px; text-align: right; color: var(--hs-text-primary); }
+    .app-tags { margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px; padding-top: 0.5rem; }
+    .tag { font-size: 0.74rem; color: #0369a1; background: rgba(2,132,199,0.1); padding: 2px 8px; border-radius: 5px; font-weight: 600; border: 1px solid rgba(2,132,199,0.25); }
+    .card-cta { margin-top: 0.85rem; padding-top: 0.7rem; border-top: 1px dashed var(--hs-border-subtle); font-size: 0.8rem; font-weight: 600; color: var(--hs-brand-primary); display: flex; justify-content: space-between; align-items: center; }
+    .empty-state { grid-column: 1 / -1; text-align: center; padding: 3.5rem 1rem; background: #fff; border: 1px dashed var(--hs-border-default); border-radius: 14px; color: var(--hs-text-muted); }
+  </style>
+</head>
+<body class="hs-dark">
+
+<custom-header compact="true"></custom-header>
+<section class="hs-hero">
+  <div class="hs-hero-inner">
+    <div class="hs-hero-badge">PRODUCT CATALOG · 44 GRADES</div>
+    <h1>Product Catalog</h1>
+    <p>Complete portfolio of 40 organic pigments (Blue, Orange, Red, Violet, Yellow), solvent dyes, optical brighteners, MXD6 barrier nylon, and Photoinitiator TPO. Click any product to request 50g lab samples or TDS.</p>
+  </div>
+</section>
+
+<main>
+  <div class="catalog-tabs" role="tablist">
+    <button type="button" class="cat-tab active" data-cat="all">All Products <span class="cat-count">44</span></button>
+    <button type="button" class="cat-tab" data-cat="organic"><span class="cat-star">CORE</span> Organic Pigments <span class="cat-count">40</span></button>
+    <button type="button" class="cat-tab" data-cat="solvent">Solvent Dyes <span class="cat-count">1</span></button>
+    <button type="button" class="cat-tab" data-cat="fluorescent">Optical Brighteners <span class="cat-count">1</span></button>
+    <button type="button" class="cat-tab" data-cat="other">Additives &amp; Resins <span class="cat-count">2</span></button>
+  </div>
+
+  <div class="filter-panel">
+    <div class="filter-top-row">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Instant search by code, color, or feature (e.g. PY155, PR122, PB60, Halogen-Free)...">
+      </div>
+      <div class="app-pills" id="app-filter-group">
+        <span class="filter-label">Key Features:</span>
+        <button type="button" class="pill-btn active" data-app="">All</button>
+        <button type="button" class="pill-btn" data-app="Nylon">Nylon / PA</button>
+        <button type="button" class="pill-btn" data-app="High Weatherability">High Weatherability</button>
+        <button type="button" class="pill-btn" data-app="Halogen-Free">Halogen-Free</button>
+      </div>
+    </div>
+
+    <div class="filter-bottom-row" id="color-filter-row">
+      <div class="color-pills" id="color-filter-group">
+        <span class="filter-label">Pigment Hue:</span>
+        <button type="button" class="pill-btn active" data-color="">All Hues</button>
+        <button type="button" class="pill-btn" data-color="Blue"><span class="color-dot" style="background:#2563eb;"></span>Blue (6)</button>
+        <button type="button" class="pill-btn" data-color="Orange"><span class="color-dot" style="background:#f97316;"></span>Orange (6)</button>
+        <button type="button" class="pill-btn" data-color="Red"><span class="color-dot" style="background:#dc2626;"></span>Red (11)</button>
+        <button type="button" class="pill-btn" data-color="Violet"><span class="color-dot" style="background:#9333ea;"></span>Violet (2)</button>
+        <button type="button" class="pill-btn" data-color="Yellow"><span class="color-dot" style="background:#facc15;"></span>Yellow (15)</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-bar">
+    <div class="result-count">Showing <strong id="visible-count">44</strong> / 44 products</div>
+    <button type="button" class="reset-btn" id="reset-filters">Reset Filters</button>
+  </div>
+
+  <div id="product-grid" class="product-grid"></div>
+</main>
+
+<custom-footer></custom-footer>
+
+<script>
+const PRODUCTS = [
+  { code:"PB15:0", name:"Pigment Blue 15:0 (α-CuPc)", cat:"organic", color:"Blue", apps:["High Weatherability","Halogen-Free"], c1:"#1941E6", c2:"#2A8CF5", l:7, h:3, c:1 },
+  { code:"PB15:1", name:"Pigment Blue 15:1 (Stabilized α-CuPc)", cat:"organic", color:"Blue", apps:["Nylon","High Weatherability"], c1:"#1941E6", c2:"#2A8CF5", l:8, h:4, c:1 },
+  { code:"PB15:3", name:"Pigment Blue 15:3 (β-CuPc Cyan)", cat:"organic", color:"Blue", apps:["Nylon","High Weatherability","Halogen-Free"], c1:"#1755DC", c2:"#16A0E6", l:8, h:5, c:1 },
+  { code:"PB15:4", name:"Pigment Blue 15:4 (Anti-Flocculating β-CuPc)", cat:"organic", color:"Blue", apps:["High Weatherability","Halogen-Free"], c1:"#1755DC", c2:"#16A0E6", l:8, h:4, c:2 },
+  { code:"PB15:6", name:"Pigment Blue 15:6 (ε-CuPc Reddish Blue)", cat:"organic", color:"Blue", apps:["High Weatherability","Halogen-Free"], c1:"#0235B2", c2:"#008EF0", l:8, h:5, c:5 },
+  { code:"PB60", name:"Pigment Blue 60 (Indanthrone Blue)", cat:"organic", color:"Blue", apps:["High Weatherability","Halogen-Free"], c1:"#102A63", c2:"#4a6fa5", l:8, h:5, c:5 },
+
+  { code:"PO13", name:"Pigment Orange 13 (Pyrazolone Orange)", cat:"organic", color:"Orange", apps:[], c1:"#F2101A", c2:"#FD583E", l:3, h:1, c:1 },
+  { code:"PO34", name:"Pigment Orange 34 (Diarylide Orange)", cat:"organic", color:"Orange", apps:[], c1:"#EC2800", c2:"#FF976A", l:5, h:3, c:2 },
+  { code:"PO36", name:"Pigment Orange 36 (Benzimidazolone Orange)", cat:"organic", color:"Orange", apps:["High Weatherability"], c1:"#D84012", c2:"#FF7D4D", l:8, h:2, c:3 },
+  { code:"PO43", name:"Pigment Orange 43 (Perinone Orange)", cat:"organic", color:"Orange", apps:["High Weatherability"], c1:"#E84A1A", c2:"#FBA67A", l:8, h:4, c:5 },
+  { code:"PO64", name:"Pigment Orange 64 (Benzimidazolone Orange)", cat:"organic", color:"Orange", apps:["Halogen-Free"], c1:"#E84A05", c2:"#FF9E5E", l:7, h:4, c:4 },
+  { code:"PO72", name:"Pigment Orange 72 (High-Heat Benzimidazolone)", cat:"organic", color:"Orange", apps:["High Weatherability","Halogen-Free"], c1:"#EF6C00", c2:"#FFCC80", l:8, h:5, c:5 },
+
+  { code:"PR122", name:"Pigment Red 122 (Quinacridone Magenta)", cat:"organic", color:"Red", apps:["Nylon","High Weatherability","Halogen-Free"], c1:"#5B0011", c2:"#E88FD3", l:8, h:5, c:4 },
+  { code:"PR146", name:"Pigment Red 146 (Naphthol AS Bluish Red)", cat:"organic", color:"Red", apps:[], c1:"#D3170E", c2:"#E89FC1", l:6, h:3, c:2 },
+  { code:"PR166", name:"Pigment Red 166 (Disazo Condensation Scarlet)", cat:"organic", color:"Red", apps:[], c1:"#E34234", c2:"#FF7F7F", l:8, h:5, c:3 },
+  { code:"PR168", name:"Pigment Red 168 (Dibromoanthanthrone Red)", cat:"organic", color:"Red", apps:["High Weatherability"], c1:"#DC2626", c2:"#FCA5A5", l:8, h:5, c:5 },
+  { code:"PR170", name:"Pigment Red 170 (Naphthol AS Red)", cat:"organic", color:"Red", apps:["Halogen-Free"], c1:"#C21807", c2:"#FF5252", l:5, h:3, c:2 },
+  { code:"PR176", name:"Pigment Red 176 (Benzimidazolone Carmine)", cat:"organic", color:"Red", apps:["Halogen-Free"], c1:"#8C001A", c2:"#E53935", l:7, h:4, c:4 },
+  { code:"PR177", name:"Pigment Red 177 (Anthraquinone Red)", cat:"organic", color:"Red", apps:["High Weatherability","Halogen-Free"], c1:"#89010F", c2:"#DA3555", l:7, h:4, c:5 },
+  { code:"PR185", name:"Pigment Red 185 (Benzimidazolone Magenta)", cat:"organic", color:"Red", apps:["Halogen-Free"], c1:"#B00D23", c2:"#FF4081", l:7, h:4, c:4 },
+  { code:"PR208", name:"Pigment Red 208 (Benzimidazolone Medium Red)", cat:"organic", color:"Red", apps:["Halogen-Free"], c1:"#EC2523", c2:"#FF7291", l:7, h:4, c:5 },
+  { code:"PR242", name:"Pigment Red 242 (Disazo Condensation Red)", cat:"organic", color:"Red", apps:["High Weatherability"], c1:"#D50000", c2:"#FF5131", l:7, h:4, c:5 },
+  { code:"PR254", name:"Pigment Red 254 (DPP Ferrari Red)", cat:"organic", color:"Red", apps:["High Weatherability"], c1:"#C40202", c2:"#FF4545", l:8, h:5, c:2 },
+
+  { code:"PV19", name:"Pigment Violet 19 (Quinacridone Red/Violet)", cat:"organic", color:"Violet", apps:["Nylon","High Weatherability","Halogen-Free"], c1:"#750045", c2:"#D56E96", l:8, h:5, c:5 },
+  { code:"PV23", name:"Pigment Violet 23 (Dioxazine Violet)", cat:"organic", color:"Violet", apps:["Nylon","High Weatherability"], c1:"#150028", c2:"#683FB5", l:7, h:4, c:4 },
+
+  { code:"PY14", name:"Pigment Yellow 14 (Diarylide Yellow)", cat:"organic", color:"Yellow", apps:[], c1:"#FDD835", c2:"#FFF59D", l:3, h:2, c:1 },
+  { code:"PY74", name:"Pigment Yellow 74 (Monoazo Yellow)", cat:"organic", color:"Yellow", apps:["Halogen-Free"], c1:"#FEEA3B", c2:"#FFFF8D", l:7, h:1, c:1 },
+  { code:"PY83", name:"Pigment Yellow 83 (Diarylide Reddish Yellow)", cat:"organic", color:"Yellow", apps:[], c1:"#FFB300", c2:"#FFE082", l:7, h:3, c:2 },
+  { code:"PY110", name:"Pigment Yellow 110 (Isoindolinone Yellow)", cat:"organic", color:"Yellow", apps:["High Weatherability"], c1:"#FB8C00", c2:"#FFCC80", l:8, h:5, c:5 },
+  { code:"PY128", name:"Pigment Yellow 128 (Disazo Condensation Yellow)", cat:"organic", color:"Yellow", apps:["High Weatherability"], c1:"#FFEE58", c2:"#FFF9C4", l:8, h:4, c:5 },
+  { code:"PY138", name:"Pigment Yellow 138 (Quinophthalone Yellow)", cat:"organic", color:"Yellow", apps:["High Weatherability"], c1:"#F9DA2E", c2:"#FFF176", l:8, h:5, c:4 },
+  { code:"PY139", name:"Pigment Yellow 139 (Isoindoline Yellow)", cat:"organic", color:"Yellow", apps:["High Weatherability","Halogen-Free"], c1:"#FFA000", c2:"#FFECB3", l:8, h:4, c:3 },
+  { code:"PY150", name:"Pigment Yellow 150 (Nickel Azo Complex)", cat:"organic", color:"Yellow", apps:["Nylon","High Weatherability"], c1:"#9E7E08", c2:"#FFD600", l:8, h:5, c:3 },
+  { code:"PY151", name:"Pigment Yellow 151 (Benzimidazolone Yellow)", cat:"organic", color:"Yellow", apps:["Halogen-Free"], c1:"#FFEB3B", c2:"#FFFF8D", l:7, h:3, c:3 },
+  { code:"PY154", name:"Pigment Yellow 154 (Benzimidazolone Yellow)", cat:"organic", color:"Yellow", apps:["High Weatherability"], c1:"#FFC107", c2:"#FFE57F", l:8, h:2, c:3 },
+  { code:"PY155", name:"Pigment Yellow 155 (Disazo Greenish Yellow)", cat:"organic", color:"Yellow", apps:["Halogen-Free"], c1:"#FFCA28", c2:"#FFF59D", l:7, h:4, c:3 },
+  { code:"PY180", name:"Pigment Yellow 180 (Benzimidazolone Yellow)", cat:"organic", color:"Yellow", apps:["Halogen-Free"], c1:"#FDD835", c2:"#FFF9C4", l:7, h:4, c:3 },
+  { code:"PY181", name:"Pigment Yellow 181 (High-Heat Benzimidazolone)", cat:"organic", color:"Yellow", apps:["Halogen-Free"], c1:"#FFA722", c2:"#FFCC76", l:8, h:5, c:5 },
+  { code:"PY191", name:"Pigment Yellow 191 (Pyrazolone Calcium Lake)", cat:"organic", color:"Yellow", apps:[], c1:"#FFB300", c2:"#FFE082", l:6, h:5, c:2 },
+  { code:"PY192", name:"Pigment Yellow 192 (Heterocyclic Nylon Yellow)", cat:"organic", color:"Yellow", apps:["Nylon","Halogen-Free"], c1:"#FBC02D", c2:"#FFF176", l:7, h:5, c:3 },
+
+  { code:"Solvent Dyes", name:"Polymer-Soluble Solvent Dyes (Full Spectrum)", cat:"solvent", color:"Solvent", apps:["Nylon"], c1:"linear-gradient(135deg,#ef4444,#eab308,#3b82f6)", desc:"High-transparency anthraquinone, perinone, and fluorescent solvent dyes for PS, ABS, PC, PMMA, PET, and PA." },
+  { code:"OB / OB-1 / KCB", name:"Optical Brightening Agents (OB, OB-1, KCB, KSN, FP-127)", cat:"fluorescent", color:"Brightener", apps:[], c1:"linear-gradient(135deg,#0284c7,#38bdf8)", desc:"Industrial fluorescent brighteners to neutralize polymer yellowing and maximize brightness in plastics, fibers, and coatings." },
+  { code:"MXD6", name:"High-Barrier Polyamide MXD6 (M5800 / M5800H / M6100 / M6400)", cat:"other", color:"Polymer", apps:["Nylon","High Weatherability","Halogen-Free"], c1:"linear-gradient(135deg,#1e293b,#475569)", desc:"Meta-xylylene adipamide nylon with exceptional oxygen barrier, low water absorption, and high modulus for metal replacement and packaging." },
+  { code:"TPO", name:"Photoinitiator TPO (UV Curing)", cat:"other", color:"Additive", apps:[], c1:"linear-gradient(135deg,#475569,#94a3b8)", desc:"Free-radical Type I UV photoinitiator with strong 350–400nm absorption, ideal for TiO2-pigmented white coatings, inks, and thick UV films." }
+];
+
+function makeBars(val, max, cls) {
+  let html = `<div class="visual-bar ${cls}">`;
+  for (let i = 1; i <= max; i++) html += `<i class="${i <= val ? 'on' : ''}"></i>`;
+  html += `</div>`;
+  return html;
+}
+
+const state = { cat: 'all', color: '', app: '', term: '' };
+
+function render() {
+  const grid = document.getElementById('product-grid');
+  const filtered = PRODUCTS.filter((p) => {
+    if (state.cat !== 'all' && p.cat !== state.cat) return false;
+    if (state.color && p.color !== state.color) return false;
+    if (state.app && !p.apps.includes(state.app)) return false;
+    if (state.term) {
+      const hay = `${p.code} ${p.name} ${p.color} ${p.apps.join(' ')} ${p.desc || ''}`.toLowerCase();
+      if (!hay.includes(state.term)) return false;
+    }
+    return true;
+  });
+
+  document.getElementById('visible-count').textContent = filtered.length;
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty-state">No matching products found. Try clearing your filters or search terms.</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map((p) => {
+    const swatchHtml = p.c2
+      ? `<div class="mass-tone" style="background-color:${p.c1};"><span class="color-tag">Full</span></div>
+         <div class="tint-tone" style="background-color:${p.c2};"><span class="color-tag">Tint</span></div>`
+      : `<div class="color-full" style="background:${p.c1};"></div>`;
+
+    const bodyDetail = p.l
+      ? `<div class="specs-container">
+           <div class="specs-row"><span class="spec-label">Light</span>${makeBars(p.l, 8, 'light')}<span class="spec-value">${p.l}</span></div>
+           <div class="specs-row"><span class="spec-label">Heat</span>${makeBars(p.h, 5, 'heat')}<span class="spec-value">${p.h}</span></div>
+           <div class="specs-row"><span class="spec-label">Cost</span>${makeBars(p.c, 5, 'cost')}<span class="spec-value">${p.c}</span></div>
+         </div>`
+      : `<p style="font-size:0.83rem;color:var(--hs-text-secondary);line-height:1.6;margin:0 0 0.8rem;">${p.desc}</p>`;
+
+    const tagsHtml = p.apps.map((a) => `<span class="tag">${a}</span>`).join('');
+    const contactUrl = `/en/contact?product=${encodeURIComponent(p.code)}&type=sample`;
+
+    return `
+      <a href="${contactUrl}" class="product-card">
+        <div class="color-display">${swatchHtml}</div>
+        <div class="card-body">
+          <div class="card-header">
+            <span class="product-code">${p.code}</span>
+            <span class="ci-badge">${p.cat.toUpperCase()}</span>
+          </div>
+          <h3 class="product-name">${p.name}</h3>
+          ${bodyDetail}
+          <div class="app-tags">${tagsHtml}</div>
+          <div class="card-cta"><span>Request 50g Sample / TDS</span><span>→</span></div>
+        </div>
+      </a>
+    `;
+  }).join('');
+}
+
+function syncButtons() {
+  document.querySelectorAll('.cat-tab').forEach((b) => b.classList.toggle('active', b.dataset.cat === state.cat));
+  document.querySelectorAll('#color-filter-group .pill-btn').forEach((b) => b.classList.toggle('active', b.dataset.color === state.color));
+  document.querySelectorAll('#app-filter-group .pill-btn').forEach((b) => b.classList.toggle('active', b.dataset.app === state.app));
+  document.getElementById('color-filter-row').style.display = (state.cat === 'all' || state.cat === 'organic') ? 'flex' : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const catParam = new URLSearchParams(window.location.search).get('category');
+  if (['all','organic','solvent','fluorescent','other'].includes(catParam)) state.cat = catParam;
+
+  document.querySelectorAll('.cat-tab').forEach((b) => b.addEventListener('click', () => {
+    state.cat = b.dataset.cat;
+    if (state.cat !== 'all' && state.cat !== 'organic') { state.color = ''; state.app = ''; }
+    syncButtons(); render();
+  }));
+  document.querySelectorAll('#color-filter-group .pill-btn').forEach((b) => b.addEventListener('click', () => {
+    state.color = b.dataset.color;
+    if (state.color && state.cat !== 'organic') state.cat = 'organic';
+    syncButtons(); render();
+  }));
+  document.querySelectorAll('#app-filter-group .pill-btn').forEach((b) => b.addEventListener('click', () => {
+    state.app = b.dataset.app;
+    syncButtons(); render();
+  }));
+  const inp = document.getElementById('search-input');
+  inp.addEventListener('input', () => { state.term = inp.value.trim().toLowerCase(); render(); });
+  document.getElementById('reset-filters').addEventListener('click', () => {
+    state.cat = 'all'; state.color = ''; state.app = ''; state.term = ''; inp.value = '';
+    syncButtons(); render();
+  });
+
+  syncButtons(); render();
+});
+</script>
+</body>
+</html>

@@ -1,10 +1,15 @@
 // ==========================================================================
-// 華翔興業 Hwa Shine — 全站共用元件 (Header / Nav / Page Hero / Footer)
-// 單一檔案維護，全站頁面自動同步更新
+// 華翔興業 Hwa Shine — 全站共用雙語元件 (zh-Hant / EN Header, Subnav, Footer)
+// 單一檔案維護，中英文全站自動同步更新
 // ==========================================================================
 
 (function () {
-  // 確保 body 套用深色工業風主類名，並為全站未包覆捲動容器的表格自動加上橫向捲動保護
+  function isEnglishPage() {
+    const p = window.location.pathname.toLowerCase();
+    return p === '/en' || p.startsWith('/en/') || (document.documentElement.lang || '').toLowerCase().startsWith('en');
+  }
+
+  // 確保 body 套用主題類名，並為全站未包覆捲動容器的表格自動加上橫向捲動保護
   function initSiteEnhancements() {
     if (document.body) {
       document.body.classList.add('hs-dark');
@@ -34,24 +39,46 @@
     initSiteEnhancements();
   }
 
+  function getAlternateLangUrl(isEn) {
+    const path = window.location.pathname.toLowerCase();
+    const search = window.location.search || '';
+    if (isEn) {
+      if (path === '/en' || path === '/en/' || path === '/en/index' || path === '/en/index.html') return '/';
+      if (path.startsWith('/en/products')) return '/products' + search;
+      if (path.startsWith('/en/about')) return '/about';
+      if (path.startsWith('/en/contact')) return '/contact' + search;
+      return '/';
+    } else {
+      if (path === '/' || path === '/index' || path === '/index.html') return '/en/';
+      if (path === '/products' || path === '/products.html') return '/en/products' + search;
+      if (path === '/about' || path === '/about.html') return '/en/about';
+      if (path === '/contact' || path === '/contact.html') return '/en/contact' + search;
+      return '/en/';
+    }
+  }
+
   function isCurrentPath(href) {
     const path = window.location.pathname.toLowerCase();
     const search = window.location.search.toLowerCase();
     const full = path + search;
     const target = href.toLowerCase();
+
     if (target.includes('?')) {
       return full === target || full === target.replace('/products?', '/products.html?');
     }
     if (target === '/' || target === '/index.html') {
       return path === '/' || path === '/index' || path === '/index.html';
     }
-    if (target === '/products') {
-      return (path === '/products' || path === '/products.html') && !search.includes('category=organic') && !search.includes('category=other');
+    if (target === '/en/') {
+      return path === '/en' || path === '/en/' || path === '/en/index' || path === '/en/index.html';
+    }
+    if (target === '/products' || target === '/en/products') {
+      return (path === target || path === target + '.html') && !search.includes('category=organic') && !search.includes('category=other');
     }
     return path === target || path === target + '.html' || path.startsWith(target + '/');
   }
 
-  const NAV_ITEMS = [
+  const NAV_ITEMS_ZH = [
     { label: '首頁', href: '/' },
     { label: '有機顏料', href: '/products?category=organic' },
     { label: '溶劑染料', href: '/solvent-dyes-showcase' },
@@ -59,6 +86,13 @@
     { label: '其他', href: '/products?category=other' },
     { label: '產品總表', href: '/products' },
     { label: '關於我們', href: '/about' },
+  ];
+
+  const NAV_ITEMS_EN = [
+    { label: 'Home', href: '/en/' },
+    { label: 'Organic Pigments', href: '/en/products?category=organic' },
+    { label: 'Product Catalog', href: '/en/products' },
+    { label: 'About Us', href: '/en/about' },
   ];
 
   const SUBNAV_GROUPS = [
@@ -111,30 +145,36 @@
     `;
   }
 
-  // ==========================================
-  // 1. 全站共用頁首 & 導航列 (<custom-header>)
-  //    屬性：
-  //      page-title="頁面標題"       (有設定時自動渲染工業風 Hero Banner)
-  //      page-subtitle="副標題說明"
-  //      page-badge="分類標籤"
-  //      compact="true"              (僅顯示頂部導航列，不渲染 Hero Banner)
-  // ==========================================
   class CustomHeader extends HTMLElement {
     connectedCallback() {
+      const isEn = isEnglishPage();
       const title = this.getAttribute('page-title');
       const subtitle = this.getAttribute('page-subtitle') || '';
       const badge = this.getAttribute('page-badge') || '';
       const compact = this.getAttribute('compact') === 'true';
 
-      const navLinksHtml = NAV_ITEMS.map((item) => {
-        const activeClass = isCurrentPath(item.href) ? 'active' : '';
-        return `<li><a href="${item.href}" class="${activeClass}">${item.label}</a></li>`;
-      }).join('');
+      const navItems = isEn ? NAV_ITEMS_EN : NAV_ITEMS_ZH;
+      const homeHref = isEn ? '/en/' : '/';
+      const contactHref = isEn ? '/en/contact' : '/contact';
+      const contactLabel = isEn ? 'Contact Us' : '聯絡我們';
+      const brandName = isEn ? 'Hwa Shine' : '華翔興業';
+      const brandSub = isEn ? 'SPECIALTY CHEMICALS' : 'HWA SHINE CHEMICALS';
+      const langHref = getAlternateLangUrl(isEn);
+      const langLabel = isEn ? '繁體中文' : 'EN';
 
-      const mobileLinksHtml = NAV_ITEMS.map((item) => {
-        const activeClass = isCurrentPath(item.href) ? 'active' : '';
-        return `<a href="${item.href}" class="${activeClass}">${item.label}</a>`;
-      }).join('');
+      const navLinksHtml = navItems
+        .map((item) => {
+          const activeClass = isCurrentPath(item.href) ? 'active' : '';
+          return `<li><a href="${item.href}" class="${activeClass}">${item.label}</a></li>`;
+        })
+        .join('');
+
+      const mobileLinksHtml = navItems
+        .map((item) => {
+          const activeClass = isCurrentPath(item.href) ? 'active' : '';
+          return `<a href="${item.href}" class="${activeClass}">${item.label}</a>`;
+        })
+        .join('');
 
       const heroHtml =
         !compact && title
@@ -152,32 +192,34 @@
       this.innerHTML = `
         <header class="hs-navbar" role="banner">
           <div class="hs-navbar-inner">
-            <a href="/" class="hs-brand" aria-label="華翔興業有限公司首頁">
+            <a href="${homeHref}" class="hs-brand" aria-label="${isEn ? 'Hwa Shine Co., Ltd. Home' : '華翔興業有限公司首頁'}">
               <span class="hs-brand-mark">HS</span>
               <span class="hs-brand-text">
-                <span class="hs-brand-name">華翔興業</span>
-                <span class="hs-brand-sub">HWA SHINE CHEMICALS</span>
+                <span class="hs-brand-name">${brandName}</span>
+                <span class="hs-brand-sub">${brandSub}</span>
               </span>
             </a>
 
-            <nav aria-label="主導航列">
+            <nav aria-label="${isEn ? 'Main navigation' : '主導航列'}">
               <ul class="hs-nav-links">
                 ${navLinksHtml}
-                <li><a href="/contact" class="hs-nav-cta">聯絡我們</a></li>
+                <li><a href="${langHref}" class="hs-lang-btn" title="${isEn ? '切換至繁體中文版' : 'Switch to English'}">🌐 ${langLabel}</a></li>
+                <li><a href="${contactHref}" class="hs-nav-cta">${contactLabel}</a></li>
               </ul>
             </nav>
 
-            <button type="button" class="hs-mobile-toggle" aria-label="切換導航選單" aria-expanded="false">
+            <button type="button" class="hs-mobile-toggle" aria-label="${isEn ? 'Toggle navigation' : '切換導航選單'}" aria-expanded="false">
               ☰
             </button>
           </div>
 
-          <div class="hs-mobile-menu" role="navigation" aria-label="行動版導航列">
+          <div class="hs-mobile-menu" role="navigation" aria-label="${isEn ? 'Mobile navigation' : '行動版導航列'}">
             ${mobileLinksHtml}
-            <a href="/contact">聯絡我們</a>
+            <a href="${contactHref}">${contactLabel}</a>
+            <a href="${langHref}" style="color:#38bdf8 !important;">🌐 ${isEn ? '切換至繁體中文版' : 'English Version (EN)'}</a>
           </div>
         </header>
-        ${getSubnavHtml()}
+        ${isEn ? '' : getSubnavHtml()}
         ${heroHtml}
       `;
 
@@ -197,11 +239,62 @@
     customElements.define('custom-header', CustomHeader);
   }
 
-  // ==========================================
-  // 2. 全站共用頁尾 (<custom-footer>)
-  // ==========================================
   class CustomFooter extends HTMLElement {
     connectedCallback() {
+      const isEn = isEnglishPage();
+
+      if (isEn) {
+        this.innerHTML = `
+          <footer class="hs-footer" role="contentinfo">
+            <div class="hs-footer-inner">
+              <div>
+                <div class="hs-brand" style="margin-bottom: 1rem;">
+                  <span class="hs-brand-mark">HS</span>
+                  <span class="hs-brand-text">
+                    <span class="hs-brand-name">Hwa Shine Co., Ltd.</span>
+                    <span class="hs-brand-sub">TAIWAN SPECIALTY CHEMICALS</span>
+                  </span>
+                </div>
+                <p>Trusted Taiwan supplier of high-performance organic pigments, solvent dyes, optical brighteners, MXD6 barrier nylon, and photoinitiator TPO for coatings, inks, plastics, and engineering polymers.</p>
+              </div>
+
+              <div>
+                <h4>Product Lines</h4>
+                <ul>
+                  <li><a href="/en/products?category=organic">Organic Pigments (40 Grades)</a></li>
+                  <li><a href="/en/products?category=solvent">Solvent Dyes</a></li>
+                  <li><a href="/en/products?category=fluorescent">Optical Brighteners</a></li>
+                  <li><a href="/en/products?category=other">MXD6 Nylon &amp; Photoinitiator TPO</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><a href="/en/">Home</a></li>
+                  <li><a href="/en/about">About Us</a></li>
+                  <li><a href="/en/products">Product Catalog</a></li>
+                  <li><a href="/en/contact">Contact &amp; Samples</a></li>
+                  <li><a href="/">繁體中文版 (Traditional Chinese)</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Contact Information</h4>
+                <p><strong>Address:</strong> 37F., No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei City 110, Taiwan</p>
+                <p><strong>Phone:</strong> <a href="tel:+886277337581">+886-2-7733-7581</a></p>
+                <p><strong>Email:</strong> <a href="mailto:info@hwashine.tw">info@hwashine.tw</a></p>
+              </div>
+            </div>
+
+            <div class="hs-footer-bottom">
+              <span>&copy; 2026 Hwa Shine Co., Ltd. All Rights Reserved.</span>
+            </div>
+          </footer>
+        `;
+        return;
+      }
+
       this.innerHTML = `
         <footer class="hs-footer" role="contentinfo">
           <div class="hs-footer-inner">
@@ -223,7 +316,7 @@
                 <li><a href="/solvent-dyes-showcase">溶劑染料</a></li>
                 <li><a href="/fluorescent/">螢光增白劑</a></li>
                 <li><a href="/PA-MXD6/indexMXD6">MXD6 阻氣尼龍</a></li>
-                <li><a href="/products?category=other">光起始劑 TPO & 其他</a></li>
+                <li><a href="/products?category=other">光起始劑 TPO &amp; 其他</a></li>
               </ul>
             </div>
 
@@ -234,6 +327,7 @@
                 <li><a href="/about">關於我們</a></li>
                 <li><a href="/products">產品中心</a></li>
                 <li><a href="/tool.html">顏料資料分析工具</a></li>
+                <li><a href="/en/">English Version</a></li>
                 <li><a href="/contact">聯絡我們</a></li>
               </ul>
             </div>

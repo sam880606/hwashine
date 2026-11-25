@@ -585,4 +585,24 @@
     <lastmod>2026-11-25</lastmod>
     <priority>0.80</priority>
   </url>
+  <url>
+    <loc>https://hwashine.tw/en/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://hwashine.tw/en/products</loc>
+    <lastmod>2026-11-26</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://hwashine.tw/en/about</loc>
+    <lastmod>2026-11-26</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://hwashine.tw/en/contact</loc>
+    <lastmod>2026-11-26</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>
