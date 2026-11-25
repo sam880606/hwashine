@@ -25,7 +25,7 @@
       return path === '/' || path === '/index' || path === '/index.html';
     }
     if (target === '/products') {
-      return (path === '/products' || path === '/products.html') && !search.includes('category=organic');
+      return (path === '/products' || path === '/products.html') && !search.includes('category=organic') && !search.includes('category=other');
     }
     return path === target || path === target + '.html' || path.startsWith(target + '/');
   }
@@ -35,7 +35,7 @@
     { label: '有機顏料', href: '/products?category=organic' },
     { label: '溶劑染料', href: '/solvent-dyes-showcase' },
     { label: '螢光增白劑', href: '/fluorescent/' },
-    { label: 'MXD6 材料', href: '/PA-MXD6/indexMXD6' },
+    { label: '其他', href: '/products?category=other' },
     { label: '產品總表', href: '/products' },
     { label: '關於我們', href: '/about' },
   ];
