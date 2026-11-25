@@ -398,7 +398,7 @@
     <script>
         // 渲染 Icons
         lucide.createIcons();
-        document.getElementById('year').textContent = new Date().getFullYear();
+        (document.getElementById('year') || {}).textContent = new Date().getFullYear();
 
         // 處理手機版漢堡選單
         const menuBtn = document.getElementById('mobile-menu-btn');

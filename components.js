@@ -4,13 +4,34 @@
 // ==========================================================================
 
 (function () {
-  // 確保 body 套用深色工業風主類名
-  if (document.body) {
-    document.body.classList.add('hs-dark');
-  } else {
-    document.addEventListener('DOMContentLoaded', () => {
+  // 確保 body 套用深色工業風主類名，並為全站未包覆捲動容器的表格自動加上橫向捲動保護
+  function initSiteEnhancements() {
+    if (document.body) {
       document.body.classList.add('hs-dark');
+    }
+    document.querySelectorAll('table').forEach((table) => {
+      const parent = table.parentElement;
+      if (!parent) return;
+      const cls = parent.className || '';
+      const overflowX = window.getComputedStyle(parent).overflowX;
+      if (
+        overflowX === 'auto' ||
+        overflowX === 'scroll' ||
+        /\b(overflow-x-auto|table-responsive|data-table-container|table-wrapper|table-container|hs-table-scroll)\b/.test(cls)
+      ) {
+        return;
+      }
+      const wrapper = document.createElement('div');
+      wrapper.className = 'hs-table-scroll';
+      parent.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
     });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSiteEnhancements);
+  } else {
+    initSiteEnhancements();
   }
 
   function isCurrentPath(href) {
