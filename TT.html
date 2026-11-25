@@ -37,12 +37,36 @@
 <body class="hs-dark text-gray-800 h-screen flex flex-col">
 
     <!-- 頂部導航 -->
-    <custom-header compact="true"></custom-header>
-<section class="hs-hero">
-  <div class="hs-hero-inner">
-    <h1>年度銷售業績儀表板</h1>
-  </div>
-</section>
+        <custom-header compact="true"></custom-header>
+    <section class="hs-hero">
+      <div class="hs-hero-inner">
+        <div class="hs-hero-badge">ANALYTICS DASHBOARD</div>
+        <h1>年度銷售業績儀表板</h1>
+      </div>
+    </section>
+
+    <div class="bg-white shadow-sm border-b border-slate-200 flex flex-col z-10">
+        <div class="max-w-7xl mx-auto w-full px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2 text-slate-700 font-semibold text-sm">
+                <i data-lucide="bar-chart-3" class="text-blue-600 w-5 h-5"></i>
+                <span>Excel 銷售報表匯入與分析</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-sm text-gray-500 font-medium">檔案數量: <span id="file-count">0</span>/10</span>
+                <div id="file-upload-container" class="relative">
+                    <input type="file" id="excel-file" accept=".xlsx, .xls, .csv" multiple class="hidden" />
+                    <label for="excel-file" class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors shadow-sm">
+                        <i data-lucide="upload" class="w-4 h-4"></i>
+                        新增 Excel 報表
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- 檔案標籤列 (顯示目前上傳的檔案) -->
+        <div id="file-chips-container" class="max-w-7xl mx-auto w-full px-6 py-3 bg-gray-50 flex flex-wrap gap-2 hidden">
+            <!-- 標籤將透過 JS 動態產生 -->
+        </div>
+    </div>
 
     <!-- 載入中動畫 -->
     <div id="loading" class="hidden absolute inset-0 bg-white/80 z-50 flex flex-col items-center justify-center">
