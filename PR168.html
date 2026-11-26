@@ -14,7 +14,6 @@
     <meta property="og:description" content="CAS 4378-61-4 | 還原顏料中耐光耐候最頂尖的黃光紅品種之一，本色與沖淡色耐光可達8級；不故意添加歐盟RoHS限用重金屬與PBB/PBDE阻燃劑，適用於高階汽車漆、氟碳捲材塗料與無鉛替代鉬鉻紅(PR104)拼色配方。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hwashine.tw/PR168">
-    <!-- 提醒：上線前請確認伺服器端圖片實際路徑是否存在 -->
     <meta property="og:image" content="https://hwashine.tw/images/pr168-sample.jpg">
     <meta property="og:site_name" content="華翔興業 Hwa Shine">
     
@@ -54,7 +53,6 @@
             "@type": "Offer",
             "url": "https://hwashine.tw/PR168",
             "priceCurrency": "TWD",
-            "price": "0",
             "priceValidUntil": "2027-12-31",
             "availability": "https://schema.org/InStock",
             "itemCondition": "https://schema.org/NewCondition",
@@ -326,6 +324,38 @@
             </div>
         </div>
 
+                <!-- 核心指標快速一覽 (手機優先可見) -->
+        <div id="benchmark-kpi-strip" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+            <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center shrink-0"><i class="fas fa-sun"></i></div>
+                <div>
+                    <div class="text-xs text-slate-500 font-medium">耐光性 (本/沖淡)</div>
+                    <div class="text-base sm:text-lg font-extrabold text-slate-900 font-mono">8 / 8 級</div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0"><i class="fas fa-cloud-sun"></i></div>
+                <div>
+                    <div class="text-xs text-slate-500 font-medium">戶外耐候性</div>
+                    <div class="text-base sm:text-lg font-extrabold text-slate-900 font-mono">5 級 (頂級)</div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0"><i class="fas fa-temperature-high"></i></div>
+                <div>
+                    <div class="text-xs text-slate-500 font-medium">防重塗 / PVC 遷移</div>
+                    <div class="text-base sm:text-lg font-extrabold text-slate-900 font-mono">200°C / 5 級</div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0"><i class="fas fa-shield-alt"></i></div>
+                <div>
+                    <div class="text-xs text-slate-500 font-medium">法規與重金屬</div>
+                    <div class="text-base sm:text-lg font-extrabold text-slate-900">無鉛 / RoHS 合規</div>
+                </div>
+            </div>
+        </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
             
             <!-- Left Column: Detailed Content -->
@@ -377,103 +407,81 @@
 
                     <!-- Chemical Structure SVG Card -->
                     <div class="mb-6 bg-gradient-to-b from-gray-50 to-white border border-gray-200 rounded-xl p-4 md:p-6 shadow-inner">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-gray-200">
+                                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-gray-200">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-original-scarlet-700 bg-red-50 px-2.5 py-1 rounded border border-red-200">
-                                    平面共軛構型與官能基示意圖
+                                <span class="text-xs font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded border border-sky-200">
+                                    IUPAC 標準 2D 化學結構式（SMILES 自動渲染）
                                 </span>
                                 <h3 class="text-base md:text-lg font-bold text-gray-800 mt-1.5">
-                                    4,10-二溴蒽嵌蒽二酮 (Dibromoanthanthrone) 分子結構與官能基性能圖解
+                                    4,10-二溴蒽嵌蒽二酮 (4,10-Dibromoanthanthrone) 分子結構
                                 </h3>
                             </div>
-                            <button id="toggleStructureGroups" type="button" aria-pressed="true" onclick="toggleFunctionalGroups()" class="self-start sm:self-auto inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-original-scarlet-600 text-white hover:bg-original-scarlet-700 transition-colors shadow-sm">
-                                <i class="fas fa-highlighter"></i>
-                                <span id="toggleBtnText">隱藏官能基標註</span>
+                            <button id="copySmilesBtn" type="button" onclick="copyPr168Smiles()" class="self-start sm:self-auto inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-sky-600 text-white hover:bg-sky-700 transition-colors shadow-sm">
+                                <i class="fas fa-copy"></i>
+                                <span id="copySmilesText">複製 SMILES</span>
                             </button>
                         </div>
 
-                        <!-- Responsive Vector SVG of Pigment Red 168 (C22H8Br2O2) - Strictly Centrosymmetric & Tetravalent Kekulé Representation -->
-                        <div class="w-full overflow-x-auto bg-white rounded-lg border border-gray-100 p-2 md:p-4 flex justify-center">
-                            <svg id="pr168StructureSvg" viewBox="0 0 800 360" class="w-full max-w-3xl h-auto select-none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="顏料紅168 (Pigment Red 168, C22H8Br2O2, 4,10-dibromoanthanthrone) 化學結構圖">
-                                <!-- Functional Group Highlight Zones -->
-                                <g id="functionalHighlights" class="transition-opacity duration-300" style="opacity: 1;">
-                                    <!-- ② Central Fused 6-Ring Anthanthrone Polycyclic Core -->
-                                    <rect x="272" y="96" width="228" height="145" rx="14" fill="#fef2f2" fill-opacity="0.65" stroke="#ef4444" stroke-width="1.3" stroke-dasharray="5 3"/>
-                                    <text x="525" y="75" text-anchor="start" font-size="11" font-weight="700" fill="#b91c1c">② 稠合六環蒽嵌蒽二酮共軛核心</text>
-                                    <line x1="520" y1="78" x2="482" y2="105" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3 2"/>
-
-                                    <!-- ① 6,12-Dione Carbonyl Groups -->
-                                    <rect x="372" y="48" width="56" height="58" rx="8" fill="#fff7ed" fill-opacity="0.85" stroke="#ea580c" stroke-width="1.4" stroke-dasharray="4 2"/>
-                                    <rect x="342" y="232" width="56" height="58" rx="8" fill="#fff7ed" fill-opacity="0.85" stroke="#ea580c" stroke-width="1.4" stroke-dasharray="4 2"/>
-                                    <text x="360" y="65" text-anchor="end" font-size="10.5" font-weight="700" fill="#c2410c">① 6-位還原羰基 (C=O)</text>
-                                    <text x="410" y="275" text-anchor="start" font-size="10.5" font-weight="700" fill="#c2410c">① 12-位還原羰基 (C=O)</text>
-
-                                    <!-- ③ 4,10-Dibromo Substituents (-Br at True IUPAC Positions 4 & 10) -->
-                                    <rect x="220" y="82" width="90" height="50" rx="10" fill="#fef3c7" fill-opacity="0.75" stroke="#d97706" stroke-width="1.4" stroke-dasharray="4 2"/>
-                                    <rect x="462" y="202" width="90" height="50" rx="10" fill="#fef3c7" fill-opacity="0.75" stroke="#d97706" stroke-width="1.4" stroke-dasharray="4 2"/>
-                                    <text x="210" y="111" text-anchor="end" font-size="10.5" font-weight="700" fill="#b45309">③ 4-位共價溴原子 (-Br)</text>
-                                    <text x="562" y="232" text-anchor="start" font-size="10.5" font-weight="700" fill="#b45309">③ 10-位共價溴原子 (-Br)</text>
-
-                                    <!-- ④ Crystal Lattice π-π Stacking & Dipolar Interaction Badge -->
-                                    <rect x="55" y="175" width="185" height="46" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.1"/>
-                                    <text x="147" y="194" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">④ 剛性平面 π-π 晶格堆疊</text>
-                                    <text x="147" y="210" text-anchor="middle" font-size="9" font-weight="600" fill="#2563eb">耐光 8 級 / 耐溶劑 5 級</text>
-                                </g>
-
-                                <!-- ==================== CHEMICAL BONDS (6-Ring Fused Anthanthrone Skeleton) ==================== -->
-                                <g stroke="#1f2937" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                                    <!-- Top Row of 3 Fused 6-Membered Rings: Ring A (Left-Top), Ring B (Center-Top Quinone), Ring C (Right-Top) -->
-                                    <polygon points="341,109 370.4,126 370.4,160 341,177 311.6,160 311.6,126"/>
-                                    <polyline points="370.4,126 400,109 429.4,126 429.4,160 400,177 370.4,160"/>
-                                    <polyline points="429.4,126 458.8,109 488.2,126 488.2,160 458.8,177 429.4,160"/>
-
-                                    <!-- Bottom Row of 3 Fused 6-Membered Rings: Ring D (Left-Bottom), Ring E (Center-Bottom Quinone), Ring F (Right-Bottom) -->
-                                    <polyline points="311.6,160 282.2,177 282.2,211 311.6,228 341,211 341,177"/>
-                                    <polyline points="341,211 370.4,228 400,211 400,177"/>
-                                    <polyline points="400,211 429.4,228 458.8,211 458.8,177"/>
-
-                                    <!-- Centrosymmetric Kekulé Double Bonds (10 C=C bonds for 20 non-carbonyl sp2 carbons, strictly tetravalent) -->
-                                    <!-- Naphthalene Subunit 1 (Left: Ring A + Ring D, 5 conjugated double bonds) -->
-                                    <line x1="341" y1="116" x2="364" y2="129.5"/>
-                                    <line x1="318" y1="129.5" x2="318" y2="156.5"/>
-                                    <line x1="341" y1="169.5" x2="364" y2="156.5"/>
-                                    <line x1="288.5" y1="180.5" x2="288.5" y2="207.5"/>
-                                    <line x1="311.6" y1="220.5" x2="334.5" y2="207.5"/>
-
-                                    <!-- Naphthalene Subunit 2 (Right: Ring C + Ring F, 5 conjugated double bonds, inversion-symmetric around center (385.2, 168.5)) -->
-                                    <line x1="436" y1="129.5" x2="458.8" y2="116"/>
-                                    <line x1="481.8" y1="129.5" x2="481.8" y2="156.5"/>
-                                    <line x1="406.5" y1="180.5" x2="429.4" y2="167.5"/>
-                                    <line x1="452.4" y1="180.5" x2="452.4" y2="207.5"/>
-                                    <line x1="406.5" y1="207.5" x2="429.4" y2="220.5"/>
-
-                                    <!-- Carbonyl Double Bonds (C=O at positions 6 & 12) -->
-                                    <line x1="397" y1="109" x2="397" y2="79" stroke="#dc2626" stroke-width="2.6"/>
-                                    <line x1="403" y1="109" x2="403" y2="79" stroke="#dc2626" stroke-width="2.6"/>
-                                    <line x1="367.4" y1="228" x2="367.4" y2="258" stroke="#dc2626" stroke-width="2.6"/>
-                                    <line x1="373.4" y1="228" x2="373.4" y2="258" stroke="#dc2626" stroke-width="2.6"/>
-
-                                    <!-- Two Centrosymmetric C-Br Covalent Bonds at True IUPAC Positions 4 (311.6, 126) & 10 (458.8, 211) -->
-                                    <line x1="311.6" y1="126" x2="274" y2="105" stroke="#b45309" stroke-width="2.6"/>
-                                    <line x1="458.8" y1="211" x2="496.4" y2="232" stroke="#b45309" stroke-width="2.6"/>
-                                </g>
-
-                                <!-- ==================== ATOM LABELS ==================== -->
-                                <g font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">
-                                    <!-- Carbonyl Oxygens -->
-                                    <text x="400" y="72" text-anchor="middle" fill="#dc2626">O</text>
-                                    <text x="370.4" y="276" text-anchor="middle" fill="#dc2626">O</text>
-                                    <!-- Bromine Atoms at 4,10-positions -->
-                                    <text x="252" y="106" text-anchor="middle" fill="#b45309">Br</text>
-                                    <text x="518" y="242" text-anchor="middle" fill="#b45309">Br</text>
-                                </g>
-
-                                <!-- Bottom Summary Captions -->
-                                <text x="175" y="340" text-anchor="middle" font-size="10.5" font-weight="600" fill="#991b1b">母體骨架：蒽嵌蒽二酮 (Anthanthrone)</text>
-                                <text x="415" y="340" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b45309">取代特徵：4,10-對稱雙溴取代 (2Br, ~34.4%)</text>
-                                <text x="655" y="340" text-anchor="middle" font-size="10.5" font-weight="600" fill="#6b7280">分子式 C₂₂H₈Br₂O₂ (464.11 g/mol)</text>
-                            </svg>
+                                                <!-- SmilesDrawer Auto-Rendered Standard 2D Vector Structure -->
+                        <div class="w-full bg-white rounded-lg border border-gray-100 p-4 md:p-6 flex flex-col items-center justify-center">
+                            <svg id="pr168-smiles-svg" width="560" height="300" class="w-full max-w-lg h-auto select-none" role="img" aria-label="顏料紅168 (Pigment Red 168, C22H8Br2O2, 4,10-dibromoanthanthrone) 標準化學結構式"></svg>
+                            <img id="pr168-fallback-img" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/4378-61-4/PNG?image_size=large" alt="顏料紅168 (PR168) PubChem 標準化學結構式" class="hidden max-w-md w-full h-auto" />
+                            <div class="mt-3 pt-3 border-t border-gray-100 w-full flex flex-wrap justify-center gap-x-6 gap-y-1 text-xs text-slate-500 font-mono">
+                                <span>分子式：C₂₂H₈Br₂O₂</span>
+                                <span>分子量：464.11 g/mol</span>
+                                <span>CAS：4378-61-4</span>
+                                <span>C.I. 59300</span>
+                            </div>
                         </div>
+                        <script src="https://cdn.jsdelivr.net/npm/smiles-drawer@2.0.1/dist/smiles-drawer.min.js"></script>
+                        <script>
+                            (function () {
+                                const PR168_SMILES = 'C1=CC2=C(C=C3C4=C2C(=C1)C(=O)C5=CC(=C6C=CC=C(C6=C54)C3=O)Br)Br';
+                                window.copyPr168Smiles = function () {
+                                    if (navigator.clipboard) {
+                                        navigator.clipboard.writeText(PR168_SMILES).then(() => {
+                                            const el = document.getElementById('copySmilesText');
+                                            if (el) { el.textContent = '已複製 SMILES ✓'; setTimeout(() => { el.textContent = '複製 SMILES'; }, 2000); }
+                                        });
+                                    }
+                                };
+                                function showFallback() {
+                                    const svg = document.getElementById('pr168-smiles-svg');
+                                    const img = document.getElementById('pr168-fallback-img');
+                                    if (svg) svg.classList.add('hidden');
+                                    if (img) img.classList.remove('hidden');
+                                }
+                                function renderPr168Structure() {
+                                    try {
+                                        if (typeof SmilesDrawer === 'undefined') { showFallback(); return; }
+                                        const drawer = new SmilesDrawer.SvgDrawer({
+                                            width: 560,
+                                            height: 300,
+                                            bondThickness: 2.0,
+                                            padding: 24
+                                        });
+                                        SmilesDrawer.parse(PR168_SMILES, function (tree) {
+                                            drawer.draw(tree, 'pr168-smiles-svg', 'light', false);
+                                            const thumbEl = document.getElementById('pr168-smiles-thumb');
+                                            if (thumbEl) {
+                                                const thumbDrawer = new SmilesDrawer.SvgDrawer({ width: 260, height: 120, bondThickness: 1.8, padding: 10 });
+                                                thumbDrawer.draw(tree, 'pr168-smiles-thumb', 'light', false);
+                                            }
+                                        }, function () {
+                                            showFallback();
+                                        });
+                                    } catch (e) {
+                                        console.error('SmilesDrawer error:', e);
+                                        showFallback();
+                                    }
+                                }
+                                if (document.readyState === 'loading') {
+                                    document.addEventListener('DOMContentLoaded', renderPr168Structure);
+                                } else {
+                                    renderPr168Structure();
+                                }
+                            })();
+                        </script>
 
                         <!-- Crystal Structure Note -->
                         <div class="mt-3 px-3.5 py-2.5 bg-gray-100/80 rounded-lg border border-gray-200 text-xs text-gray-600 leading-relaxed">
@@ -604,7 +612,7 @@
                                 <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded">含 34.4% 結構共價溴</span>
                             </div>
                             <p class="text-xs text-gray-600 leading-relaxed">
-                                PR168 分子式 (<code>C₂₂H₈Br₂O₂</code>) 含有 2 顆共價鍵結溴原子（理論溴含量約 <strong>34.4%</strong>）。若用於要求 <strong>Br &lt; 900 ppm (IEC 61249-2-21)</strong> 之無鹵電子材料，在假設基材本身不含溴的前提下，顏料添加量佔整體配方超過約 <strong>0.26%</strong> 即會超標，請改選無鹵之苝紅 <strong>PR179、PR149</strong> 或無鹵苯並咪唑酮橙（<strong>PO62、PO64</strong>）。
+                                PR168 分子式 (<code>C₂₂H₈Br₂O₂</code>) 含有 2 顆共價鍵結溴原子（理論溴含量約 <strong>34.4%</strong>）。若用於要求 <strong>Br &lt; 900 ppm (IEC 61249-2-21)</strong> 之無鹵電子材料，在假設基材本身不含溴的前提下，顏料添加量佔整體配方超過約 <strong>0.26%</strong> 即會超標，請改選無鹵之苝紅 <strong>PR179、PR149</strong> 或無鹵苯並咪唑酮橙（<strong>PO62、<a href="/PO64" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO64</a></strong>）。
                             </p>
                         </div>
                     </div>
@@ -681,7 +689,7 @@
                                 </tr>
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 font-bold text-gray-800">
-                                        PR254<br><span class="text-xs font-normal text-gray-500">二酮吡咯並吡咯 DPP (中性正紅)</span>
+                                        <a href="/PR254" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR254</a><br><span class="text-xs font-normal text-gray-500">二酮吡咯並吡咯 DPP (中性正紅)</span>
                                     </td>
                                     <td class="px-4 py-3 text-green-700 text-center">優異 (4-5~5 / 4級)</td>
                                     <td class="px-4 py-3 text-green-700 font-bold text-center">280–300°C</td>
@@ -690,7 +698,7 @@
                                 </tr>
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 font-bold text-gray-800">
-                                        PR242<br><span class="text-xs font-normal text-gray-500">雙偶氮縮合 (鮮黃光紅)</span>
+                                        <a href="/PR242" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR242</a><br><span class="text-xs font-normal text-gray-500">雙偶氮縮合 (鮮黃光紅)</span>
                                     </td>
                                     <td class="px-4 py-3 text-green-600 text-center">良好至優異<br><span class="text-xs font-normal text-gray-500">(4-5 / 4級)</span></td>
                                     <td class="px-4 py-3 text-green-700 font-bold text-center">280–300°C</td>
@@ -708,7 +716,7 @@
                                 </tr>
                                 <tr class="hover:bg-gray-50">
                                     <td class="px-4 py-3 font-bold text-gray-800">
-                                        PO36<br><span class="text-xs font-normal text-gray-500">苯並咪唑酮 (紅光橙)</span>
+                                        <a href="/PO36" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO36</a><br><span class="text-xs font-normal text-gray-500">苯並咪唑酮 (紅光橙)</span>
                                     </td>
                                     <td class="px-4 py-3 text-green-700 text-center">優異 (5 / 4-5級)</td>
                                     <td class="px-4 py-3 text-green-600 font-bold text-center">240–260°C</td>
@@ -722,7 +730,7 @@
                                     <td class="px-4 py-3 text-amber-700 font-bold text-center">中至良好 (易暗化)</td>
                                     <td class="px-4 py-3 text-green-700 font-bold text-center">&gt;280°C</td>
                                     <td class="px-4 py-3 text-red-700 font-extrabold text-center"><i class="fas fa-ban mr-1"></i>含鉛與六價鉻禁用</td>
-                                    <td class="px-4 py-3 font-bold text-blue-800">受 RoHS/REACH 嚴格限制；業界常以 PY184 + PR168 / PO36 / PR254 複合無鉛化取代</td>
+                                    <td class="px-4 py-3 font-bold text-blue-800">受 RoHS/REACH 嚴格限制；業界常以 PY184 + PR168 / <a href="/PO36" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO36</a> / <a href="/PR254" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR254</a> 複合無鉛化取代</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -738,8 +746,8 @@
                                 <i class="fas fa-lightbulb mr-2 text-original-scarlet-600"></i>高耐候汽車/建築塗料、無鉛替代鉬鉻紅與無鹵選色建議
                             </h4>
                             <p class="text-sm text-gray-600">
-                                <strong>塗料與無鉛拼色客戶：</strong>PR168 在淺色沖淡耐候與防重塗滲色上無可取代；若需高遮蓋實色橘紅（替代含鉛鉬鉻紅 PR104），建議以 <strong>PY184（釩酸鉍黃）+ PO36 / PR254</strong> 打底，再搭配 <strong>PR168</strong> 提升表面彩度與長期耐曬牢度。<br>
-                                <strong>高溫塑膠與無鹵電子客戶：</strong>若加工溫度超過 260°C 或追求高著色力，可評估 <strong>PR242 或 PR254</strong>；若需符合 <strong>Br &lt; 900 ppm 無鹵規範</strong>，請改選無鹵素結構之苝紅 <strong>PR149、PR179</strong> 或無鹵苯並咪唑酮橙 <strong>PO62、PO64</strong>。
+                                <strong>塗料與無鉛拼色客戶：</strong>PR168 在淺色沖淡耐候與防重塗滲色上無可取代；若需高遮蓋實色橘紅（替代含鉛鉬鉻紅 PR104），建議以 <strong>PY184（釩酸鉍黃）+ <a href="/PO36" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO36</a> / <a href="/PR254" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR254</a></strong> 打底，再搭配 <strong>PR168</strong> 提升表面彩度與長期耐曬牢度。<br>
+                                <strong>高溫塑膠與無鹵電子客戶：</strong>若加工溫度超過 260°C 或追求高著色力，可評估 <strong><a href="/PR242" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR242</a> 或 <a href="/PR254" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR254</a></strong>；若需符合 <strong>Br &lt; 900 ppm 無鹵規範</strong>，請改選無鹵素結構之苝紅 <strong>PR149、PR179</strong> 或無鹵苯並咪唑酮橙 <strong>PO62、<a href="/PO64" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO64</a></strong>。
                             </p>
                         </div>
                         <a href="/contact" class="flex-shrink-0 px-6 py-2.5 bg-original-scarlet-600 text-white font-bold rounded-full hover:bg-original-scarlet-700 transition-colors shadow-sm text-sm whitespace-nowrap">
@@ -786,7 +794,7 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-gray-800 mb-2">無鉛替代鉬鉻紅 (PR104) 工程機械與安全漆</h3>
-                                <p class="text-sm text-gray-600 mb-2">在農機、工程車、消防與道路交通標誌漆的無鉛化配方中，與無機釩酸鉍黃 (PY184)、苯並咪唑酮橙 (PO36) 複合拼色，重現高飽和橘紅色相並大幅提升耐曬壽命。</p>
+                                <p class="text-sm text-gray-600 mb-2">在農機、工程車、消防與道路交通標誌漆的無鉛化配方中，與無機釩酸鉍黃 (PY184)、苯並咪唑酮橙 (<a href="/PO36" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO36</a>) 複合拼色，重現高飽和橘紅色相並大幅提升耐曬壽命。</p>
                                 <span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded">無鉛高耐候拼色核心</span>
                             </div>
                         </div>
@@ -889,7 +897,7 @@
                         <!-- FAQ 2: Division between PR168, PR254, PR179, PR242, PO36 -->
                         <details class="group bg-white rounded-lg p-4 shadow-sm border border-gray-200">
                             <summary class="font-bold text-gray-800 flex justify-between items-center select-none text-base cursor-pointer">
-                                <span><span class="text-original-scarlet-600 mr-2">Q2.</span>在汽車塗料與工業漆配方中，PR168 與常見的 DPP 紅 (PR254)、苝紅 (PR149/PR179)、雙偶氮縮合紅 (PR242) 及苯並咪唑酮橙 (PO36) 如何分工選擇？</span>
+                                <span><span class="text-original-scarlet-600 mr-2">Q2.</span>在汽車塗料與工業漆配方中，PR168 與常見的 DPP 紅 (<a href="/PR254" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR254</a>)、苝紅 (PR149/PR179)、雙偶氮縮合紅 (<a href="/PR242" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR242</a>) 及苯並咪唑酮橙 (<a href="/PO36" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO36</a>) 如何分工選擇？</span>
                                 <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform ml-2"></i>
                             </summary>
                             <div class="mt-3 text-sm text-gray-600 leading-relaxed pl-3 border-l-2 border-original-scarlet-500 space-y-2">
@@ -898,8 +906,8 @@
                                 </p>
                                 <ul class="list-disc pl-5 space-y-1">
                                     <li><strong>1. PR168（二溴蒽嵌蒽二酮黃光紅）：</strong>色相為極鮮明的黃光紅（朱紅/橘紅），最大優勢是「極淺沖淡色下的頂級戶外耐候性（4-5~5級）」以及「優異的耐強溶劑與 200°C 防重塗滲色表現」，是高階汽車金屬珠光漆、氟碳捲材塗料及調配暖色調（珊瑚色、磚紅、香檳橘）的首選；惟其著色力偏溫和且單價較高。</li>
-                                    <li><strong>2. PR254（DPP 紅）與 PR179（苝紅）：</strong>PR254 為主流中性正紅（汽車標準紅），著色力與遮蓋力明顯高於 PR168，但色相不如 PR168 偏黃光；PR179 則為深紅棕/酒紅色高透明汽車金屬漆主力。</li>
-                                    <li><strong>3. PR242（雙偶氮縮合黃光紅）與 PO36（苯並咪唑酮紅光橙）：</strong>PR242 同為鮮豔黃光紅且著色力強、塑膠耐熱高（280–300°C），但在極淺戶外沖淡耐候上 PR168 仍居冠；PO36 則常用於中底層提供經濟型遮蓋與耐候骨架。</li>
+                                    <li><strong>2. <a href="/PR254" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR254</a>（DPP 紅）與 PR179（苝紅）：</strong><a href="/PR254" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR254</a> 為主流中性正紅（汽車標準紅），著色力與遮蓋力明顯高於 PR168，但色相不如 PR168 偏黃光；PR179 則為深紅棕/酒紅色高透明汽車金屬漆主力。</li>
+                                    <li><strong>3. <a href="/PR242" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR242</a>（雙偶氮縮合黃光紅）與 <a href="/PO36" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO36</a>（苯並咪唑酮紅光橙）：</strong><a href="/PR242" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR242</a> 同為鮮豔黃光紅且著色力強、塑膠耐熱高（280–300°C），但在極淺戶外沖淡耐候上 PR168 仍居冠；<a href="/PO36" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO36</a> 則常用於中底層提供經濟型遮蓋與耐候骨架。</li>
                                 </ul>
                             </div>
                         </details>
@@ -911,7 +919,7 @@
                                 <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform ml-2"></i>
                             </summary>
                             <div class="mt-3 text-sm text-gray-600 leading-relaxed pl-3 border-l-2 border-original-scarlet-500">
-                                傳統無機鉬鉻紅（C.I. Pigment Red 104，鉛鉻鉬酸鹽）兼具鮮豔橘紅色相、高遮蓋力與低成本，但因含鉛與六價鉻受歐盟 REACH 授權清單與 RoHS 嚴格禁用。在工程機械、農機、安全標誌與捲材塗料的無鉛化替代方案中，由於純 PR168 屬於高透明至半透明型且單價較高，配方師通常不會單獨以 100% PR168 替換，而是採用「有機/無機複合拼色策略」：以高遮蓋無機釩酸鉍黃（PY184）、氧化鐵紅（PR101）或無鉛有機橙/紅（如 PO36、PO73、不透明型 PR254）建構底層遮蓋力，再引入 PR168 作為高彩度黃光紅與頂層耐候補強組分，如此既能精準匹配鉬鉻紅的鮮亮朱紅/橘紅色相，又能確保長期暴曬不粉化、不褪色。
+                                傳統無機鉬鉻紅（C.I. Pigment Red 104，鉛鉻鉬酸鹽）兼具鮮豔橘紅色相、高遮蓋力與低成本，但因含鉛與六價鉻受歐盟 REACH 授權清單與 RoHS 嚴格禁用。在工程機械、農機、安全標誌與捲材塗料的無鉛化替代方案中，由於純 PR168 屬於高透明至半透明型且單價較高，配方師通常不會單獨以 100% PR168 替換，而是採用「有機/無機複合拼色策略」：以高遮蓋無機釩酸鉍黃（PY184）、氧化鐵紅（PR101）或無鉛有機橙/紅（如 <a href="/PO36" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO36</a>、PO73、不透明型 <a href="/PR254" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PR254</a>）建構底層遮蓋力，再引入 PR168 作為高彩度黃光紅與頂層耐候補強組分，如此既能精準匹配鉬鉻紅的鮮亮朱紅/橘紅色相，又能確保長期暴曬不粉化、不褪色。
                             </div>
                         </details>
 
@@ -967,7 +975,7 @@
                                     <strong>1. 歐盟 RoHS 完全合規：</strong>RoHS 指令限制的是「多溴聯苯 (PBB)」與「多溴二苯醚 (PBDE)」兩類特定溴化阻燃劑。PR168 則是共價鍵結於蒽嵌蒽二酮骨架上的有機顏料（CAS 4378-61-4），既非 PBB/PBDE，亦不含鉛、鎘、汞、六價鉻，因此在 RoHS 規範下完全合規（惟傳統 XRF 螢光光譜儀篩檢時會偵測到總溴 Br 訊號，需提供化學結構證明或改以 GC-MS 確認非 PBB/PBDE）。
                                 </p>
                                 <p>
-                                    <strong>2. 電子無鹵（Halogen-Free）規範限制：</strong>PR168 分子式為 <code>C₂₂H₈Br₂O₂</code>，含有 2 顆共價溴原子，理論結構溴含量高達約 34.4%。若終端電子產品要求符合 IEC 61249-2-21 或 JPCA-ES-01 無鹵標準（總溴 Br &lt; 900 ppm，總鹵素 Cl+Br &lt; 1500 ppm），在假設基材不含溴的前提下，PR168 添加量佔整體配方超過約 0.26% 即會造成總溴超標，此類無鹵電子案建議改選完全無鹵素結構之苝紅（PR179、PR149）或無鹵苯並咪唑酮橙（如 PO62、PO64）。
+                                    <strong>2. 電子無鹵（Halogen-Free）規範限制：</strong>PR168 分子式為 <code>C₂₂H₈Br₂O₂</code>，含有 2 顆共價溴原子，理論結構溴含量高達約 34.4%。若終端電子產品要求符合 IEC 61249-2-21 或 JPCA-ES-01 無鹵標準（總溴 Br &lt; 900 ppm，總鹵素 Cl+Br &lt; 1500 ppm），在假設基材不含溴的前提下，PR168 添加量佔整體配方超過約 0.26% 即會造成總溴超標，此類無鹵電子案建議改選完全無鹵素結構之苝紅（PR179、PR149）或無鹵苯並咪唑酮橙（如 PO62、<a href="/PO64" class="font-bold text-sky-700 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">PO64</a>）。
                                 </p>
                             </div>
                         </details>
@@ -1003,40 +1011,7 @@
                                 <div class="text-[11px] font-semibold text-gray-400 group-hover:text-original-scarlet-600 mb-1 flex items-center justify-center gap-1">
                                     <i class="fas fa-project-diagram"></i> 分子結構式 (C₂₂H₈Br₂O₂)
                                 </div>
-                                <svg viewBox="215 50 340 245" class="w-full h-16 mx-auto" xmlns="http://www.w3.org/2000/svg">
-                                    <g stroke="#374151" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                                        <polygon points="341,109 370.4,126 370.4,160 341,177 311.6,160 311.6,126"/>
-                                        <polyline points="370.4,126 400,109 429.4,126 429.4,160 400,177 370.4,160"/>
-                                        <polyline points="429.4,126 458.8,109 488.2,126 488.2,160 458.8,177 429.4,160"/>
-                                        <polyline points="311.6,160 282.2,177 282.2,211 311.6,228 341,211 341,177"/>
-                                        <polyline points="341,211 370.4,228 400,211 400,177"/>
-                                        <polyline points="400,211 429.4,228 458.8,211 458.8,177"/>
-                                        <!-- Kekulé Double Bonds -->
-                                        <line x1="341" y1="116" x2="364" y2="129.5"/>
-                                        <line x1="318" y1="129.5" x2="318" y2="156.5"/>
-                                        <line x1="341" y1="169.5" x2="364" y2="156.5"/>
-                                        <line x1="288.5" y1="180.5" x2="288.5" y2="207.5"/>
-                                        <line x1="311.6" y1="220.5" x2="334.5" y2="207.5"/>
-                                        <line x1="436" y1="129.5" x2="458.8" y2="116"/>
-                                        <line x1="481.8" y1="129.5" x2="481.8" y2="156.5"/>
-                                        <line x1="406.5" y1="180.5" x2="429.4" y2="167.5"/>
-                                        <line x1="452.4" y1="180.5" x2="452.4" y2="207.5"/>
-                                        <line x1="406.5" y1="207.5" x2="429.4" y2="220.5"/>
-                                        <!-- Carbonyl & 4,10-Bromine Bonds -->
-                                        <line x1="397" y1="109" x2="397" y2="80" stroke="#dc2626"/>
-                                        <line x1="403" y1="109" x2="403" y2="80" stroke="#dc2626"/>
-                                        <line x1="367.4" y1="228" x2="367.4" y2="257" stroke="#dc2626"/>
-                                        <line x1="373.4" y1="228" x2="373.4" y2="257" stroke="#dc2626"/>
-                                        <line x1="311.6" y1="126" x2="274" y2="105" stroke="#b45309"/>
-                                        <line x1="458.8" y1="211" x2="496.4" y2="232" stroke="#b45309"/>
-                                    </g>
-                                    <g font-family="Arial, sans-serif" font-size="18" font-weight="700">
-                                        <text x="400" y="73" text-anchor="middle" fill="#dc2626">O</text>
-                                        <text x="370.4" y="276" text-anchor="middle" fill="#dc2626">O</text>
-                                        <text x="252" y="106" text-anchor="middle" fill="#b45309">Br</text>
-                                        <text x="518" y="242" text-anchor="middle" fill="#b45309">Br</text>
-                                    </g>
-                                </svg>
+                                <svg id="pr168-smiles-thumb" width="260" height="120" class="w-full h-24 mx-auto"></svg>
                             </a>
                         </div>
 
