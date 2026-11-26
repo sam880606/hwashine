@@ -1,4 +1,5 @@
 <html><head><meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
@@ -344,7 +345,7 @@ products = products.concat(otherProducts);
 let solventDyes = [
   {
     name: "溶劑染料",
-    link: "https://hwashine.tw/solvent-dyes-showcase/",
+    link: "https://hwashine.tw/solvent-dyes-showcase",
     category: "溶劑染料", 
     description: "提供多種高品質溶劑染料，適用於各種工業應用。點擊查看更多詳情。",
     applications: ["塑料", "油墨", "塗料"], 
@@ -654,7 +655,7 @@ function displayProducts(filteredProducts = products) {
             grid.appendChild(link);
         } else if (product.type === 'solvent') {
             const link = document.createElement('a');
-            link.href = product.link || 'https://hwashine.tw/solvent-dyes-showcase/';
+            link.href = product.link || 'https://hwashine.tw/solvent-dyes-showcase';
             link.style.textDecoration = 'none';
             link.style.color = 'inherit';
 
