@@ -840,4 +840,24 @@
     <lastmod>2026-11-26</lastmod>
     <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://hwashine.tw/PR144</loc>
+    <lastmod>2026-11-26</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://hwashine.tw/PR149</loc>
+    <lastmod>2026-11-26</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://hwashine.tw/en/PR144</loc>
+    <lastmod>2026-11-26</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://hwashine.tw/en/PR149</loc>
+    <lastmod>2026-11-26</lastmod>
+    <priority>0.75</priority>
+  </url>
 </urlset>

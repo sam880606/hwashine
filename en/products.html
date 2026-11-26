@@ -74,7 +74,7 @@
 <custom-header compact="true"></custom-header>
 <section class="hs-hero">
   <div class="hs-hero-inner">
-    <div class="hs-hero-badge">PRODUCT CATALOG · 44 GRADES</div>
+    <div class="hs-hero-badge">PRODUCT CATALOG · 46 GRADES</div>
     <h1>Product Catalog</h1>
     <p>Complete portfolio of 40 organic pigments (Blue, Orange, Red, Violet, Yellow), solvent dyes, optical brighteners, MXD6 barrier nylon, and Photoinitiator TPO. Click any product to request 50g lab samples or TDS.</p>
   </div>
@@ -82,8 +82,8 @@
 
 <main>
   <div class="catalog-tabs" role="tablist">
-    <button type="button" class="cat-tab active" data-cat="all">All Products <span class="cat-count">44</span></button>
-    <button type="button" class="cat-tab" data-cat="organic"><span class="cat-star">CORE</span> Organic Pigments <span class="cat-count">40</span></button>
+    <button type="button" class="cat-tab active" data-cat="all">All Products <span class="cat-count">46</span></button>
+    <button type="button" class="cat-tab" data-cat="organic"><span class="cat-star">CORE</span> Organic Pigments <span class="cat-count">42</span></button>
     <button type="button" class="cat-tab" data-cat="solvent">Solvent Dyes <span class="cat-count">1</span></button>
     <button type="button" class="cat-tab" data-cat="fluorescent">Optical Brighteners <span class="cat-count">1</span></button>
     <button type="button" class="cat-tab" data-cat="other">Additives &amp; Resins <span class="cat-count">2</span></button>
@@ -110,7 +110,7 @@
         <button type="button" class="pill-btn active" data-color="">All Hues</button>
         <button type="button" class="pill-btn" data-color="Blue"><span class="color-dot" style="background:#2563eb;"></span>Blue (6)</button>
         <button type="button" class="pill-btn" data-color="Orange"><span class="color-dot" style="background:#f97316;"></span>Orange (6)</button>
-        <button type="button" class="pill-btn" data-color="Red"><span class="color-dot" style="background:#dc2626;"></span>Red (11)</button>
+        <button type="button" class="pill-btn" data-color="Red"><span class="color-dot" style="background:#dc2626;"></span>Red (13)</button>
         <button type="button" class="pill-btn" data-color="Violet"><span class="color-dot" style="background:#9333ea;"></span>Violet (2)</button>
         <button type="button" class="pill-btn" data-color="Yellow"><span class="color-dot" style="background:#facc15;"></span>Yellow (15)</button>
       </div>
@@ -118,7 +118,7 @@
   </div>
 
   <div class="result-bar">
-    <div class="result-count">Showing <strong id="visible-count">44</strong> / 44 products</div>
+    <div class="result-count">Showing <strong id="visible-count">46</strong> / 46 products</div>
     <button type="button" class="reset-btn" id="reset-filters">Reset Filters</button>
   </div>
 
@@ -144,6 +144,8 @@ const PRODUCTS = [
   { code:"PO72", name:"Pigment Orange 72 (High-Heat Benzimidazolone)", cat:"organic", color:"Orange", apps:["High Weatherability","Halogen-Free"], c1:"#EF6C00", c2:"#FFCC80", l:8, h:5, c:5 },
 
   { code:"PR122", name:"Pigment Red 122 (Quinacridone Magenta)", cat:"organic", color:"Red", apps:["Nylon","High Weatherability","Halogen-Free"], c1:"#5B0011", c2:"#E88FD3", l:8, h:5, c:4 },
+  { code:"PR144", name:"Pigment Red 144 (Disazo Condensation Red)", cat:"organic", color:"Red", apps:[], c1:"#B81420", c2:"#F28B9E", l:7, h:5, c:3 },
+  { code:"PR149", name:"Pigment Red 149 (Halogen-Free Perylene Red)", cat:"organic", color:"Red", apps:["High Weatherability","Halogen-Free"], c1:"#B91C1C", c2:"#F472B6", l:8, h:5, c:5 },
   { code:"PR146", name:"Pigment Red 146 (Naphthol AS Bluish Red)", cat:"organic", color:"Red", apps:[], c1:"#D3170E", c2:"#E89FC1", l:6, h:3, c:2 },
   { code:"PR166", name:"Pigment Red 166 (Disazo Condensation Scarlet)", cat:"organic", color:"Red", apps:[], c1:"#E34234", c2:"#FF7F7F", l:8, h:5, c:3 },
   { code:"PR168", name:"Pigment Red 168 (Dibromoanthanthrone Red)", cat:"organic", color:"Red", apps:["High Weatherability"], c1:"#DC2626", c2:"#FCA5A5", l:8, h:5, c:5 },

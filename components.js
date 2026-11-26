@@ -42,7 +42,7 @@
   const BILINGUAL_SLUGS = new Set([
     'pb15-0','pb15-1','pb15-3','pb15-4','pb15-6','pb60',
     'po13','po34','po36','po43','po64','po72',
-    'pr122','pr146','pr166','pr168','pr170','pigmentred176','pr177','pr185','pr208','pr242','pr254',
+    'pr122','pr144','pr146','pr149','pr166','pr168','pr170','pigmentred176','pr177','pr185','pr208','pr242','pr254',
     'pv19','pv23',
     'py14','py74','py83','py110','py128','py138','py139','py150','py151','py154','py155','py180','py181','py191','py192',
     'solvent-dyes-showcase'
