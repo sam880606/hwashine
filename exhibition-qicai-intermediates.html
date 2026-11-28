@@ -53,7 +53,7 @@
           "dateModified": "2026-11-19T10:50:00+08:00",
           "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://hwashine.tw/exhibition-qicai-intermediates.html"
+            "@id": "https://hwashine.tw/exhibition-qicai-intermediates"
           },
           "image": [
             "https://hwashine.tw/images/og-brand.jpg"
@@ -206,6 +206,44 @@
             <p>
                 本頁 CAS、分子式與分子量為化學品識別資料；應用敘述屬一般用途整理，不代表七彩化學特定牌號的保證規格。實際產品名稱、異構物組成、純度、性能、供應狀態及法規文件，請以製造商最新 TDS、SDS、COA 與正式報價為準。
             </p>
+        </section>
+
+        <!-- Static Crawl-Friendly SEO Hub Directory (Direct links to all 10 independent intermediate pages) -->
+        <section aria-label="各中間體獨立技術規格頁快速目錄" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 pb-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-sky-600">INDEPENDENT PRODUCT PAGES · 10 INTERMEDIATES</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">各特種中間體獨立介紹頁快速導覽</h2>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-500 m-0">點擊任一型號即可進入專屬獨立頁，查看完整識別規格、應用評估與常見問答</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                    <div class="text-xs font-bold text-sky-700 uppercase tracking-wider">一、特種二胺 (3 項)</div>
+                    <ul class="space-y-1.5 m-0 p-0 list-none">
+                        <li><a href="/intermediates/mxda" class="font-bold hover:underline">MXDA 間苯二甲胺</a> <span class="text-xs font-mono text-slate-500">CAS 1477-55-0</span></li>
+                        <li><a href="/intermediates/1-3-bac" class="font-bold hover:underline">1,3-BAC 1,3-環己烷雙(甲胺)</a> <span class="text-xs font-mono text-slate-500">CAS 2579-20-6</span></li>
+                        <li><a href="/intermediates/1-4-bac" class="font-bold hover:underline">1,4-BAC 1,4-環己烷雙(甲胺)</a> <span class="text-xs font-mono text-slate-500">CAS 2549-93-1</span></li>
+                    </ul>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                    <div class="text-xs font-bold text-cyan-800 uppercase tracking-wider">二、特種異氰酸酯 (4 項)</div>
+                    <ul class="space-y-1.5 m-0 p-0 list-none">
+                        <li><a href="/intermediates/xdi" class="font-bold hover:underline">XDI 間苯二亞甲基二異氰酸酯</a> <span class="text-xs font-mono text-slate-500">CAS 3634-83-1</span></li>
+                        <li><a href="/intermediates/1-3-h6xdi" class="font-bold hover:underline">1,3-H6XDI 氫化苯二亞甲基二異氰酸酯</a> <span class="text-xs font-mono text-slate-500">CAS 38661-72-2</span></li>
+                        <li><a href="/intermediates/1-4-h6xdi" class="font-bold hover:underline">1,4-H6XDI 對位脂環二異氰酸酯</a> <span class="text-xs font-mono text-slate-500">CAS 10347-54-3</span></li>
+                        <li><a href="/intermediates/ppdi" class="font-bold hover:underline">PPDI 對苯二異氰酸酯</a> <span class="text-xs font-mono text-slate-500">CAS 104-49-4</span></li>
+                    </ul>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                    <div class="text-xs font-bold text-indigo-700 uppercase tracking-wider">三、TCD 三環癸烷系列 (3 項)</div>
+                    <ul class="space-y-1.5 m-0 p-0 list-none">
+                        <li><a href="/intermediates/tcd-alcohol-dm" class="font-bold hover:underline">TCD-Alcohol DM 三環癸烷二甲醇</a> <span class="text-xs font-mono text-slate-500">CAS 26896-48-0</span></li>
+                        <li><a href="/intermediates/tcd-alcohol-m" class="font-bold hover:underline">TCD-Alcohol M 三環癸烷單甲醇</a> <span class="text-xs font-mono text-slate-500">CAS 57526-50-8</span></li>
+                        <li><a href="/intermediates/tcd-diamine" class="font-bold hover:underline">TCD-Diamine 三環癸烷二甲胺</a> <span class="text-xs font-mono text-slate-500">CAS 68889-71-4</span></li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <!-- Section 2: Interactive CAS Filter & Product Cards -->
@@ -432,6 +470,7 @@
             // ================= 1. 特種二胺 Functional Diamines =================
             {
                 id: 'mxda',
+                url: '/intermediates/mxda',
                 category: 'diamine',
                 shortCategory: '特種二胺',
                 categoryName: '特種二胺 Functional Diamines',
@@ -464,6 +503,7 @@
             },
             {
                 id: '13bac',
+                url: '/intermediates/1-3-bac',
                 category: 'diamine',
                 shortCategory: '特種二胺',
                 categoryName: '特種二胺 Functional Diamines',
@@ -495,6 +535,7 @@
             },
             {
                 id: '14bac',
+                url: '/intermediates/1-4-bac',
                 category: 'diamine',
                 shortCategory: '特種二胺',
                 categoryName: '特種二胺 Functional Diamines',
@@ -528,6 +569,7 @@
             // ================= 2. 特種異氰酸酯 Functional Diisocyanates =================
             {
                 id: 'xdi',
+                url: '/intermediates/xdi',
                 category: 'diisocyanate',
                 shortCategory: '特種異氰酸酯',
                 categoryName: '特種異氰酸酯 Functional Diisocyanates',
@@ -560,6 +602,7 @@
             },
             {
                 id: '13h6xdi',
+                url: '/intermediates/1-3-h6xdi',
                 category: 'diisocyanate',
                 shortCategory: '特種異氰酸酯',
                 categoryName: '特種異氰酸酯 Functional Diisocyanates',
@@ -591,6 +634,7 @@
             },
             {
                 id: '14h6xdi',
+                url: '/intermediates/1-4-h6xdi',
                 category: 'diisocyanate',
                 shortCategory: '特種異氰酸酯',
                 categoryName: '特種異氰酸酯 Functional Diisocyanates',
@@ -622,6 +666,7 @@
             },
             {
                 id: 'ppdi',
+                url: '/intermediates/ppdi',
                 category: 'diisocyanate',
                 shortCategory: '特種異氰酸酯',
                 categoryName: '特種異氰酸酯 Functional Diisocyanates',
@@ -654,6 +699,7 @@
             // ================= 3. TCD 系列化學品 Tricyclodecane Series =================
             {
                 id: 'tcd-dm',
+                url: '/intermediates/tcd-alcohol-dm',
                 category: 'tcd',
                 shortCategory: 'TCD 系列',
                 categoryName: 'TCD 系列化學品 (聚合樹脂用高性能單體)',
@@ -689,6 +735,7 @@
             },
             {
                 id: 'tcd-m',
+                url: '/intermediates/tcd-alcohol-m',
                 category: 'tcd',
                 shortCategory: 'TCD 系列',
                 categoryName: 'TCD 系列化學品 (聚合樹脂用高性能單體)',
@@ -722,6 +769,7 @@
             },
             {
                 id: 'tcd-diamine',
+                url: '/intermediates/tcd-diamine',
                 category: 'tcd',
                 shortCategory: 'TCD 系列',
                 categoryName: 'TCD 系列化學品 (聚合樹脂用高性能單體)',
@@ -928,7 +976,7 @@
                         <div class="p-5 pb-3">
                             <div class="flex items-start justify-between gap-3">
                                 <div class="min-w-0">
-                                    <h3 class="text-2xl font-black text-slate-900 tracking-tight">${item.abbr}</h3>
+                                    <h3 class="text-2xl font-black text-slate-900 tracking-tight"><a href="${item.url}" class="!text-slate-900 hover:!text-sky-600 no-underline transition-colors">${item.abbr}</a></h3>
                                     <p class="text-sm font-bold text-slate-700 mt-0.5">${item.zhName}</p>
                                     <p class="text-xs text-slate-400 font-medium truncate" title="${item.enName}">${item.enName}</p>
                                 </div>
@@ -975,12 +1023,13 @@
 
                     <!-- Card Footer Actions -->
                     <div class="px-5 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-2 mt-2">
+                        <a href="${item.url}" class="text-xs font-bold !text-sky-700 hover:!text-sky-900 flex items-center py-1.5 px-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 border border-sky-200/70 transition-colors no-underline">獨立規格頁 <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i></a>
                         <button
                             type="button"
                             onclick="copyToClipboard('${item.abbr} (${item.zhName}) - CAS: ${item.cas}', '已複製完整品名與 CAS')"
                             class="text-xs font-semibold text-slate-600 hover:text-sky-600 flex items-center py-1.5 px-2 rounded-lg hover:bg-white transition-colors"
                         >
-                            <i class="fa-solid fa-copy mr-1.5 text-slate-400"></i> 複製規格文字
+                            <i class="fa-solid fa-copy mr-1.5 text-slate-400"></i> 複製
                         </button>
 
                         <button
@@ -1011,7 +1060,7 @@
             tbody.innerHTML = chemicalsData.map(item => `
                 <tr class="hover:bg-sky-50/40 transition-colors">
                     <td class="py-3.5 px-4 font-medium text-slate-600 whitespace-nowrap">${item.shortCategory}</td>
-                    <td class="py-3.5 px-4 font-extrabold text-slate-900 whitespace-nowrap">${item.abbr}</td>
+                    <td class="py-3.5 px-4 font-extrabold text-slate-900 whitespace-nowrap"><a href="${item.url}" class="!text-sky-700 hover:underline">${item.abbr}</a></td>
                     <td class="py-3.5 px-4 whitespace-nowrap">
                         <button
                             type="button"
